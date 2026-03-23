@@ -839,6 +839,15 @@
   document.head.appendChild(s);
 })();
 </script>
+<script>
+function toggleBlog(id) {
+  var full = document.getElementById(id + '-full');
+  var link = document.querySelector('#' + id + ' .blog-link');
+  var isOpen = full.style.display !== 'none';
+  full.style.display = isOpen ? 'none' : 'block';
+  link.textContent = isOpen ? 'Read Article →' : 'Close Article ↑';
+}
+</script>
 
 <!-- VA TOOLS -->
 <section class="va-tools" id="va">
@@ -1197,34 +1206,60 @@
     <h2 class="section-title light">Guides written for families PCSing to Drum.</h2>
     <p class="section-sub light">Real, useful content written by Joseph and the PCSHomes team — not marketing fluff.</p>
     <div class="blog-grid">
-      <div class="blog-card">
-        <div class="blog-img" style="background:linear-gradient(135deg,#1a3660,#0B1F3A)">❄️</div>
-        <div class="blog-body">
-          <div class="blog-cat">PCS Guide</div>
-          <div class="blog-title">The Complete Fort Drum Winter Survival Guide for Military Families</div>
-          <div class="blog-desc">Everything you need before your first North Country winter — vehicles, gear, heating, and mindset.</div>
-          <div class="blog-meta">By Joseph Murtha · Coming Soon</div>
-          <a class="blog-link" href="#">Read Article →</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-img" style="background:linear-gradient(135deg,#2D4A2D,#1a3660)">🏠</div>
+      <div class="blog-card" id="fd-blog-a1">
+        <div class="blog-img" style="background:linear-gradient(135deg,#1a3660,#0B1F3A)">🎖️</div>
         <div class="blog-body">
           <div class="blog-cat">VA Loans</div>
-          <div class="blog-title">Why Fort Drum Is One of the Best Bases to Use Your VA Loan</div>
-          <div class="blog-desc">Home prices, BAH rates, and the buy-to-rent strategy that's building wealth for 10th Mountain soldiers.</div>
-          <div class="blog-meta">By Joseph Murtha · Coming Soon</div>
-          <a class="blog-link" href="#">Read Article →</a>
+          <div class="blog-title">Your 2026 VA Loan Guide for Fort Drum</div>
+          <div class="blog-desc">VA loan limits just went up — here's what that means for you.</div>
+          <div class="blog-meta">By Joseph Murtha · March 2026</div>
+          <div class="blog-full" id="fd-blog-a1-full" style="display:none;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
+            <p style="margin-bottom:12px;">If you're PCSing to Fort Drum this year, your VA loan benefit is stronger than it's ever been. Here's what changed for 2026 and how to use it.</p>
+            <p style="margin-bottom:12px;">First, the big one: if you have full VA entitlement — meaning you've never used your benefit, or you've paid off a previous VA loan — there is no loan limit. Zero. The VA will guarantee whatever a lender approves you for, with $0 down. That's not a typo. No down payment. No PMI. Just your Certificate of Eligibility and a lender who knows what they're doing.</p>
+            <p style="margin-bottom:12px;">For soldiers who already have an active VA loan, the baseline limit for 2026 is $832,750 — up from $806,500 in 2025. That's a 3.3% increase that puts more buying power in your hands.</p>
+            <p style="margin-bottom:12px;">Here's the math that matters at Fort Drum: median home prices in the Watertown area run well below the national average. We're talking $126,000–$200,000 for solid family homes. Your BAH for 2026 increased 4.9% over last year. As an E-6 with dependents, you're looking at $1,893/month in housing allowance. That covers the mortgage on most homes near post — which means you could be building equity instead of paying someone else's mortgage.</p>
+            <p style="margin-bottom:12px;">The VA funding fee for first-time use with $0 down is 2.15% of the loan amount. On a $175,000 home that's about $3,762 — usually rolled into the loan so you pay nothing out of pocket at closing. Compare that to a conventional loan requiring a 20% down payment — $35,000 cash — and the VA benefit starts to look like exactly what it is: one of the best financial tools available to anyone in uniform.</p>
+            <p style="margin-bottom:12px;">One thing I see soldiers miss: get your COE (Certificate of Eligibility) before you start house hunting. It takes 10 minutes online at VA.gov and it tells you exactly what you're working with. Don't wait until you find the right house to figure this out.</p>
+            <p>If you have questions about how your specific rank and situation plays into this, reach out. I run these numbers every day for Fort Drum soldiers and I'm happy to walk you through it.</p>
+          </div>
+          <a class="blog-link" href="#" onclick="toggleBlog('fd-blog-a1');return false;">Read Article →</a>
         </div>
       </div>
-      <div class="blog-card">
-        <div class="blog-img" style="background:linear-gradient(135deg,#3a2a0a,#1a3660)">🏫</div>
+      <div class="blog-card" id="fd-blog-a2">
+        <div class="blog-img" style="background:linear-gradient(135deg,#2D4A2D,#1a3660)">🏠</div>
         <div class="blog-body">
-          <div class="blog-cat">Schools</div>
-          <div class="blog-title">Fort Drum School Districts Compared: Which One Is Right for Your Family?</div>
-          <div class="blog-desc">An honest breakdown of General Brown, Indian River, Carthage, and Watertown school districts.</div>
-          <div class="blog-meta">By Joseph Murtha · Coming Soon</div>
-          <a class="blog-link" href="#">Read Article →</a>
+          <div class="blog-cat">BAH &amp; Housing</div>
+          <div class="blog-title">Fort Drum BAH 2026: Why Buying Beats Renting Right Now</div>
+          <div class="blog-desc">Your BAH went up 4.9%. Here's how to make it work for you — not your landlord.</div>
+          <div class="blog-meta">By Joseph Murtha · March 2026</div>
+          <div class="blog-full" id="fd-blog-a2-full" style="display:none;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
+            <p style="margin-bottom:12px;">BAH rates at Fort Drum just went up 4.9% for 2026. Most soldiers take that money and hand it straight to a landlord. Here's why that's worth reconsidering.</p>
+            <p style="margin-bottom:12px;">The 2026 BAH rates for the Fort Drum/Watertown military housing area break down like this: an E-5 with dependents receives $1,665/month. E-6 with dependents: $1,893. E-7 with dependents: $2,103. That's your housing budget — tax-free money that doesn't touch your base pay.</p>
+            <p style="margin-bottom:12px;">Now look at the local market. The median home purchase price in the Watertown area is around $126,000. Even factoring in a modest bump over the past year, you're looking at homes in the $150,000–$200,000 range that cover everything a military family needs — 3 bedrooms, a yard, close to post. At current rates on a VA loan, a $175,000 home runs roughly $1,100–$1,300/month depending on your rate and taxes.</p>
+            <p style="margin-bottom:12px;">The math: your BAH covers the mortgage and then some. The difference stays in your pocket. And when you PCS out of Drum in 2–3 years, you can either sell the home and walk away with equity, or keep it as a rental property — which Fort Drum's rental market can absolutely support given the constant rotation of incoming soldiers.</p>
+            <p style="margin-bottom:12px;">The biggest objection I hear: "I don't know how long I'll be here." That's the VA loan's secret weapon. Because you put $0 down, your risk exposure is minimal. In the worst case scenario — you PCS earlier than expected and the market dips — you can rent it out and cover the mortgage without losing money every month.</p>
+            <p>I've helped Fort Drum soldiers build the beginning of a real estate portfolio just by buying smart at each duty station instead of renting. It starts with one house, right here, right now. If you want to run the numbers for your rank and situation, that's exactly what I'm here for.</p>
+          </div>
+          <a class="blog-link" href="#" onclick="toggleBlog('fd-blog-a2');return false;">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" id="fd-blog-a3">
+        <div class="blog-img" style="background:linear-gradient(135deg,#3a2a0a,#1a3660)">🪖</div>
+        <div class="blog-body">
+          <div class="blog-cat">PCS Guide</div>
+          <div class="blog-title">PCSing to Fort Drum: What Nobody Tells You About Housing Near the 10th Mountain Division</div>
+          <div class="blog-desc">The real neighborhoods, the winter reality, and how to find a home before you get your orders.</div>
+          <div class="blog-meta">By Joseph Murtha · February 2026</div>
+          <div class="blog-full" id="fd-blog-a3-full" style="display:none;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
+            <p style="margin-bottom:12px;">Every year I work with soldiers and families PCSing to Fort Drum who had no idea what they were getting into — not because they didn't prepare, but because nobody told them the things that actually matter. Here's what I wish every incoming soldier knew before they started their search.</p>
+            <p style="margin-bottom:12px;">The neighborhoods that matter: Most families end up in Watertown, Calcium, or Evans Mills. Watertown is the most complete — you have grocery stores, schools, restaurants, and a real downtown. Calcium is tight-knit and popular with military families because of proximity to post. Evans Mills is quiet and affordable. All three are worth looking at depending on your family's priorities.</p>
+            <p style="margin-bottom:12px;">The winter is real. Fort Drum gets an average of 100+ inches of snow per year — lake effect off Lake Ontario. When soldiers from warmer climates ask me what that means for housing, I tell them: buy close to post. A commute that's 20 minutes in October can be 45 minutes in January. That matters when you're trying to make formation.</p>
+            <p style="margin-bottom:12px;">Start earlier than you think. The Watertown housing market moves quickly — good homes in the $150,000–$200,000 range don't sit long, especially in spring when PCS season heats up. If you have your orders and you're not actively looking, you're already behind. I work with families who are 60–90 days out and we find better options than the ones who wait until 30 days.</p>
+            <p style="margin-bottom:12px;">Use your VA benefit. I know I say this all the time, but Fort Drum is one of the best duty stations in the country to buy instead of rent because of the price-to-BAH ratio. You can make your housing allowance actually work for you here instead of just paying someone else's mortgage.</p>
+            <p style="margin-bottom:12px;">Get a lender approved before you contact a real estate agent. Seriously. Know your numbers — your BAH, your COE status, your credit score — before you fall in love with a house. It makes everything faster and it makes your offer stronger.</p>
+            <p>I've helped dozens of 10th Mountain Division soldiers and families find the right home before, during, and after PCS season. If you're inbound to Fort Drum and you want a straight answer about the market, the neighborhoods, and what your benefit actually gets you — just reach out. That's what I'm here for.</p>
+          </div>
+          <a class="blog-link" href="#" onclick="toggleBlog('fd-blog-a3');return false;">Read Article →</a>
         </div>
       </div>
     </div>
@@ -1284,7 +1319,6 @@
         <div class="footer-links">
           <a href="pcshomes-about.html">About PCSHomes</a>
           <a href="pcshomes-contact.html">Contact Joseph</a>
-          <a href="pcshomes-dashboard.html">My Dashboard</a>
         </div>
       </div>
     </div>
