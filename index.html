@@ -23,7 +23,7 @@
       --cream: #F8F5EF; --white: #FFFFFF;
       --gray: #8A96A3; --gray-light: #EEF1F4; --text: #1C2B3A;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -333,12 +333,32 @@
     .chat-send:disabled { background: var(--gray-light); cursor: not-allowed; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
     @media(max-width:900px){
-      nav{padding:0 20px;} .nav-links{display:none;} section{padding:64px 20px;}
+      nav{padding:0 20px;} .nav-links{display:none;} section{padding:56px 18px;}
       .listings-grid,.guide-grid,.tools-row,.lenders-grid,.blog-grid{grid-template-columns:1fr;}
       .pcs-layout{grid-template-columns:1fr;} .drum-facts{grid-template-columns:repeat(2,1fr);}
       .faq-grid{grid-template-columns:1fr;} .rvb-controls,.rvb-controls-row2{grid-template-columns:1fr;} .rvb-results,.pros-cons-grid{grid-template-columns:1fr;}
-      .hero-stats{gap:24px;} .chat-window{width:calc(100vw - 40px);right:20px;}
+      .hero-stats{gap:20px;flex-wrap:wrap;justify-content:center;} .chat-window{width:calc(100vw - 40px);right:20px;bottom:90px;}
+      .hero h1{font-size:clamp(30px,8vw,48px);} .hero-stats .stat-num{font-size:22px;}
+      .section-title{font-size:clamp(22px,5vw,32px);}
+      .inner{padding:0;}
+      .search-box{flex-direction:column;border-radius:12px;}
+      .search-btn{border-radius:0 0 10px 10px;padding:14px;}
+      .bah-strip-grid{grid-template-columns:repeat(2,1fr) !important;}
+      .nav-cta{padding:7px 14px;font-size:12px;}
+      #lenderAgentBanner{flex-direction:column !important;text-align:center;}
+      #lenderAgentBanner > div:last-child{min-width:unset !important;width:100%;}
+      #vaLeadForm > div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr !important;}
+      #mapPanel{position:fixed !important;bottom:0 !important;top:auto !important;right:0 !important;left:0 !important;width:100% !important;border-radius:16px 16px 0 0 !important;max-height:65vh;overflow-y:auto;}
+      .popup-box{max-height:90vh;overflow-y:auto;margin:auto;}
+      .nav-hamburger{display:flex;}
+      .nav-mobile{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(11,31,58,0.98);backdrop-filter:blur(12px);padding:20px;flex-direction:column;gap:4px;z-index:199;border-bottom:1px solid rgba(201,168,76,0.2);}
+      .nav-mobile.open{display:flex;}
+      .nav-mobile a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:15px;font-weight:500;padding:12px 16px;border-radius:8px;transition:all 0.2s;}
+      .nav-mobile a:hover{background:rgba(255,255,255,0.07);color:var(--gold);}
+      .nav-mobile .nav-mobile-cta{background:var(--gold);color:var(--navy);padding:13px 16px;border-radius:8px;font-weight:700;text-align:center;margin-top:8px;}
     }
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+    .nav-hamburger span{width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;transition:all 0.3s;}
   </style>
   <script type="application/ld+json">
   {
@@ -389,7 +409,24 @@
     <li><a href="#blog">Blog</a></li>
   </ul>
   <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Talk to Joseph</button>
+  <button class="nav-hamburger" onclick="toggleMobileNav()" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile nav -->
+<div class="nav-mobile" id="mobileNav">
+  <a href="#listings" onclick="closeMobileNav()">Find a Home</a>
+  <a href="#base" onclick="closeMobileNav()">Base Guide</a>
+  <a href="#map" onclick="closeMobileNav()">Area Map</a>
+  <a href="#va" onclick="closeMobileNav()">VA Tools</a>
+  <a href="#rvb" onclick="closeMobileNav()">Rent vs Buy</a>
+  <a href="#pcs" onclick="closeMobileNav()">PCS Planner</a>
+  <a href="#lenders" onclick="closeMobileNav()">Lenders</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
+  <a href="#blog" onclick="closeMobileNav()">Blog</a>
+  <a href="pcshomes-contact.html" class="nav-mobile-cta">Talk to Joseph →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -863,6 +900,15 @@
 })();
 </script>
 <script>
+function toggleMobileNav() {
+  var nav = document.getElementById('mobileNav');
+  var btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', nav.classList.contains('open'));
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
 function toggleBlog(id) {
   var full = document.getElementById(id + '-full');
   var link = document.querySelector('#' + id + ' .blog-link');
