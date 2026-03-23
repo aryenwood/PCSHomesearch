@@ -206,7 +206,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Last Name</label>
-            <input class="form-input" type="text" placeholder="Smith"/>
+            <input class="form-input" id="contactLastName" type="text" placeholder="Smith"/>
           </div>
         </div>
         <div class="form-row">
@@ -222,16 +222,16 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Current Duty Station</label>
-            <input class="form-input" type="text" placeholder="e.g. Fort Campbell, KY"/>
+            <input class="form-input" id="contactDutyStation" type="text" placeholder="e.g. Fort Campbell, KY"/>
           </div>
           <div class="form-group">
             <label class="form-label">PCS / Report Date</label>
-            <input class="form-input" type="text" placeholder="e.g. June 2026"/>
+            <input class="form-input" id="contactPCSDate" type="text" placeholder="e.g. June 2026"/>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Budget Range</label>
-          <select class="form-input form-select">
+          <select class="form-input form-select" id="contactBudget">
             <option>Select a range...</option>
             <option>Under $150,000</option>
             <option>$150,000 – $200,000</option>
@@ -319,19 +319,21 @@
     btn.classList.add('selected');
   }
   function submitForm() {
-    const name    = document.getElementById('contactName') ? document.getElementById('contactName').value.trim() : '';
-    const email   = document.getElementById('contactEmail') ? document.getElementById('contactEmail').value.trim() : '';
-    const phone   = document.getElementById('contactPhone') ? document.getElementById('contactPhone').value.trim() : '';
-    const message = document.getElementById('contactMessage') ? document.getElementById('contactMessage').value.trim() : '';
-    // Replace YOUR_FORM_ID with your Formspree ID
+    const firstName   = document.getElementById('contactName').value.trim();
+    const lastName    = document.getElementById('contactLastName').value.trim();
+    const email       = document.getElementById('contactEmail').value.trim();
+    const phone       = document.getElementById('contactPhone').value.trim();
+    const dutyStation = document.getElementById('contactDutyStation').value.trim();
+    const pcsDate     = document.getElementById('contactPCSDate').value.trim();
+    const budget      = document.getElementById('contactBudget').value;
+    const message     = document.getElementById('contactMessage').value.trim();
+    const inquiryType = (document.querySelector('.inquiry-type.selected') || {}).textContent || '';
     const FORMSPREE_ID = 'xvzwezbn';
-    if (FORMSPREE_ID !== 'YOUR_FORM_ID') {
-      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({ subject:'PCSHomes Contact Form', name, email, phone, message })
-      }).catch(()=>{});
-    }
+    fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ subject:'PCSHomes Contact Form', name: firstName + ' ' + lastName, email, phone, duty_station: dutyStation, pcs_date: pcsDate, budget, inquiry_type: inquiryType, message })
+    }).catch(()=>{});
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('successState').style.display = 'block';
   }
