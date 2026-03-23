@@ -1266,7 +1266,7 @@ function submitVaLead() {
   const area = document.getElementById('vaArea').value;
   const date = document.getElementById('vaDate').value;
   // Send to Formspree (replace with your Formspree endpoint)
-  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  fetch('https://formspree.io/f/xvzwezbn', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
@@ -1444,7 +1444,7 @@ function submitPopup() {
   const contact = document.getElementById('popupContact').value.trim();
   if (!name || !contact) { alert('Please enter your name and contact info.'); return; }
   const offer = document.getElementById('popupOfferType').value;
-  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  fetch('https://formspree.io/f/xvzwezbn', {
     method: 'POST',
     headers: {'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({ subject: 'PCSHomes Popup Lead — ' + offer, name, contact, offer })
