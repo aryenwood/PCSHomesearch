@@ -424,7 +424,7 @@
     <span class="hero-tag">Lowville</span>
   </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-num">$1,<span>740</span></div><div class="stat-label">E5 BAH w/ Dependents</div></div>
+    <div class="stat"><div class="stat-num">$1,<span>665</span></div><div class="stat-label">E5 BAH w/ Dependents</div></div>
     <div class="stat"><div class="stat-num">18<span>k+</span></div><div class="stat-label">Soldiers at Fort Drum</div></div>
     <div class="stat"><div class="stat-num">340<span>+</span></div><div class="stat-label">VA Listings Nearby</div></div>
   </div>
@@ -474,16 +474,18 @@
               <label class="va-label">Rank &amp; BAH Rate</label>
               <select class="va-input" id="vaBah">
                 <option value="">Select your rank / BAH rate</option>
-                <option>E1–E3 (~$1,068/mo BAH)</option>
-                <option>E4 (~$1,278/mo BAH)</option>
-                <option>E5 without dependents</option>
-                <option>E5 with dependents (~$1,740/mo BAH)</option>
-                <option>E6 with dependents (~$1,800/mo BAH)</option>
-                <option>E7 with dependents (~$1,890/mo BAH)</option>
-                <option>E8–E9 with dependents</option>
-                <option>O1–O2</option>
-                <option>O3 with dependents (~$2,130/mo BAH)</option>
-                <option>O4+ with dependents</option>
+                <option>E1–E4 w/dep (~$1,569/mo BAH)</option>
+                <option>E5 w/dep (~$1,665/mo BAH)</option>
+                <option>E6 w/dep (~$1,893/mo BAH)</option>
+                <option>E7 w/dep (~$2,103/mo BAH)</option>
+                <option>E8 w/dep (~$2,331/mo BAH)</option>
+                <option>E9 w/dep (~$2,526/mo BAH)</option>
+                <option>W1 w/dep (~$1,914/mo BAH)</option>
+                <option>O1 w/dep (~$1,701/mo BAH)</option>
+                <option>O2 w/dep (~$1,890/mo BAH)</option>
+                <option>O3 w/dep (~$2,469/mo BAH)</option>
+                <option>O4 w/dep (~$2,655/mo BAH)</option>
+                <option>O5+ w/dep (~$2,784+/mo BAH)</option>
                 <option>Not sure — I'll provide details</option>
               </select>
             </div>
@@ -543,11 +545,11 @@
     <div class="bah-strip">
       <div class="bah-strip-label">2026 Fort Drum BAH Quick Reference</div>
       <div class="bah-strip-grid">
-        <div class="bah-item"><div class="bah-rank">E1</div><div class="bah-amount">$1,068<span>/mo</span></div></div>
-        <div class="bah-item"><div class="bah-rank">E4</div><div class="bah-amount">$1,278<span>/mo</span></div></div>
-        <div class="bah-item"><div class="bah-rank">E5 w/dep</div><div class="bah-amount">$1,740<span>/mo</span></div></div>
-        <div class="bah-item"><div class="bah-rank">E7 w/dep</div><div class="bah-amount">$1,890<span>/mo</span></div></div>
-        <div class="bah-item"><div class="bah-rank">O3 w/dep</div><div class="bah-amount">$2,130<span>/mo</span></div></div>
+        <div class="bah-item"><div class="bah-rank">E1–E4 w/dep</div><div class="bah-amount">$1,569<span>/mo</span></div></div>
+        <div class="bah-item"><div class="bah-rank">E5 w/dep</div><div class="bah-amount">$1,665<span>/mo</span></div></div>
+        <div class="bah-item"><div class="bah-rank">E7 w/dep</div><div class="bah-amount">$2,103<span>/mo</span></div></div>
+        <div class="bah-item"><div class="bah-rank">O3 w/dep</div><div class="bah-amount">$2,469<span>/mo</span></div></div>
+        <div class="bah-item"><div class="bah-rank">O5 w/dep</div><div class="bah-amount">$2,784<span>/mo</span></div></div>
         <div class="bah-item"><div class="bah-rank">Median home</div><div class="bah-amount">~$185k</div></div>
       </div>
     </div>
@@ -563,7 +565,7 @@
     <h2 class="section-title light">Everything you need to know before you arrive.</h2>
     <p class="section-sub light">Honest intel from families who've lived it — not a brochure.</p>
     <div class="drum-facts">
-      <div class="drum-fact"><div class="drum-fact-num">$1,740</div><div class="drum-fact-label">BAH E5 w/ Dependents</div></div>
+      <div class="drum-fact"><div class="drum-fact-num">$1,665</div><div class="drum-fact-label">BAH E5 w/ Dependents</div></div>
       <div class="drum-fact"><div class="drum-fact-num">-20°F</div><div class="drum-fact-label">Winter Lows (Prepare)</div></div>
       <div class="drum-fact"><div class="drum-fact-num">18k+</div><div class="drum-fact-label">Active Duty Soldiers</div></div>
       <div class="drum-fact"><div class="drum-fact-num">10th</div><div class="drum-fact-label">Mountain Division</div></div>
@@ -865,7 +867,7 @@
         <div class="calc-label">DOWN PAYMENT (VA allows $0)</div>
         <input class="calc-input" type="number" placeholder="$0" id="downPayment" oninput="calcPayment()"/>
         <div class="calc-label">YOUR BAH RATE</div>
-        <input class="calc-input" type="number" placeholder="$1,740" id="bah" oninput="calcPayment()"/>
+        <input class="calc-input" type="number" placeholder="$1,665" id="bah" oninput="calcPayment()"/>
         <div class="calc-result">
           <div><div class="result-label">Est. Monthly Payment</div><div class="result-value" id="paymentResult">$—</div></div>
           <div style="text-align:right"><div class="result-label">BAH Coverage</div><div class="result-value" id="bahCoverage" style="font-size:20px">—</div></div>
@@ -907,8 +909,8 @@
       </div>
       <div class="rvb-control">
         <div class="rvb-control-label">Your BAH Rate</div>
-        <input class="rvb-input" type="number" id="rvbBah" value="1740" oninput="calcRvB()"/>
-        <div class="rvb-control-hint">E5 w/dep: $1,740 · O3 w/dep: $2,130</div>
+        <input class="rvb-input" type="number" id="rvbBah" value="1665" oninput="calcRvB()"/>
+        <div class="rvb-control-hint">E5 w/dep: $1,665 · O3 w/dep: $2,469</div>
       </div>
     </div>
 
@@ -1156,7 +1158,7 @@
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What does my BAH actually cover in Watertown?</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">Your BAH is set to cover the median cost of housing for your rank and dependency status in the local market. In Watertown, BAH goes <strong>further than almost any other Army base</strong>. For an E5 with dependents ($1,740/mo), a typical mortgage on a $185k home runs $1,100–$1,300/month — leaving real money in your pocket. If you live on-post, BAH covers rent, utilities, and insurance entirely. Off-post, you're responsible for utilities on top of your housing payment — budget an extra $150–300/month in winter.</div>
+        <div class="faq-a">Your BAH is set to cover the median cost of housing for your rank and dependency status in the local market. In Watertown, BAH goes <strong>further than almost any other Army base</strong>. For an E5 with dependents ($1,665/mo), a typical mortgage on a $185k home runs $1,100–$1,300/month — leaving real money in your pocket. If you live on-post, BAH covers rent, utilities, and insurance entirely. Off-post, you're responsible for utilities on top of your housing payment — budget an extra $150–300/month in winter.</div>
       </div>
 
       <div class="faq-item">
@@ -1470,7 +1472,7 @@ const SYSTEM_PROMPT=`You are a friendly, knowledgeable Fort Drum PCS assistant f
 
 Key facts:
 - Fort Drum: 10th Mountain Division, ~18,000 active duty soldiers
-- BAH 2026 approx: E1 $1,068 / E4 $1,278 / E5 w/dep $1,740 / E7 w/dep $1,890 / O3 w/dep $2,130
+- BAH 2026 (with dependents): E1-E4 $1,569 / E5 $1,665 / E6 $1,893 / E7 $2,103 / E8 $2,331 / E9 $2,526 / W1 $1,914 / O1 $1,701 / O2 $1,890 / O3 $2,469 / O4 $2,655 / O5 $2,784
 - Neighborhoods: Evans Mills (4-5 min to gate, most popular), Watertown (most amenities), Carthage, Black River, Lowville (30 min out)
 - Median home price: ~$185,000, range $140k-$280k
 - On-post housing: Mountain Community Homes (FDMCH), waitlist 6-18 months, (315) 955-6644, fortdrummch.com
