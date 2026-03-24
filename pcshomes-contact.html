@@ -13,7 +13,6 @@
   <meta property="og:url" content="https://pcshomes.com/contact">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { color: inherit; text-decoration: none; }
@@ -22,9 +21,10 @@
       --gold: #C9A84C; --gold-light: #E2C57A;
       --cream: #F8F5EF; --white: #FFFFFF;
       --gray: #8A96A3; --gray-light: #EEF1F4; --text: #1C2B3A;
+      --bg: #070F1E; --surface: rgba(255,255,255,0.04); --border: rgba(255,255,255,0.09);
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -33,13 +33,19 @@
       padding: 0 48px; height: 66px;
       border-bottom: 1px solid rgba(201,168,76,0.2);
     }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--white); text-decoration: none; }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--white); }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--gold); }
     .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .nav-hamburger span { width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
+    .nav-mobile { display: none !important; position: fixed; top: 66px; left: 0; right: 0; background: rgba(11,31,58,0.98); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 4px; z-index: 199; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .nav-mobile.open { display: flex !important; }
+    .nav-mobile a { color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: 8px; }
 
+    /* HERO */
     .hero {
       background: var(--navy); padding: 120px 48px 80px;
       text-align: center; position: relative; overflow: hidden;
@@ -62,225 +68,136 @@
     .hero h1 em { font-style: italic; color: var(--gold); }
     .hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 460px; line-height: 1.75; margin: 18px auto 0; }
 
-    .contact-main { max-width: 1100px; margin: 0 auto; padding: 72px 48px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+    /* QUICK CONTACT BAR */
+    .quick-contact {
+      background: rgba(201,168,76,0.07); border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 14px 48px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;
+    }
+    .quick-contact-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    .quick-contact-item {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.75);
+      font-size: 13px; font-weight: 500; transition: color 0.2s;
+    }
+    .quick-contact-item:hover { color: var(--gold); }
+    .quick-contact-item svg { flex-shrink: 0; }
+    .quick-contact-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); }
 
-    /* FORM */
-    .form-col {}
+    /* MAIN LAYOUT */
+    .contact-wrapper { background: var(--bg); }
+    .contact-main { max-width: 1100px; margin: 0 auto; padding: 72px 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+
+    /* FORM CARD */
+    .form-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .form-title { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .form-sub { font-size: 14px; color: var(--gray); margin-bottom: 32px; line-height: 1.6; }
+    .form-title { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .form-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 28px; line-height: 1.6; }
 
+    /* INQUIRY TYPES */
+    .inquiry-types { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .inquiry-type {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55); font-size: 12px; font-weight: 600;
+      padding: 8px 14px; border-radius: 100px; cursor: pointer;
+      transition: all 0.18s; font-family: 'DM Sans', sans-serif;
+    }
+    .inquiry-type:hover { border-color: rgba(201,168,76,0.4); color: var(--gold); background: rgba(201,168,76,0.08); }
+    .inquiry-type.selected { background: rgba(201,168,76,0.12); border-color: rgba(201,168,76,0.55); color: var(--gold); }
+
+    /* FORM FIELDS */
     .contact-form { display: flex; flex-direction: column; gap: 16px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--navy); }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-label { font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
     .form-input {
-      border: 1.5px solid var(--gray-light); border-radius: 8px;
-      padding: 12px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px;
-      outline: none; transition: border-color 0.2s; background: var(--white);
+      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
+      outline: none; transition: border-color 0.2s, background 0.2s;
     }
-    .form-input:focus { border-color: var(--navy); }
-    .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A96A3' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; }
+    .form-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
+    .form-input::placeholder { color: rgba(255,255,255,0.22); }
+    .form-select {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.35)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      background-color: rgba(255,255,255,0.06);
+    }
+    .form-select option { background: #0B1F3A; color: var(--white); }
     .form-textarea { resize: vertical; min-height: 120px; }
-    .submit-btn {
-      background: var(--navy); color: var(--white); border: none; border-radius: 10px;
-      padding: 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
-      cursor: pointer; transition: background 0.2s; margin-top: 4px;
-    }
-    .submit-btn:hover { background: var(--gold); color: var(--navy); }
 
-    .inquiry-types { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-    .inquiry-type {
-      background: var(--gray-light); border: 2px solid transparent; color: var(--navy);
-      font-size: 12px; font-weight: 600; padding: 7px 16px; border-radius: 100px;
-      cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+    .form-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 4px 0; }
+
+    .submit-btn {
+      background: var(--gold); color: var(--navy); border: none; border-radius: 10px;
+      padding: 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 4px;
+      letter-spacing: 0.02em;
     }
-    .inquiry-type.selected, .inquiry-type:hover { background: rgba(11,31,58,0.08); border-color: var(--navy); }
+    .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
 
     /* SIDEBAR */
-    .contact-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 24px; }
+    .contact-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 16px; }
 
-    .joseph-card { background: var(--navy); border-radius: 16px; padding: 32px; }
-    .joseph-photo { width: 72px; height: 72px; border-radius: 50%; background: var(--navy-light); display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; border: 3px solid var(--gold); }
-    .joseph-name { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .joseph-title { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px; line-height: 1.5; }
-    .joseph-methods { display: flex; flex-direction: column; gap: 10px; }
+    .joseph-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 18px; padding: 28px; }
+    .joseph-photo { width: 68px; height: 68px; border-radius: 50%; background: var(--navy-light); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 14px; border: 2.5px solid var(--gold); }
+    .joseph-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .joseph-name { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+    .joseph-title { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 18px; line-height: 1.55; }
+    .joseph-methods { display: flex; flex-direction: column; gap: 8px; }
     .joseph-method {
       display: flex; align-items: center; gap: 12px;
-      padding: 12px 16px; background: rgba(255,255,255,0.07); border-radius: 8px;
-      font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer;
-      transition: background 0.2s; text-decoration: none; border: 1px solid rgba(255,255,255,0.08);
+      padding: 11px 14px; background: rgba(255,255,255,0.05); border-radius: 10px;
+      font-size: 13px; color: rgba(255,255,255,0.65); cursor: pointer;
+      transition: background 0.2s, color 0.2s; border: 1px solid rgba(255,255,255,0.07);
     }
-    .joseph-method:hover { background: rgba(201,168,76,0.15); color: var(--gold); border-color: rgba(201,168,76,0.2); }
-    .joseph-method-icon { font-size: 18px; }
+    .joseph-method:hover { background: rgba(201,168,76,0.12); color: var(--gold); border-color: rgba(201,168,76,0.25); }
+    .joseph-method-icon { font-size: 16px; flex-shrink: 0; }
 
-    .hours-card { background: var(--white); border-radius: 16px; padding: 28px; border: 1px solid rgba(0,0,0,0.06); }
-    .hours-title { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
-    .hours-list { display: flex; flex-direction: column; gap: 10px; }
-    .hours-item { display: flex; justify-content: space-between; font-size: 13px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-light); }
+    .info-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+    .info-card-title { font-family: 'Libre Baskerville', serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .hours-list { display: flex; flex-direction: column; gap: 0; }
+    .hours-item { display: flex; justify-content: space-between; font-size: 13px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .hours-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .hours-day { color: var(--navy); font-weight: 500; }
-    .hours-time { color: var(--gray); }
-    .hours-note { font-size: 12px; color: var(--gold); margin-top: 12px; font-style: italic; }
-
-    .office-card { background: var(--white); border-radius: 16px; padding: 28px; border: 1px solid rgba(0,0,0,0.06); }
-    .office-title { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
-    .office-detail { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; font-size: 13px; color: var(--gray); line-height: 1.5; }
-    .office-detail-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .hours-day { color: rgba(255,255,255,0.75); font-weight: 500; }
+    .hours-time { color: rgba(255,255,255,0.4); }
+    .hours-note { font-size: 11.5px; color: rgba(201,168,76,0.7); margin-top: 12px; font-style: italic; line-height: 1.6; }
+    .office-detail { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.55; }
+    .office-detail:last-child { margin-bottom: 0; }
+    .office-detail-icon { flex-shrink: 0; margin-top: 1px; }
 
     /* SUCCESS STATE */
     .success-state {
-      display: none; text-align: center; padding: 48px 24px;
-      background: var(--white); border-radius: 16px; border: 1px solid rgba(0,0,0,0.06);
+      display: none; text-align: center; padding: 56px 24px;
+      background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid var(--border);
     }
-    .success-icon { font-size: 56px; margin-bottom: 20px; }
-    .success-title { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .success-sub { font-size: 15px; color: var(--gray); line-height: 1.7; max-width: 360px; margin: 0 auto; }
+    .success-icon { font-size: 52px; margin-bottom: 18px; }
+    .success-title { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .success-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 360px; margin: 0 auto; }
 
-    footer { background: #070F1E; padding: 40px 48px; }
+    footer { background: #040b14; padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--white); }
     .footer-logo span { color: var(--gold); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+    .footer-links a { color: rgba(255,255,255,0.3); font-size: 13px; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
 
     @media (max-width: 900px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
+      nav { padding: 0 20px; } .nav-links { display: none; } .nav-hamburger { display: flex; }
       .hero { padding: 100px 20px 60px; }
-      .contact-main { grid-template-columns: 1fr; padding: 48px 20px; gap: 40px; }
+      .quick-contact { padding: 12px 20px; gap: 16px; }
+      .quick-contact-divider { display: none; }
+      .contact-main { grid-template-columns: 1fr; padding: 40px 20px; gap: 32px; }
       .contact-sidebar { position: static; }
       .form-row { grid-template-columns: 1fr; }
-      .nav-hamburger{display:flex;}
-      .nav-mobile{display:none !important;position:fixed;top:66px;left:0;right:0;background:rgba(11,31,58,0.98);backdrop-filter:blur(12px);padding:20px;flex-direction:column;gap:4px;z-index:199;}
-      .nav-mobile.open{display:flex !important;}
-      .nav-mobile a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:15px;font-weight:500;padding:12px 16px;border-radius:8px;}
-    }
-    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
-    .nav-hamburger span{width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;}
-    @media(max-width:768px){
-      h1{font-size:clamp(26px,7vw,40px);}
-      h2,.section-title{font-size:clamp(20px,5vw,28px);}
-      .section-sub{font-size:0.9rem;}
-      p{font-size:0.9rem;}
     }
     @media (max-width: 768px) {
-      body {
-        padding-bottom: 80px;
-      }
-    }
-
-    /* =============================================
-       PCSHOMES TYPOGRAPHY SYSTEM
-       Base: 16px, Scale: Minor Third
-    ============================================= */
-
-    /* 1. ROOT SCALE */
-    :root {
-      font-size: 16px;
-    }
-
-    /* 2. BODY DEFAULT */
-    body {
-      font-size: 1rem;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* 3. HEADING SCALE */
-    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.25; }
-    h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.35; }
-    h4 { font-size: 1.125rem; line-height: 1.4; }
-    h5, h6 { font-size: 1rem; line-height: 1.5; }
-
-    /* 4. BODY TEXT */
-    p {
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    /* 5. NAV LINKS */
-    nav a, .nav-links a {
-      font-size: 0.9375rem;
-    }
-
-    /* 6. SECTION EYEBROW / LABELS */
-    .eyebrow, .section-label, [class*="eyebrow"], [class*="section-tag"],
-    [class*="label-tag"], .hero-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-    }
-
-    /* 7. CARD BODY TEXT */
-    .card p, .card li, [class*="card"] p, [class*="card"] li {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-    }
-
-    /* 8. STAT LABELS */
-    .stat-label, [class*="stat"] p, [class*="stat-desc"],
-    [class*="stat"] > span:not(:first-child) {
-      font-size: 0.8125rem;
-    }
-
-    /* 9. FORM LABELS AND INPUTS */
-    label, input, select, textarea {
-      font-size: 0.9375rem;
-    }
-    input::placeholder, textarea::placeholder {
-      font-size: 0.875rem;
-    }
-
-    /* 10. BUTTONS */
-    button, .btn, [class*="btn"], a[class*="btn"] {
-      font-size: 0.9375rem;
-      font-weight: 600;
-    }
-
-    /* 11. FOOTER TEXT */
-    footer p, footer a, footer li, footer span,
-    .footer p, .footer a, .footer li {
-      font-size: 0.875rem;
-      line-height: 1.6;
-    }
-
-    /* 12. SMALL / HELPER TEXT */
-    small, .text-xs, [class*="text-xs"], [class*="hint"],
-    [class*="helper"], [class*="disclaimer"], .estimates-note {
-      font-size: 0.8125rem !important;
-      line-height: 1.55;
-    }
-
-    /* 13. LOW OPACITY FIX */
-    [style*="opacity: 0.4"], [style*="opacity:0.4"],
-    [style*="rgba(255, 255, 255, 0.4)"],
-    [style*="rgba(255,255,255,0.4)"] {
-      opacity: 0.7 !important;
-    }
-
-    /* 14. MOBILE OVERRIDES */
-    @media (max-width: 768px) {
-      :root { font-size: 15px; }
-      p { font-size: 1rem; line-height: 1.7; }
-      h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
-      h2 { font-size: clamp(1.35rem, 5vw, 1.75rem); }
-      h3 { font-size: clamp(1.1rem, 4vw, 1.35rem); }
-      nav a, .nav-links a { font-size: 0.875rem; }
-      .card p, .card li, [class*="card"] p { font-size: 0.9375rem; }
-      label, input, select, textarea { font-size: 1rem; }
-      small, .text-xs, [class*="disclaimer"] { font-size: 0.8125rem !important; }
-      * { min-font-size: 13px; }
-    }
-
-    /* 15. NUCLEAR OPTION */
-    @media screen {
-      :is(p, li, span, a, td, th, label, div):not([class*="icon"]):not([class*="svg"]) {
-        min-height: 0;
-      }
+      body { padding-bottom: 80px; }
+      h1 { font-size: clamp(26px, 7vw, 40px); }
+      .form-card { padding: 24px; }
     }
   </style>
 </head>
@@ -301,139 +218,201 @@
   </button>
 </nav>
 <div class="nav-mobile" id="mobileNav">
-  <a href="pcshomes-fortdrum.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Fort Drum</a>
-  <a href="pcshomes-about.html">ℹ️ About</a>
-  <a href="pcshomes-agent.html">👤 Your Agent</a>
-  <a href="pcshomes-contact.html">📬 Contact</a>
+  <a href="pcshomes-fortdrum.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Fort Drum</a>
+  <a href="pcshomes-about.html">About</a>
+  <a href="pcshomes-agent.html">Your Agent</a>
+  <a href="pcshomes-contact.html">Contact</a>
 </div>
 
 <section class="hero">
-  <div class="hero-eyebrow">📬 Get in Touch</div>
-  <h1>Let's talk about<br/><em>your next move.</em></h1>
-  <p class="hero-sub">Whether you're buying, renting, investing, or just have questions about Fort Drum — Joseph is here to help.</p>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-eyebrow">📬 Get in Touch</div>
+    <h1>Let's talk about<br/><em>your next move.</em></h1>
+    <p class="hero-sub">Whether you're buying, renting, or just landed orders — Joseph is ready to help you navigate Fort Drum.</p>
+  </div>
 </section>
 
-<div class="contact-main">
-  <div class="form-col">
-    <div class="section-label">Send a Message</div>
-    <h2 class="form-title">How can Joseph help you?</h2>
-    <p class="form-sub">Fill out the form and Joseph will get back to you within one business day — usually much faster.</p>
+<!-- QUICK CONTACT BAR -->
+<div class="quick-contact">
+  <span class="quick-contact-label">Reach Joseph directly</span>
+  <div class="quick-contact-divider"></div>
+  <a class="quick-contact-item" href="tel:+13157775219">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    (315) 777-5219
+  </a>
+  <div class="quick-contact-divider"></div>
+  <a class="quick-contact-item" href="mailto:jmurtha.northstar@gmail.com">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    jmurtha.northstar@gmail.com
+  </a>
+  <div class="quick-contact-divider"></div>
+  <span class="quick-contact-item" style="color:rgba(255,255,255,0.3);font-size:12px;cursor:default;">Typical response: same day</span>
+</div>
 
-    <div id="contactForm">
-      <div style="margin-bottom:20px">
-        <div class="form-label" style="margin-bottom:10px">What are you looking for?</div>
-        <div class="inquiry-types">
-          <button class="inquiry-type selected" onclick="selectType(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Buying a Home</button>
-          <button class="inquiry-type" onclick="selectType(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg> Renting</button>
-          <button class="inquiry-type" onclick="selectType(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Investing</button>
-          <button class="inquiry-type" onclick="selectType(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg> VA Loan Questions</button>
-          <button class="inquiry-type" onclick="selectType(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> PCS Help</button>
-          <button class="inquiry-type" onclick="selectType(this)">💬 General Question</button>
-        </div>
-      </div>
+<div class="contact-wrapper">
+  <div class="contact-main">
 
-      <div class="contact-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">First Name</label>
-            <input class="form-input" id="contactName" type="text" placeholder="John"/>
+    <!-- FORM COLUMN -->
+    <div>
+      <div class="form-card">
+        <div class="section-label">Send a Message</div>
+        <h2 class="form-title">How can Joseph help you?</h2>
+        <p class="form-sub">Fill out the form below and Joseph will get back to you — usually within a few hours.</p>
+
+        <div id="contactForm">
+          <!-- INQUIRY TYPE -->
+          <div style="margin-bottom:24px;">
+            <div class="form-label" style="margin-bottom:12px;">What are you looking for?</div>
+            <div class="inquiry-types">
+              <button class="inquiry-type selected" onclick="selectType(this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Buying a Home
+              </button>
+              <button class="inquiry-type" onclick="selectType(this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
+                Renting
+              </button>
+              <button class="inquiry-type" onclick="selectType(this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                Investing
+              </button>
+              <button class="inquiry-type" onclick="selectType(this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
+                VA Loan Questions
+              </button>
+              <button class="inquiry-type" onclick="selectType(this)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                PCS Help
+              </button>
+              <button class="inquiry-type" onclick="selectType(this)">💬 General Question</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Last Name</label>
-            <input class="form-input" id="contactLastName" type="text" placeholder="Smith"/>
+
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input class="form-input" id="contactName" type="text" placeholder="John"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input class="form-input" id="contactLastName" type="text" placeholder="Smith"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Phone / Text</label>
+                <input class="form-input" id="contactPhone" type="tel" placeholder="(315) 555-0100"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input class="form-input" id="contactEmail" type="email" placeholder="john@email.com"/>
+              </div>
+            </div>
+
+            <hr class="form-divider"/>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Current Duty Station</label>
+                <input class="form-input" id="contactDutyStation" type="text" placeholder="e.g. Fort Campbell, KY"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">PCS / Report Date</label>
+                <input class="form-input" id="contactPCSDate" type="text" placeholder="e.g. June 2026"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Budget Range</label>
+              <select class="form-input form-select" id="contactBudget">
+                <option value="">Select a range...</option>
+                <option>Under $150,000</option>
+                <option>$150,000 – $200,000</option>
+                <option>$200,000 – $250,000</option>
+                <option>$250,000 – $300,000</option>
+                <option>$300,000+</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-input form-textarea" id="contactMessage" placeholder="Tell me about your situation — family size, timeline, what you're looking for, any questions about Fort Drum..."></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitForm()">Send Message to Joseph →</button>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Phone</label>
-            <input class="form-input" id="contactPhone" type="tel" placeholder="(315) 555-0100"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input class="form-input" id="contactEmail" type="email" placeholder="john@email.com"/>
-          </div>
+
+        <div class="success-state" id="successState">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Message sent!</div>
+          <p class="success-sub">Thanks for reaching out. Joseph will get back to you shortly — usually within a few hours during business days.</p>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Current Duty Station</label>
-            <input class="form-input" id="contactDutyStation" type="text" placeholder="e.g. Fort Campbell, KY"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">PCS / Report Date</label>
-            <input class="form-input" id="contactPCSDate" type="text" placeholder="e.g. June 2026"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Budget Range</label>
-          <select class="form-input form-select" id="contactBudget">
-            <option>Select a range...</option>
-            <option>Under $150,000</option>
-            <option>$150,000 – $200,000</option>
-            <option>$200,000 – $250,000</option>
-            <option>$250,000 – $300,000</option>
-            <option>$300,000+</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-input form-textarea" id="contactMessage" placeholder="Tell me about your situation — family size, timeline, what you're looking for, any questions about Fort Drum..."></textarea>
-        </div>
-        <button class="submit-btn" onclick="submitForm()">Send Message to Joseph →</button>
       </div>
     </div>
 
-    <div class="success-state" id="successState">
-      <div class="success-icon">✅</div>
-      <div class="success-title">Message sent!</div>
-      <p class="success-sub">Thanks for reaching out. Joseph will get back to you shortly — usually within a few hours during business days.</p>
-    </div>
-  </div>
+    <!-- SIDEBAR -->
+    <div class="contact-sidebar">
 
-  <div class="contact-sidebar">
-    <div class="joseph-card">
-      <div class="joseph-photo"><img src="joe-headshot.jpg" alt="Joseph Murtha" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"/></div>
-      <div class="joseph-name">Joseph Murtha</div>
-      <div class="joseph-title">Real Estate Agent & Investor<br/>North Star Real Estate · Watertown, NY</div>
-      <div class="joseph-methods">
-        <a class="joseph-method" href="tel:+13157775219">
-          <span class="joseph-method-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
-          <span>Call or Text Directly</span>
-        </a>
-        <a class="joseph-method" href="mailto:jmurtha.northstar@gmail.com">
-          <span class="joseph-method-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-          <span>Email Joseph</span>
-        </a>
-        <a class="joseph-method" href="https://www.facebook.com/JosephMurthaRealEstate" target="_blank" rel="noopener">
-          <span class="joseph-method-icon">💼</span>
-          <span>Facebook</span>
-        </a>
-        <a class="joseph-method" href="https://www.realtor.com/realestateagents/5eaf993dabc3e30011b6970b" target="_blank" rel="noopener">
-          <span class="joseph-method-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-          <span>Realtor.com Profile</span>
-        </a>
-        <a class="joseph-method" href="pcshomes-agent.html">
-          <span class="joseph-method-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-          <span>View Full Agent Profile</span>
-        </a>
+      <div class="joseph-card">
+        <div class="joseph-photo"><img src="joe-headshot.jpg" alt="Joseph Murtha"/></div>
+        <div class="joseph-name">Joseph Murtha</div>
+        <div class="joseph-title">Real Estate Agent & Investor<br/>North Star Real Estate · Watertown, NY</div>
+        <div class="joseph-methods">
+          <a class="joseph-method" href="tel:+13157775219">
+            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+            Call or Text Directly
+          </a>
+          <a class="joseph-method" href="mailto:jmurtha.northstar@gmail.com">
+            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            Email Joseph
+          </a>
+          <a class="joseph-method" href="https://www.facebook.com/JosephMurthaRealEstate" target="_blank" rel="noopener">
+            <span class="joseph-method-icon">💼</span>
+            Facebook
+          </a>
+          <a class="joseph-method" href="https://www.realtor.com/realestateagents/5eaf993dabc3e30011b6970b" target="_blank" rel="noopener">
+            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+            Realtor.com Profile
+          </a>
+          <a class="joseph-method" href="pcshomes-agent.html">
+            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+            View Full Agent Profile
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="hours-card">
-      <div class="hours-title">📅 Availability</div>
-      <div class="hours-list">
-        <div class="hours-item"><span class="hours-day">Monday – Friday</span><span class="hours-time">8:00 AM – 6:00 PM</span></div>
-        <div class="hours-item"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 4:00 PM</span></div>
-        <div class="hours-item"><span class="hours-day">Sunday</span><span class="hours-time">By appointment</span></div>
+      <div class="info-card">
+        <div class="info-card-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Availability
+        </div>
+        <div class="hours-list">
+          <div class="hours-item"><span class="hours-day">Monday – Friday</span><span class="hours-time">8 AM – 6 PM</span></div>
+          <div class="hours-item"><span class="hours-day">Saturday</span><span class="hours-time">9 AM – 4 PM</span></div>
+          <div class="hours-item"><span class="hours-day">Sunday</span><span class="hours-time">By appointment</span></div>
+        </div>
+        <div class="hours-note">PCS timelines don't work 9–5. If you need to connect outside these hours, just say so — Joseph will make it work.</div>
       </div>
-      <div class="hours-note">PCS timelines don't always work 9–5. If you need to connect outside these hours, just say so — Joseph will make it work.</div>
-    </div>
 
-    <div class="office-card">
-      <div class="office-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M16 3v18M2 9h20M2 15h20"/></svg> North Star Real Estate</div>
-      <div class="office-detail"><span class="office-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Watertown, New York<br/>Jefferson County</span></div>
-      <div class="office-detail"><span class="office-detail-icon"></span><span>Serving military families PCSing to Fort Drum and the surrounding Watertown area</span></div>
-      <div class="office-detail"><span class="office-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg></span><span>VA-Certified · NYS Licensed</span></div>
+      <div class="info-card">
+        <div class="info-card-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M16 3v18M2 9h20M2 15h20"/></svg>
+          North Star Real Estate
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span>Watertown, New York · Jefferson County</span>
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+          <span>VA-Certified · NYS Licensed</span>
+        </div>
+        <div class="office-detail">
+          <span class="office-detail-icon" style="margin-top:0;">🎖️</span>
+          <span>Specializing in military relocation & VA loans for Fort Drum</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -471,20 +450,14 @@
     const inquiryType = (document.querySelector('.inquiry-type.selected') || {}).textContent || '';
     const FORMSPREE_ID = 'xvzwezbn';
     const form = document.getElementById('contactForm');
-    const submitBtn = form.querySelector('button[type="submit"], button');
-    const originalBtnText = submitBtn ? submitBtn.textContent : 'Send';
     fetch('https://formspree.io/f/' + FORMSPREE_ID, {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify({ subject:'PCSHomes Contact Form', name: firstName + ' ' + lastName, email, phone, duty_station: dutyStation, pcs_date: pcsDate, budget, inquiry_type: inquiryType, message })
     }).catch(() => {
-      if (submitBtn) {
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
-      }
       const errorEl = document.createElement('p');
       errorEl.textContent = 'Something went wrong. Please try again or call Joseph at (315) 777-5219.';
-      errorEl.style.cssText = 'color:#e53e3e;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
+      errorEl.style.cssText = 'color:#f87171;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
       form.appendChild(errorEl);
       setTimeout(() => errorEl.remove(), 6000);
     });
@@ -493,28 +466,5 @@
   }
 </script>
 
-<div id="mobileStickyBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0b1f3a;border-top:1px solid rgba(201,168,76,0.3);padding:0.75rem 1rem;gap:0.75rem;justify-content:center;align-items:center;">
-  <a href="tel:+13157775219" style="flex:1;max-width:160px;text-align:center;background:#C9A84C;color:#0a1628;font-weight:700;font-size:0.875rem;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;display:block;">Call Joseph</a>
-  <a href="pcshomes-contact.html" style="flex:1;max-width:160px;text-align:center;background:transparent;color:#C9A84C;font-weight:700;font-size:0.875rem;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;border:1px solid #C9A84C;display:block;">Get Home List</a>
-</div>
-
-<script>
-(function() {
-  var bar = document.getElementById('mobileStickyBar');
-  if (!bar) return;
-  function update() {
-    if (window.innerWidth > 768) { bar.style.display = 'none'; return; }
-    var footer = document.querySelector('footer, .footer, .site-footer');
-    if (footer) {
-      var ftop = footer.getBoundingClientRect().top;
-      if (ftop < window.innerHeight + 80) { bar.style.display = 'none'; return; }
-    }
-    bar.style.display = 'flex';
-  }
-  update();
-  window.addEventListener('resize', update);
-  window.addEventListener('scroll', update, { passive: true });
-})();
-</script>
 </body>
 </html>
