@@ -264,27 +264,27 @@
           <div style="margin-bottom:24px;">
             <div class="form-label" style="margin-bottom:12px;">What are you looking for?</div>
             <div class="inquiry-types">
-              <button class="inquiry-type selected" onclick="selectType(this)">
+              <button class="inquiry-type selected" data-type="Buying a Home" onclick="selectType(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 Buying a Home
               </button>
-              <button class="inquiry-type" onclick="selectType(this)">
+              <button class="inquiry-type" data-type="Renting" onclick="selectType(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
                 Renting
               </button>
-              <button class="inquiry-type" onclick="selectType(this)">
+              <button class="inquiry-type" data-type="Investing" onclick="selectType(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                 Investing
               </button>
-              <button class="inquiry-type" onclick="selectType(this)">
+              <button class="inquiry-type" data-type="VA Loan Questions" onclick="selectType(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
                 VA Loan Questions
               </button>
-              <button class="inquiry-type" onclick="selectType(this)">
+              <button class="inquiry-type" data-type="PCS Help" onclick="selectType(this)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
                 PCS Help
               </button>
-              <button class="inquiry-type" onclick="selectType(this)">💬 General Question</button>
+              <button class="inquiry-type" data-type="General Question" onclick="selectType(this)">💬 General Question</button>
             </div>
           </div>
 
@@ -447,7 +447,7 @@
     const pcsDate     = document.getElementById('contactPCSDate').value.trim();
     const budget      = document.getElementById('contactBudget').value;
     const message     = document.getElementById('contactMessage').value.trim();
-    const inquiryType = (document.querySelector('.inquiry-type.selected') || {}).textContent || '';
+    const inquiryType = (document.querySelector('.inquiry-type.selected') || {}).dataset?.type || '';
     const FORMSPREE_ID = 'xvzwezbn';
     const form = document.getElementById('contactForm');
     fetch('https://formspree.io/f/' + FORMSPREE_ID, {

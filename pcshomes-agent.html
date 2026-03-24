@@ -24,7 +24,7 @@
       --gray: #8A96A3; --gray-light: #EEF1F4; --text: #1C2B3A;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: #070F1E; color: #fff; overflow-x: hidden; }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -87,85 +87,86 @@
     /* LEFT CONTENT */
     .content-col {}
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .content-title { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+    .content-title { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 20px; }
 
     .about-text { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
-    .about-text p { font-size: 15px; line-height: 1.8; color: #3A4A5A; }
-    .about-text p strong { color: var(--navy); font-weight: 600; }
+    .about-text p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.65); }
+    .about-text p strong { color: var(--white); font-weight: 600; }
 
     .specialties { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 48px; }
     .specialty-item {
       display: flex; gap: 12px; align-items: flex-start;
-      background: var(--white); border-radius: 10px; padding: 16px;
-      border: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.04); border-radius: 10px; padding: 16px;
+      border: 1px solid rgba(255,255,255,0.09);
     }
     .specialty-icon { font-size: 20px; flex-shrink: 0; }
-    .specialty-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
-    .specialty-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+    .specialty-title { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+    .specialty-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
 
     /* REVIEWS */
     .reviews { margin-bottom: 48px; }
     .reviews-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
     .reviews-rating { display: flex; align-items: center; gap: 10px; }
     .reviews-stars { color: var(--gold); font-size: 20px; }
-    .reviews-score { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--navy); }
-    .reviews-count { font-size: 13px; color: var(--gray); }
+    .reviews-score { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--white); }
+    .reviews-count { font-size: 13px; color: rgba(255,255,255,0.4); }
     .review-cards { display: flex; flex-direction: column; gap: 16px; }
-    .review-card { background: var(--white); border-radius: 12px; padding: 24px; border: 1px solid rgba(0,0,0,0.06); }
+    .review-card { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 24px; border: 1px solid rgba(255,255,255,0.09); }
     .review-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-    .reviewer-name { font-size: 14px; font-weight: 600; color: var(--navy); }
-    .reviewer-rank { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .reviewer-name { font-size: 14px; font-weight: 600; color: var(--white); }
+    .reviewer-rank { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
     .review-stars { color: var(--gold); font-size: 14px; }
-    .review-text { font-size: 13px; color: #4A5A6A; line-height: 1.65; }
-    .review-date { font-size: 11px; color: var(--gray); margin-top: 8px; }
+    .review-text { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .review-date { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 8px; }
 
     /* LISTINGS PREVIEW */
     .agent-listings { margin-bottom: 48px; }
     .listings-mini { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
     .listing-mini {
-      background: var(--white); border-radius: 12px; overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.06); cursor: pointer; transition: all 0.2s;
+      background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09); cursor: pointer; transition: all 0.2s;
     }
-    .listing-mini:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
+    .listing-mini:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.3); }
     .listing-mini-img {
       height: 120px; background: var(--navy-light);
       display: flex; align-items: center; justify-content: center; font-size: 32px;
     }
     .listing-mini-body { padding: 14px; }
-    .listing-mini-price { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .listing-mini-addr { font-size: 11px; color: var(--gray); margin-bottom: 8px; }
-    .listing-mini-specs { font-size: 12px; color: var(--text); }
+    .listing-mini-price { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .listing-mini-addr { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+    .listing-mini-specs { font-size: 12px; color: rgba(255,255,255,0.6); }
 
     /* RIGHT SIDEBAR */
     .sidebar-col { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 20px; }
-    .contact-card { background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid rgba(0,0,0,0.06); }
-    .contact-card-title { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .contact-card-sub { font-size: 13px; color: var(--gray); margin-bottom: 24px; line-height: 1.5; }
+    .contact-card { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 32px; border: 1px solid rgba(201,168,76,0.2); }
+    .contact-card-title { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .contact-card-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 24px; line-height: 1.5; }
     .contact-form { display: flex; flex-direction: column; gap: 12px; }
     .contact-input {
-      width: 100%; border: 1.5px solid var(--gray-light); border-radius: 8px;
+      width: 100%; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1); color: var(--white); border-radius: 8px;
       padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px;
       outline: none; transition: border-color 0.2s;
     }
-    .contact-input:focus { border-color: var(--navy); }
-    .contact-textarea { resize: vertical; min-height: 90px; }
+    .contact-input:focus { border-color: var(--gold); }
+    .contact-input::placeholder { color: rgba(255,255,255,0.22); }
+    .contact-textarea { resize: vertical; min-height: 90px; background: rgba(255,255,255,0.06); }
     .contact-btn {
-      background: var(--navy); color: var(--white); border: none; border-radius: 8px;
+      background: var(--gold); color: var(--navy); border: none; border-radius: 8px;
       padding: 13px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
       cursor: pointer; transition: background 0.2s;
     }
-    .contact-btn:hover { background: var(--gold); color: var(--navy); }
+    .contact-btn:hover { background: var(--gold-light); }
     .contact-divider { display: flex; align-items: center; gap: 12px; margin: 4px 0; }
-    .contact-divider::before, .contact-divider::after { content: ''; flex: 1; height: 1px; background: var(--gray-light); }
-    .contact-divider span { font-size: 12px; color: var(--gray); }
+    .contact-divider::before, .contact-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .contact-divider span { font-size: 12px; color: rgba(255,255,255,0.35); }
     .contact-methods { display: flex; flex-direction: column; gap: 10px; }
     .contact-method {
       display: flex; align-items: center; gap: 12px;
-      padding: 12px; background: var(--gray-light); border-radius: 8px;
-      font-size: 13px; font-weight: 500; color: var(--navy); cursor: pointer;
+      padding: 12px; background: rgba(255,255,255,0.06); border-radius: 8px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); cursor: pointer;
       transition: background 0.2s; text-decoration: none;
     }
-    .contact-method:hover { background: rgba(201,168,76,0.15); }
+    .contact-method:hover { background: rgba(201,168,76,0.12); color: var(--gold); }
     .contact-method-icon { font-size: 18px; }
 
     .cert-card { background: var(--navy); border-radius: 16px; padding: 28px; }
@@ -174,10 +175,10 @@
     .cert-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.6); }
     .cert-check { color: var(--gold); font-size: 14px; }
 
-    .areas-card { background: var(--white); border-radius: 16px; padding: 28px; border: 1px solid rgba(0,0,0,0.06); }
-    .areas-title { font-family: 'Libre Baskerville', serif; font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    .areas-card { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 28px; border: 1px solid rgba(255,255,255,0.09); }
+    .areas-title { font-family: 'Libre Baskerville', serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
     .areas-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .area-tag { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 100px; background: var(--gray-light); color: var(--navy); }
+    .area-tag { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 100px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.65); }
 
     footer { background: #070F1E; padding: 40px 48px; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
