@@ -517,10 +517,11 @@
     @media (max-width: 768px) {
       #family-image-strip { height: 160px !important; }
       #family-image-strip img:not(:first-child) { display: none !important; }
-      #family-image-strip img:first-child { width: 100% !important; -webkit-mask-image: none !important; mask-image: none !important; }
+      #family-image-strip img:first-child { display:block !important; width: 100% !important; -webkit-mask-image: none !important; mask-image: none !important; }
       #base-guide-image { height: 200px !important; }
       #founder-image { height: 180px !important; }
     }
+    #family-image-strip > img:first-child { display: none; }
   </style>
 </head>
 <body>
@@ -583,18 +584,14 @@
 <!-- FAMILY IMAGE STRIP -->
 <div id="family-image-strip" style="position:relative;width:100%;height:clamp(160px,18vw,260px);overflow:hidden;">
   <img src="images/Novosel_Soldier%20and%20Spouse_0.jpg" alt="Military couple with American flag"
-       style="position:absolute;left:0;top:0;width:55%;height:100%;object-fit:cover;
-              transform:scale(1.7) translateY(-18%);transform-origin:35% center;
-              z-index:3;
-              -webkit-mask-image:linear-gradient(to right,black 52%,transparent 90%);
-              mask-image:linear-gradient(to right,black 52%,transparent 90%);">
+       style="position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:38% 80%;">
   <img src="images/istockphoto-1420097514-612x612.jpg" alt="Military family homecoming"
-       style="position:absolute;left:22%;top:0;width:56%;height:100%;object-fit:cover;object-position:center 72%;
+       style="position:absolute;left:0;top:0;width:60%;height:100%;object-fit:cover;object-position:center 72%;
               z-index:2;
-              -webkit-mask-image:linear-gradient(to right,black 52%,transparent 90%);
-              mask-image:linear-gradient(to right,black 52%,transparent 90%);">
+              -webkit-mask-image:linear-gradient(to right,black 55%,transparent 95%);
+              mask-image:linear-gradient(to right,black 55%,transparent 95%);">
   <img src="images/servicemember-returning-home.jpg" alt="Soldier homecoming hugging child"
-       style="position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;object-position:center 35%;
+       style="position:absolute;right:0;top:0;width:60%;height:100%;object-fit:cover;object-position:center 35%;
               z-index:1;">
 </div>
 
