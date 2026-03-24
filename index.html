@@ -362,6 +362,32 @@
     }
     .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
     .nav-hamburger span{width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;transition:all 0.3s;}
+    @media(max-width:768px){
+      /* FIX: chat button clears sticky bar, z-index above bar */
+      .chat-fab{bottom:90px !important;z-index:10000 !important;}
+      /* FIX: agent card — stack vertically, center everything */
+      .agent-card-hero{flex-direction:column !important;align-items:center !important;text-align:center !important;padding:20px 16px !important;gap:0 !important;}
+      /* photo wrapper — margin below */
+      .agent-card-hero > div:first-child{flex-shrink:unset !important;margin-bottom:16px;}
+      /* text column — full width */
+      .agent-card-hero > div:nth-child(2){flex:unset !important;width:100% !important;}
+      /* bio text — no max-width clip */
+      .agent-card-hero > div:nth-child(2) > div:last-child{max-width:100% !important;}
+      /* badge pills — center-justify */
+      .agent-card-hero > div:nth-child(2) > div[style*=display:flex]{justify-content:center !important;}
+      /* buttons wrapper — full width, top margin */
+      .agent-card-hero > div:last-child{flex-shrink:unset !important;min-width:unset !important;width:100% !important;margin-top:16px;}
+      /* each button — full width */
+      .agent-card-hero .lender-btn{width:100% !important;box-sizing:border-box !important;}
+      h1{font-size:clamp(26px,7vw,40px);}
+      h2,.section-title{font-size:clamp(20px,5vw,28px);}
+      .section-sub{font-size:0.9rem;}
+      p{font-size:0.9rem;}
+      .blog-title{font-size:0.95rem;}
+      .blog-desc{font-size:0.82rem;}
+      .lender-name{font-size:16px;}
+      .stat-num,.hero-stats .stat-num{font-size:20px !important;}
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -1206,7 +1232,7 @@ function toggleBlog(id) {
     <p class="section-sub">Joseph Murtha is your boots-on-the-ground agent at Fort Drum — paired with VA loan specialists who understand military timelines.</p>
 
     <!-- Joseph as primary agent — full-width card -->
-    <div style="background:var(--navy);border-radius:16px;padding:32px 36px;display:flex;gap:32px;align-items:center;margin:40px 0 24px;border:1px solid rgba(201,168,76,0.2);">
+    <div class="agent-card-hero" style="background:var(--navy);border-radius:16px;padding:32px 36px;display:flex;gap:32px;align-items:center;margin:40px 0 24px;border:1px solid rgba(201,168,76,0.2);">
       <div style="flex-shrink:0;">
         <div style="width:110px;height:110px;border-radius:50%;border:4px solid var(--gold);box-shadow:0 0 0 8px rgba(201,168,76,0.12);overflow:hidden;">
           <img src="joe-headshot.jpg" alt="Joseph Murtha" style="width:100%;height:100%;object-fit:cover;"/>
@@ -1338,7 +1364,7 @@ function toggleBlog(id) {
     <p class="section-sub light">Real, useful content written by Joseph and the PCSHomes team — not marketing fluff.</p>
     <div class="blog-grid">
       <div class="blog-card" id="blog-a1">
-        <div class="blog-img" style="background:linear-gradient(135deg,#1a3660,#0B1F3A)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg></div>
+        <img class="blog-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="VA Loan Guide" style="width:100%;height:140px;object-fit:cover;display:block;">
         <div class="blog-body">
           <div class="blog-cat">VA Loans</div>
           <div class="blog-title">Your 2026 VA Loan Guide for Fort Drum</div>
@@ -1357,7 +1383,7 @@ function toggleBlog(id) {
         </div>
       </div>
       <div class="blog-card" id="blog-a2">
-        <div class="blog-img" style="background:linear-gradient(135deg,#2D4A2D,#1a3660)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <img class="blog-img" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" alt="BAH Buying vs Renting" style="width:100%;height:140px;object-fit:cover;display:block;">
         <div class="blog-body">
           <div class="blog-cat">BAH &amp; Housing</div>
           <div class="blog-title">Fort Drum BAH 2026: Why Buying Beats Renting Right Now</div>
@@ -1375,7 +1401,7 @@ function toggleBlog(id) {
         </div>
       </div>
       <div class="blog-card" id="blog-a3">
-        <div class="blog-img" style="background:linear-gradient(135deg,#3a2a0a,#1a3660)"></div>
+        <img class="blog-img" src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?w=800&q=80" alt="PCSing to Fort Drum" style="width:100%;height:140px;object-fit:cover;display:block;">
         <div class="blog-body">
           <div class="blog-cat">PCS Guide</div>
           <div class="blog-title">PCSing to Fort Drum: What Nobody Tells You About Housing Near the 10th Mountain Division</div>
@@ -1674,20 +1700,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 setTimeout(()=>{const l=document.getElementById('fabLabel');if(l)l.style.opacity='0';},4000);
 
 // ── POPUP ──
+window.__pageLoadTime = Date.now();
 let popupShown = false;
+
 document.addEventListener('mouseleave', function(e) {
-  if (e.clientY <= 20 && !popupShown && !sessionStorage.getItem('popupShown')) {
-    const minDelay = 10000; // 10 seconds minimum before it can fire
-    const timeOnPage = Date.now() - window.__pageLoadTime;
-    if (timeOnPage >= minDelay) {
-      popupShown = true;
-      sessionStorage.setItem('popupShown', 'true');
-      const popup = document.getElementById('pcshPopup');
-      if (popup) popup.classList.add('visible');
-    }
+  if (
+    e.clientY <= 20 &&
+    !popupShown &&
+    !sessionStorage.getItem('popupShown') &&
+    (Date.now() - window.__pageLoadTime) >= 10000
+  ) {
+    popupShown = true;
+    sessionStorage.setItem('popupShown', 'true');
+    const popup = document.getElementById('pcshPopup');
+    if (popup) popup.classList.add('visible');
   }
 });
-window.__pageLoadTime = Date.now();
 
 function closePopup() {
   document.getElementById('pcshPopup').classList.remove('visible');
