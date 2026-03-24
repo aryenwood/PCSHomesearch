@@ -931,17 +931,17 @@
 <!-- INTERACTIVE MAP -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<section style="background:#0f1923;padding:88px 48px;isolation:isolate;" id="map">
+<section style="background:#0f1923;padding:88px 48px;position:relative;z-index:0;isolation:isolate;" id="map">
   <div class="inner">
     <div class="section-label" style="color:var(--gold);">Interactive Area Map</div>
     <h2 class="section-title light">Explore every town, commute &amp; snow severity around Fort Drum.</h2>
     <p class="section-sub light">Click any pin for commute times, snow severity, school district, and home prices. Toggle layers to customize your view.</p>
 
     <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(201,168,76,0.13);border-radius:22px;padding:22px;margin-top:28px;">
-    <div class="map-school-grid" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start;">
+    <div class="map-school-grid" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:stretch;">
 
       <!-- LEFT: Map + controls -->
-      <div>
+      <div style="display:flex;flex-direction:column;">
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
           <button class="maptog active" data-layer="gates"    onclick="toggleMap(this)">🚧 Base Gates</button>
           <button class="maptog active" data-layer="towns"    onclick="toggleMap(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Towns &amp; Villages</button>
@@ -949,8 +949,8 @@
           <button class="maptog active" data-layer="snow"     onclick="toggleMap(this)"> Snow Belt</button>
           <button class="maptog active" data-layer="landmarks" onclick="toggleMap(this)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Landmarks</button>
         </div>
-        <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5);">
-          <div id="drumMap" style="width:100%;height:520px;"></div>
+        <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5);flex:1;min-height:0;">
+          <div id="drumMap" style="width:100%;height:100%;min-height:420px;"></div>
           <div id="mapTileError" style="display:none;position:absolute;inset:0;background:rgba(11,18,28,0.92);align-items:center;justify-content:center;flex-direction:column;gap:12px;z-index:900;border-radius:20px;">
             <div style="font-size:32px;"></div>
             <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;">Map requires an internet connection</div>
@@ -979,7 +979,7 @@
       </div>
 
       <!-- RIGHT: School districts panel -->
-      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.22);border-radius:18px;padding:26px;position:sticky;top:100px;">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.22);border-radius:18px;padding:26px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
           <span style="font-size:1.1rem;">⚠️</span>
           <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">Know Before You Buy</div>
