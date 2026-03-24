@@ -873,7 +873,8 @@
     <h2 class="section-title light">Explore every town, commute &amp; snow severity around Fort Drum.</h2>
     <p class="section-sub light">Click any pin for commute times, snow severity, school district, and home prices. Toggle layers to customize your view.</p>
 
-    <div class="map-school-grid" style="display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start;margin-top:28px;">
+    <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(201,168,76,0.13);border-radius:22px;padding:22px;margin-top:28px;">
+    <div class="map-school-grid" style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start;">
       <div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
           <button class="maptog active" data-layer="gates"    onclick="toggleMap(this)">🚧 Base Gates</button>
@@ -949,6 +950,7 @@
         <button onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})" style="width:100%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:700;padding:11px 16px;border-radius:8px;cursor:pointer;letter-spacing:0.03em;">Ask Joseph about a specific neighborhood →</button>
       </div>
     </div>
+    </div><!-- /map-school-grid wrapper card -->
   </div>
 </section>
 
@@ -1114,6 +1116,9 @@
   const s = document.createElement('style');
   s.textContent = '.school-label { background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important; } .leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before { display:none!important; }';
   document.head.appendChild(s);
+
+  // Recalculate map dimensions after grid layout renders
+  setTimeout(function(){ map.invalidateSize(); }, 200);
 })();
 </script>
 <script>
