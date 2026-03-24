@@ -165,6 +165,123 @@
       .section-sub{font-size:0.9rem;}
       p{font-size:0.9rem;}
     }
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 80px;
+      }
+    }
+
+    /* =============================================
+       PCSHOMES TYPOGRAPHY SYSTEM
+       Base: 16px, Scale: Minor Third
+    ============================================= */
+
+    /* 1. ROOT SCALE */
+    :root {
+      font-size: 16px;
+    }
+
+    /* 2. BODY DEFAULT */
+    body {
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 3. HEADING SCALE */
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.25; }
+    h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.35; }
+    h4 { font-size: 1.125rem; line-height: 1.4; }
+    h5, h6 { font-size: 1rem; line-height: 1.5; }
+
+    /* 4. BODY TEXT */
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* 5. NAV LINKS */
+    nav a, .nav-links a {
+      font-size: 0.9375rem;
+    }
+
+    /* 6. SECTION EYEBROW / LABELS */
+    .eyebrow, .section-label, [class*="eyebrow"], [class*="section-tag"],
+    [class*="label-tag"], .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    /* 7. CARD BODY TEXT */
+    .card p, .card li, [class*="card"] p, [class*="card"] li {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+    }
+
+    /* 8. STAT LABELS */
+    .stat-label, [class*="stat"] p, [class*="stat-desc"],
+    [class*="stat"] > span:not(:first-child) {
+      font-size: 0.8125rem;
+    }
+
+    /* 9. FORM LABELS AND INPUTS */
+    label, input, select, textarea {
+      font-size: 0.9375rem;
+    }
+    input::placeholder, textarea::placeholder {
+      font-size: 0.875rem;
+    }
+
+    /* 10. BUTTONS */
+    button, .btn, [class*="btn"], a[class*="btn"] {
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    /* 11. FOOTER TEXT */
+    footer p, footer a, footer li, footer span,
+    .footer p, .footer a, .footer li {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* 12. SMALL / HELPER TEXT */
+    small, .text-xs, [class*="text-xs"], [class*="hint"],
+    [class*="helper"], [class*="disclaimer"], .estimates-note {
+      font-size: 0.8125rem !important;
+      line-height: 1.55;
+    }
+
+    /* 13. LOW OPACITY FIX */
+    [style*="opacity: 0.4"], [style*="opacity:0.4"],
+    [style*="rgba(255, 255, 255, 0.4)"],
+    [style*="rgba(255,255,255,0.4)"] {
+      opacity: 0.7 !important;
+    }
+
+    /* 14. MOBILE OVERRIDES */
+    @media (max-width: 768px) {
+      :root { font-size: 15px; }
+      p { font-size: 1rem; line-height: 1.7; }
+      h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+      h2 { font-size: clamp(1.35rem, 5vw, 1.75rem); }
+      h3 { font-size: clamp(1.1rem, 4vw, 1.35rem); }
+      nav a, .nav-links a { font-size: 0.875rem; }
+      .card p, .card li, [class*="card"] p { font-size: 0.9375rem; }
+      label, input, select, textarea { font-size: 1rem; }
+      small, .text-xs, [class*="disclaimer"] { font-size: 0.8125rem !important; }
+      * { min-font-size: 13px; }
+    }
+
+    /* 15. NUCLEAR OPTION */
+    @media screen {
+      :is(p, li, span, a, td, th, label, div):not([class*="icon"]):not([class*="svg"]) {
+        min-height: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -172,10 +289,11 @@
 <nav>
   <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
   <ul class="nav-links">
-    <li><a href="pcshomes-fortdrum.html">Fort Drum</a></li>
+    <li><a href="index.html#listings">Find a Home</a></li>
+    <li><a href="index.html#va">VA Tools</a></li>
+    <li><a href="index.html#base">Base Guide</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
     <li><a href="pcshomes-about.html">About</a></li>
-    <li><a href="pcshomes-agent.html">Your Agent</a></li>
-    <li><a href="pcshomes-contact.html" class="active">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Talk to Joseph</button>
   <button class="nav-hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
@@ -389,7 +507,7 @@
     var footer = document.querySelector('footer, .footer, .site-footer');
     if (footer) {
       var ftop = footer.getBoundingClientRect().top;
-      if (ftop < window.innerHeight + 200) { bar.style.display = 'none'; return; }
+      if (ftop < window.innerHeight + 80) { bar.style.display = 'none'; return; }
     }
     bar.style.display = 'flex';
   }
