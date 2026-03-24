@@ -15,6 +15,8 @@
   <meta property="og:url" content="https://pcshomes.com">
   <meta property="og:site_name" content="PCSHomes Fort Drum">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -407,6 +409,8 @@
     <li><a href="#lenders">Lenders</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#blog">Blog</a></li>
+    <li><a href="pcshomes-about.html">About</a></li>
+    <li><a href="pcshomes-agent.html">Your Agent</a></li>
   </ul>
   <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Talk to Joseph</button>
   <button class="nav-hamburger" onclick="toggleMobileNav()" id="hamburger" aria-label="Menu">
@@ -435,9 +439,10 @@
   <p class="hero-sub">VA-eligible homes, honest base guides, PCS checklists, and a community of military families who know Fort Drum — all in one place.</p>
   <div class="hero-search">
     <div class="search-box">
-      <input class="search-input" type="text" placeholder="Search Watertown, Evans Mills, or ZIP code..."/>
-      <button class="search-btn">Search Homes</button>
+      <input class="search-input" type="text" placeholder="Search Watertown, Evans Mills, or ZIP code..." onkeydown="if(event.keyCode===13)handleHeroSearch()"/>
+      <button class="search-btn" onclick="handleHeroSearch()">Search VA Homes →</button>
     </div>
+    <p style="font-size:0.75rem; color:rgba(255,255,255,0.55); margin-top:0.5rem; text-align:center; letter-spacing:0.02em;">Searches VA-eligible homes in the Watertown area · Full IDX coming soon</p>
   </div>
   <div class="hero-tags">
     <span class="hero-tag">Watertown, NY</span>
@@ -908,6 +913,25 @@ function toggleMobileNav() {
 }
 function closeMobileNav() {
   document.getElementById('mobileNav').classList.remove('open');
+}
+function handleHeroSearch() {
+  const input = document.querySelector('input[placeholder*="Search"], input[placeholder*="ZIP"], input[placeholder*="Watertown"]');
+  const query = input ? input.value.trim() : '';
+  const areaMap = {
+    'watertown': 'Watertown-NY', 'evans mills': 'Evans-Mills-NY',
+    'carthage': 'Carthage-NY', 'black river': 'Black-River-NY',
+    'lowville': 'Lowville-NY', 'fort drum': 'Watertown-NY',
+    '13601': '13601', '13602': '13602', '13603': '13603'
+  };
+  let location = 'Watertown-NY';
+  const lower = query.toLowerCase();
+  for (const [key, val] of Object.entries(areaMap)) {
+    if (lower.includes(key)) { location = val; break; }
+  }
+  if (query && !Object.keys(areaMap).some(k => lower.includes(k))) {
+    location = query.replace(/\s+/g, '-').replace(/,/g, '') + '-NY';
+  }
+  window.open('https://www.zillow.com/homes/for_sale/' + location + '_rb/', '_blank');
 }
 function toggleBlog(id) {
   var full = document.getElementById(id + '-full');
@@ -1452,6 +1476,9 @@ function submitVaLead() {
   const area = document.getElementById('vaArea').value;
   const date = document.getElementById('vaDate').value;
   // Send to Formspree (replace with your Formspree endpoint)
+  const form = document.getElementById('vaLeadForm');
+  const submitBtn = form.querySelector('button[type="submit"], button');
+  const originalBtnText = submitBtn ? submitBtn.textContent : 'Send';
   fetch('https://formspree.io/f/xvzwezbn', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1461,7 +1488,17 @@ function submitVaLead() {
       rank_bah: bah, bedrooms: beds, bathrooms: baths,
       area, report_date: date
     })
-  }).catch(()=>{}); // fails silently if no Formspree ID yet
+  }).catch(() => {
+    if (submitBtn) {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    }
+    const errorEl = document.createElement('p');
+    errorEl.textContent = 'Something went wrong. Please try again or call Joseph at (315) 777-5219.';
+    errorEl.style.cssText = 'color:#e53e3e;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
+    form.appendChild(errorEl);
+    setTimeout(() => errorEl.remove(), 6000);
+  });
   document.getElementById('vaLeadForm').style.display = 'none';
   document.getElementById('vaLeadSuccess').style.display = 'block';
 }
@@ -1630,11 +1667,24 @@ function submitPopup() {
   const contact = document.getElementById('popupContact').value.trim();
   if (!name || !contact) { alert('Please enter your name and contact info.'); return; }
   const offer = document.getElementById('popupOfferType').value;
+  const form = document.getElementById('popupForm');
+  const submitBtn = form.querySelector('button[type="submit"], button');
+  const originalBtnText = submitBtn ? submitBtn.textContent : 'Send';
   fetch('https://formspree.io/f/xvzwezbn', {
     method: 'POST',
     headers: {'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify({ subject: 'PCSHomes Popup Lead — ' + offer, name, contact, offer })
-  }).catch(()=>{});
+  }).catch(() => {
+    if (submitBtn) {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    }
+    const errorEl = document.createElement('p');
+    errorEl.textContent = 'Something went wrong. Please try again or call Joseph at (315) 777-5219.';
+    errorEl.style.cssText = 'color:#e53e3e;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
+    form.appendChild(errorEl);
+    setTimeout(() => errorEl.remove(), 6000);
+  });
   document.getElementById('popupForm').style.display = 'none';
   document.getElementById('popupSuccess').style.display = 'block';
   setTimeout(() => closePopup(), 3500);

@@ -12,6 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com/agent">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -202,11 +204,11 @@
       .inner { padding: 0; }
       .nav-cta { padding: 7px 14px; font-size: 12px; }
       .nav-hamburger { display: flex; }
-      .nav-mobile-ag { display: none; position: fixed; top: 66px; left: 0; right: 0; background: rgba(11,31,58,0.98); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 4px; z-index: 199; border-bottom: 1px solid rgba(201,168,76,0.2); }
-      .nav-mobile-ag.open { display: flex; }
-      .nav-mobile-ag a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: 8px; transition: all 0.2s; }
-      .nav-mobile-ag a:hover { background: rgba(255,255,255,0.07); color: var(--gold); }
-      .nav-mobile-ag .nav-mobile-cta { background: var(--gold); color: var(--navy); padding: 13px 16px; border-radius: 8px; font-weight: 700; text-align: center; margin-top: 8px; }
+      .nav-mobile { display: none; position: fixed; top: 66px; left: 0; right: 0; background: rgba(11,31,58,0.98); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 4px; z-index: 199; border-bottom: 1px solid rgba(201,168,76,0.2); }
+      .nav-mobile.open { display: flex; }
+      .nav-mobile a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: 8px; transition: all 0.2s; }
+      .nav-mobile a:hover { background: rgba(255,255,255,0.07); color: var(--gold); }
+      .nav-mobile .nav-mobile-cta { background: var(--gold); color: var(--navy); padding: 13px 16px; border-radius: 8px; font-weight: 700; text-align: center; margin-top: 8px; }
     }
   </style>
 </head>
@@ -220,18 +222,18 @@
     <li><a href="pcshomes-agent.html" class="active">Your Agent</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Join Free</button>
-  <button class="nav-hamburger" onclick="document.getElementById('mobileNavAg').classList.toggle('open')" aria-label="Menu">
+  <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Talk to Joseph</button>
+  <button class="nav-hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="nav-mobile-ag" id="mobileNavAg">
+<div class="nav-mobile" id="mobileNav">
   <a href="pcshomes-fortdrum.html">Fort Drum</a>
   <a href="pcshomes-about.html">About</a>
   <a href="pcshomes-agent.html">Your Agent</a>
   <a href="pcshomes-contact.html">Contact</a>
-  <a href="pcshomes-contact.html" class="nav-mobile-cta">Join Free →</a>
+  <a href="pcshomes-contact.html" class="nav-mobile-cta">Talk to Joseph →</a>
 </div>
 
 <section class="profile-hero">
@@ -429,7 +431,6 @@
       <div class="cert-title">Certifications & Credentials</div>
       <div class="cert-list">
         <div class="cert-item"><span class="cert-check">✓</span>VA Certified Real Estate Agent</div>
-        <div class="cert-item"><span class="cert-check">✓</span>Military Relocation Professional (MRP)</div>
         <div class="cert-item"><span class="cert-check">✓</span>Licensed NYS Real Estate Agent</div>
         <div class="cert-item"><span class="cert-check">✓</span>North Star Real Estate, Watertown NY</div>
         <div class="cert-item"><span class="cert-check">✓</span>Jefferson County Market Specialist</div>

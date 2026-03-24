@@ -12,6 +12,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com/contact">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -149,13 +151,13 @@
       .contact-main { grid-template-columns: 1fr; padding: 48px 20px; gap: 40px; }
       .contact-sidebar { position: static; }
       .form-row { grid-template-columns: 1fr; }
-      .nav-hamburger-c{display:flex;}
-      .nav-mobile-c{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(11,31,58,0.98);backdrop-filter:blur(12px);padding:20px;flex-direction:column;gap:4px;z-index:199;}
-      .nav-mobile-c.open{display:flex;}
-      .nav-mobile-c a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:15px;font-weight:500;padding:12px 16px;border-radius:8px;}
+      .nav-hamburger{display:flex;}
+      .nav-mobile{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(11,31,58,0.98);backdrop-filter:blur(12px);padding:20px;flex-direction:column;gap:4px;z-index:199;}
+      .nav-mobile.open{display:flex;}
+      .nav-mobile a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:15px;font-weight:500;padding:12px 16px;border-radius:8px;}
     }
-    .nav-hamburger-c{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
-    .nav-hamburger-c span{width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+    .nav-hamburger span{width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;}
   </style>
 </head>
 <body>
@@ -169,11 +171,11 @@
     <li><a href="pcshomes-contact.html" class="active">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Talk to Joseph</button>
-  <button class="nav-hamburger-c" onclick="document.getElementById('mobileNavC').classList.toggle('open')" aria-label="Menu">
+  <button class="nav-hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="nav-mobile-c" id="mobileNavC">
+<div class="nav-mobile" id="mobileNav">
   <a href="pcshomes-fortdrum.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Fort Drum</a>
   <a href="pcshomes-about.html">ℹ️ About</a>
   <a href="pcshomes-agent.html">👤 Your Agent</a>
@@ -306,7 +308,7 @@
       <div class="office-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M16 3v18M2 9h20M2 15h20"/></svg> North Star Real Estate</div>
       <div class="office-detail"><span class="office-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Watertown, New York<br/>Jefferson County</span></div>
       <div class="office-detail"><span class="office-detail-icon"></span><span>Serving military families PCSing to Fort Drum and the surrounding Watertown area</span></div>
-      <div class="office-detail"><span class="office-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg></span><span>VA-Certified · MRP Designation · NYS Licensed</span></div>
+      <div class="office-detail"><span class="office-detail-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg></span><span>VA-Certified · NYS Licensed</span></div>
     </div>
   </div>
 </div>
@@ -343,11 +345,24 @@
     const message     = document.getElementById('contactMessage').value.trim();
     const inquiryType = (document.querySelector('.inquiry-type.selected') || {}).textContent || '';
     const FORMSPREE_ID = 'xvzwezbn';
+    const form = document.getElementById('contactForm');
+    const submitBtn = form.querySelector('button[type="submit"], button');
+    const originalBtnText = submitBtn ? submitBtn.textContent : 'Send';
     fetch('https://formspree.io/f/' + FORMSPREE_ID, {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify({ subject:'PCSHomes Contact Form', name: firstName + ' ' + lastName, email, phone, duty_station: dutyStation, pcs_date: pcsDate, budget, inquiry_type: inquiryType, message })
-    }).catch(()=>{});
+    }).catch(() => {
+      if (submitBtn) {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      }
+      const errorEl = document.createElement('p');
+      errorEl.textContent = 'Something went wrong. Please try again or call Joseph at (315) 777-5219.';
+      errorEl.style.cssText = 'color:#e53e3e;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
+      form.appendChild(errorEl);
+      setTimeout(() => errorEl.remove(), 6000);
+    });
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('successState').style.display = 'block';
   }
