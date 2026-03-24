@@ -401,11 +401,12 @@
       <div class="contact-card-title">Work with Joseph</div>
       <div class="contact-card-sub">Buying, selling, or just have questions about the Fort Drum market? Reach out — no pressure, no obligation.</div>
       <div class="contact-form">
-        <input class="contact-input" type="text" placeholder="Your name"/>
-        <input class="contact-input" type="text" placeholder="Phone or email"/>
-        <input class="contact-input" type="text" placeholder="Current duty station"/>
-        <textarea class="contact-input contact-textarea" placeholder="How can I help? (PCS date, buying, renting, questions...)"></textarea>
-        <button class="contact-btn">Send Message</button>
+        <input class="contact-input" id="agentName" type="text" placeholder="Your name"/>
+        <input class="contact-input" id="agentContact" type="text" placeholder="Phone or email"/>
+        <input class="contact-input" id="agentDutyStation" type="text" placeholder="Current duty station"/>
+        <textarea class="contact-input contact-textarea" id="agentMessage" placeholder="How can I help? (PCS date, buying, renting, questions...)"></textarea>
+        <div id="agentFormMsg" style="display:none;font-size:13px;font-weight:600;margin-top:4px;line-height:1.5;"></div>
+        <button class="contact-btn" id="agentSubmitBtn" onclick="submitAgentForm()">Send Message</button>
       </div>
       <div class="contact-divider"><span>or reach me directly</span></div>
       <div class="contact-methods">
@@ -464,5 +465,42 @@
   </div>
 </footer>
 
+<script>
+function submitAgentForm() {
+  var btn = document.getElementById('agentSubmitBtn');
+  var msgEl = document.getElementById('agentFormMsg');
+  var name = document.getElementById('agentName').value.trim();
+  var contact = document.getElementById('agentContact').value.trim();
+  var dutyStation = document.getElementById('agentDutyStation').value.trim();
+  var message = document.getElementById('agentMessage').value.trim();
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  msgEl.style.display = 'none';
+
+  fetch('https://formspree.io/f/xvzwezbn', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ subject: 'PCSHomes Agent Page Inquiry', name: name, contact: contact, duty_station: dutyStation, message: message })
+  })
+  .then(function(r) {
+    if (r.ok) {
+      msgEl.textContent = 'Message sent! Joseph will be in touch soon.';
+      msgEl.style.color = '#C9A84C';
+      msgEl.style.display = 'block';
+      btn.style.display = 'none';
+    } else {
+      throw new Error('server error');
+    }
+  })
+  .catch(function() {
+    msgEl.textContent = 'Something went wrong. Please try again or call Joseph directly.';
+    msgEl.style.color = '#C0392B';
+    msgEl.style.display = 'block';
+    btn.textContent = 'Send Message';
+    btn.disabled = false;
+  });
+}
+</script>
 </body>
 </html>
