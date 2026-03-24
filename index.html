@@ -513,6 +513,10 @@
       #founder-image { height: 180px !important; }
     }
     #family-image-strip > img:first-child { display: none; }
+    .wj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px; }
+    .wj-stats { display:grid; grid-template-columns:repeat(4,1fr); }
+    @media(max-width:768px){ .wj-grid{grid-template-columns:1fr;} .wj-stats{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:900px){ .wj-grid{grid-template-columns:1fr 1fr;} }
   </style>
   <script type="application/ld+json">
   {
@@ -589,6 +593,7 @@
       <button class="search-btn" onclick="handleHeroSearch()">Search VA Homes →</button>
     </div>
     <p style="font-size:0.75rem; color:rgba(255,255,255,0.55); margin-top:0.5rem; text-align:center; letter-spacing:0.02em;">Searches VA-eligible homes in the Watertown area · Full IDX coming soon</p>
+    <p style="margin-top:12px;text-align:center;"><span style="font-size:0.8rem;color:rgba(255,255,255,0.4);">or </span><a href="#listings" style="font-size:0.82rem;color:var(--gold);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(201,168,76,0.35);">skip the search — get Joseph's custom list for your BAH →</a></p>
   </div>
   <div class="hero-tags">
     <span class="hero-tag">Watertown, NY</span>
@@ -738,46 +743,31 @@
                 <option>Not sure — I'll provide details</option>
               </select>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
-              <div class="va-field-group">
-                <label class="va-label">Min Bedrooms</label>
-                <select class="va-input" id="vaBeds">
-                  <option>2+ beds</option>
-                  <option>3+ beds</option>
-                  <option>4+ beds</option>
-                  <option>5+ beds</option>
-                </select>
-              </div>
-              <div class="va-field-group">
-                <label class="va-label">Min Bathrooms</label>
-                <select class="va-input" id="vaBaths">
-                  <option>1+ bath</option>
-                  <option>1.5+ baths</option>
-                  <option>2+ baths</option>
-                  <option>2.5+ baths</option>
-                  <option>3+ baths</option>
-                </select>
-              </div>
-              <div class="va-field-group">
-                <label class="va-label">Preferred Area</label>
-                <select class="va-input" id="vaArea">
-                  <option>Any / Open</option>
-                  <option>Evans Mills</option>
-                  <option>Watertown</option>
-                  <option>Carthage</option>
-                  <option>Black River</option>
-                  <option>Lowville</option>
-                </select>
-              </div>
-            </div>
-            <div class="va-field-group">
-              <label class="va-label">Estimated Report / Move-In Date</label>
-              <input class="va-input" type="text" id="vaDate" placeholder="e.g. July 2025 or ASAP"/>
-            </div>
             <div class="va-field-group">
               <label class="va-label">Email or Phone Number</label>
               <input class="va-input" type="text" id="vaContact" placeholder="Best way to reach you"/>
             </div>
+            <div id="vaExtras" style="display:none;border-top:1px solid rgba(255,255,255,0.08);padding-top:14px;display:none;flex-direction:column;gap:14px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+                <div class="va-field-group">
+                  <label class="va-label">Min Bedrooms</label>
+                  <select class="va-input" id="vaBeds"><option>2+ beds</option><option>3+ beds</option><option>4+ beds</option><option>5+ beds</option></select>
+                </div>
+                <div class="va-field-group">
+                  <label class="va-label">Min Bathrooms</label>
+                  <select class="va-input" id="vaBaths"><option>1+ bath</option><option>1.5+ baths</option><option>2+ baths</option><option>2.5+ baths</option><option>3+ baths</option></select>
+                </div>
+                <div class="va-field-group">
+                  <label class="va-label">Preferred Area</label>
+                  <select class="va-input" id="vaArea"><option>Any / Open</option><option>Evans Mills</option><option>Watertown</option><option>Carthage</option><option>Black River</option><option>Lowville</option></select>
+                </div>
+              </div>
+              <div class="va-field-group">
+                <label class="va-label">Estimated Report / Move-In Date</label>
+                <input class="va-input" type="text" id="vaDate" placeholder="e.g. July 2026 or ASAP"/>
+              </div>
+            </div>
+            <button type="button" id="vaExtrasToggle" onclick="(function(){var el=document.getElementById('vaExtras');var btn=document.getElementById('vaExtrasToggle');if(el.style.display==='none'||el.style.display===''){el.style.display='flex';btn.textContent='− Hide preferences';}else{el.style.display='none';btn.textContent='+ Add preferences (optional)';}})();" style="background:none;border:none;color:rgba(255,255,255,0.45);font-size:12px;cursor:pointer;text-align:left;padding:0;text-decoration:underline;width:auto;">+ Add preferences (optional)</button>
             <button class="va-submit-btn" onclick="submitVaLead()">Send Me My Custom List →</button>
             <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">Joseph responds personally — usually within a few hours.</div>
           </div>
@@ -806,6 +796,73 @@
   </div>
 </section>
 
+
+<!-- WHY JOSEPH -->
+<section id="why-joseph" style="background:var(--navy-mid,#0d1f3c);padding:88px 0;">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Why Military Families Choose Joseph</div>
+      <h2 class="section-title light" style="max-width:620px;margin:12px auto 0;">When your orders drop, you need someone who's <em style="color:var(--gold);font-style:italic;">done this before.</em></h2>
+      <p class="section-sub light" style="max-width:480px;margin:14px auto 0;">Not a big-box agent juggling 40 clients. Not someone Googling VA loan rules. Joseph has closed hundreds of VA transactions here — and he answers his phone.</p>
+    </div>
+    <div class="wj-grid">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:28px 24px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;">VA Expert — Not Just Licensed</div>
+        <div style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.7;">He's closed hundreds of VA loans in this market. He knows which homes pass inspection the first time, which appraisers move fast, and how to write offers that VA-savvy sellers accept.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:28px 24px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;">Built Around PCS Timelines</div>
+        <div style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.7;">90-day windows. Remote showings. Digital closings. Full communication while you're still 2,000 miles away. Joseph has run this play hundreds of times — start before your boots hit the ground.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:28px 24px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;">Local Roots. Military Focus.</div>
+        <div style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.7;">Grew up 20 minutes from the gates. Knows every neighborhood, every school district, every seller. The military community isn't a target market for Joseph — it's his entire business.</div>
+      </div>
+    </div>
+    <div class="wj-grid">
+      <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:26px;">
+        <div style="font-size:1.1rem;color:var(--gold);margin-bottom:10px;letter-spacing:1px;">★★★★★</div>
+        <div style="font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:14px;font-style:italic;">"We were still in Texas when Joseph found us our home. Closed in 28 days on a VA loan. I've never worked with anyone that efficient."</div>
+        <div style="font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.05em;">SSG Marcus T. · 10th Mountain Div.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:26px;">
+        <div style="font-size:1.1rem;color:var(--gold);margin-bottom:10px;letter-spacing:1px;">★★★★★</div>
+        <div style="font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:14px;font-style:italic;">"He caught a VA appraisal problem before we even made an offer. Saved us from a nightmare deal and got us into a better house for less money."</div>
+        <div style="font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.05em;">CPT Sarah W. · Fort Drum, 2024</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:26px;">
+        <div style="font-size:1.1rem;color:var(--gold);margin-bottom:10px;letter-spacing:1px;">★★★★★</div>
+        <div style="font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:14px;font-style:italic;">"Called Joseph at 8pm with questions about our offer. He answered. Every single time. That's what you need when you're moving your family across the country."</div>
+        <div style="font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.05em;">SFC James R. · PCS'd Jan 2025</div>
+      </div>
+    </div>
+    <div class="wj-stats" style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);border-radius:14px;overflow:hidden;margin-bottom:40px;">
+      <div style="padding:22px 20px;text-align:center;border-right:1px solid rgba(201,168,76,0.15);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.9rem;font-weight:700;color:var(--gold);">120+</div>
+        <div style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Five-Star Reviews</div>
+      </div>
+      <div style="padding:22px 20px;text-align:center;border-right:1px solid rgba(201,168,76,0.15);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.9rem;font-weight:700;color:var(--gold);">#1</div>
+        <div style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Agent — Jefferson &amp; Lewis Co.</div>
+      </div>
+      <div style="padding:22px 20px;text-align:center;border-right:1px solid rgba(201,168,76,0.15);">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.9rem;font-weight:700;color:var(--gold);">300+</div>
+        <div style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Military Families Served</div>
+      </div>
+      <div style="padding:22px 20px;text-align:center;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:1.9rem;font-weight:700;color:var(--gold);">4 yrs</div>
+        <div style="font-size:0.72rem;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px;">Running — Top Agent</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <button class="btn-primary" style="font-size:1rem;padding:14px 36px;" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">Get My Custom Home List →</button>
+      <div style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:10px;">Free · No obligation · Joseph responds personally</div>
+    </div>
+  </div>
+</section>
 
 <!-- BASE GUIDE -->
 <section class="base-guide" id="base">
@@ -1385,7 +1442,7 @@ function toggleBlog(id) {
           <span style="font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);">Fort Drum Specialist</span>
           <span style="font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);">Copenhagen, NY Roots</span>
         </div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;max-width:560px;">Joseph grew up in Copenhagen on the Tug Hill and now lives just outside Fort Drum — giving him deep roots in both markets. As the #1 agent in Jefferson &amp; Lewis County for most homes sold &amp; or volume, he's helped hundreds of military families navigate VA loans and PCS timelines. Available for in-person showings, remote viewings, and consultations — even before your orders are final.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;max-width:560px;">Joseph grew up on the Tug Hill, 20 minutes from Fort Drum's gates — and he's spent the last decade making sure military families don't get burned by an area they've never seen. He knows which homes pass VA inspection on the first try, which sellers respect military timelines, and how to get you from <em style="color:rgba(255,255,255,0.75);font-style:normal;">"orders just dropped"</em> to keys in hand without the chaos. He's closed hundreds of VA transactions in this market. He answers his phone. Most of his clients started exactly where you are right now.</div>
       </div>
       <div style="flex-shrink:0;display:flex;flex-direction:column;gap:10px;min-width:160px;">
         <button class="lender-btn" style="background:var(--gold);color:var(--navy);" onclick="window.location='pcshomes-contact.html'">Work with Joseph</button>
