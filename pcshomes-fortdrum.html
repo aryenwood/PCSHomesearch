@@ -375,7 +375,7 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">PCS<span>Homes</span><small>Fort Drum</small></a>
+  <a href="index.html" class="nav-logo">PCS<span>Homes</span><small>Fort Drum</small></a>
   <ul class="nav-links">
     <li><a href="#listings">Find a Home</a></li>
     <li><a href="#base">Base Guide</a></li>
@@ -662,6 +662,9 @@
         </div>
         <div id="mpBody" style="padding:14px 18px;display:flex;flex-direction:column;gap:7px;"></div>
       </div>
+      <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(10,22,40,0.85);color:#C9A84C;font-size:0.75rem;font-weight:600;padding:0.4rem 1rem;border-radius:20px;letter-spacing:0.05em;pointer-events:none;animation:bounceScroll 2s infinite;">
+        SCROLL TO CONTINUE ↓
+      </div>
     </div>
 
     <!-- Legend -->
@@ -683,6 +686,10 @@
 </section>
 
 <style>
+  @keyframes bounceScroll {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-6px); }
+  }
   .maptog { border:1.5px solid rgba(255,255,255,0.12);border-radius:100px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.45);transition:all 0.2s; }
   .maptog.active { background:var(--navy);color:var(--white);border-color:rgba(11,31,58,0.8); }
   .maptog:hover { border-color:var(--gold);color:var(--gold); }
@@ -1584,17 +1591,20 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 setTimeout(()=>{const l=document.getElementById('fabLabel');if(l)l.style.opacity='0';},4000);
 
 // ── POPUP ──
-function initPopup() {
-  const key = 'pcsh_popup_shown';
-  const lastShown = sessionStorage.getItem(key);
-  if (lastShown) return;
-  setTimeout(() => {
-    const popup = document.getElementById('pcshPopup');
-    if (popup) popup.classList.add('visible');
-    sessionStorage.setItem(key, '1');
-  }, 45000);
-}
-window.addEventListener('DOMContentLoaded', initPopup);
+let popupShown = false;
+document.addEventListener('mouseleave', function(e) {
+  if (e.clientY <= 20 && !popupShown && !sessionStorage.getItem('popupShown')) {
+    const minDelay = 10000; // 10 seconds minimum before it can fire
+    const timeOnPage = Date.now() - window.__pageLoadTime;
+    if (timeOnPage >= minDelay) {
+      popupShown = true;
+      sessionStorage.setItem('popupShown', 'true');
+      const popup = document.getElementById('pcshPopup');
+      if (popup) popup.classList.add('visible');
+    }
+  }
+});
+window.__pageLoadTime = Date.now();
 
 function closePopup() {
   document.getElementById('pcshPopup').classList.remove('visible');
@@ -1732,5 +1742,37 @@ if (popupEl) {
     </div>
   </div>
 </div>
+
+<div id="mobileStickyBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a1628;border-top:1px solid rgba(201,168,76,0.3);padding:0.75rem 1rem;gap:0.75rem;justify-content:center;">
+  <a href="tel:+13157775219" style="flex:1;max-width:160px;text-align:center;background:#C9A84C;color:#0a1628;font-weight:700;font-size:0.875rem;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;">Call Joseph</a>
+  <a href="pcshomes-contact.html" style="flex:1;max-width:160px;text-align:center;background:transparent;color:#C9A84C;font-weight:700;font-size:0.875rem;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;border:1px solid #C9A84C;">Get Home List</a>
+</div>
+
+<script>
+(function() {
+  var bar = document.getElementById('mobileStickyBar');
+  if (!bar) return;
+  function checkMobile() {
+    if (window.innerWidth <= 768) {
+      bar.style.display = 'flex';
+    } else {
+      bar.style.display = 'none';
+    }
+  }
+  function checkFooter() {
+    var footer = document.querySelector('footer, .footer, .site-footer');
+    if (!footer) return;
+    var footerTop = footer.getBoundingClientRect().top;
+    if (footerTop < window.innerHeight + 200) {
+      bar.style.display = 'none';
+    } else if (window.innerWidth <= 768) {
+      bar.style.display = 'flex';
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  window.addEventListener('scroll', checkFooter);
+})();
+</script>
 </body>
 </html>

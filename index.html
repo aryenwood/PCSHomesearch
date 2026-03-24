@@ -398,7 +398,7 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">PCS<span>Homes</span><small>Fort Drum</small></a>
+  <a href="index.html" class="nav-logo">PCS<span>Homes</span><small>Fort Drum</small></a>
   <ul class="nav-links">
     <li><a href="#listings">Find a Home</a></li>
     <li><a href="#base">Base Guide</a></li>
@@ -536,6 +536,22 @@
 
       <!-- Lead form -->
       <div style="flex:1;min-width:320px;max-width:500px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <img src="joe-headshot.jpg" alt="Joseph Murtha" style="width:52px;height:52px;border-radius:50%;border:2px solid #C9A84C;object-fit:cover;flex-shrink:0;">
+    <div>
+      <div style="font-weight:700;font-size:1rem;color:#0a1628;">Joseph Murtha</div>
+      <div style="font-size:0.8rem;color:#6b7280;">Your Fort Drum VA Specialist · North Star Realty</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;font-size:0.78rem;color:#4a5568;">
+    <span>⭐ 5.0 Rating</span>
+    <span style="color:#C9A84C;">|</span>
+    <span>#1 Agent Jefferson & Lewis County</span>
+    <span style="color:#C9A84C;">|</span>
+    <span>100s of Military Families Helped</span>
+  </div>
+</div>
         <div class="va-lead-card">
           <div class="va-lead-header">
             <div class="va-lead-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Get My Custom Home List</div>
@@ -687,6 +703,10 @@
   </div>
 </section>
 
+<div style="text-align:center;padding:2rem 1rem;">
+  <a href="#va-home-list" style="display:inline-block;background:#C9A84C;color:#0a1628;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;">Get Your Custom VA Home List →</a>
+</div>
+
 <!-- INTERACTIVE MAP -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -724,6 +744,9 @@
         </div>
         <div id="mpBody" style="padding:14px 18px;display:flex;flex-direction:column;gap:7px;"></div>
       </div>
+      <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(10,22,40,0.85);color:#C9A84C;font-size:0.75rem;font-weight:600;padding:0.4rem 1rem;border-radius:20px;letter-spacing:0.05em;pointer-events:none;animation:bounceScroll 2s infinite;">
+        SCROLL TO CONTINUE ↓
+      </div>
     </div>
 
     <!-- Legend -->
@@ -745,6 +768,10 @@
 </section>
 
 <style>
+  @keyframes bounceScroll {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-6px); }
+  }
   .maptog { border:1.5px solid rgba(255,255,255,0.12);border-radius:100px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.45);transition:all 0.2s; }
   .maptog.active { background:var(--navy);color:var(--white);border-color:rgba(11,31,58,0.8); }
   .maptog:hover { border-color:var(--gold);color:var(--gold); }
@@ -990,6 +1017,10 @@ function toggleBlog(id) {
   </div>
 </section>
 
+<div style="text-align:center;padding:2rem 1rem;">
+  <a href="pcshomes-contact.html" style="display:inline-block;background:#C9A84C;color:#0a1628;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;">Talk to Joseph About Your VA Loan →</a>
+</div>
+
 <!-- RENT VS BUY -->
 <section class="rvb-section" id="rvb">
   <div class="rvb-inner">
@@ -1118,6 +1149,10 @@ function toggleBlog(id) {
     </div>
   </div>
 </section>
+
+<div style="text-align:center;padding:2rem 1rem;">
+  <a href="#va-home-list" style="display:inline-block;background:transparent;color:#C9A84C;border:2px solid #C9A84C;padding:0.75rem 2rem;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;">Start With a Free Custom Home List →</a>
+</div>
 
 <!-- PCS PLANNER -->
 <section class="pcs" id="pcs">
@@ -1638,17 +1673,20 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 setTimeout(()=>{const l=document.getElementById('fabLabel');if(l)l.style.opacity='0';},4000);
 
 // ── POPUP ──
-function initPopup() {
-  const key = 'pcsh_popup_shown';
-  const lastShown = sessionStorage.getItem(key);
-  if (lastShown) return;
-  setTimeout(() => {
-    const popup = document.getElementById('pcshPopup');
-    if (popup) popup.classList.add('visible');
-    sessionStorage.setItem(key, '1');
-  }, 45000);
-}
-window.addEventListener('DOMContentLoaded', initPopup);
+let popupShown = false;
+document.addEventListener('mouseleave', function(e) {
+  if (e.clientY <= 20 && !popupShown && !sessionStorage.getItem('popupShown')) {
+    const minDelay = 10000; // 10 seconds minimum before it can fire
+    const timeOnPage = Date.now() - window.__pageLoadTime;
+    if (timeOnPage >= minDelay) {
+      popupShown = true;
+      sessionStorage.setItem('popupShown', 'true');
+      const popup = document.getElementById('pcshPopup');
+      if (popup) popup.classList.add('visible');
+    }
+  }
+});
+window.__pageLoadTime = Date.now();
 
 function closePopup() {
   document.getElementById('pcshPopup').classList.remove('visible');
@@ -1803,5 +1841,37 @@ if (popupEl) {
     </div>
   </div>
 </div>
+
+<div id="mobileStickyBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a1628;border-top:1px solid rgba(201,168,76,0.3);padding:0.75rem 1rem;gap:0.75rem;justify-content:center;">
+  <a href="tel:+13157775219" style="flex:1;max-width:160px;text-align:center;background:#C9A84C;color:#0a1628;font-weight:700;font-size:0.875rem;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;">Call Joseph</a>
+  <a href="pcshomes-contact.html" style="flex:1;max-width:160px;text-align:center;background:transparent;color:#C9A84C;font-weight:700;font-size:0.875rem;padding:0.65rem 1rem;border-radius:8px;text-decoration:none;border:1px solid #C9A84C;">Get Home List</a>
+</div>
+
+<script>
+(function() {
+  var bar = document.getElementById('mobileStickyBar');
+  if (!bar) return;
+  function checkMobile() {
+    if (window.innerWidth <= 768) {
+      bar.style.display = 'flex';
+    } else {
+      bar.style.display = 'none';
+    }
+  }
+  function checkFooter() {
+    var footer = document.querySelector('footer, .footer, .site-footer');
+    if (!footer) return;
+    var footerTop = footer.getBoundingClientRect().top;
+    if (footerTop < window.innerHeight + 200) {
+      bar.style.display = 'none';
+    } else if (window.innerWidth <= 768) {
+      bar.style.display = 'flex';
+    }
+  }
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  window.addEventListener('scroll', checkFooter);
+})();
+</script>
 </body>
 </html>
