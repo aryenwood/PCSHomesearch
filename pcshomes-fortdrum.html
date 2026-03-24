@@ -1776,5 +1776,19 @@ if (popupEl) {
   window.addEventListener('scroll', checkFooter);
 })();
 </script>
+<script>
+document.querySelectorAll('.hero-tag').forEach(function(tag) {
+  tag.style.cursor = 'pointer';
+  tag.addEventListener('click', function() {
+    const area = this.textContent.trim();
+    const input = document.querySelector('input[placeholder*="Search"], input[placeholder*="ZIP"], input[placeholder*="Watertown"]');
+    if (input) {
+      input.value = area;
+      input.focus();
+    }
+    handleHeroSearch();
+  });
+});
+</script>
 </body>
 </html>
