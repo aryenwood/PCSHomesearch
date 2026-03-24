@@ -215,6 +215,126 @@
       .blog-desc{font-size:0.82rem;}
       .lender-name{font-size:16px;}
     }
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 80px;
+      }
+    }
+
+    /* =============================================
+       PCSHOMES TYPOGRAPHY SYSTEM
+       Base: 16px, Scale: Minor Third
+    ============================================= */
+
+    /* 1. ROOT SCALE */
+    :root {
+      font-size: 16px;
+    }
+
+    /* 2. BODY DEFAULT */
+    body {
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 3. HEADING SCALE */
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.25; }
+    h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.35; }
+    h4 { font-size: 1.125rem; line-height: 1.4; }
+    h5, h6 { font-size: 1rem; line-height: 1.5; }
+
+    /* 4. BODY TEXT */
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* 5. NAV LINKS */
+    nav a, .nav-links a {
+      font-size: 0.9375rem;
+    }
+
+    /* 6. SECTION EYEBROW / LABELS */
+    .eyebrow, .section-label, [class*="eyebrow"], [class*="section-tag"],
+    [class*="label-tag"], .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    /* 7. CARD BODY TEXT */
+    .card p, .card li, [class*="card"] p, [class*="card"] li {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+    }
+
+    /* 8. STAT LABELS */
+    .stat-label, [class*="stat"] p, [class*="stat-desc"],
+    [class*="stat"] > span:not(:first-child) {
+      font-size: 0.8125rem;
+    }
+
+    /* 9. FORM LABELS AND INPUTS */
+    label, input, select, textarea {
+      font-size: 0.9375rem;
+    }
+    input::placeholder, textarea::placeholder {
+      font-size: 0.875rem;
+    }
+
+    /* 10. BUTTONS */
+    button, .btn, [class*="btn"], a[class*="btn"] {
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    /* 11. FOOTER TEXT */
+    footer p, footer a, footer li, footer span,
+    .footer p, .footer a, .footer li {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* 12. SMALL / HELPER TEXT */
+    small, .text-xs, [class*="text-xs"], [class*="hint"],
+    [class*="helper"], [class*="disclaimer"], .estimates-note {
+      font-size: 0.8125rem !important;
+      line-height: 1.55;
+    }
+
+    /* 13. LOW OPACITY FIX */
+    [style*="opacity: 0.4"], [style*="opacity:0.4"],
+    [style*="rgba(255, 255, 255, 0.4)"],
+    [style*="rgba(255,255,255,0.4)"] {
+      opacity: 0.7 !important;
+    }
+
+    /* 14. MOBILE OVERRIDES */
+    @media (max-width: 768px) {
+      :root { font-size: 15px; }
+      p { font-size: 1rem; line-height: 1.7; }
+      h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+      h2 { font-size: clamp(1.35rem, 5vw, 1.75rem); }
+      h3 { font-size: clamp(1.1rem, 4vw, 1.35rem); }
+      nav a, .nav-links a { font-size: 0.875rem; }
+      .card p, .card li, [class*="card"] p { font-size: 0.9375rem; }
+      label, input, select, textarea { font-size: 1rem; }
+      small, .text-xs, [class*="disclaimer"] { font-size: 0.8125rem !important; }
+      * { min-font-size: 13px; }
+    }
+
+    /* 15. NUCLEAR OPTION */
+    @media screen {
+      :is(p, li, span, a, td, th, label, div):not([class*="icon"]):not([class*="svg"]) {
+        min-height: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      #founder-image { height: 180px !important; }
+    }
   </style>
 </head>
 <body>
@@ -276,6 +396,11 @@
           <p>"I watched families arrive in October with no idea what a North Country winter actually meant. I watched soldiers overpay for homes because they didn't know the market, or miss out on their VA benefits because nobody explained them clearly. I knew there had to be a better way."</p>
           <cite>— Joseph Murtha, Founder</cite>
         </div>
+<!-- FOUNDER LIFESTYLE IMAGE -->
+<div id="founder-image" style="width:100%;height:260px;overflow:hidden;border-radius:12px;margin:2rem 0;position:relative;">
+  <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80" alt="Family moving into new home" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(10,22,40,0.4) 0%, transparent 70%);"></div>
+</div>
 
         <p>As a real estate agent with <strong>North Star Real Estate</strong> and a property investor in the Watertown area, I've helped hundreds of military families find homes, navigate VA loans, and settle into this community. But I always felt like the tools available to them — the national platforms, the generic relocation sites — just didn't get it.</p>
 
@@ -417,7 +542,7 @@
     var footer = document.querySelector('footer, .footer, .site-footer');
     if (!footer) return;
     var footerTop = footer.getBoundingClientRect().top;
-    if (footerTop < window.innerHeight + 200) {
+    if (footerTop < window.innerHeight + 80) {
       bar.style.display = 'none';
     } else if (window.innerWidth <= 768) {
       bar.style.display = 'flex';

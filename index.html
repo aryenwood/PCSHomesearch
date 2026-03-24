@@ -388,6 +388,129 @@
       .lender-name{font-size:16px;}
       .stat-num,.hero-stats .stat-num{font-size:20px !important;}
     }
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 80px;
+      }
+    }
+
+    /* =============================================
+       PCSHOMES TYPOGRAPHY SYSTEM
+       Base: 16px, Scale: Minor Third
+    ============================================= */
+
+    /* 1. ROOT SCALE */
+    :root {
+      font-size: 16px;
+    }
+
+    /* 2. BODY DEFAULT */
+    body {
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 3. HEADING SCALE */
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.25; }
+    h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.35; }
+    h4 { font-size: 1.125rem; line-height: 1.4; }
+    h5, h6 { font-size: 1rem; line-height: 1.5; }
+
+    /* 4. BODY TEXT */
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* 5. NAV LINKS */
+    nav a, .nav-links a {
+      font-size: 0.9375rem;
+    }
+
+    /* 6. SECTION EYEBROW / LABELS */
+    .eyebrow, .section-label, [class*="eyebrow"], [class*="section-tag"],
+    [class*="label-tag"], .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    /* 7. CARD BODY TEXT */
+    .card p, .card li, [class*="card"] p, [class*="card"] li {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+    }
+
+    /* 8. STAT LABELS */
+    .stat-label, [class*="stat"] p, [class*="stat-desc"],
+    [class*="stat"] > span:not(:first-child) {
+      font-size: 0.8125rem;
+    }
+
+    /* 9. FORM LABELS AND INPUTS */
+    label, input, select, textarea {
+      font-size: 0.9375rem;
+    }
+    input::placeholder, textarea::placeholder {
+      font-size: 0.875rem;
+    }
+
+    /* 10. BUTTONS */
+    button, .btn, [class*="btn"], a[class*="btn"] {
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    /* 11. FOOTER TEXT */
+    footer p, footer a, footer li, footer span,
+    .footer p, .footer a, .footer li {
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+
+    /* 12. SMALL / HELPER TEXT */
+    small, .text-xs, [class*="text-xs"], [class*="hint"],
+    [class*="helper"], [class*="disclaimer"], .estimates-note {
+      font-size: 0.8125rem !important;
+      line-height: 1.55;
+    }
+
+    /* 13. LOW OPACITY FIX */
+    [style*="opacity: 0.4"], [style*="opacity:0.4"],
+    [style*="rgba(255, 255, 255, 0.4)"],
+    [style*="rgba(255,255,255,0.4)"] {
+      opacity: 0.7 !important;
+    }
+
+    /* 14. MOBILE OVERRIDES */
+    @media (max-width: 768px) {
+      :root { font-size: 15px; }
+      p { font-size: 1rem; line-height: 1.7; }
+      h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+      h2 { font-size: clamp(1.35rem, 5vw, 1.75rem); }
+      h3 { font-size: clamp(1.1rem, 4vw, 1.35rem); }
+      nav a, .nav-links a { font-size: 0.875rem; }
+      .card p, .card li, [class*="card"] p { font-size: 0.9375rem; }
+      label, input, select, textarea { font-size: 1rem; }
+      small, .text-xs, [class*="disclaimer"] { font-size: 0.8125rem !important; }
+      * { min-font-size: 13px; }
+    }
+
+    /* 15. NUCLEAR OPTION */
+    @media screen {
+      :is(p, li, span, a, td, th, label, div):not([class*="icon"]):not([class*="svg"]) {
+        min-height: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      #family-image-strip { grid-template-columns: 1fr !important; height: 160px !important; }
+      #family-image-strip img:not(:first-child) { display: none !important; }
+      #base-guide-image { height: 200px !important; }
+      #founder-image { height: 180px !important; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -484,6 +607,13 @@
     <div class="stat"><div class="stat-num">340<span>+</span></div><div class="stat-label">VA Listings Nearby</div></div>
   </div>
 </section>
+
+<!-- FAMILY IMAGE STRIP -->
+<div id="family-image-strip" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;height:220px;overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80" alt="Military family at home" style="width:100%;height:100%;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Family new home" style="width:100%;height:100%;object-fit:cover;">
+  <img src="https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&q=80" alt="Couple new home keys" style="width:100%;height:100%;object-fit:cover;">
+</div>
 
 <!-- FORT DRUM BANNER -->
 <div style="
@@ -683,6 +813,13 @@
     <div class="section-label">Fort Drum Base Guide</div>
     <h2 class="section-title light">Everything you need to know before you arrive.</h2>
     <p class="section-sub light">Honest intel from families who've lived it — not a brochure.</p>
+
+<!-- BASE GUIDE LIFESTYLE IMAGE -->
+<div id="base-guide-image" style="width:100%;height:300px;overflow:hidden;border-radius:12px;margin-bottom:2rem;position:relative;">
+  <img src="https://images.unsplash.com/photo-1536300099515-6c61b290b654?w=1200&q=80" alt="Family neighborhood Fort Drum area" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(10,22,40,0.5) 0%, transparent 60%);"></div>
+  <div style="position:absolute;bottom:1rem;left:1.5rem;color:white;font-size:0.8rem;letter-spacing:0.05em;font-weight:600;opacity:0.85;">WATERTOWN AREA · NORTH COUNTRY NY</div>
+</div>
     <div class="drum-facts">
       <div class="drum-fact"><div class="drum-fact-num">$1,665</div><div class="drum-fact-label">BAH E5 w/ Dependents</div></div>
       <div class="drum-fact"><div class="drum-fact-num">-20°F</div><div class="drum-fact-label">Winter Lows (Prepare)</div></div>
@@ -1232,7 +1369,7 @@ function toggleBlog(id) {
     <p class="section-sub">Joseph Murtha is your boots-on-the-ground agent at Fort Drum — paired with VA loan specialists who understand military timelines.</p>
 
     <!-- Joseph as primary agent — full-width card -->
-    <div class="agent-card-hero" style="background:var(--navy);border-radius:16px;padding:32px 36px;display:flex;gap:32px;align-items:center;margin:40px 0 24px;border:1px solid rgba(201,168,76,0.2);">
+    <div class="agent-card-hero" style="background-image:linear-gradient(rgba(10,22,40,0.88),rgba(10,22,40,0.88)),url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80');background-size:cover;background-position:center;background-color:var(--navy);border-radius:16px;padding:32px 36px;display:flex;gap:32px;align-items:center;margin:40px 0 24px;border:1px solid rgba(201,168,76,0.2);">
       <div style="flex-shrink:0;">
         <div style="width:110px;height:110px;border-radius:50%;border:4px solid var(--gold);box-shadow:0 0 0 8px rgba(201,168,76,0.12);overflow:hidden;">
           <img src="joe-headshot.jpg" alt="Joseph Murtha" style="width:100%;height:100%;object-fit:cover;"/>
@@ -1891,7 +2028,7 @@ if (popupEl) {
     var footer = document.querySelector('footer, .footer, .site-footer');
     if (!footer) return;
     var footerTop = footer.getBoundingClientRect().top;
-    if (footerTop < window.innerHeight + 200) {
+    if (footerTop < window.innerHeight + 80) {
       bar.style.display = 'none';
     } else if (window.innerWidth <= 768) {
       bar.style.display = 'flex';
