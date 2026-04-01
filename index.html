@@ -527,6 +527,48 @@
     .wj-stats { display:grid; grid-template-columns:repeat(4,1fr); }
     @media(max-width:768px){ .wj-grid{grid-template-columns:1fr;} .wj-stats{grid-template-columns:repeat(2,1fr);} .map-school-grid{grid-template-columns:1fr !important;} }
     @media(max-width:900px){ .wj-grid{grid-template-columns:1fr 1fr;} }
+
+    /* ===== MOBILE OPTIMIZATION PASS ===== */
+    @media (max-width: 768px) {
+      /* Touch targets — min 44px */
+      .nav-cta { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+      .filter-btn, .filter-select { min-height: 44px; }
+      .hero-tag { min-height: 44px; display: inline-flex; align-items: center; }
+      .rate-btn { min-height: 44px; padding: 10px 14px; }
+      .calc-btn, .va-submit-btn, .lender-btn, .btn-primary, .btn-outline { min-height: 44px; }
+      .faq-q { min-height: 44px; }
+      .popup-option { min-height: 44px; }
+      .popup-btn { min-height: 44px; }
+      .suggestion-chip { min-height: 44px; display: inline-flex; align-items: center; }
+      .tab-item { min-height: 44px; }
+
+      /* iOS zoom fix — inputs must be 16px */
+      input, select, textarea { font-size: 16px !important; }
+
+      /* Hero — reduce height on mobile */
+      .hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+
+      /* Popup modal — mobile friendly */
+      .popup-box { max-width: 100%; margin: 0 16px; border-radius: 16px; max-height: 85vh; }
+      .popup-top { padding: 22px 20px 18px; }
+      .popup-body { padding: 20px; }
+      .popup-headline { font-size: 19px; }
+
+      /* Footer mobile stacking */
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+      footer { padding: 32px 18px 24px; }
+
+      /* Table responsiveness */
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+      /* Text overflow protection */
+      body { word-break: break-word; }
+      a { word-break: break-word; }
+
+      /* Chat window mobile */
+      .chat-window { width: calc(100vw - 32px); right: 16px; max-height: 70vh; }
+    }
   </style>
   <script type="application/ld+json">
   {
