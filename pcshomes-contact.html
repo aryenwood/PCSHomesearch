@@ -237,6 +237,32 @@
       h1 { font-size: clamp(26px, 7vw, 40px); }
       .form-card { padding: 24px; }
       .sidebar-card { padding: 22px; }
+
+      /* Touch targets — min 44px */
+      .nav-cta-link { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+      .inquiry-type { min-height: 44px; padding: 10px 16px; }
+      .submit-btn { min-height: 44px; }
+      .tab-item { min-height: 44px; }
+
+      /* iOS zoom fix — inputs must be 16px */
+      input, select, textarea { font-size: 16px !important; }
+
+      /* Form usability */
+      .form-input, .form-select, .form-textarea { width: 100%; }
+      .submit-btn { width: 100%; }
+
+      /* Hero padding */
+      .hero { padding: 100px 20px 56px; }
+
+      /* Footer mobile stacking */
+      .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .footer-social { justify-content: center; }
+      footer { padding: 32px 18px; }
+
+      /* Text overflow protection */
+      body { word-break: break-word; }
+      a { word-break: break-word; }
     }
   </style>
 </head>

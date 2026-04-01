@@ -222,6 +222,31 @@
       .weekend-grid { grid-template-columns: 1fr; }
       .gems-grid { grid-template-columns: 1fr; }
       section { padding: 56px 20px; }
+
+      /* Touch targets — min 44px */
+      .nav-cta-link { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+      .suggest-submit { min-height: 44px; }
+      .tab-item { min-height: 44px; }
+      .location-pill, .drive-badge { min-height: 36px; display: inline-flex; align-items: center; }
+
+      /* iOS zoom fix — inputs must be 16px */
+      input, select, textarea { font-size: 16px !important; }
+
+      /* Hero padding */
+      .hero { padding: 100px 18px 56px; }
+
+      /* Footer mobile stacking */
+      .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .footer-social { justify-content: center; }
+
+      /* Heading sizes */
+      h1 { font-size: clamp(26px, 7vw, 40px); }
+      h2, .section-title { font-size: clamp(20px, 5vw, 28px); }
+
+      /* Text overflow protection */
+      body { word-break: break-word; }
+      a { word-break: break-word; }
     }
   </style>
 </head>
