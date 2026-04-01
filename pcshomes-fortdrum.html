@@ -8,7 +8,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pcshomes.com/fortdrum">
   <meta property="og:title" content="Fort Drum VA Homes | PCSHomes">
-  <meta property="og:description" content="VA-approved homes and PCS resources for soldiers at Fort Drum and the 10th Mountain Division.">
+  <meta property="og:description" content="VA-approved homes and PCS resources for military families at Fort Drum and the 10th Mountain Division.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com/fortdrum">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
@@ -458,7 +458,8 @@
     .wj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px; }
     .wj-stats { display:grid; grid-template-columns:repeat(4,1fr); }
     @media(max-width:768px){ .wj-grid{grid-template-columns:1fr;} .wj-stats{grid-template-columns:repeat(2,1fr);} .map-school-grid{grid-template-columns:1fr !important;} }
-    @media(max-width:900px){ .wj-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:900px){ .wj-grid{grid-template-columns:1fr 1fr;} #family .inner > div:first-of-type { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:768px){ #family .inner > div:first-of-type { grid-template-columns: 1fr; } }
     /* MOBILE TAB BAR */
     .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a1628;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
     .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.4);font-size:10px;font-weight:600;padding:4px 12px; }
@@ -485,7 +486,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">🥾 10th Mountain Division · Fort Drum, NY</div>
-  <h1>Your PCS to<br/><em>Fort Drum</em> starts here.</h1>
+  <h1>Your family's PCS to<br/><em>Fort Drum</em> starts here.</h1>
   <p class="hero-sub">VA-eligible homes, honest base guides, PCS checklists, and a community of military families who know Fort Drum — all in one place.</p>
   <div class="hero-search">
     <div class="search-box">
@@ -661,7 +662,7 @@
       <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:14px;padding:28px 24px;text-align:center;">
         <div style="width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--gold);">3</div>
         <div style="font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;">Move with Confidence</div>
-        <div style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.7;">Close on your home, sign your lease, or get pre-approved -- all on your PCS timeline. Our partners understand military deadlines.</div>
+        <div style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.7;">Close on your home, sign your lease, or get pre-approved -- all on your family's timeline. Our partners understand military deadlines.</div>
       </div>
     </div>
     <div style="text-align:center;">
@@ -822,6 +823,38 @@
             <div style="font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.6;">Covers the east side of the installation and the Carthage community. Solid programs with a tight-knit school culture.</div>
           </div>
         </div>
+        <div style="margin-top:16px;margin-bottom:16px;overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.78rem;color:rgba(255,255,255,0.55);">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.1);text-align:left;">
+                <th style="padding:8px 10px;color:rgba(255,255,255,0.35);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">District</th>
+                <th style="padding:8px 10px;color:rgba(255,255,255,0.35);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">Rating</th>
+                <th style="padding:8px 10px;color:rgba(255,255,255,0.35);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">Mil-Family %</th>
+                <th style="padding:8px 10px;color:rgba(255,255,255,0.35);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;">Key Schools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+                <td style="padding:8px 10px;color:#fff;font-weight:600;">General Brown</td>
+                <td style="padding:8px 10px;">Above Avg</td>
+                <td style="padding:8px 10px;">~40%</td>
+                <td style="padding:8px 10px;">Dexter Elementary, GB Middle, GB High</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
+                <td style="padding:8px 10px;color:#fff;font-weight:600;">Indian River</td>
+                <td style="padding:8px 10px;">Average</td>
+                <td style="padding:8px 10px;">~60%</td>
+                <td style="padding:8px 10px;">Philadelphia Elementary, IR Middle, IR High</td>
+              </tr>
+              <tr>
+                <td style="padding:8px 10px;color:#fff;font-weight:600;">Carthage</td>
+                <td style="padding:8px 10px;">Average</td>
+                <td style="padding:8px 10px;">~15%</td>
+                <td style="padding:8px 10px;">Carthage Elementary, Carthage Middle/High</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:12px 14px;margin-bottom:18px;">
           <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);line-height:1.65;">Boundaries are approximate. Always verify your specific address with the <a href="https://drum.armymwr.com/programs/school-support-services" target="_blank" style="color:var(--gold);font-weight:600;text-decoration:none;">Fort Drum School Liaison</a> at (315) 772-3214 before making any housing decision.</div>
         </div>
@@ -829,6 +862,77 @@
       </div>
     </div>
     </div><!-- /map-school-grid wrapper card -->
+  </div>
+</section>
+
+<!-- FAMILY RESOURCES -->
+<section style="background:#0a1628;padding:88px 48px;" id="family">
+  <div class="inner">
+    <div class="section-label" style="color:var(--gold);">Family Resources</div>
+    <h2 class="section-title light" style="max-width:600px;">Everything your family needs — <em style="color:var(--gold);font-style:italic;">not just a house.</em></h2>
+    <p class="section-sub light" style="max-width:520px;">Whether you're the service member, the spouse, or both — Fort Drum has support systems built for military families. Here's what you need to know.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;">
+
+      <!-- Schools -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:14px;">🏫</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">School Districts</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">Fort Drum spans 3 school districts. General Brown CSD (Evans Mills) is the most popular with military families — experienced staff, strong community, and high military-family enrollment.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);">School Liaison: <a href="tel:+13157723214" style="color:var(--gold);text-decoration:none;">(315) 772-3214</a></div>
+      </div>
+
+      <!-- Childcare -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:14px;">👶</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Childcare & Youth Services</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">CYSS offers on-post childcare (infant through school-age), before/after school programs, summer camps, and youth sports. Waitlists can be long — register through MilitaryChildCare.com as soon as you have orders.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);">CYSS: <a href="tel:+13157726518" style="color:var(--gold);text-decoration:none;">(315) 772-6518</a></div>
+      </div>
+
+      <!-- ACS -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:14px;">🤝</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Army Community Service</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">ACS is your first stop for relocation help, financial counseling, spouse employment assistance, and the Lending Closet (free household items while you wait for your shipment). They also run newcomer orientations.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);">ACS: <a href="tel:+13157726557" style="color:var(--gold);text-decoration:none;">(315) 772-6557</a></div>
+      </div>
+
+      <!-- FRG -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:14px;">💛</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Family Readiness Groups</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">Your unit's FRG is the fastest way to meet other families, get deployment updates, and find support. Ask your sponsor or unit rear-detachment for the FRG leader's contact before you arrive.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);">Tip: Join the FRG Facebook group before you PCS</div>
+      </div>
+
+      <!-- Medical -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:14px;">🏥</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Medical & TRICARE</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">Guthrie Ambulatory Healthcare Clinic is on post. Off-post, Samaritan Medical Center in Watertown is the main hospital. Transfer your TRICARE region and enroll with a PCM as soon as you arrive — pediatrician waitlists fill fast.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);">Samaritan: <a href="tel:+13157851600" style="color:var(--gold);text-decoration:none;">(315) 785-4000</a></div>
+      </div>
+
+      <!-- Spouse Employment -->
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:14px;">💼</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:8px;">Spouse Employment</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:14px;">ACS Employment Readiness helps spouses find local jobs, build resumes, and access remote work resources. Fort Drum also participates in the Military Spouse Employment Partnership (MSEP) with hundreds of partner employers.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);">Employment Readiness: <a href="tel:+13157726557" style="color:var(--gold);text-decoration:none;">(315) 772-6557</a></div>
+      </div>
+
+    </div>
+
+    <!-- Deployment callout -->
+    <div style="margin-top:32px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:24px 28px;display:flex;gap:20px;align-items:flex-start;">
+      <div style="font-size:24px;flex-shrink:0;">⚠️</div>
+      <div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;">Spouse deploying soon after PCS?</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65;">This is more common at Drum than most posts. Connect with your FRG leader early, register for CYSS childcare immediately, and make sure ACS has your contact info. The rear-detachment and Family Readiness Group will be your primary support network during deployment. You are not alone — thousands of families at Drum navigate this every year.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1048,7 +1152,7 @@ function toggleBlog(id) {
         <div class="tool-sub">Fort Drum's housing market is one of the most favorable in the Army for VA loan buyers.</div>
         <div class="entitlement-list">
           <div class="entitlement-item"><div class="entitlement-icon">✅</div><div><div class="entitlement-title">$0 Down at Fort Drum</div><div class="entitlement-desc">Most homes near Drum are well under the conforming loan limit — full entitlement covers 100% with no down payment required.</div></div></div>
-          <div class="entitlement-item"><div class="entitlement-icon">💰</div><div><div class="entitlement-title">BAH Often Exceeds Payment</div><div class="entitlement-desc">With median home prices around $185k, many E5+ soldiers find their mortgage is lower than their BAH — building equity essentially for free.</div></div></div>
+          <div class="entitlement-item"><div class="entitlement-icon">💰</div><div><div class="entitlement-title">BAH Often Exceeds Payment</div><div class="entitlement-desc">With median home prices around $185k, many E5+ families find their mortgage is lower than their BAH — building equity essentially for free.</div></div></div>
           <div class="entitlement-item"><div class="entitlement-icon">🔄</div><div><div class="entitlement-title">Buy Now, Rent Later</div><div class="entitlement-desc">The Watertown rental market is strong with constant military demand. Many Fort Drum buyers convert to rentals after PCSing — creating passive income.</div></div></div>
           <div class="entitlement-item"><div class="entitlement-icon">🚫</div><div><div class="entitlement-title">No PMI Required</div><div class="entitlement-desc">Save $100–200/month vs. conventional loans. Over a 3-year assignment that's $3,600–7,200 back in your pocket.</div></div></div>
         </div>
@@ -1190,7 +1294,7 @@ function toggleBlog(id) {
 <section class="pcs" id="pcs">
   <div class="inner">
     <div class="section-label">PCS Move Planner</div>
-    <h2 class="section-title light">PCSing to Fort Drum? Here's your roadmap.</h2>
+    <h2 class="section-title light">Your family's Fort Drum PCS starts here.</h2>
     <p class="section-sub light">A Fort Drum–specific checklist with real links and resources built into every step.</p>
     <div class="pcs-layout">
       <div class="timeline">
@@ -1283,7 +1387,7 @@ function toggleBlog(id) {
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Should I buy or rent at Fort Drum?</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">Fort Drum is one of the best bases in the Army to buy a home. Home prices are well below the national average (median ~$185k) and many soldiers find their VA mortgage payment comes in <strong>under their BAH</strong> — meaning they're building equity while living essentially for free. The Watertown rental market is also strong, so if you PCS in 3 years you can convert it to a rental rather than selling. If you have less than 2 years on your contract or significant uncertainty, renting may make more sense. Connect with a PCSHomes partner for a personalized recommendation based on your specific situation.</div>
+        <div class="faq-a">Fort Drum is one of the best bases in the Army to buy a home. Home prices are well below the national average (median ~$185k) and many military families find their VA mortgage payment comes in <strong>under their BAH</strong> — meaning they're building equity while living essentially for free. The Watertown rental market is also strong, so if you PCS in 3 years you can convert it to a rental rather than selling. If you have less than 2 years on your contract or significant uncertainty, renting may make more sense. Connect with a PCSHomes partner for a personalized recommendation based on your specific situation.</div>
       </div>
 
       <div class="faq-item">
@@ -1308,7 +1412,7 @@ function toggleBlog(id) {
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Can I use my VA loan if I've already used it before?</span><span class="faq-icon">+</span></div>
-        <div class="faq-a">Yes — <strong>your VA loan benefit is reusable</strong>, even if you still have an existing VA loan on another property. You have "remaining entitlement" or "bonus entitlement" that can cover a second purchase. Since Fort Drum home prices are well under the conforming loan limit, most soldiers can still purchase with $0 down even on their second VA loan. Talk to one of our preferred lenders to pull your Certificate of Eligibility and see exactly where your entitlement stands before you start searching.</div>
+        <div class="faq-a">Yes — <strong>your VA loan benefit is reusable</strong>, even if you still have an existing VA loan on another property. You have "remaining entitlement" or "bonus entitlement" that can cover a second purchase. Since Fort Drum home prices are well under the conforming loan limit, most service members can still purchase with $0 down even on their second VA loan. Talk to one of our preferred lenders to pull your Certificate of Eligibility and see exactly where your entitlement stands before you start searching.</div>
       </div>
 
       <div class="faq-item">
@@ -1362,11 +1466,11 @@ function toggleBlog(id) {
           <div class="blog-full" id="fd-blog-a1-full" style="display:none;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
             <p style="margin-bottom:12px;">If you're PCSing to Fort Drum this year, your VA loan benefit is stronger than it's ever been. Here's what changed for 2026 and how to use it.</p>
             <p style="margin-bottom:12px;">First, the big one: if you have full VA entitlement — meaning you've never used your benefit, or you've paid off a previous VA loan — there is no loan limit. Zero. The VA will guarantee whatever a lender approves you for, with $0 down. That's not a typo. No down payment. No PMI. Just your Certificate of Eligibility and a lender who knows what they're doing.</p>
-            <p style="margin-bottom:12px;">For soldiers who already have an active VA loan, the baseline limit for 2026 is $832,750 — up from $806,500 in 2025. That's a 3.3% increase that puts more buying power in your hands.</p>
+            <p style="margin-bottom:12px;">For service members who already have an active VA loan, the baseline limit for 2026 is $832,750 — up from $806,500 in 2025. That's a 3.3% increase that puts more buying power in your hands.</p>
             <p style="margin-bottom:12px;">Here's the math that matters at Fort Drum: median home prices in the Watertown area run well below the national average. We're talking $126,000–$200,000 for solid family homes. Your BAH for 2026 increased 4.9% over last year. As an E-6 with dependents, you're looking at $1,893/month in housing allowance. That covers the mortgage on most homes near post — which means you could be building equity instead of paying someone else's mortgage.</p>
             <p style="margin-bottom:12px;">The VA funding fee for first-time use with $0 down is 2.15% of the loan amount. On a $175,000 home that's about $3,762 — usually rolled into the loan so you pay nothing out of pocket at closing. Compare that to a conventional loan requiring a 20% down payment — $35,000 cash — and the VA benefit starts to look like exactly what it is: one of the best financial tools available to anyone in uniform.</p>
-            <p style="margin-bottom:12px;">One thing we see soldiers miss: get your COE (Certificate of Eligibility) before you start house hunting. It takes 10 minutes online at VA.gov and it tells you exactly what you're working with. Don't wait until you find the right house to figure this out.</p>
-            <p>If you have questions about how your specific rank and situation plays into this, reach out. Our partners run these numbers every day for Fort Drum soldiers and are happy to walk you through it.</p>
+            <p style="margin-bottom:12px;">One thing we see families miss: get your COE (Certificate of Eligibility) before you start house hunting. It takes 10 minutes online at VA.gov and it tells you exactly what you're working with. Don't wait until you find the right house to figure this out.</p>
+            <p>If you have questions about how your specific rank and situation plays into this, reach out. Our partners run these numbers every day for Fort Drum families and are happy to walk you through it.</p>
           </div>
           <a class="blog-link" href="#" onclick="toggleBlog('fd-blog-a1');return false;">Read Article →</a>
         </div>
@@ -1379,12 +1483,12 @@ function toggleBlog(id) {
           <div class="blog-desc">Your BAH went up 4.9%. Here's how to make it work for you — not your landlord.</div>
           <div class="blog-meta">By PCSHomes Team · March 2026</div>
           <div class="blog-full" id="fd-blog-a2-full" style="display:none;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
-            <p style="margin-bottom:12px;">BAH rates at Fort Drum just went up 4.9% for 2026. Most soldiers take that money and hand it straight to a landlord. Here's why that's worth reconsidering.</p>
+            <p style="margin-bottom:12px;">BAH rates at Fort Drum just went up 4.9% for 2026. Most military families take that money and hand it straight to a landlord. Here's why that's worth reconsidering.</p>
             <p style="margin-bottom:12px;">The 2026 BAH rates for the Fort Drum/Watertown military housing area break down like this: an E-5 with dependents receives $1,665/month. E-6 with dependents: $1,893. E-7 with dependents: $2,103. That's your housing budget — tax-free money that doesn't touch your base pay.</p>
             <p style="margin-bottom:12px;">Now look at the local market. The median home purchase price in the Watertown area is around $126,000. Even factoring in a modest bump over the past year, you're looking at homes in the $150,000–$200,000 range that cover everything a military family needs — 3 bedrooms, a yard, close to post. At current rates on a VA loan, a $175,000 home runs roughly $1,100–$1,300/month depending on your rate and taxes.</p>
-            <p style="margin-bottom:12px;">The math: your BAH covers the mortgage and then some. The difference stays in your pocket. And when you PCS out of Drum in 2–3 years, you can either sell the home and walk away with equity, or keep it as a rental property — which Fort Drum's rental market can absolutely support given the constant rotation of incoming soldiers.</p>
+            <p style="margin-bottom:12px;">The math: your BAH covers the mortgage and then some. The difference stays in your pocket. And when you PCS out of Drum in 2–3 years, you can either sell the home and walk away with equity, or keep it as a rental property — which Fort Drum's rental market can absolutely support given the constant rotation of incoming military families.</p>
             <p style="margin-bottom:12px;">The biggest objection we hear: "I don't know how long I'll be here." That's the VA loan's secret weapon. Because you put $0 down, your risk exposure is minimal. In the worst case scenario — you PCS earlier than expected and the market dips — you can rent it out and cover the mortgage without losing money every month.</p>
-            <p>Many Fort Drum soldiers have built the beginning of a real estate portfolio just by buying smart at each duty station instead of renting. It starts with one house, right here, right now. If you want to run the numbers for your rank and situation, connect with a PCSHomes partner who can walk you through it.</p>
+            <p>Many Fort Drum families have built the beginning of a real estate portfolio just by buying smart at each duty station instead of renting. It starts with one house, right here, right now. If you want to run the numbers for your rank and situation, connect with a PCSHomes partner who can walk you through it.</p>
           </div>
           <a class="blog-link" href="#" onclick="toggleBlog('fd-blog-a2');return false;">Read Article →</a>
         </div>
@@ -1397,13 +1501,13 @@ function toggleBlog(id) {
           <div class="blog-desc">The real neighborhoods, the winter reality, and how to find a home before you get your orders.</div>
           <div class="blog-meta">By PCSHomes Team · February 2026</div>
           <div class="blog-full" id="fd-blog-a3-full" style="display:none;margin-top:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.75;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">
-            <p style="margin-bottom:12px;">Every year we work with soldiers and families PCSing to Fort Drum who had no idea what they were getting into -- not because they didn't prepare, but because nobody told them the things that actually matter. Here's what every incoming soldier should know before starting their search.</p>
+            <p style="margin-bottom:12px;">Every year we work with military families PCSing to Fort Drum who had no idea what they were getting into -- not because they didn't prepare, but because nobody told them the things that actually matter. Here's what every incoming family should know before starting their search.</p>
             <p style="margin-bottom:12px;">The neighborhoods that matter: Most families end up in Watertown, Calcium, or Evans Mills. Watertown is the most complete — you have grocery stores, schools, restaurants, and a real downtown. Calcium is tight-knit and popular with military families because of proximity to post. Evans Mills is quiet and affordable. All three are worth looking at depending on your family's priorities.</p>
-            <p style="margin-bottom:12px;">The winter is real. Fort Drum gets an average of 100+ inches of snow per year — lake effect off Lake Ontario. When soldiers from warmer climates ask what that means for housing, the advice is simple: buy close to post. A commute that's 20 minutes in October can be 45 minutes in January. That matters when you're trying to make formation.</p>
+            <p style="margin-bottom:12px;">The winter is real. Fort Drum gets an average of 100+ inches of snow per year — lake effect off Lake Ontario. When families from warmer climates ask what that means for housing, the advice is simple: buy close to post. A commute that's 20 minutes in October can be 45 minutes in January. That matters when you're trying to make formation.</p>
             <p style="margin-bottom:12px;">Start earlier than you think. The Watertown housing market moves quickly — good homes in the $150,000–$200,000 range don't sit long, especially in spring when PCS season heats up. If you have your orders and you're not actively looking, you're already behind. Our partners work with families who are 60-90 days out and find better options than those who wait until 30 days.</p>
             <p style="margin-bottom:12px;">Use your VA benefit. We say this all the time, but Fort Drum is one of the best duty stations in the country to buy instead of rent because of the price-to-BAH ratio. You can make your housing allowance actually work for you here instead of just paying someone else's mortgage.</p>
             <p style="margin-bottom:12px;">Get a lender approved before you contact a real estate agent. Seriously. Know your numbers — your BAH, your COE status, your credit score — before you fall in love with a house. It makes everything faster and it makes your offer stronger.</p>
-            <p>Our partners have helped dozens of 10th Mountain Division soldiers and families find the right home before, during, and after PCS season. If you're inbound to Fort Drum and you want a straight answer about the market, the neighborhoods, and what your benefit actually gets you -- just reach out. That's what PCSHomes is here for.</p>
+            <p>Our partners have helped dozens of 10th Mountain Division families find the right home before, during, and after PCS season. If you're inbound to Fort Drum and you want a straight answer about the market, the neighborhoods, and what your benefit actually gets you -- just reach out. That's what PCSHomes is here for.</p>
           </div>
           <a class="blog-link" href="#" onclick="toggleBlog('fd-blog-a3');return false;">Read Article →</a>
         </div>
@@ -1759,7 +1863,7 @@ if (popupEl) {
       <button class="popup-close" onclick="closePopup()">×</button>
       <div class="popup-eyebrow">🥾 Fort Drum PCS Resource</div>
       <div class="popup-headline">How can PCSHomes help you today?</div>
-      <div class="popup-sub">Choose what's most useful for where you are in your PCS journey.</div>
+      <div class="popup-sub">Choose what's most useful for where you are in your family's PCS journey.</div>
     </div>
     <div class="popup-body">
 
