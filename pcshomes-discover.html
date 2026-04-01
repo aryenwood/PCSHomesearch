@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Discover the North Country | PCSHomes Fort Drum</title>
   <meta name="description" content="Explore the best of the North Country — outdoor adventures, family activities, weekend trips, and local gems near Fort Drum NY.">
   <meta name="robots" content="index, follow">
@@ -213,7 +213,7 @@
     }
     @media (max-width: 768px) {
       .mobile-tab-bar { display: flex; }
-      body { padding-bottom: 72px; }
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .nav-links { display: none !important; }
       nav .nav-cta-link { display: none !important; }
       .adventure-grid { grid-template-columns: 1fr; }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Our Network | PCSHomes Fort Drum Trusted Vendors</title>
   <meta name="description" content="Connect with trusted real estate agents, VA lenders, property inspectors, and home service providers serving the Fort Drum military community.">
   <meta name="robots" content="index, follow">
@@ -303,7 +303,7 @@
       .partner-form { gap: 12px; }
     }
     @media (max-width: 768px) {
-      body { padding-bottom: 72px; }
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .nav-links, .nav-cta { display: none !important; }
       .bottom-tabs { display: flex; }
       .vendor-grid { grid-template-columns: 1fr; }

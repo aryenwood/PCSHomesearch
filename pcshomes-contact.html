@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Contact PCSHomes | Fort Drum Military Relocation</title>
   <meta name="description" content="Get connected with trusted real estate agents, VA lenders, inspectors, and home service providers serving Fort Drum military families.">
   <meta name="robots" content="index, follow">
@@ -232,7 +232,7 @@
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
     @media (max-width: 768px) {
-      body { padding-bottom: 72px; }
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .mobile-tab-bar { display: flex; }
       h1 { font-size: clamp(26px, 7vw, 40px); }
       .form-card { padding: 24px; }
