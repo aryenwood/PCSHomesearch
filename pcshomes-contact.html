@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Joseph Murtha | PCSHomes Fort Drum Military Relocation</title>
-  <meta name="description" content="Contact Joseph Murtha, military relocation specialist at North Star Realty. Serving Fort Drum, Watertown, and Jefferson County NY. VA loan expert for the 10th Mountain Division.">
+  <title>Contact PCSHomes | Fort Drum Military Relocation</title>
+  <meta name="description" content="Get connected with trusted real estate agents, VA lenders, inspectors, and home service providers serving Fort Drum military families.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pcshomes.com/contact">
-  <meta property="og:title" content="Contact PCSHomes Fort Drum">
-  <meta property="og:description" content="Reach Joseph Murtha — VA loan and military relocation specialist serving Fort Drum NY.">
+  <meta property="og:title" content="Contact PCSHomes | Fort Drum Military Relocation">
+  <meta property="og:description" content="Get connected with trusted real estate agents, VA lenders, inspectors, and home service providers serving Fort Drum military families.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com/contact">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
@@ -26,6 +26,7 @@
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
       background-color: #0b1f3a; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -38,12 +39,8 @@
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
-    .nav-hamburger span { width: 22px; height: 2px; background: rgba(255,255,255,0.8); border-radius: 2px; }
-    .nav-mobile { display: none !important; position: fixed; top: 66px; left: 0; right: 0; background: rgba(11,31,58,0.98); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 4px; z-index: 199; border-bottom: 1px solid rgba(201,168,76,0.2); }
-    .nav-mobile.open { display: flex !important; }
-    .nav-mobile a { color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 500; padding: 12px 16px; border-radius: 8px; }
+    .nav-cta-link { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; }
+    .nav-cta-link:hover { background: var(--gold-light); }
 
     /* HERO */
     .hero {
@@ -63,24 +60,20 @@
     .hero h1 {
       font-family: 'Libre Baskerville', serif;
       font-size: clamp(34px, 5vw, 58px); font-weight: 700; line-height: 1.1;
-      color: var(--white); max-width: 600px; margin: 0 auto;
+      color: var(--white); max-width: 700px; margin: 0 auto;
     }
     .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 460px; line-height: 1.75; margin: 18px auto 0; }
+    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.75; margin: 18px auto 0; }
 
-    /* QUICK CONTACT BAR */
-    .quick-contact {
+    /* INFO BAR */
+    .info-bar {
       background: rgba(201,168,76,0.07); border-bottom: 1px solid rgba(201,168,76,0.15);
-      padding: 14px 48px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;
+      padding: 16px 48px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center;
     }
-    .quick-contact-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
-    .quick-contact-item {
-      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.75);
-      font-size: 13px; font-weight: 500; transition: color 0.2s;
+    .info-bar svg { flex-shrink: 0; }
+    .info-bar p {
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); line-height: 1.6;
     }
-    .quick-contact-item:hover { color: var(--gold); }
-    .quick-contact-item svg { flex-shrink: 0; }
-    .quick-contact-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); }
 
     /* MAIN LAYOUT */
     .contact-wrapper { background: var(--bg); }
@@ -110,7 +103,7 @@
     .form-group { display: flex; flex-direction: column; gap: 7px; }
     .form-label { font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: rgba(255,255,255,0.45); }
     .form-input {
-      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
       border-radius: 10px; padding: 13px 16px;
       font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
       outline: none; transition: border-color 0.2s, background 0.2s;
@@ -126,13 +119,11 @@
     .form-select option { background: #0B1F3A; color: var(--white); }
     .form-textarea { resize: vertical; min-height: 120px; }
 
-    .form-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 4px 0; }
-
     .submit-btn {
       background: var(--gold); color: var(--navy); border: none; border-radius: 10px;
-      padding: 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
       cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 4px;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.02em; width: 100%;
     }
     .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
     .submit-btn:active { transform: translateY(0); }
@@ -140,43 +131,70 @@
     /* SIDEBAR */
     .contact-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 16px; }
 
-    .joseph-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); border-radius: 18px; padding: 28px; }
-    .joseph-photo { width: 68px; height: 68px; border-radius: 50%; background: var(--navy-light); overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 14px; border: 2.5px solid var(--gold); }
-    .joseph-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .joseph-name { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
-    .joseph-title { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 18px; line-height: 1.55; }
-    .joseph-methods { display: flex; flex-direction: column; gap: 8px; }
-    .joseph-method {
-      display: flex; align-items: center; gap: 12px;
-      padding: 11px 14px; background: rgba(255,255,255,0.05); border-radius: 10px;
-      font-size: 13px; color: rgba(255,255,255,0.65); cursor: pointer;
-      transition: background 0.2s, color 0.2s; border: 1px solid rgba(255,255,255,0.07);
-    }
-    .joseph-method:hover { background: rgba(201,168,76,0.12); color: var(--gold); border-color: rgba(201,168,76,0.25); }
-    .joseph-method-icon { font-size: 16px; flex-shrink: 0; }
+    .sidebar-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+    .sidebar-card-accent { border-color: rgba(201,168,76,0.2); }
+    .sidebar-card-title { font-family: 'Libre Baskerville', serif; font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .sidebar-card-sub { font-size: 12px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 20px; }
 
-    .info-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-    .info-card-title { font-family: 'Libre Baskerville', serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
-    .hours-list { display: flex; flex-direction: column; gap: 0; }
-    .hours-item { display: flex; justify-content: space-between; font-size: 13px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .hours-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .hours-day { color: rgba(255,255,255,0.75); font-weight: 500; }
-    .hours-time { color: rgba(255,255,255,0.4); }
-    .hours-note { font-size: 11.5px; color: rgba(201,168,76,0.7); margin-top: 12px; font-style: italic; line-height: 1.6; }
-    .office-detail { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.55; }
-    .office-detail:last-child { margin-bottom: 0; }
-    .office-detail-icon { flex-shrink: 0; margin-top: 1px; }
+    /* How It Works Steps */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step { display: flex; gap: 14px; align-items: flex-start; position: relative; }
+    .step-number {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(201,168,76,0.12); border: 1.5px solid rgba(201,168,76,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--gold);
+    }
+    .step-content { padding: 4px 0 20px; }
+    .step:last-child .step-content { padding-bottom: 0; }
+    .step-text { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; line-height: 1.5; }
+    .step-line {
+      position: absolute; left: 15px; top: 36px; width: 2px; bottom: 0;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.35), rgba(201,168,76,0.08));
+    }
+    .step:last-child .step-line { display: none; }
+
+    /* Categories List */
+    .category-list { display: flex; flex-direction: column; gap: 0; }
+    .category-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 13.5px; color: rgba(255,255,255,0.7); font-weight: 500;
+      transition: color 0.2s;
+    }
+    .category-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .category-item:first-child { padding-top: 0; }
+    .category-item:hover { color: var(--gold); }
+    .category-item-left { display: flex; align-items: center; gap: 10px; }
+    .category-item-left svg { flex-shrink: 0; opacity: 0.5; }
+    .category-item:hover .category-item-left svg { opacity: 1; }
+    .category-browse { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 600; transition: color 0.2s; }
+    .category-item:hover .category-browse { color: var(--gold); }
+
+    /* Serving Card */
+    .serving-text { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 14px; }
+    .serving-tags { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500; }
+    .serving-tags span { display: inline-block; margin: 0 6px; opacity: 0.4; }
 
     /* SUCCESS STATE */
     .success-state {
       display: none; text-align: center; padding: 56px 24px;
       background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid var(--border);
     }
-    .success-icon { font-size: 52px; margin-bottom: 18px; }
+    .success-icon { margin-bottom: 18px; }
+    .success-icon svg { width: 56px; height: 56px; }
     .success-title { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
-    .success-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 360px; margin: 0 auto; }
+    .success-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 380px; margin: 0 auto; }
 
-    footer { background: #040b14; padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.06); }
+    /* ERROR STATE */
+    .form-error {
+      color: #f87171; font-size: 13px; text-align: center; margin-top: 8px;
+      padding: 10px; background: rgba(248,113,113,0.08); border-radius: 8px;
+      border: 1px solid rgba(248,113,113,0.2);
+    }
+
+    /* FOOTER */
+    footer { background: #050d1a; padding: 40px 48px; border-top: 1px solid rgba(201,168,76,0.1); }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--white); }
     .footer-logo span { color: var(--gold); }
@@ -184,71 +202,72 @@
     .footer-links a { color: rgba(255,255,255,0.3); font-size: 13px; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer-social { display: flex; gap: 16px; align-items: center; }
+    .footer-social a { color: rgba(255,255,255,0.3); transition: color 0.2s; }
+    .footer-social a:hover { color: var(--gold); }
 
+    /* MOBILE TAB BAR */
+    .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a1628;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
+    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.4);font-size:10px;font-weight:600;padding:4px 12px; }
+    .tab-item.active { color:var(--gold); }
+
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; } .nav-links { display: none; } .nav-hamburger { display: flex; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none !important; }
+      nav .nav-cta-link { display: none !important; }
       .hero { padding: 100px 20px 60px; }
-      .quick-contact { padding: 12px 20px; gap: 16px; }
-      .quick-contact-divider { display: none; }
+      .info-bar { padding: 14px 20px; }
       .contact-main { grid-template-columns: 1fr; padding: 40px 20px; gap: 32px; }
       .contact-sidebar { position: static; }
       .form-row { grid-template-columns: 1fr; }
+      footer { padding: 32px 20px; }
+      .footer-inner { flex-direction: column; text-align: center; gap: 20px; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
     }
     @media (max-width: 768px) {
-      body { padding-bottom: 80px; }
+      body { padding-bottom: 72px; }
+      .mobile-tab-bar { display: flex; }
       h1 { font-size: clamp(26px, 7vw, 40px); }
       .form-card { padding: 24px; }
+      .sidebar-card { padding: 22px; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
   <ul class="nav-links">
-    <li><a href="index.html#listings">Find a Home</a></li>
-    <li><a href="index.html#va">VA Tools</a></li>
-    <li><a href="index.html#base">Base Guide</a></li>
-    <li><a href="index.html#blog">Blog</a></li>
-    <li><a href="pcshomes-about.html">About</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pcshomes-fortdrum.html">Resources</a></li>
+    <li><a href="pcshomes-discover.html">Discover</a></li>
+    <li><a href="pcshomes-network.html">Our Network</a></li>
+    <li><a href="pcshomes-contact.html" class="active">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="window.location='pcshomes-contact.html'">Talk to Joseph</button>
-  <button class="nav-hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="pcshomes-contact.html" class="nav-cta-link">Get Started</a>
 </nav>
-<div class="nav-mobile" id="mobileNav">
-  <a href="pcshomes-fortdrum.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Fort Drum</a>
-  <a href="pcshomes-about.html">About</a>
-  <a href="pcshomes-agent.html">Your Agent</a>
-  <a href="pcshomes-contact.html">Contact</a>
-</div>
 
+<!-- HERO -->
 <section class="hero">
   <div style="position:relative;z-index:1;">
-    <div class="hero-eyebrow">📬 Get in Touch</div>
-    <h1>Let's talk about<br/><em>your next move.</em></h1>
-    <p class="hero-sub">Whether you're buying, renting, or just landed orders — Joseph is ready to help you navigate Fort Drum.</p>
+    <div class="hero-eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Get in Touch
+    </div>
+    <h1>Let us connect you with<br/>the <em>right expert.</em></h1>
+    <p class="hero-sub">Whether you're buying, renting, or just landed orders — PCSHomes matches you with trusted professionals who know Fort Drum.</p>
   </div>
 </section>
 
-<!-- QUICK CONTACT BAR -->
-<div class="quick-contact">
-  <span class="quick-contact-label">Reach Joseph directly</span>
-  <div class="quick-contact-divider"></div>
-  <a class="quick-contact-item" href="tel:+13157775219">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    (315) 777-5219
-  </a>
-  <div class="quick-contact-divider"></div>
-  <a class="quick-contact-item" href="mailto:jmurtha.northstar@gmail.com">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    jmurtha.northstar@gmail.com
-  </a>
-  <div class="quick-contact-divider"></div>
-  <span class="quick-contact-item" style="color:rgba(255,255,255,0.3);font-size:12px;cursor:default;">Typical response: same day</span>
+<!-- INFO BAR -->
+<div class="info-bar">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <p>PCSHomes connects you with vetted agents, lenders, inspectors, and home service providers.</p>
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="contact-wrapper">
   <div class="contact-main">
 
@@ -256,97 +275,111 @@
     <div>
       <div class="form-card">
         <div class="section-label">Send a Message</div>
-        <h2 class="form-title">How can Joseph help you?</h2>
-        <p class="form-sub">Fill out the form below and Joseph will get back to you — usually within a few hours.</p>
+        <h2 class="form-title">How can we help?</h2>
+        <p class="form-sub">Tell us what you need and we'll connect you with the right expert — usually within a few hours.</p>
 
         <div id="contactForm">
-          <!-- INQUIRY TYPE -->
-          <div style="margin-bottom:24px;">
-            <div class="form-label" style="margin-bottom:12px;">What are you looking for?</div>
-            <div class="inquiry-types">
-              <button class="inquiry-type selected" data-type="Buying a Home" onclick="selectType(this)">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                Buying a Home
-              </button>
-              <button class="inquiry-type" data-type="Renting" onclick="selectType(this)">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
-                Renting
-              </button>
-              <button class="inquiry-type" data-type="Investing" onclick="selectType(this)">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                Investing
-              </button>
-              <button class="inquiry-type" data-type="VA Loan Questions" onclick="selectType(this)">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
-                VA Loan Questions
-              </button>
-              <button class="inquiry-type" data-type="PCS Help" onclick="selectType(this)">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-                PCS Help
-              </button>
-              <button class="inquiry-type" data-type="General Question" onclick="selectType(this)">💬 General Question</button>
-            </div>
-          </div>
+          <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)">
+            <input type="hidden" name="form-name" value="pcshomes-contact"/>
+            <p style="display:none"><input name="bot-field"/></p>
+            <input type="hidden" name="need-type" id="needTypeInput" value=""/>
 
-          <div class="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">First Name</label>
-                <input class="form-input" id="contactName" type="text" placeholder="John"/>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Last Name</label>
-                <input class="form-input" id="contactLastName" type="text" placeholder="Smith"/>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Phone / Text</label>
-                <input class="form-input" id="contactPhone" type="tel" placeholder="(315) 555-0100"/>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Email</label>
-                <input class="form-input" id="contactEmail" type="email" placeholder="john@email.com"/>
+            <!-- INQUIRY TYPE -->
+            <div style="margin-bottom:24px;">
+              <div class="form-label" style="margin-bottom:12px;">What do you need?</div>
+              <div class="inquiry-types">
+                <button type="button" class="inquiry-type" data-type="real-estate-agent" onclick="selectType(this)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  Find a Real Estate Agent
+                </button>
+                <button type="button" class="inquiry-type" data-type="va-lender" onclick="selectType(this)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
+                  Get VA Loan Guidance
+                </button>
+                <button type="button" class="inquiry-type" data-type="property-inspector" onclick="selectType(this)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+                  Find a Property Inspector
+                </button>
+                <button type="button" class="inquiry-type" data-type="home-services" onclick="selectType(this)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                  Home Services
+                </button>
+                <button type="button" class="inquiry-type" data-type="general" onclick="selectType(this)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  General PCS Question
+                </button>
               </div>
             </div>
 
-            <button type="button" id="contactExtrasToggle" onclick="(function(){var el=document.getElementById('contactExtras');var btn=document.getElementById('contactExtrasToggle');if(el.style.display==='none'||el.style.display===''){el.style.display='flex';btn.textContent='− Hide details';}else{el.style.display='none';btn.textContent='+ Add details (optional)';}})();" style="background:none;border:none;color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer;text-align:left;padding:0;text-decoration:underline;width:auto;font-family:'DM Sans',sans-serif;margin-top:4px;">+ Add details (optional)</button>
-            <div id="contactExtras" style="display:none;flex-direction:column;gap:16px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;margin-top:12px;">
+            <div class="contact-form">
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label">Current Duty Station</label>
-                  <input class="form-input" id="contactDutyStation" type="text" placeholder="e.g. Fort Campbell, KY"/>
+                  <label class="form-label" for="firstName">First Name</label>
+                  <input class="form-input" id="firstName" name="first-name" type="text" placeholder="John" required/>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">PCS / Report Date</label>
-                  <input class="form-input" id="contactPCSDate" type="text" placeholder="e.g. June 2026"/>
+                  <label class="form-label" for="lastName">Last Name</label>
+                  <input class="form-input" id="lastName" name="last-name" type="text" placeholder="Smith" required/>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="form-label">Budget Range</label>
-                <select class="form-input form-select" id="contactBudget">
-                  <option value="">Select a range...</option>
-                  <option>Under $150,000</option>
-                  <option>$150,000 – $200,000</option>
-                  <option>$200,000 – $250,000</option>
-                  <option>$250,000 – $300,000</option>
-                  <option>$300,000+</option>
-                  <option>Not sure yet</option>
-                </select>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-input" id="email" name="email" type="email" placeholder="john@email.com" required/>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone</label>
+                  <input class="form-input" id="phone" name="phone" type="tel" placeholder="(315) 555-0100"/>
+                </div>
               </div>
+
+              <button type="button" id="contactExtrasToggle" onclick="toggleExtras()" style="background:none;border:none;color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer;text-align:left;padding:0;text-decoration:underline;width:auto;font-family:'DM Sans',sans-serif;margin-top:4px;">+ Add details (optional)</button>
+              <div id="contactExtras" style="display:none;flex-direction:column;gap:16px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;margin-top:12px;">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="dutyStation">Current Duty Station</label>
+                    <input class="form-input" id="dutyStation" name="duty-station" type="text" placeholder="e.g. Fort Campbell, KY"/>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="pcsDate">PCS / Report Date</label>
+                    <input class="form-input" id="pcsDate" name="pcs-date" type="text" placeholder="e.g. June 2026"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="budget">Budget Range</label>
+                  <select class="form-input form-select" id="budget" name="budget">
+                    <option value="">Select a range...</option>
+                    <option>Under $150,000</option>
+                    <option>$150,000 - $200,000</option>
+                    <option>$200,000 - $250,000</option>
+                    <option>$250,000 - $300,000</option>
+                    <option>$300,000+</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-input form-textarea" id="message" name="message" placeholder="Tell us about your situation — family size, timeline, what you're looking for, any questions about Fort Drum..."></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn">Connect Me with an Expert &rarr;</button>
+              <div id="formError" style="display:none;"></div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-input form-textarea" id="contactMessage" placeholder="Tell me about your situation — family size, timeline, what you're looking for, any questions about Fort Drum..."></textarea>
-            </div>
-            <button class="submit-btn" onclick="submitForm()">Send Message to Joseph →</button>
-          </div>
+          </form>
         </div>
 
         <div class="success-state" id="successState">
-          <div class="success-icon">✅</div>
-          <div class="success-title">Message sent!</div>
-          <p class="success-sub">Thanks for reaching out. Joseph will get back to you shortly — usually within a few hours during business days.</p>
+          <div class="success-icon">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <circle cx="28" cy="28" r="28" fill="rgba(201,168,76,0.12)"/>
+              <circle cx="28" cy="28" r="20" fill="rgba(201,168,76,0.15)"/>
+              <path d="M20 28l5.5 5.5L36 22" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="success-title">We got your message!</div>
+          <p class="success-sub">A PCSHomes team member will review your request and connect you with the right expert — usually within a few hours.</p>
         </div>
       </div>
     </div>
@@ -354,116 +387,155 @@
     <!-- SIDEBAR -->
     <div class="contact-sidebar">
 
-      <div class="joseph-card">
-        <div class="joseph-photo"><img src="joe-headshot.jpg" alt="Joseph Murtha"/></div>
-        <div class="joseph-name">Joseph Murtha</div>
-        <div class="joseph-title">Real Estate Agent & Investor<br/>North Star Real Estate · Watertown, NY</div>
-        <div class="joseph-methods">
-          <a class="joseph-method" href="tel:+13157775219">
-            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.08 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
-            Call or Text Directly
+      <!-- How It Works -->
+      <div class="sidebar-card sidebar-card-accent">
+        <div class="sidebar-card-sub">How It Works</div>
+        <div class="sidebar-card-title" style="margin-bottom:20px;">PCSHomes Trusted Network</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content"><div class="step-text">Tell us what you need</div></div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content"><div class="step-text">We match you with a vetted expert</div></div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content"><div class="step-text">Get personalized help — fast</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Our Categories -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title" style="margin-bottom:16px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Our Categories
+        </div>
+        <div class="category-list">
+          <a href="pcshomes-network.html" class="category-item">
+            <span class="category-item-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Real Estate Agents
+            </span>
+            <span class="category-browse">Browse &rarr;</span>
           </a>
-          <a class="joseph-method" href="mailto:jmurtha.northstar@gmail.com">
-            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            Email Joseph
+          <a href="pcshomes-network.html" class="category-item">
+            <span class="category-item-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
+              VA Lenders
+            </span>
+            <span class="category-browse">Browse &rarr;</span>
           </a>
-          <a class="joseph-method" href="https://www.facebook.com/JosephMurthaRealEstate" target="_blank" rel="noopener">
-            <span class="joseph-method-icon">💼</span>
-            Facebook
+          <a href="pcshomes-network.html" class="category-item">
+            <span class="category-item-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+              Property Inspectors
+            </span>
+            <span class="category-browse">Browse &rarr;</span>
           </a>
-          <a class="joseph-method" href="https://www.realtor.com/realestateagents/5eaf993dabc3e30011b6970b" target="_blank" rel="noopener">
-            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-            Realtor.com Profile
-          </a>
-          <a class="joseph-method" href="pcshomes-agent.html">
-            <span class="joseph-method-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
-            View Full Agent Profile
+          <a href="pcshomes-network.html" class="category-item">
+            <span class="category-item-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              Home Services
+            </span>
+            <span class="category-browse">Browse &rarr;</span>
           </a>
         </div>
       </div>
 
-      <div class="info-card">
-        <div class="info-card-title">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Availability
+      <!-- Serving Fort Drum -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title" style="margin-bottom:12px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Serving Fort Drum
         </div>
-        <div class="hours-list">
-          <div class="hours-item"><span class="hours-day">Monday – Friday</span><span class="hours-time">8 AM – 6 PM</span></div>
-          <div class="hours-item"><span class="hours-day">Saturday</span><span class="hours-time">9 AM – 4 PM</span></div>
-          <div class="hours-item"><span class="hours-day">Sunday</span><span class="hours-time">By appointment</span></div>
-        </div>
-        <div class="hours-note">PCS timelines don't work 9–5. If you need to connect outside these hours, just say so — Joseph will make it work.</div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-card-title">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M16 3v18M2 9h20M2 15h20"/></svg>
-          North Star Real Estate
-        </div>
-        <div class="office-detail">
-          <span class="office-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          <span>Watertown, New York · Jefferson County</span>
-        </div>
-        <div class="office-detail">
-          <span class="office-detail-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
-          <span>VA-Certified · NYS Licensed</span>
-        </div>
-        <div class="office-detail">
-          <span class="office-detail-icon" style="margin-top:0;">🎖️</span>
-          <span>Specializing in military relocation & VA loans for Fort Drum</span>
-        </div>
+        <p class="serving-text">PCSHomes exclusively serves military families at Fort Drum and the surrounding North Country.</p>
+        <div class="serving-tags">10th Mountain Division<span>&middot;</span>Watertown<span>&middot;</span>Evans Mills<span>&middot;</span>Carthage</div>
       </div>
 
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">PCS<span>Homes</span></div>
+    <div>
+      <div class="footer-logo">PCS<span>Homes</span></div>
+      <span class="footer-copy">&copy; 2026 PCSHomes</span>
+    </div>
     <div class="footer-links">
-      <a href="pcshomes-fortdrum.html">Fort Drum</a>
-      <a href="pcshomes-about.html">About</a>
-      <a href="pcshomes-agent.html">Agent Profile</a>
+      <a href="index.html">Home</a>
+      <a href="pcshomes-fortdrum.html">Resources</a>
+      <a href="pcshomes-discover.html">Discover</a>
+      <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
     </div>
-    <div class="footer-copy" style="display:flex;align-items:center;gap:14px;">
-      <span>© 2026 PCSHomes · North Star Real Estate</span>
-      <img loading="lazy" src="images/realtor-logo.png" alt="REALTOR®" style="height:60px;border:none;display:block;">
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.2 8.2 0 004.76 1.52V6.76a4.83 4.83 0 01-1-.07z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
     </div>
   </div>
 </footer>
 
+<!-- MOBILE TAB BAR -->
+<div class="mobile-tab-bar">
+  <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="pcshomes-fortdrum.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span>Resources</span></a>
+  <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
+  <a href="pcshomes-network.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Network</span></a>
+  <a href="pcshomes-contact.html" class="tab-item active"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+</div>
+
 <script>
   function selectType(btn) {
-    document.querySelectorAll('.inquiry-type').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.inquiry-type').forEach(function(b) { b.classList.remove('selected'); });
     btn.classList.add('selected');
+    document.getElementById('needTypeInput').value = btn.dataset.type;
   }
-  function submitForm() {
-    const firstName   = document.getElementById('contactName').value.trim();
-    const lastName    = document.getElementById('contactLastName').value.trim();
-    const email       = document.getElementById('contactEmail').value.trim();
-    const phone       = document.getElementById('contactPhone').value.trim();
-    const dutyStation = document.getElementById('contactDutyStation').value.trim();
-    const pcsDate     = document.getElementById('contactPCSDate').value.trim();
-    const budget      = document.getElementById('contactBudget').value;
-    const message     = document.getElementById('contactMessage').value.trim();
-    const inquiryType = (document.querySelector('.inquiry-type.selected') || {}).dataset?.type || '';
-    const FORMSPREE_ID = 'xvzwezbn';
-    const form = document.getElementById('contactForm');
-    fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+
+  function toggleExtras() {
+    var el = document.getElementById('contactExtras');
+    var btn = document.getElementById('contactExtrasToggle');
+    if (el.style.display === 'none' || el.style.display === '') {
+      el.style.display = 'flex';
+      btn.textContent = '− Hide details';
+    } else {
+      el.style.display = 'none';
+      btn.textContent = '+ Add details (optional)';
+    }
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    var form = e.target;
+    var formData = new FormData(form);
+    var selectedType = document.querySelector('.inquiry-type.selected');
+    if (selectedType) {
+      formData.set('need-type', selectedType.dataset.type);
+    }
+    var errorEl = document.getElementById('formError');
+    errorEl.style.display = 'none';
+
+    fetch('/', {
       method: 'POST',
-      headers: {'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({ subject:'PCSHomes Contact Form', name: firstName + ' ' + lastName, email, phone, duty_station: dutyStation, pcs_date: pcsDate, budget, inquiry_type: inquiryType, message })
-    }).catch(() => {
-      const errorEl = document.createElement('p');
-      errorEl.textContent = 'Something went wrong. Please try again or call Joseph at (315) 777-5219.';
-      errorEl.style.cssText = 'color:#f87171;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
-      form.appendChild(errorEl);
-      setTimeout(() => errorEl.remove(), 6000);
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(function(response) {
+      if (!response.ok) throw new Error('Form submission failed');
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successState').style.display = 'block';
+    }).catch(function() {
+      errorEl.innerHTML = '<div class="form-error">Something went wrong. Please try again in a moment.</div>';
+      errorEl.style.display = 'block';
+      setTimeout(function() { errorEl.style.display = 'none'; }, 6000);
     });
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('successState').style.display = 'block';
   }
 </script>
 
