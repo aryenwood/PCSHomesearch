@@ -27,7 +27,7 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
       background-color: #0b1f3a; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 66px;
@@ -310,29 +310,30 @@
               </div>
             </div>
 
-            <hr class="form-divider"/>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Current Duty Station</label>
-                <input class="form-input" id="contactDutyStation" type="text" placeholder="e.g. Fort Campbell, KY"/>
+            <button type="button" id="contactExtrasToggle" onclick="(function(){var el=document.getElementById('contactExtras');var btn=document.getElementById('contactExtrasToggle');if(el.style.display==='none'||el.style.display===''){el.style.display='flex';btn.textContent='− Hide details';}else{el.style.display='none';btn.textContent='+ Add details (optional)';}})();" style="background:none;border:none;color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer;text-align:left;padding:0;text-decoration:underline;width:auto;font-family:'DM Sans',sans-serif;margin-top:4px;">+ Add details (optional)</button>
+            <div id="contactExtras" style="display:none;flex-direction:column;gap:16px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;margin-top:12px;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Current Duty Station</label>
+                  <input class="form-input" id="contactDutyStation" type="text" placeholder="e.g. Fort Campbell, KY"/>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">PCS / Report Date</label>
+                  <input class="form-input" id="contactPCSDate" type="text" placeholder="e.g. June 2026"/>
+                </div>
               </div>
               <div class="form-group">
-                <label class="form-label">PCS / Report Date</label>
-                <input class="form-input" id="contactPCSDate" type="text" placeholder="e.g. June 2026"/>
+                <label class="form-label">Budget Range</label>
+                <select class="form-input form-select" id="contactBudget">
+                  <option value="">Select a range...</option>
+                  <option>Under $150,000</option>
+                  <option>$150,000 – $200,000</option>
+                  <option>$200,000 – $250,000</option>
+                  <option>$250,000 – $300,000</option>
+                  <option>$300,000+</option>
+                  <option>Not sure yet</option>
+                </select>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Budget Range</label>
-              <select class="form-input form-select" id="contactBudget">
-                <option value="">Select a range...</option>
-                <option>Under $150,000</option>
-                <option>$150,000 – $200,000</option>
-                <option>$200,000 – $250,000</option>
-                <option>$250,000 – $300,000</option>
-                <option>$300,000+</option>
-                <option>Not sure yet</option>
-              </select>
             </div>
             <div class="form-group">
               <label class="form-label">Message</label>
@@ -428,7 +429,7 @@
     </div>
     <div class="footer-copy" style="display:flex;align-items:center;gap:14px;">
       <span>© 2026 PCSHomes · North Star Real Estate</span>
-      <img src="images/realtor-logo.png" alt="REALTOR®" style="height:60px;border:none;display:block;">
+      <img loading="lazy" src="images/realtor-logo.png" alt="REALTOR®" style="height:60px;border:none;display:block;">
     </div>
   </div>
 </footer>

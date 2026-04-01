@@ -27,7 +27,7 @@
     body { font-family: 'DM Sans', sans-serif; background: #070F1E; color: #fff; overflow-x: hidden; }
 
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
       background-color: #0b1f3a; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 66px;
@@ -399,15 +399,19 @@
         </div>
 <!-- FOUNDER LIFESTYLE IMAGE -->
 <div id="founder-image" style="width:100%;height:260px;overflow:hidden;border-radius:12px;margin:2rem 0;position:relative;">
-  <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80" alt="Family moving into new home" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+  <img loading="lazy" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80" alt="Family moving into new home" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
   <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(10,22,40,0.4) 0%, transparent 70%);"></div>
 </div>
 
         <p>As a real estate agent with <strong>North Star Real Estate</strong> and a property investor in the Watertown area, I've helped hundreds of military families find homes, navigate VA loans, and settle into this community. But I always felt like the tools available to them — the national platforms, the generic relocation sites — just didn't get it.</p>
 
-        <p>They didn't know that <strong>Evans Mills is a 4-minute drive from the gate</strong>. They didn't know that <strong>General Brown Central School District</strong> is where most families with kids want to be. They didn't know that the rental market here is strong enough that buying and renting out later is one of the smartest financial moves a soldier can make at Drum.</p>
+        <p>They didn't know that <strong>Evans Mills is a 4-minute drive from the gate</strong>. They didn't know that <strong>General Brown Central School District</strong> is where most families with kids want to be. They didn't know which streets flood in spring, which neighborhoods lose power first in an ice storm, or that the house they're eyeing sits in a completely different school district than the one two doors down.</p>
 
-        <p>So I built PCSHomes. Starting with Fort Drum — the place I know best — and eventually expanding to cover every major installation in the country. A platform built not just for finding a house, but for navigating the entire military home journey: the PCS move, the VA loan, the base guide, the community of people who've been there before you.</p>
+        <p>I've talked soldiers out of buying homes with <strong>oil heat systems that would cost $400/month in January</strong>. I've warned families about properties that look great on Zillow but sit in the Tug Hill snow belt — where 300+ inches of snow a year isn't a joke, it's a lifestyle. And I've shown dozens of families how to <strong>use their VA loan to buy a home, live in it for their tour, and turn it into a cash-flowing rental</strong> when they PCS out — building real wealth instead of just paying someone else's mortgage.</p>
+
+        <p>The truth is, most agents around here will sell you a house. I want to make sure <strong>you don't regret the one you buy</strong>. That means answering the 10 PM text when you're panicking about your inspection. That means driving you past the house in February so you see what that driveway really looks like. That means telling you "don't buy that one" when I know something you don't.</p>
+
+        <p>So I built PCSHomes — a platform that puts everything a military family needs in one place: honest neighborhood intel, VA loan tools, BAH calculators, school district maps, and a direct line to someone who actually picks up the phone. Starting with Fort Drum, the place I know best.</p>
 
         <p>This is my hometown. These are my neighbors. And I'm going to make sure every family that PCSes here gets treated like it.</p>
       </div>
@@ -432,7 +436,7 @@
 
 <!-- 10TH MOUNTAIN PATCH BANNER -->
 <div style="background:var(--navy);padding:48px 48px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;border-top:1px solid rgba(201,168,76,0.15);border-bottom:1px solid rgba(201,168,76,0.15);">
-  <img src="images/10th-mountain-patch.webp" alt="10th Mountain Division Fort Drum patch" style="height:110px;width:auto;border:none;flex-shrink:0;"/>
+  <img loading="lazy" src="images/10th-mountain-patch.webp" alt="10th Mountain Division Fort Drum patch" style="height:110px;width:auto;border:none;flex-shrink:0;"/>
   <div>
     <div style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C9A84C;margin-bottom:10px;">Proudly Serving</div>
     <div style="font-family:'Libre Baskerville',serif;font-size:clamp(20px,3vw,30px);font-weight:700;color:#ffffff;line-height:1.2;">10th Mountain Division<br/>Fort Drum, New York</div>
@@ -467,34 +471,34 @@
 <section class="why">
   <div class="why-inner">
     <div class="section-label">Why PCSHomes Is Different</div>
-    <h2 style="font-family:'Libre Baskerville',serif; font-size:clamp(26px,3.5vw,40px); font-weight:700; color:var(--navy); max-width:540px; line-height:1.2;">Built for military life. Not adapted for it.</h2>
+    <h2 style="font-family:'Libre Baskerville',serif; font-size:clamp(26px,3.5vw,40px); font-weight:700; color:var(--white); max-width:540px; line-height:1.2;">Built for military life. Not adapted for it.</h2>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div>
-          <div class="why-title">Listings filtered by BAH — not just price</div>
-          <div class="why-desc">Every listing shows you how it compares to your actual BAH rate, so you know immediately whether it makes financial sense for your rank and family situation.</div>
+          <div class="why-title">He'll tell you which homes pass VA inspection the first time</div>
+          <div class="why-desc">Joseph knows the local housing stock cold. He steers you away from properties with peeling paint, well water issues, or crawl space problems that fail VA appraisals — saving you weeks of delays and re-negotiations.</div>
         </div>
       </div>
       <div class="why-card">
-        <div class="why-icon"></div>
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div>
-          <div class="why-title">Honest base guides — not brochures</div>
-          <div class="why-desc">We tell you about the winters, the waitlists, the traffic, and the school districts — the stuff you actually need to know before you arrive.</div>
+          <div class="why-title">He knows every street, not just every neighborhood</div>
+          <div class="why-desc">Two blocks can be the difference between General Brown and Indian River school districts. Joseph grew up here — he doesn't need to look it up, and he'll make sure you don't end up in the wrong zone.</div>
         </div>
       </div>
       <div class="why-card">
-        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
         <div>
-          <div class="why-title">PCS checklists built around your orders</div>
-          <div class="why-desc">Not a generic moving checklist. Installation-specific timelines that account for on-post waitlists, seasonal timing, and military-specific requirements.</div>
+          <div class="why-title">He answers his phone — at 10 PM, on a Saturday, during a blizzard</div>
+          <div class="why-desc">When your inspection report lands at 9:45 PM and you need to make a decision before the seller's deadline, you need someone who picks up. Joseph does. Every time.</div>
         </div>
       </div>
       <div class="why-card">
-        <div class="why-icon">👥</div>
+        <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
         <div>
-          <div class="why-title">Real agents who know military moves</div>
-          <div class="why-desc">Every agent and lender in our network is VA-certified and has closed military transactions. No learning curve on your dime and your timeline.</div>
+          <div class="why-title">He shows you how to build wealth — not just find a house</div>
+          <div class="why-desc">Joseph helps soldiers buy smart: pick a home that works for your tour, then convert it into a rental when you PCS out. Several of his clients now own income-producing properties in the Watertown market.</div>
         </div>
       </div>
     </div>
