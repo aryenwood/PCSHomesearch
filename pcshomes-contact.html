@@ -257,7 +257,7 @@
       Get in Touch
     </div>
     <h1>Let us connect you with<br/>the <em>right expert.</em></h1>
-    <p class="hero-sub">Whether you're buying, renting, or just landed orders — PCSHomes matches you with trusted professionals who know Fort Drum.</p>
+    <p class="hero-sub">Whether you're the service member, the spouse, or managing this move together — PCSHomes connects your family with trusted professionals who know Fort Drum.</p>
   </div>
 </section>
 
@@ -276,7 +276,7 @@
       <div class="form-card">
         <div class="section-label">Send a Message</div>
         <h2 class="form-title">How can we help?</h2>
-        <p class="form-sub">Tell us what you need and we'll connect you with the right expert — usually within a few hours.</p>
+        <p class="form-sub">Tell us what your family needs and we'll connect you with the right expert — usually within a few hours.</p>
 
         <div id="contactForm">
           <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)">
@@ -308,7 +308,12 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                   General PCS Question
                 </button>
+                <button type="button" class="inquiry-type" data-type="Military Spouse / Family" onclick="selectType(this)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                  Family Support
+                </button>
               </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:-16px;margin-bottom:20px;line-height:1.5;">Whether you're a soldier, spouse, or both — we're here for your whole family.</div>
             </div>
 
             <div class="contact-form">
@@ -338,7 +343,7 @@
                 <div class="form-row">
                   <div class="form-group">
                     <label class="form-label" for="dutyStation">Current Duty Station</label>
-                    <input class="form-input" id="dutyStation" name="duty-station" type="text" placeholder="e.g. Fort Campbell, KY"/>
+                    <input class="form-input" id="dutyStation" name="duty-station" type="text" placeholder="Current or Sponsor's Duty Station"/>
                   </div>
                   <div class="form-group">
                     <label class="form-label" for="pcsDate">PCS / Report Date</label>
