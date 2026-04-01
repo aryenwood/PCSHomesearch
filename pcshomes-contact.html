@@ -44,7 +44,8 @@
 
     /* HERO */
     .hero {
-      background: var(--navy); padding: 120px 48px 80px;
+      background: linear-gradient(rgba(11,31,58,0.88), rgba(11,31,58,0.92)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1400&q=70') center/cover no-repeat;
+      padding: 120px 48px 80px;
       text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
@@ -80,8 +81,13 @@
     .contact-main { max-width: 1100px; margin: 0 auto; padding: 72px 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
 
     /* FORM CARD */
-    .form-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
+    .form-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 20px; padding: 36px; animation: fadeUp 0.5s 0.2s ease both; }
+    .contact-sidebar > div { animation: fadeUp 0.5s ease both; }
+    .contact-sidebar > div:nth-child(2) { animation-delay: 0.15s; }
+    .contact-sidebar > div:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-label::after { content:''; display:block; width:40px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); margin-top:8px; border-radius:2px; }
     .form-title { font-family: 'Libre Baskerville', serif; font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .form-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 28px; line-height: 1.6; }
 

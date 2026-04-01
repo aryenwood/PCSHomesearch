@@ -45,7 +45,8 @@
 
     /* HERO */
     .hero {
-      background: var(--navy); padding: 120px 48px 80px;
+      background: linear-gradient(rgba(11,31,58,0.85), rgba(11,31,58,0.92)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=70') center/cover no-repeat;
+      padding: 120px 48px 80px;
       text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
@@ -189,6 +190,11 @@
     .fade-up { animation: fadeUp 0.5s ease both; }
     .fade-up-d1 { animation-delay: 0.1s; }
     .fade-up-d2 { animation-delay: 0.2s; }
+    .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    /* Weekend card flag icons */
+    .weekend-card-flag { font-size: 32px; margin-bottom: 12px; display: block; }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -406,6 +412,7 @@
     <div class="weekend-grid">
 
       <div class="weekend-card">
+        <span class="weekend-card-flag">&#127464;&#127462;</span>
         <h3>Ottawa, Canada</h3>
         <p>2 hours north. World-class museums, Rideau Canal, ByWard Market, and NHL hockey.</p>
         <div class="drive-badge">
@@ -415,6 +422,7 @@
       </div>
 
       <div class="weekend-card">
+        <span class="weekend-card-flag">&#127464;&#127462;</span>
         <h3>Montreal, Canada</h3>
         <p>2.5 hours north. Old Montreal, incredible food scene, festivals year-round.</p>
         <div class="drive-badge">
@@ -424,6 +432,7 @@
       </div>
 
       <div class="weekend-card">
+        <span class="weekend-card-flag">&#127482;&#127480;</span>
         <h3>Syracuse, NY</h3>
         <p>90 minutes south. Destiny USA mega-mall, Syracuse University gamedays, and the closest major airport.</p>
         <div class="drive-badge">
@@ -543,6 +552,23 @@
   <a href="pcshomes-network.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Network</span></a>
   <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
+
+<script>
+(function() {
+  document.querySelectorAll('.adventure-card, .familykids-card, .family-card, .weekend-card, .gem-card').forEach(function(el, i) {
+    el.classList.add('animate-on-scroll');
+    el.style.transitionDelay = (i * 0.08) + 's';
+  });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) { obs.observe(el); });
+  } else {
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>
 
 </body>
 </html>

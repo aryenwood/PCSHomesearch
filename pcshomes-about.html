@@ -73,7 +73,7 @@
     .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
 
     /* STORY */
-    .story { background: #0B1F3A; padding: 96px 48px; }
+    .story { background: linear-gradient(rgba(11,31,58,0.93), rgba(11,31,58,0.97)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=70') center/cover no-repeat; padding: 96px 48px; }
     .story-inner { max-width: 900px; margin: 0 auto; }
     .story-headline {
       font-family: 'Libre Baskerville', serif;
@@ -152,7 +152,7 @@
     .why-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; }
 
     /* CTA */
-    .cta-section { background: var(--navy); padding: 72px 48px; text-align: center; }
+    .cta-section { background: linear-gradient(rgba(11,31,58,0.85), rgba(11,31,58,0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=70') center/cover no-repeat; padding: 72px 48px; text-align: center; }
     .cta-section h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(26px, 4vw, 40px); font-weight: 700; color: var(--white); margin-bottom: 14px; }
     .cta-section p { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 440px; margin: 0 auto 32px; line-height: 1.7; }
     .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -179,6 +179,11 @@
     .tab-item.active { color:var(--gold); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+    .animate-delay-1 { transition-delay: 0.15s; }
+    .animate-delay-2 { transition-delay: 0.3s; }
+    .section-label::after { content:''; display:block; width:40px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); margin-top:8px; border-radius:2px; }
 
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
@@ -423,6 +428,24 @@
     <span>Contact</span>
   </a>
 </div>
+
+<script>
+(function() {
+  document.querySelectorAll('.how-card, .mission-card, .why-card, .stat-item').forEach(function(el, i) {
+    el.classList.add('animate-on-scroll');
+    if (i % 3 === 1) el.classList.add('animate-delay-1');
+    if (i % 3 === 2) el.classList.add('animate-delay-2');
+  });
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) { obs.observe(el); });
+  } else {
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) { el.classList.add('visible'); });
+  }
+})();
+</script>
 
 </body>
 </html>
