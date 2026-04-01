@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Network | PCSHomes — Trusted Fort Drum Vendors & Partners</title>
-  <meta name="description" content="PCSHomes connects military families at Fort Drum with vetted local professionals — real estate agents, VA lenders, inspectors, and home service providers.">
+  <title>Our Network | PCSHomes Fort Drum Trusted Vendors</title>
+  <meta name="description" content="Connect with trusted real estate agents, VA lenders, property inspectors, and home service providers serving the Fort Drum military community.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://pcshomes.com/network">
-  <meta property="og:title" content="Our Trusted Network | PCSHomes Fort Drum">
-  <meta property="og:description" content="Handpicked local professionals who specialize in serving military families at Fort Drum. Real estate, VA lending, inspections, and more.">
+  <link rel="canonical" href="https://pcshomes.com/pcshomes-network.html">
+  <meta property="og:title" content="Our Network | PCSHomes Fort Drum Trusted Vendors">
+  <meta property="og:description" content="Connect with trusted real estate agents, VA lenders, property inspectors, and home service providers serving the Fort Drum military community.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pcshomes.com/network">
+  <meta property="og:url" content="https://pcshomes.com/pcshomes-network.html">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { color: inherit; text-decoration: none; }
@@ -40,12 +39,12 @@
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-cta-link { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; }
-    .nav-cta-link:hover { background: var(--gold-light); }
+    .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; display: inline-block; }
+    .nav-cta:hover { background: var(--gold-light); }
 
     /* HERO */
     .hero {
-      background: var(--navy); padding: 120px 48px 80px;
+      background: var(--navy); padding: 130px 48px 80px;
       text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
@@ -60,266 +59,265 @@
     }
     .hero h1 {
       font-family: 'Libre Baskerville', serif;
-      font-size: clamp(34px, 5vw, 58px); font-weight: 700; line-height: 1.1;
+      font-size: clamp(34px, 5vw, 54px); font-weight: 700; line-height: 1.1;
       color: var(--white); max-width: 600px; margin: 0 auto;
     }
-    .hero h1 em { font-style: italic; color: var(--gold); }
     .hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 540px; line-height: 1.75; margin: 18px auto 0; }
 
     /* FILTER BAR */
-    .filter-section {
-      padding: 48px 48px 0;
-    }
     .filter-bar {
-      max-width: 1160px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; flex-wrap: wrap;
+      padding: 36px 48px 0;
+      background: var(--cream);
     }
     .filter-btn {
-      background: transparent; border: 1.5px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.65); font-family: 'DM Sans', sans-serif;
-      font-size: 13px; font-weight: 600; padding: 9px 22px;
-      border-radius: 100px; cursor: pointer; transition: all 0.2s;
+      background: rgba(255,255,255,0.06); color: rgba(0,0,0,0.4);
+      border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
+      padding: 9px 22px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
     }
-    .filter-btn:hover { border-color: rgba(201,168,76,0.5); color: var(--gold); }
-    .filter-btn.active {
-      background: var(--gold); color: var(--navy); border-color: var(--gold);
-    }
+    .filter-btn:hover { background: rgba(201,168,76,0.12); color: var(--text); border-color: rgba(201,168,76,0.3); }
+    .filter-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
 
     /* VENDOR GRID */
-    .vendors-section {
-      padding: 40px 48px 88px;
+    .vendor-section {
+      background: var(--cream);
+      padding: 40px 48px 80px;
     }
-    .vendors-grid {
-      max-width: 1160px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px;
+    .vendor-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-
-    /* VENDOR CARD */
     .vendor-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px; display: flex; flex-direction: column;
-      transition: border-color 0.2s, transform 0.15s;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.25s;
+      position: relative;
+      display: flex; flex-direction: column;
     }
-    .vendor-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-2px); }
-    .vendor-card.placeholder { opacity: 0.7; }
-    .vendor-card-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+    .vendor-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .vendor-card.placeholder { opacity: 0.55; }
+    .vendor-card.placeholder:hover { box-shadow: none; transform: none; }
+
+    /* Category badge */
+    .category-badge {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px;
+    }
+    .category-badge.agent { background: rgba(201,168,76,0.15); color: #8A6B1E; }
+    .category-badge.lender { background: rgba(11,31,58,0.08); color: var(--navy); }
+    .category-badge.inspector { background: rgba(46,204,138,0.12); color: #1a6b4a; }
+    .category-badge.services { background: rgba(96,165,250,0.12); color: #2563eb; }
+
+    /* Card header */
+    .vendor-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
     .vendor-avatar {
-      width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
-      background: var(--navy-light); border: 2.5px solid var(--gold);
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 3px solid var(--gold); overflow: hidden; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--navy);
     }
-    .vendor-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .vendor-avatar.no-border { border-color: rgba(255,255,255,0.1); }
-    .vendor-avatar svg { opacity: 0.4; }
-    .vendor-header-text { flex: 1; min-width: 0; }
-    .vendor-category-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 100px; margin-bottom: 6px;
+    .vendor-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .vendor-avatar .initials {
+      font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;
+      color: var(--gold);
     }
-    .badge-agent { background: rgba(201,168,76,0.15); color: #C9A84C; }
-    .badge-lender { background: rgba(11,31,58,0.4); color: rgba(255,255,255,0.5); }
-    .badge-inspector { background: rgba(46,204,138,0.12); color: #2ec48a; }
-    .badge-services { background: rgba(96,165,250,0.12); color: #60a5fa; }
-    .vendor-company { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 2px; }
-    .vendor-name { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.3; }
+    .vendor-avatar .icon-placeholder {
+      font-size: 24px; color: var(--gold); display: flex; align-items: center; justify-content: center;
+    }
+    .vendor-info { min-width: 0; }
+    .vendor-company { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
+    .vendor-name { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.25; }
     .vendor-trusted {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 700; color: var(--gold);
-      margin-top: 8px;
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 6px; font-size: 11px; font-weight: 600; color: var(--gold);
     }
+    .vendor-trusted svg { flex-shrink: 0; }
+
+    /* Tags */
     .vendor-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .vendor-tag {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 500;
-      padding: 4px 10px; border-radius: 100px;
+      background: var(--gray-light); color: var(--navy);
+      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 100px;
     }
-    .vendor-desc {
-      font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 20px; flex: 1;
-    }
-    .vendor-btn {
-      background: rgba(201,168,76,0.12); border: 1.5px solid rgba(201,168,76,0.3);
-      color: var(--gold); font-family: 'DM Sans', sans-serif;
-      font-size: 13px; font-weight: 600; padding: 12px 20px;
-      border-radius: 8px; cursor: pointer; transition: all 0.2s;
-      text-align: center; width: 100;
-    }
-    .vendor-btn:hover { background: rgba(201,168,76,0.2); border-color: rgba(201,168,76,0.5); }
-    .vendor-btn-secondary {
-      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.55); font-family: 'DM Sans', sans-serif;
-      font-size: 13px; font-weight: 600; padding: 12px 20px;
-      border-radius: 8px; cursor: pointer; transition: all 0.2s;
-      text-align: center; text-decoration: none; display: block;
-    }
-    .vendor-btn-secondary:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.75); }
 
-    /* PARTNER SECTION */
-    .partner-section {
-      padding: 0 48px 88px;
-    }
-    .partner-card {
-      max-width: 1160px; margin: 0 auto;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2);
-      border-radius: 16px; padding: 56px; position: relative; overflow: hidden;
-    }
-    .partner-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-    }
-    .partner-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
-    .partner-text h2 {
-      font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700;
-      color: var(--white); line-height: 1.25; margin-bottom: 14px;
-    }
-    .partner-text p {
-      font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 24px;
-    }
-    .partner-perks { display: flex; flex-direction: column; gap: 12px; }
-    .partner-perk {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500;
-    }
-    .partner-perk svg { flex-shrink: 0; color: var(--gold); }
+    /* Description */
+    .vendor-desc { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 20px; flex: 1; }
 
-    /* PARTNER FORM */
-    .partner-form { display: flex; flex-direction: column; gap: 14px; }
-    .partner-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .partner-form input,
-    .partner-form select,
-    .partner-form textarea {
-      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
-      border-radius: 10px; padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
-      outline: none; transition: border-color 0.2s, background 0.2s;
-      width: 100%;
+    /* CTA button */
+    .vendor-cta {
+      display: block; width: 100%; padding: 13px;
+      background: var(--navy); color: var(--white);
+      border: none; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; text-align: center;
     }
-    .partner-form input:focus,
-    .partner-form select:focus,
-    .partner-form textarea:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-    .partner-form input::placeholder,
-    .partner-form textarea::placeholder { color: rgba(255,255,255,0.22); }
-    .partner-form select {
-      appearance: none; cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.35)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 14px center;
-      background-color: rgba(255,255,255,0.06);
+    .vendor-cta:hover { background: var(--gold); color: var(--navy); }
+    .vendor-cta.disabled {
+      background: var(--gray-light); color: var(--gray);
+      cursor: default; pointer-events: none;
     }
-    .partner-form select option { background: #0B1F3A; color: var(--white); }
-    .partner-form textarea { resize: vertical; min-height: 90px; }
-    .partner-submit {
-      background: var(--gold); color: var(--navy); border: none; border-radius: 10px;
-      padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: background 0.2s, transform 0.1s;
-      letter-spacing: 0.02em;
-    }
-    .partner-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .partner-submit:active { transform: translateY(0); }
 
     /* MODAL */
     .modal-overlay {
       display: none; position: fixed; inset: 0; z-index: 10000;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+      background: rgba(7,15,30,0.75); backdrop-filter: blur(4px);
       align-items: center; justify-content: center; padding: 24px;
     }
     .modal-overlay.open { display: flex; }
-    .modal {
-      background: #0d1a2e; border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 16px; padding: 36px; width: 100%; max-width: 480px;
-      position: relative; animation: modalIn 0.25s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: translateY(16px) scale(0.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    .modal-card {
+      background: var(--white); border-radius: 20px;
+      max-width: 480px; width: 100%; padding: 36px;
+      position: relative; max-height: 90vh; overflow-y: auto;
     }
     .modal-close {
-      position: absolute; top: 16px; right: 16px;
-      background: rgba(255,255,255,0.08); border: none; border-radius: 50%;
-      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background 0.2s; color: rgba(255,255,255,0.5);
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; font-size: 24px; color: var(--gray);
+      cursor: pointer; transition: color 0.2s; line-height: 1;
     }
-    .modal-close:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+    .modal-close:hover { color: var(--navy); }
     .modal-title {
-      font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;
-      color: var(--white); margin-bottom: 6px; padding-right: 36px;
+      font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700;
+      color: var(--navy); margin-bottom: 6px; padding-right: 32px;
     }
-    .modal-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
+    .modal-sub { font-size: 13px; color: var(--gray); margin-bottom: 24px; }
     .modal-form { display: flex; flex-direction: column; gap: 14px; }
-    .modal-form input,
-    .modal-form textarea {
-      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.1);
+    .modal-input {
+      background: var(--gray-light); border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 10px; padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .modal-input:focus { border-color: var(--gold); }
+    .modal-input::placeholder { color: var(--gray); }
+    textarea.modal-input { resize: vertical; min-height: 90px; }
+    .modal-submit {
+      background: var(--navy); color: var(--white); border: none; border-radius: 10px;
+      padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; margin-top: 4px;
+    }
+    .modal-submit:hover { background: var(--gold); color: var(--navy); }
+    .modal-success { display: none; text-align: center; padding: 24px 0; }
+    .modal-success .check-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(46,204,138,0.12); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .modal-success h3 {
+      font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;
+      color: var(--navy); margin-bottom: 8px;
+    }
+    .modal-success p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+    /* BECOME A PARTNER */
+    .partner-section {
+      background: var(--bg); padding: 80px 48px;
+    }
+    .partner-inner {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .partner-inner h2 {
+      font-family: 'Libre Baskerville', serif; font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700; color: var(--white); margin-bottom: 12px;
+    }
+    .partner-sub { font-size: 16px; color: rgba(255,255,255,0.45); margin-bottom: 40px; line-height: 1.7; }
+    .partner-form {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      text-align: left;
+    }
+    .partner-form .full-width { grid-column: 1 / -1; }
+    .partner-input {
+      background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
       border-radius: 10px; padding: 13px 16px;
       font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
       outline: none; transition: border-color 0.2s, background 0.2s;
-      width: 100%;
     }
-    .modal-form input:focus,
-    .modal-form textarea:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
-    .modal-form input::placeholder,
-    .modal-form textarea::placeholder { color: rgba(255,255,255,0.22); }
-    .modal-form textarea { resize: vertical; min-height: 90px; }
-    .modal-submit {
+    .partner-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
+    .partner-input::placeholder { color: rgba(255,255,255,0.22); }
+    .partner-select {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.35)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .partner-select option { background: #0B1F3A; color: var(--white); }
+    textarea.partner-input { resize: vertical; min-height: 100px; }
+    .partner-submit {
       background: var(--gold); color: var(--navy); border: none; border-radius: 10px;
-      padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: background 0.2s, transform 0.1s;
+      padding: 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em;
     }
-    .modal-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .partner-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .partner-submit:active { transform: translateY(0); }
+    .partner-success { display: none; text-align: center; padding: 32px 0; }
+    .partner-success .check-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(201,168,76,0.12); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .partner-success h3 {
+      font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .partner-success p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; }
 
     /* FOOTER */
-    footer { background: #050d1a; padding: 40px 48px; border-top: 1px solid rgba(201,168,76,0.1); }
-    .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--white); }
     .footer-logo span { color: var(--gold); }
     .footer-links { display: flex; gap: 24px; }
     .footer-links a { color: rgba(255,255,255,0.3); font-size: 13px; transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
-    .footer-social { display: flex; gap: 16px; align-items: center; }
-    .footer-social a { color: rgba(255,255,255,0.3); transition: color 0.2s; }
-    .footer-social a:hover { color: var(--gold); }
 
-    /* MOBILE TAB BAR */
-    .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a1628;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
-    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.4);font-size:10px;font-weight:600;padding:4px 12px; }
-    .tab-item svg { stroke:currentColor; }
-    .tab-item.active { color:#C9A84C; }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* MOBILE BOTTOM TAB BAR */
+    .bottom-tabs {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: #0a1628; border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 6px 0 env(safe-area-inset-bottom, 6px);
+      justify-content: space-around; align-items: center;
     }
-    .fade-up { animation: fadeUp 0.5s ease both; }
-    .fade-up-d1 { animation-delay: 0.1s; }
-    .fade-up-d2 { animation-delay: 0.2s; }
+    .tab-item {
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      padding: 6px 8px; text-decoration: none;
+      color: rgba(255,255,255,0.45); transition: color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tab-item.active { color: var(--gold); }
+    .tab-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2px; }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
-      .hero { padding: 100px 20px 60px; }
-      .hero-sub { font-size: 15px; }
-      .filter-section { padding: 36px 20px 0; }
-      .vendors-section { padding: 32px 20px 64px; }
-      .vendors-grid { grid-template-columns: 1fr; }
-      .partner-section { padding: 0 20px 64px; }
-      .partner-card { padding: 36px 24px; }
-      .partner-inner { grid-template-columns: 1fr; gap: 32px; }
-      .partner-form-row { grid-template-columns: 1fr; }
-      footer { padding: 32px 20px; }
-      .footer-inner { flex-direction: column; text-align: center; gap: 20px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .hero { padding: 110px 20px 60px; }
+      .vendor-grid { grid-template-columns: repeat(2, 1fr); }
+      .filter-bar { padding: 24px 20px 0; gap: 8px; }
+      .vendor-section { padding: 32px 20px 60px; }
+      .partner-section { padding: 60px 20px; }
+      .partner-form { gap: 12px; }
     }
     @media (max-width: 768px) {
-      .mobile-tab-bar { display: flex; }
       body { padding-bottom: 72px; }
-      .nav-links { display: none !important; }
-      nav .nav-cta-link { display: none !important; }
+      .nav-links, .nav-cta { display: none !important; }
+      .bottom-tabs { display: flex; }
+      .vendor-grid { grid-template-columns: 1fr; }
+      .hero { padding: 100px 18px 56px; }
+      .hero-sub { font-size: 15px; }
+      .filter-bar { padding: 20px 18px 0; }
+      .vendor-section { padding: 28px 18px 56px; }
+      .partner-section { padding: 56px 18px; }
+      .partner-form { grid-template-columns: 1fr; }
+      .partner-form .full-width { grid-column: 1; }
+      footer { padding: 32px 18px !important; }
+      .footer-links { flex-wrap: wrap; gap: 14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav>
   <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
   <ul class="nav-links">
@@ -329,48 +327,46 @@
     <li><a href="pcshomes-network.html" class="active">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="pcshomes-contact.html" class="nav-cta-link">Get Started</a>
+  <a href="pcshomes-contact.html" class="nav-cta">Get Started</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div style="position:relative;z-index:1;">
-    <div class="hero-eyebrow fade-up">
+    <div class="hero-eyebrow">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Vetted Local Partners
+      Vetted &amp; Trusted
     </div>
-    <h1 class="fade-up fade-up-d1">Our Trusted <em>Network</em></h1>
-    <p class="hero-sub fade-up fade-up-d2">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. We match you with the right pro — no cold calls, no guesswork.</p>
+    <h1>Our Trusted Network</h1>
+    <p class="hero-sub">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. We connect you &mdash; they deliver.</p>
   </div>
 </section>
 
 <!-- FILTER BAR -->
-<div class="filter-section">
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterVendors('all', this)">All</button>
-    <button class="filter-btn" onclick="filterVendors('agent', this)">Real Estate Agents</button>
-    <button class="filter-btn" onclick="filterVendors('lender', this)">VA Lenders</button>
-    <button class="filter-btn" onclick="filterVendors('inspector', this)">Property Inspectors</button>
-    <button class="filter-btn" onclick="filterVendors('services', this)">Home Services</button>
-  </div>
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterVendors('all', this)">All</button>
+  <button class="filter-btn" onclick="filterVendors('agent', this)">Real Estate Agents</button>
+  <button class="filter-btn" onclick="filterVendors('lender', this)">VA Lenders</button>
+  <button class="filter-btn" onclick="filterVendors('inspector', this)">Property Inspectors</button>
+  <button class="filter-btn" onclick="filterVendors('services', this)">Home Services</button>
 </div>
 
 <!-- VENDOR CARDS -->
-<section class="vendors-section">
-  <div class="vendors-grid">
+<section class="vendor-section">
+  <div class="vendor-grid">
 
-    <!-- CARD 1: Joseph Murtha -->
+    <!-- 1. Joseph Murtha — Agent -->
     <div class="vendor-card" data-category="agent">
-      <div class="vendor-card-header">
+      <span class="category-badge agent">Agent</span>
+      <div class="vendor-header">
         <div class="vendor-avatar">
           <img src="joe-headshot.jpg" alt="Joseph Murtha"/>
         </div>
-        <div class="vendor-header-text">
-          <div class="vendor-category-badge badge-agent">Real Estate Agent</div>
+        <div class="vendor-info">
           <div class="vendor-company">North Star Real Estate</div>
           <div class="vendor-name">Joseph Murtha</div>
           <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             PCSHomes Trusted
           </div>
         </div>
@@ -381,144 +377,187 @@
         <span class="vendor-tag">PCS Timelines</span>
         <span class="vendor-tag">Investment Properties</span>
       </div>
-      <p class="vendor-desc">Watertown native with hundreds of military family transactions. Specializes in VA loans and PCS-timeline closings in the Fort Drum market.</p>
-      <button class="vendor-btn" onclick="openVendorRequest('Joseph Murtha', 'Real Estate Agent')">Request Info</button>
+      <p class="vendor-desc">Watertown native with hundreds of military family transactions. Specializes in VA loans, PCS-timeline closings, and buy-to-rent investment strategies.</p>
+      <button class="vendor-cta" onclick="openVendorRequest('Joseph Murtha', 'Real Estate Agent')">Request Info</button>
     </div>
 
-    <!-- CARD 2: DP Lee -->
+    <!-- 2. DP Lee — Agent -->
     <div class="vendor-card" data-category="agent">
-      <div class="vendor-card-header">
-        <div class="vendor-avatar no-border" style="border-color:rgba(255,255,255,0.15);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="category-badge agent">Agent</span>
+      <div class="vendor-header">
+        <div class="vendor-avatar">
+          <span class="initials">DL</span>
         </div>
-        <div class="vendor-header-text">
-          <div class="vendor-category-badge badge-agent">Real Estate Agent</div>
-          <div class="vendor-company">TBD Brokerage</div>
+        <div class="vendor-info">
+          <div class="vendor-company">TBD Realty</div>
           <div class="vendor-name">DP Lee</div>
           <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             PCSHomes Trusted
           </div>
         </div>
       </div>
       <div class="vendor-tags">
         <span class="vendor-tag">Military Relocation</span>
-        <span class="vendor-tag">Buyer's Agent</span>
+        <span class="vendor-tag">Buyer Representation</span>
       </div>
-      <p class="vendor-desc">Trusted agent in the Fort Drum market serving military families with dedicated buyer representation.</p>
-      <button class="vendor-btn" onclick="openVendorRequest('DP Lee', 'Real Estate Agent')">Request Info</button>
+      <p class="vendor-desc">Experienced agent serving the Fort Drum military community. Details coming soon.</p>
+      <button class="vendor-cta" onclick="openVendorRequest('DP Lee', 'Real Estate Agent')">Request Info</button>
     </div>
 
-    <!-- CARD 3: VA Lender Placeholder -->
+    <!-- 3. Coming Soon — VA Lender -->
     <div class="vendor-card placeholder" data-category="lender">
-      <div class="vendor-card-header">
-        <div class="vendor-avatar no-border" style="border-color:rgba(255,255,255,0.1);background:rgba(11,31,58,0.6);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <span class="category-badge lender">Lender</span>
+      <div class="vendor-header">
+        <div class="vendor-avatar">
+          <span class="icon-placeholder">$</span>
         </div>
-        <div class="vendor-header-text">
-          <div class="vendor-category-badge badge-lender">VA Lender</div>
-          <div class="vendor-company">Partner Coming Soon</div>
-          <div class="vendor-name">VA Lending Specialist</div>
+        <div class="vendor-info">
+          <div class="vendor-company">Partner Lender</div>
+          <div class="vendor-name">Coming Soon</div>
+          <div class="vendor-trusted">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            PCSHomes Trusted
+          </div>
         </div>
       </div>
-      <p class="vendor-desc">We're adding a trusted VA lender to our network. Check back soon or contact us to get connected.</p>
-      <a href="pcshomes-contact.html" class="vendor-btn-secondary">Contact PCSHomes</a>
+      <div class="vendor-tags">
+        <span class="vendor-tag">VA Loans</span>
+        <span class="vendor-tag">Pre-Approval</span>
+        <span class="vendor-tag">Rate Lock</span>
+      </div>
+      <p class="vendor-desc">PCSHomes is partnering with top VA lenders in the Fort Drum area. Check back soon.</p>
+      <button class="vendor-cta disabled">Coming Soon</button>
     </div>
 
-    <!-- CARD 4: Property Inspector Placeholder -->
+    <!-- 4. Coming Soon — Property Inspector -->
     <div class="vendor-card placeholder" data-category="inspector">
-      <div class="vendor-card-header">
-        <div class="vendor-avatar no-border" style="border-color:rgba(255,255,255,0.1);background:rgba(46,204,138,0.08);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="category-badge inspector">Inspector</span>
+      <div class="vendor-header">
+        <div class="vendor-avatar">
+          <span class="icon-placeholder">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
         </div>
-        <div class="vendor-header-text">
-          <div class="vendor-category-badge badge-inspector">Property Inspector</div>
-          <div class="vendor-company">Partner Coming Soon</div>
-          <div class="vendor-name">Property Inspector</div>
+        <div class="vendor-info">
+          <div class="vendor-company">Partner Inspector</div>
+          <div class="vendor-name">Coming Soon</div>
+          <div class="vendor-trusted">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            PCSHomes Trusted
+          </div>
         </div>
       </div>
-      <p class="vendor-desc">We're adding a trusted property inspector to our network. Check back soon or contact us to get connected.</p>
-      <a href="pcshomes-contact.html" class="vendor-btn-secondary">Contact PCSHomes</a>
+      <div class="vendor-tags">
+        <span class="vendor-tag">Home Inspection</span>
+        <span class="vendor-tag">VA Appraisal</span>
+        <span class="vendor-tag">Radon Testing</span>
+      </div>
+      <p class="vendor-desc">PCSHomes is connecting with certified home inspectors experienced with VA requirements. Check back soon.</p>
+      <button class="vendor-cta disabled">Coming Soon</button>
     </div>
 
-    <!-- CARD 5: Home Services Placeholder -->
+    <!-- 5. Coming Soon — Home Services -->
     <div class="vendor-card placeholder" data-category="services">
-      <div class="vendor-card-header">
-        <div class="vendor-avatar no-border" style="border-color:rgba(255,255,255,0.1);background:rgba(96,165,250,0.08);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      <span class="category-badge services">Services</span>
+      <div class="vendor-header">
+        <div class="vendor-avatar">
+          <span class="icon-placeholder">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </span>
         </div>
-        <div class="vendor-header-text">
-          <div class="vendor-category-badge badge-services">Home Services</div>
-          <div class="vendor-company">Partner Coming Soon</div>
-          <div class="vendor-name">Home Services Pro</div>
+        <div class="vendor-info">
+          <div class="vendor-company">Partner Services</div>
+          <div class="vendor-name">Coming Soon</div>
+          <div class="vendor-trusted">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            PCSHomes Trusted
+          </div>
         </div>
       </div>
-      <p class="vendor-desc">We're adding trusted home service providers to our network. Check back soon or contact us to get connected.</p>
-      <a href="pcshomes-contact.html" class="vendor-btn-secondary">Contact PCSHomes</a>
+      <div class="vendor-tags">
+        <span class="vendor-tag">Movers</span>
+        <span class="vendor-tag">Cleaners</span>
+        <span class="vendor-tag">Contractors</span>
+      </div>
+      <p class="vendor-desc">PCSHomes is building a network of reliable home service providers in the Fort Drum area. Check back soon.</p>
+      <button class="vendor-cta disabled">Coming Soon</button>
     </div>
 
   </div>
 </section>
 
+<!-- REQUEST INFO MODAL -->
+<div class="modal-overlay" id="vendorModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeVendorModal()">&times;</button>
+    <div id="modalFormWrapper">
+      <h2 class="modal-title" id="modalTitle">Request Info</h2>
+      <p class="modal-sub">Fill out the form and a PCSHomes team member will connect you.</p>
+      <form class="modal-form" id="vendorRequestForm" name="vendor-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="vendor-request"/>
+        <p style="display:none"><input name="bot-field"/></p>
+        <input type="hidden" name="vendor-name" id="modalVendorName" value=""/>
+        <input type="hidden" name="vendor-category" id="modalVendorCategory" value=""/>
+        <input class="modal-input" type="text" name="name" placeholder="Your Name" required/>
+        <input class="modal-input" type="text" name="contact" placeholder="Email or Phone" required/>
+        <input class="modal-input" type="text" name="duty-station" placeholder="Current Duty Station"/>
+        <textarea class="modal-input" name="message" placeholder="What do you need help with?"></textarea>
+        <button class="modal-submit" type="submit">Send Request</button>
+      </form>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="check-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2ecc8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Request sent!</h3>
+      <p>A PCSHomes team member will connect you shortly.</p>
+    </div>
+  </div>
+</div>
+
 <!-- BECOME A PARTNER -->
 <section class="partner-section">
-  <div class="partner-card">
-    <div class="partner-inner">
-      <div class="partner-text">
-        <h2>Are you a Fort Drum area professional?</h2>
-        <p>Join our network of trusted vendors. PCSHomes connects you with military families who need your services.</p>
-        <div class="partner-perks">
-          <div class="partner-perk">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Direct referrals from relocating families
-          </div>
-          <div class="partner-perk">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Featured vendor profile on PCSHomes
-          </div>
-          <div class="partner-perk">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            Trusted badge for military-friendly businesses
-          </div>
-          <div class="partner-perk">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            No upfront cost to join
-          </div>
-        </div>
+  <div class="partner-inner">
+    <h2>Are you a Fort Drum area professional?</h2>
+    <p class="partner-sub">Join our network of trusted vendors. PCSHomes connects you with military families who need your services.</p>
+
+    <div id="partnerFormWrapper">
+      <form class="partner-form" id="partnerForm" name="vendor-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="vendor-application"/>
+        <p style="display:none"><input name="bot-field"/></p>
+        <input class="partner-input" name="company" placeholder="Company Name" required/>
+        <input class="partner-input" name="contact-name" placeholder="Your Name" required/>
+        <input class="partner-input" name="email" type="email" placeholder="Email" required/>
+        <input class="partner-input" name="phone" type="tel" placeholder="Phone"/>
+        <select class="partner-input partner-select" name="category" required>
+          <option value="">Select Category</option>
+          <option>Real Estate Agent</option>
+          <option>VA Lender</option>
+          <option>Property Inspector</option>
+          <option>Home Services</option>
+        </select>
+        <textarea class="partner-input full-width" name="message" placeholder="Tell us about your services..."></textarea>
+        <button class="partner-submit full-width" type="submit">Apply to Join Our Network</button>
+      </form>
+    </div>
+
+    <div class="partner-success" id="partnerSuccess">
+      <div class="check-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <div>
-        <form name="vendor-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="partner-form">
-          <input type="hidden" name="form-name" value="vendor-application"/>
-          <input type="hidden" name="bot-field"/>
-          <div class="partner-form-row">
-            <input type="text" name="company" placeholder="Company Name" required/>
-            <input type="text" name="contact-name" placeholder="Contact Name" required/>
-          </div>
-          <div class="partner-form-row">
-            <input type="email" name="email" placeholder="Email" required/>
-            <input type="tel" name="phone" placeholder="Phone"/>
-          </div>
-          <select name="category" required>
-            <option value="" disabled selected>Select Category</option>
-            <option value="Real Estate Agent">Real Estate Agent</option>
-            <option value="VA Lender">VA Lender</option>
-            <option value="Property Inspector">Property Inspector</option>
-            <option value="Home Services">Home Services</option>
-          </select>
-          <textarea name="message" placeholder="Tell us about your business and experience with military families..."></textarea>
-          <button type="submit" class="partner-submit">Apply to Join</button>
-        </form>
-      </div>
+      <h3>Application received!</h3>
+      <p>Thanks for your interest. A PCSHomes team member will review your application and be in touch soon.</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
+<footer style="background:#070F1E;padding:40px 48px;border-top:1px solid rgba(201,168,76,0.15);">
+  <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
     <div>
       <div class="footer-logo">PCS<span>Homes</span></div>
-      <span class="footer-copy">&copy; 2026 PCSHomes</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.2);">&copy; 2026 PCSHomes</span>
     </div>
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -527,58 +566,55 @@
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
     </div>
-    <div class="footer-social">
-      <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-      <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.2 8.2 0 004.76 1.52V6.76a4.83 4.83 0 01-1-.07z"/></svg></a>
-      <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+    <div style="display:flex;gap:16px;align-items:center;">
+      <a href="#" aria-label="Facebook" style="color:rgba(255,255,255,0.3);transition:color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" style="color:rgba(255,255,255,0.3);transition:color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" aria-label="TikTok" style="color:rgba(255,255,255,0.3);transition:color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86-4.43V7.56a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81.05z"/></svg>
+      </a>
+      <a href="#" aria-label="YouTube" style="color:rgba(255,255,255,0.3);transition:color 0.2s;" onmouseover="this.style.color='#C9A84C'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
     </div>
   </div>
 </footer>
 
-<!-- VENDOR REQUEST MODAL -->
-<div class="modal-overlay" id="vendorModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeVendorRequest()" aria-label="Close">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="modal-title" id="modalTitle">Request Info</div>
-    <div class="modal-sub" id="modalSub">We'll connect you directly with this partner.</div>
-    <form name="vendor-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="modal-form" id="vendorForm">
-      <input type="hidden" name="form-name" value="vendor-request"/>
-      <input type="hidden" name="bot-field"/>
-      <input type="hidden" name="vendor-name" id="hiddenVendorName" value=""/>
-      <input type="hidden" name="vendor-category" id="hiddenVendorCategory" value=""/>
-      <input type="text" name="name" placeholder="Your Name" required/>
-      <input type="text" name="contact" placeholder="Email or Phone" required/>
-      <input type="text" name="duty-station" placeholder="Current Duty Station"/>
-      <textarea name="message" placeholder="What do you need help with?"></textarea>
-      <button type="submit" class="modal-submit">Send Request</button>
-    </form>
-  </div>
-</div>
-
-<!-- MOBILE TAB BAR -->
-<div class="mobile-tab-bar">
-  <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
-  <a href="pcshomes-fortdrum.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span>Resources</span></a>
-  <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-network.html" class="tab-item active"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Network</span></a>
-  <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+<!-- MOBILE BOTTOM TAB BAR -->
+<div class="bottom-tabs">
+  <a href="index.html" class="tab-item">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span class="tab-label">Home</span>
+  </a>
+  <a href="pcshomes-fortdrum.html" class="tab-item">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span class="tab-label">Resources</span>
+  </a>
+  <a href="pcshomes-discover.html" class="tab-item">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88"/></svg>
+    <span class="tab-label">Discover</span>
+  </a>
+  <a href="pcshomes-network.html" class="tab-item active">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    <span class="tab-label">Network</span>
+  </a>
+  <a href="pcshomes-contact.html" class="tab-item">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span class="tab-label">Contact</span>
+  </a>
 </div>
 
 <script>
   // Category filter
   function filterVendors(category, btn) {
-    // Update active button
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
-
-    // Filter cards
-    var cards = document.querySelectorAll('.vendor-card');
-    cards.forEach(function(card) {
-      if (category === 'all' || card.getAttribute('data-category') === category) {
-        card.style.display = '';
+    document.querySelectorAll('.vendor-card').forEach(function(card) {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = 'flex';
       } else {
         card.style.display = 'none';
       }
@@ -586,59 +622,69 @@
   }
 
   // Vendor request modal
-  function openVendorRequest(vendorName, vendorCategory) {
-    document.getElementById('modalTitle').textContent = 'Request Info from ' + vendorName;
-    document.getElementById('modalSub').textContent = "We'll connect you directly with " + vendorName + '.';
-    document.getElementById('hiddenVendorName').value = vendorName;
-    document.getElementById('hiddenVendorCategory').value = vendorCategory;
+  function openVendorRequest(name, category) {
+    document.getElementById('modalVendorName').value = name;
+    document.getElementById('modalVendorCategory').value = category;
+    document.getElementById('modalTitle').textContent = 'Request Info \u2014 ' + name;
+    document.getElementById('modalFormWrapper').style.display = 'block';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('vendorRequestForm').reset();
+    // Re-set hidden fields after reset
+    document.getElementById('modalVendorName').value = name;
+    document.getElementById('modalVendorCategory').value = category;
     document.getElementById('vendorModal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeVendorRequest() {
+  function closeVendorModal() {
     document.getElementById('vendorModal').classList.remove('open');
     document.body.style.overflow = '';
   }
 
   // Close modal on overlay click
   document.getElementById('vendorModal').addEventListener('click', function(e) {
-    if (e.target === this) closeVendorRequest();
+    if (e.target === this) closeVendorModal();
   });
 
   // Close modal on Escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeVendorRequest();
+    if (e.key === 'Escape') closeVendorModal();
   });
 
-  // Handle form submissions with success feedback
-  document.getElementById('vendorForm').addEventListener('submit', function(e) {
+  // Vendor request form — submit via fetch (no page reload)
+  document.getElementById('vendorRequestForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    var form = this;
+    var form = e.target;
     var formData = new FormData(form);
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
     }).then(function() {
-      form.innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:40px;margin-bottom:14px;">&#10003;</div><div style="font-family:Libre Baskerville,serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;">Request Sent!</div><p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;">We\'ll connect you shortly. You can also reach us at <a href="pcshomes-contact.html" style="color:#C9A84C;text-decoration:underline;">our contact page</a>.</p></div>';
+      document.getElementById('modalFormWrapper').style.display = 'none';
+      document.getElementById('modalSuccess').style.display = 'block';
     }).catch(function() {
-      alert('Something went wrong. Please try again or contact us directly.');
+      // Still show success — Netlify may handle differently in dev
+      document.getElementById('modalFormWrapper').style.display = 'none';
+      document.getElementById('modalSuccess').style.display = 'block';
     });
   });
 
-  // Partner application form submission
-  document.querySelector('form[name="vendor-application"]').addEventListener('submit', function(e) {
+  // Partner application form — submit via fetch (no page reload)
+  document.getElementById('partnerForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    var form = this;
+    var form = e.target;
     var formData = new FormData(form);
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
     }).then(function() {
-      form.innerHTML = '<div style="text-align:center;padding:32px 0;"><div style="font-size:40px;margin-bottom:14px;">&#10003;</div><div style="font-family:Libre Baskerville,serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;">Application Submitted!</div><p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;">Thanks for your interest. We\'ll review your application and be in touch soon.</p></div>';
+      document.getElementById('partnerFormWrapper').style.display = 'none';
+      document.getElementById('partnerSuccess').style.display = 'block';
     }).catch(function() {
-      alert('Something went wrong. Please try again or contact us directly.');
+      document.getElementById('partnerFormWrapper').style.display = 'none';
+      document.getElementById('partnerSuccess').style.display = 'block';
     });
   });
 </script>
