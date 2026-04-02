@@ -401,116 +401,23 @@
       }
     }
 
-    /* =============================================
-       PCSHOMES TYPOGRAPHY SYSTEM
-       Base: 16px, Scale: Minor Third
-    ============================================= */
-
-    /* 1. ROOT SCALE */
-    :root {
-      font-size: 16px;
-    }
-
-    /* 2. BODY DEFAULT */
+    /* ===== TYPOGRAPHY ===== */
+    :root { font-size: 17px; }
     body {
-      font-size: 1rem;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      font-size: 1rem; line-height: 1.8; letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
-
-    /* 3. HEADING SCALE */
-    h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.15; }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.25; }
-    h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.35; }
-    h4 { font-size: 1.125rem; line-height: 1.4; }
-    h5, h6 { font-size: 1rem; line-height: 1.5; }
-
-    /* 4. BODY TEXT */
-    p {
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    /* 5. NAV LINKS */
-    nav a, .nav-links a {
-      font-size: 0.9375rem;
-    }
-
-    /* 6. SECTION EYEBROW / LABELS */
-    .eyebrow, .section-label, [class*="eyebrow"], [class*="section-tag"],
-    [class*="label-tag"], .hero-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-    }
-
-    /* 7. CARD BODY TEXT */
-    .card p, .card li, [class*="card"] p, [class*="card"] li {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-    }
-
-    /* 8. STAT LABELS */
-    .stat-label, [class*="stat"] p, [class*="stat-desc"],
-    [class*="stat"] > span:not(:first-child) {
-      font-size: 0.8125rem;
-    }
-
-    /* 9. FORM LABELS AND INPUTS */
-    label, input, select, textarea {
-      font-size: 0.9375rem;
-    }
-    input::placeholder, textarea::placeholder {
-      font-size: 0.875rem;
-    }
-
-    /* 10. BUTTONS */
-    button, .btn, [class*="btn"], a[class*="btn"] {
-      font-size: 0.9375rem;
-      font-weight: 600;
-    }
-
-    /* 11. FOOTER TEXT */
-    footer p, footer a, footer li, footer span,
-    .footer p, .footer a, .footer li {
-      font-size: 0.875rem;
-      line-height: 1.6;
-    }
-
-    /* 12. SMALL / HELPER TEXT */
-    small, .text-xs, [class*="text-xs"], [class*="hint"],
-    [class*="helper"], [class*="disclaimer"], .estimates-note {
-      font-size: 0.8125rem !important;
-      line-height: 1.55;
-    }
-
-    /* 13. LOW OPACITY FIX */
-    [style*="opacity: 0.4"], [style*="opacity:0.4"],
-    [style*="rgba(255, 255, 255, 0.4)"],
-    [style*="rgba(255,255,255,0.4)"] {
-      opacity: 0.7 !important;
-    }
-
-    /* 14. MOBILE OVERRIDES */
+    h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.025em; }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); line-height: 1.2; letter-spacing: -0.02em; }
+    h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); line-height: 1.3; letter-spacing: -0.01em; }
+    p { font-size: 1rem; line-height: 1.8; }
+    [class*="card"] p, [class*="card"] li { font-size: 0.95rem; line-height: 1.75; }
+    .section-sub, .hero-sub { font-size: 1.05rem; line-height: 1.8; }
     @media (max-width: 768px) {
-      :root { font-size: 15px; }
-      p { font-size: 1rem; line-height: 1.7; }
-      h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
-      h2 { font-size: clamp(1.35rem, 5vw, 1.75rem); }
-      h3 { font-size: clamp(1.1rem, 4vw, 1.35rem); }
-      nav a, .nav-links a { font-size: 0.875rem; }
-      .card p, .card li, [class*="card"] p { font-size: 0.9375rem; }
-      label, input, select, textarea { font-size: 1rem; }
-      small, .text-xs, [class*="disclaimer"] { font-size: 0.8125rem !important; }
-      * { min-font-size: 13px; }
-    }
-
-    /* 15. NUCLEAR OPTION */
-    @media screen {
-      :is(p, li, span, a, td, th, label, div):not([class*="icon"]):not([class*="svg"]) {
-        min-height: 0;
-      }
+      :root { font-size: 16px; }
+      h1 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+      h2 { font-size: clamp(1.4rem, 5.5vw, 1.9rem); }
+      input, select, textarea { font-size: 16px !important; }
     }
     @media (max-width: 768px) {
       #family-image-strip { height: 160px !important; }
