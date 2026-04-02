@@ -1328,18 +1328,18 @@ function toggleBlog(id) {
       <div class="rvb-control">
         <div class="rvb-control-label">Est. Monthly Water / Sewer</div>
         <select class="rvb-select" id="rvbWater" onchange="calcRvB()">
-          <option value="40">$40/mo — Well/septic (low cost)</option>
-          <option value="65" selected>$65/mo — City water, avg usage</option>
-          <option value="90">$90/mo — City water, higher usage</option>
+          <option value="45">$45/mo — Well/septic or Town water</option>
+          <option value="85" selected>$85/mo — City water + sewer, avg usage</option>
+          <option value="100">$100/mo — City water + sewer, higher usage</option>
           <option value="0">Included in rent</option>
         </select>
       </div>
       <div class="rvb-control">
         <div class="rvb-control-label">Est. Monthly Trash / Other</div>
         <select class="rvb-select" id="rvbTrash" onchange="calcRvB()">
-          <option value="0">$0 — Included in taxes or rent</option>
-          <option value="25" selected>$25/mo — Typical curbside pickup</option>
-          <option value="45">$45/mo — Trash + recycling service</option>
+          <option value="0">$0 — Included in taxes (City of Watertown)</option>
+          <option value="10" selected>$10/mo — City tote (64-gal prepaid)</option>
+          <option value="35">$35/mo — Private hauler (outside city)</option>
         </select>
       </div>
     </div>
