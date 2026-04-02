@@ -347,6 +347,8 @@
       body { word-break: break-word; }
       a { word-break: break-word; }
     }
+    #sectionNav::-webkit-scrollbar, #sectionNav > div::-webkit-scrollbar { display:none; }
+    .snav-link.active { background:rgba(201,168,76,0.2); color:#C9A84C !important; }
   </style>
 </head>
 <body>
@@ -362,6 +364,19 @@
   </ul>
   <a href="pcshomes-contact.html" class="nav-cta">Get Started</a>
 </nav>
+
+<!-- STICKY SECTION NAV -->
+<div id="sectionNav" style="position:sticky;top:66px;z-index:9998;background:#162D50;border-bottom:1px solid rgba(201,168,76,0.15);padding:0 20px;display:none;">
+  <div style="max-width:1160px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 0;">
+    <a href="#va" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">VA Tools</a>
+    <a href="#rvb" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">Rent vs Buy</a>
+    <a href="#base" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">Base Guide</a>
+    <a href="#map" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">Map</a>
+    <a href="#family" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">Family</a>
+    <a href="#schools" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">Schools</a>
+    <a href="#pcs" class="snav-link" style="white-space:nowrap;padding:8px 16px;border-radius:100px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s;flex-shrink:0;">PCS Planner</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -2019,6 +2034,47 @@ function toggleQuickLinks(){
   else{p.style.transform='translateY(100%)';setTimeout(function(){p.style.display='none';},300);}
 }
 document.getElementById('quickLinksPanel').addEventListener('click',function(e){if(e.target===this)toggleQuickLinks();});
+</script>
+<script>
+// Sticky section nav: show after scrolling past hero, highlight current section
+(function(){
+  var nav = document.getElementById('sectionNav');
+  var links = document.querySelectorAll('.snav-link');
+  var sections = [];
+  links.forEach(function(l){
+    var t = document.querySelector(l.getAttribute('href'));
+    if(t) sections.push({el:t, link:l});
+  });
+
+  function update(){
+    // Show/hide nav based on scroll position
+    nav.style.display = window.scrollY > 400 ? '' : 'none';
+
+    // Highlight current section
+    var current = null;
+    sections.forEach(function(s){
+      if(s.el.getBoundingClientRect().top <= 150) current = s;
+    });
+    links.forEach(function(l){ l.classList.remove('active'); });
+    if(current) {
+      current.link.classList.add('active');
+      // Scroll the nav to show active link
+      current.link.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    }
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+
+  // Smooth scroll on click
+  links.forEach(function(l){
+    l.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) window.scrollTo({top: target.offsetTop - 120, behavior:'smooth'});
+    });
+  });
+})();
 </script>
 </body>
 </html>
