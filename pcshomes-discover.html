@@ -830,8 +830,6 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     links.forEach(function(l){ l.classList.remove('active'); });
     if(current) {
       current.link.classList.add('active');
-      // Scroll the nav to show active link
-      current.link.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
     }
   }
 
