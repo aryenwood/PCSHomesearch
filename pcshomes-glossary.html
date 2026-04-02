@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Military Terms Glossary | PCSHomes Fort Drum</title>
+  <meta name="description" content="New to military life? A plain-English glossary of every military term, acronym, and abbreviation used on PCSHomes — from PCS to BAH to TRICARE.">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230F1D35'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    a { color: inherit; text-decoration: none; }
+    :root {
+      --navy: #162D50; --navy-mid: #1A3660; --navy-light: #234880;
+      --gold: #C9A84C; --gold-light: #E2C57A;
+      --cream: #FAF8F4; --white: #FFFFFF;
+      --gray: #5C6B7A; --gray-light: #EEF1F4; --text: #1C2B3A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); font-size: 17px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background-color: #162D50; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 66px; border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--white); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+
+    .hero { background: var(--navy); padding: 140px 48px 80px; text-align: center; }
+    .hero h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--white); max-width: 700px; margin: 0 auto; line-height: 1.15; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 540px; margin: 18px auto 0; line-height: 1.8; }
+
+    .glossary { max-width: 800px; margin: 0 auto; padding: 64px 24px 120px; }
+    .glossary-search { width: 100%; padding: 16px 20px; border: 2px solid var(--gray-light); border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 16px; outline: none; margin-bottom: 40px; transition: border-color 0.2s; }
+    .glossary-search:focus { border-color: var(--gold); }
+    .glossary-letter { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--navy); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+    .glossary-letter:first-of-type { margin-top: 0; }
+    .term { margin-bottom: 24px; padding: 20px 24px; background: var(--white); border-radius: 12px; border: 1px solid rgba(0,0,0,0.06); }
+    .term-name { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .term-abbr { font-size: 13px; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+    .term-def { font-size: 15px; color: var(--gray); line-height: 1.75; }
+    .term-example { font-size: 13px; color: var(--gray); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--gray-light); }
+
+    footer { background: #0F1D35; padding: 40px 48px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+
+    @media(max-width:900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      .glossary { padding: 40px 16px 100px; }
+      .term { padding: 16px 18px; }
+    }
+    @media(max-width:768px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); font-size: 16px; }
+      input { font-size: 16px !important; }
+    }
+
+    .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0F1D35;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
+    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.4);font-size:10px;font-weight:600;padding:4px 12px; }
+    .tab-item svg { stroke:currentColor; }
+    .tab-item.active { color:#C9A84C; }
+    @media(max-width:768px){ .mobile-tab-bar{display:flex;} .nav-links{display:none !important;} .nav-cta{display:none !important;} }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pcshomes-fortdrum.html">Resources</a></li>
+    <li><a href="pcshomes-discover.html">Discover</a></li>
+    <li><a href="pcshomes-network.html">Our Network</a></li>
+    <li><a href="pcshomes-contact.html">Contact</a></li>
+  </ul>
+  <a href="pcshomes-contact.html" class="nav-cta">Get Started</a>
+</nav>
+
+<section class="hero">
+  <h1>New to military life? <em>We've got you.</em></h1>
+  <p>Every military term, acronym, and abbreviation on this site — explained in plain English. No judgment, no assumptions.</p>
+</section>
+
+<div class="glossary">
+  <input type="text" class="glossary-search" id="glossarySearch" placeholder="Search for a term (e.g. BAH, PCS, TRICARE)..." oninput="filterGlossary()"/>
+
+  <div class="glossary-letter">A</div>
+
+  <div class="term" data-terms="acs army community service">
+    <div class="term-name">ACS</div>
+    <div class="term-abbr">Army Community Service</div>
+    <div class="term-def">A free support center on every Army base. They help with relocations, financial counseling, spouse employment, and have a "Lending Closet" where you can borrow pots, pans, high chairs, and other household items for free while you wait for your stuff to arrive.</div>
+    <div class="term-example">On the site: "ACS connected me with the Lending Closet" — means they borrowed free household items from Army Community Service.</div>
+  </div>
+
+  <div class="term" data-terms="active duty">
+    <div class="term-name">Active Duty</div>
+    <div class="term-def">A service member who works full-time in the military. This is their job — not part-time or reserve. If someone says "my husband is active duty," it means the military is their full-time employer.</div>
+  </div>
+
+  <div class="glossary-letter">B</div>
+
+  <div class="term" data-terms="bah basic allowance for housing">
+    <div class="term-name">BAH</div>
+    <div class="term-abbr">Basic Allowance for Housing</div>
+    <div class="term-def">A monthly payment the military gives service members to cover housing costs when they live off-base. The amount depends on their rank, location, and whether they have dependents (spouse/kids). At Fort Drum, BAH ranges from about $1,569/month (junior enlisted) to $2,784+/month (senior officers).</div>
+    <div class="term-example">On the site: "Your BAH covers this mortgage" — means the military housing stipend is enough to pay the monthly home loan.</div>
+  </div>
+
+  <div class="term" data-terms="bct brigade combat team">
+    <div class="term-name">BCT</div>
+    <div class="term-abbr">Brigade Combat Team</div>
+    <div class="term-def">A large military unit (3,000-5,000 soldiers). Fort Drum has several BCTs within the 10th Mountain Division. Your spouse's BCT determines their day-to-day work and deployment schedule.</div>
+  </div>
+
+  <div class="glossary-letter">C</div>
+
+  <div class="term" data-terms="coe certificate of eligibility">
+    <div class="term-name">COE</div>
+    <div class="term-abbr">Certificate of Eligibility</div>
+    <div class="term-def">A document from the VA that proves you're eligible for a VA home loan. You need this before you can start the home-buying process. Takes about 10 minutes to get online at VA.gov.</div>
+  </div>
+
+  <div class="term" data-terms="commissary">
+    <div class="term-name">Commissary</div>
+    <div class="term-def">A grocery store on the military base. Prices are tax-free and generally cheaper than off-base stores. You need a military ID to shop there.</div>
+  </div>
+
+  <div class="term" data-terms="csd central school district">
+    <div class="term-name">CSD</div>
+    <div class="term-abbr">Central School District</div>
+    <div class="term-def">How school districts are organized in New York State. Near Fort Drum, you'll hear about General Brown CSD, Indian River CSD, and Carthage CSD — these are the three main school systems your kids would attend.</div>
+  </div>
+
+  <div class="term" data-terms="cyss child youth services">
+    <div class="term-name">CYSS</div>
+    <div class="term-abbr">Child & Youth Services</div>
+    <div class="term-def">The military's on-base childcare and youth program system. Includes daycare (infant through pre-K), before/after school care, summer camps, and youth sports. Waitlists can be 3-6 months — register at MilitaryChildCare.com the day you get orders.</div>
+    <div class="term-example">On the site: "Register for CYSS as soon as you have orders" — means sign up for base childcare immediately so you don't wait months.</div>
+  </div>
+
+  <div class="glossary-letter">D</div>
+
+  <div class="term" data-terms="deployment deployed">
+    <div class="term-name">Deployment</div>
+    <div class="term-def">When a service member is sent away from their home base for a military mission — usually overseas, typically for 6-12 months. The spouse and family stay behind. At Fort Drum, deployments are common and can happen shortly after arriving.</div>
+  </div>
+
+  <div class="term" data-terms="dependents">
+    <div class="term-name">Dependents</div>
+    <div class="term-def">Your spouse and/or children. In military terms, "with dependents" (often written "w/dep") means the service member has a family. This affects BAH rates, healthcare eligibility, and housing options.</div>
+  </div>
+
+  <div class="term" data-terms="dla dislocation allowance">
+    <div class="term-name">DLA</div>
+    <div class="term-abbr">Dislocation Allowance</div>
+    <div class="term-def">A one-time payment to help cover the costs of relocating — things like utility deposits, temporary lodging, and meals during your move. Ranges from about $1,018 to $6,385 depending on rank and whether you have dependents.</div>
+  </div>
+
+  <div class="glossary-letter">E</div>
+
+  <div class="term" data-terms="e1 e2 e3 e4 e5 e6 e7 e8 e9 enlisted rank pay grade">
+    <div class="term-name">E1 through E9</div>
+    <div class="term-abbr">Enlisted Pay Grades</div>
+    <div class="term-def">Military rank levels for enlisted soldiers (the majority of the force). E1 is the most junior (Private), E5 is mid-career (Sergeant), E9 is the highest enlisted rank (Sergeant Major). The number determines pay, BAH, and benefits. When you see "E5 w/dep" on this site, it means a Sergeant-level soldier with a family.</div>
+    <div class="term-example">On the site: "E5 BAH: $1,665/mo" — means a Sergeant with dependents gets $1,665/month for housing at Fort Drum.</div>
+  </div>
+
+  <div class="glossary-letter">F</div>
+
+  <div class="term" data-terms="frg family readiness group">
+    <div class="term-name">FRG</div>
+    <div class="term-abbr">Family Readiness Group</div>
+    <div class="term-def">A support network for families within a military unit. Run by volunteers (usually spouses). They share deployment updates, organize events, and check on families. Your FRG is often the fastest way to meet other families and get help — especially during deployments. Ask your sponsor for the FRG leader's contact before you arrive.</div>
+  </div>
+
+  <div class="glossary-letter">G</div>
+
+  <div class="term" data-terms="gate main gate base gate">
+    <div class="term-name">Gate</div>
+    <div class="term-def">The entrance to a military base. Fort Drum has multiple gates (Main Gate, East Gate, North Gate). When the site says "4 min to gate," it means the home is 4 minutes from the entrance to the base. You need a military ID to enter.</div>
+  </div>
+
+  <div class="glossary-letter">H</div>
+
+  <div class="term" data-terms="hhg household goods">
+    <div class="term-name">HHG</div>
+    <div class="term-abbr">Household Goods</div>
+    <div class="term-def">Your stuff — furniture, appliances, boxes, clothes. When the military moves you, they pack and ship your household goods. Delivery can take 2-8 weeks, which is why ACS has a Lending Closet (see above).</div>
+  </div>
+
+  <div class="glossary-letter">I</div>
+
+  <div class="term" data-terms="iep individualized education program special education">
+    <div class="term-name">IEP</div>
+    <div class="term-abbr">Individualized Education Program</div>
+    <div class="term-def">A legal document for children with special education needs. If your child has an IEP, the new school must honor it during the transition. Under the MIC3 Interstate Compact, the receiving school must provide comparable services immediately — they can't make your child wait or restart the process.</div>
+  </div>
+
+  <div class="glossary-letter">J</div>
+
+  <div class="term" data-terms="jrtc joint readiness training center">
+    <div class="term-name">JRTC</div>
+    <div class="term-abbr">Joint Readiness Training Center</div>
+    <div class="term-def">A major training exercise at Fort Johnson, Louisiana. Soldiers from Fort Drum frequently deploy to JRTC for 3-4 weeks of intensive training. If your spouse is "at JRTC," they're away at a training exercise — not deployed overseas, but still gone.</div>
+  </div>
+
+  <div class="glossary-letter">M</div>
+
+  <div class="term" data-terms="mflc military family life counselor">
+    <div class="term-name">MFLC</div>
+    <div class="term-abbr">Military & Family Life Counselor</div>
+    <div class="term-def">A free, confidential counselor available to military families. No records are kept, and it does NOT affect your spouse's career or security clearance. They help with stress, relationship issues, parenting, grief, and adjusting to a new location. Available on-base and at schools.</div>
+  </div>
+
+  <div class="term" data-terms="mic3 interstate compact military children">
+    <div class="term-name">MIC3</div>
+    <div class="term-abbr">Interstate Compact on Educational Opportunity for Military Children</div>
+    <div class="term-def">A legal agreement between all 50 states that protects military kids during school transitions. It gives your children the right to: pre-enroll before arriving, keep their course placement, transfer IEPs immediately, maintain sports eligibility despite transfer timing, and graduate on time. This is your biggest tool as a military parent changing schools.</div>
+  </div>
+
+  <div class="term" data-terms="mwr morale welfare recreation">
+    <div class="term-name">MWR</div>
+    <div class="term-abbr">Morale, Welfare & Recreation</div>
+    <div class="term-def">The military's on-base recreation system. At Fort Drum, MWR runs the gym, pool, bowling alley, outdoor recreation (equipment rental), and community events. Most facilities are free or very cheap with a military ID.</div>
+  </div>
+
+  <div class="glossary-letter">O</div>
+
+  <div class="term" data-terms="o1 o2 o3 o4 o5 o6 o7 officer rank pay grade">
+    <div class="term-name">O1 through O7+</div>
+    <div class="term-abbr">Officer Pay Grades</div>
+    <div class="term-def">Military rank levels for officers (typically college-educated, commissioned). O1 is a 2nd Lieutenant (entry-level officer), O3 is a Captain (company-level leader), O5+ is senior leadership (Lieutenant Colonel and above). Officers generally have higher BAH and pay than enlisted at the same years of service.</div>
+  </div>
+
+  <div class="term" data-terms="on-post off-post on base off base">
+    <div class="term-name">On-Post / Off-Post</div>
+    <div class="term-def">On-post means on the military base (inside the gates). Off-post means outside the base in the surrounding community. Most families at Fort Drum live off-post in towns like Evans Mills, Watertown, or Carthage. On-post housing exists but has long waitlists (3-9 months).</div>
+  </div>
+
+  <div class="term" data-terms="orders pcs orders">
+    <div class="term-name">Orders</div>
+    <div class="term-def">The official military document directing a service member to move to a new duty station. When someone says "we got orders to Fort Drum," it means the military is telling them to relocate there. Orders specify when you need to arrive (your "report date") and authorize moving expenses.</div>
+  </div>
+
+  <div class="glossary-letter">P</div>
+
+  <div class="term" data-terms="pcs permanent change of station military move relocation">
+    <div class="term-name">PCS</div>
+    <div class="term-abbr">Permanent Change of Station</div>
+    <div class="term-def">A military move. When the military reassigns a service member to a new base, the entire family relocates. This is called a PCS. It happens every 2-4 years for most families. The military covers moving costs, provides a housing allowance, and gives a dislocation allowance — but the logistics (finding a home, enrolling kids, learning a new area) fall largely on the family, especially the spouse.</div>
+    <div class="term-example">On the site: "PCSing to Fort Drum" = your family is being relocated to Fort Drum by the military.</div>
+  </div>
+
+  <div class="term" data-terms="px post exchange aafes">
+    <div class="term-name">PX / Exchange</div>
+    <div class="term-abbr">Post Exchange (AAFES)</div>
+    <div class="term-def">A department store on the military base. Tax-free shopping for electronics, clothing, and household goods. Fort Drum's Exchange also has a food court, barbershop, and gas station. Military ID required.</div>
+  </div>
+
+  <div class="glossary-letter">R</div>
+
+  <div class="term" data-terms="rank pay grade e o enlisted officer">
+    <div class="term-name">Rank</div>
+    <div class="term-def">A service member's level in the military hierarchy. Rank determines pay, BAH, responsibilities, and authority. Enlisted ranks go E1-E9, officer ranks go O1-O10. When this site asks for your "rank," it's to calculate your housing allowance and estimate what you can afford.</div>
+  </div>
+
+  <div class="glossary-letter">S</div>
+
+  <div class="term" data-terms="scra servicemembers civil relief act lease break">
+    <div class="term-name">SCRA</div>
+    <div class="term-abbr">Servicemembers Civil Relief Act</div>
+    <div class="term-def">A federal law that protects military members. The most relevant part for PCSing: if you have PCS orders, you can legally break a lease without penalty by giving 30 days' written notice. Landlords must comply. This also provides protections on interest rates, foreclosure, and other financial obligations.</div>
+  </div>
+
+  <div class="term" data-terms="slo school liaison officer">
+    <div class="term-name">SLO</div>
+    <div class="term-abbr">School Liaison Officer</div>
+    <div class="term-def">A person on every military base whose entire job is helping military families navigate schools. They assist with enrollment, IEP transfers, school district questions, and connect you directly with registrars. At Fort Drum, the SLO is Wendy O'Sullivan: (315) 772-3214. Call her first — before you call any school.</div>
+  </div>
+
+  <div class="glossary-letter">T</div>
+
+  <div class="term" data-terms="tricare health insurance military healthcare">
+    <div class="term-name">TRICARE</div>
+    <div class="term-def">The military's health insurance system. If you're married to a service member, you and your kids are covered by TRICARE. There are different plans (Prime = HMO-style, Select = PPO-style). When transferring to Fort Drum, you'll need to re-enroll and find TRICARE-accepting providers in the area. The on-base clinic is Guthrie Army Health Clinic; the main off-base hospital is Samaritan Medical Center.</div>
+  </div>
+
+  <div class="glossary-letter">V</div>
+
+  <div class="term" data-terms="va veterans affairs va loan va mortgage">
+    <div class="term-name">VA / VA Loan</div>
+    <div class="term-abbr">Department of Veterans Affairs</div>
+    <div class="term-def">The VA provides home loans specifically for military members and veterans. The biggest benefits: $0 down payment required, no private mortgage insurance (PMI), and competitive interest rates. This is how most military families buy homes. "VA-approved" means a home meets the VA's property standards for this type of loan.</div>
+    <div class="term-example">On the site: "VA Calculator" — a tool that shows how much house you can afford using your VA loan benefit and BAH.</div>
+  </div>
+
+  <div class="glossary-letter">W</div>
+
+  <div class="term" data-terms="w1 w2 w3 w4 w5 warrant officer">
+    <div class="term-name">W1 through W5</div>
+    <div class="term-abbr">Warrant Officer Pay Grades</div>
+    <div class="term-def">A specialized rank between enlisted and officer. Warrant officers are technical experts (helicopter pilots, intelligence analysts, etc.). Their BAH falls between enlisted and officer rates.</div>
+  </div>
+
+</div>
+
+<footer style="background:#0F1D35;padding:40px 48px;border-top:1px solid rgba(201,168,76,0.15);">
+  <div class="footer-inner">
+    <div>
+      <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;">PCS<span style="color:#C9A84C;">Homes</span></div>
+      <span style="font-size:12px;color:rgba(255,255,255,0.2);">&copy; 2026 PCSHomes</span>
+    </div>
+    <div style="display:flex;gap:24px;">
+      <a href="index.html" style="color:rgba(255,255,255,0.45);font-size:13px;">Home</a>
+      <a href="pcshomes-fortdrum.html" style="color:rgba(255,255,255,0.45);font-size:13px;">Resources</a>
+      <a href="pcshomes-discover.html" style="color:rgba(255,255,255,0.45);font-size:13px;">Discover</a>
+      <a href="pcshomes-network.html" style="color:rgba(255,255,255,0.45);font-size:13px;">Network</a>
+      <a href="pcshomes-contact.html" style="color:rgba(255,255,255,0.45);font-size:13px;">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function filterGlossary() {
+  var q = document.getElementById('glossarySearch').value.toLowerCase();
+  document.querySelectorAll('.term').forEach(function(t) {
+    var match = t.getAttribute('data-terms').includes(q) || t.textContent.toLowerCase().includes(q);
+    t.style.display = match ? '' : 'none';
+  });
+  document.querySelectorAll('.glossary-letter').forEach(function(l) {
+    var next = l.nextElementSibling;
+    var hasVisible = false;
+    while (next && !next.classList.contains('glossary-letter')) {
+      if (next.style.display !== 'none' && next.classList.contains('term')) hasVisible = true;
+      next = next.nextElementSibling;
+    }
+    l.style.display = hasVisible ? '' : 'none';
+  });
+}
+</script>
+
+<div class="mobile-tab-bar">
+  <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="#" onclick="return false;" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
+  <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
+  <a href="pcshomes-network.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>Network</span></a>
+  <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+</div>
+
+</body>
+</html>
