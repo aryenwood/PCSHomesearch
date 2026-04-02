@@ -249,6 +249,8 @@
       .bah-strip-grid{grid-template-columns:repeat(2,1fr) !important;}
       /* Nav CTA mobile */
       .nav-cta{padding:7px 14px;font-size:12px;}
+      /* Schools quick facts mobile */
+      #schools div[style*="repeat(4"] { grid-template-columns: repeat(2,1fr) !important; }
     }
     @media(max-width:768px){
       h1{font-size:clamp(26px,7vw,40px);}
@@ -754,7 +756,31 @@
   <div class="inner">
     <div class="section-label">School Enrollment Guide</div>
     <h2 class="section-title" style="max-width:700px;">Step-by-step school enrollment for military families at Fort Drum.</h2>
-    <p class="section-sub" style="max-width:600px;">Every document, every phone number, every deadline. Written for the spouse who needs to enroll their kids -- ideally before they even arrive.</p>
+    <p class="section-sub" style="max-width:600px;">Every document, every phone number, every deadline. Written for the spouse who needs to enroll their kids — ideally before they even arrive.</p>
+
+    <!-- Quick facts visible always -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px;">
+      <div style="background:var(--white);border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.06);text-align:center;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--navy);">4</div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">School Districts</div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.06);text-align:center;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--navy);">MIC3</div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">Interstate Compact</div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.06);text-align:center;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--gold);">Yes</div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">Pre-enroll remotely</div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:18px;border:1px solid rgba(0,0,0,0.06);text-align:center;">
+        <div style="font-family:'Libre Baskerville',serif;font-size:14px;font-weight:700;color:var(--navy);">(315) 772-3214</div>
+        <div style="font-size:12px;color:var(--gray);margin-top:4px;">School Liaison</div>
+      </div>
+    </div>
+
+    <button id="schoolsToggle" onclick="(function(){var el=document.getElementById('schoolsContent');var btn=document.getElementById('schoolsToggle');if(el.style.display==='none'){el.style.display='block';btn.innerHTML='Close School Guide <span style=&quot;margin-left:6px;&quot;>↑</span>';el.scrollIntoView({behavior:'smooth',block:'start'});}else{el.style.display='none';btn.innerHTML='Open Full School Enrollment Guide <span style=&quot;margin-left:6px;&quot;>↓</span>';}})()" style="margin-top:28px;width:100%;background:var(--navy);color:var(--white);border:none;border-radius:12px;padding:18px 24px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;">Open Full School Enrollment Guide <span style="margin-left:6px;">↓</span></button>
+
+    <div id="schoolsContent" style="display:none;">
 
     <!-- FIRST STEP: CONTACT THE SLO -->
     <div style="margin-top:40px;background:var(--navy);border-radius:16px;padding:32px;margin-bottom:32px;">
@@ -1288,6 +1314,7 @@
       </div>
     </div>
 
+    </div><!-- /schoolsContent collapsible -->
   </div>
 </section>
 
