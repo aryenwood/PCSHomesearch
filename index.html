@@ -1137,6 +1137,8 @@ if (popupEl) {
   }
 })();
 </script>
+<!-- QUICK LINKS BACKDROP -->
+<div id="qlBackdrop" onclick="toggleQuickLinks()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s ease;"></div>
 <!-- MOBILE QUICK LINKS PANEL -->
 <div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0F1D35;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
   <div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 14px;"></div>
@@ -1203,11 +1205,15 @@ if (popupEl) {
 <script>
 function toggleQuickLinks(){
   var p=document.getElementById('quickLinksPanel');
-  if(p.style.display==='none'){p.style.display='block';setTimeout(function(){p.style.transform='translateY(0)';},10);}
-  else{p.style.transform='translateY(100%)';setTimeout(function(){p.style.display='none';},300);}
+  var b=document.getElementById('qlBackdrop');
+  if(p.style.display==='none'){
+    b.style.display='block';p.style.display='block';
+    setTimeout(function(){b.style.opacity='1';p.style.transform='translateY(0)';},10);
+  } else {
+    b.style.opacity='0';p.style.transform='translateY(100%)';
+    setTimeout(function(){b.style.display='none';p.style.display='none';},300);
+  }
 }
-// Close on backdrop tap
-document.getElementById('quickLinksPanel').addEventListener('click',function(e){if(e.target===this)toggleQuickLinks();});
 </script>
 </body>
 </html>
