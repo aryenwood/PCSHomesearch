@@ -310,6 +310,9 @@
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
       /* MOBILE PADDING: Tighten section padding */
       [style*="padding:88px 48px"],[style*="padding:72px 48px"],[style*="padding: 88px 48px"] { padding-left:18px !important; padding-right:18px !important; }
+      /* Featured agent card: stack vertically on mobile */
+      .featured-agent > div { flex-direction:column !important; }
+      .featured-agent > div > div { border-left:none !important; border-top:1px solid rgba(255,255,255,0.06) !important; }
     }
     @media (max-width: 768px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
@@ -396,9 +399,9 @@
   <div class="vendor-grid">
 
     <!-- 1. Joseph Murtha — Featured Agent -->
-    <div class="vendor-card" data-category="agent" style="grid-column:1/-1;background:var(--navy);border:1px solid rgba(201,168,76,0.2);padding:0;overflow:hidden;">
+    <div class="vendor-card featured-agent" data-category="agent" style="grid-column:1/-1;background:var(--navy);border:1px solid rgba(201,168,76,0.2);padding:0;overflow:hidden;">
       <div style="display:flex;gap:0;flex-wrap:wrap;">
-        <div style="flex:1;min-width:280px;padding:32px;">
+        <div style="flex:1;min-width:0;padding:28px;">
           <div style="display:flex;align-items:center;gap:4px;margin-bottom:12px;">
             <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#C9A84C;">Featured Agent</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -424,7 +427,7 @@
             <a href="tel:+13157775219" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-decoration:none;font-family:'DM Sans',sans-serif;">Call/Text</a>
           </div>
         </div>
-        <div style="flex:1;min-width:280px;padding:32px;background:rgba(255,255,255,0.03);border-left:1px solid rgba(255,255,255,0.06);">
+        <div style="flex:1;min-width:0;padding:28px;background:rgba(255,255,255,0.03);border-left:1px solid rgba(255,255,255,0.06);">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
             <div style="font-size:13px;font-weight:700;color:#fff;">120+ Five-Star Reviews</div>
             <div style="color:#C9A84C;font-size:13px;">★★★★★</div>
