@@ -350,15 +350,55 @@ function filterGlossary() {
 <div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0F1D35;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
   <div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 14px;"></div>
   <div style="display:flex;flex-direction:column;gap:2px;">
-    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">School Enrollment Guide</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">All 4 districts · step-by-step</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-fortdrum.html#va" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="14" y2="10"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">VA Calculator</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">See how BAH covers your mortgage</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-fortdrum.html#rvb" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">Rent vs Buy</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">Side-by-side cost comparison</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">Groceries · Medical · Storage</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">Interactive essentials map</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-fortdrum.html#map" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">Neighborhood Map</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">Towns · commutes · home prices</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-fortdrum.html#family" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">Family Resources</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">ACS · childcare · spouse programs</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-fortdrum.html#pcs" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">PCS Checklist</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">Timeline · deadlines · links</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><div><div style="font-size:14px;font-weight:700;color:#fff;">Military Glossary</div><div style="font-size:11px;color:rgba(255,255,255,0.55);">New to military life? Start here</div></div><div style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:16px;border-radius:12px;background:rgba(201,168,76,0.1);margin-top:8px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72"/></svg><div style="font-size:14px;font-weight:700;color:#C9A84C;">Talk to a Fort Drum Expert</div><div style="margin-left:auto;font-size:14px;color:rgba(201,168,76,0.5);">›</div></a>
+    <!-- GROUP: Tools & Planning -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:8px 16px 4px;">Fort Drum Guide</div>
+    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="pcshomes-fortdrum.html#va" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">VA Calculator</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="pcshomes-fortdrum.html#rvb" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Rent vs Buy</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="pcshomes-fortdrum.html#map" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Neighborhood Map</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="pcshomes-fortdrum.html#pcs" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">PCS Checklist</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <!-- GROUP: Area & Lifestyle -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
+    <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="pcshomes-discover.html#family-kids" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Family & Kids</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="pcshomes-discover.html#outdoors" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors & Adventures</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <!-- BOTTOM CTAs -->
+    <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
+      <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
+      <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
+    </div>
   </div>
 </div>
 
