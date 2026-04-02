@@ -590,8 +590,8 @@
       <div class="guide-card">
         <div class="guide-icon"></div>
         <div class="guide-title">Cost of Living</div>
-        <div class="guide-desc">Watertown is very affordable by national standards. Median home prices around $185k. Groceries and dining are reasonable. BAH goes further here than at most bases — many families pocket money after housing. Factor in heating costs during winter months.</div>
-        <div class="guide-stat">Median home price: ~$185k</div>
+        <div class="guide-desc">Watertown is very affordable by national standards. Median home prices around $204k (2026). Groceries and dining are reasonable. BAH goes further here than at most bases — many families pocket money after housing. Factor in heating costs during winter months.</div>
+        <div class="guide-stat">Median home price: ~$204k</div>
       </div>
       <div class="guide-card">
         <div class="guide-icon"></div>
@@ -1003,7 +1003,7 @@
           <label>% interest rate</label>
         </div>
         <div class="calc-label">HOME PRICE</div>
-        <input class="calc-input" type="number" placeholder="$185,000" id="homePrice" oninput="calcPayment()"/>
+        <input class="calc-input" type="number" placeholder="$204,000" id="homePrice" oninput="calcPayment()"/>
         <div class="calc-label">DOWN PAYMENT (VA allows $0)</div>
         <input class="calc-input" type="number" placeholder="$0" id="downPayment" oninput="calcPayment()"/>
         <div class="calc-label">YOUR BAH RATE</div>
@@ -1019,7 +1019,7 @@
         <div class="tool-sub">Fort Drum's housing market is one of the most favorable in the Army for VA loan buyers.</div>
         <div class="entitlement-list">
           <div class="entitlement-item"><div class="entitlement-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><div class="entitlement-title">$0 Down at Fort Drum</div><div class="entitlement-desc">Most homes near Drum are well under the conforming loan limit — full entitlement covers 100% with no down payment required.</div></div></div>
-          <div class="entitlement-item"><div class="entitlement-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><div class="entitlement-title">BAH Often Exceeds Payment</div><div class="entitlement-desc">With median home prices around $185k, many E5+ families find their mortgage is lower than their BAH — building equity essentially for free.</div></div></div>
+          <div class="entitlement-item"><div class="entitlement-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><div class="entitlement-title">BAH Often Exceeds Payment</div><div class="entitlement-desc">With median home prices around $204k, many E6+ families find their mortgage is close to or below their BAH — building equity instead of paying a landlord.</div></div></div>
           <div class="entitlement-item"><div class="entitlement-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div><div><div class="entitlement-title">Buy Now, Rent Later</div><div class="entitlement-desc">The Watertown rental market is strong with constant military demand. Many Fort Drum buyers convert to rentals after PCSing — creating passive income.</div></div></div>
           <div class="entitlement-item"><div class="entitlement-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div><div><div class="entitlement-title">No PMI Required</div><div class="entitlement-desc">Save $100–200/month vs. conventional loans. Over a 3-year assignment that's $3,600–7,200 back in your pocket.</div></div></div>
         </div>
@@ -1039,8 +1039,8 @@
     <div class="rvb-controls">
       <div class="rvb-control">
         <div class="rvb-control-label">Home Purchase Price</div>
-        <input class="rvb-input" type="number" id="rvbPrice" value="189900" oninput="calcRvB()"/>
-        <div class="rvb-control-hint">Median near Drum: ~$185,000</div>
+        <input class="rvb-input" type="number" id="rvbPrice" value="204000" oninput="calcRvB()"/>
+        <div class="rvb-control-hint">Median near Drum: ~$204,000 (Mar 2026)</div>
       </div>
       <div class="rvb-control">
         <div class="rvb-control-label">Monthly Rent (if renting)</div>
@@ -1057,16 +1057,15 @@
     <!-- Row 2: Utility estimates -->
     <div class="rvb-controls-row2">
       <div class="rvb-control">
-        <div class="rvb-control-label">Est. Monthly Heating / Electric</div>
+        <div class="rvb-control-label">Est. Monthly Electric + Heating</div>
         <select class="rvb-select" id="rvbUtility" onchange="calcRvB()">
-          <option value="150">$150/mo — Natural gas, mild season</option>
-          <option value="220" selected>$220/mo — Natural gas, avg winter</option>
-          <option value="320">$320/mo — Natural gas, heavy winter</option>
-          <option value="380">$380/mo — Propane or oil, avg winter</option>
-          <option value="500">$500/mo — Propane or oil, heavy winter</option>
+          <option value="250">$250/mo — Electric + gas heat, summer avg</option>
+          <option value="350" selected>$350/mo — Electric + gas heat, annual avg</option>
+          <option value="475">$475/mo — Electric + gas heat, winter avg</option>
+          <option value="550">$550/mo — Electric + propane/oil, winter avg</option>
           <option value="0">Included in rent (renting only)</option>
         </select>
-        <div class="rvb-control-hint">Buyers pay utilities; renters sometimes don't</div>
+        <div class="rvb-control-hint">Electric avg ~$191/mo (National Grid, $0.17/kWh)</div>
       </div>
       <div class="rvb-control">
         <div class="rvb-control-label">Est. Monthly Water / Sewer</div>
@@ -1152,7 +1151,7 @@
     <!-- Disclaimer -->
     <div class="rvb-disclaimer">
       <div class="rvb-disclaimer-icon">ⓘ</div>
-      <div class="rvb-disclaimer-text"><strong style="color:rgba(255,255,255,0.4)">Estimates only.</strong> All figures are approximations for illustrative purposes. Mortgage calculations use a 6.25% interest rate over 30 years with $0 down. Property tax estimate is ~1.2% annually. Appreciation assumes ~3%/year — actual values may be higher or lower. Utility estimates are based on typical Fort Drum area costs and will vary by property, usage, and season. This tool is not a substitute for a formal mortgage pre-approval or financial advice. Speak with a licensed lender and real estate professional before making any decisions.</div>
+      <div class="rvb-disclaimer-text"><strong style="color:rgba(255,255,255,0.4)">Estimates only.</strong> All figures are approximations for illustrative purposes. Mortgage calculations use a 6.25% interest rate over 30 years with $0 down. Property tax estimate is ~1.5% annually (Jefferson County avg). Appreciation assumes ~3%/year — actual values may be higher or lower. Utility estimates are based on typical Fort Drum area costs and will vary by property, usage, and season. This tool is not a substitute for a formal mortgage pre-approval or financial advice. Speak with a licensed lender and real estate professional before making any decisions.</div>
     </div>
   </div>
 </section>
@@ -1267,7 +1266,7 @@ function calcPayment() {
   const loan = price - down;
   const r = (currentRate / 100) / 12; const n = 360;
   const pmt = Math.round(loan * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1));
-  const total = pmt + Math.round(price * 0.0012);
+  const total = pmt + Math.round(price * 0.015 / 12);
   document.getElementById('paymentResult').textContent = '$' + total.toLocaleString();
   if (bah) document.getElementById('bahCoverage').textContent = Math.round((bah/total)*100) + '%';
 }
@@ -1288,7 +1287,7 @@ function calcRvB() {
   // Mortgage calc at 6.25%, 30yr, $0 down
   const r = 0.0625/12, n = 360;
   const mortgage   = Math.round(price * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1));
-  const taxes      = Math.round(price * 0.012 / 12);
+  const taxes      = Math.round(price * 0.015 / 12);
   const housingPmt = mortgage + taxes;
 
   // Utilities: buyer pays all; renter — if dropdown says "Included in rent" value=0, assume 0
