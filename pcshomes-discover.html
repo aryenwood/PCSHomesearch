@@ -478,6 +478,97 @@
   </div>
 </section>
 
+<!-- GROCERY STORE MAP -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<section style="background:#0a1220;padding:88px 48px;" id="groceries">
+  <div class="inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
+      <div>
+        <div class="section-label" style="color:var(--gold);">Grocery &amp; Essentials</div>
+        <h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;color:#fff;line-height:1.2;max-width:500px;">Where to buy groceries near Fort Drum.</h2>
+        <p style="font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.8;max-width:440px;margin-top:10px;">Commissary, Walmart, ALDI, Hannaford — plus discount stores in every direction. Click any pin for the address.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,0.5);"><span style="width:10px;height:10px;border-radius:50%;background:#C9A84C;display:inline-block;"></span>Commissary</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,0.5);"><span style="width:10px;height:10px;border-radius:50%;background:#5BA4F5;display:inline-block;"></span>Supermarket</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,0.5);"><span style="width:10px;height:10px;border-radius:50%;background:#5DD88A;display:inline-block;"></span>Discount</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5);">
+      <div id="groceryMap" style="width:100%;height:460px;"></div>
+      <div id="groceryPanel" style="position:absolute;bottom:16px;left:16px;right:16px;max-width:360px;background:rgba(11,18,28,0.97);backdrop-filter:blur(20px);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.09);padding:18px 20px;display:none;z-index:1000;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div>
+            <div id="gpName" style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;line-height:1.25;"></div>
+            <div id="gpAddress" style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.5;"></div>
+            <div id="gpNotes" style="font-size:11px;color:var(--gold);margin-top:6px;font-weight:600;"></div>
+          </div>
+          <button onclick="document.getElementById('groceryPanel').style.display='none'" style="background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.5);cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;line-height:1;flex-shrink:0;margin-left:12px;">×</button>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Near Fort Drum Gate</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Walmart, ALDI, Dollar General — all on Route 11 in Evans Mills, 5 min from main gate. Commissary on post (ID required).</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Watertown</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Biggest selection: Walmart, Hannaford, ALDI, Price Chopper, two Tops locations, Save-A-Lot. Arsenal St corridor has most of them.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:18px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Carthage / Lowville</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">Price Chopper + ALDI in West Carthage. Walmart + Tops in Lowville. Black River has Dollar General only.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var map = L.map('groceryMap', { center:[44.00,-75.78], zoom:10, scrollWheelZoom:false });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var stores = [
+    {name:"Fort Drum Commissary",addr:"10730C Enduring Freedom Dr, Fort Drum",lat:44.0452,lon:-75.8053,type:"commissary",notes:"Military ID required"},
+    {name:"Walmart Supercenter",addr:"20823 State Route 3, Watertown",lat:43.9760,lon:-75.9586,type:"supermarket"},
+    {name:"Hannaford",addr:"21110 Pioneer Plaza Dr, Watertown",lat:43.9730,lon:-75.9537,type:"supermarket"},
+    {name:"ALDI",addr:"1165 Arsenal St, Watertown",lat:43.9685,lon:-75.8955,type:"discount"},
+    {name:"Price Chopper",addr:"1283 Arsenal St, Watertown",lat:43.9677,lon:-75.8918,type:"supermarket"},
+    {name:"Tops (Seaway Plaza)",addr:"22050 Seaway Shopping Ctr, Watertown",lat:43.9812,lon:-75.9265,type:"supermarket"},
+    {name:"Tops (Washington St)",addr:"1330 Washington St S, Watertown",lat:43.9590,lon:-75.9120,type:"supermarket"},
+    {name:"Save-A-Lot",addr:"1851 State St, Watertown",lat:43.9637,lon:-75.9185,type:"discount"},
+    {name:"Walmart (Evans Mills)",addr:"25737 US Route 11, Evans Mills",lat:44.0835,lon:-75.8100,type:"supermarket"},
+    {name:"ALDI (Evans Mills)",addr:"26163 US Route 11, Evans Mills",lat:44.0870,lon:-75.8080,type:"discount"},
+    {name:"Price Chopper (W. Carthage)",addr:"60 High St, West Carthage",lat:43.9747,lon:-75.6120,type:"supermarket"},
+    {name:"ALDI (W. Carthage)",addr:"14 N Broad St, West Carthage",lat:43.9765,lon:-75.6140,type:"discount"},
+    {name:"Walmart (Lowville)",addr:"7155 State Route 12, Lowville",lat:43.7870,lon:-75.4920,type:"supermarket"},
+    {name:"Tops (Lowville)",addr:"7395 Turin Rd, Lowville",lat:43.7925,lon:-75.4910,type:"supermarket"},
+    {name:"Dollar General (Evans Mills)",addr:"26221 US Route 11, Evans Mills",lat:44.0875,lon:-75.8075,type:"discount"},
+    {name:"Dollar General (Black River)",addr:"28525 NY Route 3, Black River",lat:44.0125,lon:-75.7960,type:"discount"},
+    {name:"Dollar General (Carthage)",addr:"700 West End Ave, Carthage",lat:43.9735,lon:-75.6210,type:"discount"}
+  ];
+
+  var colors = {commissary:'#C9A84C', supermarket:'#5BA4F5', discount:'#5DD88A'};
+  stores.forEach(function(s){
+    var col = colors[s.type] || '#fff';
+    var icon = L.divIcon({className:'',html:'<div style="width:14px;height:14px;border-radius:50%;background:'+col+';border:2.5px solid rgba(255,255,255,0.85);box-shadow:0 2px 8px rgba(0,0,0,0.5);cursor:pointer;"></div>',iconAnchor:[7,7]});
+    var marker = L.marker([s.lat,s.lon],{icon:icon}).addTo(map);
+    marker.on('click',function(){
+      document.getElementById('gpName').textContent = s.name;
+      document.getElementById('gpAddress').textContent = s.addr;
+      document.getElementById('gpNotes').textContent = s.notes || (s.type === 'commissary' ? 'Tax-free · Military ID required' : s.type === 'supermarket' ? 'Full-service grocery' : 'Budget-friendly');
+      document.getElementById('groceryPanel').style.display = 'block';
+    });
+  });
+
+  // Add Fort Drum label
+  L.marker([44.04,-75.82],{icon:L.divIcon({className:'',html:'<div style="font-size:10px;font-weight:700;color:rgba(201,168,76,0.6);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">FORT DRUM</div>',iconAnchor:[30,5]})}).addTo(map);
+})();
+</script>
+
 <!-- LOCAL GEMS -->
 <section class="gems-section">
   <div class="inner">
