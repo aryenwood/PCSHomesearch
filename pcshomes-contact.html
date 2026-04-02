@@ -215,7 +215,8 @@
     /* MOBILE TAB BAR */
     .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0F1D35;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
     .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:10px;font-weight:600;padding:4px 12px; }
-    .tab-item.active { color:var(--gold); }
+    .tab-item svg { stroke:currentColor; }
+    .tab-item.active { color:#C9A84C; }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
