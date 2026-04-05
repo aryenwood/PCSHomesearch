@@ -262,6 +262,9 @@
       [style*="flex-wrap:wrap"],[style*="flex-wrap: wrap"] { flex-direction:column !important; gap:24px !important; }
 
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
+      /* MOBILE HERO PILLS: horizontal scroll instead of stack */
+      .hero-pills { flex-direction:row !important; flex-wrap:nowrap !important; overflow-x:auto !important; justify-content:flex-start !important; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:8px !important; }
+      .hero-pills::-webkit-scrollbar { display:none; }
       /* MOBILE FOOTER: center and wrap nicely */
       footer > div { flex-direction:column !important; align-items:center !important; text-align:center; }
       .footer-nav { flex-direction:row !important; gap:16px !important; justify-content:center !important; }
@@ -388,14 +391,14 @@
   <div class="hero-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg> 10th Mountain Division · Fort Drum, NY</div>
   <h1>Your family's PCS to<br/><em>Fort Drum</em> starts here.</h1>
   <p class="hero-sub">Base guides, school districts, family resources, BAH tools, and PCS checklists — everything you need for Fort Drum in one place.</p>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:32px;">
-    <a href="#va" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">VA Calculator</a>
-    <a href="#rvb" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">Rent vs Buy</a>
-    <a href="#base" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">Base Guide</a>
-    <a href="#map" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">Area Map</a>
-    <a href="#family" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">Family Resources</a>
-    <a href="#schools" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">School Enrollment</a>
-    <a href="#pcs" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;">PCS Planner</a>
+  <div class="hero-pills" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
+    <a href="#va" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">VA Calculator</a>
+    <a href="#rvb" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">Rent vs Buy</a>
+    <a href="#base" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">Base Guide</a>
+    <a href="#map" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">Area Map</a>
+    <a href="#family" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">Family</a>
+    <a href="#schools" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">Schools</a>
+    <a href="#pcs" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;transition:all 0.2s;white-space:nowrap;">PCS Planner</a>
   </div>
 </section>
 
@@ -1736,41 +1739,7 @@ function toggleCheck(item) {
   item.classList.toggle('done');
   item.querySelector('.check-box').textContent = item.classList.contains('done') ? '✓' : '';
 }
-/* Chatbot removed - dead code block */
-if(false) {
-  document.getElementById('chatWindow').classList.toggle('open',chatOpen);
-  document.getElementById('fabLabel').style.display=chatOpen?'none':'';
-  document.getElementById('fabIcon').innerHTML=chatOpen?'×':'<svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="1"><path d="M12 2C8.13 2 5 5.13 5 9v1H4a1 1 0 00-1 1v2a1 1 0 001 1h1v1c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-1h1a1 1 0 001-1v-2a1 1 0 00-1-1h-1V9c0-3.87-3.13-7-7-7z"/></svg>';
-  if(chatOpen)document.getElementById('chatInput').focus();
-}
-function sendSuggestion(el){document.getElementById('chatInput').value=el.textContent;document.getElementById('suggestions').style.display='none';sendMessage();}
-async function sendMessage(){
-  const input=document.getElementById('chatInput');
-  const msg=input.value.trim();
-  if(!msg||isTyping)return;
-  input.value='';
-  appendMessage('user',msg);
-  conversationHistory.push({role:'user',content:msg});
-  showTyping();isTyping=true;document.getElementById('sendBtn').disabled=true;
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages:conversationHistory})});
-    const data=await res.json();
-    const reply=data.content?.map(b=>b.text||'').join('')||"Sorry, I couldn't connect. Try again!";
-    removeTyping();appendMessage('bot',reply);
-    conversationHistory.push({role:'assistant',content:reply});
-  }catch(e){removeTyping();appendMessage('bot',"Sorry, I'm having trouble connecting right now.");}
-  isTyping=false;document.getElementById('sendBtn').disabled=false;
-}
-function appendMessage(role,text){
-  const msgs=document.getElementById('chatMessages');
-  const div=document.createElement('div');div.className=`msg ${role==='user'?'user':''}`;
-  div.innerHTML=role==='user'?`<div class="msg-bubble">${escapeHtml(text)}</div><div class="msg-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`:`<div class="msg-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="1"><path d="M12 2C8.13 2 5 5.13 5 9v1H4a1 1 0 00-1 1v2a1 1 0 001 1h1v1c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-1h1a1 1 0 001-1v-2a1 1 0 00-1-1h-1V9c0-3.87-3.13-7-7-7z"/></svg></div><div class="msg-bubble">${escapeHtml(text)}</div>`;
-  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
-}
-function showTyping(){const msgs=document.getElementById('chatMessages');const div=document.createElement('div');div.className='msg';div.id='typingIndicator';div.innerHTML=`<div class="msg-avatar"><svg width="22" height="22" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="1"><path d="M12 2C8.13 2 5 5.13 5 9v1H4a1 1 0 00-1 1v2a1 1 0 001 1h1v1c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-1h1a1 1 0 001-1v-2a1 1 0 00-1-1h-1V9c0-3.87-3.13-7-7-7z"/></svg></div><div class="msg-bubble typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
-function removeTyping(){const el=document.getElementById('typingIndicator');if(el)el.remove();}
-} /* end chatbot removed block */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-120,behavior:'smooth'});}});});
 
 // ── POPUP ──
 window.__pageLoadTime = Date.now();
