@@ -419,5 +419,8 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 }
 </script>
 
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold,#C9A84C);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
+<script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
 </body>
 </html>
