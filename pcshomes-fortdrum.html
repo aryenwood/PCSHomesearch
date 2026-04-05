@@ -391,13 +391,13 @@
   <h1>Your family's PCS to<br/><em>Fort Drum</em> starts here.</h1>
   <p class="hero-sub">Base guides, school districts, family resources, BAH tools, and PCS checklists — everything you need for Fort Drum in one place.</p>
   <div class="hero-pills" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
-    <a href="pcshomes-fortdrum.html#va" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">VA Calculator</a>
-    <a href="pcshomes-fortdrum.html#rvb" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Rent vs Buy</a>
-    <a href="pcshomes-fortdrum.html#base" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Base Guide</a>
-    <a href="pcshomes-fortdrum.html#map" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Area Map</a>
-    <a href="pcshomes-fortdrum.html#family" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Family</a>
-    <a href="pcshomes-fortdrum.html#schools" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Schools</a>
-    <a href="pcshomes-fortdrum.html#pcs" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">PCS Planner</a>
+    <a href="#va" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">VA Calculator</a>
+    <a href="#rvb" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Rent vs Buy</a>
+    <a href="#base" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Base Guide</a>
+    <a href="#map" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Area Map</a>
+    <a href="#family" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Family</a>
+    <a href="#schools" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Schools</a>
+    <a href="#pcs" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">PCS Planner</a>
   </div>
 </section>
 
@@ -1738,7 +1738,7 @@ function toggleCheck(item) {
   item.classList.toggle('done');
   item.querySelector('.check-box').textContent = item.classList.contains('done') ? '✓' : '';
 }
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-120,behavior:'smooth'});}});});
+/* anchor scroll handled by native scroll-behavior:smooth */
 
 // ── POPUP ──
 window.__pageLoadTime = Date.now();
