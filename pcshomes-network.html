@@ -563,7 +563,7 @@
       <p class="modal-sub">Fill out the form and a PCSHomes team member will connect you.</p>
       <form class="modal-form" id="vendorRequestForm" name="vendor-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="vendor-request"/>
-        <p style="display:none"><input name="bot-field"/></p>
+        <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
         <input type="hidden" name="vendor-name" id="modalVendorName" value=""/>
         <input type="hidden" name="vendor-category" id="modalVendorCategory" value=""/>
         <input class="modal-input" type="text" name="name" placeholder="Your Name" required/>
@@ -571,6 +571,7 @@
         <input class="modal-input" type="text" name="duty-station" placeholder="Current Duty Station"/>
         <textarea class="modal-input" name="message" placeholder="What do you need help with?"></textarea>
         <button class="modal-submit" type="submit">Send Request</button>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
     <div class="modal-success" id="modalSuccess">
@@ -592,7 +593,7 @@
     <div id="partnerFormWrapper">
       <form class="partner-form" id="partnerForm" name="vendor-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="vendor-application"/>
-        <p style="display:none"><input name="bot-field"/></p>
+        <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
         <input class="partner-input" name="company" placeholder="Company Name" required/>
         <input class="partner-input" name="contact-name" placeholder="Your Name" required/>
         <input class="partner-input" name="email" type="email" placeholder="Email" required/>
@@ -606,6 +607,7 @@
         </select>
         <textarea class="partner-input full-width" name="message" placeholder="Tell us about your services..."></textarea>
         <button class="partner-submit full-width" type="submit">Apply to Join Our Network</button>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
 
@@ -632,6 +634,7 @@
       <a href="pcshomes-discover.html">Discover</a>
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
+      <a href="tel:3152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
     </div>
     <!-- Social links: add when accounts are created -->
   </div>
