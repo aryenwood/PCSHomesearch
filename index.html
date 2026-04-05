@@ -654,59 +654,13 @@
         </div>
         <div style="padding:24px;flex:1;display:flex;flex-direction:column;">
           <div style="font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px;">Wood Consulting</div>
-          <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;flex:1;">Save on power, get clean water, and grow your business or brand.</div>
+          <div style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;flex:1;">Local home services — need a contractor? Want cleaner, healthier water? Looking to save on your power bill? We've got you covered.</div>
           <a href="https://woodconsultingllc.net" target="_blank" style="display:block;text-align:center;background:var(--navy);color:var(--white);padding:12px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;font-family:'DM Sans',sans-serif;">Learn More · (315) 221-4857</a>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- PARTNER INQUIRY -->
-<section style="background:var(--navy);padding:72px 48px;">
-  <div class="inner" style="max-width:640px;text-align:center;">
-    <div class="section-label">Partner With Us</div>
-    <h2 class="section-title light" style="margin:12px auto 0;text-align:center;max-width:500px;">We're looking for ethical, military-friendly businesses.</h2>
-    <p class="section-sub light" style="margin:14px auto 28px;text-align:center;">Want to reach thousands of military families PCSing to Fort Drum? Tell us about your business.</p>
-    <form name="partner-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:14px;text-align:left;" id="partnerInquiryForm">
-      <input type="hidden" name="form-name" value="partner-inquiry"/>
-      <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <input name="full-name" type="text" placeholder="Full Name" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;"/>
-        <input name="business-name" type="text" placeholder="Business Name" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;"/>
-      </div>
-      <select name="business-type" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.65);outline:none;appearance:none;cursor:pointer;">
-        <option value="">Business Type</option>
-        <option>Real Estate Agent</option>
-        <option>VA Lender</option>
-        <option>Contractor</option>
-        <option>Property Manager</option>
-        <option>Other</option>
-      </select>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <input name="phone" type="tel" placeholder="Phone" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;"/>
-        <input name="email" type="email" placeholder="Email" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;"/>
-      </div>
-      <textarea name="message" placeholder="Tell us about your business and how you serve the military community" rows="3" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--white);outline:none;resize:vertical;"></textarea>
-      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:15px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;">Submit Partner Inquiry</button>
-    </form>
-    <div id="partnerSuccess" style="display:none;padding:32px 0;text-align:center;">
-      <div style="margin-bottom:12px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-      <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;">Inquiry received!</div>
-      <div style="font-size:14px;color:rgba(255,255,255,0.65);">We'll review your application and be in touch within 48 hours.</div>
-    </div>
-  </div>
-</section>
-<script>
-function submitPartnerInquiry(){
-  var form=document.getElementById('partnerInquiryForm');
-  var fd=new FormData(form);
-  if(!fd.get('full-name')||!fd.get('business-name')||!fd.get('phone')||!fd.get('email')){alert('Please fill in all required fields.');return;}
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()})
-  .then(function(){form.style.display='none';document.getElementById('partnerSuccess').style.display='block';})
-  .catch(function(){alert('Something went wrong. Please try again.');});
-}
-</script>
 
 <!-- HOW IT WORKS -->
 <section id="how-it-works" style="background:linear-gradient(rgba(10,22,40,0.92), rgba(10,22,40,0.96)), url('images/watertown-downtown.jpg') center/cover no-repeat;padding:88px 48px;">
@@ -985,8 +939,64 @@ function submitPartnerInquiry(){
       <a href="pcshomes-contact.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Contact</a>
     </div>
     <!-- Social links: add when accounts are created -->
+    <div style="margin-top:12px;width:100%;text-align:center;">
+      <a href="#" onclick="document.getElementById('partnerModal').style.display='flex';return false;" style="font-size:11px;color:rgba(255,255,255,0.25);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,0.15);">Advertise with us</a>
+      <span style="font-size:11px;color:rgba(255,255,255,0.15);margin:0 8px;">·</span>
+      <a href="pcshomes-glossary.html" style="font-size:11px;color:rgba(255,255,255,0.25);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,0.15);">Military Glossary</a>
+    </div>
   </div>
 </footer>
+
+<!-- PARTNER INQUIRY MODAL -->
+<div id="partnerModal" style="display:none;position:fixed;inset:0;z-index:20000;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#162D50;border-radius:20px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,0.4);">
+    <div style="padding:28px 28px 0;display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:8px;">Partner With Us</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;">Advertise on PCSHomes</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);margin-top:6px;">Reach thousands of military families PCSing to Fort Drum.</div>
+      </div>
+      <button onclick="document.getElementById('partnerModal').style.display='none'" style="background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.5);width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0;">×</button>
+    </div>
+    <form name="partner-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="padding:24px 28px;display:flex;flex-direction:column;gap:12px;" id="partnerInquiryForm">
+      <input type="hidden" name="form-name" value="partner-inquiry"/>
+      <p style="display:none"><input name="bot-field"/></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <input name="full-name" type="text" placeholder="Full Name" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;"/>
+        <input name="business-name" type="text" placeholder="Business Name" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;"/>
+      </div>
+      <select name="business-type" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.55);outline:none;">
+        <option value="">Business Type</option>
+        <option>Real Estate Agent</option>
+        <option>VA Lender</option>
+        <option>Contractor</option>
+        <option>Property Manager</option>
+        <option>Other</option>
+      </select>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <input name="phone" type="tel" placeholder="Phone" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;"/>
+        <input name="email" type="email" placeholder="Email" required style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;"/>
+      </div>
+      <textarea name="message" placeholder="Tell us about your business and how you serve the military community" rows="3" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;resize:vertical;"></textarea>
+      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#C9A84C;color:#162D50;border:none;border-radius:8px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;">Submit Inquiry</button>
+    </form>
+    <div id="partnerSuccess" style="display:none;padding:40px 28px;text-align:center;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;margin:12px 0 8px;">Inquiry received!</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.55);">We'll review your application and be in touch within 48 hours.</div>
+    </div>
+  </div>
+</div>
+<script>
+function submitPartnerInquiry(){
+  var form=document.getElementById('partnerInquiryForm');
+  var fd=new FormData(form);
+  if(!fd.get('full-name')||!fd.get('business-name')||!fd.get('phone')||!fd.get('email')){alert('Please fill in all required fields.');return;}
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()})
+  .then(function(){form.style.display='none';document.getElementById('partnerSuccess').style.display='block';})
+  .catch(function(){alert('Something went wrong. Please try again.');});
+}
+</script>
 
 <!-- chatbot removed -->
 <!-- <div class="chat-messages" id="chatMessages">
