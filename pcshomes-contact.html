@@ -367,25 +367,25 @@
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="firstName">First Name</label>
-                  <input class="form-input" id="firstName" name="first-name" type="text" placeholder="John" required/>
+                  <input class="form-input" id="firstName" name="first-name" type="text" placeholder="John" required autocomplete="given-name"/>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="lastName">Last Name</label>
-                  <input class="form-input" id="lastName" name="last-name" type="text" placeholder="Smith" required/>
+                  <input class="form-input" id="lastName" name="last-name" type="text" placeholder="Smith" required autocomplete="family-name"/>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="email">Email</label>
-                  <input class="form-input" id="email" name="email" type="email" placeholder="your.email@example.com" required/>
+                  <input class="form-input" id="email" name="email" type="email" placeholder="your.email@example.com" required autocomplete="email"/>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="phone">Phone</label>
-                  <input class="form-input" id="phone" name="phone" type="tel" placeholder="(315) 000-0000"/>
+                  <input class="form-input" id="phone" name="phone" type="tel" placeholder="(315) 000-0000" autocomplete="tel"/>
                 </div>
               </div>
 
-              <button type="button" id="contactExtrasToggle" onclick="toggleExtras()" style="background:none;border:none;color:rgba(255,255,255,0.55);font-size:12px;cursor:pointer;text-align:left;padding:0;text-decoration:underline;width:auto;font-family:'DM Sans',sans-serif;margin-top:4px;">+ Add details (optional)</button>
+              <button type="button" id="contactExtrasToggle" onclick="toggleExtras()" style="background:none;border:none;color:rgba(255,255,255,0.55);font-size:12px;cursor:pointer;text-align:left;padding:12px 0;text-decoration:underline;width:auto;font-family:'DM Sans',sans-serif;margin-top:4px;min-height:44px;">+ Add details (optional)</button>
               <div id="contactExtras" style="display:none;flex-direction:column;gap:16px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;margin-top:12px;">
                 <div class="form-row">
                   <div class="form-group">

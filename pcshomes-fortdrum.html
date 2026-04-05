@@ -271,7 +271,19 @@
       .footer-bottom { flex-direction: column !important; text-align: center; gap: 12px; }
       .footer-nav { flex-direction:row !important; gap:16px !important; justify-content:center !important; }
       /* MOBILE PADDING: Tighten section padding */
-      [style*="padding:88px 48px"],[style*="padding:72px 48px"],[style*="padding: 88px 48px"] { padding-left:18px !important; padding-right:18px !important; }
+      [style*="padding:88px 48px"],[style*="padding:72px 48px"],[style*="padding: 88px 48px"] { padding:56px 18px !important; }
+      /* Thousand Islands banner mobile */
+      div[style*="height:460px"] { height: 300px !important; }
+      div[style*="padding:0 64px 0 48px"] { padding: 0 18px !important; text-align: center !important; }
+      div[style*="justify-content:flex-end"] { justify-content: center !important; }
+      div[style*="margin:0 0 0 auto"] { margin: 0 auto !important; }
+      /* Map height on mobile */
+      #drumMap { height: 350px !important; }
+      /* Touch targets */
+      .maptog { min-height: 44px; display: inline-flex; align-items: center; }
+      .hero-pills a { min-height: 44px; display: inline-flex; align-items: center; }
+      .snav-link { min-height: 44px !important; display: inline-flex !important; align-items: center !important; }
+      .school-tab { min-height: 44px !important; }
     }
     @media(max-width:768px){
       h1{font-size:clamp(26px,7vw,40px);}
@@ -1489,10 +1501,10 @@ function showDistrict(id) {
   function showPanel(d, type) {
     const typeLbl = {gate:'Base Gate', town:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Town / Village', landmark:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Landmark'};
     document.getElementById('mpTitle').textContent = d.name;
-    document.getElementById('mpType').textContent  = typeLbl[type] || '';
+    document.getElementById('mpType').innerHTML  = typeLbl[type] || '';
     const schoolRow = d.school !== 'N/A' ? `<div class="mprow"><span class="mprow-lbl">School District</span><span class="mprow-val">${d.school}</span></div>` : '';
     const priceRow  = d.price  !== 'N/A' ? `<div class="mprow"><span class="mprow-lbl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Avg Home Price</span><span class="mprow-val">${d.price}</span></div>` : '';
-    const ctaBtn    = type === 'town' ? `<button onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'});document.getElementById('mapPanel').style.display='none';" style="width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;">Get Homes in ${d.name} →</button>` : '';
+    const ctaBtn    = type === 'town' ? `<button onclick="window.location='pcshomes-contact.html'" style="width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;">Get Matched in ${d.name} →</button>` : '';
     document.getElementById('mpBody').innerHTML = `
       <div class="mprow"><span class="mprow-lbl"> Commute to Gate</span><span class="mprow-val">${d.commute}</span></div>
       <div class="mprow"><span class="mprow-lbl"> Snow Severity</span><span class="mprow-val">${d.snow}</span></div>
