@@ -370,8 +370,8 @@
       [style*="grid-template-columns: repeat(2"],[style*="grid-template-columns: repeat(3"],[style*="grid-template-columns: repeat(4"] { grid-template-columns:1fr !important; }
       [style*="grid-template-columns:1fr 360px"],[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
       [style*="grid-column: 2"],[style*="grid-column:2"] { grid-column:auto !important; }
-      /* MOBILE FLEX FIX: Force flex-wrap containers to column + remove min-width */
-      [style*="flex-wrap:wrap"],[style*="flex-wrap: wrap"] { flex-direction:column !important; gap:24px !important; }
+      /* MOBILE FLEX FIX: Only stack two-panel layouts, not pill groups */
+      .listings > .inner > div[style*="flex-wrap"] { flex-direction:column !important; gap:24px !important; }
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
       [style*="max-width:500px"] { max-width:100% !important; }
       /* MOBILE FOOTER: center and wrap nicely */

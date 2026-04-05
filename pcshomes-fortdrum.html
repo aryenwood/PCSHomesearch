@@ -258,12 +258,10 @@
       [style*="grid-template-columns: repeat(2"],[style*="grid-template-columns: repeat(3"],[style*="grid-template-columns: repeat(4"] { grid-template-columns:1fr !important; }
       [style*="grid-template-columns:1fr 360px"],[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
       [style*="grid-column: 2"],[style*="grid-column:2"] { grid-column:auto !important; }
-      /* MOBILE FLEX FIX: Force flex-wrap containers to column + remove min-width */
-      [style*="flex-wrap:wrap"],[style*="flex-wrap: wrap"] { flex-direction:column !important; gap:24px !important; }
-
+      /* MOBILE FLEX FIX: Only stack two-panel layouts, not pill groups */
+      .listings > .inner > div[style*="flex-wrap"] { flex-direction:column !important; gap:24px !important; }
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
-      /* MOBILE HERO PILLS: wrap naturally */
-      .hero-pills { flex-direction:row !important; flex-wrap:wrap !important; justify-content:center !important; gap:8px !important; }
+      [style*="max-width:500px"] { max-width:100% !important; }
       /* MOBILE FOOTER: center and wrap nicely */
       footer > div { flex-direction:column !important; align-items:center !important; text-align:center; }
       .footer-nav { flex-direction:row !important; gap:16px !important; justify-content:center !important; }
@@ -390,7 +388,7 @@
   <div class="hero-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg> 10th Mountain Division · Fort Drum, NY</div>
   <h1>Your family's PCS to<br/><em>Fort Drum</em> starts here.</h1>
   <p class="hero-sub">Base guides, school districts, family resources, BAH tools, and PCS checklists — everything you need for Fort Drum in one place.</p>
-  <div class="hero-pills" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
+  <div class="hero-pills" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:32px;position:relative;z-index:1;">
     <a href="#va" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">VA Calculator</a>
     <a href="#rvb" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Rent vs Buy</a>
     <a href="#base" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Base Guide</a>
