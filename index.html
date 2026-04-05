@@ -374,6 +374,9 @@
       [style*="flex-wrap:wrap"],[style*="flex-wrap: wrap"] { flex-direction:column !important; gap:24px !important; }
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
       [style*="max-width:500px"] { max-width:100% !important; }
+      /* MOBILE FOOTER: center and wrap nicely */
+      footer > div { flex-direction:column !important; align-items:center !important; text-align:center; }
+      .footer-nav { flex-direction:row !important; gap:16px !important; justify-content:center !important; }
       /* MOBILE PADDING: Tighten section padding */
       [style*="padding:88px 48px"],[style*="padding:72px 48px"],[style*="padding: 88px 48px"] { padding-left:18px !important; padding-right:18px !important; }
     }
@@ -933,9 +936,9 @@
       <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#fff;">PCS<span style="color:#C9A84C;">Homes</span></div>
       <span style="font-size:12px;color:rgba(255,255,255,0.2);">© 2026 PCSHomes</span>
     </div>
-    <div style="display:flex;gap:24px;">
+    <div class="footer-nav" style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
       <a href="index.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Home</a>
-      <a href="pcshomes-fortdrum.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Resources</a>
+      <a href="pcshomes-fortdrum.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Fort Drum Guide</a>
       <a href="pcshomes-discover.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Discover</a>
       <a href="pcshomes-network.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Our Network</a>
       <a href="pcshomes-contact.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Contact</a>

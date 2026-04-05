@@ -220,6 +220,9 @@
       [style*="flex-wrap:wrap"],[style*="flex-wrap: wrap"] { flex-direction:column !important; gap:24px !important; }
 
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
+      /* MOBILE FOOTER: center and wrap nicely */
+      footer > div { flex-direction:column !important; align-items:center !important; text-align:center; }
+      .footer-nav { flex-direction:row !important; gap:16px !important; justify-content:center !important; }
       /* MOBILE PADDING: Tighten section padding */
       [style*="padding:88px 48px"],[style*="padding:72px 48px"],[style*="padding: 88px 48px"] { padding-left:18px !important; padding-right:18px !important; }
     }
