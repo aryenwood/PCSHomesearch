@@ -263,7 +263,12 @@
       [style*="min-width:280px"],[style*="min-width:320px"],[style*="min-width: 280px"],[style*="min-width: 320px"] { min-width:0 !important; width:100% !important; }
       [style*="max-width:500px"] { max-width:100% !important; }
       /* MOBILE FOOTER: center and wrap nicely */
-      footer > div { flex-direction:column !important; align-items:center !important; text-align:center; }
+      footer { padding: 32px 18px 24px !important; }
+      .footer-top { flex-direction: column !important; align-items: center !important; text-align: center; gap: 28px !important; }
+      .footer-top > div { width: 100%; }
+      .footer-tagline { margin: 0 auto; }
+      .footer-links { align-items: center; }
+      .footer-bottom { flex-direction: column !important; text-align: center; gap: 12px; }
       .footer-nav { flex-direction:row !important; gap:16px !important; justify-content:center !important; }
       /* MOBILE PADDING: Tighten section padding */
       [style*="padding:88px 48px"],[style*="padding:72px 48px"],[style*="padding: 88px 48px"] { padding-left:18px !important; padding-right:18px !important; }
@@ -340,10 +345,7 @@
       .popup-body { padding: 20px; }
       .popup-headline { font-size: 19px; }
 
-      /* Footer mobile stacking */
-      .footer-top { flex-direction: column; gap: 24px; }
-      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
-      footer { padding: 32px 18px 24px; }
+      /* Footer mobile stacking — handled in 900px breakpoint */
 
       /* Table responsiveness */
       table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
