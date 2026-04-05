@@ -391,26 +391,14 @@
   <h1>Your family's PCS to<br/><em>Fort Drum</em> starts here.</h1>
   <p class="hero-sub">Base guides, school districts, family resources, BAH tools, and PCS checklists — everything you need for Fort Drum in one place.</p>
   <div class="hero-pills" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
-    <button type="button" data-target="va" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">VA Calculator</button>
-    <button type="button" data-target="rvb" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">Rent vs Buy</button>
-    <button type="button" data-target="base" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">Base Guide</button>
-    <button type="button" data-target="map" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">Area Map</button>
-    <button type="button" data-target="family" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">Family</button>
-    <button type="button" data-target="schools" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">Schools</button>
-    <button type="button" data-target="pcs" class="pill-btn" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,76,0.2);">PCS Planner</button>
+    <a href="pcshomes-fortdrum.html#va" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">VA Calculator</a>
+    <a href="pcshomes-fortdrum.html#rvb" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Rent vs Buy</a>
+    <a href="pcshomes-fortdrum.html#base" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Base Guide</a>
+    <a href="pcshomes-fortdrum.html#map" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Area Map</a>
+    <a href="pcshomes-fortdrum.html#family" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Family</a>
+    <a href="pcshomes-fortdrum.html#schools" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">Schools</a>
+    <a href="pcshomes-fortdrum.html#pcs" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold-light);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;text-decoration:none;">PCS Planner</a>
   </div>
-  <script>
-  document.querySelectorAll('.pill-btn').forEach(function(btn){
-    function go(e){
-      e.preventDefault();
-      e.stopPropagation();
-      var el=document.getElementById(btn.getAttribute('data-target'));
-      if(el) window.scrollTo({top:el.offsetTop-120,behavior:'smooth'});
-    }
-    btn.addEventListener('touchend',go,{passive:false});
-    btn.addEventListener('click',go);
-  });
-  </script>
 </section>
 
 <!-- VA TOOLS -->
