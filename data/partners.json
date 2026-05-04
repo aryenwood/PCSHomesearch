@@ -80,31 +80,6 @@
     "iconKind": "dollar"
   },
   {
-    "id": "best-check-home-inspections",
-    "name": "Joe Gaus",
-    "org": "Best Check Home Inspections",
-    "tier": "network",
-    "category": "other",
-    "tags": [
-      "Home Inspection",
-      "Radon Testing",
-      "Water Quality"
-    ],
-    "phone": null,
-    "email": null,
-    "blurb": "NYS licensed inspector serving Jefferson & Lewis counties. 20+ years in property maintenance and construction with the City of Watertown. Thorough inspections with detailed explanations for first-time buyers.",
-    "logoUrl": null,
-    "photoUrl": null,
-    "active": true,
-    "displayOrder": 4,
-    "badgeLabel": "Inspector",
-    "badgeKind": "inspector",
-    "trustedLabel": "NYS Licensed · 20+ Years Experience",
-    "websiteUrl": "https://bestcheckhome.com",
-    "ctaLabel": "Visit Website →",
-    "iconKind": "magnifier"
-  },
-  {
     "id": "wood-consulting",
     "name": "Home Services",
     "org": "Wood Consulting LLC",
