@@ -161,7 +161,7 @@
           '</div>' +
           '<div class="partner-name">' +
             (p.logoUrl
-              ? '<span class="row-thumb"><img src="' + escapeAttr(p.logoUrl) + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'broken\');this.remove();"/></span>'
+              ? '<span class="row-thumb"><img src="' + window.AdminDash.escapeAttr(p.logoUrl) + '" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'broken\');this.remove();"/></span>'
               : '') +
             '<span class="row-name-text">' + escapeHtml(p.name) +
               '<span class="org">' + escapeHtml(p.org) + '</span>' +
@@ -597,11 +597,11 @@
     if (photoMount && photoUploader) photoMount.appendChild(photoUploader.element);
     // Fallback: if image-upload.js failed to load, render plain text inputs so the form remains usable.
     if (logoMount && !logoUploader) {
-      logoMount.innerHTML = '<input type="url" id="f-logoUrl-fallback" value="' + escapeAttr(logoUrlState || '') + '" />';
+      logoMount.innerHTML = '<input type="url" id="f-logoUrl-fallback" value="' + window.AdminDash.escapeAttr(logoUrlState || '') + '" />';
       logoMount.querySelector('input').addEventListener('input', function(e) { logoUrlState = e.target.value.trim() || null; });
     }
     if (photoMount && !photoUploader) {
-      photoMount.innerHTML = '<input type="url" id="f-photoUrl-fallback" value="' + escapeAttr(photoUrlState || '') + '" />';
+      photoMount.innerHTML = '<input type="url" id="f-photoUrl-fallback" value="' + window.AdminDash.escapeAttr(photoUrlState || '') + '" />';
       photoMount.querySelector('input').addEventListener('input', function(e) { photoUrlState = e.target.value.trim() || null; });
     }
 
@@ -912,12 +912,12 @@
       // Refetch to recover ground truth
       return loadPartners().then(function() { return false; });
     }).catch(function(err) {
-      console.error('save-partners network error:', err);
+      console.error('save-partners failed:', err);
       if (savingToastId) dismissToast(savingToastId);
       showToast({
         kind: 'error',
         title: 'Save failed',
-        message: 'Network error: ' + (err && err.message ? err.message : 'unknown')
+        message: (err && err.message) ? err.message : String(err || 'unknown error')
       });
       return loadPartners().then(function() { return false; });
     }).finally(function() {

@@ -18,6 +18,15 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  function escapeAttr(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
   // ===== Tab switching =====
   function activatePane(paneId) {
     var tabs = document.querySelectorAll('.tab[data-pane]');
@@ -146,6 +155,7 @@
     onPaneActivated: onPaneActivated,
     activatePane: activatePane,
     escapeHtml: escapeHtml,
+    escapeAttr: escapeAttr,
     getAdminConfig: getAdminConfig
   };
 

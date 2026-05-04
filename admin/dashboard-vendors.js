@@ -781,9 +781,9 @@
       Dash.showToast({ kind: 'error', title: 'Save failed (HTTP ' + res.status + ')', message: (res.body && res.body.error) || 'Unknown error' });
       return loadAll(true).then(function() { return false; });
     }).catch(function(err) {
-      console.error('save-vendors network error:', err);
+      console.error('save-vendors failed:', err);
       if (savingToastId) Dash.dismissToast(savingToastId);
-      Dash.showToast({ kind: 'error', title: 'Save failed', message: 'Network error: ' + (err && err.message || 'unknown') });
+      Dash.showToast({ kind: 'error', title: 'Save failed', message: (err && err.message) ? err.message : String(err || 'unknown error') });
       return loadAll(true).then(function() { return false; });
     }).finally(function() {
       saveInFlight = false;
@@ -1070,9 +1070,9 @@
       }
       return loadAll(true).then(function() { return false; });
     }).catch(function(err) {
-      console.error('save-categories network error:', err);
+      console.error('save-categories failed:', err);
       if (savingToastId) Dash.dismissToast(savingToastId);
-      Dash.showToast({ kind: 'error', title: 'Save failed', message: 'Network error: ' + (err && err.message || 'unknown') });
+      Dash.showToast({ kind: 'error', title: 'Save failed', message: (err && err.message) ? err.message : String(err || 'unknown error') });
       return loadAll(true).then(function() { return false; });
     }).finally(function() {
       saveInFlight = false;
