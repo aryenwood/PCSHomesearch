@@ -80,6 +80,55 @@
     "iconKind": "dollar"
   },
   {
+    "id": "best-check-home-inspections",
+    "name": "Joe Gaus",
+    "org": "Best Check Home Inspections",
+    "tier": "network",
+    "category": "other",
+    "tags": [
+      "Home Inspection",
+      "Radon Testing",
+      "Water Quality"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "NYS licensed inspector serving Jefferson & Lewis counties. 20+ years in property maintenance and construction with the City of Watertown. Thorough inspections with detailed explanations for first-time buyers.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 4,
+    "badgeLabel": "Inspector",
+    "badgeKind": "inspector",
+    "trustedLabel": "NYS Licensed · 20+ Years Experience",
+    "websiteUrl": "https://bestcheckhome.com",
+    "ctaLabel": "Visit Website →",
+    "iconKind": "magnifier"
+  },
+  {
+    "id": "bridgeview-real-estate",
+    "name": "35+ Agents",
+    "org": "Bridgeview Real Estate Services",
+    "tier": "network",
+    "category": "agent",
+    "tags": [
+      "Military Relocation",
+      "VA Specialists",
+      "Lake Ontario"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "Largest independently owned brokerage in Northern NY (est. 2016). Consistently ranked #1 or #2 for gross sales. Agents understand the unique needs of military families making real estate decisions around Fort Drum.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 5,
+    "badgeLabel": "Brokerage",
+    "trustedLabel": "Largest Independent Brokerage in Northern NY",
+    "websiteUrl": "https://www.bridgeviewny.com",
+    "ctaLabel": "Visit Website →",
+    "iconKind": "house"
+  },
+  {
     "id": "wood-consulting",
     "name": "Home Services",
     "org": "Wood Consulting LLC",
@@ -131,17 +180,17 @@
   {
     "id": "delete-me",
     "name": "DELETE ME",
-    "org": "Test",
+    "org": "Deleted",
     "tier": "network",
-    "category": "services",
+    "category": "agent",
     "tags": [
       "Homes"
     ],
-    "phone": "TEST",
-    "email": "123@123.com",
-    "blurb": "This is a testt partner for the site",
-    "logoUrl": "/images/partners/screenshot-2026-04-23-at-12-18-19-pm.jpg",
-    "photoUrl": "/images/partners/67046497-7ed1-4167-b8b1-6121064fda09.jpg",
+    "phone": null,
+    "email": null,
+    "blurb": "",
+    "logoUrl": null,
+    "photoUrl": null,
     "active": true,
     "displayOrder": 8
   }
