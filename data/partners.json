@@ -105,30 +105,6 @@
     "iconKind": "magnifier"
   },
   {
-    "id": "bridgeview-real-estate",
-    "name": "35+ Agents",
-    "org": "Bridgeview Real Estate Services",
-    "tier": "network",
-    "category": "agent",
-    "tags": [
-      "Military Relocation",
-      "VA Specialists",
-      "Lake Ontario"
-    ],
-    "phone": null,
-    "email": null,
-    "blurb": "Largest independently owned brokerage in Northern NY (est. 2016). Consistently ranked #1 or #2 for gross sales. Agents understand the unique needs of military families making real estate decisions around Fort Drum.",
-    "logoUrl": null,
-    "photoUrl": null,
-    "active": true,
-    "displayOrder": 5,
-    "badgeLabel": "Brokerage",
-    "trustedLabel": "Largest Independent Brokerage in Northern NY",
-    "websiteUrl": "https://www.bridgeviewny.com",
-    "ctaLabel": "Visit Website →",
-    "iconKind": "house"
-  },
-  {
     "id": "wood-consulting",
     "name": "Home Services",
     "org": "Wood Consulting LLC",
