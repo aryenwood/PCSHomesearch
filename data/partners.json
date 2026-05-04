@@ -1,0 +1,180 @@
+[
+  {
+    "id": "joseph-murtha",
+    "name": "Joseph Murtha",
+    "org": "North Star Real Estate",
+    "tier": "featured",
+    "category": "agent",
+    "tags": [
+      "#1 Agent — 4 Years Running",
+      "VA Loans",
+      "Fort Drum Specialist",
+      "Remote Showings",
+      "Investment Properties"
+    ],
+    "phone": "+13157775219",
+    "email": null,
+    "blurb": "Watertown native with hundreds of military family transactions. #1 agent in Jefferson & Lewis County for most homes sold and volume — 4 years running. Specializes in VA loans, PCS-timeline closings, remote showings, and buy-to-rent investment strategies.",
+    "logoUrl": null,
+    "photoUrl": "joe-headshot.jpg",
+    "active": true,
+    "displayOrder": 1,
+    "subtitle": "North Star Real Estate · Watertown, NY",
+    "badgeLabel": "Featured Agent",
+    "trustedLabel": "120+ Five-Star Reviews",
+    "reviewsUrl": "https://www.zillow.com/profile/joe8963",
+    "reviews": [
+      {
+        "quote": "Joe hoofed it out there in the snow to get me a good look at multiple houses, while I kicked my feet up enjoying the 75 degree weather with a beer. Truly selfless.",
+        "attribution": "Remote Buyer · Zillow Verified"
+      },
+      {
+        "quote": "When the snowstorm of the century threatened our closing, Joe went out and shoveled a path to the front door himself and got someone out to plow the driveway.",
+        "attribution": "Seller · Zillow Verified"
+      }
+    ]
+  },
+  {
+    "id": "dp-lee",
+    "name": "DP Lee",
+    "org": "TBD Realty",
+    "tier": "network",
+    "category": "agent",
+    "tags": [
+      "Military Relocation",
+      "Buyer Representation"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "Experienced agent serving the Fort Drum military community. Details coming soon.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 2,
+    "badgeLabel": "Agent",
+    "trustedLabel": "PCSHomes Trusted",
+    "iconKind": "initials"
+  },
+  {
+    "id": "veterans-united",
+    "name": "VA Loan Specialists",
+    "org": "Veterans United Home Loans",
+    "tier": "network",
+    "category": "lender",
+    "tags": [
+      "VA Loans",
+      "$0 Down",
+      "A+ BBB Rating"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "#1 VA lender in the country. Specializes exclusively in VA loans with dedicated loan teams who understand military timelines, BAH-based purchasing, and PCS deadlines. Free credit consulting included.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 3,
+    "badgeLabel": "Lender",
+    "trustedLabel": "250,000+ Five-Star Reviews",
+    "websiteUrl": "https://www.veteransunited.com",
+    "ctaLabel": "Learn More →",
+    "iconKind": "dollar"
+  },
+  {
+    "id": "best-check-home-inspections",
+    "name": "Joe Gaus",
+    "org": "Best Check Home Inspections",
+    "tier": "network",
+    "category": "other",
+    "tags": [
+      "Home Inspection",
+      "Radon Testing",
+      "Water Quality"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "NYS licensed inspector serving Jefferson & Lewis counties. 20+ years in property maintenance and construction with the City of Watertown. Thorough inspections with detailed explanations for first-time buyers.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 4,
+    "badgeLabel": "Inspector",
+    "badgeKind": "inspector",
+    "trustedLabel": "NYS Licensed · 20+ Years Experience",
+    "websiteUrl": "https://bestcheckhome.com",
+    "ctaLabel": "Visit Website →",
+    "iconKind": "magnifier"
+  },
+  {
+    "id": "bridgeview-real-estate",
+    "name": "35+ Agents",
+    "org": "Bridgeview Real Estate Services",
+    "tier": "network",
+    "category": "agent",
+    "tags": [
+      "Military Relocation",
+      "VA Specialists",
+      "Lake Ontario"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "Largest independently owned brokerage in Northern NY (est. 2016). Consistently ranked #1 or #2 for gross sales. Agents understand the unique needs of military families making real estate decisions around Fort Drum.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 5,
+    "badgeLabel": "Brokerage",
+    "trustedLabel": "Largest Independent Brokerage in Northern NY",
+    "websiteUrl": "https://www.bridgeviewny.com",
+    "ctaLabel": "Visit Website →",
+    "iconKind": "house"
+  },
+  {
+    "id": "wood-consulting",
+    "name": "Home Services",
+    "org": "Wood Consulting LLC",
+    "tier": "network",
+    "category": "other",
+    "tags": [
+      "Contractors",
+      "Water Filtration",
+      "Energy Savings"
+    ],
+    "phone": "+13152214857",
+    "email": null,
+    "blurb": "Local home services for military families — need a contractor? Want cleaner, healthier water? Looking to save on your power bill? Wood Consulting connects you with trusted solutions for your Fort Drum home.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 6,
+    "badgeLabel": "Home Services",
+    "badgeKind": "services",
+    "trustedLabel": "PCSHomes Trusted",
+    "ctaLabel": "Call · (315) 221-4857",
+    "iconKind": "wrench",
+    "iconAccent": "blue"
+  },
+  {
+    "id": "home-services-coming-soon",
+    "name": "Home Services",
+    "org": "Coming Soon",
+    "tier": "network",
+    "category": "other",
+    "tags": [
+      "Vetting in Progress"
+    ],
+    "phone": null,
+    "email": null,
+    "blurb": "Know a trusted home services provider near Fort Drum? We're vetting partners now — snow removal, cleaning, landscaping, HVAC, and more.",
+    "logoUrl": null,
+    "photoUrl": null,
+    "active": true,
+    "displayOrder": 7,
+    "badgeLabel": "Home Services",
+    "badgeKind": "services",
+    "isPlaceholder": true,
+    "ctaLabel": "Refer a Partner",
+    "ctaHref": "pcshomes-contact.html#partner-inquiry",
+    "iconKind": "plus",
+    "iconAccent": "blue-muted"
+  }
+]

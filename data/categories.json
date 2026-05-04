@@ -1,0 +1,8 @@
+[
+  { "id": "commissary",  "label": "Commissary",  "color": "#C9A84C", "active": true },
+  { "id": "grocery",     "label": "Grocery",     "color": "#5BA4F5", "active": true },
+  { "id": "medical",     "label": "Medical",     "color": "#E07070", "active": true },
+  { "id": "restaurants", "label": "Restaurants", "color": "#F59E5B", "active": true },
+  { "id": "storage",     "label": "Storage",     "color": "#A78BFA", "active": true },
+  { "id": "discount",    "label": "Discount",    "color": "#5DD88A", "active": true }
+]

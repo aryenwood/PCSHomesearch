@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PCSHomes Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0F1D35;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      background: #162D50;
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 16px;
+      padding: 40px 32px;
+    }
+    .brand {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .brand span { color: #C9A84C; }
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 8px;
+    }
+    input[type="password"] {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="password"]:focus { border-color: #C9A84C; }
+    button {
+      width: 100%;
+      margin-top: 16px;
+      background: #C9A84C;
+      color: #162D50;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    button:hover:not(:disabled) { background: #E2C57A; }
+    button:disabled { opacity: 0.6; cursor: default; }
+    .error {
+      margin-top: 14px;
+      padding: 10px 12px;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 8px;
+      font-size: 13px;
+      color: #FCA5A5;
+      display: none;
+    }
+    .error.show { display: block; }
+    .footer-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+    }
+    .footer-link:hover { color: #C9A84C; }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="brand">PCS<span>Homes</span></div>
+    <div class="subtitle">Admin Access</div>
+    <form id="loginForm">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required autofocus />
+      <button type="submit" id="submitBtn">Sign In</button>
+      <div class="error" id="errorMsg"></div>
+    </form>
+    <a href="/" class="footer-link">← Back to site</a>
+  </div>
+
+  <script src="admin-auth.js"></script>
+  <script>
+    // If already authenticated, skip the form
+    if (window.AdminAuth && window.AdminAuth.isAuthenticated()) {
+      window.location.href = 'dashboard.html';
+    }
+
+    var form = document.getElementById('loginForm');
+    var pwInput = document.getElementById('password');
+    var btn = document.getElementById('submitBtn');
+    var errEl = document.getElementById('errorMsg');
+
+    function showError(msg) {
+      errEl.textContent = msg;
+      errEl.classList.add('show');
+    }
+
+    function clearError() {
+      errEl.textContent = '';
+      errEl.classList.remove('show');
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearError();
+      btn.disabled = true;
+      btn.textContent = 'Signing in…';
+
+      fetch('/.netlify/functions/admin-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pwInput.value })
+      }).then(function(r) {
+        return r.json().then(function(body) { return { status: r.status, body: body }; });
+      }).then(function(res) {
+        if (res.status === 200 && res.body.token) {
+          window.AdminAuth.saveToken(res.body.token);
+          window.location.href = 'dashboard.html';
+        } else if (res.status === 429) {
+          showError(res.body.error || 'Too many attempts. Try again in an hour.');
+        } else {
+          showError(res.body.error || 'Invalid password.');
+        }
+      }).catch(function() {
+        showError('Network error. Please try again.');
+      }).finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+        pwInput.value = '';
+      });
+    });
+  </script>
+</body>
+</html>

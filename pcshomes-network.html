@@ -394,213 +394,11 @@
   <button class="filter-btn" onclick="filterVendors('services', this)">Home Services</button>
 </div>
 
-<!-- VENDOR CARDS -->
+<!-- VENDOR CARDS — rendered from /data/partners.json -->
 <section class="vendor-section">
-  <div class="vendor-grid">
-
-    <!-- 1. Joseph Murtha — Featured Agent -->
-    <div class="vendor-card featured-agent" data-category="agent" style="grid-column:1/-1;background:var(--navy);border:1px solid rgba(201,168,76,0.2);padding:0;overflow:hidden;">
-      <div style="display:flex;gap:0;flex-wrap:wrap;">
-        <div style="flex:1;min-width:0;padding:28px;">
-          <div style="display:flex;align-items:center;gap:4px;margin-bottom:12px;">
-            <span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#C9A84C;">Featured Agent</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
-            <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:3px solid #C9A84C;flex-shrink:0;">
-              <img src="joe-headshot.jpg" alt="Joseph Murtha" style="width:100%;height:100%;object-fit:cover;"/>
-            </div>
-            <div>
-              <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;">Joseph Murtha</div>
-              <div style="font-size:13px;color:rgba(255,255,255,0.55);">North Star Real Estate · Watertown, NY</div>
-            </div>
-          </div>
-          <div style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:16px;">Watertown native with hundreds of military family transactions. #1 agent in Jefferson & Lewis County for most homes sold and volume — 4 years running. Specializes in VA loans, PCS-timeline closings, remote showings, and buy-to-rent investment strategies.</div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
-            <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">#1 Agent — 4 Years Running</span>
-            <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">VA Loans</span>
-            <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">Fort Drum Specialist</span>
-            <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">Remote Showings</span>
-            <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">Investment Properties</span>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <button class="vendor-cta" onclick="openVendorRequest('Joseph Murtha', 'Real Estate Agent')" style="flex:1;">Request Info</button>
-            <a href="tel:+13157775219" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-decoration:none;font-family:'DM Sans',sans-serif;min-height:44px;">Call/Text</a>
-          </div>
-        </div>
-        <div style="flex:1;min-width:0;padding:28px;background:rgba(255,255,255,0.03);border-left:1px solid rgba(255,255,255,0.06);">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-            <div style="font-size:13px;font-weight:700;color:#fff;">120+ Five-Star Reviews</div>
-            <div style="color:#C9A84C;font-size:13px;">★★★★★</div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
-              <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.65;font-style:italic;">"Joe hoofed it out there in the snow to get me a good look at multiple houses, while I kicked my feet up enjoying the 75 degree weather with a beer. Truly selfless."</div>
-              <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;">Remote Buyer · Zillow Verified</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
-              <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.65;font-style:italic;">"When the snowstorm of the century threatened our closing, Joe went out and shoveled a path to the front door himself and got someone out to plow the driveway."</div>
-              <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;">Seller · Zillow Verified</div>
-            </div>
-          </div>
-          <a href="https://www.zillow.com/profile/joe8963" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:#C9A84C;text-decoration:none;">Read all reviews on Zillow →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. DP Lee — Agent -->
-    <div class="vendor-card" data-category="agent">
-      <span class="category-badge agent">Agent</span>
-      <div class="vendor-header">
-        <div class="vendor-avatar">
-          <span class="initials">DL</span>
-        </div>
-        <div class="vendor-info">
-          <div class="vendor-company">TBD Realty</div>
-          <div class="vendor-name">DP Lee</div>
-          <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            PCSHomes Trusted
-          </div>
-        </div>
-      </div>
-      <div class="vendor-tags">
-        <span class="vendor-tag">Military Relocation</span>
-        <span class="vendor-tag">Buyer Representation</span>
-      </div>
-      <p class="vendor-desc">Experienced agent serving the Fort Drum military community. Details coming soon.</p>
-      <button class="vendor-cta" onclick="openVendorRequest('DP Lee', 'Real Estate Agent')">Request Info</button>
-    </div>
-
-    <!-- 3. Veterans United — VA Lender -->
-    <div class="vendor-card" data-category="lender">
-      <span class="category-badge lender">Lender</span>
-      <div class="vendor-header">
-        <div class="vendor-avatar">
-          <span class="icon-placeholder">$</span>
-        </div>
-        <div class="vendor-info">
-          <div class="vendor-company">Veterans United Home Loans</div>
-          <div class="vendor-name">VA Loan Specialists</div>
-          <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            250,000+ Five-Star Reviews
-          </div>
-        </div>
-      </div>
-      <div class="vendor-tags">
-        <span class="vendor-tag">VA Loans</span>
-        <span class="vendor-tag">$0 Down</span>
-        <span class="vendor-tag">A+ BBB Rating</span>
-      </div>
-      <p class="vendor-desc">#1 VA lender in the country. Specializes exclusively in VA loans with dedicated loan teams who understand military timelines, BAH-based purchasing, and PCS deadlines. Free credit consulting included.</p>
-      <a class="vendor-cta" href="https://www.veteransunited.com" target="_blank" style="text-decoration:none;display:block;text-align:center;">Learn More →</a>
-    </div>
-
-    <!-- 4. Best Check Home Inspections -->
-    <div class="vendor-card" data-category="inspector">
-      <span class="category-badge inspector">Inspector</span>
-      <div class="vendor-header">
-        <div class="vendor-avatar">
-          <span class="icon-placeholder">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </span>
-        </div>
-        <div class="vendor-info">
-          <div class="vendor-company">Best Check Home Inspections</div>
-          <div class="vendor-name">Joe Gaus</div>
-          <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            NYS Licensed · 20+ Years Experience
-          </div>
-        </div>
-      </div>
-      <div class="vendor-tags">
-        <span class="vendor-tag">Home Inspection</span>
-        <span class="vendor-tag">Radon Testing</span>
-        <span class="vendor-tag">Water Quality</span>
-      </div>
-      <p class="vendor-desc">NYS licensed inspector serving Jefferson &amp; Lewis counties. 20+ years in property maintenance and construction with the City of Watertown. Thorough inspections with detailed explanations for first-time buyers.</p>
-      <a class="vendor-cta" href="https://bestcheckhome.com" target="_blank" style="text-decoration:none;display:block;text-align:center;">Visit Website →</a>
-    </div>
-
-    <!-- 5. Bridgeview Real Estate -->
-    <div class="vendor-card" data-category="agent">
-      <span class="category-badge agent">Brokerage</span>
-      <div class="vendor-header">
-        <div class="vendor-avatar">
-          <span class="icon-placeholder">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </span>
-        </div>
-        <div class="vendor-info">
-          <div class="vendor-company">Bridgeview Real Estate Services</div>
-          <div class="vendor-name">35+ Agents</div>
-          <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Largest Independent Brokerage in Northern NY
-          </div>
-        </div>
-      </div>
-      <div class="vendor-tags">
-        <span class="vendor-tag">Military Relocation</span>
-        <span class="vendor-tag">VA Specialists</span>
-        <span class="vendor-tag">Lake Ontario</span>
-      </div>
-      <p class="vendor-desc">Largest independently owned brokerage in Northern NY (est. 2016). Consistently ranked #1 or #2 for gross sales. Agents understand the unique needs of military families making real estate decisions around Fort Drum.</p>
-      <a class="vendor-cta" href="https://www.bridgeviewny.com" target="_blank" style="text-decoration:none;display:block;text-align:center;">Visit Website →</a>
-    </div>
-
-    <!-- 6. Wood Consulting — Home Services -->
-    <div class="vendor-card" data-category="services">
-      <span class="category-badge services">Home Services</span>
-      <div class="vendor-header">
-        <div class="vendor-avatar" style="border-color: #60a5fa;">
-          <span class="icon-placeholder">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-          </span>
-        </div>
-        <div class="vendor-info">
-          <div class="vendor-company">Wood Consulting LLC</div>
-          <div class="vendor-name">Home Services</div>
-          <div class="vendor-trusted">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            PCSHomes Trusted
-          </div>
-        </div>
-      </div>
-      <div class="vendor-tags">
-        <span class="vendor-tag">Contractors</span>
-        <span class="vendor-tag">Water Filtration</span>
-        <span class="vendor-tag">Energy Savings</span>
-      </div>
-      <p class="vendor-desc">Local home services for military families — need a contractor? Want cleaner, healthier water? Looking to save on your power bill? Wood Consulting connects you with trusted solutions for your Fort Drum home.</p>
-      <a class="vendor-cta" href="tel:3152214857" style="text-decoration:none;display:block;text-align:center;">Call · (315) 221-4857</a>
-    </div>
-
-    <!-- 7. Home Services — Coming Soon -->
-    <div class="vendor-card placeholder" data-category="services">
-      <span class="category-badge services">Home Services</span>
-      <div class="vendor-header">
-        <div class="vendor-avatar" style="border-color: rgba(96,165,250,0.3);">
-          <span class="icon-placeholder" style="opacity:0.4;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-          </span>
-        </div>
-        <div class="vendor-info">
-          <div class="vendor-company">Coming Soon</div>
-          <div class="vendor-name">Home Services</div>
-        </div>
-      </div>
-      <div class="vendor-tags">
-        <span class="vendor-tag">Vetting in Progress</span>
-      </div>
-      <p class="vendor-desc">Know a trusted home services provider near Fort Drum? We're vetting partners now — snow removal, cleaning, landscaping, HVAC, and more.</p>
-      <a class="vendor-cta" href="pcshomes-contact.html#partner-inquiry" style="text-decoration:none;display:block;text-align:center;">Refer a Partner</a>
-    </div>
-
-  </div>
+  <div class="vendor-grid" id="vendorGrid"></div>
 </section>
+
 
 <!-- REQUEST INFO MODAL -->
 <div class="modal-overlay" id="vendorModal">
@@ -845,19 +643,195 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 </script>
 
 <script>
+// Render partner cards from /data/partners.json
 (function() {
-  document.querySelectorAll('.vendor-card').forEach(function(el, i) {
-    el.classList.add('animate-on-scroll');
-    el.style.transitionDelay = (i * 0.1) + 's';
-  });
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-on-scroll').forEach(function(el) { obs.observe(el); });
-  } else {
-    document.querySelectorAll('.animate-on-scroll').forEach(function(el) { el.classList.add('visible'); });
+  var SHIELD_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>';
+
+  var ICON_SVGS = {
+    magnifier: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+    house: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    wrench: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
+    plus: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>'
+  };
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
+
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  function deriveInitials(name) {
+    return String(name || '').trim().split(/\s+/).map(function(p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase();
+  }
+
+  function avatarHtml(p) {
+    var borderStyle = '';
+    if (p.iconAccent === 'blue') borderStyle = ' style="border-color: #60a5fa;"';
+    else if (p.iconAccent === 'blue-muted') borderStyle = ' style="border-color: rgba(96,165,250,0.3);"';
+
+    var inner;
+    if (p.photoUrl) {
+      inner = '<img src="' + escapeAttr(p.photoUrl) + '" alt="' + escapeAttr(p.name) + '"/>';
+    } else if (p.iconKind === 'initials') {
+      inner = '<span class="initials">' + escapeHtml(deriveInitials(p.name)) + '</span>';
+    } else if (p.iconKind === 'dollar') {
+      inner = '<span class="icon-placeholder">$</span>';
+    } else if (p.iconKind && ICON_SVGS[p.iconKind]) {
+      var iconStyle = p.iconAccent === 'blue-muted' ? ' style="opacity:0.4;"' : '';
+      inner = '<span class="icon-placeholder"' + iconStyle + '>' + ICON_SVGS[p.iconKind] + '</span>';
+    } else {
+      inner = '<span class="initials">' + escapeHtml(deriveInitials(p.name)) + '</span>';
+    }
+    return '<div class="vendor-avatar"' + borderStyle + '>' + inner + '</div>';
+  }
+
+  function tagsHtml(tags) {
+    if (!tags || !tags.length) return '';
+    return '<div class="vendor-tags">' + tags.map(function(t) {
+      return '<span class="vendor-tag">' + escapeHtml(t) + '</span>';
+    }).join('') + '</div>';
+  }
+
+  function ctaHtml(p) {
+    var label = p.ctaLabel || 'Request Info';
+    if (p.isPlaceholder) {
+      return '<a class="vendor-cta" href="' + escapeAttr(p.ctaHref || 'pcshomes-contact.html#partner-inquiry') + '" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
+    }
+    if (p.websiteUrl) {
+      return '<a class="vendor-cta" href="' + escapeAttr(p.websiteUrl) + '" target="_blank" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
+    }
+    if (p.phone && (p.ctaLabel || '').toLowerCase().indexOf('call') === 0) {
+      return '<a class="vendor-cta" href="tel:' + escapeAttr(p.phone) + '" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
+    }
+    var displayCategory = p.category === 'agent' ? 'Real Estate Agent'
+      : p.category === 'lender' ? 'VA Lender'
+      : (p.badgeLabel || 'Partner');
+    return '<button class="vendor-cta" onclick="openVendorRequest(' + JSON.stringify(p.name) + ', ' + JSON.stringify(displayCategory) + ')">' + escapeHtml(label) + '</button>';
+  }
+
+  function badgeKindFor(p) {
+    return p.badgeKind || (p.category === 'agent' ? 'agent' : p.category === 'lender' ? 'lender' : 'services');
+  }
+
+  function dataCategoryFor(p) {
+    return p.badgeKind || p.category;
+  }
+
+  function renderStandard(p) {
+    var phoneCta = '';
+    if (p.phone && (!p.websiteUrl) && (!p.ctaLabel || (p.ctaLabel || '').toLowerCase().indexOf('call') !== 0)) {
+      phoneCta = '';
+    }
+    var classes = 'vendor-card' + (p.isPlaceholder ? ' placeholder' : '');
+    return '<div class="' + classes + '" data-category="' + escapeAttr(dataCategoryFor(p)) + '">' +
+      '<span class="category-badge ' + escapeAttr(badgeKindFor(p)) + '">' + escapeHtml(p.badgeLabel || '') + '</span>' +
+      '<div class="vendor-header">' +
+        avatarHtml(p) +
+        '<div class="vendor-info">' +
+          '<div class="vendor-company">' + escapeHtml(p.org) + '</div>' +
+          '<div class="vendor-name">' + escapeHtml(p.name) + '</div>' +
+          (p.trustedLabel
+            ? '<div class="vendor-trusted">' + SHIELD_SVG + ' ' + escapeHtml(p.trustedLabel) + '</div>'
+            : '') +
+        '</div>' +
+      '</div>' +
+      tagsHtml(p.tags) +
+      '<p class="vendor-desc">' + escapeHtml(p.blurb || '') + '</p>' +
+      ctaHtml(p) +
+    '</div>';
+  }
+
+  function renderFeatured(p) {
+    var photoBlock = p.photoUrl
+      ? '<div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:3px solid #C9A84C;flex-shrink:0;"><img src="' + escapeAttr(p.photoUrl) + '" alt="' + escapeAttr(p.name) + '" style="width:100%;height:100%;object-fit:cover;"/></div>'
+      : '';
+    var tags = (p.tags || []).map(function(t) {
+      return '<span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">' + escapeHtml(t) + '</span>';
+    }).join('');
+    var reviews = (p.reviews || []).map(function(r) {
+      return '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">' +
+               '<div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.65;font-style:italic;">"' + escapeHtml(r.quote) + '"</div>' +
+               '<div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;">' + escapeHtml(r.attribution) + '</div>' +
+             '</div>';
+    }).join('');
+
+    var primaryCta = '<button class="vendor-cta" onclick="openVendorRequest(' + JSON.stringify(p.name) + ', ' + JSON.stringify('Real Estate Agent') + ')" style="flex:1;">Request Info</button>';
+    var phoneCta = p.phone
+      ? '<a href="tel:' + escapeAttr(p.phone) + '" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-decoration:none;font-family:\'DM Sans\',sans-serif;min-height:44px;">Call/Text</a>'
+      : '';
+    var reviewsLink = p.reviewsUrl
+      ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:#C9A84C;text-decoration:none;">Read all reviews on Zillow →</a>'
+      : '';
+
+    return '<div class="vendor-card featured-agent" data-category="' + escapeAttr(dataCategoryFor(p)) + '" style="grid-column:1/-1;background:var(--navy);border:1px solid rgba(201,168,76,0.2);padding:0;overflow:hidden;">' +
+      '<div style="display:flex;gap:0;flex-wrap:wrap;">' +
+        '<div style="flex:1;min-width:0;padding:28px;">' +
+          '<div style="display:flex;align-items:center;gap:4px;margin-bottom:12px;">' +
+            '<span style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#C9A84C;">' + escapeHtml(p.badgeLabel || 'Featured') + '</span>' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">' +
+            photoBlock +
+            '<div>' +
+              '<div style="font-family:\'Libre Baskerville\',serif;font-size:20px;font-weight:700;color:#fff;">' + escapeHtml(p.name) + '</div>' +
+              '<div style="font-size:13px;color:rgba(255,255,255,0.55);">' + escapeHtml(p.subtitle || p.org) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.75;margin-bottom:16px;">' + escapeHtml(p.blurb) + '</div>' +
+          '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">' + tags + '</div>' +
+          '<div style="display:flex;gap:10px;flex-wrap:wrap;">' + primaryCta + phoneCta + '</div>' +
+        '</div>' +
+        '<div style="flex:1;min-width:0;padding:28px;background:rgba(255,255,255,0.03);border-left:1px solid rgba(255,255,255,0.06);">' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">' +
+            '<div style="font-size:13px;font-weight:700;color:#fff;">' + escapeHtml(p.trustedLabel || '') + '</div>' +
+            '<div style="color:#C9A84C;font-size:13px;">★★★★★</div>' +
+          '</div>' +
+          '<div style="display:flex;flex-direction:column;gap:12px;">' + reviews + '</div>' +
+          reviewsLink +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderCard(p) {
+    return p.tier === 'featured' ? renderFeatured(p) : renderStandard(p);
+  }
+
+  function attachAnimations() {
+    var cards = document.querySelectorAll('.vendor-card');
+    cards.forEach(function(el, i) {
+      el.classList.add('animate-on-scroll');
+      el.style.transitionDelay = (i * 0.1) + 's';
+    });
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.animate-on-scroll').forEach(function(el) { obs.observe(el); });
+    } else {
+      document.querySelectorAll('.animate-on-scroll').forEach(function(el) { el.classList.add('visible'); });
+    }
+  }
+
+  fetch('data/partners.json', { cache: 'no-cache' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('partners.json HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(partners) {
+      var grid = document.getElementById('vendorGrid');
+      if (!grid) return;
+      var visible = partners
+        .filter(function(p) { return p.active !== false; })
+        .sort(function(a, b) { return (a.displayOrder || 0) - (b.displayOrder || 0); });
+      grid.innerHTML = visible.map(renderCard).join('');
+      attachAnimations();
+    })
+    .catch(function(err) {
+      console.error('Failed to load partners:', err);
+    });
 })();
 </script>
 

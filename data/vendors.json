@@ -1,0 +1,369 @@
+[
+  {
+    "id": "fort-drum-commissary",
+    "name": "Fort Drum Commissary",
+    "address": "10730C Enduring Freedom Dr, Fort Drum",
+    "lat": 44.0452,
+    "lng": -75.8053,
+    "category": "commissary",
+    "description": "Military ID required",
+    "active": true
+  },
+  {
+    "id": "walmart-supercenter-watertown",
+    "name": "Walmart Supercenter",
+    "address": "20823 State Route 3, Watertown",
+    "lat": 43.9760,
+    "lng": -75.9586,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "hannaford-watertown",
+    "name": "Hannaford",
+    "address": "21110 Pioneer Plaza Dr, Watertown",
+    "lat": 43.9730,
+    "lng": -75.9537,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "aldi-watertown",
+    "name": "ALDI",
+    "address": "1165 Arsenal St, Watertown",
+    "lat": 43.9685,
+    "lng": -75.8955,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "price-chopper-watertown",
+    "name": "Price Chopper",
+    "address": "1283 Arsenal St, Watertown",
+    "lat": 43.9677,
+    "lng": -75.8918,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "tops-seaway-plaza",
+    "name": "Tops (Seaway Plaza)",
+    "address": "22050 Seaway Shopping Ctr, Watertown",
+    "lat": 43.9812,
+    "lng": -75.9265,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "tops-washington-st",
+    "name": "Tops (Washington St)",
+    "address": "1330 Washington St S, Watertown",
+    "lat": 43.9590,
+    "lng": -75.9120,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "save-a-lot-watertown",
+    "name": "Save-A-Lot",
+    "address": "1851 State St, Watertown",
+    "lat": 43.9637,
+    "lng": -75.9185,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "walmart-evans-mills",
+    "name": "Walmart (Evans Mills)",
+    "address": "25737 US Route 11, Evans Mills",
+    "lat": 44.0835,
+    "lng": -75.8100,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "aldi-evans-mills",
+    "name": "ALDI (Evans Mills)",
+    "address": "26163 US Route 11, Evans Mills",
+    "lat": 44.0870,
+    "lng": -75.8080,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "price-chopper-w-carthage",
+    "name": "Price Chopper (W. Carthage)",
+    "address": "60 High St, West Carthage",
+    "lat": 43.9747,
+    "lng": -75.6120,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "aldi-w-carthage",
+    "name": "ALDI (W. Carthage)",
+    "address": "14 N Broad St, West Carthage",
+    "lat": 43.9765,
+    "lng": -75.6140,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "walmart-lowville",
+    "name": "Walmart (Lowville)",
+    "address": "7155 State Route 12, Lowville",
+    "lat": 43.7870,
+    "lng": -75.4920,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "tops-lowville",
+    "name": "Tops (Lowville)",
+    "address": "7395 Turin Rd, Lowville",
+    "lat": 43.7925,
+    "lng": -75.4910,
+    "category": "grocery",
+    "active": true
+  },
+  {
+    "id": "dollar-general-evans-mills",
+    "name": "Dollar General (Evans Mills)",
+    "address": "26221 US Route 11, Evans Mills",
+    "lat": 44.0875,
+    "lng": -75.8075,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "dollar-general-black-river",
+    "name": "Dollar General (Black River)",
+    "address": "28525 NY Route 3, Black River",
+    "lat": 44.0125,
+    "lng": -75.7960,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "dollar-general-carthage",
+    "name": "Dollar General (Carthage)",
+    "address": "700 West End Ave, Carthage",
+    "lat": 43.9735,
+    "lng": -75.6210,
+    "category": "discount",
+    "active": true
+  },
+  {
+    "id": "guthrie-army-health-clinic",
+    "name": "Guthrie Army Health Clinic",
+    "address": "11050 Mt Belvedere Blvd, Fort Drum",
+    "lat": 44.042,
+    "lng": -75.810,
+    "category": "medical",
+    "phone": "(315) 772-2778",
+    "description": "On-post · TRICARE Prime · (315) 772-2778",
+    "active": true
+  },
+  {
+    "id": "samaritan-medical-center",
+    "name": "Samaritan Medical Center",
+    "address": "830 Washington St, Watertown",
+    "lat": 43.970,
+    "lng": -75.912,
+    "category": "medical",
+    "phone": "(315) 785-4000",
+    "description": "ER 24/7 · Main hospital · (315) 785-4000",
+    "active": true
+  },
+  {
+    "id": "samaritan-urgent-care-evans-mills",
+    "name": "Samaritan Urgent Care (Evans Mills)",
+    "address": "26908 Independence Way, Evans Mills",
+    "lat": 44.085,
+    "lng": -75.812,
+    "category": "medical",
+    "phone": "(315) 629-4080",
+    "description": "Walk-in · Near main gate · (315) 629-4080",
+    "active": true
+  },
+  {
+    "id": "watertown-urgent-care",
+    "name": "Watertown Urgent Care",
+    "address": "Across from JCC, Watertown",
+    "lat": 43.972,
+    "lng": -75.918,
+    "category": "medical",
+    "description": "Walk-in · No appointment · X-ray on site",
+    "active": true
+  },
+  {
+    "id": "samaritan-family-health-center",
+    "name": "Samaritan Family Health Center",
+    "address": "1575 Washington St, Watertown",
+    "lat": 43.962,
+    "lng": -75.914,
+    "category": "medical",
+    "description": "Primary care · Pediatrics",
+    "active": true
+  },
+  {
+    "id": "fort-drum-obgyn",
+    "name": "Fort Drum OB/GYN",
+    "address": "826 Washington St Ste 202, Watertown",
+    "lat": 43.971,
+    "lng": -75.911,
+    "category": "medical",
+    "description": "Prenatal · Labor & delivery at Samaritan",
+    "active": true
+  },
+  {
+    "id": "fort-drum-dental-stone-clinic",
+    "name": "Fort Drum Dental (Stone Clinic)",
+    "address": "Fort Drum, NY",
+    "lat": 44.038,
+    "lng": -75.806,
+    "category": "medical",
+    "description": "On-post · Active duty priority",
+    "active": true
+  },
+  {
+    "id": "laclair-family-dental",
+    "name": "LaClair Family Dental",
+    "address": "Carthage, NY",
+    "lat": 43.978,
+    "lng": -75.610,
+    "category": "medical",
+    "description": "Accepts TRICARE · Family dentistry",
+    "active": true
+  },
+  {
+    "id": "garland-city-beer-works",
+    "name": "Garland City Beer Works",
+    "address": "321 Howk St, Watertown",
+    "lat": 43.974,
+    "lng": -75.910,
+    "category": "restaurants",
+    "description": "Best craft beer in Watertown · Food trucks",
+    "active": true
+  },
+  {
+    "id": "sacketts-harbor-brewing",
+    "name": "Sacketts Harbor Brewing",
+    "address": "212 W Main St, Sackets Harbor",
+    "lat": 43.946,
+    "lng": -76.118,
+    "category": "restaurants",
+    "description": "Lake views · Outdoor seating · Great beer",
+    "active": true
+  },
+  {
+    "id": "shortys-place",
+    "name": "Shorty's Place",
+    "address": "Watertown",
+    "lat": 43.975,
+    "lng": -75.906,
+    "category": "restaurants",
+    "description": "50s-themed · Family friendly · Great portions",
+    "active": true
+  },
+  {
+    "id": "chatterbox-diner",
+    "name": "Chatterbox Diner",
+    "address": "1142 Arsenal St, Watertown",
+    "lat": 43.968,
+    "lng": -75.896,
+    "category": "restaurants",
+    "description": "Breakfast favorite · Pancakes & omelets",
+    "active": true
+  },
+  {
+    "id": "petes-pizza",
+    "name": "Pete's Pizza",
+    "address": "Watertown",
+    "lat": 43.972,
+    "lng": -75.908,
+    "category": "restaurants",
+    "description": "Local favorite · Generous portions · Affordable",
+    "active": true
+  },
+  {
+    "id": "b-hats-curry-house",
+    "name": "B-Hat's Curry House",
+    "address": "Watertown",
+    "lat": 43.971,
+    "lng": -75.914,
+    "category": "restaurants",
+    "description": "Indian & Nepalese · Butter chicken is a must",
+    "active": true
+  },
+  {
+    "id": "cracker-barrel-watertown",
+    "name": "Cracker Barrel",
+    "address": "State Route 3, Watertown",
+    "lat": 43.978,
+    "lng": -75.952,
+    "category": "restaurants",
+    "description": "Family dining · Country store · Kid menu",
+    "active": true
+  },
+  {
+    "id": "chick-fil-a-watertown",
+    "name": "Chick-fil-A",
+    "address": "Watertown",
+    "lat": 43.976,
+    "lng": -75.956,
+    "category": "restaurants",
+    "description": "Family favorite · Drive-thru · Closed Sundays",
+    "active": true
+  },
+  {
+    "id": "abc-self-storage",
+    "name": "ABC Self Storage",
+    "address": "Watertown/Evans Mills area",
+    "lat": 44.060,
+    "lng": -75.810,
+    "category": "storage",
+    "description": "Largest in NNY · Climate controlled · Vehicle storage",
+    "active": true
+  },
+  {
+    "id": "watertown-storage-solutions-evans-mills",
+    "name": "Watertown Storage Solutions (Evans Mills)",
+    "address": "US-11, Evans Mills",
+    "lat": 44.082,
+    "lng": -75.808,
+    "category": "storage",
+    "description": "Near Fort Drum gate · Month-to-month",
+    "active": true
+  },
+  {
+    "id": "u-store-coffeen-st",
+    "name": "U Store (Coffeen St)",
+    "address": "Coffeen St, Watertown",
+    "lat": 43.978,
+    "lng": -75.930,
+    "category": "storage",
+    "description": "Quick access to I-81 · Clean & secure",
+    "active": true
+  },
+  {
+    "id": "u-haul-storage-fort-drum",
+    "name": "U-Haul Storage at Fort Drum",
+    "address": "Watertown",
+    "lat": 43.985,
+    "lng": -75.845,
+    "category": "storage",
+    "description": "Self-storage + truck rental",
+    "active": true
+  },
+  {
+    "id": "ko-storage-evans-mills",
+    "name": "KO Storage (Evans Mills)",
+    "address": "US-11, Evans Mills",
+    "lat": 44.086,
+    "lng": -75.806,
+    "category": "storage",
+    "description": "Climate controlled · Flexible plans",
+    "active": true
+  }
+]
