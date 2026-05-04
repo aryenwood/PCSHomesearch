@@ -56,30 +56,6 @@
     "iconKind": "initials"
   },
   {
-    "id": "veterans-united",
-    "name": "VA Loan Specialists",
-    "org": "Veterans United Home Loans",
-    "tier": "network",
-    "category": "lender",
-    "tags": [
-      "VA Loans",
-      "$0 Down",
-      "A+ BBB Rating"
-    ],
-    "phone": null,
-    "email": null,
-    "blurb": "#1 VA lender in the country. Specializes exclusively in VA loans with dedicated loan teams who understand military timelines, BAH-based purchasing, and PCS deadlines. Free credit consulting included.",
-    "logoUrl": null,
-    "photoUrl": null,
-    "active": true,
-    "displayOrder": 3,
-    "badgeLabel": "Lender",
-    "trustedLabel": "250,000+ Five-Star Reviews",
-    "websiteUrl": "https://www.veteransunited.com",
-    "ctaLabel": "Learn More →",
-    "iconKind": "dollar"
-  },
-  {
     "id": "wood-consulting",
     "name": "Home Services",
     "org": "Wood Consulting LLC",
