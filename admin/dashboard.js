@@ -325,16 +325,31 @@
     document.addEventListener('keydown', onKey);
 
     backdrop.innerHTML =
-      '<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">' +
+      '<div class="modal modal-with-preview" role="dialog" aria-modal="true" aria-labelledby="modalTitle">' +
         '<div class="modal-header">' +
           '<div class="modal-title" id="modalTitle">' + escapeHtml(mode === 'add' ? 'Add Partner' : 'Edit Partner') + '</div>' +
           '<button type="button" class="modal-close" aria-label="Close">&times;</button>' +
         '</div>' +
-        '<form class="modal-body" id="partnerForm" novalidate>' +
-          '<div class="field-error-banner" id="formErrorBanner"></div>' +
-          buildBasicHtml(partner, slugLocked, mode) +
-          buildAdvancedHtml(partner, advancedHasContent) +
-        '</form>' +
+        '<div class="modal-body modal-body-split">' +
+          '<form class="form-pane" id="partnerForm" novalidate>' +
+            '<div class="field-error-banner" id="formErrorBanner"></div>' +
+            buildBasicHtml(partner, slugLocked, mode) +
+            buildAdvancedHtml(partner, advancedHasContent) +
+          '</form>' +
+          '<aside class="preview-pane" aria-live="polite" aria-label="Live partner card preview">' +
+            '<div class="preview-header">' +
+              '<span class="preview-label">Live preview</span>' +
+              '<div class="preview-width-toggle" role="tablist" aria-label="Preview width">' +
+                '<button type="button" role="tab" data-width="mobile"  aria-selected="false">Mobile</button>' +
+                '<button type="button" role="tab" data-width="tablet"  aria-selected="false">Tablet</button>' +
+                '<button type="button" role="tab" data-width="desktop" aria-selected="true">Desktop</button>' +
+              '</div>' +
+            '</div>' +
+            '<div class="preview-canvas">' +
+              '<div class="preview-card-wrap" id="previewCardWrap" data-preview-width="desktop"></div>' +
+            '</div>' +
+          '</aside>' +
+        '</div>' +
         '<div class="modal-footer">' +
           '<button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>' +
           '<button type="submit" class="btn-primary" id="saveBtn" form="partnerForm">Save Partner</button>' +
@@ -579,7 +594,7 @@
       ? window.createImageUploader({
           targetDir: 'images/partners',
           currentUrl: logoUrlState,
-          onChange: function(url) { logoUrlState = url || null; },
+          onChange: function(url) { logoUrlState = url || null; schedulePreviewUpdate(); },
           onBusyChange: function(busy) { imageBusy.logo = busy; refreshSaveDisabled(); }
         })
       : null;
@@ -587,7 +602,7 @@
       ? window.createImageUploader({
           targetDir: 'images/partners',
           currentUrl: photoUrlState,
-          onChange: function(url) { photoUrlState = url || null; },
+          onChange: function(url) { photoUrlState = url || null; schedulePreviewUpdate(); },
           onBusyChange: function(busy) { imageBusy.photo = busy; refreshSaveDisabled(); }
         })
       : null;
@@ -726,6 +741,80 @@
       }
       handleSubmit();
     });
+
+    // ===== Live preview (Phase 5a) =====
+    // Debounced re-render on every form change. Uses the SHARED renderer at
+    // window.renderPartnerCard, which is the same function the public Network
+    // page uses. Pixel parity is automatic — change the renderer once and
+    // both surfaces follow.
+    var previewWrap = backdrop.querySelector('#previewCardWrap');
+    var previewTimer = null;
+    var currentPreviewWidth = 'desktop';
+
+    function collectForPreview() {
+      try { return collect(); } catch (e) { return null; }
+    }
+
+    function buildEmptyState() {
+      return '<div class="preview-empty">' +
+        '<strong>Live preview</strong>' +
+        'Start filling the form to see your card preview.' +
+        '</div>';
+    }
+
+    function renderPreviewNow() {
+      if (!previewWrap || typeof window.renderPartnerCard !== 'function') return;
+      var state = collectForPreview();
+      if (!state || (!state.name && !state.org && !state.blurb)) {
+        previewWrap.innerHTML = buildEmptyState();
+        previewWrap.classList.remove('inactive');
+        return;
+      }
+      // Defensive normalization: renderer expects sane defaults
+      if (!state.name) state.name = '(unnamed)';
+      if (!state.org) state.org = '';
+      if (!state.tier) state.tier = 'network';
+      if (!state.category) state.category = 'other';
+      previewWrap.innerHTML = window.renderPartnerCard(state);
+      previewWrap.classList.toggle('inactive', state.active === false);
+    }
+
+    function schedulePreviewUpdate() {
+      if (!previewWrap) return;
+      if (previewTimer) clearTimeout(previewTimer);
+      previewTimer = setTimeout(renderPreviewNow, 100);
+    }
+
+    // Delegate input/change on the form pane — covers every input, select, textarea.
+    form.addEventListener('input', schedulePreviewUpdate);
+    form.addEventListener('change', schedulePreviewUpdate);
+
+    // Chip changes (tags) — chipWrap mutates innerHTML directly; observe it.
+    if (chipWrap && typeof MutationObserver !== 'undefined') {
+      new MutationObserver(schedulePreviewUpdate).observe(chipWrap, { childList: true, subtree: true });
+    }
+    // Reviews repeater — same pattern.
+    if (reviewsList && typeof MutationObserver !== 'undefined') {
+      new MutationObserver(schedulePreviewUpdate).observe(reviewsList, { childList: true, subtree: true });
+    }
+
+    // Width toggle pills
+    var widthToggle = backdrop.querySelector('.preview-width-toggle');
+    if (widthToggle) {
+      widthToggle.addEventListener('click', function(e) {
+        var btn = e.target.closest('button[data-width]');
+        if (!btn) return;
+        currentPreviewWidth = btn.getAttribute('data-width');
+        $all('button[data-width]', widthToggle).forEach(function(b) {
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        if (previewWrap) previewWrap.setAttribute('data-preview-width', currentPreviewWidth);
+      });
+    }
+
+    // Initial render — Edit mode shows existing partner immediately;
+    // Add mode shows the empty-state placeholder.
+    renderPreviewNow();
 
     function showFormError(msg, fieldId) {
       errorBanner.textContent = msg;
