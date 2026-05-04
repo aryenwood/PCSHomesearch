@@ -127,5 +127,22 @@
     "ctaHref": "pcshomes-contact.html#partner-inquiry",
     "iconKind": "plus",
     "iconAccent": "blue-muted"
+  },
+  {
+    "id": "delete-me",
+    "name": "DELETE ME",
+    "org": "Test",
+    "tier": "network",
+    "category": "services",
+    "tags": [
+      "Homes"
+    ],
+    "phone": "TEST",
+    "email": "123@123.com",
+    "blurb": "This is a testt partner for the site",
+    "logoUrl": "/images/partners/screenshot-2026-04-23-at-12-18-19-pm.jpg",
+    "photoUrl": "/images/partners/67046497-7ed1-4167-b8b1-6121064fda09.jpg",
+    "active": true,
+    "displayOrder": 8
   }
 ]
