@@ -79,29 +79,5 @@
     "ctaLabel": "Call · (315) 221-4857",
     "iconKind": "wrench",
     "iconAccent": "blue"
-  },
-  {
-    "id": "home-services-coming-soon",
-    "name": "Home Services",
-    "org": "Coming Soon",
-    "tier": "network",
-    "category": "other",
-    "tags": [
-      "Vetting in Progress"
-    ],
-    "phone": null,
-    "email": null,
-    "blurb": "Know a trusted home services provider near Fort Drum? We're vetting partners now — snow removal, cleaning, landscaping, HVAC, and more.",
-    "logoUrl": null,
-    "photoUrl": null,
-    "active": true,
-    "displayOrder": 7,
-    "badgeLabel": "Home Services",
-    "badgeKind": "services",
-    "isPlaceholder": true,
-    "ctaLabel": "Refer a Partner",
-    "ctaHref": "pcshomes-contact.html#partner-inquiry",
-    "iconKind": "plus",
-    "iconAccent": "blue-muted"
   }
 ]
