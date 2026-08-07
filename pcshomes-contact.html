@@ -6,11 +6,16 @@
   <title>Contact PCSHomes | Fort Drum Military Relocation</title>
   <meta name="description" content="Get connected with trusted real estate agents, VA lenders, inspectors, and home service providers serving Fort Drum military families.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://pcshomes.com/contact">
+  <link rel="canonical" href="https://pcshomes.com/pcshomes-contact.html">
   <meta property="og:title" content="Contact PCSHomes | Fort Drum Military Relocation">
   <meta property="og:description" content="Get connected with trusted real estate agents, VA lenders, inspectors, and home service providers serving Fort Drum military families.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pcshomes.com/contact">
+  <meta property="og:url" content="https://pcshomes.com/pcshomes-contact.html">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
@@ -293,7 +298,7 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html" class="active">Contact</a></li>
   </ul>
-  <a href="pcshomes-contact.html" class="nav-cta-link">Get Started</a>
+  <a href="#contactForm" class="nav-cta-link">Get Started</a>
 </nav>
 
 <!-- HERO -->
@@ -329,7 +334,7 @@
           <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)">
             <input type="hidden" name="form-name" value="pcshomes-contact"/>
             <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
-            <input type="hidden" name="need-type" id="needTypeInput" value=""/>
+            <input type="hidden" name="need-type" id="needTypeInput" value="general"/>
 
             <!-- INQUIRY TYPE -->
             <div style="margin-bottom:24px;">
@@ -355,7 +360,7 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                   General PCS Question
                 </button>
-                <button type="button" class="inquiry-type" data-type="Military Spouse / Family" onclick="selectType(this)">
+                <button type="button" class="inquiry-type" data-type="family-support" onclick="selectType(this)">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
                   Family Support
                 </button>
@@ -423,7 +428,8 @@
               </div>
 
               <button type="submit" class="submit-btn">Connect Me with an Expert &rarr;</button>
-              <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">Backed by a 5.0&#9733; network — 120+ verified reviews across our partners.</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
               <div id="formError" style="display:none;"></div>
             </div>
           </form>
@@ -529,11 +535,11 @@
     </div>
     <div class="footer-links">
       <a href="index.html">Home</a>
-      <a href="pcshomes-fortdrum.html">Resources</a>
+      <a href="pcshomes-fortdrum.html">Fort Drum Guide</a>
       <a href="pcshomes-discover.html">Discover</a>
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
-      <a href="tel:3152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
+      <a href="tel:+13152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
     </div>
     <!-- Social links: add when accounts are created -->
   </div>
@@ -639,6 +645,8 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     var selectedType = document.querySelector('.inquiry-type.selected');
     if (selectedType) {
       formData.set('need-type', selectedType.dataset.type);
+    } else if (!formData.get('need-type')) {
+      formData.set('need-type', 'general');
     }
     var errorEl = document.getElementById('formError');
     errorEl.style.display = 'none';
@@ -652,7 +660,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       document.getElementById('contactForm').style.display = 'none';
       document.getElementById('successState').style.display = 'block';
     }).catch(function() {
-      errorEl.innerHTML = '<div class="form-error">Something went wrong. Please try again in a moment.</div>';
+      errorEl.innerHTML = '<div class="form-error">Something went wrong — please try again, or call/text <a href="tel:+13152214857" style="color:inherit;font-weight:600;">(315) 221-4857</a>.</div>';
       errorEl.style.display = 'block';
       setTimeout(function() { errorEl.style.display = 'none'; }, 6000);
     });

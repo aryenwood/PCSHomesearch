@@ -6,11 +6,17 @@
   <title>Discover the North Country | PCSHomes Fort Drum</title>
   <meta name="description" content="Explore the best of the North Country — outdoor adventures, family activities, weekend trips, and local gems near Fort Drum NY.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://pcshomes.com/discover">
+  <link rel="canonical" href="https://pcshomes.com/pcshomes-discover.html">
   <meta property="og:title" content="Discover the North Country | PCSHomes Fort Drum">
   <meta property="og:description" content="Explore the best of the North Country — outdoor adventures, family activities, weekend trips, and local gems near Fort Drum NY.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pcshomes.com/discover">
+  <meta property="og:url" content="https://pcshomes.com/pcshomes-discover.html">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
@@ -314,7 +320,7 @@
 <section class="familykids-section" id="family-kids">
   <div class="inner">
     <div class="section-label" style="color:var(--gold);">Family &amp; Kids</div>
-    <div class="section-title" style="color:var(--navy);">Honest answer: is this a good place to raise kids?</div>
+    <h2 class="section-title" style="color:var(--navy);">Honest answer: is this a good place to raise kids?</h2>
     <div class="section-sub" style="color:var(--gray);">Yes. The military community is tight, the outdoor access is unreal, and your kids will grow up tougher than most. Here's what families actually do here.</div>
     <div class="familykids-grid">
 
@@ -368,7 +374,7 @@
 <section class="outdoor-section" id="outdoors">
   <div class="inner">
     <div class="section-label">Get Outside</div>
-    <div class="section-title">This is why people secretly love getting stationed here</div>
+    <h2 class="section-title">This is why people secretly love getting stationed here</h2>
     <div class="section-sub">Nobody asks for Fort Drum. But the families who lean into the outdoors? They end up wanting to come back.</div>
     <div class="adventure-grid">
 
@@ -389,21 +395,6 @@
 
       <div class="adventure-card">
         <div class="adventure-img">
-          <img src="images/thompson-park.jpg" alt="Thompson Park, Watertown NY" loading="lazy"/>
-          <div class="adventure-img-overlay"></div>
-          <div class="adventure-img-title">Thompson Park</div>
-        </div>
-        <div class="adventure-body">
-          <p>Watertown's crown jewel — 435 acres of trails, a zoo, public pool, playgrounds, and the best views of the city. Military families' go-to park.</p>
-          <div class="location-pill">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            In Watertown
-          </div>
-        </div>
-      </div>
-
-      <div class="adventure-card">
-        <div class="adventure-img">
           <img src="images/north-country-winter.jpg" alt="Tug Hill Plateau" loading="lazy"/>
           <div class="adventure-img-overlay"></div>
           <div class="adventure-img-title">Tug Hill Plateau</div>
@@ -417,7 +408,7 @@
         </div>
       </div>
 
-      <div class="adventure-card" style="grid-column: 2;">
+      <div class="adventure-card">
         <div class="adventure-img">
           <img src="images/sackets-harbor.webp" alt="Lake Ontario" loading="lazy"/>
           <div class="adventure-img-overlay"></div>
@@ -440,19 +431,13 @@
 <section class="family-section" id="day-trips">
   <div class="inner">
     <div class="section-label">Day Trips</div>
-    <div class="section-title" style="color:var(--navy);">Where families actually go on weekends</div>
+    <h2 class="section-title" style="color:var(--navy);">Where families actually go on weekends</h2>
     <div class="family-grid">
 
       <div class="family-card">
         <div class="family-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88"/></svg></div>
         <h3>Sackets Harbor</h3>
         <p>Historic village on Lake Ontario. Battlefield tours, breweries, galleries, and the annual Can-Am Festival.</p>
-      </div>
-
-      <div class="family-card">
-        <div class="family-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-        <h3>Fort Drum MWR</h3>
-        <p>Family pools, youth sports, bowling, arts &amp; crafts, and seasonal kid events — all on post. Whiteface Mountain is worth the drive for a ski weekend — about 2.5 hours from post.</p>
       </div>
 
       <div class="family-card">
@@ -475,7 +460,7 @@
 <section class="weekend-section" id="weekends">
   <div class="inner">
     <div class="section-label">Weekend Escapes</div>
-    <div class="section-title">Two international cities within 2.5 hours</div>
+    <h2 class="section-title">Two international cities within 2.5 hours</h2>
     <div class="weekend-grid">
 
       <div class="weekend-card">
@@ -508,13 +493,22 @@
         </div>
       </div>
 
+      <div class="weekend-card">
+        <span class="weekend-card-flag">&#127482;&#127480;</span>
+        <h3>Whiteface Mountain</h3>
+        <p>Whiteface Mountain is worth the drive for a ski weekend — about 2.5 hours from post, in the heart of the Adirondacks near Lake Placid.</p>
+        <div class="drive-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          2.5 hr drive
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- GROCERY STORE MAP -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
 <section style="background:#0a1220;padding:88px 48px;" id="groceries">
   <div class="inner">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
@@ -540,6 +534,7 @@
             <div id="gpName" style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;line-height:1.25;"></div>
             <div id="gpAddress" style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.5;"></div>
             <div id="gpNotes" style="font-size:11px;color:var(--gold);margin-top:6px;font-weight:600;"></div>
+            <div id="gpLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"></div>
           </div>
           <button onclick="document.getElementById('groceryPanel').style.display='none'" style="background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.65);cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;line-height:1;flex-shrink:0;margin-left:12px;">×</button>
         </div>
@@ -556,7 +551,7 @@
       </div>
       <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#F59E5B;margin-bottom:6px;">Food &amp; Dining</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">Garland City Beer Works, Chatterbox Diner, Pete's Pizza, Sacketts Harbor Brewing. Growing food scene — not just chains.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">Garland City Beer Works, Chatterbox Diner, Pete's Pizza, Sackets Harbor Brewing. Growing food scene — not just chains.</div>
       </div>
       <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#A78BFA;margin-bottom:6px;">Storage</div>
@@ -567,6 +562,12 @@
 </section>
 <script>
 (function(){
+  function showMapError(){
+    document.getElementById('groceryMap').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;">Couldn\'t load the map — refresh or call us at <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;font-weight:600;">&nbsp;(315) 221-4857</a></div>';
+  }
+
+  function initMap(){
+  if (typeof L === 'undefined') { showMapError(); return; }
   var map = L.map('groceryMap', { center:[44.00,-75.78], zoom:10, scrollWheelZoom:false });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19
@@ -600,12 +601,29 @@
         document.getElementById('gpName').textContent = v.name;
         document.getElementById('gpAddress').textContent = v.address;
         document.getElementById('gpNotes').textContent = v.description || DEFAULT_NOTES[v.category] || '';
+        var linkStyle = 'display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--gold);text-decoration:none;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:5px 12px;border-radius:100px;';
+        var linksHtml = '';
+        if (v.phone) {
+          var telDigits = String(v.phone).replace(/\D/g, '');
+          if (telDigits.length === 10) telDigits = '1' + telDigits;
+          linksHtml += '<a href="tel:+' + telDigits + '" style="' + linkStyle + '">Call ' + v.phone + '</a>';
+        }
+        linksHtml += '<a href="https://www.google.com/maps/dir/?api=1&destination=' + v.lat + ',' + v.lng + '" target="_blank" rel="noopener" style="' + linkStyle + '">Directions</a>';
+        document.getElementById('gpLinks').innerHTML = linksHtml;
         document.getElementById('groceryPanel').style.display = 'block';
       });
     });
   }).catch(function(err){
     console.error('Failed to load map data:', err);
+    showMapError();
   });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
 })();
 </script>
 
@@ -613,7 +631,7 @@
 <section class="gems-section" id="gems">
   <div class="inner">
     <div class="section-label">Insider Picks</div>
-    <div class="section-title">The spots you won't find on TripAdvisor</div>
+    <h2 class="section-title">The spots you won't find on TripAdvisor</h2>
     <div class="gems-grid">
 
       <div class="gem-card">
@@ -627,7 +645,7 @@
       <div class="gem-card">
         <div class="gem-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
         <div>
-          <h3>Sacketts Harbor Brewing</h3>
+          <h3>Sackets Harbor Brewing</h3>
           <p>Lake Ontario views, outdoor seating, and solid beer. Perfect summer day trip with the family.</p>
         </div>
       </div>
@@ -681,13 +699,13 @@
       </select>
       <textarea name="details" placeholder="What makes it worth checking out?"></textarea>
       <button type="submit" class="suggest-submit">Submit Suggestion</button>
-      <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
     </form>
   </div>
 </section>
 
 <div style="text-align:center;padding:24px 18px 32px;">
-  <span style="font-size:13px;color:rgba(255,255,255,0.35);">Questions about life in the North Country? Call or text PCSHomes at <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a> — we're happy to help.</span>
+  <span style="font-size:13px;color:rgba(255,255,255,0.35);">Questions about life in the North Country? Call or text PCSHomes at <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a> — we're happy to help.</span>
 </div>
 
 <!-- FOOTER -->
@@ -703,7 +721,7 @@
       <a href="pcshomes-discover.html">Discover</a>
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
-      <a href="tel:3152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
+      <a href="tel:+13152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
     </div>
     <!-- Social links: add when accounts are created -->
   </div>

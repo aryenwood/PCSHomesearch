@@ -10,9 +10,9 @@ const { requireAdmin } = require('./_lib/auth');
 const { fetchFileFromRepo, commitFileToRepo, getEnv } = require('./_lib/github');
 
 const MAX_DECODED_BYTES = 5 * 1024 * 1024; // 5 MB
-const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp', 'image/svg+xml'];
+const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp'];
 const ALLOWED_DIRS  = ['images/partners', 'images/vendors'];
-const FILENAME_RE   = /^[a-z0-9][a-z0-9-]*\.(png|jpe?g|webp|svg)$/i;
+const FILENAME_RE   = /^[a-z0-9][a-z0-9-]*\.(png|jpe?g|webp)$/i;
 
 function jsonResponse(status, body) {
   return {
@@ -30,7 +30,7 @@ function validateInput(body) {
     return 'filename must not contain path components';
   }
   if (!FILENAME_RE.test(body.filename)) {
-    return 'filename must be slugified (a-z, 0-9, -) with extension .png|.jpg|.jpeg|.webp|.svg';
+    return 'filename must be slugified (a-z, 0-9, -) with extension .png|.jpg|.jpeg|.webp';
   }
 
   if (typeof body.contentType !== 'string' || ALLOWED_TYPES.indexOf(body.contentType) === -1) {

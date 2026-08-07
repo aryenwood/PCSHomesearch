@@ -16,12 +16,17 @@
     "email": null,
     "blurb": "Watertown native with hundreds of military family transactions. #1 agent in Jefferson & Lewis County for most homes sold and volume — 4 years running. Specializes in VA loans, PCS-timeline closings, remote showings, and buy-to-rent investment strategies.",
     "logoUrl": null,
-    "photoUrl": "joe-headshot.jpg",
+    "photoUrl": "/images/joe-headshot.jpg",
     "active": true,
     "displayOrder": 1,
     "subtitle": "North Star Real Estate · Watertown, NY",
     "badgeLabel": "Featured Agent",
     "trustedLabel": "120+ Five-Star Reviews",
+    "platformBadges": [
+      "66 five-star on Zillow",
+      "54 five-star on Facebook"
+    ],
+    "reviewsLinkLabel": "Read all 66 reviews on Zillow →",
     "reviewsUrl": "https://www.zillow.com/profile/joe8963",
     "reviews": [
       {
@@ -49,7 +54,7 @@
     "blurb": "Experienced agent serving the Fort Drum military community. Details coming soon.",
     "logoUrl": null,
     "photoUrl": null,
-    "active": true,
+    "active": false,
     "displayOrder": 2,
     "badgeLabel": "Agent",
     "trustedLabel": "PCSHomes Trusted",

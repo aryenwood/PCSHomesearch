@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /docs/
+
+Sitemap: https://pcshomes.com/sitemap.xml

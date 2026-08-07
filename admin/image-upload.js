@@ -44,15 +44,6 @@
     });
   }
 
-  function fileToText(file) {
-    return new Promise(function(resolve, reject) {
-      var r = new FileReader();
-      r.onload  = function() { resolve(r.result); };
-      r.onerror = function() { reject(new Error('Could not read file')); };
-      r.readAsText(file);
-    });
-  }
-
   function loadImage(dataUrl) {
     return new Promise(function(resolve, reject) {
       var img = new Image();
@@ -69,16 +60,8 @@
     var isSvg = file.type === 'image/svg+xml' || ext === 'svg';
 
     if (isSvg) {
-      return fileToText(file).then(function(text) {
-        // Encode UTF-8 → base64
-        var utf8 = unescape(encodeURIComponent(text));
-        var base64 = btoa(utf8);
-        return {
-          filename: slugifyFilename(file.name).replace(/\.[^.]+$/, '') + '.svg',
-          contentType: 'image/svg+xml',
-          contentBase64: base64
-        };
-      });
+      // SVG uploads are disabled — SVGs can carry scripts and are served same-origin.
+      return Promise.reject(new Error('SVG files are not supported. Use PNG, JPEG, or WebP.'));
     }
 
     return fileToDataUrl(file).then(loadImage).then(function(img) {
@@ -141,7 +124,7 @@
         '<div class="iu-controls">' +
           '<button type="button" class="iu-upload-btn">Upload image</button>' +
           '<button type="button" class="iu-remove-btn"' + (currentUrl ? '' : ' style="display:none;"') + '>Remove</button>' +
-          '<input type="file" class="iu-file" accept="image/png,image/jpeg,image/webp,image/svg+xml" style="display:none;" />' +
+          '<input type="file" class="iu-file" accept="image/png,image/jpeg,image/webp" style="display:none;" />' +
         '</div>' +
       '</div>' +
       '<input type="text" class="iu-url" placeholder="Or paste an external URL" value="' + escapeAttr(currentUrl) + '" />' +
@@ -210,9 +193,9 @@
         setStatus('error', 'File too large (' + Math.round(file.size / (1024*1024)) + ' MB > 10 MB max).');
         return;
       }
-      var ALLOWED = ['image/png', 'image/jpeg', 'image/webp', 'image/svg+xml'];
+      var ALLOWED = ['image/png', 'image/jpeg', 'image/webp'];
       if (file.type && ALLOWED.indexOf(file.type) === -1) {
-        setStatus('error', 'Unsupported format: ' + file.type + '. Use PNG, JPEG, WebP, or SVG.');
+        setStatus('error', 'Unsupported format: ' + file.type + '. Use PNG, JPEG, or WebP.');
         return;
       }
 

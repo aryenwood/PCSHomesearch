@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-  <title>PCSHomes Fort Drum | VA Home Loans & Military Relocation Specialist</title>
+  <title>Fort Drum PCS Resource | VA Home Buying Help & Vetted Local Experts | PCSHomes</title>
   <meta name="description" content="PCSing to Fort Drum? Free tools, VA home resources, and a vetted network of military-focused agents and lenders — built for the 10th Mountain Division community.">
   <meta name="keywords" content="Fort Drum homes for sale, VA loan homes Fort Drum, PCS to Fort Drum, military housing Watertown NY, 10th Mountain Division housing, VA approved homes Fort Drum, military relocation Fort Drum NY">
   <meta name="author" content="PCSHomes">
@@ -11,11 +11,16 @@
   <link rel="canonical" href="https://pcshomes.com">
   <link rel="prefetch" href="pcshomes-fortdrum.html">
   <link rel="prefetch" href="pcshomes-discover.html">
-  <meta property="og:title" content="PCSHomes Fort Drum | VA Homes & Military Relocation">
-  <meta property="og:description" content="PCSing to Fort Drum? Find VA-approved homes and get expert guidance from a military relocation specialist. Serving the 10th Mountain Division.">
+  <meta property="og:title" content="Fort Drum PCS Resource | Vetted Local Experts | PCSHomes">
+  <meta property="og:description" content="PCSing to Fort Drum? Free tools, honest local guides, and a vetted network of military-focused agents, lenders, and inspectors. Serving the 10th Mountain Division.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com">
   <meta property="og:site_name" content="PCSHomes Fort Drum">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
@@ -44,7 +49,23 @@
     .nav-links a:hover { color: var(--gold); }
     .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
     .hero { min-height: 100vh; background: var(--navy); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 110%, rgba(201,168,76,0.1) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 15% 15%, rgba(45,74,45,0.3) 0%, transparent 60%); }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url('images/fort-drum-gate.jpg') center 35%/cover no-repeat; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,29,53,0.84) 0%, rgba(15,29,53,0.64) 45%, rgba(15,29,53,0.94) 100%); }
+    .hero > * { position: relative; z-index: 2; }
+    .hero-frame { position: absolute; inset: 22px; border: 1px solid rgba(201,168,76,0.35); pointer-events: none; z-index: 1; }
+    .hero-eyebrow-rule { display: inline-flex; align-items: center; gap: 12px; color: var(--gold-light); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 26px; animation: fadeUp 0.5s ease both; }
+    .hero-eyebrow-rule::before, .hero-eyebrow-rule::after { content: ''; width: 36px; height: 1px; background: rgba(201,168,76,0.5); }
+    .hero-trust { margin-top: 56px; display: flex; justify-content: center; flex-wrap: wrap; border-top: 1px solid rgba(201,168,76,0.25); animation: fadeUp 0.5s 0.4s ease both; }
+    .hero-trust > div { padding: 18px 32px; display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,0.8); }
+    .hero-trust > div + div { border-left: 1px solid rgba(201,168,76,0.18); }
+    .hero-trust b { color: var(--gold-light); font-weight: 700; }
+    .hero-trust .stars { color: var(--gold); letter-spacing: 2px; font-size: 13px; }
+    @media (max-width: 768px) {
+      .hero-frame { inset: 12px; }
+      .hero-trust { flex-direction: column; align-items: center; gap: 0; }
+      .hero-trust > div + div { border-left: none; border-top: 1px solid rgba(201,168,76,0.12); }
+      .hero-trust > div { padding: 12px 16px; }
+    }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: var(--gold-light); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px; border-radius: 100px; margin-bottom: 28px; position: relative; animation: fadeUp 0.5s ease both; }
     .hero h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(38px, 6.5vw, 72px); font-weight: 700; line-height: 1.1; color: var(--white); width: 100%; max-width: 760px; position: relative; animation: fadeUp 0.5s 0.1s ease both; }
     .hero h1 em { font-style: italic; color: var(--gold); }
@@ -437,7 +458,6 @@
       #family-image-strip img:first-child { display:block !important; width: 100% !important; -webkit-mask-image: none !important; mask-image: none !important; }
       #base-guide-image { height: 200px !important; }
     }
-    #family-image-strip > img:first-child { display: none; }
     /* MOBILE TAB BAR */
     .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0F1D35;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
     .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:10px;font-weight:600;padding:4px 12px; }
@@ -495,11 +515,14 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
     "name": "PCSHomes",
     "alternateName": "PCSHomes Fort Drum",
     "description": "Community resource platform and vetted vendor network for military families PCSing to Fort Drum and the 10th Mountain Division",
     "url": "https://pcshomes.com",
+    "telephone": "+13152214857",
+    "image": "https://pcshomes.com/images/og-card.jpg",
+    "priceRange": "Free",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Watertown",
@@ -532,93 +555,76 @@
 
 
 <!-- HERO -->
-<section class="hero" style="min-height:auto;padding:140px 24px 80px;">
-  <div class="hero-eyebrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg> 10th Mountain Division · Fort Drum, NY</div>
+<section class="hero" style="min-height:92vh;padding:140px 24px 70px;">
+  <div class="hero-frame"></div>
+  <div class="hero-eyebrow-rule">10th Mountain Division · Fort Drum, NY</div>
   <h1>We handle the transition.<br/>You handle <em>the mission.</em></h1>
-  <p class="hero-sub" style="max-width:640px;">We exist to stand beside every military family during one of life's most challenging transitions — the move to a new duty station. By building trusted bridges between service members and vetted local experts in housing, finance, education, employment, and family life, we hold every partner to a standard of integrity, transparency, and respect for those who serve. You focus on protecting our freedom. We focus on protecting your peace of mind during your move.</p>
-  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;position:relative;">
+  <p class="hero-sub" style="max-width:560px;">Vetted local experts for your PCS to Fort Drum — agents, VA lenders, and inspectors who work with military families every day. Free, always.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px;">
     <a href="pcshomes-contact.html" class="btn-primary" style="text-decoration:none;font-size:15px;padding:16px 36px;display:inline-block;">Get Matched with an Expert →</a>
-    <a href="pcshomes-fortdrum.html" class="btn-outline" style="text-decoration:none;font-size:15px;padding:16px 36px;display:inline-block;">Explore Resources</a>
+    <a href="pcshomes-fortdrum.html" class="btn-outline" style="text-decoration:none;font-size:15px;padding:16px 36px;display:inline-block;">Explore the Fort Drum Guide</a>
   </div>
-  <div style="margin-top:20px;position:relative;">
+  <div style="margin-top:20px;">
     <a href="pcshomes-glossary.html" style="font-size:13px;color:rgba(255,255,255,0.55);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,0.3);">New to military life? See our plain-English glossary →</a>
   </div>
-  <div style="margin-top:48px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;position:relative;">
-    <div style="text-align:center;">
-      <div style="font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:var(--gold);">24hrs</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:4px;">Avg response time</div>
-    </div>
-    <div style="text-align:center;">
-      <div style="font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:var(--gold);">120+</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:4px;">Five-star reviews</div>
-    </div>
-    <div style="text-align:center;">
-      <div style="font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:var(--gold);">100%</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:4px;">Military focused</div>
-    </div>
+  <div class="hero-trust">
+    <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Serving 10th Mountain families</div>
+    <div><span class="stars">★★★★★</span> <b>120+ five-star reviews</b>&nbsp;across our network</div>
+    <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> Free for every family</div>
   </div>
 </section>
 
 <!-- FAMILY IMAGE STRIP -->
-<div id="family-image-strip" style="position:relative;width:100%;height:clamp(160px,18vw,260px);overflow:hidden;">
-  <img src="images/Novosel_Soldier%20and%20Spouse_0.jpg" alt="Military couple with American flag"
-       style="position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:38% 80%;">
-  <img src="images/istockphoto-1420097514-612x612.jpg" alt="Military family homecoming"
-       style="position:absolute;left:0;top:0;width:60%;height:100%;object-fit:cover;object-position:center 72%;z-index:2;-webkit-mask-image:linear-gradient(to right,black 55%,transparent 95%);mask-image:linear-gradient(to right,black 55%,transparent 95%);">
-  <img src="images/servicemember-returning-home.jpg" alt="Soldier homecoming hugging child"
-       style="position:absolute;right:0;top:0;width:60%;height:100%;object-fit:cover;object-position:center 35%;z-index:1;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 22%,black 65%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 22%,black 65%,transparent 100%);">
+<div id="family-image-strip" style="position:relative;width:100%;height:clamp(160px,18vw,260px);overflow:hidden;border-top:1px solid rgba(201,168,76,0.35);border-bottom:1px solid rgba(201,168,76,0.35);">
+  <img src="images/Novosel_Soldier%20and%20Spouse_0.jpg" alt="Military couple with American flag" loading="lazy"
+       style="position:absolute;left:0;top:0;width:55%;height:100%;object-fit:cover;object-position:38% 80%;">
+  <img src="images/servicemember-returning-home.jpg" alt="Soldier homecoming hugging child" loading="lazy"
+       style="position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;object-position:center 35%;z-index:1;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 18%);mask-image:linear-gradient(to right,transparent 0%,black 18%);">
 </div>
 
-<!-- FAMILY STORIES -->
+<!-- WHY WE EXIST + VERIFIED REVIEWS -->
 <section style="background:var(--cream);padding:88px 48px;">
   <div class="inner" style="text-align:center;">
-    <div class="section-label">Real PCS Stories</div>
-    <h2 class="section-title" style="margin:12px auto 0;max-width:600px;text-align:center;">Families who trusted PCSHomes with their move to Fort Drum.</h2>
-    <p class="section-sub" style="margin:14px auto 0;text-align:center;max-width:500px;">Every family's PCS is different. Here's how we helped.</p>
+    <div class="section-label">Why We Exist</div>
+    <h2 class="section-title" style="margin:12px auto 0;max-width:640px;text-align:center;">Built for the whole family — not just the orders.</h2>
+    <p class="section-sub" style="margin:14px auto 0;text-align:center;max-width:620px;">For many families, it's the spouse who carries the weight of the move — finding the right school, registering for childcare before the waitlist closes, unpacking a house alone because their partner is already in the field. PCSHomes exists for the service member, the spouse, and the kids. We connect you with vetted local experts who already understand military timelines, VA loans, and the Fort Drum market.</p>
+  </div>
+  <div class="inner" style="text-align:center;margin-top:64px;">
+    <div class="section-label">Verified Reviews</div>
+    <h2 class="section-title" style="margin:12px auto 0;max-width:600px;text-align:center;">What families say about our network.</h2>
+    <p class="section-sub" style="margin:14px auto 0;text-align:center;max-width:500px;">Real reviews of our featured agent, verified on Zillow.</p>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;max-width:1160px;margin-left:auto;margin-right:auto;">
-    <!-- Story 1 -->
-    <div class="animate-on-scroll" style="background:var(--white);border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">E7 Spouse · PCS from Fort Liberty</div>
+    <!-- Review 1 -->
+    <div class="animate-on-scroll" style="background:var(--white);border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">Remote Buyer · Out-of-State PCS</div>
+        <div style="color:var(--gold);font-size:12px;letter-spacing:1px;">★★★★★</div>
       </div>
-      <div style="font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:14px;">"We closed on our house before we even set foot in Watertown."</div>
-      <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;">I was 7 months pregnant, my husband was at JRTC, and I was doing this alone. My agent FaceTimed me through 3 houses. We put an offer in that weekend and closed in 28 days.</p>
-      <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--navy);">$1,180</div><div style="font-size:10px;color:var(--gray);">Monthly mortgage</div></div>
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#2A8A5A;">+$923</div><div style="font-size:10px;color:var(--gray);">BAH leftover/mo</div></div>
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--navy);">28</div><div style="font-size:10px;color:var(--gray);">Days to close</div></div>
-      </div>
-      <div style="margin-top:14px;font-size:11px;color:var(--gray);font-style:italic;">— Sarah R., Evans Mills</div>
+      <p style="font-family:'Libre Baskerville',serif;font-style:italic;font-size:15px;color:var(--navy);line-height:1.7;margin-bottom:16px;flex:1;">"Joe hoofed it out there in the snow to get me a good look at multiple houses, while I kicked my feet up on my back porch enjoying the sunny, 75 degree weather with a beer in my hand. What a guy! Truly selfless."</p>
+      <div style="padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);font-size:11px;color:var(--gray);">Zillow · Verified Review</div>
     </div>
-    <!-- Story 2 -->
-    <div class="animate-on-scroll animate-delay-1" style="background:var(--white);border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">O2 Spouse · First Duty Station</div>
+    <!-- Review 2 -->
+    <div class="animate-on-scroll animate-delay-1" style="background:var(--white);border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">Seller · Watertown, NY</div>
+        <div style="color:var(--gold);font-size:12px;letter-spacing:1px;">★★★★★</div>
       </div>
-      <div style="font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:14px;">"Everyone said just rent. We're glad we didn't listen."</div>
-      <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;">Our agent knew which homes had natural gas vs. propane — that one detail saves us $150/month in winter. When we PCS out, we're keeping the house as a rental.</p>
-      <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--navy);">$1,240</div><div style="font-size:10px;color:var(--gray);">Monthly mortgage</div></div>
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#2A8A5A;">+$650</div><div style="font-size:10px;color:var(--gray);">BAH leftover/mo</div></div>
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--navy);">$1,550</div><div style="font-size:10px;color:var(--gray);">Future rent income</div></div>
-      </div>
-      <div style="margin-top:14px;font-size:11px;color:var(--gray);font-style:italic;">— Emily T., Watertown</div>
+      <p style="font-family:'Libre Baskerville',serif;font-style:italic;font-size:15px;color:var(--navy);line-height:1.7;margin-bottom:16px;flex:1;">"When the snowstorm of the century came through and threatened our final walkthrough and closing, Joe went out and shoveled a path to the front door himself and managed to get someone out to plow the driveway."</p>
+      <div style="padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);font-size:11px;color:var(--gray);">Zillow · Verified Review</div>
     </div>
-    <!-- Story 3 -->
-    <div class="animate-on-scroll animate-delay-2" style="background:var(--white);border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">E6 Solo Spouse · Deployment</div>
+    <!-- Review 3 -->
+    <div class="animate-on-scroll animate-delay-2" style="background:var(--white);border-radius:16px;padding:32px;border:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">Buyer &amp; Investor · Fort Drum</div>
+        <div style="color:var(--gold);font-size:12px;letter-spacing:1px;">★★★★★</div>
       </div>
-      <div style="font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:14px;">"My husband deployed 6 weeks after we got here."</div>
-      <p style="font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;">I found PCSHomes googling at 2am. They connected me to the ACS Lending Closet, a CYSS childcare spot, and eventually a house. The community here is the tightest I've seen at any base.</p>
-      <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--navy);">$1,050</div><div style="font-size:10px;color:var(--gray);">Monthly mortgage</div></div>
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#2A8A5A;">+$843</div><div style="font-size:10px;color:var(--gray);">BAH leftover/mo</div></div>
-        <div><div style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:var(--navy);">8 wks</div><div style="font-size:10px;color:var(--gray);">CYSS waitlist</div></div>
-      </div>
-      <div style="margin-top:14px;font-size:11px;color:var(--gray);font-style:italic;">— Jasmine W., Black River → Evans Mills</div>
+      <p style="font-family:'Libre Baskerville',serif;font-style:italic;font-size:15px;color:var(--navy);line-height:1.7;margin-bottom:16px;flex:1;">"Joe is AMAZING! He's a Watertown area local, he's family oriented and a successful investor. Whatever you're looking for, he can help you find it — your forever home, next investment, or a good home while stationed at Fort Drum."</p>
+      <div style="padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);font-size:11px;color:var(--gray);">Zillow · Verified Review</div>
     </div>
+  </div>
+  <div style="text-align:center;margin-top:28px;">
+    <a href="https://www.zillow.com/profile/joe8963" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;border:1.5px solid rgba(22,45,80,0.2);border-radius:8px;padding:10px 20px;">Read all 66 reviews on Zillow →</a>
   </div>
 </section>
 
@@ -638,7 +644,7 @@
         <div style="padding:24px;flex:1;display:flex;flex-direction:column;">
           <div style="font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:4px;">DP Development & Properties</div>
           <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:16px;flex:1;">High-end rentals at affordable prices — specially built for veterans and active duty families. Quality housing without the premium price tag.</div>
-          <a href="tel:3157674222" style="display:block;text-align:center;background:var(--gold);color:var(--navy);padding:12px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;font-family:'DM Sans',sans-serif;">Call Now · (315) 767-4222</a>
+          <a href="tel:+13157674222" style="display:block;text-align:center;background:var(--gold);color:var(--navy);padding:12px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;font-family:'DM Sans',sans-serif;">Call Now · (315) 767-4222</a>
         </div>
       </div>
       <!-- Card 2: Joseph Murtha -->
@@ -656,7 +662,7 @@
       <!-- Card 3: Wood Consulting -->
       <div style="background:rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);transition:all 0.25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="height:240px;background:#0a1225;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:12px;">
-          <img src="images/wc-brand.png" alt="Wood Consulting" style="width:100%;height:100%;object-fit:contain;"/>
+          <img src="images/wc-brand.webp" alt="Wood Consulting" style="width:100%;height:100%;object-fit:contain;"/>
         </div>
         <div style="padding:24px;flex:1;display:flex;flex-direction:column;">
           <div style="font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:4px;">Wood Consulting</div>
@@ -854,7 +860,7 @@
             <button type="button" class="va-submit-btn" onclick="submitVaLead()">Get My Call →</button>
             <div style="font-size:12px;color:var(--gray);text-align:center;margin-top:14px;line-height:1.6;"><strong style="color:rgba(255,255,255,0.8);">What happens next?</strong> A real person from our Fort Drum network calls you — usually the same day. No spam, no pressure, just a conversation about your move. This service is completely free.</div>
           </form>
-          <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
           <div id="vaLeadSuccess" style="display:none;padding:40px 32px;text-align:center;">
             <div style="margin-bottom:16px;"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
             <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:10px;">You're all set!</div>
@@ -944,7 +950,7 @@
       <a href="pcshomes-discover.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Discover</a>
       <a href="pcshomes-network.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Our Network</a>
       <a href="pcshomes-contact.html" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">Contact</a>
-      <a href="tel:3152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
+      <a href="tel:+13152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
     </div>
     <!-- Social links: add when accounts are created -->
     <div style="margin-top:12px;width:100%;text-align:center;">
@@ -987,7 +993,7 @@
       </div>
       <textarea name="message" placeholder="Tell us about your business and how you serve the military community" rows="3" style="width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#fff;outline:none;resize:vertical;"></textarea>
       <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#C9A84C;color:#162D50;border:none;border-radius:8px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;">Submit Inquiry</button>
-      <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
     </form>
     <div id="partnerSuccess" style="display:none;padding:40px 28px;text-align:center;">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -1002,8 +1008,8 @@ function submitPartnerInquiry(){
   var fd=new FormData(form);
   if(!fd.get('full-name')||!fd.get('business-name')||!fd.get('phone')||!fd.get('email')){alert('Please fill in all required fields.');return;}
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()})
-  .then(function(){form.style.display='none';document.getElementById('partnerSuccess').style.display='block';})
-  .catch(function(){alert('Something went wrong. Please try again.');});
+  .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);form.style.display='none';document.getElementById('partnerSuccess').style.display='block';})
+  .catch(function(){alert('Something went wrong — please try again, or call/text (315) 221-4857.');});
 }
 </script>
 
@@ -1035,7 +1041,8 @@ function submitVaLead() {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(formData).toString()
-  }).then(() => {
+  }).then((r) => {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
     document.getElementById('vaLeadForm').style.display = 'none';
     document.getElementById('vaLeadSuccess').style.display = 'block';
   }).catch(() => {
@@ -1072,8 +1079,8 @@ function selectOffer(type) {
   document.getElementById('popupOptions').style.display = 'none';
   document.getElementById('popupForm').style.display = 'block';
   document.getElementById('popupFormTitle').innerHTML =
-    type === 'homes'   ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Get Your Custom VA Home List' :
-    type === 'guide'   ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> Get the Free Fort Drum PCS Guide' :
+    type === 'homes'   ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Get Matched with a Local Agent' :
+    type === 'lender'  ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Connect with a VA Lender' :
                          '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule a Free Consultation';
   document.getElementById('popupOfferType').value = type;
 }
@@ -1087,7 +1094,8 @@ function submitPopup() {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(formData).toString()
-  }).then(() => {
+  }).then((r) => {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
     document.getElementById('popupForm').style.display = 'none';
     document.getElementById('popupSuccess').style.display = 'block';
     setTimeout(() => closePopup(), 3500);
@@ -1175,8 +1183,8 @@ if (popupEl) {
           </div>
           <div class="popup-option-arrow">›</div>
         </a>
-        <div class="popup-option" onclick="selectOffer('consult')">
-          <div class="popup-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="popup-option" onclick="selectOffer('lender')">
+          <div class="popup-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
           <div>
             <div class="popup-option-title">Connect with a VA Lender</div>
             <div class="popup-option-desc">Get matched with a vetted VA loan specialist — no pressure, no obligation.</div>

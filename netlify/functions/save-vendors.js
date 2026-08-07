@@ -9,6 +9,10 @@ const { fetchJsonFromRepo, commitJsonToRepo, getEnv } = require('./_lib/github')
 const FILE_PATH = 'data/vendors.json';
 const CATEGORIES_PATH = 'data/categories.json';
 
+// Optional link fields must use a safe scheme (or be site-relative) —
+// blocks javascript:, data:, and other script-capable URL vectors.
+const SAFE_URL_RE = /^(https?:\/\/|\/|tel:|mailto:)/i;
+
 function jsonResponse(status, body) {
   return {
     statusCode: status,
@@ -37,6 +41,11 @@ function validateVendor(v, idx, knownCategoryIds) {
     return 'Vendor ' + tag + ' lng must be a number in [-180, 180]';
   }
   if (typeof v.active !== 'boolean') return 'Vendor ' + tag + ' active must be boolean';
+  if (v.website !== undefined && v.website !== null && v.website !== '') {
+    if (typeof v.website !== 'string' || !SAFE_URL_RE.test(v.website)) {
+      return 'Vendor ' + tag + ' website must start with http://, https://, /, tel:, or mailto:';
+    }
+  }
   return null;
 }
 

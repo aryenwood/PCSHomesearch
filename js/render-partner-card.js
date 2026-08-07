@@ -37,6 +37,8 @@
     var inner;
     if (p.photoUrl) {
       inner = '<img src="' + escapeAttr(p.photoUrl) + '" alt="' + escapeAttr(p.name) + '"/>';
+    } else if (p.logoUrl) {
+      inner = '<img src="' + escapeAttr(p.logoUrl) + '" alt="' + escapeAttr(p.org || p.name) + '" style="object-fit:contain;background:#fff;"/>';
     } else if (p.iconKind === 'initials') {
       inner = '<span class="initials">' + escapeHtml(deriveInitials(p.name)) + '</span>';
     } else if (p.iconKind === 'dollar') {
@@ -60,7 +62,7 @@
   function ctaHtml(p) {
     var label = p.ctaLabel || 'Request Info';
     if (p.isPlaceholder) {
-      return '<a class="vendor-cta" href="' + escapeAttr(p.ctaHref || 'pcshomes-contact.html#partner-inquiry') + '" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
+      return '<a class="vendor-cta" href="' + escapeAttr(p.ctaHref || 'pcshomes-network.html#partner-apply') + '" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
     }
     if (p.websiteUrl) {
       return '<a class="vendor-cta" href="' + escapeAttr(p.websiteUrl) + '" target="_blank" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
@@ -71,7 +73,9 @@
     var displayCategory = p.category === 'agent' ? 'Real Estate Agent'
       : p.category === 'lender' ? 'VA Lender'
       : (p.badgeLabel || 'Partner');
-    return '<button class="vendor-cta" onclick="openVendorRequest(' + JSON.stringify(p.name) + ', ' + JSON.stringify(displayCategory) + ')">' + escapeHtml(label) + '</button>';
+    // Request-info buttons carry data attributes; the host page binds one
+    // delegated click listener (inline onclick breaks on names with quotes).
+    return '<button class="vendor-cta" data-request-name="' + escapeAttr(p.name) + '" data-request-category="' + escapeAttr(displayCategory) + '">' + escapeHtml(label) + '</button>';
   }
 
   function badgeKindFor(p) {
@@ -83,10 +87,6 @@
   }
 
   function renderStandard(p) {
-    var phoneCta = '';
-    if (p.phone && (!p.websiteUrl) && (!p.ctaLabel || (p.ctaLabel || '').toLowerCase().indexOf('call') !== 0)) {
-      phoneCta = '';
-    }
     var classes = 'vendor-card' + (p.isPlaceholder ? ' placeholder' : '');
     return '<div class="' + classes + '" data-category="' + escapeAttr(dataCategoryFor(p)) + '">' +
       '<span class="category-badge ' + escapeAttr(badgeKindFor(p)) + '">' + escapeHtml(p.badgeLabel || '') + '</span>' +
@@ -120,13 +120,17 @@
              '</div>';
     }).join('');
 
-    var primaryCta = '<button class="vendor-cta" onclick="openVendorRequest(' + JSON.stringify(p.name) + ', ' + JSON.stringify('Real Estate Agent') + ')" style="flex:1;">Request Info</button>';
+    var primaryCta = '<button class="vendor-cta" data-request-name="' + escapeAttr(p.name) + '" data-request-category="Real Estate Agent" style="flex:1;">Request Info</button>';
     var phoneCta = p.phone
       ? '<a href="tel:' + escapeAttr(p.phone) + '" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-decoration:none;font-family:\'DM Sans\',sans-serif;min-height:44px;">Call/Text</a>'
       : '';
     var reviewsLink = p.reviewsUrl
-      ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:#C9A84C;text-decoration:none;">Read all reviews on Zillow →</a>'
+      ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:#C9A84C;text-decoration:none;">' + escapeHtml(p.reviewsLinkLabel || 'Read all reviews on Zillow →') + '</a>'
       : '';
+    var platformBadges = (p.platformBadges || []).map(function(b) {
+      return '<span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:#E2C57A;">' + escapeHtml(b) + '</span>';
+    }).join('');
+    if (platformBadges) platformBadges = '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">' + platformBadges + '</div>';
 
     return '<div class="vendor-card featured-agent" data-category="' + escapeAttr(dataCategoryFor(p)) + '" style="grid-column:1/-1;background:var(--navy);border:1px solid rgba(201,168,76,0.2);padding:0;overflow:hidden;">' +
       '<div style="display:flex;gap:0;flex-wrap:wrap;">' +
@@ -151,6 +155,7 @@
             '<div style="font-size:13px;font-weight:700;color:#fff;">' + escapeHtml(p.trustedLabel || '') + '</div>' +
             '<div style="color:#C9A84C;font-size:13px;">★★★★★</div>' +
           '</div>' +
+          platformBadges +
           '<div style="display:flex;flex-direction:column;gap:12px;">' + reviews + '</div>' +
           reviewsLink +
         '</div>' +

@@ -8,6 +8,11 @@ const { requireAdmin } = require('./_lib/auth');
 const VALID_TIERS = ['featured', 'network', 'founding'];
 const FILE_PATH = 'data/partners.json';
 
+// Optional link fields must use a safe scheme (or be site-relative) —
+// blocks javascript:, data:, and other script-capable URL vectors.
+const URL_FIELDS = ['websiteUrl', 'reviewsUrl', 'ctaHref', 'logoUrl', 'photoUrl'];
+const SAFE_URL_RE = /^(https?:\/\/|\/|tel:|mailto:)/i;
+
 function jsonResponse(status, body) {
   return {
     statusCode: status,
@@ -28,6 +33,14 @@ function validatePartner(p, idx) {
   if (typeof p.displayOrder !== 'number' || !isFinite(p.displayOrder)) return 'Partner ' + tag + ' displayOrder must be a number';
   if (!Array.isArray(p.tags)) return 'Partner ' + tag + ' tags must be an array';
   if (typeof p.active !== 'boolean') return 'Partner ' + tag + ' active must be boolean';
+  for (let f = 0; f < URL_FIELDS.length; f++) {
+    const field = URL_FIELDS[f];
+    const val = p[field];
+    if (val === undefined || val === null || val === '') continue;
+    if (typeof val !== 'string' || !SAFE_URL_RE.test(val)) {
+      return 'Partner ' + tag + ' ' + field + ' must start with http://, https://, /, tel:, or mailto:';
+    }
+  }
   return null;
 }
 

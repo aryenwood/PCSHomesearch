@@ -68,7 +68,8 @@ netlify/
     _lib/
       auth.js               # Shared sign / verify / requireAdmin
       github.js             # Shared GitHub Contents API helpers (JSON + binary)
-SETUP.md                    # This file
+docs/
+  SETUP.md                  # This file (internal docs — served as 404 publicly via netlify.toml)
 ```
 
 ## Phase 2 testing

@@ -11,6 +11,11 @@
   <meta property="og:description" content="Connect with trusted real estate agents, VA lenders, property inspectors, and home service providers serving the Fort Drum military community.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com/pcshomes-network.html">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <style>
@@ -73,8 +78,8 @@
       background: var(--cream);
     }
     .filter-btn {
-      background: rgba(255,255,255,0.06); color: rgba(0,0,0,0.4);
-      border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
+      background: var(--white); color: #3d4c5c;
+      border: 1px solid rgba(22,45,80,0.18); border-radius: 100px;
       padding: 9px 22px; font-size: 13px; font-weight: 600;
       cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
     }
@@ -397,6 +402,14 @@
 <!-- VENDOR CARDS — rendered from /data/partners.json -->
 <section class="vendor-section">
   <div class="vendor-grid" id="vendorGrid"></div>
+  <div id="vendorEmptyState" style="display:none;max-width:640px;margin:0 auto;background:var(--white);border:1.5px dashed rgba(22,45,80,0.25);border-radius:16px;padding:40px 32px;text-align:center;">
+    <div style="width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <h3 style="font-family:'Libre Baskerville',serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
+    <p style="font-size:13.5px;color:var(--gray);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
+    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:#8A6B1E;padding:11px 22px;border-radius:8px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
+  </div>
 </section>
 
 
@@ -417,7 +430,7 @@
         <input class="modal-input" type="text" name="duty-station" placeholder="Current Duty Station"/>
         <textarea class="modal-input" name="message" placeholder="What do you need help with?"></textarea>
         <button class="modal-submit" type="submit">Send Request</button>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
     <div class="modal-success" id="modalSuccess">
@@ -431,7 +444,7 @@
 </div>
 
 <!-- BECOME A PARTNER -->
-<section class="partner-section">
+<section class="partner-section" id="partner-apply">
   <div class="partner-inner">
     <h2>Are you a Fort Drum area professional?</h2>
     <p class="partner-sub">Join our network of trusted vendors. PCSHomes connects you with military families who need your services.</p>
@@ -453,7 +466,7 @@
         </select>
         <textarea class="partner-input full-width" name="message" placeholder="Tell us about your services..."></textarea>
         <button class="partner-submit full-width" type="submit">Apply to Join Our Network</button>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:3152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
 
@@ -476,11 +489,11 @@
     </div>
     <div class="footer-links">
       <a href="index.html">Home</a>
-      <a href="pcshomes-fortdrum.html">Resources</a>
+      <a href="pcshomes-fortdrum.html">Fort Drum Guide</a>
       <a href="pcshomes-discover.html">Discover</a>
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
-      <a href="tel:3152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
+      <a href="tel:+13152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
     </div>
     <!-- Social links: add when accounts are created -->
   </div>
@@ -565,14 +578,25 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
   function filterVendors(category, btn) {
     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
+    var visibleCount = 0;
     document.querySelectorAll('.vendor-card').forEach(function(card) {
       if (category === 'all' || card.dataset.category === category) {
         card.style.display = 'flex';
+        visibleCount++;
       } else {
         card.style.display = 'none';
       }
     });
+    var empty = document.getElementById('vendorEmptyState');
+    if (empty) empty.style.display = visibleCount === 0 ? 'block' : 'none';
   }
+
+  // Delegated handler for Request Info buttons rendered from partners.json
+  // (cards carry data-request-name / data-request-category attributes)
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest ? e.target.closest('[data-request-name]') : null;
+    if (btn) openVendorRequest(btn.getAttribute('data-request-name'), btn.getAttribute('data-request-category') || 'Partner');
+  });
 
   // Vendor request modal
   function openVendorRequest(name, category) {
@@ -613,15 +637,26 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
-    }).then(function() {
+    }).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       document.getElementById('modalFormWrapper').style.display = 'none';
       document.getElementById('modalSuccess').style.display = 'block';
     }).catch(function() {
-      // Still show success — Netlify may handle differently in dev
-      document.getElementById('modalFormWrapper').style.display = 'none';
-      document.getElementById('modalSuccess').style.display = 'block';
+      showFormError(form, 'Something went wrong — please try again, or call/text (315) 221-4857.');
     });
   });
+
+  // Inline form error helper (used by both forms)
+  function showFormError(form, msg) {
+    var err = form.querySelector('.form-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.className = 'form-error';
+      err.style.cssText = 'margin-top:10px;padding:11px 14px;border-radius:8px;background:rgba(220,80,80,0.12);border:1px solid rgba(220,80,80,0.35);color:#c0392b;font-size:13px;text-align:center;grid-column:1/-1;';
+      form.appendChild(err);
+    }
+    err.textContent = msg;
+  }
 
   // Partner application form — submit via fetch (no page reload)
   document.getElementById('partnerForm').addEventListener('submit', function(e) {
@@ -632,12 +667,12 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
-    }).then(function() {
+    }).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       document.getElementById('partnerFormWrapper').style.display = 'none';
       document.getElementById('partnerSuccess').style.display = 'block';
     }).catch(function() {
-      document.getElementById('partnerFormWrapper').style.display = 'none';
-      document.getElementById('partnerSuccess').style.display = 'block';
+      showFormError(form, 'Something went wrong — please try again, or call/text (315) 221-4857.');
     });
   });
 </script>
