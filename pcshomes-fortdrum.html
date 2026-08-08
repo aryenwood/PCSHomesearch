@@ -474,7 +474,7 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="pcshomes-contact.html#contactForm" class="nav-cta">Call or text us</a>
+  <a href="pcshomes-contact.html#contactForm" class="nav-cta">Get in touch</a>
   <a href="tel:+13152214857" class="nav-cta nav-call-mobile" aria-label="Call PCSHomes">Call</a>
 </nav>
 
@@ -2439,11 +2439,15 @@ if (popupEl) {
   .popup-option-arrow { margin-left:auto;font-size:18px;color:var(--gold);flex-shrink:0; }
   /* Form */
   .popup-form { display:none;flex-direction:column;gap:14px; }
+  .popup-form > * + * { margin-top:14px; } /* JS shows this panel with display:block, so gap alone never applies — margins keep 14px field rhythm */
   .popup-form-title { font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px; }
-  .popup-input { width:100%;border:1.5px solid var(--gray-light);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s; }
-  .popup-input:focus { border-color:var(--navy); }
-  .popup-btn { width:100%;background:var(--navy);color:var(--white);border:none;border-radius:8px;padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:background 0.2s; }
-  .popup-btn:hover { background:var(--gold);color:var(--navy); }
+  .popup-form label { display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px; }
+  .popup-input { width:100%;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:13px 14px;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color 0.15s; }
+  .popup-input:focus { border-color:var(--gold); }
+  .popup-note { font-size:12.5px;color:var(--muted);line-height:1.6; }
+  .popup-note a { color:var(--gold);text-decoration:none;font-weight:600; }
+  .popup-btn { width:100%;background:var(--navy);color:var(--white);border:none;border-radius:100px;padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;min-height:46px;margin-top:18px;transition:background 0.2s; }
+  .popup-btn:hover { background:var(--gold);color:#fff; }
   .popup-back { background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--gray);cursor:pointer;padding:0;margin-top:-4px;text-align:left; }
   .popup-back:hover { color:var(--navy); }
   /* Success */
@@ -2499,11 +2503,16 @@ if (popupEl) {
         <button class="popup-back" onclick="document.getElementById('popupOptions').style.display='flex';document.getElementById('popupForm').style.display='none';">← Back</button>
         <div class="popup-form-title" id="popupFormTitle"></div>
         <input type="hidden" id="popupOfferType" value=""/>
-        <input class="popup-input" type="text" id="popupName" placeholder="Your name"/>
-        <input class="popup-input" type="text" id="popupContact" placeholder="Email or phone number"/>
+        <div>
+          <label for="popupName">Your name <span style="text-transform:none;letter-spacing:0;font-weight:500;">(required)</span></label>
+          <input class="popup-input" type="text" id="popupName" placeholder="Sarah Martin" autocomplete="name"/>
+        </div>
+        <div>
+          <label for="popupContact">Email or phone <span style="text-transform:none;letter-spacing:0;font-weight:500;">(required)</span></label>
+          <input class="popup-input" type="text" id="popupContact" placeholder="you@email.com or (315) 555-0100" autocomplete="on" enterkeyhint="send"/>
+        </div>
+        <div class="popup-note">A real person replies within 24 hours — no spam, ever. Questions now? Call or text <a href="tel:+13152214857">(315) 221-4857</a>.</div>
         <button class="popup-btn" onclick="submitPopup()">Send My Request →</button>
-        <div style="font-size:11px;color:var(--gray);text-align:center;">A PCSHomes partner will respond within 24 hours.</div>
-        <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
       </div>
 
       <!-- Step 3: Success -->

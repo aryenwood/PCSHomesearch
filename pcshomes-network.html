@@ -203,19 +203,24 @@
     }
     .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
     .modal-form { display: flex; flex-direction: column; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .field-label-navy { color: rgba(255,255,255,0.6); }
+    .form-reassure { font-size: 12.5px; color: var(--muted); text-align: center; line-height: 1.5; }
+    .form-reassure-navy { color: rgba(255,255,255,0.6); }
     .modal-input {
-      background: var(--paper); border: 1.5px solid var(--line);
-      border-radius: 10px; padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+      background: #fff; border: 1.5px solid var(--line);
+      border-radius: 10px; padding: 13px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink);
       outline: none; transition: border-color 0.2s;
     }
     .modal-input:focus { border-color: var(--gold); }
-    .modal-input::placeholder { color: var(--muted); }
+    .modal-input::placeholder { color: rgba(43,52,66,0.35); }
     textarea.modal-input { resize: vertical; min-height: 90px; }
     .modal-submit {
       background: var(--navy); color: #fff; border: none; border-radius: 100px;
       padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: all 0.2s; margin-top: 4px;
+      cursor: pointer; transition: all 0.2s; margin-top: 4px; width: 100%; min-height: 46px;
     }
     .modal-submit:hover { background: var(--gold-soft); color: var(--navy); }
     .modal-success { display: none; text-align: center; padding: 24px 0; }
@@ -252,8 +257,8 @@
     .partner-form .full-width { grid-column: 1 / -1; }
     .partner-input {
       background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
-      border-radius: 10px; padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white);
+      border-radius: 10px; padding: 13px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--white);
       outline: none; transition: border-color 0.2s, background 0.2s;
     }
     .partner-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.08); }
@@ -268,7 +273,23 @@
     .partner-submit {
       background: var(--gold-soft); color: var(--navy); border: none; border-radius: 100px;
       padding: 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em;
+      cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em; width: 100%; min-height: 46px;
+    }
+    /* Partner inquiry modal (advertise) inputs — same light-surface spec */
+    .pim-input {
+      width: 100%; background: #fff; border: 1.5px solid var(--line);
+      border-radius: 10px; padding: 13px 14px;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink);
+      outline: none; transition: border-color 0.2s; resize: vertical;
+    }
+    .pim-input:focus { border-color: var(--gold); }
+    .pim-input::placeholder { color: rgba(43,52,66,0.35); }
+    .pim-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 520px) { .pim-row { grid-template-columns: 1fr; } }
+    select.pim-input {
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(43,52,66,0.45)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
     }
     .partner-submit:hover { background: #E5C46E; transform: translateY(-1px); }
     .partner-submit:active { transform: translateY(0); }
@@ -380,7 +401,7 @@
     <li><a href="pcshomes-network.html" class="active">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="pcshomes-contact.html#contactForm" class="nav-cta">Call or text us</a>
+  <a href="pcshomes-contact.html#contactForm" class="nav-cta">Get in touch</a>
   <a href="tel:+13152214857" class="nav-cta nav-call-mobile" aria-label="Call PCSHomes">Call</a>
 </nav>
 
@@ -441,12 +462,25 @@
         <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
         <input type="hidden" name="vendor-name" id="modalVendorName" value=""/>
         <input type="hidden" name="vendor-category" id="modalVendorCategory" value=""/>
-        <input class="modal-input" type="text" name="name" placeholder="Your Name" required/>
-        <input class="modal-input" type="text" name="contact" placeholder="Email or Phone" required/>
-        <input class="modal-input" type="text" name="duty-station" placeholder="Current Duty Station"/>
-        <textarea class="modal-input" name="message" placeholder="What do you need help with?"></textarea>
-        <button class="modal-submit" type="submit">Send Request</button>
-        <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
+        <div class="field">
+          <label class="field-label" for="vrName">Your Name (required)</label>
+          <input class="modal-input" id="vrName" type="text" name="name" placeholder="Jane Smith" required autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="vrContact">Email or Phone (required)</label>
+          <input class="modal-input" id="vrContact" type="text" name="contact" placeholder="you@example.com" required/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="vrDuty">Current Duty Station</label>
+          <input class="modal-input" id="vrDuty" type="text" name="duty-station" placeholder="e.g. Fort Bragg"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="vrMessage">What do you need help with?</label>
+          <textarea class="modal-input" id="vrMessage" name="message" rows="3" enterkeyhint="send" placeholder="e.g. Buying our first home, arriving in June"></textarea>
+        </div>
+        <div class="form-reassure">No spam, no pressure — a PCSHomes team member makes the introduction personally.</div>
+        <button class="modal-submit" type="submit">Send my request</button>
+        <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
     <div class="modal-success" id="modalSuccess">
@@ -470,20 +504,39 @@
       <form class="partner-form" id="partnerForm" name="vendor-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="vendor-application"/>
         <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
-        <input class="partner-input" name="company" placeholder="Company Name" required/>
-        <input class="partner-input" name="contact-name" placeholder="Your Name" required/>
-        <input class="partner-input" name="email" type="email" placeholder="Email" required/>
-        <input class="partner-input" name="phone" type="tel" placeholder="Phone"/>
-        <select class="partner-input partner-select" name="category" required>
-          <option value="">Select Category</option>
-          <option>Real Estate Agent</option>
-          <option>VA Lender</option>
-          <option>Property Inspector</option>
-          <option>Home Services</option>
-        </select>
-        <textarea class="partner-input full-width" name="message" placeholder="Tell us about your services..."></textarea>
+        <div class="field">
+          <label class="field-label field-label-navy" for="paCompany">Company Name (required)</label>
+          <input class="partner-input" id="paCompany" name="company" placeholder="e.g. North Country Realty" required autocomplete="organization"/>
+        </div>
+        <div class="field">
+          <label class="field-label field-label-navy" for="paContactName">Your Name (required)</label>
+          <input class="partner-input" id="paContactName" name="contact-name" placeholder="Jane Smith" required autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label class="field-label field-label-navy" for="paEmail">Email (required)</label>
+          <input class="partner-input" id="paEmail" name="email" type="email" placeholder="you@company.com" required autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label class="field-label field-label-navy" for="paPhone">Phone</label>
+          <input class="partner-input" id="paPhone" name="phone" type="tel" inputmode="tel" placeholder="(315) 000-0000" autocomplete="tel"/>
+        </div>
+        <div class="field">
+          <label class="field-label field-label-navy" for="paCategory">Category (required)</label>
+          <select class="partner-input partner-select" id="paCategory" name="category" required>
+            <option value="">Select a category...</option>
+            <option>Real Estate Agent</option>
+            <option>VA Lender</option>
+            <option>Property Inspector</option>
+            <option>Home Services</option>
+          </select>
+        </div>
+        <div class="field full-width">
+          <label class="field-label field-label-navy" for="paMessage">Tell Us About Your Services</label>
+          <textarea class="partner-input" id="paMessage" name="message" rows="4" enterkeyhint="send" placeholder="e.g. 10 years helping Fort Drum families buy and sell"></textarea>
+        </div>
+        <div class="form-reassure form-reassure-navy full-width">We review every application personally — no fees, no pay-for-placement.</div>
         <button class="partner-submit full-width" type="submit">Apply to Join Our Network</button>
-        <div style="font-size:12px;color:rgba(255,255,255,0.6);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold-soft);text-decoration:none;">(315) 221-4857</a></div>
+        <div class="full-width" style="font-size:12px;color:rgba(255,255,255,0.6);text-align:center;">Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold-soft);text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
 
@@ -513,25 +566,44 @@
     <form name="partner-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="padding:24px 28px;display:flex;flex-direction:column;gap:12px;" id="partnerInquiryForm">
       <input type="hidden" name="form-name" value="partner-inquiry"/>
       <p style="display:none"><input name="bot-field"/></p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <input name="full-name" type="text" placeholder="Full Name" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
-        <input name="business-name" type="text" placeholder="Business Name" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
+      <div class="pim-row">
+        <div class="field">
+          <label class="field-label" for="piFullName">Full Name (required)</label>
+          <input class="pim-input" id="piFullName" name="full-name" type="text" placeholder="Jane Smith" required autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="piBusinessName">Business Name (required)</label>
+          <input class="pim-input" id="piBusinessName" name="business-name" type="text" placeholder="e.g. Drum City Plumbing" required autocomplete="organization"/>
+        </div>
       </div>
-      <select name="business-type" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#6B7280;outline:none;">
-        <option value="">Business Type</option>
-        <option>Real Estate Agent</option>
-        <option>VA Lender</option>
-        <option>Contractor</option>
-        <option>Property Manager</option>
-        <option>Other</option>
-      </select>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <input name="phone" type="tel" placeholder="Phone" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
-        <input name="email" type="email" placeholder="Email" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
+      <div class="field">
+        <label class="field-label" for="piBusinessType">Business Type (required)</label>
+        <select class="pim-input" id="piBusinessType" name="business-type" required>
+          <option value="">Select a type...</option>
+          <option>Real Estate Agent</option>
+          <option>VA Lender</option>
+          <option>Contractor</option>
+          <option>Property Manager</option>
+          <option>Other</option>
+        </select>
       </div>
-      <textarea name="message" placeholder="Tell us about your business and how you serve the military community" rows="3" style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;resize:vertical;"></textarea>
-      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:100px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:44px;">Submit Inquiry</button>
-      <div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
+      <div class="pim-row">
+        <div class="field">
+          <label class="field-label" for="piPhone">Phone (required)</label>
+          <input class="pim-input" id="piPhone" name="phone" type="tel" inputmode="tel" placeholder="(315) 000-0000" required autocomplete="tel"/>
+        </div>
+        <div class="field">
+          <label class="field-label" for="piEmail">Email (required)</label>
+          <input class="pim-input" id="piEmail" name="email" type="email" placeholder="you@company.com" required autocomplete="email"/>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="piMessage">How You Serve the Military Community</label>
+        <textarea class="pim-input" id="piMessage" name="message" rows="3" enterkeyhint="send" placeholder="e.g. Military discounts, 8 years serving Fort Drum families"></textarea>
+      </div>
+      <div class="form-reassure">We review every inquiry personally and reply within 48 hours.</div>
+      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:100px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:46px;">Send inquiry</button>
+      <div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px;">Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
     </form>
     <div id="partnerInquirySuccess" style="display:none;padding:40px 28px;text-align:center;">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
