@@ -53,6 +53,8 @@
     .nav-links a:hover { color: var(--navy); }
     .nav-links a.active { color: var(--navy); }
     .nav-call { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 100px; white-space: nowrap; }
+    .nav-call-mobile { display: none; margin-left: auto; }
+    @media (max-width: 768px) { .nav-call-mobile { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; } }
 
     main { padding-top: 64px; }
     .shell { max-width: 1060px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
@@ -84,12 +86,16 @@
     .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; }
     .ans .note { font-size: 12px; color: #8a6a1e; font-weight: 600; margin-top: 2px; }
 
-    /* SECTION HEADS */
-    .section { padding-top: 52px; }
-    .sec-head { display: flex; align-items: baseline; gap: 18px; padding-bottom: 6px; flex-wrap: wrap; }
-    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--navy); }
-    .sec-head span { font-size: 13px; color: var(--muted); margin-left: auto; }
-    .sub-head { width: max-content; max-width: 100%; margin-top: 30px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 5px 12px; border-radius: 100px; }
+    /* SECTION HEADS — eyebrow above, dek on its own line, hairline under the block */
+    .section { padding-top: 56px; }
+    .sec-head { position: relative; padding-bottom: 14px; margin-bottom: 4px; border-bottom: 1px solid var(--line); }
+    .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a6a1e; margin-bottom: 6px; }
+    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; color: var(--navy); }
+    .sec-head span { display: block; font-size: 14px; color: var(--muted); margin-top: 4px; max-width: 72ch; }
+    /* SUB-GROUP HEADS — real heading + pill demoted to category metadata */
+    .sub-head { margin-top: 34px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .sub-head h3 { font-size: 16px; font-weight: 700; color: var(--navy); }
+    .sub-head .sub-meta { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 5px 12px; border-radius: 100px; }
 
     /* RULED ROW GROUPS — housed in white cards on the paper ground */
     .index, .tips, .steps, .net { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); padding: 8px 24px; margin-top: 16px; }
@@ -151,7 +157,8 @@
     /* CTA — navy rounded card on paper */
     .cta { max-width: 1060px; margin: 64px auto 0; padding: 0 32px; }
     .cta-in { background: var(--navy); color: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 44px 40px; display: flex; align-items: baseline; gap: 40px; flex-wrap: wrap; }
-    .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
+    .cta-eyebrow { font-size: 10.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 8px; }
+    .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
     .cta-copy p { margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 52ch; }
     .cta-act { margin-left: auto; display: flex; flex-direction: column; gap: 12px; }
     .cta-btn { background: var(--gold-soft); color: var(--navy); padding: 15px 32px; font-size: 14.5px; font-weight: 700; text-align: center; border-radius: 100px; }
@@ -196,7 +203,7 @@
     }
     @media (max-width: 768px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
-      .nav-links, .nav-call { display: none !important; }
+      .nav-links, .nav-call-desktop { display: none !important; }
       .mobile-tab-bar { display: flex; }
       .hero { padding-top: 44px; }
     }
@@ -270,7 +277,8 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="tel:+13152214857" class="nav-call">Call or text us</a>
+  <a href="pcshomes-contact.html#contactForm" class="nav-call nav-call-desktop">Call or text us</a>
+  <a href="tel:+13152214857" class="nav-call nav-call-mobile" aria-label="Call PCSHomes">Call</a>
 </nav>
 
 <!-- STICKY SECTION NAV -->
@@ -308,7 +316,7 @@
 
 <!-- NUMBERS -->
 <section class="section shell" id="numbers">
-  <div class="sec-head"><h2>The numbers you might need at 2am</h2><span>Every one is a tap-to-call — save them now</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Emergency</div><h2>The numbers you might need at 2am</h2><span>Every one is a tap-to-call — save them now</span></div>
   <div class="em-box">
     <div class="em"><div class="label">Emergency on post</div><div class="val"><a href="tel:911">911</a> · <a href="tel:+13157725156">(315) 772-5156</a></div><div class="note">On-post emergency dispatch</div></div>
     <div class="em"><div class="label">Crisis line</div><div class="val"><a href="tel:988">988</a>, press 1</div><div class="note">24/7 military/veteran crisis support</div></div>
@@ -321,7 +329,7 @@
 
 <!-- SOLO PCS -->
 <section class="section shell" id="solo">
-  <div class="sec-head"><h2>Doing this move without them</h2><span>Field time, TDY, deployment — the move doesn't wait</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Solo PCS</div><h2>Doing this move without them</h2><span>Field time, TDY, deployment — the move doesn't wait</span></div>
   <div class="net">
     <div class="net-row"><b>Power of attorney, first</b><small>A <b>general POA</b> lets you act broadly on their behalf; a <b>special POA</b> covers one named thing (a lease, a closing, a vehicle). Both are free at the Fort Drum Legal Assistance Office — get them <b>before</b> the field problem or deployment, not during it. Not sure where to start? ACS Information &amp; Referral will point you right.</small><a class="act" href="tel:+13157726557">ACS I&amp;R (315) 772-6557</a></div>
     <div class="net-row"><b>Signing without them</b><small>With the right POA in hand you can sign a lease, close on a VA loan, and register vehicles solo (NY gives new residents 30 days). Bring orders + POA + IDs to every appointment — it saves the second trip.</small><a class="act" href="tel:+13157726557">Questions? ACS (315) 772-6557</a></div>
@@ -335,7 +343,7 @@
 
 <!-- COMMUNITY -->
 <section class="section shell" id="community">
-  <div class="sec-head"><h2>Your people</h2><span>The fastest cure for "I don't know anyone here"</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Community</div><h2>Your people</h2><span>The fastest cure for "I don't know anyone here"</span></div>
   <div class="net">
     <a class="net-row" href="https://www.northcountryspousesclub.com/" target="_blank" rel="noopener"><b>North Country Spouses' Club</b><small>One club for all ranks and all genders since 2012. Scholarships, monthly socials, baking/crafting/cooking sub-clubs, and Operation: Deploy Your Dress — free formal wear for military balls.</small><span class="act">northcountryspousesclub.com</span></a>
     <a class="net-row" href="tel:+13157726566"><b>Hearts Apart</b><small>Support and networking for spouses whose Soldier is deployed, on an unaccompanied tour, or on extended TDY of 90+ days. Family Resource Center, Bldg 11042 Mount Belvedere Blvd. Call to confirm the current meeting schedule.</small><span class="act">Call (315) 772-6566</span></a>
@@ -344,7 +352,7 @@
     <a class="net-row" href="https://drum.armymwr.com/calendar/international-spouses-group" target="_blank" rel="noopener"><b>International Spouses Group</b><small>MWR-hosted group for spouses from other countries finding their footing in the North Country.</small><span class="act">MWR calendar</span></a>
   </div>
 
-  <div class="sub-head">Find your feed — the Facebook groups everyone actually uses</div>
+  <div class="sub-head"><h3>Find your feed</h3><span class="sub-meta">The Facebook groups everyone actually uses</span></div>
   <div class="index">
     <a class="ix" href="https://www.facebook.com/groups/459382070775301/" target="_blank" rel="noopener"><b>Spouses of Fort Drum</b><small>The main spouse community group</small><span class="arrow">→</span></a>
     <a class="ix" href="https://www.facebook.com/groups/1488668414728069/" target="_blank" rel="noopener"><b>Fort Drum Yard Sales</b><small>Buy/sell — furniture moves fast at PCS season</small><span class="arrow">→</span></a>
@@ -356,14 +364,14 @@
 
 <!-- CHILDCARE -->
 <section class="section shell" id="childcare">
-  <div class="sec-head"><h2>Childcare, decoded</h2><span>Start the day you get orders — not the day you arrive</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Childcare</div><h2>Childcare, decoded</h2><span>Start the day you get orders — not the day you arrive</span></div>
   <div class="steps">
     <div class="step"><div><b>Register with CYS Parent Central Services</b><span>Clark Hall, Bldg P-10720, 2nd floor · <a href="tel:+13157728675">(315) 772-8675</a>. Registration is required before any CYS care — CDCs, School Age Center, home-based care, sports, SKIES classes, all of it.</span></div></div>
     <div class="step"><div><b>Create your household profile at MilitaryChildCare.com</b><span>Go to <a href="https://militarychildcare.com" target="_blank" rel="noopener">militarychildcare.com</a>, request care, and join waitlists there. Waitlists move on need dates, so the sooner you're in the system the better.</span></div></div>
     <div class="step"><div><b>Going off post? Apply for Army Fee Assistance</b><span>The Army offsets off-post care costs through Child Care Aware of America: request care on MilitaryChildCare.com, apply at <a href="https://www.childcareaware.org/fee-assistancerespite/military-families/army/afa-program/" target="_blank" rel="noopener">childcareaware.org</a>, complete the Fee Assistance Enrollment Portal profile, then accept your offer. Your provider must be state-licensed and CCAoA-enrolled — you can ask a Watertown provider to enroll. CCAoA: <a href="tel:+18004242246">800-424-2246</a>.</span></div></div>
   </div>
 
-  <div class="sub-head">On-post Child Development Centers · ages 6 weeks–5 years · Mon–Fri 5:45 am–5:45 pm</div>
+  <div class="sub-head"><h3>On-post Child Development Centers</h3><span class="sub-meta">Ages 6 weeks–5 years · Mon–Fri 5:45 am–5:45 pm</span></div>
   <div class="net">
     <a class="net-row" href="tel:+13157728676"><b>Chapel Drive CDC</b><small>10785C Chapel Drive. Note: hourly (drop-in) care at Chapel Drive is closed until further notice — full-day and part-day programs are separate.</small><span class="act">(315) 772-8676</span></a>
     <a class="net-row" href="tel:+13157721085"><b>Memorial Drive CDC</b><small>10745 Memorial Drive. <b>Currently closed until further notice</b> (per MWR, Aug 2026) — call before counting on this location.</small><span class="act">(315) 772-1085</span></a>
@@ -374,7 +382,7 @@
     <a class="net-row" href="tel:+13157726719"><b>CYS Babysitting Course</b><small>Teens who complete the course (plus a parent application) become certified babysitters on post — your date-night pipeline.</small><span class="act">(315) 772-6719</span></a>
   </div>
 
-  <div class="sub-head">Off post — Watertown &amp; Jefferson County</div>
+  <div class="sub-head"><h3>Off post</h3><span class="sub-meta">Watertown &amp; Jefferson County</span></div>
   <div class="tips">
     <div class="tip"><b>Watertown Family YMCA Day Care Center</b><span>514 Washington St — holds a 4-star QUALITYstarsNY rating. Details at <a href="https://www.watertownymca.org/programs/daycare" target="_blank" rel="noopener">watertownymca.org</a>.</span></div>
     <div class="tip"><b>Vetting any other daycare? Use the state database.</b><span>The authoritative path is the <a href="https://hs.ocfs.ny.gov/dcfs/Search/" target="_blank" rel="noopener">NY OCFS Day Care Facility Search</a> — it shows license status, capacity, and inspection history for every licensed provider. Check it before you tour.</span></div>
@@ -385,7 +393,7 @@
 
 <!-- CAREER -->
 <section class="section shell" id="career">
-  <div class="sec-head"><h2>Your career doesn't stall here</h2><span>The dollar-denominated programs nobody briefs you on</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Career</div><h2>Your career doesn't stall here</h2><span>The dollar-denominated programs nobody briefs you on</span></div>
   <div class="tips">
     <div class="tip"><b>SpouseWorks (formerly MyCAA) — up to $4,000</b><span>Tuition assistance for licenses, certifications, and associate degrees in portable fields, plus continuing ed to maintain a credential. Military OneSource now lists eligibility across all ranks and pay grades (active duty, Guard, reserve on Title 10). Start at <a href="https://mycaa.militaryonesource.mil/mycaa/" target="_blank" rel="noopener">the SpouseWorks portal</a> or call <a href="tel:+18003429647">800-342-9647</a>.</span></div>
     <div class="tip"><b>Relicensure reimbursement — $1,000 + $1,000</b><span>When a PCS crosses state lines (orders on/after Dec 21, 2023), the Army reimburses up to $1,000 in relicensing/certification costs plus up to $1,000 in qualifying business costs. Details at <a href="https://www.militaryonesource.mil/benefits/transferring-your-professional-license/" target="_blank" rel="noopener">Military OneSource</a>.</span></div>
@@ -397,11 +405,11 @@
 
   <div class="callout">
     <div class="label">The big gotcha for nurses</div>
-    <div class="big">New York is NOT in the Nurse Licensure Compact.</div>
+    <h3 class="big">New York is NOT in the Nurse Licensure Compact.</h3>
     <p>As of August 2026, NY is not an active NLC member — your multistate license cannot be used to practice here. RN spouses must apply for licensure by endorsement through <a href="https://www.op.nysed.gov/about/military-spouses-relocated-new-york-state-expedited-licensing-services" target="_blank" rel="noopener">NYSED</a>, using the expedited military-spouse process above. Start the paperwork the day you get orders, and use the 6-month temporary permit to keep working while it processes.</p>
   </div>
 
-  <div class="sub-head">Get help in person</div>
+  <div class="sub-head"><h3>Get help in person</h3></div>
   <div class="net">
     <a class="net-row" href="tel:+13157721090"><b>ACS Employment Readiness Program</b><small>Resume help, interview prep, career planning, and job lead referrals for spouses. 10720 Mt Belvedere Blvd · Mon–Fri 8–4.</small><span class="act">(315) 772-1090</span></a>
     <div class="net-row"><b>Jefferson Community College — on post</b><small>SUNY Jefferson keeps an office at the Fort Drum Army Education Center Annex, 4300 Camp Hale Rd · Mon–Fri 9–4. Contact: Betsi Bentz, Director of Community Services–Fort Drum, <a href="tel:+13157862425">(315) 786-2425</a>. ACEN-accredited nursing AAS and 50+ programs at the Watertown campus.</small><a class="act" href="tel:+13157866566">Call (315) 786-6566</a></div>
@@ -410,16 +418,16 @@
 
 <!-- DAILY LIFE -->
 <section class="section shell" id="daily-life">
-  <div class="sec-head"><h2>The week, with kids</h2><span>Winter is long — here's where everyone actually goes</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Daily life</div><h2>The week, with kids</h2><span>Winter is long — here's where everyone actually goes</span></div>
 
-  <div class="sub-head">Indoor play (the winter lifeline)</div>
+  <div class="sub-head"><h3>Indoor play</h3><span class="sub-meta">The winter lifeline</span></div>
   <div class="net">
     <a class="net-row" href="tel:+13158164515"><b>Billy Beez</b><small>Big indoor play park at Salmon Run Mall, 21182 Salmon Run Mall Loop W, Suite A101, Watertown. The go-to indoor playground for the area.</small><span class="act">(315) 816-4515</span></a>
     <a class="net-row" href="tel:+13157726601"><b>Pine Plains Bowling Center (on post)</b><small>Bldg 4320 Conway Rd · 24 lanes with bumpers, HyperBowling, snack bar, birthday parties. Wed 11–2, Thu 11–9, Fri 11–10, Sat 4–9, Sun 12–5; closed Mon/Tue.</small><span class="act">(315) 772-6601</span></a>
     <a class="net-row" href="https://www.watertownymca.org/" target="_blank" rel="noopener"><b>Watertown Family YMCA</b><small>Pool, gymnastics, open gym — the all-weather backstop for burning off toddler energy.</small><span class="act">watertownymca.org</span></a>
   </div>
 
-  <div class="sub-head">Library storytimes — free, warm, and full of other moms</div>
+  <div class="sub-head"><h3>Library storytimes</h3><span class="sub-meta">Free, warm, and full of other moms</span></div>
   <div class="tips">
     <div class="tip"><b>Carthage Free Library — Wednesdays 10:30–11:45 am, ages 0–4</b><span>Stories, craft, and music, plus a K–6 summer reading program.</span></div>
     <div class="tip"><b>Flower Memorial Library, Watertown</b><span>Dedicated children's department with playrooms, preschool story programs (reading hour + craft), and summer reading clubs. Weekly schedule isn't posted online — call the children's desk at <a href="tel:+13157857709">(315) 785-7709</a>.</span></div>
@@ -427,7 +435,7 @@
     <div class="tip"><b>Evans Mills &amp; Philadelphia</b><span>Evans Mills Public Library runs preschool story programs and summer reading. Bodman Memorial Library (8 Aldrich St, Philadelphia) has a preschool story hour; open Tue/Fri 8:30–4:30, Wed/Thu 3:30–7. And the USO hosts a monthly Storytime with a free book per family.</span></div>
   </div>
 
-  <div class="sub-head">Swim, gymnastics, dance</div>
+  <div class="sub-head"><h3>Swim, gymnastics, dance</h3></div>
   <div class="tips">
     <div class="tip"><b>MWR Learn to Swim — Magrath Sports Complex</b><span>25-meter indoor pool on post with family/all-ages and private lessons. <a href="tel:+13157724806">(315) 772-4806</a>.</span></div>
     <div class="tip"><b>YMCA swim lessons — ages 6 months to adult</b><span>Downtown Y aquatic center, Saturday blocks (Parent &amp; Tot and Levels 1–3 about 10:00–11:05, Levels 4–6 11:10–11:55), private lessons, and Carthage-site lessons too. In summer, the city runs Thompson Park Pool and the Alteri Pool at the fairgrounds — <a href="tel:+13157857775">(315) 785-7775</a> — plus splash pads at Thompson Park and North Elementary (Flynn), roughly 10 am–8 pm daily in season.</span></div>
@@ -438,11 +446,11 @@
 
 <!-- HEALTH -->
 <section class="section shell" id="health">
-  <div class="sec-head"><h2>Mom logistics</h2><span>Doctors, delivery, urgent care, and getting groceries without three car seats</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Health</div><h2>Mom logistics</h2><span>Doctors, delivery, urgent care, and getting groceries without three car seats</span></div>
 
   <div class="callout">
     <div class="label">Know before you need it</div>
-    <div class="big">There is no hospital on Fort Drum.</div>
+    <h3 class="big">There is no hospital on Fort Drum.</h3>
     <p>The Guthrie Ambulatory Health Care Clinic (11050 Mount Belvedere Blvd, appointments <a href="tel:+13157722778">(315) 772-2778</a>) is outpatient-only. ER and inpatient care happen at civilian hospitals, and families are commonly assigned civilian network PCMs. Your TRICARE East contractor is <b>Humana Military</b> — confirm any provider is in network via the <a href="https://www.humanamilitary.com/" target="_blank" rel="noopener">Humana Military directory</a>.</p>
   </div>
 
@@ -454,7 +462,7 @@
     <a class="net-row" href="tel:+13152215289"><b>WellNow Urgent Care</b><small>1233 Arsenal St, Watertown · 7 days a week, 8:00 am–7:30 pm · walk-ins, X-ray, and labs on site.</small><span class="act">(315) 221-5289</span></a>
   </div>
 
-  <div class="sub-head">Groceries without unloading the kids</div>
+  <div class="sub-head"><h3>Groceries without unloading the kids</h3></div>
   <div class="tips">
     <div class="tip"><b>Fort Drum Commissary</b><span>10730 Enduring Freedom Dr · open 7 days, 7:30 am–7:00 pm · <a href="tel:+13157729130">(315) 772-9130</a>. Tax-free groceries, ID required.</span></div>
     <div class="tip"><b>Delivery and pickup that actually work here</b><span>Hannaford does delivery via Instacart and DoorDash, plus Hannaford To Go curbside pickup. Instacart runs same-day coverage in Watertown and DoorDash is active — for a napping toddler, curbside pickup is the move.</span></div>
@@ -463,7 +471,7 @@
 
 <!-- DEPLOYMENT -->
 <section class="section shell" id="deployment">
-  <div class="sec-head"><h2>When they're gone</h2><span>Deployment support, money help, and the numbers to keep on the fridge</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Deployment</div><h2>When they're gone</h2><span>Deployment support, money help, and the numbers to keep on the fridge</span></div>
   <div class="net">
     <div class="net-row"><b>Hearts Apart</b><small>Community for spouses of deployed Soldiers, unaccompanied tours, and 90+ day TDY. Bldg 11042 Mount Belvedere Blvd. Also answers at <a href="tel:+13157726902">(315) 772-6902</a>, <a href="tel:+13157726553">(315) 772-6553</a>, and <a href="tel:+13157723241">(315) 772-3241</a>.</small><a class="act" href="tel:+13157726566">Call (315) 772-6566</a></div>
     <a class="net-row" href="tel:+13157720509"><b>Mobilization &amp; Deployment (Mob/Dep) + your SFRG</b><small>Deployment-cycle briefings and workshops, plus training for Soldier and Family Readiness Group leaders and volunteers. Your unit's SFRG is the fastest line to what's actually happening — ask your sponsor for the SFRG contact.</small><span class="act">(315) 772-0509</span></a>
@@ -471,7 +479,7 @@
     <a class="net-row" href="tel:+13157726704"><b>New Parent Support Program</b><small>Home-front backup for new and expecting parents, via the Family Advocacy Program at the Soldier and Family Readiness Center, Bldg 10250 4th Armored Division Dr.</small><span class="act">(315) 772-6704</span></a>
   </div>
 
-  <div class="sub-head">The financial safety net — using it is what it's for</div>
+  <div class="sub-head"><h3>The financial safety net</h3><span class="sub-meta">Using it is what it's for</span></div>
   <div class="tips">
     <div class="tip"><b>WIC — free food for pregnant moms and kids under 5</b><span>238 Arsenal St, Watertown · <a href="tel:+13157829222">(315) 782-9222</a>, with a second location by the Fort Drum main gate at 26908 Independence Way, Evans Mills. Nutritious foods, formula, and nutrition education for income-qualified families.</span></div>
     <div class="tip"><b>Army Emergency Relief (AER)</b><span>Interest-free emergency loans and grants for military families — car repairs, travel, rent. Through ACS at the Family Resource Center, Bldg 11042 Mount Belvedere Blvd · <a href="tel:+13157726556">(315) 772-6556</a>.</span></div>
@@ -488,6 +496,7 @@
 <div class="cta">
   <div class="cta-in">
     <div class="cta-copy">
+      <div class="cta-eyebrow">Support</div>
       <h2>You don't have to figure this out alone.</h2>
       <p>Housing, schools, timing the move around a due date — tell us what you're juggling and a real person from our Fort Drum network calls you back, usually the same day.</p>
     </div>

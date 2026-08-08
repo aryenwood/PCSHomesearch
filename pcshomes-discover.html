@@ -87,6 +87,8 @@
     .nav-links a:hover { color: var(--navy); }
     .nav-links a.active { color: var(--navy); }
     .nav-call { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 100px; white-space: nowrap; }
+    .nav-call-mobile { display: none; margin-left: auto; }
+    @media (max-width: 768px) { .nav-call-mobile { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; } }
 
     main { padding-top: 64px; }
     .shell { max-width: 1060px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
@@ -121,10 +123,11 @@
     .ans .note a { border-bottom: 1px dotted var(--gold); }
 
     /* SECTIONS — white journal cards on the paper ground */
-    .section { width: min(1060px, calc(100% - 40px)); margin: 44px auto 0; padding-top: 26px; padding-bottom: 34px; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); }
-    .sec-head { display: flex; align-items: baseline; gap: 18px; border-bottom: 1px solid var(--line); padding-bottom: 12px; flex-wrap: wrap; }
-    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--navy); }
-    .sec-head span { font-size: 13px; color: var(--muted); margin-left: auto; }
+    .section { width: min(1060px, calc(100% - 40px)); margin: 56px auto 0; padding-top: 26px; padding-bottom: 34px; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); }
+    .sec-head { border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 20px; }
+    .sec-eyebrow { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a6a1e; margin-bottom: 8px; }
+    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; color: var(--navy); }
+    .sec-head span { display: block; font-size: 14px; color: var(--muted); margin-top: 6px; }
     .sub-h { width: max-content; max-width: 100%; margin-top: 34px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 5px 12px; border-radius: 100px; }
     .lede { margin-top: 14px; font-size: 14px; color: var(--muted); max-width: 68ch; }
 
@@ -154,7 +157,7 @@
 
     /* DAY-TRIP ROWS: name / drive / what / price */
     .dt-row { display: grid; grid-template-columns: 200px 88px 1fr 190px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); align-items: baseline; }
-    .dt-row b { font-size: 14.5px; font-weight: 700; color: var(--navy); }
+    .dt-row b { font-size: 15.5px; font-weight: 700; color: var(--navy); }
     .dt-row .drv { font-size: 12.5px; font-weight: 700; color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
     .dt-row small { font-size: 13px; color: var(--muted); }
     .dt-row .price { font-size: 12px; color: var(--ink); text-align: right; }
@@ -206,7 +209,7 @@
     /* CTA — navy rounded card on paper, with suggestion form */
     .cta { max-width: 1060px; margin: 64px auto 0; padding: 0 32px; }
     .cta-in { background: var(--navy); color: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 44px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
+    .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
     .cta-copy p { margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 44ch; }
     .cta-points { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .cta-points div { display: flex; gap: 10px; align-items: baseline; font-size: 13.5px; color: rgba(255,255,255,0.8); }
@@ -261,7 +264,7 @@
     }
     @media (max-width: 768px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
-      .nav-links, .nav-call { display: none !important; }
+      .nav-links, .nav-call-desktop { display: none !important; }
       .mobile-tab-bar { display: flex; }
       .hero { padding-top: 44px; }
       input, select, textarea { font-size: 16px !important; }
@@ -282,7 +285,8 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="tel:+13152214857" class="nav-call">Call or text us</a>
+  <a href="pcshomes-contact.html#contactForm" class="nav-call nav-call-desktop">Call or text us</a>
+  <a href="tel:+13152214857" class="nav-call nav-call-mobile" aria-label="Call PCSHomes">Call</a>
 </nav>
 
 <!-- STICKY SECTION NAV -->
@@ -321,7 +325,7 @@
 <section class="band" id="essentials">
   <div id="groceries"></div>
   <div class="shell">
-    <div class="sec-head"><h2>The essentials — on one map</h2><span>Groceries · medical · dining · storage</span></div>
+    <div class="sec-head"><div class="sec-eyebrow">Start Here</div><h2>The essentials — on one map</h2><span>Groceries · medical · dining · storage</span></div>
     <p class="lede">Everything you need in your first month, pinned. Click any pin for the name, address, tap-to-call, and directions.</p>
     <div class="map-legend">
       <span><i style="background:#C9A84C;"></i>Commissary</span>
@@ -368,7 +372,7 @@
 
 <!-- FAMILY & KIDS -->
 <section class="section shell" id="family-kids">
-  <div class="sec-head"><h2>With kids, week to week</h2><span>What actually fills a Tuesday in January</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Family &amp; Kids</div><h2>With kids, week to week</h2><span>What actually fills a Tuesday in January</span></div>
   <p class="lede">Honest answer: yes, this is a good place to raise kids. The community is tight, the outdoor access is unreal, and the week-to-week routine is more full than the Google results suggest.</p>
 
   <div class="callout">
@@ -376,7 +380,7 @@
     <p>Filter for <b>Free</b> + <b>Indoor</b> above — and the storytimes are full of other moms who get it.</p>
   </div>
 
-  <div class="sub-h">Indoor play — winter-critical</div>
+  <h3 class="sub-h">Indoor play — winter-critical</h3>
   <div class="tips">
     <div class="tip" data-tags="indoor winter"><b>Billy Beez — Salmon Run Mall</b><i class="fact">Indoor · call for hours &amp; prices</i><span>The big indoor play park, and effectively <i>the</i> indoor playground now — the mall's other play spots have closed. Plan on it all winter. <a href="tel:+13158164515">(315) 816-4515</a></span></div>
     <div class="tip" data-tags="indoor winter under20"><b>Pine Plains Bowling Center — on post</b><i class="fact">Indoor · on post · closed Mon–Tue</i><span>24 lanes with bumpers, HyperBowling, snack bar, birthday parties. Closed Mon–Tue. <a href="tel:+13157726601">(315) 772-6601</a></span></div>
@@ -385,7 +389,7 @@
   </div>
   <p class="lede" data-keep="1" style="margin-top:10px;">January Saturday, everything above closed or crowded? Honest answer: the library, the pool at Magrath, and a fort made of moving boxes. It counts.</p>
 
-  <div class="sub-h">Storytimes — one at nearly every library</div>
+  <h3 class="sub-h">Storytimes — one at nearly every library</h3>
   <div class="tips">
     <div class="tip" data-tags="free indoor baby winter"><b><a href="https://carthagefreelibrary.org/children-and-teens/" target="_blank" rel="noopener">Carthage Free Library</a></b><i class="fact">Free · Wed 10:30–11:45am · ages 0–4</i><span>Story Time Wednesdays 10:30–11:45am, ages 0–4 — stories, craft, music. Summer reading for K–6.</span></div>
     <div class="tip" data-tags="free indoor baby winter under20"><b><a href="https://www.flowermemoriallibrary.org" target="_blank" rel="noopener">Flower Memorial Library, Watertown</a></b><i class="fact">Free · preschool programs · call for schedule</i><span>Children's department with playrooms, puppet theater, costume area. Preschool story programs — call Children's for the current schedule: <a href="tel:+13157857709">(315) 785-7709</a></span></div>
@@ -393,7 +397,7 @@
     <div class="tip" data-tags="free indoor baby winter under20"><b><a href="https://evansmillspubliclibrary.org/library-hours/" target="_blank" rel="noopener">Evans Mills Public Library</a> &amp; <a href="https://bodmanmemoriallibrary.org/" target="_blank" rel="noopener">Bodman Memorial, Philadelphia</a></b><i class="fact">Free · preschool story programs · gate-side</i><span>Preschool story programs and summer reading closest to the gate-side villages.</span></div>
   </div>
 
-  <div class="sub-h">Swim &amp; splash</div>
+  <h3 class="sub-h">Swim &amp; splash</h3>
   <div class="tips">
     <div class="tip" data-tags="indoor winter under20"><b>Magrath indoor pool — on post</b><i class="fact">Indoor · on post · lessons free for AD soldiers</i><span>25m pool with "Learn to Swim" family and private lessons — free for active-duty soldiers. <a href="tel:+13157724806">(315) 772-4806</a></span></div>
     <div class="tip" data-tags="indoor winter baby"><b>Watertown Family YMCA</b><i class="fact">Indoor · lessons from 6 months · Saturdays</i><span>Lessons from 6 months to adult at the downtown aquatic center — Saturday blocks for Parent &amp; Tot through Level 6, plus Carthage-site lessons.</span></div>
@@ -401,7 +405,7 @@
     <div class="tip" data-tags="free under20"><b>Splash pads</b><i class="fact">Free · mid-May on · ~10am–8pm daily</i><span>Thompson Park and North Elementary (Flynn) — open mid-May, roughly 10am–8pm daily in season. Free.</span></div>
   </div>
 
-  <div class="sub-h">Worth the trip, every time</div>
+  <h3 class="sub-h">Worth the trip, every time</h3>
   <div class="tips one-col">
     <div class="tip" data-tags="under20"><b>Zoo New York at Thompson Park</b><i class="fact">~20 min · admission charged · May–Oct daily 10–5</i><span>The only zoo in the world devoted to New York–native species — bears, wolves, wolverines, eagles, mountain lions. May–Oct daily 10–5; April weekends 10–5; Nov–Mar weekends 11–3 plus school breaks. A 2025 funding crisis nearly closed it — go, your admission genuinely matters. <a href="tel:+13157826180">(315) 782-6180</a></span></div>
     <div class="tip"><b>Old McDonald's Farm — Sackets Harbor</b><i class="fact">$15.95 ages 2+ · closed Mon–Tue</i><span>200+ animals, storybook hayride, mini golf, bounce pad; corn maze and pumpkin patch in fall. $15.95 ages 2+, closed Mon–Tue.</span></div>
@@ -418,9 +422,9 @@
 
 <!-- OUTDOORS BY SEASON -->
 <section class="section shell" id="outdoors">
-  <div class="sec-head"><h2>Outside, by season</h2><span>Drive times approx. from post</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Outdoors</div><h2>Outside, by season</h2><span>Drive times approx. from post</span></div>
 
-  <div class="sub-h">Hiking — spring through fall</div>
+  <h3 class="sub-h">Hiking — spring through fall</h3>
   <div class="tbl-wrap">
     <table class="brief">
       <thead><tr><th>Trail</th><th>Drive</th><th>Difficulty</th><th>Kid-friendly?</th></tr></thead>
@@ -435,7 +439,7 @@
   </div>
   <p class="lede" style="margin-top:10px;">Bigger days out: Inman Gulf's Rainbow Falls loop (6.9 mi over a 200–300-ft canyon), Gleasmans Falls (6.6 mi round trip), and Robert G. Wehle State Park's Lake Ontario bluffs — famous sunsets, but keep kids off the edges. On post: the Fort Drum Trails and James R. Kanik Nature Trail.</p>
 
-  <div class="sub-h">Beaches — summer</div>
+  <h3 class="sub-h">Beaches — summer</h3>
   <div class="tips">
     <div class="tip" data-tags="under20"><b>Westcott Beach State Park</b><span>The closest real beach — ~20 min, $7/car, lifeguarded swimming, picnic tables, minutes from Sackets Harbor.</span></div>
     <div class="tip"><b>Southwick Beach State Park</b><span>3,500 feet of sand — among the best on Lake Ontario. ~40 min, $8/car May–Oct; guarded swimming June 19–Sept 6 in 2026.</span></div>
@@ -443,7 +447,7 @@
     <div class="tip"><b>Wellesley Island State Park</b><span>Beach at the largest camping complex in the Thousand Islands — pair it with the nature center.</span></div>
   </div>
 
-  <div class="sub-h">Fishing — year-round</div>
+  <h3 class="sub-h">Fishing — year-round</h3>
   <div class="tips">
     <div class="tip"><b>Henderson Harbor — the "Golden Crescent"</b><span>60+ Lake Ontario charters: lake trout, king salmon, browns, steelhead, smallmouth. Season runs roughly April–September.</span></div>
     <div class="tip" data-tags="under20"><b>Black River</b><span>Bass and pike water 10 minutes from post, plus fall salmon and steelhead runs. Charters from around $120.</span></div>
@@ -451,7 +455,7 @@
     <div class="tip" data-tags="winter"><b>Ice fishing</b><span>Rent everything from MWR Outdoor Rec's Gear to Go — see winter, below.</span></div>
   </div>
 
-  <div class="sub-h">Winter — the Tug Hill snow machine</div>
+  <h3 class="sub-h">Winter — the Tug Hill snow machine</h3>
   <div class="tips">
     <div class="tip" data-tags="winter"><b>Dry Hill Ski Area</b><span>10 min south of downtown Watertown — 7 trails, 300-ft vertical, terrain park, snow tubing with snowmaking. The learn-to-ski hill, with military discounts. <a href="tel:+13157828584">(315) 782-8584</a></span></div>
     <div class="tip" data-tags="winter"><b>Snow Ridge, Turin (~50 min)</b><span>230&Prime; average snowfall — 22 trails, 6 lifts, night skiing, glades, tubing, backcountry acreage.</span></div>
@@ -464,28 +468,28 @@
 
 <!-- DAY TRIPS -->
 <section class="section shell" id="day-trips">
-  <div class="sec-head"><h2>Day trips, ranked by drive</h2><span>All times approx. from Fort Drum/Watertown</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Day Trips</div><h2>Day trips, ranked by drive</h2><span>All times approx. from Fort Drum/Watertown</span></div>
 
-  <div class="sub-h">Under 30 minutes</div>
+  <h3 class="sub-h">Under 30 minutes</h3>
   <div class="dt-row"><b>Thompson Park + Zoo New York</b><span class="drv">~20 min</span><small>355-acre Olmsted-designed park above the city — zoo, pool, splash pad, playgrounds, easy loop trail, cross-country ski trails.</small><span class="price">Park free · zoo details above</span></div>
   <div class="dt-row"><b>Burrville Cider Mill</b><span class="drv">~20 min</span><small>1801 mill with its own waterfall — cider donuts daily, pressing you can watch Tue/Thu/Sat/Sun mornings. Roughly Labor Day–Thanksgiving.</small><span class="price">Fall only · <a href="tel:+13157887292" style="font-weight:600;">(315) 788-7292</a></span></div>
   <div class="dt-row"><b>Sackets Harbor</b><span class="drv">~30 min</span><small>War of 1812 battlefield with summer reenactors, restored 1850s Navy Yard, walkable Main Street, breweries, Lake Ontario sunsets.</small><span class="price">Battlefield grounds free</span></div>
   <div class="dt-row"><b>Black River village</b><span class="drv">~10–20 min</span><small>Ride or stroll the flat 4.5-mile Black River Trail along the river — the easiest outing on this page.</small><span class="price">Free</span></div>
 
-  <div class="sub-h">30–60 minutes</div>
+  <h3 class="sub-h">30–60 minutes</h3>
   <div class="dt-row"><b>Clayton</b><span class="drv">~40 min</span><small>Antique Boat Museum — 300+ boats, kids' programs, skiff rowing, speedboat rides — plus a walkable riverfront downtown and Wood Boat Brewery.</small><span class="price"><i>Castle boats: (315) 686-4820</i></span></div>
   <div class="dt-row"><b>Alexandria Bay — Boldt Castle</b><span class="drv">~45 min</span><small>Boat-access castle on Heart Island, mid-May to mid-Oct. Uncle Sam Boat Tours (since 1926) runs Millionaires Row and castle stopovers: <a href="tel:+13154822611" style="font-weight:600;">(315) 482-2611</a>.</small><span class="price">~$10 adult / $7 child 5–12 — <i>confirm at boldtcastle.com</i></span></div>
   <div class="dt-row"><b>Cape Vincent</b><span class="drv">~50 min</span><small>Tibbetts Point Lighthouse (1827), where Lake Ontario meets the St. Lawrence — the only original working Fresnel lens on the lake. Village farmers market and the Wolfe Island ferry.</small><span class="price">Grounds free, daylight hours</span></div>
   <div class="dt-row"><b>Wellesley Island State Park</b><span class="drv">~50 min</span><small>Largest camping complex in the Thousand Islands — beach, plus the Minna Anthony Common Nature Center with live animals and family trails.</small><span class="price">&nbsp;</span></div>
   <div class="dt-row"><b>Singer Castle, Dark Island</b><span class="drv">~1 hr</span><small>45-minute guided tour of four floors — hidden passages, the Great Hall, the 4th-floor dormitory. Shuttle from Schermerhorn Harbor Wed–Sat in summer: <a href="tel:+13153245966" style="font-weight:600;">(315) 324-5966</a>.</small><span class="price">$14.75 / <b>military $12.75</b> · child $7.75 / <b>$6.75</b></span></div>
 
-  <div class="sub-h">1–2 hours</div>
+  <h3 class="sub-h">1–2 hours</h3>
   <div class="dt-row"><b>Salmon River Falls</b><span class="drv">~1 hr 10</span><small>110-ft waterfall with a 0.2-mile kid-friendly trail to overlook platforms. Limited parking, no restrooms.</small><span class="price">Free</span></div>
   <div class="dt-row"><b>Syracuse</b><span class="drv">~1 hr 15</span><small>Rosamond Gifford Zoo (700+ animals), the MOST science museum with NY's only domed IMAX, and Destiny USA for the rainy-day mall run.</small><span class="price">&nbsp;</span></div>
   <div class="dt-row"><b>Kingston, Ontario</b><span class="drv">~1.5 hr</span><small>Fort Henry's costumed interpreters, the Marine Museum of the Great Lakes, a dinosaur-and-AR geology museum — a real international day trip over the Thousand Islands Bridge.</small><span class="price">Passport required</span></div>
   <div class="dt-row"><b>Old Forge, Adirondacks</b><span class="drv">~1.5–2 hr</span><small>Enchanted Forest Water Safari — New York's largest water theme park, 50+ rides including 32 heated water rides — plus go-karts at Calypso's Cove and the McCauley Mountain scenic chairlift.</small><span class="price">Seasonal</span></div>
 
-  <div class="sub-h">Worth a weekend</div>
+  <h3 class="sub-h">Worth a weekend</h3>
   <div class="dt-row"><b>Ottawa, Ontario</b><span class="drv">~2.5 hr</span><small>Winterlude and the Rideau Canal Skateway in winter — the world's largest naturally frozen rink, free — plus free Parliament tours, national museums, and ByWard Market.</small><span class="price">Skateway free</span></div>
   <div class="dt-row"><b>Montreal, Quebec</b><span class="drv">~3.5 hr</span><small>The bigger weekend — Old Montreal, the food scene, festivals year-round.</small><span class="price">&nbsp;</span></div>
 
@@ -501,7 +505,7 @@
 
 <!-- EVENTS -->
 <section class="section shell" id="events">
-  <div class="sec-head"><h2>The year, month by month</h2><span>There is always something on the calendar</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">The Calendar</div><h2>The year, month by month</h2><span>There is always something on the calendar</span></div>
   <div class="mo-row"><b>Jan – Feb</b><span>Snowtown USA at Thompson Park — skating at the rotary pavilion; the "Snowtown" name goes back to Walter Cronkite's Blizzard of '77 coverage. <i>·</i> Ottawa's Winterlude, Jan 30–Feb 16 in 2026 — ice sculptures, a snow playground, mostly free.</span></div>
   <div class="mo-row"><b>March</b><span>NYS Maple Weekend — sugarhouses across Lewis and Jefferson counties open their doors over two weekends; the Maple Museum in Croghan runs pancake breakfasts ($12 adult / $7 child).</span></div>
   <div class="mo-row"><b>May</b><span>Boldt Castle opens for the season, mid-May.</span></div>
@@ -515,7 +519,7 @@
 
 <!-- EATS -->
 <section class="section shell" id="eats">
-  <div class="sec-head"><h2>Worth the table</h2><span>The verified institutions</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Food &amp; Drink</div><h2>Worth the table</h2><span>The verified institutions</span></div>
   <div class="eat-row"><b>Crystal Restaurant</b><small>Watertown's oldest restaurant — original tin ceilings, one of the last stand-up bars in the country, and the famous winter Tom &amp; Jerry cocktail.</small><span class="where">Public Square · since 1925</span></div>
   <div class="eat-row"><b>Art's Jug</b><small>Four generations of the Sboro family — the North Country red-sauce institution.</small><span class="where">Watertown · since 1933</span></div>
   <div class="eat-row"><b>1812 Brewing Company</b><small>Local "gold medal beer" and pub food.</small><span class="where">Watertown</span></div>
@@ -528,7 +532,7 @@
 
 <!-- MILITARY DEALS -->
 <section class="section shell" id="military-deals">
-  <div class="sec-head"><h2>The discount stack</h2><span>Bring your ID everywhere</span></div>
+  <div class="sec-head"><div class="sec-eyebrow">Military Discounts</div><h2>The discount stack</h2><span>Bring your ID everywhere</span></div>
   <div class="tips">
     <div class="tip"><b>LTS/ITR office — on post, first stop</b><span>Mon–Fri 8:00–2:30 · <a href="tel:+13157728222">(315) 772-8222</a> or <a href="tel:+13157725169">(315) 772-5169</a>. Current price list examples: Disney World 4–6 day Park Hoppers $409–$479, Disneyland $314–$505, Universal Orlando $215–$255, Legoland NY from $49.50 — all under gate price. Call for the full list.</span></div>
     <div class="tip"><b>Singer Castle</b><span>Published military rate: $12.75 adult / $6.75 child (vs $14.75 / $7.75).</span></div>
