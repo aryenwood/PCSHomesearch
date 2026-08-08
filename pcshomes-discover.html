@@ -59,91 +59,116 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { color: inherit; text-decoration: none; }
     :root {
-      --navy: #162D50; --navy-deep: #0F1D35;
-      --gold: #A8842C; --gold-bright: #C9A84C; --gold-light: #E2C57A;
-      --bg: #FCFBF8;
-      --ink: #1C2B3A; --muted: #5C6B7A; --rule: rgba(22,45,80,0.14);
+      --navy: #1D3557; --navy-deep: #14263F;
+      --ink: #2B3442; --muted: #6B7280;
+      --gold: #B98A2F; --gold-soft: #D9B45B; --gold-tint: rgba(185,138,47,0.12);
+      --gold-bright: #C9A84C; --gold-light: #E2C57A; /* legacy accents — dark tab bar, quick-links sheet + map internals only */
+      --paper: #FBF7EF; --card: #FFFFFF; --line: rgba(43,52,66,0.10);
+      --bg: var(--paper); --rule: var(--line);
+      --shadow: 0 2px 6px rgba(43,52,66,0.06), 0 12px 32px rgba(43,52,66,0.08);
+      --r: 16px;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    :focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-    /* NAV */
+    /* NAV — light journal bar */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
       display: flex; align-items: center; gap: 32px;
-      padding: 0 40px; height: 60px; background: var(--navy);
-      border-bottom: 1px solid rgba(201,168,76,0.25); color: #fff;
+      padding: 0 40px; height: 64px; background: rgba(251,247,239,0.92);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line); color: var(--ink);
     }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .nav-logo span { color: var(--gold-bright); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+    .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 26px; margin-left: auto; list-style: none; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--gold-bright); }
-    .nav-links a.active { color: #fff; }
-    .nav-call { font-size: 13px; font-weight: 700; color: var(--gold-bright); white-space: nowrap; }
+    .nav-links a { font-size: 13.5px; font-weight: 600; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a.active { color: var(--navy); }
+    .nav-call { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 100px; white-space: nowrap; }
 
-    main { padding-top: 60px; }
+    main { padding-top: 64px; }
     .shell { max-width: 1060px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
 
-    /* STICKY SECTION NAV (ruled, no pills) */
-    #sectionNav { position: fixed; top: 60px; left: 0; right: 0; z-index: 9998; background: var(--navy); border-bottom: 1px solid rgba(201,168,76,0.25); display: none; }
+    /* Anchor landings clear the fixed nav + section nav */
+    section[id], div[id] { scroll-margin-top: 130px; }
+
+    /* STICKY SECTION NAV (light variant — same JS) */
+    #sectionNav { position: fixed; top: 64px; left: 0; right: 0; z-index: 9998; background: rgba(251,247,239,0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); display: none; }
     #sectionNav .snav-in { max-width: 1060px; margin: 0 auto; display: flex; gap: 26px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 11px 32px; }
     #sectionNav .snav-in::-webkit-scrollbar { display: none; }
-    .snav-link { white-space: nowrap; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.55); border-bottom: 2px solid transparent; padding-bottom: 2px; transition: color 0.15s; }
-    .snav-link:hover { color: #fff; }
-    .snav-link.active { color: var(--gold-bright); border-bottom-color: var(--gold-bright); }
+    .snav-link { white-space: nowrap; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid transparent; padding-bottom: 2px; transition: color 0.15s; }
+    .snav-link:hover { color: var(--navy); }
+    .snav-link.active { color: var(--navy); border-bottom-color: var(--gold); }
 
     /* HERO */
     .hero { padding-top: 64px; padding-bottom: 8px; }
-    .kicker { font-size: 11px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-    h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(29px, 3.6vw, 44px); font-weight: 700; line-height: 1.2; max-width: 24ch; text-wrap: balance; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-tint); color: #8a6a1e; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 100px; margin-bottom: 18px; }
+    h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(29px, 3.6vw, 44px); font-weight: 700; line-height: 1.2; max-width: 24ch; text-wrap: balance; color: var(--navy); }
     h1 em { font-style: italic; color: var(--gold); }
     .hero-sub { margin-top: 12px; font-size: 15.5px; color: var(--muted); max-width: 58ch; }
 
-    /* ANSWER BAR */
+    /* ANSWER BAR → white facts card */
     .answers { margin-top: 34px; }
-    .answers-box { background: var(--navy); color: #fff; display: grid; grid-template-columns: repeat(4, 1fr); }
-    .ans { padding: 20px 24px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .answers-box { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 0; }
+    .ans { padding: 18px 24px; border-right: 1px solid rgba(43,52,66,0.07); }
     .ans:last-child { border-right: none; }
-    .ans .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .ans .val { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--gold-bright); margin-top: 4px; font-variant-numeric: tabular-nums; }
-    .ans .note { font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
-    .ans .note a { border-bottom: 1px dotted rgba(255,255,255,0.4); }
+    .ans .label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+    .ans .val { font-family: 'Libre Baskerville', serif; font-size: 24px; color: var(--navy); margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; }
+    .ans .note { font-size: 12px; color: #8a6a1e; font-weight: 600; margin-top: 2px; }
+    .ans .note a { border-bottom: 1px dotted var(--gold); }
 
-    /* SECTION HEADS */
-    .section { padding-top: 56px; }
-    .sec-head { display: flex; align-items: baseline; gap: 18px; border-bottom: 2px solid var(--navy); padding-bottom: 10px; flex-wrap: wrap; }
-    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; }
+    /* SECTIONS — white journal cards on the paper ground */
+    .section { width: min(1060px, calc(100% - 40px)); margin: 44px auto 0; padding-top: 26px; padding-bottom: 34px; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); }
+    .sec-head { display: flex; align-items: baseline; gap: 18px; border-bottom: 1px solid var(--line); padding-bottom: 12px; flex-wrap: wrap; }
+    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--navy); }
     .sec-head span { font-size: 13px; color: var(--muted); margin-left: auto; }
-    .sub-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-top: 34px; }
+    .sub-h { width: max-content; max-width: 100%; margin-top: 34px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 5px 12px; border-radius: 100px; }
     .lede { margin-top: 14px; font-size: 14px; color: var(--muted); max-width: 68ch; }
 
     /* RULED TIP LISTS */
     .tips { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
-    .tip { padding: 16px 4px; border-bottom: 1px solid var(--rule); }
-    .tip b { display: block; font-size: 14.5px; font-weight: 700; }
+    .tip { padding: 16px 4px; border-bottom: 1px solid var(--line); }
+    .tip b { display: block; font-size: 14.5px; font-weight: 700; color: var(--navy); }
     .tip span { font-size: 13px; color: var(--muted); }
-    .tip a { font-weight: 600; color: var(--navy); border-bottom: 1px dotted var(--gold-bright); }
+    .tip a { font-weight: 600; color: var(--navy); border-bottom: 1px dotted var(--gold); }
     .tips.one-col { grid-template-columns: 1fr; }
 
+    /* PRICE / HOURS / AGE FACT SLOT (leading bold-slot in kid rows) */
+    .tip .fact { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; font-style: normal; margin: 2px 0 3px; font-variant-numeric: tabular-nums; }
+
+    /* SITUATION CHIPS — white pills, gold active (same JS) */
+    .sit-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 44px; }
+    .sit-chip { background: var(--card); border: 1px solid var(--line); box-shadow: 0 1px 4px rgba(43,52,66,0.06); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color 0.15s, background 0.15s, border-color 0.15s; }
+    .sit-chip:hover { color: var(--navy); border-color: rgba(43,52,66,0.22); }
+    .sit-chip.active { background: var(--gold-tint); border-color: var(--gold); color: #7a5c15; }
+
+    /* NAVY ACCENT CARD (callout — spouse page's pattern) */
+    .callout { margin-top: 26px; background: var(--navy); color: #fff; padding: 20px 24px; border-radius: var(--r); box-shadow: var(--shadow); }
+    .callout .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold-soft); }
+    .callout p { margin-top: 7px; font-size: 13.5px; color: rgba(255,255,255,0.75); max-width: 78ch; }
+    .callout b { color: #fff; }
+    .callout a { color: var(--gold-soft); border-bottom: 1px dotted rgba(217,180,91,0.5); }
+
     /* DAY-TRIP ROWS: name / drive / what / price */
-    .dt-row { display: grid; grid-template-columns: 200px 88px 1fr 190px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--rule); align-items: baseline; }
-    .dt-row b { font-size: 14.5px; font-weight: 700; }
+    .dt-row { display: grid; grid-template-columns: 200px 88px 1fr 190px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); align-items: baseline; }
+    .dt-row b { font-size: 14.5px; font-weight: 700; color: var(--navy); }
     .dt-row .drv { font-size: 12.5px; font-weight: 700; color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
     .dt-row small { font-size: 13px; color: var(--muted); }
     .dt-row .price { font-size: 12px; color: var(--ink); text-align: right; }
     .dt-row .price i { color: var(--muted); font-style: normal; }
 
     /* MONTH ROWS */
-    .mo-row { display: grid; grid-template-columns: 140px 1fr; gap: 18px; padding: 15px 4px; border-bottom: 1px solid var(--rule); }
+    .mo-row { display: grid; grid-template-columns: 140px 1fr; gap: 18px; padding: 15px 4px; border-bottom: 1px solid var(--line); }
     .mo-row b { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--navy); }
     .mo-row span { font-size: 13.5px; color: var(--ink); }
     .mo-row span i { color: var(--muted); font-style: normal; }
 
     /* EATS ROWS */
-    .eat-row { display: grid; grid-template-columns: 210px 1fr 160px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--rule); align-items: baseline; }
-    .eat-row b { font-size: 14.5px; font-weight: 700; }
+    .eat-row { display: grid; grid-template-columns: 210px 1fr 160px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); align-items: baseline; }
+    .eat-row b { font-size: 14.5px; font-weight: 700; color: var(--navy); }
     .eat-row small { font-size: 13px; color: var(--muted); }
     .eat-row .where { font-size: 12px; color: var(--muted); text-align: right; white-space: nowrap; }
 
@@ -151,64 +176,63 @@
     .tbl-wrap { overflow-x: auto; margin-top: 6px; }
     table.brief { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
     .brief th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); padding: 10px 14px 8px 4px; border-bottom: 2px solid var(--navy); }
-    .brief td { padding: 12px 14px 12px 4px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-    .brief td b { font-weight: 700; }
+    .brief td { padding: 12px 14px 12px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .brief td b { font-weight: 700; color: var(--navy); }
     .brief td small { font-size: 12px; color: var(--muted); display: block; }
     .brief .num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-    /* NAVY BAND (essentials map) */
-    .band { background: var(--navy-deep); color: #fff; margin-top: 64px; padding: 56px 0 60px; }
-    .band .sec-head { border-bottom-color: rgba(201,168,76,0.45); }
-    .band .sec-head h2 { color: #fff; }
-    .band .sec-head span { color: rgba(255,255,255,0.5); }
+    /* ESSENTIALS BAND → white journal card (text inverted to ink/muted) */
+    .band { width: min(1060px, calc(100% - 40px)); margin: 56px auto 0; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); color: var(--ink); padding: 26px 0 34px; }
     .band .tips { margin-top: 4px; }
-    .band .tip { border-bottom-color: rgba(255,255,255,0.12); }
-    .band .tip b { color: #fff; }
-    .band .tip span { color: rgba(255,255,255,0.55); }
-    .band .lede { color: rgba(255,255,255,0.6); }
     .map-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
-    .map-legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.65); }
+    .map-legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
     .map-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .map-frame { margin-top: 20px; border: 1px solid rgba(255,255,255,0.15); position: relative; }
-    #groceryMap { width: 100%; height: 460px; }
+    .map-frame { margin-top: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 8px; position: relative; }
+    #groceryMap { width: 100%; height: 460px; border-radius: 8px; background: var(--navy-deep); }
 
-    /* PHOTO STRIP */
-    .life { margin-top: 56px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: repeat(3, 1fr); }
-    .life figure { position: relative; margin: 0; aspect-ratio: 16/10; overflow: hidden; }
-    .life img { width: 100%; height: 100%; object-fit: cover; }
-    .life figcaption { position: absolute; bottom: 0; left: 0; right: 0; padding: 26px 16px 12px; background: linear-gradient(transparent, rgba(15,29,53,0.85)); color: #fff; font-size: 12px; font-weight: 600; }
-    .life figcaption small { display: block; font-weight: 400; color: rgba(255,255,255,0.7); font-size: 11px; }
+    /* PHOTO CARDS (replaces the photo strip) */
+    .blog-grid { width: min(1060px, calc(100% - 40px)); margin: 44px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .bcard { background: var(--card); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform 0.15s; }
+    .bcard:hover { transform: translateY(-3px); }
+    .bcard .im { aspect-ratio: 16/9; overflow: hidden; }
+    .bcard img { width: 100%; height: 100%; object-fit: cover; }
+    .bcard .bd { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .tag { align-self: flex-start; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 4px 10px; border-radius: 100px; }
+    .bcard h3 { font-family: 'Libre Baskerville', serif; font-size: 17.5px; color: var(--navy); line-height: 1.35; }
+    .bcard p { font-size: 13.5px; color: var(--muted); flex: 1; }
+    .bcard .go { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .bcard .go::after { content: ' →'; color: var(--gold); }
 
-    /* CTA BAND with suggestion form */
-    .cta { margin-top: 64px; background: var(--navy); color: #fff; }
-    .cta-in { max-width: 1060px; margin: 0 auto; padding: 52px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    /* CTA — navy rounded card on paper, with suggestion form */
+    .cta { max-width: 1060px; margin: 64px auto 0; padding: 0 32px; }
+    .cta-in { background: var(--navy); color: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 44px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
     .cta-copy p { margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 44ch; }
     .cta-points { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
     .cta-points div { display: flex; gap: 10px; align-items: baseline; font-size: 13.5px; color: rgba(255,255,255,0.8); }
-    .cta-points div::before { content: '—'; color: var(--gold-bright); }
-    .cta-copy .cta-link { display: inline-block; margin-top: 26px; background: var(--gold-bright); color: var(--navy); padding: 14px 26px; font-size: 14.5px; font-weight: 700; }
+    .cta-points div::before { content: '—'; color: var(--gold-soft); }
+    .cta-copy .cta-link { display: inline-block; margin-top: 26px; background: var(--gold-soft); color: var(--navy); padding: 14px 26px; font-size: 14.5px; font-weight: 700; border-radius: 100px; }
     .cta-copy .cta-link:hover { background: var(--gold-light); }
     .lead-form { display: flex; flex-direction: column; gap: 12px; }
     .lead-form label { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .lead-input { width: 100%; background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.15); color: #fff; padding: 13px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.15s; }
-    .lead-input:focus { border-color: var(--gold-bright); }
-    .lead-input::placeholder { color: rgba(255,255,255,0.35); }
+    .lead-input { width: 100%; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15); color: #fff; padding: 13px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; border-radius: 10px; transition: border-color 0.15s; }
+    .lead-input:focus { border-color: var(--gold-soft); }
+    .lead-input::placeholder { color: rgba(255,255,255,0.55); }
     select.lead-input option { background: var(--navy); color: #fff; }
     textarea.lead-input { resize: vertical; min-height: 90px; }
-    .lead-btn { background: var(--gold-bright); color: var(--navy); border: none; padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 700; cursor: pointer; }
+    .lead-btn { background: var(--gold-soft); color: var(--navy); border: none; padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 700; cursor: pointer; border-radius: 100px; }
     .lead-btn:hover { background: var(--gold-light); }
-    .lead-note { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; }
-    .lead-note a { color: var(--gold-bright); }
+    .lead-note { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .lead-note a { color: var(--gold-soft); }
 
-    /* FOOTER */
-    footer { background: var(--navy-deep); color: #fff; padding: 28px 32px calc(28px + env(safe-area-inset-bottom, 0px)); }
+    /* FOOTER — warm paper, hairline top */
+    footer { background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); margin-top: 56px; padding: 28px 32px calc(28px + env(safe-area-inset-bottom, 0px)); }
     .foot-in { max-width: 1060px; margin: 0 auto; display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
     .foot-in .nav-logo { font-size: 15px; }
-    .foot-in .copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .foot-in .copy { font-size: 12px; color: var(--muted); }
     .foot-links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
-    .foot-links a { font-size: 12.5px; color: rgba(255,255,255,0.5); }
-    .foot-links a:hover { color: var(--gold-bright); }
+    .foot-links a { font-size: 12.5px; color: var(--muted); }
+    .foot-links a:hover { color: var(--navy); }
 
     /* MOBILE TAB BAR */
     .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--navy-deep);border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);justify-content:space-around;align-items:center; }
@@ -223,16 +247,16 @@
       #sectionNav .snav-in { padding-left: 20px; padding-right: 20px; gap: 20px; }
       .answers-box { grid-template-columns: 1fr 1fr; }
       .ans:nth-child(2) { border-right: none; }
-      .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(43,52,66,0.07); }
       .tips { grid-template-columns: 1fr; }
       .dt-row { grid-template-columns: 1fr; gap: 3px; }
       .dt-row .price { text-align: left; }
       .eat-row { grid-template-columns: 1fr; gap: 3px; }
       .eat-row .where { text-align: left; }
       .mo-row { grid-template-columns: 1fr; gap: 4px; }
-      .life { grid-template-columns: 1fr; }
-      .life figure { aspect-ratio: 16/8; }
-      .cta-in { grid-template-columns: 1fr; gap: 36px; padding: 44px 20px; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .cta { padding: 0 20px; }
+      .cta-in { grid-template-columns: 1fr; gap: 36px; padding: 36px 24px; }
       footer { padding-left: 20px; padding-right: 20px; }
     }
     @media (max-width: 768px) {
@@ -258,7 +282,7 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="tel:+13152214857" class="nav-call">(315) 221-4857</a>
+  <a href="tel:+13152214857" class="nav-call">Call or text us</a>
 </nav>
 
 <!-- STICKY SECTION NAV -->
@@ -286,10 +310,10 @@
 <!-- ANSWER BAR -->
 <div class="answers shell">
   <div class="answers-box">
-    <div class="ans"><div class="label">Nearest real beach</div><div class="val">~20 min</div><div class="note">Westcott Beach · $7/car</div></div>
-    <div class="ans"><div class="label">Day-trip castles</div><div class="val">45 min</div><div class="note">Boldt &amp; Singer · by boat</div></div>
-    <div class="ans"><div class="label">Snow per year</div><div class="val">140&Prime;+</div><div class="note">200&Prime;+ on Tug Hill</div></div>
-    <div class="ans"><div class="label">Disney tickets</div><div class="val">On-post ITR</div><div class="note">Call <a href="tel:+13157728222">(315) 772-8222</a></div></div>
+    <div class="ans"><div class="label">Free &amp; indoor today</div><div class="val"><a href="#family-kids">Storytimes</a></div><div class="note"><a href="#family-kids">Library storytimes — 4 towns ↓</a></div></div>
+    <div class="ans"><div class="label">Energy burn-off</div><div class="val"><a href="#family-kids">Billy Beez</a></div><div class="note"><a href="#family-kids">+ Pine Plains bowling, on post ↓</a></div></div>
+    <div class="ans"><div class="label">Free outdoors</div><div class="val"><a href="#outdoors">Thompson Park</a></div><div class="note"><a href="#outdoors">+ flat trails &amp; the sledding hill ↓</a></div></div>
+    <div class="ans"><div class="label">Discount tickets</div><div class="val"><a href="tel:+13157728222">ITR office</a></div><div class="note">Call <a href="tel:+13157728222">(315) 772-8222</a></div></div>
   </div>
 </div>
 
@@ -313,7 +337,7 @@
         <div style="display:flex;justify-content:space-between;align-items:flex-start;">
           <div>
             <div id="gpName" style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;line-height:1.25;"></div>
-            <div id="gpAddress" style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px;line-height:1.5;"></div>
+            <div id="gpAddress" style="font-size:12px;color:rgba(255,255,255,0.62);margin-top:4px;line-height:1.5;"></div>
             <div id="gpNotes" style="font-size:11px;color:var(--gold-bright);margin-top:6px;font-weight:600;"></div>
             <div id="gpLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"></div>
           </div>
@@ -330,48 +354,66 @@
   </div>
 </section>
 
+<!-- SITUATION CHIPS -->
+<div class="shell">
+  <div class="sit-chips" id="sitChips" role="group" aria-label="Filter family activities">
+    <button class="sit-chip active" data-filter="all" type="button">All</button>
+    <button class="sit-chip" data-filter="free" type="button">Free</button>
+    <button class="sit-chip" data-filter="indoor" type="button">Indoor</button>
+    <button class="sit-chip" data-filter="under20" type="button">Under 20 min</button>
+    <button class="sit-chip" data-filter="baby" type="button">Baby-friendly</button>
+    <button class="sit-chip" data-filter="winter" type="button">Winter-proof</button>
+  </div>
+</div>
+
 <!-- FAMILY & KIDS -->
 <section class="section shell" id="family-kids">
   <div class="sec-head"><h2>With kids, week to week</h2><span>What actually fills a Tuesday in January</span></div>
   <p class="lede">Honest answer: yes, this is a good place to raise kids. The community is tight, the outdoor access is unreal, and the week-to-week routine is more full than the Google results suggest.</p>
 
+  <div class="callout">
+    <div class="label">Solo-parenting this weekend?</div>
+    <p>Filter for <b>Free</b> + <b>Indoor</b> above — and the storytimes are full of other moms who get it.</p>
+  </div>
+
   <div class="sub-h">Indoor play — winter-critical</div>
   <div class="tips">
-    <div class="tip"><b>Billy Beez — Salmon Run Mall</b><span>The big indoor play park, and effectively <i>the</i> indoor playground now — the mall's other play spots have closed. Plan on it all winter. <a href="tel:+13158164515">(315) 816-4515</a></span></div>
-    <div class="tip"><b>Pine Plains Bowling Center — on post</b><span>24 lanes with bumpers, HyperBowling, snack bar, birthday parties. Closed Mon–Tue. <a href="tel:+13157726601">(315) 772-6601</a></span></div>
-    <div class="tip"><b>Watertown Family YMCA</b><span>Gymnastics from 18 months (Parent &amp; Tot, Tumbling Tigers, Ninja classes) at the Fairgrounds and Carthage sites — around $38/mo for members.</span></div>
-    <div class="tip"><b>CYSS + SKIES Unlimited — on post</b><span>Dance, piano, gymnastics, martial arts, STEM/robotics via WebTrac. Register with Parent Central the day you get orders — the childcare waitlist runs 3–6 months. <a href="tel:+13157728675">(315) 772-8675</a></span></div>
+    <div class="tip" data-tags="indoor winter"><b>Billy Beez — Salmon Run Mall</b><i class="fact">Indoor · call for hours &amp; prices</i><span>The big indoor play park, and effectively <i>the</i> indoor playground now — the mall's other play spots have closed. Plan on it all winter. <a href="tel:+13158164515">(315) 816-4515</a></span></div>
+    <div class="tip" data-tags="indoor winter under20"><b>Pine Plains Bowling Center — on post</b><i class="fact">Indoor · on post · closed Mon–Tue</i><span>24 lanes with bumpers, HyperBowling, snack bar, birthday parties. Closed Mon–Tue. <a href="tel:+13157726601">(315) 772-6601</a></span></div>
+    <div class="tip" data-tags="indoor winter baby"><b>Watertown Family YMCA</b><i class="fact">≈$38/mo members · from 18 months · indoor</i><span>Gymnastics from 18 months (Parent &amp; Tot, Tumbling Tigers, Ninja classes) at the Fairgrounds and Carthage sites — around $38/mo for members.</span></div>
+    <div class="tip" data-tags="indoor winter under20"><b>CYSS + SKIES Unlimited — on post</b><i class="fact">On post · via WebTrac · indoor</i><span>Dance, piano, gymnastics, martial arts, STEM/robotics via WebTrac. Register with Parent Central the day you get orders — the childcare waitlist runs 3–6 months. <a href="tel:+13157728675">(315) 772-8675</a></span></div>
   </div>
+  <p class="lede" data-keep="1" style="margin-top:10px;">January Saturday, everything above closed or crowded? Honest answer: the library, the pool at Magrath, and a fort made of moving boxes. It counts.</p>
 
   <div class="sub-h">Storytimes — one at nearly every library</div>
   <div class="tips">
-    <div class="tip"><b><a href="https://carthagefreelibrary.org/children-and-teens/" target="_blank" rel="noopener">Carthage Free Library</a></b><span>Story Time Wednesdays 10:30–11:45am, ages 0–4 — stories, craft, music. Summer reading for K–6.</span></div>
-    <div class="tip"><b><a href="https://www.flowermemoriallibrary.org" target="_blank" rel="noopener">Flower Memorial Library, Watertown</a></b><span>Children's department with playrooms, puppet theater, costume area. Preschool story programs — call Children's for the current schedule: <a href="tel:+13157857709">(315) 785-7709</a></span></div>
-    <div class="tip"><b><a href="https://haymemoriallibrary.org/" target="_blank" rel="noopener">Hay Memorial Library, Sackets Harbor</a></b><span>Morning storytimes plus interactive Story Walks. <a href="tel:+13156462228">(315) 646-2228</a></span></div>
-    <div class="tip"><b><a href="https://evansmillspubliclibrary.org/library-hours/" target="_blank" rel="noopener">Evans Mills Public Library</a> &amp; <a href="https://bodmanmemoriallibrary.org/" target="_blank" rel="noopener">Bodman Memorial, Philadelphia</a></b><span>Preschool story programs and summer reading closest to the gate-side villages.</span></div>
+    <div class="tip" data-tags="free indoor baby winter"><b><a href="https://carthagefreelibrary.org/children-and-teens/" target="_blank" rel="noopener">Carthage Free Library</a></b><i class="fact">Free · Wed 10:30–11:45am · ages 0–4</i><span>Story Time Wednesdays 10:30–11:45am, ages 0–4 — stories, craft, music. Summer reading for K–6.</span></div>
+    <div class="tip" data-tags="free indoor baby winter under20"><b><a href="https://www.flowermemoriallibrary.org" target="_blank" rel="noopener">Flower Memorial Library, Watertown</a></b><i class="fact">Free · preschool programs · call for schedule</i><span>Children's department with playrooms, puppet theater, costume area. Preschool story programs — call Children's for the current schedule: <a href="tel:+13157857709">(315) 785-7709</a></span></div>
+    <div class="tip" data-tags="free indoor baby winter"><b><a href="https://haymemoriallibrary.org/" target="_blank" rel="noopener">Hay Memorial Library, Sackets Harbor</a></b><i class="fact">Free · morning storytimes</i><span>Morning storytimes plus interactive Story Walks. <a href="tel:+13156462228">(315) 646-2228</a></span></div>
+    <div class="tip" data-tags="free indoor baby winter under20"><b><a href="https://evansmillspubliclibrary.org/library-hours/" target="_blank" rel="noopener">Evans Mills Public Library</a> &amp; <a href="https://bodmanmemoriallibrary.org/" target="_blank" rel="noopener">Bodman Memorial, Philadelphia</a></b><i class="fact">Free · preschool story programs · gate-side</i><span>Preschool story programs and summer reading closest to the gate-side villages.</span></div>
   </div>
 
   <div class="sub-h">Swim &amp; splash</div>
   <div class="tips">
-    <div class="tip"><b>Magrath indoor pool — on post</b><span>25m pool with "Learn to Swim" family and private lessons — free for active-duty soldiers. <a href="tel:+13157724806">(315) 772-4806</a></span></div>
-    <div class="tip"><b>Watertown Family YMCA</b><span>Lessons from 6 months to adult at the downtown aquatic center — Saturday blocks for Parent &amp; Tot through Level 6, plus Carthage-site lessons.</span></div>
-    <div class="tip"><b>City pools</b><span>Thompson Park Pool and the Alteri Pool at the Duffy Fairgrounds. <a href="tel:+13157857775">(315) 785-7775</a></span></div>
-    <div class="tip"><b>Splash pads</b><span>Thompson Park and North Elementary (Flynn) — open mid-May, roughly 10am–8pm daily in season. Free.</span></div>
+    <div class="tip" data-tags="indoor winter under20"><b>Magrath indoor pool — on post</b><i class="fact">Indoor · on post · lessons free for AD soldiers</i><span>25m pool with "Learn to Swim" family and private lessons — free for active-duty soldiers. <a href="tel:+13157724806">(315) 772-4806</a></span></div>
+    <div class="tip" data-tags="indoor winter baby"><b>Watertown Family YMCA</b><i class="fact">Indoor · lessons from 6 months · Saturdays</i><span>Lessons from 6 months to adult at the downtown aquatic center — Saturday blocks for Parent &amp; Tot through Level 6, plus Carthage-site lessons.</span></div>
+    <div class="tip" data-tags="under20"><b>City pools</b><i class="fact">Summer · Thompson Park &amp; the fairgrounds</i><span>Thompson Park Pool and the Alteri Pool at the Duffy Fairgrounds. <a href="tel:+13157857775">(315) 785-7775</a></span></div>
+    <div class="tip" data-tags="free under20"><b>Splash pads</b><i class="fact">Free · mid-May on · ~10am–8pm daily</i><span>Thompson Park and North Elementary (Flynn) — open mid-May, roughly 10am–8pm daily in season. Free.</span></div>
   </div>
 
   <div class="sub-h">Worth the trip, every time</div>
   <div class="tips one-col">
-    <div class="tip"><b>Zoo New York at Thompson Park</b><span>The only zoo in the world devoted to New York–native species — bears, wolves, wolverines, eagles, mountain lions. May–Oct daily 10–5; April weekends 10–5; Nov–Mar weekends 11–3 plus school breaks. A 2025 funding crisis nearly closed it — go, your admission genuinely matters. <a href="tel:+13157826180">(315) 782-6180</a></span></div>
-    <div class="tip"><b>Old McDonald's Farm — Sackets Harbor</b><span>200+ animals, storybook hayride, mini golf, bounce pad; corn maze and pumpkin patch in fall. $15.95 ages 2+, closed Mon–Tue.</span></div>
-    <div class="tip"><b>Sackets Harbor Battlefield, with kids</b><span>Living-history reenactors in 1813 uniform all summer, a flat year-round interpretive trail, and picnic tables over Lake Ontario. Free grounds — the easiest history lesson you'll ever run.</span></div>
+    <div class="tip" data-tags="under20"><b>Zoo New York at Thompson Park</b><i class="fact">~20 min · admission charged · May–Oct daily 10–5</i><span>The only zoo in the world devoted to New York–native species — bears, wolves, wolverines, eagles, mountain lions. May–Oct daily 10–5; April weekends 10–5; Nov–Mar weekends 11–3 plus school breaks. A 2025 funding crisis nearly closed it — go, your admission genuinely matters. <a href="tel:+13157826180">(315) 782-6180</a></span></div>
+    <div class="tip"><b>Old McDonald's Farm — Sackets Harbor</b><i class="fact">$15.95 ages 2+ · closed Mon–Tue</i><span>200+ animals, storybook hayride, mini golf, bounce pad; corn maze and pumpkin patch in fall. $15.95 ages 2+, closed Mon–Tue.</span></div>
+    <div class="tip" data-tags="free"><b>Sackets Harbor Battlefield, with kids</b><i class="fact">Free grounds · flat year-round trail · ~30 min</i><span>Living-history reenactors in 1813 uniform all summer, a flat year-round interpretive trail, and picnic tables over Lake Ontario. Free grounds — the easiest history lesson you'll ever run.</span></div>
   </div>
 </section>
 
-<!-- PHOTO STRIP 1 -->
-<div class="life">
-  <figure><img src="images/thompson-park.jpg" alt="Thompson Park, Watertown NY" loading="lazy"/><figcaption>Thompson Park<small>355 acres · zoo · pool · splash pad · the sledding hill</small></figcaption></figure>
-  <figure><img src="images/sackets-harbor.webp" alt="Sackets Harbor on Lake Ontario" loading="lazy"/><figcaption>Sackets Harbor<small>1812 battlefield · breweries · ~30 min</small></figcaption></figure>
-  <figure><img src="images/watertown-downtown.jpg" alt="Downtown Watertown NY" loading="lazy"/><figcaption>Downtown Watertown<small>Public Square · Wednesday farmers market</small></figcaption></figure>
+<!-- PHOTO CARDS 1 (Warm Journal photo-card row) -->
+<div class="blog-grid">
+  <a class="bcard" href="#outdoors"><div class="im"><img src="images/thompson-park.jpg" alt="Thompson Park, Watertown NY" loading="lazy"/></div><div class="bd"><span class="tag">~20 min · Free</span><h3>Thompson Park</h3><p>355 acres · zoo · pool · splash pad · the sledding hill</p><span class="go">Outdoors</span></div></a>
+  <a class="bcard" href="#day-trips"><div class="im"><img src="images/boldt-castle.jpg" alt="Boldt Castle in the Thousand Islands" loading="lazy"/></div><div class="bd"><span class="tag">~45 min · Day trip</span><h3>Boldt Castle</h3><p>Boat access from Alexandria Bay, mid-May to mid-Oct</p><span class="go">Day trips</span></div></a>
+  <a class="bcard" href="#day-trips"><div class="im"><img src="images/sackets-harbor.webp" alt="Sackets Harbor on Lake Ontario" loading="lazy"/></div><div class="bd"><span class="tag">~30 min</span><h3>Sackets Harbor</h3><p>1812 battlefield · breweries · Lake Ontario sunsets</p><span class="go">Day trips</span></div></a>
 </div>
 
 <!-- OUTDOORS BY SEASON -->
@@ -395,28 +437,28 @@
 
   <div class="sub-h">Beaches — summer</div>
   <div class="tips">
-    <div class="tip"><b>Westcott Beach State Park</b><span>The closest real beach — ~20 min, $7/car, lifeguarded swimming, picnic tables, minutes from Sackets Harbor.</span></div>
+    <div class="tip" data-tags="under20"><b>Westcott Beach State Park</b><span>The closest real beach — ~20 min, $7/car, lifeguarded swimming, picnic tables, minutes from Sackets Harbor.</span></div>
     <div class="tip"><b>Southwick Beach State Park</b><span>3,500 feet of sand — among the best on Lake Ontario. ~40 min, $8/car May–Oct; guarded swimming June 19–Sept 6 in 2026.</span></div>
-    <div class="tip"><b>Remington Park — on post</b><span>Beach on Remington Pond, May–Oct, plus pavilions, playgrounds, fishing docks, and cabin/RV rentals. <a href="tel:+13157728222">(315) 772-8222</a></span></div>
+    <div class="tip" data-tags="under20"><b>Remington Park — on post</b><span>Beach on Remington Pond, May–Oct, plus pavilions, playgrounds, fishing docks, and cabin/RV rentals. <a href="tel:+13157728222">(315) 772-8222</a></span></div>
     <div class="tip"><b>Wellesley Island State Park</b><span>Beach at the largest camping complex in the Thousand Islands — pair it with the nature center.</span></div>
   </div>
 
   <div class="sub-h">Fishing — year-round</div>
   <div class="tips">
     <div class="tip"><b>Henderson Harbor — the "Golden Crescent"</b><span>60+ Lake Ontario charters: lake trout, king salmon, browns, steelhead, smallmouth. Season runs roughly April–September.</span></div>
-    <div class="tip"><b>Black River</b><span>Bass and pike water 10 minutes from post, plus fall salmon and steelhead runs. Charters from around $120.</span></div>
+    <div class="tip" data-tags="under20"><b>Black River</b><span>Bass and pike water 10 minutes from post, plus fall salmon and steelhead runs. Charters from around $120.</span></div>
     <div class="tip"><b>Salmon River, Pulaski (~50 min)</b><span>The most famous Lake Ontario tributary — 15–40-lb king salmon Sept–Oct, steelhead fall through spring.</span></div>
-    <div class="tip"><b>Ice fishing</b><span>Rent everything from MWR Outdoor Rec's Gear to Go — see winter, below.</span></div>
+    <div class="tip" data-tags="winter"><b>Ice fishing</b><span>Rent everything from MWR Outdoor Rec's Gear to Go — see winter, below.</span></div>
   </div>
 
   <div class="sub-h">Winter — the Tug Hill snow machine</div>
   <div class="tips">
-    <div class="tip"><b>Dry Hill Ski Area</b><span>10 min south of downtown Watertown — 7 trails, 300-ft vertical, terrain park, snow tubing with snowmaking. The learn-to-ski hill, with military discounts. <a href="tel:+13157828584">(315) 782-8584</a></span></div>
-    <div class="tip"><b>Snow Ridge, Turin (~50 min)</b><span>230&Prime; average snowfall — 22 trails, 6 lifts, night skiing, glades, tubing, backcountry acreage.</span></div>
-    <div class="tip"><b>Maple Ridge Snow Park, Lowville</b><span>The longest tubing lanes in the North Country — 1,200 ft with a tube tow, weekends and school holidays 12–5, natural snow only. Operations have changed hands — verify it's running each season before you drive.</span></div>
-    <div class="tip"><b>MWR Gear to Go — on post</b><span>Rent ski/snowboard packages, snowshoes, XC skis, fat-tire bikes, and ice-fishing gear cheap; boats, campers, and canoes in summer. <a href="tel:+13157728222">(315) 772-8222</a></span></div>
-    <div class="tip"><b>Snowmobiling on Tug Hill</b><span>Club-groomed trail networks: Osceola Snowmobile Club, Penn Mountain Snow Riders, Turin Ridge Riders, Valley Snow Travelers. Trail info at <a href="https://tughill.org/links-local/" target="_blank" rel="noopener">tughill.org</a>.</span></div>
-    <div class="tip"><b>Sledding, free version</b><span>Thompson Park's famous hill — or Dry Hill's tubing park for the lift-served upgrade. XC ski and snowshoe at Whetstone Gulf, Wellesley Island, and Wehle.</span></div>
+    <div class="tip" data-tags="winter"><b>Dry Hill Ski Area</b><span>10 min south of downtown Watertown — 7 trails, 300-ft vertical, terrain park, snow tubing with snowmaking. The learn-to-ski hill, with military discounts. <a href="tel:+13157828584">(315) 782-8584</a></span></div>
+    <div class="tip" data-tags="winter"><b>Snow Ridge, Turin (~50 min)</b><span>230&Prime; average snowfall — 22 trails, 6 lifts, night skiing, glades, tubing, backcountry acreage.</span></div>
+    <div class="tip" data-tags="winter"><b>Maple Ridge Snow Park, Lowville</b><span>The longest tubing lanes in the North Country — 1,200 ft with a tube tow, weekends and school holidays 12–5, natural snow only. Operations have changed hands — verify it's running each season before you drive.</span></div>
+    <div class="tip" data-tags="winter under20"><b>MWR Gear to Go — on post</b><span>Rent ski/snowboard packages, snowshoes, XC skis, fat-tire bikes, and ice-fishing gear cheap; boats, campers, and canoes in summer. <a href="tel:+13157728222">(315) 772-8222</a></span></div>
+    <div class="tip" data-tags="winter"><b>Snowmobiling on Tug Hill</b><span>Club-groomed trail networks: Osceola Snowmobile Club, Penn Mountain Snow Riders, Turin Ridge Riders, Valley Snow Travelers. Trail info at <a href="https://tughill.org/links-local/" target="_blank" rel="noopener">tughill.org</a>.</span></div>
+    <div class="tip" data-tags="free winter under20"><b>Sledding, free version</b><span>Thompson Park's famous hill — or Dry Hill's tubing park for the lift-served upgrade. XC ski and snowshoe at Whetstone Gulf, Wellesley Island, and Wehle.</span></div>
   </div>
 </section>
 
@@ -450,11 +492,11 @@
   <p class="lede" style="margin-top:16px;"><b>Crossing into Canada:</b> passport, passport card, or NEXUS required at the Thousand Islands Bridge (toll both ways). Service members — confirm the current leave/pass policy for international travel with your chain of command; Fort Drum has an on-post Official Passport and Visa Center.</p>
 </section>
 
-<!-- PHOTO STRIP 2 -->
-<div class="life">
-  <figure><img src="images/boldt-castle.jpg" alt="Boldt Castle in the Thousand Islands" loading="lazy"/><figcaption>Boldt Castle<small>~45 min · boat access from Alexandria Bay</small></figcaption></figure>
-  <figure><img src="images/thousand-islands.jpg" alt="Thousand Islands, St. Lawrence River" loading="lazy"/><figcaption>Thousand Islands<small>1,864 islands · two countries · one river</small></figcaption></figure>
-  <figure><img src="images/north-country-winter.jpg" alt="North Country winter on the Tug Hill Plateau" loading="lazy"/><figcaption>Tug Hill winter<small>The snowiest region east of the Rockies</small></figcaption></figure>
+<!-- PHOTO CARDS 2 (Warm Journal photo-card row) -->
+<div class="blog-grid">
+  <a class="bcard" href="#day-trips"><div class="im"><img src="images/thousand-islands.jpg" alt="Thousand Islands, St. Lawrence River" loading="lazy"/></div><div class="bd"><span class="tag">Two countries</span><h3>Thousand Islands</h3><p>1,864 islands · two countries · one river</p><span class="go">Day trips</span></div></a>
+  <a class="bcard" href="#outdoors"><div class="im"><img src="images/north-country-winter.jpg" alt="North Country winter on the Tug Hill Plateau" loading="lazy"/></div><div class="bd"><span class="tag">Winter</span><h3>Tug Hill winter</h3><p>The snowiest region east of the Rockies</p><span class="go">Outdoors</span></div></a>
+  <a class="bcard" href="#events"><div class="im"><img src="images/watertown-downtown.jpg" alt="Downtown Watertown NY" loading="lazy"/></div><div class="bd"><span class="tag">Public Square</span><h3>Downtown Watertown</h3><p>Wednesday farmers market</p><span class="go">The year</span></div></a>
 </div>
 
 <!-- EVENTS -->
@@ -509,7 +551,7 @@
       <div class="cta-points">
         <div>Free, no obligation — built by people who live here</div>
         <div>Every partner vetted on their record with military families</div>
-        <div>Call or text <a href="tel:+13152214857" style="color:var(--gold-bright);">(315) 221-4857</a></div>
+        <div>Call or text <a href="tel:+13152214857" style="color:var(--gold-soft);">(315) 221-4857</a></div>
       </div>
       <a class="cta-link" href="pcshomes-contact.html">Talk to PCSHomes &rarr;</a>
     </div>
@@ -627,7 +669,7 @@
   <div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 14px;"></div>
   <div style="display:flex;flex-direction:column;gap:2px;">
     <!-- GROUP: Tools & Planning -->
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:8px 16px 4px;">Fort Drum Guide</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:8px 16px 4px;">Fort Drum Guide</div>
     <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
@@ -654,7 +696,7 @@
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <!-- GROUP: Area & Lifestyle -->
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
     <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
@@ -677,6 +719,7 @@
     </a>
     <!-- BOTTOM CTAs -->
     <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
+    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
       <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
       <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
@@ -689,7 +732,7 @@
   <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
   <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
   <a href="pcshomes-discover.html" class="tab-item active"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-network.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Network</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
   <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
 <script>
@@ -735,6 +778,55 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       e.preventDefault();
       var target = document.querySelector(this.getAttribute('href'));
       if(target) window.scrollTo({top: target.offsetTop - 120, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+
+<script>
+// Situation chips: filter tagged rows in #family-kids and #outdoors (glossary filter idiom)
+(function(){
+  var chips = document.querySelectorAll('.sit-chip');
+  if(!chips.length) return;
+  var secs = [document.getElementById('family-kids'), document.getElementById('outdoors')];
+
+  function apply(tag){
+    secs.forEach(function(sec){
+      if(!sec) return;
+      // Tagged rows: show on match (or All)
+      sec.querySelectorAll('[data-tags]').forEach(function(row){
+        var show = tag === 'all' || row.getAttribute('data-tags').split(' ').indexOf(tag) > -1;
+        row.style.display = show ? '' : 'none';
+      });
+      // Untagged rows and prose blocks step aside while a filter is on
+      sec.querySelectorAll('.tip:not([data-tags]), .tbl-wrap, .lede:not([data-keep])').forEach(function(el){
+        el.style.display = tag === 'all' ? '' : 'none';
+      });
+      // Hide group headers with nothing visible beneath them
+      sec.querySelectorAll('.sub-h').forEach(function(h){
+        var n = h.nextElementSibling, visible = false;
+        while(n && !visible && !n.classList.contains('sub-h')){
+          if(n.style.display !== 'none'){
+            if(n.hasAttribute('data-tags') || n.classList.contains('tbl-wrap')){ visible = true; }
+            else if(n.querySelectorAll){
+              var rows = n.querySelectorAll('.tip, [data-tags]');
+              for(var i = 0; i < rows.length; i++){
+                if(rows[i].style.display !== 'none'){ visible = true; break; }
+              }
+            }
+          }
+          n = n.nextElementSibling;
+        }
+        h.style.display = (tag === 'all' || visible) ? '' : 'none';
+      });
+    });
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(x){ x.classList.remove('active'); });
+      this.classList.add('active');
+      apply(this.getAttribute('data-filter'));
     });
   });
 })();

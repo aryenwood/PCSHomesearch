@@ -22,73 +22,79 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { color: inherit; text-decoration: none; }
     :root {
-      --navy: #162D50;
-      --gold: #C9A84C; --gold-light: #E2C57A;
-      --cream: #FAF8F4; --white: #FFFFFF;
-      --gray: #5C6B7A; --gray-light: #EEF1F4; --text: #1C2B3A;
-      --bg: #0F1D35;
+      --navy: #1D3557; --navy-deep: #14263F;
+      --ink: #2B3442; --muted: #6B7280;
+      --gold: #B98A2F; --gold-soft: #D9B45B; --gold-light: #D9B45B;
+      --gold-tint: rgba(185,138,47,0.12);
+      --paper: #FBF7EF; --cream: #FBF7EF; --card: #FFFFFF; --white: #FFFFFF;
+      --gray: #6B7280; --gray-light: #F2EDE2; --text: #2B3442;
+      --line: rgba(43,52,66,0.10);
+      --shadow: 0 2px 6px rgba(43,52,66,0.06), 0 12px 32px rgba(43,52,66,0.08);
+      --r: 16px;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-      background-color: #162D50; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(251,247,239,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 66px;
-      border-bottom: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid var(--line);
     }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--white); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-cta { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; display: inline-block; }
-    .nav-cta:hover { background: var(--gold-light); }
+    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta { background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; display: inline-block; }
+    .nav-cta:hover { background: var(--navy-deep); }
 
-    /* HERO */
+    /* HERO — light, warm, gate photo card right */
     .hero {
-      background: linear-gradient(rgba(11,31,58,0.9), rgba(11,31,58,0.95)), url('images/fort-drum-gate.jpg') center/cover no-repeat;
-      padding: 110px 48px 64px;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 50% 110%, rgba(201,168,76,0.08) 0%, transparent 70%);
+      max-width: 1120px; margin: 0 auto;
+      padding: 110px 48px 12px;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 44px; align-items: center;
+      text-align: left;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
-      color: var(--gold-light); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      padding: 7px 18px; border-radius: 100px; margin-bottom: 24px;
+      background: var(--gold-tint);
+      color: #8a6a1e; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      padding: 7px 18px; border-radius: 100px; margin-bottom: 20px;
     }
     .hero h1 {
       font-family: 'Libre Baskerville', serif;
-      font-size: clamp(34px, 5vw, 54px); font-weight: 700; line-height: 1.1;
-      color: var(--white); max-width: 600px; margin: 0 auto;
+      font-size: clamp(32px, 4.2vw, 48px); font-weight: 700; line-height: 1.15;
+      color: var(--navy); margin: 0;
     }
-    .hero-sub { font-size: 17px; color: rgba(255,255,255,0.55); max-width: 540px; line-height: 1.75; margin: 18px auto 0; }
+    .hero-sub { font-size: 16.5px; color: var(--muted); max-width: 48ch; line-height: 1.75; margin: 16px 0 0; }
+    .hero-photo { position: relative; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4/3; margin: 0; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo figcaption { position: absolute; bottom: 12px; left: 12px; background: rgba(255,255,255,0.92); border-radius: 100px; padding: 7px 14px; font-size: 12px; font-weight: 600; color: var(--navy); }
 
-    /* FILTER BAR */
+    /* FILTER BAR — white pills, gold active */
     .filter-bar {
       display: flex; align-items: center; justify-content: center;
       gap: 10px; flex-wrap: wrap;
       padding: 36px 48px 0;
-      background: var(--cream);
+      background: transparent;
     }
     .filter-btn {
-      background: var(--white); color: #3d4c5c;
-      border: 1px solid rgba(22,45,80,0.18); border-radius: 100px;
+      background: var(--card); color: var(--ink);
+      border: 1px solid var(--line); border-radius: 100px;
+      box-shadow: 0 1px 3px rgba(43,52,66,0.06);
       padding: 9px 22px; font-size: 13px; font-weight: 600;
       cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;
     }
-    .filter-btn:hover { background: rgba(201,168,76,0.12); color: var(--text); border-color: rgba(201,168,76,0.3); }
-    .filter-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .filter-btn:hover { background: var(--gold-tint); color: var(--navy); border-color: rgba(185,138,47,0.35); }
+    .filter-btn.active { background: var(--gold-soft); color: var(--navy); border-color: var(--gold-soft); font-weight: 700; }
 
     /* VENDOR GRID */
     .vendor-section {
-      background: var(--cream);
+      background: transparent;
       padding: 28px 48px 64px;
     }
     .vendor-grid {
@@ -97,17 +103,18 @@
       gap: 24px;
     }
     .vendor-card {
-      background: var(--white);
-      border-radius: 16px;
+      background: var(--card);
+      border-radius: var(--r);
       padding: 28px;
-      border: 1px solid rgba(0,0,0,0.06);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
       transition: all 0.25s;
       position: relative;
       display: flex; flex-direction: column;
     }
-    .vendor-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .vendor-card:hover { box-shadow: 0 4px 10px rgba(43,52,66,0.08), 0 18px 40px rgba(43,52,66,0.12); transform: translateY(-3px); }
     .vendor-card.placeholder { opacity: 0.55; }
-    .vendor-card.placeholder:hover { box-shadow: none; transform: none; }
+    .vendor-card.placeholder:hover { box-shadow: var(--shadow); transform: none; }
 
     /* Category badge */
     .category-badge {
@@ -115,8 +122,8 @@
       font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
       padding: 5px 12px; border-radius: 100px;
     }
-    .category-badge.agent { background: rgba(201,168,76,0.15); color: #8A6B1E; }
-    .category-badge.lender { background: rgba(11,31,58,0.08); color: var(--navy); }
+    .category-badge.agent { background: var(--gold-tint); color: #8a6a1e; }
+    .category-badge.lender { background: rgba(29,53,87,0.08); color: var(--navy); }
     .category-badge.inspector { background: rgba(46,204,138,0.12); color: #1a6b4a; }
     .category-badge.services { background: rgba(96,165,250,0.12); color: #2563eb; }
 
@@ -131,39 +138,40 @@
     .vendor-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
     .vendor-avatar .initials {
       font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;
-      color: var(--gold);
+      color: var(--gold-soft);
     }
     .vendor-avatar .icon-placeholder {
-      font-size: 24px; color: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-size: 24px; color: var(--gold-soft); display: flex; align-items: center; justify-content: center;
     }
     .vendor-info { min-width: 0; }
-    .vendor-company { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-bottom: 2px; }
+    .vendor-company { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
     .vendor-name { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.25; }
     .vendor-trusted {
       display: inline-flex; align-items: center; gap: 5px;
-      margin-top: 6px; font-size: 11px; font-weight: 600; color: var(--gold);
+      margin-top: 6px; font-size: 11px; font-weight: 700; color: #8a6a1e;
     }
     .vendor-trusted svg { flex-shrink: 0; }
 
-    /* Tags */
+    /* Tags — gold-tint pills per Warm Journal spec */
     .vendor-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .vendor-tag {
-      background: var(--gray-light); color: var(--navy);
-      font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 100px;
+      background: var(--gold-tint); color: #8a6a1e;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
     }
 
     /* Description */
-    .vendor-desc { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+    .vendor-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; flex: 1; }
 
     /* CTA button */
     .vendor-cta {
       display: block; width: 100%; padding: 13px;
-      background: var(--navy); color: var(--white);
-      border: none; border-radius: 8px;
+      background: var(--navy); color: #fff;
+      border: none; border-radius: 100px;
       font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
       cursor: pointer; transition: all 0.2s; text-align: center;
     }
-    .vendor-cta:hover { background: var(--gold); color: var(--navy); }
+    .vendor-cta:hover { background: var(--gold-soft); color: var(--navy); }
 
     /* MODAL */
     .modal-overlay {
@@ -173,13 +181,14 @@
     }
     .modal-overlay.open { display: flex; }
     .modal-card {
-      background: var(--white); border-radius: 20px;
+      background: var(--card); border-radius: 18px;
       max-width: 480px; width: 100%; padding: 36px;
       position: relative; max-height: 90vh; overflow-y: auto;
+      box-shadow: var(--shadow);
     }
     .modal-close {
       position: absolute; top: 16px; right: 20px;
-      background: none; border: none; font-size: 24px; color: var(--gray);
+      background: none; border: none; font-size: 24px; color: var(--muted);
       cursor: pointer; transition: color 0.2s; line-height: 1;
     }
     .modal-close:hover { color: var(--navy); }
@@ -187,23 +196,23 @@
       font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700;
       color: var(--navy); margin-bottom: 6px; padding-right: 32px;
     }
-    .modal-sub { font-size: 13px; color: var(--gray); margin-bottom: 24px; }
+    .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
     .modal-form { display: flex; flex-direction: column; gap: 14px; }
     .modal-input {
-      background: var(--gray-light); border: 1.5px solid rgba(0,0,0,0.08);
+      background: var(--paper); border: 1.5px solid var(--line);
       border-radius: 10px; padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
       outline: none; transition: border-color 0.2s;
     }
     .modal-input:focus { border-color: var(--gold); }
-    .modal-input::placeholder { color: var(--gray); }
+    .modal-input::placeholder { color: var(--muted); }
     textarea.modal-input { resize: vertical; min-height: 90px; }
     .modal-submit {
-      background: var(--navy); color: var(--white); border: none; border-radius: 10px;
+      background: var(--navy); color: #fff; border: none; border-radius: 100px;
       padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
       cursor: pointer; transition: all 0.2s; margin-top: 4px;
     }
-    .modal-submit:hover { background: var(--gold); color: var(--navy); }
+    .modal-submit:hover { background: var(--gold-soft); color: var(--navy); }
     .modal-success { display: none; text-align: center; padding: 24px 0; }
     .modal-success .check-icon {
       width: 56px; height: 56px; border-radius: 50%;
@@ -216,18 +225,20 @@
     }
     .modal-success p { font-size: 14px; color: var(--gray); line-height: 1.6; }
 
-    /* BECOME A PARTNER */
+    /* BECOME A PARTNER — navy CTA card on paper */
     .partner-section {
-      background: var(--bg); padding: 80px 48px;
+      background: transparent; padding: 56px 48px 72px;
     }
     .partner-inner {
-      max-width: 700px; margin: 0 auto; text-align: center;
+      max-width: 760px; margin: 0 auto; text-align: center;
+      background: var(--navy); border-radius: 22px; box-shadow: var(--shadow);
+      padding: 56px 44px;
     }
     .partner-inner h2 {
       font-family: 'Libre Baskerville', serif; font-size: clamp(26px, 4vw, 36px);
-      font-weight: 700; color: var(--white); margin-bottom: 12px;
+      font-weight: 700; color: #fff; margin-bottom: 12px;
     }
-    .partner-sub { font-size: 16px; color: rgba(255,255,255,0.45); margin-bottom: 40px; line-height: 1.7; }
+    .partner-sub { font-size: 16px; color: rgba(255,255,255,0.65); margin-bottom: 40px; line-height: 1.7; }
     .partner-form {
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
       text-align: left;
@@ -246,33 +257,33 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.35)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 14px center;
     }
-    .partner-select option { background: #162D50; color: var(--white); }
+    .partner-select option { background: #1D3557; color: #fff; }
     textarea.partner-input { resize: vertical; min-height: 100px; }
     .partner-submit {
-      background: var(--gold); color: var(--navy); border: none; border-radius: 10px;
+      background: var(--gold-soft); color: var(--navy); border: none; border-radius: 100px;
       padding: 16px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
       cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em;
     }
-    .partner-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .partner-submit:hover { background: #E5C46E; transform: translateY(-1px); }
     .partner-submit:active { transform: translateY(0); }
     .partner-success { display: none; text-align: center; padding: 32px 0; }
     .partner-success .check-icon {
       width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(201,168,76,0.12); display: flex; align-items: center; justify-content: center;
+      background: rgba(217,180,91,0.15); display: flex; align-items: center; justify-content: center;
       margin: 0 auto 16px;
     }
     .partner-success h3 {
       font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;
-      color: var(--white); margin-bottom: 8px;
+      color: #fff; margin-bottom: 8px;
     }
-    .partner-success p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .partner-success p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
 
-    /* FOOTER */
-    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--white); }
+    /* FOOTER — paper, top hairline */
+    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
     .footer-logo span { color: var(--gold); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: rgba(255,255,255,0.45); font-size: 13px; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a { color: var(--muted); font-size: 13px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--navy); }
 
     /* MOBILE BOTTOM TAB BAR */
     .mobile-tab-bar {
@@ -291,7 +302,7 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
-      .hero { padding: 110px 20px 60px; }
+      .hero { padding: 96px 20px 8px; grid-template-columns: 1fr; gap: 24px; }
       .vendor-grid { grid-template-columns: repeat(2, 1fr); }
       .filter-bar { padding: 24px 20px 0; gap: 8px; }
       .vendor-section { padding: 32px 20px 60px; }
@@ -308,7 +319,7 @@
       .nav-links, .nav-cta { display: none !important; }
       .mobile-tab-bar { display: flex; }
       .vendor-grid { grid-template-columns: 1fr; }
-      .hero { padding: 100px 18px 56px; }
+      .hero { padding: 92px 18px 4px; }
       .hero-sub { font-size: 15px; }
       .filter-bar { padding: 20px 18px 0; }
       .vendor-section { padding: 28px 18px 56px; }
@@ -364,7 +375,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div style="position:relative;z-index:1;">
+  <div>
     <div class="hero-eyebrow">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       Vetted &amp; Trusted
@@ -372,6 +383,10 @@
     <h1>Our Trusted Network</h1>
     <p class="hero-sub">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. We connect you &mdash; they deliver.</p>
   </div>
+  <figure class="hero-photo">
+    <img src="images/fort-drum-gate.jpg" alt="Fort Drum main gate" loading="eager"/>
+    <figcaption>Fort Drum, New York</figcaption>
+  </figure>
 </section>
 
 <!-- FILTER BAR -->
@@ -386,13 +401,13 @@
 <!-- VENDOR CARDS — rendered from /data/partners.json -->
 <section class="vendor-section">
   <div class="vendor-grid" id="vendorGrid"></div>
-  <div id="vendorEmptyState" style="display:none;max-width:640px;margin:0 auto;background:var(--white);border:1.5px dashed rgba(22,45,80,0.25);border-radius:16px;padding:40px 32px;text-align:center;">
-    <div style="width:52px;height:52px;border-radius:50%;background:rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <div id="vendorEmptyState" style="display:none;max-width:640px;margin:0 auto;background:var(--card);border:1.5px dashed rgba(29,53,87,0.25);border-radius:16px;box-shadow:var(--shadow);padding:40px 32px;text-align:center;">
+    <div style="width:52px;height:52px;border-radius:50%;background:var(--gold-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     </div>
     <h3 style="font-family:'Libre Baskerville',serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
-    <p style="font-size:13.5px;color:var(--gray);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
-    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:#8A6B1E;padding:11px 22px;border-radius:8px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
+    <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
+    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:#8a6a1e;padding:11px 22px;border-radius:100px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
   </div>
 </section>
 
@@ -414,7 +429,7 @@
         <input class="modal-input" type="text" name="duty-station" placeholder="Current Duty Station"/>
         <textarea class="modal-input" name="message" placeholder="What do you need help with?"></textarea>
         <button class="modal-submit" type="submit">Send Request</button>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+        <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
     <div class="modal-success" id="modalSuccess">
@@ -450,26 +465,70 @@
         </select>
         <textarea class="partner-input full-width" name="message" placeholder="Tell us about your services..."></textarea>
         <button class="partner-submit full-width" type="submit">Apply to Join Our Network</button>
-        <div style="font-size:12px;color:rgba(255,255,255,0.35);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold);text-decoration:none;">(315) 221-4857</a></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:var(--gold-soft);text-decoration:none;">(315) 221-4857</a></div>
       </form>
     </div>
 
     <div class="partner-success" id="partnerSuccess">
       <div class="check-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h3>Application received!</h3>
       <p>Thanks for your interest. A PCSHomes team member will review your application and be in touch soon.</p>
     </div>
+
+    <p style="margin-top:32px;font-size:13px;color:rgba(255,255,255,0.65);">Not a vendor application? <a href="#" onclick="document.getElementById('partnerModal').style.display='flex';return false;" style="color:var(--gold-soft);border-bottom:1px dotted rgba(217,180,91,0.5);">Are you a Fort Drum professional? Partner with us</a></p>
   </div>
 </section>
 
+<!-- PARTNER INQUIRY MODAL (advertise / general partnership — alternate path to the vendor application above) -->
+<div id="partnerModal" style="display:none;position:fixed;inset:0;z-index:20000;background:rgba(20,38,63,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#FFFFFF;border-radius:18px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;overflow-x:hidden;box-shadow:0 2px 6px rgba(43,52,66,0.06),0 32px 80px rgba(43,52,66,0.25);">
+    <div style="background:var(--navy);padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D9B45B;margin-bottom:8px;">Partner With Us</div>
+        <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;">Advertise on PCSHomes</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;line-height:1.7;">We're looking for ethical, military-friendly businesses to partner with. Reach thousands of families PCSing to Fort Drum. Partners never pay for placement or ranking.</div>
+      </div>
+      <button onclick="document.getElementById('partnerModal').style.display='none'" style="background:rgba(255,255,255,0.12);border:none;color:rgba(255,255,255,0.7);width:44px;height:44px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0;">×</button>
+    </div>
+    <form name="partner-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="padding:24px 28px;display:flex;flex-direction:column;gap:12px;" id="partnerInquiryForm">
+      <input type="hidden" name="form-name" value="partner-inquiry"/>
+      <p style="display:none"><input name="bot-field"/></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <input name="full-name" type="text" placeholder="Full Name" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
+        <input name="business-name" type="text" placeholder="Business Name" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
+      </div>
+      <select name="business-type" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#6B7280;outline:none;">
+        <option value="">Business Type</option>
+        <option>Real Estate Agent</option>
+        <option>VA Lender</option>
+        <option>Contractor</option>
+        <option>Property Manager</option>
+        <option>Other</option>
+      </select>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <input name="phone" type="tel" placeholder="Phone" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
+        <input name="email" type="email" placeholder="Email" required style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;"/>
+      </div>
+      <textarea name="message" placeholder="Tell us about your business and how you serve the military community" rows="3" style="width:100%;background:#FBF7EF;border:1.5px solid rgba(43,52,66,0.12);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2B3442;outline:none;resize:vertical;"></textarea>
+      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:100px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:44px;">Submit Inquiry</button>
+      <div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px;">PCSHomes is a Fort Drum military family resource. Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
+    </form>
+    <div id="partnerInquirySuccess" style="display:none;padding:40px 28px;text-align:center;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#1D3557;margin:12px 0 8px;">Inquiry received!</div>
+      <div style="font-size:14px;color:#6B7280;">We'll review your application and be in touch within 48 hours.</div>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
-<footer style="background:#0F1D35;padding:40px 48px;border-top:1px solid rgba(201,168,76,0.15);">
+<footer style="background:transparent;padding:40px 48px;border-top:1px solid rgba(43,52,66,0.10);">
   <div class="footer-inner" style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
     <div>
       <div class="footer-logo">PCS<span>Homes</span></div>
-      <span style="font-size:12px;color:rgba(255,255,255,0.2);">&copy; 2026 PCSHomes</span>
+      <span style="font-size:12px;color:#6B7280;">&copy; 2026 PCSHomes</span>
     </div>
     <div class="footer-links">
       <a href="index.html">Home</a>
@@ -477,7 +536,7 @@
       <a href="pcshomes-discover.html">Discover</a>
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
-      <a href="tel:+13152214857" style="color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
+      <a href="tel:+13152214857" style="color:#6B7280;text-decoration:none;font-size:13px;">📞 (315) 221-4857</a>
     </div>
     <!-- Social links: add when accounts are created -->
   </div>
@@ -535,6 +594,7 @@
     </a>
     <!-- BOTTOM CTAs -->
     <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
+    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
       <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
       <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
@@ -547,7 +607,7 @@
   <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
   <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
   <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-network.html" class="tab-item active"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Network</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
   <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
 <script>
@@ -643,6 +703,16 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     err.textContent = msg;
   }
 
+  // Partner inquiry modal (advertise / general partnership) — submit via fetch
+  function submitPartnerInquiry(){
+    var form=document.getElementById('partnerInquiryForm');
+    var fd=new FormData(form);
+    if(!fd.get('full-name')||!fd.get('business-name')||!fd.get('phone')||!fd.get('email')){alert('Please fill in all required fields.');return;}
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()})
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);form.style.display='none';document.getElementById('partnerInquirySuccess').style.display='block';})
+    .catch(function(){alert('Something went wrong — please try again, or call/text (315) 221-4857.');});
+  }
+
   // Partner application form — submit via fetch (no page reload)
   document.getElementById('partnerForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -703,7 +773,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 </script>
 
 <!-- BACK TO TOP -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold,#C9A84C);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-soft,#D9B45B);color:#1D3557;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(43,52,66,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
 <script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
 </body>
 </html>

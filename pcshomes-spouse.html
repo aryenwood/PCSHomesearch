@@ -25,122 +25,149 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { color: inherit; text-decoration: none; }
     :root {
-      --navy: #162D50; --navy-deep: #0F1D35;
-      --gold: #A8842C; --gold-bright: #C9A84C; --gold-light: #E2C57A;
-      --bg: #FCFBF8;
-      --ink: #1C2B3A; --muted: #5C6B7A; --rule: rgba(22,45,80,0.14);
+      --navy: #1D3557; --navy-deep: #14263F;
+      --ink: #2B3442; --muted: #6B7280;
+      --gold: #B98A2F; --gold-soft: #D9B45B; --gold-tint: rgba(185,138,47,0.12);
+      --gold-bright: #C9A84C; --gold-light: #E2C57A; /* legacy accents — dark tab bar + quick-links sheet only */
+      --paper: #FBF7EF; --card: #FFFFFF; --line: rgba(43,52,66,0.10);
+      --bg: var(--paper); --rule: var(--line);
+      --shadow: 0 2px 6px rgba(43,52,66,0.06), 0 12px 32px rgba(43,52,66,0.08);
+      --r: 16px;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    :focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-    /* NAV */
+    /* NAV — light journal bar */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
       display: flex; align-items: center; gap: 32px;
-      padding: 0 40px; height: 60px; background: var(--navy);
-      border-bottom: 1px solid rgba(201,168,76,0.25); color: #fff;
+      padding: 0 40px; height: 64px; background: rgba(251,247,239,0.92);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line); color: var(--ink);
     }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .nav-logo span { color: var(--gold-bright); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+    .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 26px; margin-left: auto; list-style: none; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--gold-bright); }
-    .nav-links a.active { color: #fff; }
-    .nav-call { font-size: 13px; font-weight: 700; color: var(--gold-bright); white-space: nowrap; }
+    .nav-links a { font-size: 13.5px; font-weight: 600; color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a.active { color: var(--navy); }
+    .nav-call { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 100px; white-space: nowrap; }
 
-    main { padding-top: 60px; }
+    main { padding-top: 64px; }
     .shell { max-width: 1060px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+
+    /* Anchor landings clear the fixed nav + chip row */
+    section[id], div[id] { scroll-margin-top: 130px; }
+
+    /* STICKY SECTION NAV (light variant — same JS) */
+    #sectionNav { position: fixed; top: 64px; left: 0; right: 0; z-index: 9998; background: rgba(251,247,239,0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); display: none; }
+    #sectionNav .snav-in { max-width: 1060px; margin: 0 auto; display: flex; gap: 26px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 11px 32px; }
+    #sectionNav .snav-in::-webkit-scrollbar { display: none; }
+    .snav-link { white-space: nowrap; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid transparent; padding-bottom: 2px; transition: color 0.15s; }
+    .snav-link:hover { color: var(--navy); }
+    .snav-link.active { color: var(--navy); border-bottom-color: var(--gold); }
 
     /* HERO */
     .hero { padding-top: 64px; padding-bottom: 8px; }
-    .kicker { font-size: 11px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-    h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(29px, 3.6vw, 44px); font-weight: 700; line-height: 1.2; max-width: 24ch; text-wrap: balance; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-tint); color: #8a6a1e; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 100px; margin-bottom: 18px; }
+    h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(29px, 3.6vw, 44px); font-weight: 700; line-height: 1.2; max-width: 24ch; text-wrap: balance; color: var(--navy); }
     .hero-sub { margin-top: 12px; font-size: 15.5px; color: var(--muted); max-width: 54ch; }
 
-    /* ANSWER BAR */
+    /* ANSWER BAR → white facts card */
     .answers { margin-top: 34px; }
-    .answers-box { background: var(--navy); color: #fff; display: grid; grid-template-columns: repeat(4, 1fr); }
-    .ans { padding: 20px 24px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .answers-box { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 0; }
+    .ans { padding: 18px 24px; border-right: 1px solid rgba(43,52,66,0.07); }
     .ans:last-child { border-right: none; }
-    .ans .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .ans .val { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--gold-bright); margin-top: 4px; font-variant-numeric: tabular-nums; }
-    .ans .note { font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+    .ans .label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+    .ans .val { font-family: 'Libre Baskerville', serif; font-size: 24px; color: var(--navy); margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; }
+    .ans .note { font-size: 12px; color: #8a6a1e; font-weight: 600; margin-top: 2px; }
 
     /* SECTION HEADS */
-    .section { padding-top: 56px; }
-    .sec-head { display: flex; align-items: baseline; gap: 18px; border-bottom: 2px solid var(--navy); padding-bottom: 10px; flex-wrap: wrap; }
-    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; }
+    .section { padding-top: 52px; }
+    .sec-head { display: flex; align-items: baseline; gap: 18px; padding-bottom: 6px; flex-wrap: wrap; }
+    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--navy); }
     .sec-head span { font-size: 13px; color: var(--muted); margin-left: auto; }
-    .sub-head { margin-top: 30px; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+    .sub-head { width: max-content; max-width: 100%; margin-top: 30px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 5px 12px; border-radius: 100px; }
+
+    /* RULED ROW GROUPS — housed in white cards on the paper ground */
+    .index, .tips, .steps, .net { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); padding: 8px 24px; margin-top: 16px; }
 
     /* RULED INDEX LISTS */
     .index { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
-    .ix { display: flex; align-items: baseline; gap: 12px; padding: 16px 4px; border-bottom: 1px solid var(--rule); }
-    .ix b { font-size: 15px; font-weight: 700; white-space: nowrap; }
+    .ix { display: flex; align-items: baseline; gap: 12px; padding: 16px 4px; border-bottom: 1px solid var(--line); }
+    .ix:last-child { border-bottom: none; }
+    .ix b { font-size: 15px; font-weight: 700; color: var(--navy); white-space: nowrap; }
     .ix small { font-size: 12.5px; color: var(--muted); }
-    .ix .arrow { margin-left: auto; color: var(--gold-bright); font-weight: 700; }
-    .ix:hover b { color: var(--navy); }
-    .ix:hover .arrow { color: var(--navy); }
+    .ix .arrow { margin-left: auto; color: var(--gold); font-weight: 700; }
+    .ix:hover b { color: #8a6a1e; }
+    .ix:hover .arrow { color: #8a6a1e; }
 
     /* RULED TIP LIST */
     .tips { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
-    .tip { padding: 16px 4px; border-bottom: 1px solid var(--rule); }
-    .tip b { display: block; font-size: 14.5px; font-weight: 700; }
+    .tip { padding: 16px 4px; border-bottom: 1px solid var(--line); }
+    .tip b { display: block; font-size: 14.5px; font-weight: 700; color: var(--navy); }
     .tip span { font-size: 13px; color: var(--muted); }
-    .tip a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold-bright); }
+    .tip a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold); }
 
     /* RESOURCE ROWS (net-row pattern) */
     .net { display: flex; flex-direction: column; }
-    .net-row { display: grid; grid-template-columns: 220px 1fr auto; gap: 20px; align-items: baseline; padding: 16px 4px; border-bottom: 1px solid var(--rule); }
-    .net-row b { font-size: 15px; font-weight: 700; }
+    .net-row { display: grid; grid-template-columns: 220px 1fr auto; gap: 20px; align-items: baseline; padding: 16px 4px; border-bottom: 1px solid var(--line); }
+    .net-row:last-child { border-bottom: none; }
+    .net-row b { font-size: 15px; font-weight: 700; color: var(--navy); }
     .net-row small { font-size: 13px; color: var(--muted); }
-    .net-row small a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold-bright); }
+    .net-row small a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold); }
     .net-row .act { font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
-    .net-row .act::after { content: ' →'; color: var(--gold-bright); }
+    .net-row .act::after { content: ' →'; color: var(--gold); }
+    .net-row:hover .act { color: #8a6a1e; }
+    /* When the action cell is its own link (un-nested rows), give it a real tap target */
+    .net-row a.act { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 10px; margin: -8px -10px; }
 
     /* NUMBERED STEPS */
     .steps { counter-reset: step; display: flex; flex-direction: column; }
-    .step { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 16px 4px; border-bottom: 1px solid var(--rule); align-items: baseline; }
-    .step::before { content: counter(step, decimal-leading-zero); font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--gold-bright); }
-    .step b { display: block; font-size: 14.5px; font-weight: 700; }
+    .step { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 16px 4px; border-bottom: 1px solid var(--line); align-items: baseline; }
+    .step:last-child { border-bottom: none; }
+    .step::before { content: counter(step, decimal-leading-zero); font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--gold); }
+    .step b { display: block; font-size: 14.5px; font-weight: 700; color: var(--navy); }
     .step span { font-size: 13px; color: var(--muted); }
-    .step a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold-bright); }
+    .step a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold); }
 
-    /* NAVY CALLOUT (answer-bar style, single box) */
-    .callout { margin-top: 26px; background: var(--navy); color: #fff; padding: 24px 28px; }
-    .callout .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold-bright); }
+    /* NAVY ACCENT CARD (callout) */
+    .callout { margin-top: 26px; background: var(--navy); color: #fff; padding: 24px 28px; border-radius: var(--r); box-shadow: var(--shadow); }
+    .callout .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold-soft); }
     .callout .big { font-family: 'Libre Baskerville', serif; font-size: 20px; margin-top: 6px; line-height: 1.35; }
     .callout p { margin-top: 8px; font-size: 13.5px; color: rgba(255,255,255,0.7); max-width: 78ch; }
-    .callout a { color: var(--gold-bright); border-bottom: 1px dotted rgba(201,168,76,0.5); }
+    .callout a { color: var(--gold-soft); border-bottom: 1px dotted rgba(217,180,91,0.5); }
 
-    /* EMERGENCY GRID */
-    .em-box { margin-top: 26px; background: var(--navy-deep); color: #fff; display: grid; grid-template-columns: repeat(3, 1fr); }
+    /* EMERGENCY GRID — stays a navy card (deliberate exception, white/gold text) */
+    .em-box { margin-top: 26px; background: var(--navy); color: #fff; display: grid; grid-template-columns: repeat(3, 1fr); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
     .em { padding: 20px 24px; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
     .em .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .em .val { font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--gold-bright); margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .em .val { font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--gold-soft); margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .em .val a { display: inline-block; padding: 10px 2px; margin: -10px -2px; }
     .em .note { font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
 
-    /* QUIET CTA BAND */
-    .cta { margin-top: 64px; background: var(--navy); color: #fff; }
-    .cta-in { max-width: 1060px; margin: 0 auto; padding: 52px 32px; display: flex; align-items: baseline; gap: 40px; flex-wrap: wrap; }
+    /* CTA — navy rounded card on paper */
+    .cta { max-width: 1060px; margin: 64px auto 0; padding: 0 32px; }
+    .cta-in { background: var(--navy); color: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 44px 40px; display: flex; align-items: baseline; gap: 40px; flex-wrap: wrap; }
     .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
     .cta-copy p { margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 52ch; }
     .cta-act { margin-left: auto; display: flex; flex-direction: column; gap: 12px; }
-    .cta-btn { background: var(--gold-bright); color: var(--navy); padding: 15px 32px; font-size: 14.5px; font-weight: 700; text-align: center; }
+    .cta-btn { background: var(--gold-soft); color: var(--navy); padding: 15px 32px; font-size: 14.5px; font-weight: 700; text-align: center; border-radius: 100px; }
     .cta-btn:hover { background: var(--gold-light); }
     .cta-tel { font-size: 13px; color: rgba(255,255,255,0.6); text-align: center; }
-    .cta-tel a { color: var(--gold-bright); font-weight: 700; }
+    .cta-tel a { color: var(--gold-soft); font-weight: 700; }
 
-    /* FOOTER */
-    footer { background: var(--navy-deep); color: #fff; padding: 28px 32px calc(28px + env(safe-area-inset-bottom, 0px)); }
+    /* FOOTER — warm paper, hairline top */
+    footer { background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); margin-top: 56px; padding: 28px 32px calc(28px + env(safe-area-inset-bottom, 0px)); }
     .foot-in { max-width: 1060px; margin: 0 auto; display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
     .foot-in .nav-logo { font-size: 15px; }
-    .foot-in .copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .foot-in .copy { font-size: 12px; color: var(--muted); }
     .foot-links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
-    .foot-links a { font-size: 12.5px; color: rgba(255,255,255,0.5); }
-    .foot-links a:hover { color: var(--gold-bright); }
-    .foot-sub { max-width: 1060px; margin: 14px auto 0; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .foot-links a { font-size: 12.5px; color: var(--muted); }
+    .foot-links a:hover { color: var(--navy); }
+    .foot-sub { max-width: 1060px; margin: 14px auto 0; font-size: 11px; color: var(--muted); }
 
     /* MOBILE TAB BAR */
     .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--navy-deep);border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);justify-content:space-around;align-items:center; }
@@ -154,12 +181,16 @@
       .shell { padding-left: 20px; padding-right: 20px; }
       .answers-box { grid-template-columns: 1fr 1fr; }
       .ans:nth-child(2) { border-right: none; }
-      .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(43,52,66,0.07); }
       .index, .tips { grid-template-columns: 1fr; }
+      .index, .tips, .steps, .net { padding: 4px 18px; }
+      .ix { flex-wrap: wrap; }
+      .ix b { white-space: normal; }
       .net-row { grid-template-columns: 1fr; gap: 4px; }
       .net-row .act { margin-top: 4px; }
       .em-box { grid-template-columns: 1fr 1fr; }
-      .cta-in { padding: 44px 20px; }
+      .cta { padding: 0 20px; }
+      .cta-in { padding: 36px 24px; }
       .cta-act { margin-left: 0; }
       footer { padding-left: 20px; padding-right: 20px; }
     }
@@ -239,8 +270,22 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="tel:+13152214857" class="nav-call">(315) 221-4857</a>
+  <a href="tel:+13152214857" class="nav-call">Call or text us</a>
 </nav>
+
+<!-- STICKY SECTION NAV -->
+<div id="sectionNav">
+  <div class="snav-in">
+    <a href="#numbers" class="snav-link">Numbers</a>
+    <a href="#deployment" class="snav-link">When they're gone</a>
+    <a href="#childcare" class="snav-link">Childcare</a>
+    <a href="#community" class="snav-link">Community</a>
+    <a href="#daily-life" class="snav-link">The week</a>
+    <a href="#health" class="snav-link">Health</a>
+    <a href="#career" class="snav-link">Career</a>
+    <a href="#solo" class="snav-link">Solo PCS</a>
+  </div>
+</div>
 
 <main>
 
@@ -261,13 +306,40 @@
   </div>
 </div>
 
+<!-- NUMBERS -->
+<section class="section shell" id="numbers">
+  <div class="sec-head"><h2>The numbers you might need at 2am</h2><span>Every one is a tap-to-call — save them now</span></div>
+  <div class="em-box">
+    <div class="em"><div class="label">Emergency on post</div><div class="val"><a href="tel:911">911</a> · <a href="tel:+13157725156">(315) 772-5156</a></div><div class="note">On-post emergency dispatch</div></div>
+    <div class="em"><div class="label">Crisis line</div><div class="val"><a href="tel:988">988</a>, press 1</div><div class="note">24/7 military/veteran crisis support</div></div>
+    <div class="em"><div class="label">Chaplain, 24 hours</div><div class="val"><a href="tel:+13154861144">(315) 486-1144</a></div><div class="note">Any hour, any reason</div></div>
+    <div class="em"><div class="label">Samaritan ER</div><div class="val"><a href="tel:+13157854000">(315) 785-4000</a></div><div class="note">830 Washington St · 24/7</div></div>
+    <div class="em"><div class="label">Domestic violence hotline</div><div class="val"><a href="tel:+18007997233">800-799-7233</a></div><div class="note">24/7, confidential</div></div>
+    <div class="em"><div class="label">TRICARE Nurse Advice</div><div class="val"><a href="tel:+18008742273">800-874-2273</a></div><div class="note">"Is this ER-worthy?" at 2 am</div></div>
+  </div>
+</section>
+
+<!-- SOLO PCS -->
+<section class="section shell" id="solo">
+  <div class="sec-head"><h2>Doing this move without them</h2><span>Field time, TDY, deployment — the move doesn't wait</span></div>
+  <div class="net">
+    <div class="net-row"><b>Power of attorney, first</b><small>A <b>general POA</b> lets you act broadly on their behalf; a <b>special POA</b> covers one named thing (a lease, a closing, a vehicle). Both are free at the Fort Drum Legal Assistance Office — get them <b>before</b> the field problem or deployment, not during it. Not sure where to start? ACS Information &amp; Referral will point you right.</small><a class="act" href="tel:+13157726557">ACS I&amp;R (315) 772-6557</a></div>
+    <div class="net-row"><b>Signing without them</b><small>With the right POA in hand you can sign a lease, close on a VA loan, and register vehicles solo (NY gives new residents 30 days). Bring orders + POA + IDs to every appointment — it saves the second trip.</small><a class="act" href="tel:+13157726557">Questions? ACS (315) 772-6557</a></div>
+    <div class="net-row"><b>The household goods move</b><small>A spouse with POA can handle Transportation Office / DPS scheduling. Thinking about a PPM (moving yourselves)? Reimbursement rules changed — get the Transportation Office estimate first, before you commit.</small><a class="act" href="tel:+13157726557">Route via ACS (315) 772-6557</a></div>
+    <div class="net-row"><b>House-hunting by proxy</b><small>Our featured network agent does remote showings — walking houses on video while you watch from wherever you are. One remote buyer put it best: "Joe hoofed it out there in the snow to get me a good look at multiple houses."</small><a class="act" href="pcshomes-network.html">Meet the network</a></div>
+    <div class="net-row"><b>Arriving without your sponsor</b><small>In-processing at Mountain Reception Company is the soldier's job — but housing, schools, TRICARE, and DEERS updates can all move on your side. Start with ACS Relocation Readiness at the Family Resource Center, Bldg 11042 Mount Belvedere Blvd.</small><a class="act" href="tel:+13157726557">ACS (315) 772-6557</a></div>
+    <div class="net-row"><b>When you can't reach them for a decision</b><small>Your unit's SFRG and the rear detachment exist for exactly this — the people left behind to handle exactly what you're facing. Mobilization &amp; Deployment can connect you if you don't have the SFRG contact yet.</small><a class="act" href="tel:+13157720509">Mob/Dep (315) 772-0509</a></div>
+  </div>
+  <p style="margin-top:22px;font-size:13.5px;color:var(--muted);max-width:70ch;">You're not the first spouse to move an entire household while they're in the field — around here it's practically a tradition, and every office above has seen it a hundred times. Ask for exactly what you need.</p>
+</section>
+
 <!-- COMMUNITY -->
 <section class="section shell" id="community">
   <div class="sec-head"><h2>Your people</h2><span>The fastest cure for "I don't know anyone here"</span></div>
   <div class="net">
     <a class="net-row" href="https://www.northcountryspousesclub.com/" target="_blank" rel="noopener"><b>North Country Spouses' Club</b><small>One club for all ranks and all genders since 2012. Scholarships, monthly socials, baking/crafting/cooking sub-clubs, and Operation: Deploy Your Dress — free formal wear for military balls.</small><span class="act">northcountryspousesclub.com</span></a>
     <a class="net-row" href="tel:+13157726566"><b>Hearts Apart</b><small>Support and networking for spouses whose Soldier is deployed, on an unaccompanied tour, or on extended TDY of 90+ days. Family Resource Center, Bldg 11042 Mount Belvedere Blvd. Call to confirm the current meeting schedule.</small><span class="act">Call (315) 772-6566</span></a>
-    <a class="net-row" href="https://newyork.uso.org/fortdrum" target="_blank" rel="noopener"><b>USO Fort Drum</b><small>Bldg 10502 Riva Ridge Loop S · <a href="tel:+13157778006">(315) 777-8006</a> · Mon/Tue/Thu/Fri 9:30–5, Wed 9:30–8, Sat 10–3, closed Sun. Coffee Connections spouse meetups, monthly Storytime for kids about 4–7 with a free book per family, snack bar, free Wi-Fi, and a computer lab.</small><span class="act">See programs</span></a>
+    <div class="net-row"><b>USO Fort Drum</b><small>Bldg 10502 Riva Ridge Loop S · <a href="tel:+13157778006">(315) 777-8006</a> · Mon/Tue/Thu/Fri 9:30–5, Wed 9:30–8, Sat 10–3, closed Sun. Coffee Connections spouse meetups, monthly Storytime for kids about 4–7 with a free book per family, snack bar, free Wi-Fi, and a computer lab. <a href="https://newyork.uso.org/fortdrum" target="_blank" rel="noopener">See programs</a>.</small><a class="act" href="tel:+13157778006">Call (315) 777-8006</a></div>
     <a class="net-row" href="tel:+13157725591"><b>Chapel communities &amp; PWOC</b><small>Main Post Chapel, Po Valley Chapel, and Riva Ridge Chapel. Chapel Next (contemporary) Sun 11:00 Main Post · Traditional Protestant Sun 11:00 Riva Ridge · Catholic Mass Sat 5:00 pm / Sun 9:00 am · Gospel service Po Valley Sun 10:30. For PWOC (Protestant Women of the Chapel) and other chapel groups, connect via the Religious Support Office.</small><span class="act">RSO (315) 772-5591</span></a>
     <a class="net-row" href="https://drum.armymwr.com/calendar/international-spouses-group" target="_blank" rel="noopener"><b>International Spouses Group</b><small>MWR-hosted group for spouses from other countries finding their footing in the North Country.</small><span class="act">MWR calendar</span></a>
   </div>
@@ -332,7 +404,7 @@
   <div class="sub-head">Get help in person</div>
   <div class="net">
     <a class="net-row" href="tel:+13157721090"><b>ACS Employment Readiness Program</b><small>Resume help, interview prep, career planning, and job lead referrals for spouses. 10720 Mt Belvedere Blvd · Mon–Fri 8–4.</small><span class="act">(315) 772-1090</span></a>
-    <a class="net-row" href="tel:+13157866566"><b>Jefferson Community College — on post</b><small>SUNY Jefferson keeps an office at the Fort Drum Army Education Center Annex, 4300 Camp Hale Rd · Mon–Fri 9–4. Contact: Betsi Bentz, Director of Community Services–Fort Drum, <a href="tel:+13157862425">(315) 786-2425</a>. ACEN-accredited nursing AAS and 50+ programs at the Watertown campus.</small><span class="act">(315) 786-6566</span></a>
+    <div class="net-row"><b>Jefferson Community College — on post</b><small>SUNY Jefferson keeps an office at the Fort Drum Army Education Center Annex, 4300 Camp Hale Rd · Mon–Fri 9–4. Contact: Betsi Bentz, Director of Community Services–Fort Drum, <a href="tel:+13157862425">(315) 786-2425</a>. ACEN-accredited nursing AAS and 50+ programs at the Watertown campus.</small><a class="act" href="tel:+13157866566">Call (315) 786-6566</a></div>
   </div>
 </section>
 
@@ -375,7 +447,7 @@
   </div>
 
   <div class="net">
-    <a class="net-row" href="tel:+13157854609"><b>Pregnant? Start here</b><small>Fort Drum OB/GYN triage line <a href="tel:+13157854609">(315) 785-4609</a>. Delivery is at Samaritan Medical Center's Car-Freshner Center for Women and Children — 8 LDR rooms, C-section suite, about 1,400 births a year, the area's only Level II NICU (12 beds), and a dedicated Sherman St maternity entrance. CenteringPregnancy group prenatal care is available.</small><span class="act">OB triage (315) 785-4609</span></a>
+    <div class="net-row"><b>Pregnant? Start here</b><small>Fort Drum OB/GYN triage line is your first call. Delivery is at Samaritan Medical Center's Car-Freshner Center for Women and Children — 8 LDR rooms, C-section suite, about 1,400 births a year, the area's only Level II NICU (12 beds), and a dedicated Sherman St maternity entrance. CenteringPregnancy group prenatal care is available.</small><a class="act" href="tel:+13157854609">OB triage (315) 785-4609</a></div>
     <a class="net-row" href="tel:+13157854000"><b>Samaritan Medical Center</b><small>830 Washington St, Watertown · 290 beds, 24/7 ER. The main hospital for the Fort Drum community.</small><span class="act">(315) 785-4000</span></a>
     <a class="net-row" href="https://pediatricassociatesofwatertown.com/" target="_blank" rel="noopener"><b>Pediatric Associates of Watertown</b><small>18969 US Route 11 · serving area kids for 65+ years, Samaritan-affiliated. Confirm TRICARE network status with Humana Military before your first visit.</small><span class="act">Practice site</span></a>
     <a class="net-row" href="https://www.nocofamilyhealth.org/pediatrics/" target="_blank" rel="noopener"><b>North Country Family Health Center — Pediatrics</b><small>238 Arsenal St, Watertown · evening appointments to 7 pm plus Saturdays — gold for working parents. Confirm network status with Humana Military.</small><span class="act">Practice site</span></a>
@@ -393,9 +465,9 @@
 <section class="section shell" id="deployment">
   <div class="sec-head"><h2>When they're gone</h2><span>Deployment support, money help, and the numbers to keep on the fridge</span></div>
   <div class="net">
-    <a class="net-row" href="tel:+13157726566"><b>Hearts Apart</b><small>Community for spouses of deployed Soldiers, unaccompanied tours, and 90+ day TDY. Bldg 11042 Mount Belvedere Blvd. Phones: <a href="tel:+13157726566">(315) 772-6566</a>, <a href="tel:+13157726902">(315) 772-6902</a>, <a href="tel:+13157726553">(315) 772-6553</a>, <a href="tel:+13157723241">(315) 772-3241</a>.</small><span class="act">Call (315) 772-6566</span></a>
+    <div class="net-row"><b>Hearts Apart</b><small>Community for spouses of deployed Soldiers, unaccompanied tours, and 90+ day TDY. Bldg 11042 Mount Belvedere Blvd. Also answers at <a href="tel:+13157726902">(315) 772-6902</a>, <a href="tel:+13157726553">(315) 772-6553</a>, and <a href="tel:+13157723241">(315) 772-3241</a>.</small><a class="act" href="tel:+13157726566">Call (315) 772-6566</a></div>
     <a class="net-row" href="tel:+13157720509"><b>Mobilization &amp; Deployment (Mob/Dep) + your SFRG</b><small>Deployment-cycle briefings and workshops, plus training for Soldier and Family Readiness Group leaders and volunteers. Your unit's SFRG is the fastest line to what's actually happening — ask your sponsor for the SFRG contact.</small><span class="act">(315) 772-0509</span></a>
-    <a class="net-row" href="tel:+18003429647"><b>Military OneSource — 12 free counseling sessions per issue</b><small>Free, confidential, non-medical counseling, 24/7 — stress, parenting, relationships, grief, life transitions. Chat and video options at <a href="https://www.militaryonesource.mil" target="_blank" rel="noopener">militaryonesource.mil</a> if you'd rather not call.</small><span class="act">800-342-9647</span></a>
+    <div class="net-row"><b>Military OneSource — 12 free counseling sessions per issue</b><small>Free, confidential, non-medical counseling, 24/7 — stress, parenting, relationships, grief, life transitions. Chat and video options at <a href="https://www.militaryonesource.mil" target="_blank" rel="noopener">militaryonesource.mil</a> if you'd rather not call.</small><a class="act" href="tel:+18003429647">Call 800-342-9647</a></div>
     <a class="net-row" href="tel:+13157726704"><b>New Parent Support Program</b><small>Home-front backup for new and expecting parents, via the Family Advocacy Program at the Soldier and Family Readiness Center, Bldg 10250 4th Armored Division Dr.</small><span class="act">(315) 772-6704</span></a>
   </div>
 
@@ -407,14 +479,7 @@
     <div class="tip"><b>Fort Drum Food Resource Guide</b><span>The garrison's official guide to every local food resource, in one PDF. <a href="https://home.army.mil/drum/9217/1536/3618/Food_Resource_Guide_-_Spring_2024_wb.pdf" target="_blank" rel="noopener">Download it</a>.</span></div>
   </div>
 
-  <div class="em-box">
-    <div class="em"><div class="label">Emergency on post</div><div class="val">911 · <a href="tel:+13157725156">(315) 772-5156</a></div><div class="note">On-post emergency dispatch</div></div>
-    <div class="em"><div class="label">Crisis line</div><div class="val">988, press 1</div><div class="note">24/7 military/veteran crisis support</div></div>
-    <div class="em"><div class="label">Chaplain, 24 hours</div><div class="val"><a href="tel:+13154861144">(315) 486-1144</a></div><div class="note">Any hour, any reason</div></div>
-    <div class="em"><div class="label">Samaritan ER</div><div class="val"><a href="tel:+13157854000">(315) 785-4000</a></div><div class="note">830 Washington St · 24/7</div></div>
-    <div class="em"><div class="label">Domestic violence hotline</div><div class="val"><a href="tel:+18007997233">800-799-7233</a></div><div class="note">24/7, confidential</div></div>
-    <div class="em"><div class="label">TRICARE Nurse Advice</div><div class="val"><a href="tel:+18008742273">800-874-2273</a></div><div class="note">"Is this ER-worthy?" at 2 am</div></div>
-  </div>
+  <p style="margin-top:26px;font-size:13.5px;color:var(--muted);">Emergency numbers moved up top — <a href="#numbers" style="color:var(--navy);font-weight:600;border-bottom:1px dotted var(--gold);display:inline-block;padding:10px 2px;margin:-10px -2px;">tap here</a>.</p>
 </section>
 
 </main>
@@ -456,8 +521,29 @@
 <div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0F1D35;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
   <div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 14px;"></div>
   <div style="display:flex;flex-direction:column;gap:2px;">
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:8px 16px 4px;">Fort Drum Guide</div>
-    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:8px 16px 4px;">Spouse HQ — this page</div>
+    <a href="#numbers" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.9.34 1.78.65 2.62a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.46-1.22a2 2 0 012.11-.45c.84.31 1.72.53 2.62.65A2 2 0 0122 16.92z"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">The 2am numbers</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="#deployment" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">When they're gone</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="#childcare" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Childcare, decoded</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <a href="#solo" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Doing the move solo</div>
+      <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
+    </a>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Fort Drum Guide</div>
+    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
@@ -482,7 +568,7 @@
       <div style="font-size:13px;font-weight:700;color:#fff;">PCS Checklist</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
-    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
     <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
@@ -511,7 +597,7 @@
   <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
   <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
   <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-network.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span>Network</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item active"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
   <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
 
@@ -527,6 +613,54 @@ function toggleQuickLinks(){
     setTimeout(function(){b.style.display='none';p.style.display='none';},300);
   }
 }
+</script>
+
+<script>
+// Sticky chip nav: show after scrolling past hero, highlight current section (discover's pattern)
+(function(){
+  var nav = document.getElementById('sectionNav');
+  var links = document.querySelectorAll('.snav-link');
+  var sections = [];
+  links.forEach(function(l){
+    var t = document.querySelector(l.getAttribute('href'));
+    if(t) sections.push({el:t, link:l});
+  });
+  var lastActive = null;
+
+  function update(){
+    nav.style.display = window.scrollY > 400 ? 'block' : 'none';
+
+    // Current section = the one nearest above the fold line (chip order != DOM order, so pick by position)
+    var current = null, best = -Infinity;
+    sections.forEach(function(s){
+      var top = s.el.getBoundingClientRect().top;
+      if(top <= 150 && top > best){ best = top; current = s; }
+    });
+    links.forEach(function(l){ l.classList.remove('active'); });
+    if(current){
+      current.link.classList.add('active');
+      if(current.link !== lastActive){
+        lastActive = current.link;
+        // Center the active chip in its row. (Scrolls only the chip strip —
+        // element.scrollIntoView here would cancel an in-flight page smooth-scroll.)
+        var strip = current.link.parentElement;
+        strip.scrollTo({left: current.link.offsetLeft - (strip.clientWidth - current.link.offsetWidth) / 2, behavior:'smooth'});
+      }
+    }
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+
+  // Smooth scroll on click
+  links.forEach(function(l){
+    l.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target) window.scrollTo({top: target.offsetTop - 120, behavior:'smooth'});
+    });
+  });
+})();
 </script>
 
 </body>
