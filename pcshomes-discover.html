@@ -299,6 +299,8 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
+  
+    @media (max-width: 768px) { #backToTop { bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; } }
   </style>
 </head>
 <body>
@@ -883,7 +885,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 </script>
 
 <!-- BACK TO TOP -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-bright,#C9A84C);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">&uarr;</button>
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:24px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-bright,#C9A84C);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">&uarr;</button>
 <script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
 
 <!-- SUGGESTION FORM — AJAX submit with inline success panel (same pattern as index.html lead forms) -->
