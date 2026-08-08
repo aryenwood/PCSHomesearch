@@ -24,6 +24,12 @@
     .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn-g { background: var(--gold-soft); color: var(--navy); padding: 14px 28px; border-radius: 100px; font-weight: 700; font-size: 14px; box-shadow: var(--shadow); }
     .btn-o { border: 1px solid rgba(43,52,66,0.25); color: var(--navy); background: var(--card); padding: 14px 28px; border-radius: 100px; font-weight: 600; font-size: 14px; }
+    @media (max-width: 768px) {
+      /* Keep content clear of the decorative frame; no computed type below 13px */
+      body { padding: 40px 32px; overflow-wrap: break-word; }
+      .eyebrow { font-size: 13px; letter-spacing: 2px; }
+      .btn-g, .btn-o { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; }
+    }
   </style>
 </head>
 <body>

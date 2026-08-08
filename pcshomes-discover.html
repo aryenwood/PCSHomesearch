@@ -84,6 +84,7 @@
       border-bottom: 1px solid var(--line); color: var(--ink);
     }
     .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+    nav .nav-logo { display: inline-flex; align-items: center; min-height: 44px; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 26px; margin-left: auto; list-style: none; }
     .nav-links a { font-size: 13.5px; font-weight: 600; color: var(--muted); transition: color 0.15s; }
@@ -138,7 +139,7 @@
     .tips { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
     .tip { padding: 16px 4px; border-bottom: 1px solid var(--line); }
     .tip b { display: block; font-size: 14.5px; font-weight: 700; color: var(--navy); }
-    .tip span { font-size: 13px; color: var(--muted); }
+    .tip span { font-size: 13px; color: var(--muted); overflow-wrap: break-word; }
     .tip a { font-weight: 600; color: var(--navy); border-bottom: 1px dotted var(--gold); }
     .tips.one-col { grid-template-columns: 1fr; }
 
@@ -178,8 +179,15 @@
     .eat-row small { font-size: 13px; color: var(--muted); }
     .eat-row .where { font-size: 12px; color: var(--muted); text-align: right; white-space: nowrap; }
 
-    /* TABLES */
-    .tbl-wrap { overflow-x: auto; margin-top: 6px; }
+    /* TABLES — scroll container with edge-fade affordance (scroll shadows) */
+    .tbl-wrap {
+      overflow-x: auto; margin-top: 6px; -webkit-overflow-scrolling: touch;
+      background:
+        linear-gradient(90deg, var(--card) 40%, rgba(255,255,255,0)) left / 44px 100% no-repeat local,
+        linear-gradient(270deg, var(--card) 40%, rgba(255,255,255,0)) right / 44px 100% no-repeat local,
+        radial-gradient(farthest-side at 0 50%, rgba(43,52,66,0.22), transparent) left / 14px 100% no-repeat scroll,
+        radial-gradient(farthest-side at 100% 50%, rgba(43,52,66,0.22), transparent) right / 14px 100% no-repeat scroll;
+    }
     table.brief { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
     .brief th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); padding: 10px 14px 8px 4px; border-bottom: 2px solid var(--navy); }
     .brief td { padding: 12px 14px 12px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -253,6 +261,8 @@
       .shell { padding-left: 20px; padding-right: 20px; }
       #sectionNav .snav-in { padding-left: 20px; padding-right: 20px; gap: 20px; }
       .answers-box { grid-template-columns: 1fr 1fr; }
+      .ans { padding: 16px 16px; min-width: 0; }
+      .ans .val { font-size: 20px; overflow-wrap: anywhere; }
       .ans:nth-child(2) { border-right: none; }
       .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(43,52,66,0.07); }
       .tips { grid-template-columns: 1fr; }
@@ -274,6 +284,14 @@
       input, select, textarea { font-size: 16px !important; }
       .lead-btn { min-height: 44px; }
       #groceryMap { height: 380px; }
+      /* Map controls: Leaflet zoom buttons up to 44px touch size */
+      .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 20px !important; }
+      /* Tap targets: inline text links get an invisible ~44px hit area (padding/negative-margin idiom) */
+      .tip a, .dt-row a, .eat-row a, .callout a, .lede a, .mo-row a, .cta-points a { display: inline-block; padding: 11px 2px; margin: -11px -2px; }
+      .foot-links a, .foot-in .nav-logo { display: inline-block; padding: 12px 4px; margin: -12px -4px; }
+      /* Type: reading text never computes below 13px on phones */
+      .ans .note, .dt-row .price, .dt-row .drv, .eat-row .where, .foot-links a, .foot-in .copy, .lead-note, .kicker, .brief td small { font-size: 13px; }
+      .dt-row small, .eat-row small { overflow-wrap: break-word; }
     }
 
     /* REDUCED MOTION — kill smooth scroll + hover-lift transitions */
@@ -426,9 +444,9 @@
 
 <!-- PHOTO CARDS 1 (Warm Journal photo-card row) -->
 <div class="blog-grid">
-  <a class="bcard" href="#outdoors"><div class="im"><img src="images/thompson-park.jpg" alt="Thompson Park, Watertown NY" loading="lazy" decoding="async" width="1200" height="676"/></div><div class="bd"><span class="tag">~20 min · Free</span><h3>Thompson Park</h3><p>355 acres · zoo · pool · splash pad · the sledding hill</p><span class="go">Outdoors</span></div></a>
-  <a class="bcard" href="#day-trips"><div class="im"><img src="images/boldt-castle.jpg" alt="Boldt Castle in the Thousand Islands" loading="lazy" decoding="async" width="1200" height="800"/></div><div class="bd"><span class="tag">~45 min · Day trip</span><h3>Boldt Castle</h3><p>Boat access from Alexandria Bay, mid-May to mid-Oct</p><span class="go">Day trips</span></div></a>
-  <a class="bcard" href="#day-trips"><div class="im"><img src="images/sackets-harbor.webp" alt="Sackets Harbor on Lake Ontario" loading="lazy" decoding="async" width="1000" height="669"/></div><div class="bd"><span class="tag">~30 min</span><h3>Sackets Harbor</h3><p>1812 battlefield · breweries · Lake Ontario sunsets</p><span class="go">Day trips</span></div></a>
+  <a class="bcard" href="#outdoors"><div class="im"><img src="images/thompson-park.jpg" srcset="images/thompson-park.jpg 1200w, images/thompson-park-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Thompson Park, Watertown NY" loading="lazy" decoding="async" width="1200" height="676"/></div><div class="bd"><span class="tag">~20 min · Free</span><h3>Thompson Park</h3><p>355 acres · zoo · pool · splash pad · the sledding hill</p><span class="go">Outdoors</span></div></a>
+  <a class="bcard" href="#day-trips"><div class="im"><img src="images/boldt-castle.jpg" srcset="images/boldt-castle.jpg 1200w, images/boldt-castle-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Boldt Castle in the Thousand Islands" loading="lazy" decoding="async" width="1200" height="800"/></div><div class="bd"><span class="tag">~45 min · Day trip</span><h3>Boldt Castle</h3><p>Boat access from Alexandria Bay, mid-May to mid-Oct</p><span class="go">Day trips</span></div></a>
+  <a class="bcard" href="#day-trips"><div class="im"><img src="images/sackets-harbor.webp" srcset="images/sackets-harbor.webp 1000w, images/sackets-harbor-800.webp 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Sackets Harbor on Lake Ontario" loading="lazy" decoding="async" width="1000" height="669"/></div><div class="bd"><span class="tag">~30 min</span><h3>Sackets Harbor</h3><p>1812 battlefield · breweries · Lake Ontario sunsets</p><span class="go">Day trips</span></div></a>
 </div>
 
 <!-- OUTDOORS BY SEASON -->
@@ -509,9 +527,9 @@
 
 <!-- PHOTO CARDS 2 (Warm Journal photo-card row) -->
 <div class="blog-grid">
-  <a class="bcard" href="#day-trips"><div class="im"><img src="images/thousand-islands.jpg" alt="Thousand Islands, St. Lawrence River" loading="lazy" decoding="async" width="950" height="650"/></div><div class="bd"><span class="tag">Two countries</span><h3>Thousand Islands</h3><p>1,864 islands · two countries · one river</p><span class="go">Day trips</span></div></a>
-  <a class="bcard" href="#outdoors"><div class="im"><img src="images/north-country-winter.jpg" alt="North Country winter on the Tug Hill Plateau" loading="lazy" decoding="async" width="1800" height="1198"/></div><div class="bd"><span class="tag">Winter</span><h3>Tug Hill winter</h3><p>The snowiest region east of the Rockies</p><span class="go">Outdoors</span></div></a>
-  <a class="bcard" href="#events"><div class="im"><img src="images/watertown-downtown.jpg" alt="Downtown Watertown NY" loading="lazy" decoding="async" width="1200" height="832"/></div><div class="bd"><span class="tag">Public Square</span><h3>Downtown Watertown</h3><p>Wednesday farmers market</p><span class="go">The year</span></div></a>
+  <a class="bcard" href="#day-trips"><div class="im"><img src="images/thousand-islands.jpg" srcset="images/thousand-islands.jpg 950w, images/thousand-islands-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Thousand Islands, St. Lawrence River" loading="lazy" decoding="async" width="950" height="650"/></div><div class="bd"><span class="tag">Two countries</span><h3>Thousand Islands</h3><p>1,864 islands · two countries · one river</p><span class="go">Day trips</span></div></a>
+  <a class="bcard" href="#outdoors"><div class="im"><img src="images/north-country-winter.jpg" srcset="images/north-country-winter.jpg 1800w, images/north-country-winter-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="North Country winter on the Tug Hill Plateau" loading="lazy" decoding="async" width="1800" height="1198"/></div><div class="bd"><span class="tag">Winter</span><h3>Tug Hill winter</h3><p>The snowiest region east of the Rockies</p><span class="go">Outdoors</span></div></a>
+  <a class="bcard" href="#events"><div class="im"><img src="images/watertown-downtown.jpg" srcset="images/watertown-downtown.jpg 1200w, images/watertown-downtown-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Downtown Watertown NY" loading="lazy" decoding="async" width="1200" height="832"/></div><div class="bd"><span class="tag">Public Square</span><h3>Downtown Watertown</h3><p>Wednesday farmers market</p><span class="go">The year</span></div></a>
 </div>
 
 <!-- EVENTS -->

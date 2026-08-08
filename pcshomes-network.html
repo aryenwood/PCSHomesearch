@@ -33,7 +33,8 @@
       --r: 16px;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+    [id] { scroll-margin-top: 84px; }
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 10001; background: var(--navy); color: #fff; padding: 14px 22px; border-radius: 0 0 10px 0; font-weight: 700; font-size: 14px; }
     .skip-link:focus { left: 0; }
@@ -50,7 +51,7 @@
       padding: 0 48px; height: 66px;
       border-bottom: 1px solid var(--line);
     }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; min-height: 44px; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: var(--muted); font-size: 13px; font-weight: 600; transition: color 0.2s; }
@@ -325,7 +326,7 @@
       padding: 8px 0 env(safe-area-inset-bottom, 8px);
       justify-content: space-around; align-items: center;
     }
-    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:10px;font-weight:600;padding:4px 12px; }
+    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:13px;font-weight:600;padding:4px 4px;min-width:44px;white-space:nowrap; }
     .tab-item svg { stroke:currentColor; }
     .tab-item.active { color:#C9A84C; }
 
@@ -362,7 +363,7 @@
       .partner-form .full-width { grid-column: 1; }
       footer { padding: 32px 18px !important; }
       .footer-links { flex-wrap: wrap; gap: 14px; }
-      .footer-links a { display: inline-block; padding: 10px 2px; }
+      .footer-links a { display: inline-block; padding: 10px 6px; min-width: 44px; text-align: center; }
 
       /* Touch targets — min 44px */
       .nav-cta { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
@@ -389,8 +390,34 @@
       /* Text overflow protection */
       body { word-break: break-word; }
       a { word-break: break-word; }
+
+      /* Readability: no computed type below 13px on phones */
+      .hero-eyebrow, .sec-eyebrow { font-size: 13px; }
+      .hero-photo figcaption { font-size: 13px; }
+      .vendor-company, .vendor-trusted { font-size: 13px; }
+      .vendor-tag { font-size: 13px; letter-spacing: 0.5px; }
+      .field-label { font-size: 13px; letter-spacing: 1px; }
+      .form-reassure { font-size: 13px; }
+      /* Inline-styled micro type (renderer output, fine print, quick-links sheet) */
+      [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"],
+      [style*="font-size:12px"], [style*="font-size:12.5px"] { font-size: 13px !important; }
+
+      /* Category badge: static chip on phones so it can't collide with the card header */
+      .vendor-card .category-badge { position: static; order: -1; align-self: flex-start; margin-bottom: 10px; font-size: 13px; letter-spacing: 0.5px; }
+
+      /* Featured card: CTAs go full-width, reviews link gets a real tap target */
+      .featured-agent .vendor-cta { flex: 1 1 100% !important; width: 100%; }
+      .featured-agent a[href^="tel:"] { flex: 1 1 100%; }
+      .featured-agent a[target="_blank"]:not(.vendor-cta) { min-height: 44px; align-items: center; }
+
+      /* Tel fine-print links: comfortable tap area without shifting layout */
+      form a[href^="tel:"], .partner-inner a[href^="tel:"] { display: inline-block; padding: 12px 8px; margin: -6px 0; }
+
+      /* Modal breathing room on small screens */
+      .modal-overlay { padding: 12px; }
+      .modal-card { margin: 0; max-height: calc(100dvh - 24px); }
     }
-  
+
     .nav-call-mobile { display: none !important; margin-left: auto; }
     @media (max-width: 768px) { .nav-call-mobile { display: inline-flex !important; align-items: center; min-height: 40px; padding: 8px 16px; } }
   </style>
@@ -425,7 +452,7 @@
     <p class="hero-sub">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. We connect you &mdash; they deliver.</p>
   </div>
   <figure class="hero-photo">
-    <img src="images/fort-drum-gate.jpg" alt="Fort Drum main gate" width="1080" height="468" loading="eager" decoding="async"/>
+    <img src="images/fort-drum-gate.jpg" srcset="images/fort-drum-gate-800.jpg 800w, images/fort-drum-gate.jpg 1080w" sizes="(max-width: 900px) calc(100vw - 36px), 430px" alt="Fort Drum main gate" width="1080" height="468" loading="eager" decoding="async"/>
     <figcaption>Fort Drum, New York</figcaption>
   </figure>
 </section>
@@ -454,7 +481,7 @@
     </div>
     <h3 style="font-family:'Libre Baskerville',serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
-    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:#8a6a1e;padding:11px 22px;border-radius:100px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
+    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:#8a6a1e;padding:13px 22px;border-radius:100px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
   </div>
 </section>
 
@@ -557,7 +584,7 @@
       <p>Thanks for your interest. A PCSHomes team member will review your application and be in touch soon.</p>
     </div>
 
-    <p style="margin-top:32px;font-size:13px;color:rgba(255,255,255,0.65);">Not a vendor application? <a href="#" onclick="openPartnerModal();return false;" style="color:var(--gold-soft);border-bottom:1px dotted rgba(217,180,91,0.5);">Are you a Fort Drum professional? Partner with us</a></p>
+    <p style="margin-top:32px;font-size:13px;color:rgba(255,255,255,0.65);">Not a vendor application? <a href="#" onclick="openPartnerModal();return false;" style="color:var(--gold-soft);border-bottom:1px dotted rgba(217,180,91,0.5);display:inline-block;padding:10px 0;">Are you a Fort Drum professional? Partner with us</a></p>
   </div>
 </section>
 

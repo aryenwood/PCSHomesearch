@@ -50,6 +50,7 @@
       border-bottom: 1px solid var(--line); color: var(--ink);
     }
     .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+    nav .nav-logo { display: inline-flex; align-items: center; min-height: 44px; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 26px; margin-left: auto; list-style: none; }
     .nav-links a { font-size: 13.5px; font-weight: 600; color: var(--muted); transition: color 0.15s; }
@@ -117,7 +118,7 @@
     .tips { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
     .tip { padding: 16px 4px; border-bottom: 1px solid var(--line); }
     .tip b { display: block; font-size: 14.5px; font-weight: 700; color: var(--navy); }
-    .tip span { font-size: 13px; color: var(--muted); }
+    .tip span { font-size: 13px; color: var(--muted); overflow-wrap: break-word; }
     .tip a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold); }
 
     /* RESOURCE ROWS (net-row pattern) */
@@ -125,7 +126,7 @@
     .net-row { display: grid; grid-template-columns: 220px 1fr auto; gap: 20px; align-items: baseline; padding: 16px 4px; border-bottom: 1px solid var(--line); }
     .net-row:last-child { border-bottom: none; }
     .net-row b { font-size: 15px; font-weight: 700; color: var(--navy); }
-    .net-row small { font-size: 13px; color: var(--muted); }
+    .net-row small { font-size: 13px; color: var(--muted); overflow-wrap: break-word; }
     .net-row small a { color: var(--navy); font-weight: 600; border-bottom: 1px dotted var(--gold); }
     .net-row .act { font-size: 13px; font-weight: 700; color: var(--navy); white-space: nowrap; }
     .net-row .act::after { content: ' →'; color: var(--gold); }
@@ -190,6 +191,9 @@
       nav { padding: 0 20px; }
       .shell { padding-left: 20px; padding-right: 20px; }
       .answers-box { grid-template-columns: 1fr 1fr; }
+      .ans { padding: 16px 16px; min-width: 0; }
+      .ans .val { font-size: 20px; overflow-wrap: anywhere; }
+      .em .val { overflow-wrap: anywhere; }
       .ans:nth-child(2) { border-right: none; }
       .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(43,52,66,0.07); }
       .index, .tips { grid-template-columns: 1fr; }
@@ -209,6 +213,12 @@
       .nav-links, .nav-call-desktop { display: none !important; }
       .mobile-tab-bar { display: flex; }
       .hero { padding-top: 44px; }
+      /* Tap targets: inline text links get an invisible ~44px hit area (padding/negative-margin idiom) */
+      .tip a, .net-row small a, .step a, .callout a, .cta-tel a { display: inline-block; padding: 11px 2px; margin: -11px -2px; }
+      .foot-links a, .foot-in .nav-logo { display: inline-block; padding: 12px 4px; margin: -12px -4px; }
+      /* Type: reading text never computes below 13px on phones */
+      .ans .note, .em .note, .ix small, .foot-links a, .foot-in .copy, .cta-tel, .kicker { font-size: 13px; }
+      .foot-sub { font-size: 13px; }
     }
 
     /* REDUCED MOTION — kill smooth scroll + hover transitions */

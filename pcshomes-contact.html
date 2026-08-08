@@ -32,7 +32,10 @@
       --r: 16px;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+    [id] { scroll-margin-top: 84px; }
+    /* form-card's fadeUp entrance starts 20px low; pad the anchor so it still lands clear of the fixed nav */
+    #contactForm { scroll-margin-top: 108px; }
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
     .skip-link { position: absolute; left: -9999px; top: 0; z-index: 10001; background: var(--navy); color: #fff; padding: 14px 22px; border-radius: 0 0 10px 0; font-weight: 700; font-size: 14px; }
     .skip-link:focus { left: 0; }
@@ -49,7 +52,7 @@
       padding: 0 48px; height: 66px;
       border-bottom: 1px solid var(--line);
     }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
+    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; min-height: 44px; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: var(--muted); font-size: 13px; font-weight: 600; transition: color 0.2s; }
@@ -224,7 +227,7 @@
 
     /* MOBILE TAB BAR */
     .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0F1D35;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
-    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:10px;font-weight:600;padding:4px 12px; }
+    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:13px;font-weight:600;padding:4px 4px;min-width:44px;white-space:nowrap; }
     .tab-item svg { stroke:currentColor; }
     .tab-item.active { color:#C9A84C; }
 
@@ -269,14 +272,30 @@
       /* Footer mobile stacking */
       .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-      .footer-links a { display: inline-block; padding: 10px 2px; }
+      .footer-links a { display: inline-block; padding: 10px 6px; min-width: 44px; text-align: center; }
+      .footer-copy { font-size: 13px; }
       footer { padding: 32px 18px; }
 
       /* Text overflow protection */
       body { word-break: break-word; }
       a { word-break: break-word; }
+
+      /* Readability: no computed type below 13px on phones */
+      .hero-eyebrow, .section-label, .sidebar-card-sub, .form-label { font-size: 13px; letter-spacing: 1px; }
+      .inquiry-type { font-size: 13px; }
+      .form-reassure { font-size: 13px; }
+      .category-browse, .serving-tags { font-size: 13px; }
+      /* Inline-styled micro type (fine print, quick-links sheet) */
+      [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"],
+      [style*="font-size:12px"], [style*="font-size:12.5px"] { font-size: 13px !important; }
+
+      /* Sidebar category rows: full-height tap targets */
+      .category-item { min-height: 48px; }
+
+      /* Tel fine-print links: comfortable tap area without shifting layout */
+      form a[href^="tel:"] { display: inline-block; padding: 12px 8px; margin: -6px 0; }
     }
-  
+
     .nav-call-mobile { display: none !important; margin-left: auto; }
     @media (max-width: 768px) { nav .nav-call-mobile { display: inline-flex !important; align-items: center; min-height: 40px; padding: 8px 16px; } }
   </style>
