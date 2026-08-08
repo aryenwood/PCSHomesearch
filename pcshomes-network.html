@@ -24,10 +24,10 @@
     :root {
       --navy: #1D3557; --navy-deep: #14263F;
       --ink: #2B3442; --muted: #6B7280;
-      --gold: #B98A2F; --gold-soft: #D9B45B; --gold-light: #D9B45B;
+      --gold: #B98A2F; --gold-soft: #D9B45B;
       --gold-tint: rgba(185,138,47,0.12);
-      --paper: #FBF7EF; --cream: #FBF7EF; --card: #FFFFFF; --white: #FFFFFF;
-      --gray: #6B7280; --gray-light: #F2EDE2; --text: #2B3442;
+      --paper: #FBF7EF; --card: #FFFFFF; --white: #FFFFFF;
+      --gray: #6B7280;
       --line: rgba(43,52,66,0.10);
       --shadow: 0 2px 6px rgba(43,52,66,0.06), 0 12px 32px rgba(43,52,66,0.08);
       --r: 16px;
@@ -35,6 +35,12 @@
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 10001; background: var(--navy); color: #fff; padding: 14px 22px; border-radius: 0 0 10px 0; font-weight: 700; font-size: 14px; }
+    .skip-link:focus { left: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
 
     /* NAV */
     nav {
@@ -356,6 +362,7 @@
       .partner-form .full-width { grid-column: 1; }
       footer { padding: 32px 18px !important; }
       .footer-links { flex-wrap: wrap; gap: 14px; }
+      .footer-links a { display: inline-block; padding: 10px 2px; }
 
       /* Touch targets — min 44px */
       .nav-cta { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
@@ -390,6 +397,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- NAVIGATION -->
 <nav>
   <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
@@ -406,17 +415,17 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content" tabindex="-1">
   <div>
     <div class="hero-eyebrow">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       Vetted &amp; Trusted
     </div>
     <h1>Our Trusted Network</h1>
     <p class="hero-sub">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. We connect you &mdash; they deliver.</p>
   </div>
   <figure class="hero-photo">
-    <img src="images/fort-drum-gate.jpg" alt="Fort Drum main gate" loading="eager"/>
+    <img src="images/fort-drum-gate.jpg" alt="Fort Drum main gate" width="1080" height="468" loading="eager" decoding="async"/>
     <figcaption>Fort Drum, New York</figcaption>
   </figure>
 </section>
@@ -441,7 +450,7 @@
   <div class="vendor-grid" id="vendorGrid"></div>
   <div id="vendorEmptyState" style="display:none;max-width:640px;margin:0 auto;background:var(--card);border:1.5px dashed rgba(29,53,87,0.25);border-radius:16px;box-shadow:var(--shadow);padding:40px 32px;text-align:center;">
     <div style="width:52px;height:52px;border-radius:50%;background:var(--gold-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     </div>
     <h3 style="font-family:'Libre Baskerville',serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
@@ -452,8 +461,8 @@
 
 <!-- REQUEST INFO MODAL -->
 <div class="modal-overlay" id="vendorModal">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeVendorModal()">&times;</button>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" onclick="closeVendorModal()" aria-label="Close dialog">&times;</button>
     <div id="modalFormWrapper">
       <h2 class="modal-title" id="modalTitle">Request Info</h2>
       <p class="modal-sub">Fill out the form and a PCSHomes team member will connect you.</p>
@@ -485,7 +494,7 @@
     </div>
     <div class="modal-success" id="modalSuccess">
       <div class="check-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2ecc8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2ecc8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h3>Request sent!</h3>
       <p>A PCSHomes team member will connect you shortly.</p>
@@ -542,26 +551,26 @@
 
     <div class="partner-success" id="partnerSuccess">
       <div class="check-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h3>Application received!</h3>
       <p>Thanks for your interest. A PCSHomes team member will review your application and be in touch soon.</p>
     </div>
 
-    <p style="margin-top:32px;font-size:13px;color:rgba(255,255,255,0.65);">Not a vendor application? <a href="#" onclick="document.getElementById('partnerModal').style.display='flex';return false;" style="color:var(--gold-soft);border-bottom:1px dotted rgba(217,180,91,0.5);">Are you a Fort Drum professional? Partner with us</a></p>
+    <p style="margin-top:32px;font-size:13px;color:rgba(255,255,255,0.65);">Not a vendor application? <a href="#" onclick="openPartnerModal();return false;" style="color:var(--gold-soft);border-bottom:1px dotted rgba(217,180,91,0.5);">Are you a Fort Drum professional? Partner with us</a></p>
   </div>
 </section>
 
 <!-- PARTNER INQUIRY MODAL (advertise / general partnership — alternate path to the vendor application above) -->
-<div id="partnerModal" style="display:none;position:fixed;inset:0;z-index:20000;background:rgba(20,38,63,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
-  <div style="background:#FFFFFF;border-radius:18px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;overflow-x:hidden;box-shadow:0 2px 6px rgba(43,52,66,0.06),0 32px 80px rgba(43,52,66,0.25);">
+<div id="partnerModal" style="display:none;position:fixed;inset:0;z-index:20000;background:rgba(20,38,63,0.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)closePartnerModal()">
+  <div role="dialog" aria-modal="true" aria-labelledby="partnerModalTitle" style="background:#FFFFFF;border-radius:18px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;overflow-x:hidden;box-shadow:0 2px 6px rgba(43,52,66,0.06),0 32px 80px rgba(43,52,66,0.25);">
     <div style="background:var(--navy);padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;">
       <div>
         <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D9B45B;margin-bottom:8px;">Partner With Us</div>
-        <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;">Advertise on PCSHomes</div>
+        <div id="partnerModalTitle" style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;">Advertise on PCSHomes</div>
         <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;line-height:1.7;">We're looking for ethical, military-friendly businesses to partner with. Reach thousands of families PCSing to Fort Drum. Partners never pay for placement or ranking.</div>
       </div>
-      <button onclick="document.getElementById('partnerModal').style.display='none'" style="background:rgba(255,255,255,0.12);border:none;color:rgba(255,255,255,0.7);width:44px;height:44px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0;">×</button>
+      <button onclick="closePartnerModal()" aria-label="Close dialog" style="background:rgba(255,255,255,0.12);border:none;color:rgba(255,255,255,0.7);width:44px;height:44px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0;">×</button>
     </div>
     <form name="partner-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="padding:24px 28px;display:flex;flex-direction:column;gap:12px;" id="partnerInquiryForm">
       <input type="hidden" name="form-name" value="partner-inquiry"/>
@@ -606,7 +615,7 @@
       <div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px;">Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
     </form>
     <div id="partnerInquirySuccess" style="display:none;padding:40px 28px;text-align:center;">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#1D3557;margin:12px 0 8px;">Inquiry received!</div>
       <div style="font-size:14px;color:#6B7280;">We'll review your application and be in touch within 48 hours.</div>
     </div>
@@ -641,50 +650,50 @@
     <!-- GROUP: Tools & Planning -->
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:8px 16px 4px;">Fort Drum Guide</div>
     <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#va" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">VA Calculator</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#rvb" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Rent vs Buy</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#map" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Neighborhood Map</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#pcs" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">PCS Checklist</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <!-- GROUP: Area & Lifestyle -->
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
     <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#family-kids" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Family & Kids</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#outdoors" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors & Adventures</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <!-- BOTTOM CTAs -->
-    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
+    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
+    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
       <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
       <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
@@ -694,11 +703,11 @@
 
 <!-- MOBILE BOTTOM TAB BAR -->
 <div class="mobile-tab-bar">
-  <a href="index.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
-  <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
-  <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-spouse.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
-  <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+  <a href="index.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
+  <a href="pcshomes-discover.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
+  <a href="pcshomes-contact.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
 <script>
 function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
@@ -734,7 +743,9 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
   });
 
   // Vendor request modal
+  var vendorModalInvoker = null;
   function openVendorRequest(name, category) {
+    vendorModalInvoker = document.activeElement;
     document.getElementById('modalVendorName').value = name;
     document.getElementById('modalVendorCategory').value = category;
     document.getElementById('modalTitle').textContent = 'Request Info \u2014 ' + name;
@@ -746,21 +757,59 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     document.getElementById('modalVendorCategory').value = category;
     document.getElementById('vendorModal').classList.add('open');
     document.body.style.overflow = 'hidden';
+    document.getElementById('vrName').focus();
   }
 
   function closeVendorModal() {
-    document.getElementById('vendorModal').classList.remove('open');
+    var modal = document.getElementById('vendorModal');
+    var wasOpen = modal.classList.contains('open');
+    modal.classList.remove('open');
     document.body.style.overflow = '';
+    // Return focus to the element that opened the modal
+    if (wasOpen && vendorModalInvoker && typeof vendorModalInvoker.focus === 'function') vendorModalInvoker.focus();
+    vendorModalInvoker = null;
   }
+
+  // Partner inquiry modal open/close (focus-managed wrappers around the same show/hide)
+  var partnerModalInvoker = null;
+  function openPartnerModal() {
+    partnerModalInvoker = document.activeElement;
+    document.getElementById('partnerModal').style.display = 'flex';
+    document.getElementById('piFullName').focus();
+  }
+  function closePartnerModal() {
+    var modal = document.getElementById('partnerModal');
+    var wasOpen = modal.style.display === 'flex';
+    modal.style.display = 'none';
+    if (wasOpen && partnerModalInvoker && typeof partnerModalInvoker.focus === 'function') partnerModalInvoker.focus();
+    partnerModalInvoker = null;
+  }
+
+  // Simple focus trap: Tab cycles within whichever modal is open
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab') return;
+    var container = null;
+    if (document.getElementById('vendorModal').classList.contains('open')) container = document.getElementById('vendorModal');
+    else if (document.getElementById('partnerModal').style.display === 'flex') container = document.getElementById('partnerModal');
+    if (!container) return;
+    var nodes = container.querySelectorAll('a[href], button:not([disabled]), input:not([type="hidden"]), select, textarea');
+    var focusable = Array.prototype.filter.call(nodes, function(el) { return el.offsetParent !== null; });
+    if (!focusable.length) return;
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && (document.activeElement === first || !container.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && (document.activeElement === last || !container.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+  });
 
   // Close modal on overlay click
   document.getElementById('vendorModal').addEventListener('click', function(e) {
     if (e.target === this) closeVendorModal();
   });
 
-  // Close modal on Escape key
+  // Close modals on Escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeVendorModal();
+    if (e.key !== 'Escape') return;
+    closeVendorModal();
+    if (document.getElementById('partnerModal').style.display === 'flex') closePartnerModal();
   });
 
   // Vendor request form — submit via fetch (no page reload)
@@ -863,7 +912,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 </script>
 
 <!-- BACK TO TOP -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-soft,#D9B45B);color:#1D3557;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(43,52,66,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-soft,#D9B45B);color:#1D3557;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(43,52,66,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
 <script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
 </body>
 </html>

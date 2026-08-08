@@ -9,8 +9,6 @@
   <meta name="author" content="PCSHomes">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pcshomes.com">
-  <link rel="prefetch" href="pcshomes-fortdrum.html">
-  <link rel="prefetch" href="pcshomes-discover.html">
   <meta property="og:title" content="Fort Drum PCS Resource | Vetted Local Experts | PCSHomes">
   <meta property="og:description" content="PCSing to Fort Drum? Free tools, honest local guides, and a vetted network of military-focused agents, lenders, and inspectors. Serving the 10th Mountain Division.">
   <meta property="og:type" content="website">
@@ -36,12 +34,15 @@
       --r: 16px;
       /* legacy aliases (popup, tab bar, inline chrome) */
       --gold-bright: #C9A84C; --gold-light: #E2C57A;
-      --bg: var(--paper); --rule: var(--line);
       --gray-light: #EEF1F4; --white: #FFFFFF; --gray: var(--muted);
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* SKIP LINK — visually hidden until keyboard focus */
+    .skip-link { position: absolute; clip: rect(0 0 0 0); clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
+    .skip-link:focus { clip: auto; clip-path: none; width: auto; height: auto; position: fixed; top: 10px; left: 10px; z-index: 100000; background: var(--navy); color: var(--gold-soft); font-weight: 700; font-size: 14px; padding: 14px 22px; border-radius: 10px; box-shadow: var(--shadow); }
 
     /* NAV — cream translucent, cozy */
     nav {
@@ -79,8 +80,8 @@
     /* WELCOME BACK — warm chip row */
     .stage-welcome { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; padding: 10px 18px; background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--gold-soft); border-radius: 100px; box-shadow: var(--shadow); font-size: 13px; color: var(--muted); }
     .stage-welcome b { color: var(--ink); }
-    .stage-resume { background: none; border: none; padding: 0; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); cursor: pointer; border-bottom: 1.5px solid var(--gold-soft); }
-    .stage-clear { margin-left: auto; align-self: center; background: none; border: none; color: var(--muted); font-size: 14px; cursor: pointer; min-width: 32px; min-height: 32px; flex-shrink: 0; }
+    .stage-resume { background: none; border: none; padding: 10px 0; margin: -10px 0; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); cursor: pointer; border-bottom: 1.5px solid var(--gold-soft); }
+    .stage-clear { margin-left: auto; align-self: center; background: none; border: none; color: var(--muted); font-size: 14px; cursor: pointer; min-width: 40px; min-height: 40px; flex-shrink: 0; }
     .stage-clear:hover { color: var(--ink); }
 
     /* STAGE PICKER — photo tiles wired to toggleStage() */
@@ -119,8 +120,9 @@
     .ans:last-child { border-right: none; }
     .ans .label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
     .ans .val { font-family: 'Libre Baskerville', serif; font-size: 24px; color: var(--navy); margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; }
     .ans .note { font-size: 12px; color: #8a6a1e; font-weight: 600; margin-top: 2px; }
-    .ans .note a { border-bottom: 1px dotted rgba(185,138,47,0.5); }
+    .ans .note a { border-bottom: 1px dotted rgba(185,138,47,0.5); display: inline-block; padding: 10px 2px; margin: -10px -2px; }
 
     /* SECTION HEADS — eyebrow above, dek on its own line, hairline under the block */
     .section { padding-top: 56px; }
@@ -129,7 +131,7 @@
     .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a6a1e; margin-bottom: 6px; }
     .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; color: var(--navy); }
     .sec-head span { display: block; font-size: 14px; color: var(--muted); margin-top: 4px; max-width: 72ch; }
-    .sec-head .sec-more { position: absolute; right: 0; bottom: 14px; font-size: 13.5px; font-weight: 700; color: var(--gold); }
+    .sec-head .sec-more { position: absolute; right: 0; bottom: 2px; font-size: 13.5px; font-weight: 700; color: var(--gold); padding: 12px 0 12px 12px; }
 
     /* PHOTO / BLOG CARDS */
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -178,7 +180,7 @@
     .quote .lead-line { font-size: 13px; font-style: italic; color: var(--muted); margin-bottom: 10px; }
     .quote blockquote { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(18px, 2.2vw, 23px); line-height: 1.65; color: var(--navy); }
     .quote .attr { margin-top: 12px; font-size: 12.5px; color: var(--muted); }
-    .quote .attr a { font-weight: 700; color: var(--navy); border-bottom: 1.5px solid var(--gold-soft); padding-bottom: 1px; white-space: nowrap; }
+    .quote .attr a { font-weight: 700; color: var(--navy); border-bottom: 1.5px solid var(--gold-soft); white-space: nowrap; display: inline-block; padding: 10px 2px 1px; margin: -10px -2px 0; }
 
     /* CTA — navy rounded card on paper, holds the lead form */
     .cta { margin-top: 64px; margin-bottom: 64px; }
@@ -208,8 +210,6 @@
     .foot-links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
     .foot-links a { font-size: 12.5px; color: var(--muted); }
     .foot-links a:hover { color: var(--navy); }
-    .foot-sub { max-width: 1120px; margin: 14px auto 0; font-size: 11px; color: var(--muted); }
-    .foot-sub a { border-bottom: 1px dotted var(--line); }
 
     /* POPUP — white card, navy header retained */
     .popup-overlay { position:fixed;inset:0;z-index:20000;background:rgba(7,15,30,0.75);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.35s ease; }
@@ -238,7 +238,7 @@
     .popup-note { font-size:12.5px;color:var(--muted);line-height:1.6; }
     .popup-btn { width:100%;background:var(--navy);color:var(--white);border:none;border-radius:100px;padding:14px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;min-height:46px;margin-top:4px; }
     .popup-btn:hover { background:var(--gold);color:#fff; }
-    .popup-back { background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--gray);cursor:pointer;padding:0;margin-top:-4px;text-align:left; }
+    .popup-back { background:none;border:none;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--gray);cursor:pointer;padding:10px 0;margin:-10px 0 -10px;text-align:left; }
     .popup-success { display:none;text-align:center;padding:16px 0 4px; }
     .popup-success-icon { font-size:48px;margin-bottom:14px; }
     .popup-success-title { font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px; }
@@ -282,6 +282,12 @@
       input, select, textarea { font-size: 16px !important; }
       .lead-btn, .popup-btn, .popup-close { min-height: 44px; }
     }
+
+    /* REDUCED MOTION — kill smooth scroll + hover-lift transitions */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -310,6 +316,7 @@
   </script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <nav>
   <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
@@ -325,7 +332,7 @@
   <a href="tel:+13152214857" class="nav-call nav-call-mobile" aria-label="Call PCSHomes">Call</a>
 </nav>
 
-<main>
+<main id="main-content">
 
 <!-- HERO — warm journal: copy left, homecoming photo right -->
 <header class="hero shell">
@@ -340,7 +347,7 @@
     <p class="hero-note">Built by locals. Free forever. The only ask: if you want a human, we'll connect you.</p>
   </div>
   <figure class="hero-img">
-    <img src="images/servicemember-returning-home.jpg" alt="Service member returning home to family at Fort Drum"/>
+    <img src="images/servicemember-returning-home.jpg" alt="Service member returning home to family at Fort Drum" width="1400" height="934" loading="eager"/>
     <figcaption>Fort Drum, New York</figcaption>
   </figure>
 </header>
@@ -349,11 +356,11 @@
 <div class="stage-picker shell" id="stagePicker">
   <div class="sec-head"><div class="sec-eyebrow">Start here</div><h2>Where are you in the move?</h2></div>
   <div class="stage-grid">
-    <button type="button" class="stage-row" id="stageBtn-orders" aria-expanded="false" aria-controls="stageList-orders" onclick="toggleStage('orders')"><img src="images/fort-drum-gate.jpg" alt="" loading="lazy"/><span class="step">Step 1</span><b>Orders just dropped</b></button>
-    <button type="button" class="stage-row" id="stageBtn-sixty" aria-expanded="false" aria-controls="stageList-sixty" onclick="toggleStage('sixty')"><img src="images/watertown-downtown.jpg" alt="" loading="lazy"/><span class="step">Step 2</span><b>60 days out</b></button>
-    <button type="button" class="stage-row" id="stageBtn-arriving" aria-expanded="false" aria-controls="stageList-arriving" onclick="toggleStage('arriving')"><img src="images/military-family.webp" alt="" loading="lazy"/><span class="step">Step 3</span><b>Arriving this month</b></button>
-    <button type="button" class="stage-row" id="stageBtn-here" aria-expanded="false" aria-controls="stageList-here" onclick="toggleStage('here')"><img src="images/thompson-park.jpg" alt="" loading="lazy"/><span class="step">Step 4</span><b>We just got here</b></button>
-    <button type="button" class="stage-row" id="stageBtn-deployed" aria-expanded="false" aria-controls="stageList-deployed" onclick="toggleStage('deployed')"><img src="images/north-country-winter.jpg" alt="" loading="lazy"/><span class="step">Anytime</span><b>My soldier is deploying (or deployed)</b></button>
+    <button type="button" class="stage-row" id="stageBtn-orders" aria-expanded="false" aria-controls="stageList-orders" onclick="toggleStage('orders')"><img src="images/fort-drum-gate.jpg" alt="" loading="lazy" decoding="async" width="1080" height="468"/><span class="step">Step 1</span><b>Orders just dropped</b></button>
+    <button type="button" class="stage-row" id="stageBtn-sixty" aria-expanded="false" aria-controls="stageList-sixty" onclick="toggleStage('sixty')"><img src="images/watertown-downtown.jpg" alt="" loading="lazy" decoding="async" width="1200" height="832"/><span class="step">Step 2</span><b>60 days out</b></button>
+    <button type="button" class="stage-row" id="stageBtn-arriving" aria-expanded="false" aria-controls="stageList-arriving" onclick="toggleStage('arriving')"><img src="images/military-family.webp" alt="" loading="lazy" decoding="async" width="1200" height="800"/><span class="step">Step 3</span><b>Arriving this month</b></button>
+    <button type="button" class="stage-row" id="stageBtn-here" aria-expanded="false" aria-controls="stageList-here" onclick="toggleStage('here')"><img src="images/thompson-park.jpg" alt="" loading="lazy" decoding="async" width="1200" height="676"/><span class="step">Step 4</span><b>We just got here</b></button>
+    <button type="button" class="stage-row" id="stageBtn-deployed" aria-expanded="false" aria-controls="stageList-deployed" onclick="toggleStage('deployed')"><img src="images/north-country-winter.jpg" alt="" loading="lazy" decoding="async" width="1800" height="1198"/><span class="step">Anytime</span><b>My soldier is deploying (or deployed)</b></button>
   </div>
   <div class="stage-panels">
     <div class="stage-links" id="stageList-orders">
@@ -424,9 +431,9 @@
 <section class="section shell">
   <div class="sec-head"><div class="sec-eyebrow">The Guide</div><h2>The Fort Drum Guide</h2><span>Honest intel from families who've lived it</span><a class="sec-more" href="pcshomes-fortdrum.html">All guides →</a></div>
   <div class="blog-grid">
-    <a class="bcard" href="pcshomes-fortdrum.html#schools"><div class="im"><img src="images/military-family.webp" alt="Military family together" loading="lazy"/></div><div class="bd"><span class="tag">Schools</span><h3>Enroll them before you even arrive — here's how</h3><p>Four districts, MIC3 rights, and the registrar who picks up the phone.</p><span class="go">Read the guide</span></div></a>
-    <a class="bcard" href="pcshomes-fortdrum.html#winter"><div class="im"><img src="images/north-country-winter.jpg" alt="North Country winter snow" loading="lazy"/></div><div class="bd"><span class="tag">Winter &amp; heat</span><h3>Winter is real. So is the playbook.</h3><p>Lock propane pricing by Oct 1, budget the plow guy, love the snow anyway.</p><span class="go">Read the guide</span></div></a>
-    <a class="bcard" href="pcshomes-fortdrum.html#pcs"><div class="im"><img src="images/fort-drum-gate.jpg" alt="Fort Drum main gate" loading="lazy"/></div><div class="bd"><span class="tag">PCS money</span><h3>What the Army owes you for this move</h3><p>DLA, TLE, per diem — and the two deadlines that cost families real money.</p><span class="go">Read the guide</span></div></a>
+    <a class="bcard" href="pcshomes-fortdrum.html#schools"><div class="im"><img src="images/military-family.webp" alt="Military family together" loading="lazy" decoding="async" width="1200" height="800"/></div><div class="bd"><span class="tag">Schools</span><h3>Enroll them before you even arrive — here's how</h3><p>Four districts, MIC3 rights, and the registrar who picks up the phone.</p><span class="go">Read the guide</span></div></a>
+    <a class="bcard" href="pcshomes-fortdrum.html#winter"><div class="im"><img src="images/north-country-winter.jpg" alt="North Country winter snow" loading="lazy" decoding="async" width="1800" height="1198"/></div><div class="bd"><span class="tag">Winter &amp; heat</span><h3>Winter is real. So is the playbook.</h3><p>Lock propane pricing by Oct 1, budget the plow guy, love the snow anyway.</p><span class="go">Read the guide</span></div></a>
+    <a class="bcard" href="pcshomes-fortdrum.html#pcs"><div class="im"><img src="images/fort-drum-gate.jpg" alt="Fort Drum main gate" loading="lazy" decoding="async" width="1080" height="468"/></div><div class="bd"><span class="tag">PCS money</span><h3>What the Army owes you for this move</h3><p>DLA, TLE, per diem — and the two deadlines that cost families real money.</p><span class="go">Read the guide</span></div></a>
   </div>
   <div class="index index-more">
     <a class="ix" href="pcshomes-fortdrum.html#va"><b>Housing &amp; BAH tools</b><small>VA calculator · rent vs. buy</small><span class="arrow">→</span></a>
@@ -463,9 +470,9 @@
 <section class="section shell">
   <div class="sec-head"><div class="sec-eyebrow">This weekend</div><h2>This weekend, with kids</h2><span>free · indoor · survivable</span><a class="sec-more" href="pcshomes-discover.html">Discover more →</a></div>
   <div class="blog-grid">
-    <a class="bcard" href="pcshomes-discover.html#family-kids"><div class="im"><img src="images/thompson-park.jpg" alt="Thompson Park, Watertown NY" loading="lazy"/></div><div class="bd"><span class="tag">Free · Outdoors</span><h3>Thompson Park &amp; the zoo</h3><p>435 acres, playgrounds, and NY-native wolves. 20 minutes from post.</p><span class="go">Plan it</span></div></a>
-    <a class="bcard" href="pcshomes-discover.html#day-trips"><div class="im"><img src="images/boldt-castle.jpg" alt="Boldt Castle in the Thousand Islands" loading="lazy"/></div><div class="bd"><span class="tag">Day trip · Summer</span><h3>Castles, actually</h3><p>Boldt &amp; Singer castles by boat — military rate $12.75. One hour south, kayaking too.</p><span class="go">Plan it</span></div></a>
-    <a class="bcard" href="pcshomes-discover.html#outdoors"><div class="im"><img src="images/sackets-harbor.webp" alt="Sackets Harbor on Lake Ontario" loading="lazy"/></div><div class="bd"><span class="tag">Under 30 min</span><h3>Sackets Harbor with a stroller</h3><p>Battlefield lawns, Lake Ontario views, breweries, history — and ice cream on Main Street.</p><span class="go">Plan it</span></div></a>
+    <a class="bcard" href="pcshomes-discover.html#family-kids"><div class="im"><img src="images/thompson-park.jpg" alt="Thompson Park, Watertown NY" loading="lazy" decoding="async" width="1200" height="676"/></div><div class="bd"><span class="tag">Free · Outdoors</span><h3>Thompson Park &amp; the zoo</h3><p>435 acres, playgrounds, and NY-native wolves. 20 minutes from post.</p><span class="go">Plan it</span></div></a>
+    <a class="bcard" href="pcshomes-discover.html#day-trips"><div class="im"><img src="images/boldt-castle.jpg" alt="Boldt Castle in the Thousand Islands" loading="lazy" decoding="async" width="1200" height="800"/></div><div class="bd"><span class="tag">Day trip · Summer</span><h3>Castles, actually</h3><p>Boldt &amp; Singer castles by boat — military rate $12.75. One hour south, kayaking too.</p><span class="go">Plan it</span></div></a>
+    <a class="bcard" href="pcshomes-discover.html#outdoors"><div class="im"><img src="images/sackets-harbor.webp" alt="Sackets Harbor on Lake Ontario" loading="lazy" decoding="async" width="1000" height="669"/></div><div class="bd"><span class="tag">Under 30 min</span><h3>Sackets Harbor with a stroller</h3><p>Battlefield lawns, Lake Ontario views, breweries, history — and ice cream on Main Street.</p><span class="go">Plan it</span></div></a>
   </div>
 </section>
 
@@ -517,7 +524,7 @@
         <button type="button" class="lead-btn" onclick="submitVaLead()">Have someone call me</button>
       </form>
       <div id="vaLeadSuccess" style="display:none;text-align:center;padding:24px 0;">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;margin:12px 0 8px;">You're all set!</div>
         <div style="font-size:14px;color:rgba(255,255,255,0.6);">A PCSHomes partner will be in touch shortly. Keep an eye on your email or phone.</div>
       </div>
@@ -548,7 +555,7 @@
 <div class="popup-overlay" id="pcshPopup">
   <div class="popup-box">
     <div class="popup-top">
-      <button class="popup-close" onclick="closePopup()">×</button>
+      <button class="popup-close" onclick="closePopup()" aria-label="Close popup">×</button>
       <div class="popup-eyebrow">Fort Drum PCS Resource</div>
       <div class="popup-headline">Before you go — anything we can answer?</div>
       <div class="popup-sub">Pick whichever is closest to where you are. Or just close this — the guides aren't going anywhere.</div>
@@ -556,7 +563,7 @@
     <div class="popup-body">
       <div class="popup-options" id="popupOptions">
         <div class="popup-option" onclick="selectOffer('homes')">
-          <div class="popup-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="popup-option-icon"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
           <div>
             <div class="popup-option-title">Get Matched with a Local Agent</div>
             <div class="popup-option-desc">We'll connect you with a vetted agent who matches your BAH, budget &amp; timeline.</div>
@@ -564,7 +571,7 @@
           <div class="popup-option-arrow">›</div>
         </div>
         <a href="pcshomes-fortdrum.html" class="popup-option" style="text-decoration:none;">
-          <div class="popup-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div class="popup-option-icon"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
           <div>
             <div class="popup-option-title">Explore Fort Drum Resources</div>
             <div class="popup-option-desc">Neighborhoods, schools, BAH breakdown, winter tips — everything in one place.</div>
@@ -572,7 +579,7 @@
           <div class="popup-option-arrow">›</div>
         </a>
         <div class="popup-option" onclick="selectOffer('lender')">
-          <div class="popup-option-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div class="popup-option-icon"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
           <div>
             <div class="popup-option-title">Connect with a VA Lender</div>
             <div class="popup-option-desc">Get matched with a vetted VA loan specialist — no pressure, no obligation.</div>
@@ -600,15 +607,15 @@
       </form>
 
       <div class="popup-success" id="popupSuccess">
-        <div class="popup-success-icon"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="popup-success-icon"><svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
         <div class="popup-success-title">You're all set!</div>
         <div class="popup-success-sub">A PCSHomes partner will be in touch shortly. Keep an eye on your email or phone.</div>
       </div>
 
       <div class="popup-trust" id="popupTrustBar">
-        <div class="popup-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Vetted local partners</div>
-        <div class="popup-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Military family focused</div>
-        <div class="popup-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Free, no obligation</div>
+        <div class="popup-trust-item"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Vetted local partners</div>
+        <div class="popup-trust-item"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Military family focused</div>
+        <div class="popup-trust-item"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Free, no obligation</div>
       </div>
     </div>
   </div>
@@ -622,48 +629,48 @@
   <div style="display:flex;flex-direction:column;gap:2px;">
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:8px 16px 4px;">Fort Drum Guide</div>
     <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#va" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">VA Calculator</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#rvb" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Rent vs Buy</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#map" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Neighborhood Map</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#pcs" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">PCS Checklist</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
     <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#family-kids" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Family &amp; Kids</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#outdoors" onclick="toggleQuickLinks()" style="display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors &amp; Adventures</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
-    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
+    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
+    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
       <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
       <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
@@ -673,11 +680,11 @@
 
 <!-- MOBILE BOTTOM TAB BAR -->
 <div class="mobile-tab-bar">
-  <a href="index.html" class="tab-item active"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
-  <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
-  <a href="pcshomes-discover.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-spouse.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
-  <a href="pcshomes-contact.html" class="tab-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+  <a href="index.html" class="tab-item active"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
+  <a href="pcshomes-discover.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
+  <a href="pcshomes-contact.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
 
 <script>
@@ -787,9 +794,9 @@ function selectOffer(type) {
   document.getElementById('popupOptions').style.display = 'none';
   document.getElementById('popupForm').style.display = 'flex';
   document.getElementById('popupFormTitle').innerHTML =
-    type === 'homes'   ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Get Matched with a Local Agent' :
-    type === 'lender'  ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Connect with a VA Lender' :
-                         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule a Free Consultation';
+    type === 'homes'   ? '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Get Matched with a Local Agent' :
+    type === 'lender'  ? '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Connect with a VA Lender' :
+                         '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule a Free Consultation';
   document.getElementById('popupOfferType').value = type;
 }
 function submitPopup() {
@@ -822,6 +829,10 @@ if (popupEl) {
   });
 }
 </script>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:84px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-bright,#C9A84C);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">&uarr;</button>
+<script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
 
 </body>
 </html>
