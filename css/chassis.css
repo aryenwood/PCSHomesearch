@@ -133,6 +133,7 @@ h2 em { font-weight: 400; font-style: italic; color: var(--gold); }
 .facts > div { padding: 22px 18px 20px 14px; border-right: 1px solid var(--rule); min-width: 0;
                 /* label, value and note share rows across the set, so a two-line label never drops its neighbour's number */
                 display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
+.answers-box > .ans { display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
 .facts > div:last-child { border-right: none; }
 .facts .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 .facts .val { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); color: var(--navy); margin-top: 2px; font-variant-numeric: tabular-nums; line-height: 1.25; overflow-wrap: anywhere; }
@@ -217,6 +218,10 @@ footer span.tag { margin-left: auto; letter-spacing: 0.12em; text-transform: upp
   body { font-weight: 500; }
   .eyebrow, .proof span { font-size: 15px; }
   .mobile-tab-bar .tab-item { font-size: 12px; }
+  .facts > div { padding: 18px 12px 16px; }
+  .facts .val { font-size: 20px; }
+  /* all-caps labels: tracking tightened on phones so they fit one line where they can, and wrap evenly where they cannot */
+  body .eyebrow, body .proof span, body .facts .label, body .ans .label, body .em .label, body .sec-eyebrow, body .tip .fact, body .callout .label, body .sub-head .sub-meta, body .term-abbr, body .field-label, body .form-label, body .vendor-company, body .category-badge, body .vendor-tag, body .stage-row .step, body .dir-row .meta b, body .mo-row b, body .facts-mini span, body .dist-row .tag, body .dist-row .pct span { letter-spacing: 0.05em; text-wrap: balance; }
   /* older sections still size text inline: lift it to the phone floor */
   [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"], [style*="font-size:12px"], [style*="font-size:12.5px"], [style*="font-size:13px"], [style*="font-size:13.5px"], [style*="font-size:14px"], [style*="font-size:15px"] { font-size: 17px !important; }
   [style*="font-size:10px"][style*="uppercase"], [style*="font-size:10.5px"][style*="uppercase"], [style*="font-size:11px"][style*="uppercase"], [style*="font-size:12px"][style*="uppercase"], [style*="font-size:12.5px"][style*="uppercase"], [style*="font-size:13px"][style*="uppercase"], [style*="font-size:13.5px"][style*="uppercase"], [style*="font-size:14px"][style*="uppercase"], [style*="font-size:15px"][style*="uppercase"] { font-size: 15px !important; }

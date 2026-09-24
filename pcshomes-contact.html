@@ -24,9 +24,10 @@
 
     /* the ask plate carries the whole form */
     .ask-plate .plate-in { max-width: 760px; }
-    .inquiry-types { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; }
-    .inquiry-type { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px;
-                    border: 1px solid rgba(246,241,230,0.3); border-radius: 100px; background: transparent;
+    /* six options, two equal columns at every width */
+    .inquiry-types { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0 6px; }
+    .inquiry-type { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 14px; text-align: center; line-height: 1.25;
+                    border: 1px solid rgba(246,241,230,0.3); border-radius: 12px; background: transparent;
                     color: var(--plate-ink); font: 700 var(--t-xs) 'DM Sans', sans-serif; cursor: pointer;
                     transition: background .2s, border-color .2s, color .2s; }
     .inquiry-type:hover { border-color: var(--gold-bright); }

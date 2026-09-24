@@ -75,9 +75,52 @@ JS = r"""
         if (t[i] !== '—' && t[i] !== '–') continue;
         const rg = document.createRange(); rg.setStart(n, i); rg.setEnd(n, i + 1);
         const rd = rg.getBoundingClientRect(), hr = h.getBoundingClientRect();
-        if (Math.abs(rd.left - hr.left) < 4) out.push({ kind: 'DASHLINE', where: name(h), detail: t.trim().slice(0, 50) });
+        if (false) out.push({});
       }
     }
+  }
+  // GUTTER: text touching the screen edge (phones), outside full-bleed chrome
+  if (innerWidth < 800) {
+    const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n; const seenEl = new Set();
+    while ((n = tw.nextNode())) {
+      if (n.textContent.trim().length < 2) continue;
+      const el = n.parentElement; if (!el || seenEl.has(el) || el.closest('script,style,.mobile-tab-bar,.popup-overlay,[hidden],.leaflet-container,.snav,#sectionNav,.skip')) continue;
+      let e = el, hid = false; while (e) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') { hid = true; break; } e = e.parentElement; } if (hid) continue;
+      const rg = document.createRange(); rg.selectNodeContents(n);
+      for (const r of rg.getClientRects()) { if (r.width < 1) continue;
+        if (r.left < 12 || r.right > innerWidth - 12) { seenEl.add(el); out.push({ kind: 'GUTTER', where: name(el), detail: n.textContent.trim().slice(0, 40) + ' @' + Math.round(r.left) + '..' + Math.round(r.right) }); break; } }
+    }
+  }
+  // ALIGN: sibling cards in one grid row with the same structure must line up part by part
+  for (const box of document.querySelectorAll('body *')) {
+    if (!inViewTree(box) || !getComputedStyle(box).display.includes('grid')) continue;
+    const kids = [...box.children].filter(vis); if (kids.length < 2) continue;
+    const n0 = kids[0].children.length; if (n0 < 2 || kids.some(k => k.children.length !== n0)) continue;
+    const ksig = k => k.tagName + '.' + ((typeof k.className === 'string' && k.className.trim().split(/\s+/)[0]) || '');
+    if (kids.some(k => ksig(k) !== ksig(kids[0]))) continue;
+    const rows = {}; kids.forEach(k => { const t = Math.round(k.getBoundingClientRect().top); (rows[t] = rows[t] || []).push(k); });
+    for (const row of Object.values(rows)) { if (row.length < 2) continue;
+      for (let i = 1; i < n0; i++) { if (row.some(k => getComputedStyle(k.children[i]).position === 'absolute')) continue;
+        const tops = row.map(k => Math.round(k.children[i].getBoundingClientRect().top));
+        if (Math.max(...tops) - Math.min(...tops) > 2) { out.push({ kind: 'ALIGN', where: name(box), detail: 'part ' + (i + 1) + ' tops ' + tops.join('/') }); break; } } }
+  }
+  // DASH: any em dash in visible text (copy rule), and any dash that starts a rendered line
+  { const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n, count = 0;
+    while ((n = tw.nextNode())) { const t = n.textContent; if (!/[\u2014\u2013]/.test(t)) continue;
+      const el = n.parentElement; if (!el || el.closest('script,style,noscript')) continue;
+      let e = el, hid = false; while (e) { if (getComputedStyle(e).display === 'none') { hid = true; break; } e = e.parentElement; } if (hid) continue;
+      for (let i = 0; i < t.length; i++) { if (t[i] !== '\u2014' && t[i] !== '\u2013') continue; if (t[i] === '\u2014') count++;
+        const rg = document.createRange(); rg.setStart(n, i); rg.setEnd(n, i + 1); const rd = rg.getBoundingClientRect();
+        const lb = el.getBoundingClientRect(); const cs = getComputedStyle(el);
+        const startX = lb.left + parseFloat(cs.paddingLeft) + parseFloat(cs.textIndent || 0);
+        if (rd.width && Math.abs(rd.left - startX) < 3 && i > 0) out.push({ kind: 'DASHLINE', where: name(el), detail: t.trim().slice(0, 40) }); } }
+    if (count) out.push({ kind: 'EMDASH', where: 'page', detail: count + ' visible em dashes' }); }
+  // LABELWRAP: short all-caps labels that break onto a second line
+  for (const el of document.querySelectorAll('body *')) {
+    if (el.children.length || !inViewTree(el)) continue; const cs = getComputedStyle(el);
+    if (cs.textTransform !== 'uppercase' || !vis(el)) continue; const t = el.textContent.trim(); if (t.length < 3 || t.length > 60) continue;
+    const rg = document.createRange(); rg.selectNodeContents(el); const tops = new Set([...rg.getClientRects()].map(r => Math.round(r.top)));
+    if (tops.size > 1) out.push({ kind: 'LABELWRAP', where: name(el), detail: t.slice(0, 44) });
   }
   return out;
 }

@@ -77,7 +77,7 @@
     .snav-link.active { color: var(--navy); border-bottom-color: var(--gold-bright); }
 
     /* hero */
-    header.hero.shell { padding-top: clamp(44px, 7vh, 72px); padding-bottom: 0; }
+    header.hero.shell { padding: clamp(44px, 7vh, 72px) 20px 0; }
     .hero-sub { margin-top: 22px; font-size: clamp(19px, 2vw, 21px); line-height: 1.65; color: var(--ink); max-width: 36em; }
 
     /* answers strip */
@@ -92,7 +92,7 @@
     .ans .note a { text-decoration: none; display: inline-block; padding: 10px 2px; margin: -10px -2px; }
 
     /* sections back on the paper */
-    .section { width: auto; margin: 0; padding: 58px 0 6px; background: none; border-radius: 0; box-shadow: none; }
+    .section { width: auto; margin: 0; padding-block: 58px 6px; background: none; border-radius: 0; box-shadow: none; }
     .band { width: auto; max-width: none; margin: 0; padding: 58px 0 6px; background: none; border-radius: 0; box-shadow: none; color: var(--ink); }
     .sec-head { border-bottom: none; padding-bottom: 0; margin-bottom: 6px; }
     .sec-eyebrow { display: block; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--steel); margin-bottom: 12px; }
@@ -114,7 +114,10 @@
     .tip .fact { display: block; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); font-style: normal; margin: 3px 0 4px; font-variant-numeric: tabular-nums; }
 
     /* situation chips */
-    .sit-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 44px; }
+    /* six intent chips, equal slots: one row on desktop, three even rows of two on phones */
+    .sit-chips { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 44px; }
+    @media (max-width: 900px) { .sit-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .sit-chips { grid-template-columns: 1fr 1fr; } .sit-chip { padding-inline: 10px; } }
     .sit-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', sans-serif;
                 font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
                 border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color .15s, background .15s, border-color .15s; }
@@ -218,6 +221,18 @@
       .eat-row .where { text-align: left; }
       .mo-row { grid-template-columns: 1fr; gap: 4px; }
       .blog-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+      /* the trail table becomes one stacked row per trail: no sideways scroll on a phone */
+      .tbl-wrap { overflow: visible; background: none; }
+      table.brief { min-width: 0; }
+      table.brief thead { display: none; }
+      table.brief, table.brief tbody, table.brief tr, table.brief td { display: block; }
+      table.brief tr { padding: 14px 4px; border-bottom: 1px solid var(--rule); }
+      table.brief td { padding: 0; border: 0; }
+      table.brief td:nth-child(2), table.brief td:nth-child(3) { display: inline; }
+      table.brief td:nth-child(2)::after { content: " drive \00B7  "; }
+      table.brief td:nth-child(4)::before { content: "Kids: "; font-weight: 700; color: var(--navy); }
     }
     @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }

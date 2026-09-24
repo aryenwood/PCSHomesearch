@@ -34,7 +34,9 @@
     body { overflow-wrap: break-word; }
 
     /* filter chips */
-    .filter-bar { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 26px 20px 0; }
+    /* five filters, five equal slots; phones: All on its own row, then two even pairs */
+    .filter-bar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; max-width: 1060px; margin: 0 auto; padding: 26px 20px 0; }
+    @media (max-width: 780px) { .filter-bar { grid-template-columns: 1fr 1fr; } .filter-bar > :first-child { grid-column: 1 / -1; } .filter-btn { padding: 6px 12px; border-radius: 12px; line-height: 1.25; } }
     .filter-btn { background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 100px;
       padding: 0 22px; min-height: 44px; font: 700 var(--t-xs) 'DM Sans', sans-serif; cursor: pointer; transition: all .2s; }
     .filter-btn:hover { border-color: var(--gold-bright); color: var(--navy); }
