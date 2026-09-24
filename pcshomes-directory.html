@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Who Do I Call? Fort Drum Family Directory | PCSHomes</title>
+  <meta name="description" content="Who to call and where to go at Fort Drum — crisis lines, medical, VA, food and benefits, legal help, childcare, and everyday life. Every number source-verified, with dates.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pcshomes.com/pcshomes-directory.html">
+  <meta property="og:title" content="Who Do I Call? Fort Drum Family Directory | PCSHomes">
+  <meta property="og:description" content="Crisis lines, medical, VA, benefits, legal, childcare, and everyday life around Fort Drum — every number source-verified, with dates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pcshomes.com/pcshomes-directory.html">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23D9B45B' font-weight='bold'>P</text></svg>">
+  <link rel="stylesheet" href="css/chassis.css">
+  <style>
+    /* directory-only chrome on top of the chassis */
+    [id] { scroll-margin-top: 84px; }
+    body { overflow-wrap: break-word; }
+
+    /* crisis wall (static HTML — works without JS) */
+    .em-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 14px; overflow: hidden;
+               background: rgba(246,241,230,0.04); border: 1px solid rgba(246,241,230,0.12); margin-top: 30px; }
+    .em { padding: 20px 24px; border-right: 1px solid rgba(246,241,230,0.1); border-bottom: 1px solid rgba(246,241,230,0.1); }
+    .em .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(246,241,230,0.55); }
+    .em .val { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--gold-bright); margin-top: 4px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .em .val a { display: inline-block; padding: 10px 2px; margin: -10px -2px; text-decoration: none; }
+    .em .note { font-size: var(--t-xs); color: rgba(246,241,230,0.6); margin-top: 2px; }
+
+    /* search + intent chips */
+    .search-wrap { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--paper); padding: 10px 0 12px; }
+    .dir-search { width: 100%; padding: 14px 20px; background: var(--card); border: 1px solid var(--rule-strong); border-radius: 9px;
+                  color: var(--ink); font: 500 16px 'DM Sans', sans-serif; outline: none; transition: border-color .2s; }
+    .dir-search::placeholder { color: var(--muted); }
+    .dir-search:focus { border-color: var(--gold-bright); }
+    .intent-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .intent-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', sans-serif;
+                   font-size: 11px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted);
+                   border-radius: 100px; padding: 11px 16px; min-height: 44px; transition: color .15s, background .15s, border-color .15s; }
+    .intent-chip:hover { color: var(--navy); border-color: var(--gold-bright); }
+    .intent-chip.active { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
+    .intent-chip.help { border-color: rgba(163,58,43,0.45); color: var(--err); }
+
+    /* result groups + rows */
+    .dir-group-h { font-family: 'Libre Baskerville', serif; font-size: 25px; font-weight: 700; color: var(--navy);
+                   margin: 46px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
+    .dir-row { padding: 20px 2px 18px; border-bottom: 1px solid var(--rule); }
+    .dir-row h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3; }
+    .dir-row .use { font-size: var(--t-m); color: var(--ink); margin: 6px 0 0; max-width: 46em; }
+    .dir-row .meta { font-size: var(--t-xs); color: var(--muted); margin-top: 6px; }
+    .dir-row .meta b { color: var(--steel); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--t-2xs); }
+    .dir-row .rnote { font-size: var(--t-s); color: var(--ink); font-style: italic; margin-top: 8px; max-width: 46em; }
+    .dir-acts { display: flex; gap: 8px 10px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+    .dir-acts a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 9px;
+                  font-size: var(--t-s); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
+    .dir-acts .call { background: var(--navy); color: #fff; }
+    .dir-acts .call:hover { background: var(--gold-bright); color: var(--plate-deep); }
+    .dir-acts .alt { border: 1px solid var(--rule-strong); color: var(--navy); }
+    .dir-acts .alt:hover { border-color: var(--gold-bright); }
+    .dir-verified { font-size: var(--t-xs); color: var(--muted); margin-top: 10px; }
+    .dir-verified a { color: var(--gold); font-weight: 700; text-decoration: none; display: inline-block; padding: 8px 2px; margin: -8px -2px; }
+    .dir-empty { display: none; padding: 40px 0; text-align: center; color: var(--muted); font-size: var(--t-m); }
+    .dir-count { font-size: var(--t-xs); color: var(--muted); margin-top: 14px; }
+
+    /* mobile tab bar — the one fixed layer on phones */
+    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
+                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+                      justify-content: space-around; align-items: center; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
+                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
+    .tab-item svg { stroke: currentColor; }
+    .tab-item.active { color: var(--gold-bright); }
+    .m-only { display: none; }
+
+    @media (min-width: 781px) { .search-wrap { top: 73px; } }
+    @media (max-width: 900px) { .em-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 780px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+      .bar { position: static; }
+      .mobile-tab-bar { display: flex; }
+      .m-only { display: inline-flex; }
+      .d-only { display: none; }
+      input { font-size: 16px !important; }
+      .em-grid { grid-template-columns: 1fr; }
+      [style*="font-size:10px"], [style*="font-size:11px"], [style*="font-size:12px"] { font-size: 13px !important; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main-content">Skip to content</a>
+
+<div class="bar"><nav class="bar-in" aria-label="Site">
+  <a href="index.html" style="text-decoration:none;"><b>PCS<em>Homes</em></b></a>
+  <ul class="bar-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pcshomes-fortdrum.html">Fort Drum Guide</a></li>
+    <li><a href="pcshomes-directory.html" class="active">Directory</a></li>
+    <li><a href="pcshomes-discover.html">Discover</a></li>
+    <li><a href="pcshomes-spouse.html">Spouse HQ</a></li>
+    <li><a href="pcshomes-network.html">Our Network</a></li>
+    <li><a href="pcshomes-contact.html">Contact</a></li>
+  </ul>
+  <a href="tel:+13152214857" class="bar-cta m-only" aria-label="Call PCSHomes">Call</a>
+</nav></div>
+
+<main id="main-content">
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow rv">The directory</p>
+  <h1 class="rv">What do you <em>need?</em></h1>
+  <p class="dek rv">Who to call, where to go, and whether the number is still good — for the whole family, the whole tour. <strong>Every entry names its official source and the date we last verified it.</strong> No forms, no sign-up, nothing tracked.</p>
+</div></header>
+
+<!-- HELP NOW — static HTML on purpose: this section works even if everything else fails -->
+<div class="plate" id="help-now">
+  <canvas class="ground" aria-hidden="true"></canvas>
+  <div class="plate-in">
+    <h2>Help <em>now.</em></h2>
+    <p class="lede">Every line below is answered around the clock. Tap to call.</p>
+    <div class="em-grid">
+      <div class="em"><div class="label">Emergency</div><div class="val"><a href="tel:911">911</a></div><div class="note">On post, a cell call may reach county dispatch first — say you're on Fort Drum.</div></div>
+      <div class="em"><div class="label">Suicide &amp; crisis · military</div><div class="val"><a href="tel:988">988</a>, press 1</div><div class="note">Military / Veterans Crisis Line, 24/7</div></div>
+      <div class="em"><div class="label">Domestic abuse · Fort Drum</div><div class="val"><a href="tel:+13159554321">(315) 955-4321</a></div><div class="note">FAP victim advocate, 24/7</div></div>
+      <div class="em"><div class="label">Sexual assault · SHARP</div><div class="val"><a href="tel:+13157676128">(315) 767-6128</a></div><div class="note">DoD Safe Helpline: <a href="tel:+18779955247" style="color:inherit;">877-995-5247</a></div></div>
+      <div class="em"><div class="label">DV &amp; SA · off post</div><div class="val"><a href="tel:+13157821855">(315) 782-1855</a></div><div class="note">Victims Assistance Center, 24-hour hotline</div></div>
+      <div class="em"><div class="label">NY State DV hotline</div><div class="val"><a href="tel:+18009426906">800-942-6906</a></div><div class="note">Or text <a href="sms:+18449972121" style="color:inherit;">844-997-2121</a></div></div>
+      <div class="em"><div class="label">Mental health · local</div><div class="val"><a href="tel:+13157854516">(315) 785-4516</a></div><div class="note">Samaritan urgent line, 24/7 · County crisis: <a href="tel:+13157822327" style="color:inherit;">(315) 782-2327</a></div></div>
+      <div class="em"><div class="label">Child abuse</div><div class="val"><a href="tel:+18004224453">800-422-4453</a></div><div class="note">Childhelp national hotline, 24/7</div></div>
+      <div class="em"><div class="label">Poison control</div><div class="val"><a href="tel:+18002221222">800-222-1222</a></div><div class="note">24/7</div></div>
+      <div class="em"><div class="label">Chaplain, any hour</div><div class="val"><a href="tel:+13154861144">(315) 486-1144</a></div><div class="note">Emergency chaplain support: <a href="tel:+13157728620" style="color:inherit;">(315) 772-8620</a></div></div>
+      <div class="em"><div class="label">Reach a deployed soldier</div><div class="val"><a href="tel:+18772727337">877-272-7337</a></div><div class="note">Red Cross Hero Care, 24/7</div></div>
+      <div class="em"><div class="label">National DV hotline</div><div class="val"><a href="tel:+18007997233">800-799-7233</a></div><div class="note">Or text START to <a href="sms:88788" style="color:inherit;">88788</a></div></div>
+    </div>
+    <p style="font-size:var(--t-xs);color:rgba(246,241,230,0.5);margin:16px 0 0;">These lines connect you directly to each service. PCSHomes never asks who you are on this page.</p>
+  </div>
+</div>
+
+<!-- SEARCH + DIRECTORY -->
+<section style="padding-top:44px;"><div class="wrap" style="max-width:800px;">
+  <div class="search-wrap">
+    <input type="search" class="dir-search" id="dirSearch" aria-label="Search the directory"
+           placeholder='Try "food stamps," "divorce," "daycare," "VA," or "urgent care"' oninput="dirFilter()"/>
+  </div>
+  <div class="intent-chips" id="dirChips" role="group" aria-label="Browse by need">
+    <button class="intent-chip help" data-cat="__help" type="button">Help now</button>
+    <button class="intent-chip active" data-cat="all" type="button">All</button>
+    <button class="intent-chip" data-cat="Health &amp; Medical" type="button">Health &amp; mental health</button>
+    <button class="intent-chip" data-cat="Food, Money &amp; Benefits" type="button">Food, money &amp; benefits</button>
+    <button class="intent-chip" data-cat="Legal, Divorce &amp; Family" type="button">Legal &amp; family</button>
+    <button class="intent-chip" data-cat="Kids, School &amp; Child Care" type="button">Kids &amp; child care</button>
+    <button class="intent-chip" data-cat="Military &amp; PCS" type="button">Fort Drum &amp; PCS</button>
+    <button class="intent-chip" data-cat="Veterans &amp; VA" type="button">Veterans &amp; VA</button>
+    <button class="intent-chip" data-cat="Groceries, Clothes &amp; Everyday Life" type="button">Everyday life</button>
+    <button class="intent-chip" data-cat="Outdoors &amp; Local Life" type="button">Outdoors</button>
+    <button class="intent-chip" data-cat="Safety &amp; Crisis" type="button">Safety &amp; crisis</button>
+  </div>
+  <p class="dir-count" id="dirCount"></p>
+  <div id="dirResults"></div>
+  <div class="dir-empty" id="dirEmpty">No matches — try <strong>SNAP</strong>, <strong>daycare</strong>, <strong>VA</strong>, or <strong>legal</strong>. Can't find it? Fort Drum ACS Information &amp; Referral, <a href="tel:+13157726799" style="color:var(--gold);font-weight:700;text-decoration:none;">(315) 772-6799</a>, exists for exactly that.</div>
+  <noscript><p style="margin-top:24px;font-size:var(--t-m);color:var(--ink);">The searchable directory needs JavaScript. Every crisis line above works without it, and Fort Drum ACS Information &amp; Referral, (315) 772-6799, can route any other question.</p></noscript>
+</div></section>
+
+</main>
+
+<!-- FOOTER -->
+<footer><div class="f-in">
+  <a href="index.html" style="text-decoration:none;"><b>PCS<i>Homes</i></b></a>
+  <span>© 2026 PCSHomes · Free for military families</span>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="pcshomes-fortdrum.html">Fort Drum Guide</a>
+    <a href="pcshomes-discover.html">Discover</a>
+    <a href="pcshomes-spouse.html">Spouse HQ</a>
+    <a href="pcshomes-network.html">Our Network</a>
+    <a href="pcshomes-contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</div>
+<div style="max-width:1100px;margin:14px auto 0;padding-inline:20px;font-size:var(--t-xs);color:var(--muted);">Numbers, hours, and programs change. Every entry shows its official source and verification date — for anything time-sensitive, the source is the authority.</div>
+</footer>
+
+<!-- MOBILE BOTTOM TAB BAR -->
+<div class="mobile-tab-bar">
+  <a href="index.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="pcshomes-directory.html" class="tab-item active"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>Directory</span></a>
+  <a href="pcshomes-discover.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
+  <a href="pcshomes-contact.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+</div>
+
+<script>
+// ── The directory: fetch, search with aliases, render ──
+var DIR = [];
+var ALIASES = {
+  "food stamps": ["snap", "ebt"], "food stamp": ["snap"], "ebt": ["snap"],
+  "hungry": ["snap", "food pantry", "wic"], "need food": ["snap", "food pantry", "wic"],
+  "heating": ["heap"], "heat": ["heap"], "no heat": ["heap"], "fuel": ["heap"], "utilities": ["heap"],
+  "daycare": ["child care", "cys", "ccap"], "day care": ["child care", "cys", "ccap"], "babysit": ["child care", "cys"],
+  "jag": ["legal assistance"], "lawyer": ["legal"], "attorney": ["legal"],
+  "special needs": ["efmp", "iep"], "iep": ["efmp"], "autism": ["efmp"], "disability": ["efmp"],
+  "sexual assault": ["sharp", "safe helpline"], "rape": ["sharp", "safe helpline", "victim"], "assaulted": ["sharp", "safe helpline", "victim"],
+  "domestic violence": ["fap", "victim advocate", "victims assistance"], "abuse": ["fap", "victim", "childhelp"],
+  "hit me": ["fap", "victim advocate", "domestic"], "not safe": ["fap", "victim advocate", "domestic"],
+  "suicide": ["988", "crisis"], "kill myself": ["988", "crisis"], "depressed": ["mental health", "crisis", "counseling"],
+  "therapy": ["mental health", "counseling", "vet center"], "counseling": ["mental health", "vet center", "military onesource"],
+  "er": ["emergency room", "samaritan"], "hospital": ["emergency room", "samaritan"],
+  "doctor": ["clinic", "primary care", "guthrie", "urgent care"], "sick": ["urgent care", "clinic"],
+  "va doctor": ["va clinic", "va medical"], "va claim": ["veterans service agency", "benefits counseling", "claims assistance"],
+  "pregnant": ["wic", "obgyn"], "baby": ["wic", "new parent"], "formula": ["wic"],
+  "money": ["aer", "temporary assistance", "financial"], "broke": ["aer", "temporary assistance", "food pantry"],
+  "emergency money": ["aer", "temporary assistance"], "bills": ["heap", "temporary assistance", "financial"],
+  "divorce": ["supreme court", "legal assistance", "legal aid"], "custody": ["family court", "legal"],
+  "child support": ["family court"], "protection order": ["family court", "victim"],
+  "moving": ["household goods", "hhg", "pcs"], "movers": ["household goods", "hhg"],
+  "furniture damaged": ["household goods", "hhg", "secure hold"], "damaged": ["household goods", "hhg"], "claim": ["household goods", "hhg", "veterans service"],
+  "housing": ["mountain community homes", "on post housing"], "rent": ["mountain community homes", "housing"],
+  "job": ["employment readiness", "transition"], "resume": ["employment readiness"], "spouse job": ["employment readiness"],
+  "groceries": ["commissary", "walmart", "hannaford", "price chopper", "snap"], "grocery": ["commissary", "walmart", "hannaford", "price chopper"],
+  "clothes": ["walmart", "one-stop"],
+  "hike": ["trail", "state park", "outdoor recreation"], "hiking": ["trail", "state park", "outdoor recreation"],
+  "fishing": ["isportsman", "state park", "outdoor recreation"], "hunting": ["isportsman"],
+  "camping": ["state park", "wellesley", "southwick"], "beach": ["southwick", "westcott", "state park"],
+  "swimming": ["southwick", "state park", "parks"], "snowshoe": ["outdoor recreation", "black river trail"],
+  "ski": ["outdoor recreation"], "kayak": ["outdoor recreation", "sackets"],
+  "who do i call": ["information", "referral", "acs", "directory"],
+  "drunk": ["substance abuse", "asap"], "alcohol": ["substance abuse", "asap"], "drugs": ["substance abuse", "asap"],
+  "chaplain": ["chaplain"], "church": ["chaplain"], "pastor": ["chaplain"],
+  "deployed": ["red cross", "hero care", "military onesource"], "deployment": ["red cross", "military onesource"]
+};
+var CAT_ORDER = ["Safety & Crisis", "Health & Medical", "Veterans & VA", "Food, Money & Benefits",
+                 "Legal, Divorce & Family", "Kids, School & Child Care", "Military & PCS",
+                 "Groceries, Clothes & Everyday Life", "Outdoors & Local Life"];
+var activeCat = "all";
+
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function telHref(p) { var d = String(p).replace(/[^\d]/g, ""); if (d.length === 10) d = "1" + d; return "tel:+" + d; }
+function fmtDate(d) { try { var p = d.split("-"); return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+p[1]-1] + " " + (+p[2]) + ", " + p[0]; } catch (e) { return d; } }
+
+function haystack(r) {
+  return (r.name + " " + r.cat + " " + r.sub + " " + r.use + " " + (r.tags || []).join(" ") + " " + (r.phone || "")).toLowerCase();
+}
+var STOP = { "i": 1, "a": 1, "an": 1, "am": 1, "is": 1, "my": 1, "me": 1, "to": 1, "in": 1, "of": 1, "and": 1, "or": 1, "the": 1, "for": 1, "with": 1, "need": 1, "want": 1, "can": 1, "cant": 1, "where": 1, "who": 1, "what": 1, "how": 1, "do": 1, "get": 1, "got": 1, "near": 1, "buy": 1, "pay": 1, "help": 1 };
+function expand(q) {
+  // whole-word alias matching only: "er" must not fire inside "where"
+  var terms = [q];
+  for (var k in ALIASES) {
+    var esc = k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    var re = new RegExp(k.length <= 3 ? "\\b" + esc + "\\b" : "\\b" + esc);
+    if (re.test(q)) terms = terms.concat(ALIASES[k]);
+  }
+  q.split(/[^a-z0-9]+/).forEach(function (w) {
+    if (w.length > 2 && !STOP[w]) {
+      terms.push(w);
+      var stem = w.replace(/(ing|ed|es|s)$/, "");
+      if (stem !== w && stem.length >= 4) terms.push(stem);
+    }
+  });
+  return terms;
+}
+function score(r, terms, hay) {
+  var s = 0;
+  terms.forEach(function (t) {
+    t = t.trim(); if (!t) return;
+    if (r.name.toLowerCase().indexOf(t) > -1) s += 6;
+    if ((r.tags || []).some(function (g) { return g.toLowerCase().indexOf(t) > -1; })) s += 4;
+    if (r.sub.toLowerCase().indexOf(t) > -1) s += 3;
+    if (hay.indexOf(t) > -1) s += 1;
+  });
+  if (s > 0 && r.emergency) s += 3; // crisis lines outrank duty-hour offices on close calls
+  return s;
+}
+
+function rowHtml(r) {
+  var meta = [];
+  if (r.hours) meta.push("<b>Hours</b> " + esc(r.hours));
+  if (r.elig) meta.push("<b>Who</b> " + esc(r.elig));
+  if (r.cost) meta.push("<b>Cost</b> " + esc(r.cost));
+  var acts = [];
+  if (r.phone) acts.push('<a class="call" href="' + telHref(r.phone) + '">Call ' + esc(r.phone) + "</a>");
+  if (r.phone2 && /\d{3}/.test(r.phone2)) acts.push('<a class="alt" href="' + telHref(r.phone2) + '">' + esc(r.phone2) + "</a>");
+  if (r.sms && /\d/.test(r.sms)) { var sd = String(r.sms).replace(/[^\d]/g, ""); acts.push('<a class="alt" href="sms:' + (sd.length === 10 ? "+1" + sd : sd) + '">Text</a>'); }
+  if (r.address || r.city) {
+    var q = encodeURIComponent([r.name, r.address, r.city, "NY"].filter(Boolean).join(", "));
+    acts.push('<a class="alt" href="https://www.google.com/maps/search/?api=1&query=' + q + '" target="_blank" rel="noopener">Directions</a>');
+  }
+  var ver = "";
+  if (r.verified) {
+    ver = "Verified " + fmtDate(r.verified);
+    if (r.source) ver += ' · <a href="' + esc(r.source) + '" target="_blank" rel="noopener">Source: ' + esc(r.source_name || "official site") + " ↗</a>";
+  }
+  return '<div class="dir-row" data-id="' + esc(r.id) + '">'
+    + "<h3>" + esc(r.name) + "</h3>"
+    + '<p class="use">' + esc(r.use) + "</p>"
+    + (meta.length ? '<p class="meta">' + meta.join(" &nbsp;·&nbsp; ") + "</p>" : "")
+    + (r.note ? '<p class="rnote">' + esc(r.note) + "</p>" : "")
+    + (acts.length ? '<div class="dir-acts">' + acts.join("") + "</div>" : "")
+    + (ver ? '<p class="dir-verified">' + ver + "</p>" : "")
+    + "</div>";
+}
+
+function render(list, grouped) {
+  var out = "", box = document.getElementById("dirResults");
+  if (grouped) {
+    CAT_ORDER.forEach(function (cat) {
+      var rs = list.filter(function (r) { return r.cat === cat; });
+      if (!rs.length) return;
+      out += '<h2 class="dir-group-h">' + esc(cat) + "</h2>" + rs.map(rowHtml).join("");
+    });
+  } else {
+    out = list.map(rowHtml).join("");
+  }
+  box.innerHTML = out;
+  document.getElementById("dirEmpty").style.display = list.length ? "none" : "block";
+  document.getElementById("dirCount").textContent = list.length
+    ? list.length + " of " + DIR.length + " resources" : "";
+}
+
+function dirFilter() {
+  var q = document.getElementById("dirSearch").value.trim().toLowerCase();
+  if (!q) {
+    var base = activeCat === "all" ? DIR : DIR.filter(function (r) { return r.cat === activeCat; });
+    render(base, true);
+    return;
+  }
+  var terms = expand(q);
+  var scored = DIR.map(function (r) { return { r: r, s: score(r, terms, haystack(r)) }; })
+    .filter(function (x) { return x.s > 0; })
+    .sort(function (a, b) { return b.s - a.s; });
+  render(scored.map(function (x) { return x.r; }), false);
+}
+
+// exposed for automated QA
+function __dirSearch(q) {
+  document.getElementById("dirSearch").value = q; dirFilter();
+  var first = document.querySelector("#dirResults .dir-row h3");
+  return first ? first.textContent : null;
+}
+
+document.getElementById("dirChips").addEventListener("click", function (e) {
+  var chip = e.target.closest(".intent-chip"); if (!chip) return;
+  if (chip.dataset.cat === "__help") { document.getElementById("help-now").scrollIntoView({ behavior: "smooth" }); return; }
+  document.querySelectorAll(".intent-chip").forEach(function (c) { c.classList.remove("active"); });
+  chip.classList.add("active");
+  activeCat = chip.dataset.cat;
+  document.getElementById("dirSearch").value = "";
+  dirFilter();
+});
+
+fetch("data/directory.json")
+  .then(function (r) { if (!r.ok) throw new Error("directory.json HTTP " + r.status); return r.json(); })
+  .then(function (d) { DIR = d.records; dirFilter(); })
+  .catch(function (e) {
+    console.error("Directory load failed:", e);
+    document.getElementById("dirEmpty").style.display = "block";
+  });
+</script>
+<script src="js/chassis.js"></script>
+</body>
+</html>
