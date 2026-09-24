@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pcshomes.example/schemas/directory-v1.json",
+  "title": "PCSHomes Directory Product Schema",
+  "description": "Schema and product contract for the Fort Drum family resource directory.",
+  "type": "object",
+  "required": [
+    "metadata",
+    "records"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": [
+        "dataset",
+        "version",
+        "record_count",
+        "generated_at"
+      ],
+      "properties": {
+        "dataset": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "record_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "provenance": {
+          "type": "string"
+        },
+        "important_note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/directoryRecord"
+      }
+    }
+  },
+  "$defs": {
+    "directoryRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "category",
+        "subcategory",
+        "use_this_when",
+        "intent_tags",
+        "emergency",
+        "priority",
+        "status",
+        "source_name",
+        "source_url",
+        "last_checked_at",
+        "reverify_days",
+        "recheck_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "use_this_when": {
+          "type": "string"
+        },
+        "intent_tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "phone_primary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phone_secondary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sms": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "address": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zip": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "area": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lat": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lng": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -180,
+          "maximum": 180
+        },
+        "hours_display": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "eligibility": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cost": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "military_civilian": {
+          "type": "string"
+        },
+        "confidentiality_reporting_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "emergency": {
+          "type": "boolean"
+        },
+        "priority": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2"
+          ]
+        },
+        "status": {
+          "enum": [
+            "active",
+            "seasonal",
+            "temporarily_closed",
+            "needs_recheck"
+          ]
+        },
+        "source_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "verified_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "last_checked_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "reverify_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recheck_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "change_history": {
+          "type": "array"
+        },
+        "admin_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-pcshomes": {
+    "primary_search_prompt": "What do you need?",
+    "top_level_intents": [
+      "HELP NOW",
+      "HEALTH & MENTAL HEALTH",
+      "FOOD, MONEY & BENEFITS",
+      "LEGAL, DIVORCE & FAMILY",
+      "KIDS, SCHOOL & CHILD CARE",
+      "FORT DRUM & PCS",
+      "VETERANS & VA",
+      "GROCERIES, CLOTHES & EVERYDAY LIFE",
+      "OUTDOORS",
+      "EVENTS & THINGS TO DO"
+    ],
+    "result_action_order": [
+      "CALL",
+      "DIRECTIONS",
+      "OPEN NOW",
+      "WHO CAN USE IT",
+      "LAST VERIFIED",
+      "SOURCE"
+    ],
+    "emergency_rules": [
+      "No lead capture",
+      "No marketing CTA",
+      "No referral monetization",
+      "Call action first",
+      "Do not log sensitive search text tied to identity"
+    ],
+    "verification_cadence_days": {
+      "P0_crisis_safety": 7,
+      "P0_government_medical": 30,
+      "P1": 60,
+      "P2": 90
+    },
+    "search_alias_examples": {
+      "food stamps": [
+        "SNAP",
+        "food",
+        "EBT"
+      ],
+      "heating help": [
+        "HEAP",
+        "heat bill",
+        "no heat"
+      ],
+      "daycare assistance": [
+        "CCAP",
+        "child care assistance"
+      ],
+      "JAG": [
+        "Legal Assistance"
+      ],
+      "special needs": [
+        "EFMP",
+        "IEP"
+      ],
+      "sexual assault": [
+        "SHARP",
+        "Safe Helpline"
+      ],
+      "domestic violence": [
+        "FAP",
+        "Victims Assistance Center",
+        "not safe at home"
+      ],
+      "VA doctor": [
+        "Watertown VA Clinic",
+        "Syracuse VA Medical Center"
+      ],
+      "moving damage": [
+        "household goods",
+        "HHG",
+        "Secure Hold and Safe Haven"
+      ]
+    }
+  }
+}
