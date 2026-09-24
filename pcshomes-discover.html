@@ -18,9 +18,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -56,216 +56,161 @@
     ]
   }
   </script>
+  <link rel="stylesheet" href="css/chassis.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    a { color: inherit; text-decoration: none; }
-    :root {
-      --navy: #1D3557; --navy-deep: #14263F;
-      --ink: #2B3442; --muted: #6B7280;
-      --gold: #B98A2F; --gold-soft: #D9B45B; --gold-tint: rgba(185,138,47,0.12);
-      --gold-bright: #C9A84C; --gold-light: #E2C57A; /* legacy accents — dark tab bar, quick-links sheet + map internals only */
-      --paper: #FBF7EF; --card: #FFFFFF; --line: rgba(43,52,66,0.10);
-      --shadow: 0 2px 6px rgba(43,52,66,0.06), 0 12px 32px rgba(43,52,66,0.08);
-      --r: 16px;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-    /* SKIP LINK — visually hidden until keyboard focus */
-    .skip-link { position: absolute; clip: rect(0 0 0 0); clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
-    .skip-link:focus { clip: auto; clip-path: none; width: auto; height: auto; position: fixed; top: 10px; left: 10px; z-index: 100000; background: var(--navy); color: var(--gold-soft); font-weight: 700; font-size: 14px; padding: 14px 22px; border-radius: 10px; box-shadow: var(--shadow); }
-
-    /* NAV — light journal bar */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-      display: flex; align-items: center; gap: 32px;
-      padding: 0 40px; height: 64px; background: rgba(251,247,239,0.92);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line); color: var(--ink);
-    }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
-    nav .nav-logo { display: inline-flex; align-items: center; min-height: 44px; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 26px; margin-left: auto; list-style: none; }
-    .nav-links a { font-size: 13.5px; font-weight: 600; color: var(--muted); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--navy); }
-    .nav-links a.active { color: var(--navy); }
-    .nav-call { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 100px; white-space: nowrap; }
-    .nav-call-mobile { display: none; margin-left: auto; }
-    @media (max-width: 768px) { .nav-call-mobile { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; } }
-
-    main { padding-top: 64px; }
-    .shell { max-width: 1060px; margin: 0 auto; padding-left: 32px; padding-right: 32px; }
-
-    /* Anchor landings clear the fixed nav + section nav */
+    /* discover chrome on top of the chassis — same content classes, chassis skin */
+    :root { --gold-soft: var(--gold-bright); --gold-tint: rgba(138,101,32,0.12);
+            --line: rgba(43,53,71,0.12); --r: 18px;
+            --shadow: 0 2px 6px rgba(29,53,87,.06), 0 12px 32px rgba(29,53,87,.08); }
+    .shell { max-width: 1060px; margin: 0 auto; padding-inline: 20px; }
     section[id], div[id] { scroll-margin-top: 130px; }
+    body { overflow-wrap: break-word; }
 
-    /* STICKY SECTION NAV (light variant — same JS) */
-    #sectionNav { position: fixed; top: 64px; left: 0; right: 0; z-index: 9998; background: rgba(251,247,239,0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); display: none; }
-    #sectionNav .snav-in { max-width: 1060px; margin: 0 auto; display: flex; gap: 26px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 11px 32px; }
+    /* sticky section nav (desktop reading aid; phones use the tab bar sheet) */
+    #sectionNav { position: fixed; top: 0; left: 0; right: 0; z-index: 49; background: rgba(251,247,239,0.94);
+                  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); display: none; }
+    #sectionNav .snav-in { max-width: 1060px; margin: 0 auto; display: flex; gap: 26px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 11px 20px; }
     #sectionNav .snav-in::-webkit-scrollbar { display: none; }
-    .snav-link { white-space: nowrap; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid transparent; padding-bottom: 2px; transition: color 0.15s; }
+    .snav-link { white-space: nowrap; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+                 color: var(--muted); border-bottom: 2px solid transparent; padding-bottom: 2px; text-decoration: none; transition: color 0.15s; }
     .snav-link:hover { color: var(--navy); }
-    .snav-link.active { color: var(--navy); border-bottom-color: var(--gold); }
+    .snav-link.active { color: var(--navy); border-bottom-color: var(--gold-bright); }
 
-    /* HERO */
-    .hero { padding-top: 64px; padding-bottom: 8px; }
-    .kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-tint); color: #8a6a1e; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 100px; margin-bottom: 18px; }
-    h1 { font-family: 'Libre Baskerville', serif; font-size: clamp(29px, 3.6vw, 44px); font-weight: 700; line-height: 1.2; max-width: 24ch; text-wrap: balance; color: var(--navy); }
-    h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub { margin-top: 12px; font-size: 15.5px; color: var(--muted); max-width: 58ch; }
+    /* hero */
+    header.hero.shell { padding-top: clamp(44px, 7vh, 72px); padding-bottom: 0; }
+    .hero-sub { margin-top: 22px; font-size: clamp(19px, 2vw, 21px); line-height: 1.65; color: var(--ink); max-width: 36em; }
 
-    /* ANSWER BAR → white facts card */
+    /* answers strip */
     .answers { margin-top: 34px; }
-    .answers-box { background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 0; }
-    .ans { padding: 18px 24px; border-right: 1px solid rgba(43,52,66,0.07); }
+    .answers-box { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--navy); border-bottom: 1px solid var(--rule); }
+    .ans { padding: 20px 18px 18px 14px; border-right: 1px solid var(--rule); min-width: 0; }
     .ans:last-child { border-right: none; }
-    .ans .label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
-    .ans .val { font-family: 'Libre Baskerville', serif; font-size: 24px; color: var(--navy); margin-top: 3px; font-variant-numeric: tabular-nums; }
-    .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; }
-    .ans .note { font-size: 12px; color: #8a6a1e; font-weight: 600; margin-top: 2px; }
-    .ans .note a { border-bottom: 1px dotted var(--gold); display: inline-block; padding: 10px 2px; margin: -10px -2px; }
+    .ans .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .ans .val { font-family: 'Libre Baskerville', serif; font-size: clamp(20px, 2vw, 25px); color: var(--navy); margin-top: 2px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; text-decoration: none; }
+    .ans .note { font-size: var(--t-xs); color: var(--gold); font-weight: 700; margin-top: 2px; }
+    .ans .note a { text-decoration: none; display: inline-block; padding: 10px 2px; margin: -10px -2px; }
 
-    /* SECTIONS — white journal cards on the paper ground */
-    .section { width: min(1060px, calc(100% - 40px)); margin: 56px auto 0; padding-top: 26px; padding-bottom: 34px; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); }
-    .sec-head { border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 20px; }
-    .sec-eyebrow { display: block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a6a1e; margin-bottom: 8px; }
-    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; color: var(--navy); }
-    .sec-head span { display: block; font-size: 14px; color: var(--muted); margin-top: 6px; }
-    .sub-h { width: max-content; max-width: 100%; margin-top: 34px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 5px 12px; border-radius: 100px; }
-    .lede { margin-top: 14px; font-size: 14px; color: var(--muted); max-width: 68ch; }
+    /* sections back on the paper */
+    .section { width: auto; margin: 0; padding: 58px 0 6px; background: none; border-radius: 0; box-shadow: none; }
+    .band { width: auto; max-width: none; margin: 0; padding: 58px 0 6px; background: none; border-radius: 0; box-shadow: none; color: var(--ink); }
+    .sec-head { border-bottom: none; padding-bottom: 0; margin-bottom: 6px; }
+    .sec-eyebrow { display: block; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--steel); margin-bottom: 12px; }
+    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; color: var(--navy); line-height: 1.15; text-wrap: balance; }
+    .sec-head span { display: block; font-size: var(--t-body); color: var(--ink); margin-top: 8px; max-width: 36em; }
+    .sub-h { width: auto; max-width: 100%; margin-top: 38px; font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 700;
+             color: var(--navy); background: none; padding: 0; border-radius: 0; letter-spacing: 0; text-transform: none; }
+    .lede { margin-top: 14px; font-size: var(--t-m); color: var(--ink); max-width: 42em; }
+    .lede a { color: var(--navy); font-weight: 700; border-bottom: 1px dotted var(--gold); text-decoration: none; }
 
-    /* RULED TIP LISTS */
-    .tips { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; }
-    .tip { padding: 16px 4px; border-bottom: 1px solid var(--line); }
-    .tip b { display: block; font-size: 14.5px; font-weight: 700; color: var(--navy); }
-    .tip span { font-size: 13px; color: var(--muted); overflow-wrap: break-word; }
-    .tip a { font-weight: 600; color: var(--navy); border-bottom: 1px dotted var(--gold); }
+    /* ruled tips on the paper */
+    .tips { display: grid; grid-template-columns: 1fr 1fr; column-gap: 56px; margin-top: 14px; border-top: 1px solid var(--rule-strong); }
+    .tip { padding: 18px 4px; border-bottom: 1px solid var(--rule); }
+    .tip b { display: block; font-size: var(--t-m); font-weight: 700; color: var(--navy); }
+    .tip b a { text-decoration: none; border-bottom: 1px dotted var(--gold); }
+    .tip span { font-size: var(--t-s); color: var(--muted); }
+    .tip a { font-weight: 700; color: var(--navy); border-bottom: 1px dotted var(--gold); text-decoration: none; }
     .tips.one-col { grid-template-columns: 1fr; }
+    .tip .fact { display: block; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); font-style: normal; margin: 3px 0 4px; font-variant-numeric: tabular-nums; }
 
-    /* PRICE / HOURS / AGE FACT SLOT (leading bold-slot in kid rows) */
-    .tip .fact { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; font-style: normal; margin: 2px 0 3px; font-variant-numeric: tabular-nums; }
-
-    /* SITUATION CHIPS — white pills, gold active (same JS) */
+    /* situation chips */
     .sit-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 44px; }
-    .sit-chip { background: var(--card); border: 1px solid var(--line); box-shadow: 0 1px 4px rgba(43,52,66,0.06); cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--muted); border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color 0.15s, background 0.15s, border-color 0.15s; }
-    .sit-chip:hover { color: var(--navy); border-color: rgba(43,52,66,0.22); }
-    .sit-chip.active { background: var(--gold-tint); border-color: var(--gold); color: #7a5c15; }
+    .sit-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', sans-serif;
+                font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+                border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color .15s, background .15s, border-color .15s; }
+    .sit-chip:hover { color: var(--navy); border-color: var(--gold-bright); }
+    .sit-chip.active { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
 
-    /* NAVY ACCENT CARD (callout — spouse page's pattern) */
-    .callout { margin-top: 26px; background: var(--navy); color: #fff; padding: 20px 24px; border-radius: var(--r); box-shadow: var(--shadow); }
-    .callout .label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold-soft); }
-    .callout p { margin-top: 7px; font-size: 13.5px; color: rgba(255,255,255,0.75); max-width: 78ch; }
-    .callout b { color: #fff; }
-    .callout a { color: var(--gold-soft); border-bottom: 1px dotted rgba(217,180,91,0.5); }
+    /* navy accents ride the plate gradient */
+    .callout { margin-top: 26px; background: linear-gradient(160deg, var(--plate) 0%, var(--plate-deep) 100%); color: var(--plate-sub); padding: 20px 24px; border-radius: 14px; }
+    .callout .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold-bright); }
+    .callout p { margin-top: 7px; font-size: var(--t-s); color: var(--plate-sub); max-width: 78ch; }
+    .callout b { color: var(--plate-ink); }
+    .callout a { color: var(--gold-bright); border-bottom: 1px dotted rgba(217,180,91,0.5); text-decoration: none; }
 
-    /* DAY-TRIP ROWS: name / drive / what / price */
-    .dt-row { display: grid; grid-template-columns: 200px 88px 1fr 190px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); align-items: baseline; }
-    .dt-row b { font-size: 15.5px; font-weight: 700; color: var(--navy); }
-    .dt-row .drv { font-size: 12.5px; font-weight: 700; color: var(--navy); white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .dt-row small { font-size: 13px; color: var(--muted); }
-    .dt-row .price { font-size: 12px; color: var(--ink); text-align: right; }
+    /* ledger rows */
+    .dt-row { display: grid; grid-template-columns: 220px 88px 1fr 190px; gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .dt-row:first-of-type { border-top: 2px solid var(--navy); }
+    .dt-row b { font-size: var(--t-m); font-weight: 700; color: var(--navy); }
+    .dt-row .drv { font-size: var(--t-xs); font-weight: 700; color: var(--steel); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .dt-row small { font-size: var(--t-s); color: var(--muted); }
+    .dt-row .price { font-size: var(--t-xs); color: var(--ink); text-align: right; }
     .dt-row .price i { color: var(--muted); font-style: normal; }
-
-    /* MONTH ROWS */
-    .mo-row { display: grid; grid-template-columns: 140px 1fr; gap: 18px; padding: 15px 4px; border-bottom: 1px solid var(--line); }
-    .mo-row b { font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--navy); }
-    .mo-row span { font-size: 13.5px; color: var(--ink); }
+    .dt-row a { color: var(--navy); font-weight: 700; border-bottom: 1px dotted var(--gold); text-decoration: none; }
+    .mo-row { display: grid; grid-template-columns: 140px 1fr; gap: 18px; padding: 17px 4px; border-bottom: 1px solid var(--rule); }
+    .mo-row:first-of-type { border-top: 2px solid var(--navy); }
+    .mo-row b { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); }
+    .mo-row span { font-size: var(--t-s); color: var(--ink); }
     .mo-row span i { color: var(--muted); font-style: normal; }
+    .eat-row { display: grid; grid-template-columns: 230px 1fr 170px; gap: 16px; padding: 18px 4px; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .eat-row:first-of-type { border-top: 2px solid var(--navy); }
+    .eat-row b { font-size: var(--t-m); font-weight: 700; color: var(--navy); }
+    .eat-row small { font-size: var(--t-s); color: var(--muted); }
+    .eat-row .where { font-size: var(--t-xs); color: var(--muted); text-align: right; white-space: nowrap; }
 
-    /* EATS ROWS */
-    .eat-row { display: grid; grid-template-columns: 210px 1fr 160px; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); align-items: baseline; }
-    .eat-row b { font-size: 14.5px; font-weight: 700; color: var(--navy); }
-    .eat-row small { font-size: 13px; color: var(--muted); }
-    .eat-row .where { font-size: 12px; color: var(--muted); text-align: right; white-space: nowrap; }
-
-    /* TABLES — scroll container with edge-fade affordance (scroll shadows) */
+    /* the ruled table — kept, retokened */
     .tbl-wrap {
       overflow-x: auto; margin-top: 6px; -webkit-overflow-scrolling: touch;
       background:
-        linear-gradient(90deg, var(--card) 40%, rgba(255,255,255,0)) left / 44px 100% no-repeat local,
-        linear-gradient(270deg, var(--card) 40%, rgba(255,255,255,0)) right / 44px 100% no-repeat local,
-        radial-gradient(farthest-side at 0 50%, rgba(43,52,66,0.22), transparent) left / 14px 100% no-repeat scroll,
-        radial-gradient(farthest-side at 100% 50%, rgba(43,52,66,0.22), transparent) right / 14px 100% no-repeat scroll;
+        linear-gradient(90deg, var(--paper) 40%, rgba(251,247,239,0)) left / 44px 100% no-repeat local,
+        linear-gradient(270deg, var(--paper) 40%, rgba(251,247,239,0)) right / 44px 100% no-repeat local,
+        radial-gradient(farthest-side at 0 50%, rgba(29,53,87,0.22), transparent) left / 14px 100% no-repeat scroll,
+        radial-gradient(farthest-side at 100% 50%, rgba(29,53,87,0.22), transparent) right / 14px 100% no-repeat scroll;
     }
-    table.brief { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
-    .brief th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); padding: 10px 14px 8px 4px; border-bottom: 2px solid var(--navy); }
-    .brief td { padding: 12px 14px 12px 4px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    table.brief { width: 100%; border-collapse: collapse; font-size: var(--t-s); min-width: 620px; }
+    .brief th { text-align: left; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); padding: 10px 14px 8px 4px; border-bottom: 2px solid var(--navy); }
+    .brief td { padding: 14px 14px 14px 4px; border-bottom: 1px solid var(--rule); vertical-align: top; }
     .brief td b { font-weight: 700; color: var(--navy); }
-    .brief td small { font-size: 12px; color: var(--muted); display: block; }
+    .brief td small { font-size: var(--t-xs); color: var(--muted); display: block; }
     .brief .num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .brief a { color: var(--navy); font-weight: 700; border-bottom: 1px dotted var(--gold); text-decoration: none; }
 
-    /* ESSENTIALS BAND → white journal card (text inverted to ink/muted) */
-    .band { width: min(1060px, calc(100% - 40px)); margin: 56px auto 0; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); color: var(--ink); padding: 26px 0 34px; }
-    .band .tips { margin-top: 4px; }
+    /* map frame */
     .map-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
-    .map-legend span { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+    .map-legend span { display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-xs); color: var(--muted); }
     .map-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .map-frame { margin-top: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 8px; position: relative; }
-    #groceryMap { width: 100%; height: 460px; border-radius: 8px; background: var(--navy-deep); }
+    .map-frame { margin-top: 20px; background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 8px; position: relative; overflow: hidden; box-shadow: var(--shadow-photo); }
+    #groceryMap { width: 100%; height: 460px; border-radius: 12px; background: var(--plate-deep); }
 
-    /* PHOTO CARDS (replaces the photo strip) */
-    .blog-grid { width: min(1060px, calc(100% - 40px)); margin: 44px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .bcard { background: var(--card); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform 0.15s; }
-    .bcard:hover { transform: translateY(-3px); }
-    .bcard .im { aspect-ratio: 16/9; overflow: hidden; }
-    .bcard img { width: 100%; height: 100%; object-fit: cover; }
-    .bcard .bd { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-    .tag { align-self: flex-start; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8a6a1e; background: var(--gold-tint); padding: 4px 10px; border-radius: 100px; }
-    .bcard h3 { font-family: 'Libre Baskerville', serif; font-size: 17.5px; color: var(--navy); line-height: 1.35; }
-    .bcard p { font-size: 13.5px; color: var(--muted); flex: 1; }
-    .bcard .go { font-size: 13px; font-weight: 700; color: var(--navy); }
-    .bcard .go::after { content: ' →'; color: var(--gold); }
+    /* photo row — trio treatment, cards dropped */
+    .blog-grid { width: min(1060px, calc(100% - 40px)); margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .bcard { background: none; border-radius: 0; overflow: visible; box-shadow: none; display: block; text-decoration: none; }
+    .bcard .im { aspect-ratio: 16/10; overflow: hidden; border-radius: 18px; box-shadow: var(--shadow-photo); }
+    .bcard img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.6,.2,1); }
+    .bcard:hover img { transform: scale(1.03); }
+    @media (prefers-reduced-motion: reduce) { .bcard img { transition: none; } .bcard:hover img { transform: none; } }
+    .bcard .bd { padding: 14px 4px 0; display: block; }
+    .tag { display: block; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); background: none; padding: 0; border-radius: 0; margin-bottom: 4px; }
+    .bcard h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 0; }
+    .bcard p { font-size: var(--t-s); color: var(--muted); margin: 4px 0 6px; }
+    .bcard .go { font-size: var(--t-s); font-weight: 700; color: var(--gold); }
+    .bcard .go::after { content: ' →'; }
 
-    /* CTA — navy rounded card on paper, with suggestion form */
-    .cta { max-width: 1060px; margin: 64px auto 0; padding: 0 32px; }
-    .cta-in { background: var(--navy); color: #fff; border-radius: 22px; box-shadow: var(--shadow); padding: 44px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-    .cta-copy h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; line-height: 1.3; }
-    .cta-copy p { margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 44ch; }
-    .cta-points { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
-    .cta-points div { display: flex; gap: 10px; align-items: baseline; font-size: 13.5px; color: rgba(255,255,255,0.8); }
-    .cta-points div::before { content: '—'; color: var(--gold-soft); }
-    .cta-copy .cta-link { display: inline-block; margin-top: 26px; background: var(--gold-soft); color: var(--navy); padding: 14px 26px; font-size: 14.5px; font-weight: 700; border-radius: 100px; }
-    .cta-copy .cta-link:hover { background: var(--gold-light); }
-    .lead-form { display: flex; flex-direction: column; gap: 14px; }
-    .lead-form label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
-    .lead-form-title { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .lead-input { width: 100%; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15); color: #fff; padding: 13px 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; border-radius: 10px; transition: border-color 0.15s; }
-    .lead-input:focus { border-color: var(--gold-soft); }
-    .lead-input::placeholder { color: rgba(255,255,255,0.45); }
-    select.lead-input option { background: var(--navy); color: #fff; }
-    textarea.lead-input { resize: vertical; min-height: 90px; }
-    .lead-btn { width: 100%; background: var(--gold-soft); color: var(--navy); border: none; padding: 15px; font-family: 'DM Sans', sans-serif; font-size: 14.5px; font-weight: 700; cursor: pointer; border-radius: 100px; min-height: 46px; margin-top: 4px; }
-    .lead-btn:hover { background: var(--gold-light); }
-    .lead-note { font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.6; }
-    .lead-note a { color: var(--gold-soft); }
+    /* plate form extras */
+    .lead-form-title { font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 700; color: var(--plate-ink); flex-basis: 100%; }
+    #suggestForm .field { flex: 1 1 100%; }
+    #suggestForm .field textarea { resize: vertical; min-height: 72px; }
+    #suggestForm .field select option { background: var(--plate-deep); color: var(--plate-ink); }
+    .lead-note { font-size: var(--t-xs); color: rgba(246,241,230,0.5); line-height: 1.6; flex-basis: 100%; }
+    .lead-note a { color: var(--gold-bright); font-weight: 700; text-decoration: none; }
+    .lead-success { text-align: center; padding: 24px 0; }
+    .lead-success b { display: block; font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 12px 0 8px; }
+    .lead-success span { font-size: 14px; color: var(--plate-sub); }
 
-    /* FOOTER — warm paper, hairline top */
-    footer { background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); margin-top: 56px; padding: 28px 32px calc(28px + env(safe-area-inset-bottom, 0px)); }
-    .foot-in { max-width: 1060px; margin: 0 auto; display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
-    .foot-in .nav-logo { font-size: 15px; }
-    .foot-in .copy { font-size: 12px; color: var(--muted); }
-    .foot-links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
-    .foot-links a { font-size: 12.5px; color: var(--muted); }
-    .foot-links a:hover { color: var(--navy); }
-
-    /* MOBILE TAB BAR */
-    .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--navy-deep);border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);justify-content:space-around;align-items:center; }
-    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;color:rgba(255,255,255,0.55);font-size:10px;font-weight:600;padding:4px 12px;min-height:44px; }
+    /* mobile tab bar — the one fixed layer on phones */
+    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
+                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+                      justify-content: space-around; align-items: center; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
+                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
     .tab-item svg { stroke: currentColor; }
     .tab-item.active { color: var(--gold-bright); }
+    .m-only { display: none; }
 
-    /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .shell { padding-left: 20px; padding-right: 20px; }
-      #sectionNav .snav-in { padding-left: 20px; padding-right: 20px; gap: 20px; }
       .answers-box { grid-template-columns: 1fr 1fr; }
-      .ans { padding: 16px 16px; min-width: 0; }
-      .ans .val { font-size: 20px; overflow-wrap: anywhere; }
-      .ans:nth-child(2) { border-right: none; }
-      .ans:nth-child(1), .ans:nth-child(2) { border-bottom: 1px solid rgba(43,52,66,0.07); }
+      .ans:nth-child(2n) { border-right: none; }
+      .ans:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
       .tips { grid-template-columns: 1fr; }
       .dt-row { grid-template-columns: 1fr; gap: 3px; }
       .dt-row .price { text-align: left; }
@@ -273,43 +218,31 @@
       .eat-row .where { text-align: left; }
       .mo-row { grid-template-columns: 1fr; gap: 4px; }
       .blog-grid { grid-template-columns: 1fr; }
-      .cta { padding: 0 20px; }
-      .cta-in { grid-template-columns: 1fr; gap: 36px; padding: 36px 24px; }
-      footer { padding-left: 20px; padding-right: 20px; }
     }
-    @media (max-width: 768px) {
+    @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
-      .nav-links, .nav-call-desktop { display: none !important; }
+      .bar { position: static; }
+      #sectionNav { display: none !important; }
+      section[id], div[id] { scroll-margin-top: 20px; }
       .mobile-tab-bar { display: flex; }
-      .hero { padding-top: 44px; }
+      .m-only { display: inline-flex; }
+      .d-only { display: none; }
       input, select, textarea { font-size: 16px !important; }
-      .lead-btn { min-height: 44px; }
       #groceryMap { height: 380px; }
-      /* Map controls: Leaflet zoom buttons up to 44px touch size */
       .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 20px !important; }
-      /* Tap targets: inline text links get an invisible ~44px hit area (padding/negative-margin idiom) */
-      .tip a, .dt-row a, .eat-row a, .callout a, .lede a, .mo-row a, .cta-points a { display: inline-block; padding: 11px 2px; margin: -11px -2px; }
-      .foot-links a, .foot-in .nav-logo { display: inline-block; padding: 12px 4px; margin: -12px -4px; }
-      /* Type: reading text never computes below 13px on phones */
-      .ans .note, .dt-row .price, .dt-row .drv, .eat-row .where, .foot-links a, .foot-in .copy, .lead-note, .kicker, .brief td small { font-size: 13px; }
-      .dt-row small, .eat-row small { overflow-wrap: break-word; }
+      .tip a, .dt-row a, .eat-row a, .callout a, .lede a, .mo-row a { display: inline-block; padding: 11px 2px; margin: -11px -2px; }
+      [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"],
+      [style*="font-size:12px"], [style*="font-size:12.5px"] { font-size: 13px !important; }
+      .brief td small { font-size: 13px; }
     }
-
-    /* REDUCED MOTION — kill smooth scroll + hover-lift transitions */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
-    }
-  
-    @media (max-width: 768px) { #backToTop { bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; } }
-    </style>
+  </style>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to content</a>
+<a class="skip" href="#main-content">Skip to content</a>
 
-<nav>
-  <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
-  <ul class="nav-links">
+<div class="bar"><nav class="bar-in" aria-label="Site">
+  <a href="index.html" style="text-decoration:none;"><b>PCS<em>Homes</em></b></a>
+  <ul class="bar-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="pcshomes-fortdrum.html">Fort Drum Guide</a></li>
     <li><a href="pcshomes-discover.html" class="active">Discover</a></li>
@@ -317,9 +250,9 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html">Contact</a></li>
   </ul>
-  <a href="pcshomes-contact.html#contactForm" class="nav-call nav-call-desktop">Get in touch</a>
-  <a href="tel:+13152214857" class="nav-call nav-call-mobile" aria-label="Call PCSHomes">Call</a>
-</nav>
+  <a href="pcshomes-contact.html#contactForm" class="bar-cta d-only">Get in touch</a>
+  <a href="tel:+13152214857" class="bar-cta m-only" aria-label="Call PCSHomes">Call</a>
+</nav></div>
 
 <!-- STICKY SECTION NAV -->
 <div id="sectionNav">
@@ -338,9 +271,9 @@
 
 <!-- HERO -->
 <header class="hero shell">
-  <div class="kicker">North Country Living · Life around Fort Drum</div>
-  <h1>&ldquo;Is Fort Drum <em>really that bad?</em>&rdquo;</h1>
-  <p class="hero-sub">We get it — nobody Googles Fort Drum and gets excited. But the families who actually live here? Most don't want to leave. Beaches 20 minutes out, castles on islands, the snowiest hills east of the Rockies, and a festival calendar that runs all twelve months. Here's the whole brief.</p>
+  <p class="eyebrow rv">North Country Living · Life around Fort Drum</p>
+  <h1 class="rv">&ldquo;Is Fort Drum <em>really that bad?</em>&rdquo;</h1>
+  <p class="hero-sub rv">We get it — nobody Googles Fort Drum and gets excited. But the families who actually live here? Most don't want to leave. Beaches 20 minutes out, castles on islands, the snowiest hills east of the Rockies, and a festival calendar that runs all twelve months. Here's the whole brief.</p>
 </header>
 
 <!-- ANSWER BAR -->
@@ -578,34 +511,30 @@
 
 </main>
 
-<!-- CTA BAND + SUGGESTION FORM -->
-<div class="cta">
-  <div class="cta-in">
-    <div class="cta-copy">
-      <h2>Moving here? Start with one conversation.</h2>
-      <p>Housing, schools, BAH, and which of all this is closest to which neighborhood — a real person from our Fort Drum network calls you back within 24 hours.</p>
-      <div class="cta-points">
+<!-- THE CONVERSION PLATE + SUGGESTION FORM -->
+<div class="plate rv">
+  <canvas class="ground" aria-hidden="true"></canvas>
+  <div class="plate-in wide-in" style="max-width:1060px;">
+    <div class="plate-ask">
+    <div>
+      <h2>Moving here? Start with <em>one conversation.</em></h2>
+      <p class="lede" style="color:var(--plate-sub);">Housing, schools, BAH, and which of all this is closest to which neighborhood — a real person from our Fort Drum network calls you back within 24 hours.</p>
+      <div class="points">
         <div>Free, no obligation — built by people who live here</div>
         <div>Every partner vetted on their record with military families</div>
-        <div><a href="sms:+13152214857" style="color:var(--gold-soft);">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-soft);">(315) 221-4857</a></div>
+        <div><a href="sms:+13152214857" style="color:var(--gold-bright);text-decoration:none;font-weight:700;">Text</a>&nbsp;or call&nbsp;<a href="tel:+13152214857" style="color:var(--gold-bright);text-decoration:none;font-weight:700;">(315) 221-4857</a></div>
       </div>
-      <a class="cta-link" href="pcshomes-contact.html">Talk to PCSHomes &rarr;</a>
+      <div class="lines"><a class="solid" href="pcshomes-contact.html">Talk to PCSHomes &rarr;</a></div>
     </div>
-    <form name="discover-suggestion" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="lead-form" id="suggestForm">
+    <div>
+    <form name="discover-suggestion" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="suggestForm">
       <input type="hidden" name="form-name" value="discover-suggestion"/>
       <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
       <div class="lead-form-title">Know a spot we missed?</div>
-      <div>
-        <label for="sgName">Your name</label>
-        <input class="lead-input" id="sgName" name="name" placeholder="Sarah Martin" autocomplete="name"/>
-      </div>
-      <div>
-        <label for="sgSuggestion">Place or event <span style="text-transform:none;letter-spacing:0;font-weight:500;">(required)</span></label>
-        <input class="lead-input" id="sgSuggestion" name="suggestion" placeholder="Whitewater rafting on the Black River" required/>
-      </div>
-      <div>
-        <label for="sgCategory">Category</label>
-        <select class="lead-input" id="sgCategory" name="category">
+      <label class="field"><span>Your name</span><input id="sgName" name="name" autocomplete="name"/></label>
+      <label class="field"><span>Place or event</span><input id="sgSuggestion" name="suggestion" required aria-required="true"/></label>
+      <label class="field"><span>Category</span>
+        <select id="sgCategory" name="category">
           <option value="">Choose one</option>
           <option>Outdoor Activity</option>
           <option>Restaurant / Bar</option>
@@ -614,28 +543,27 @@
           <option>Weekend Trip</option>
           <option>Other</option>
         </select>
-      </div>
-      <div>
-        <label for="sgDetails">What makes it great</label>
-        <textarea class="lead-input" id="sgDetails" name="details" placeholder="Why should the next family check it out?" enterkeyhint="send"></textarea>
-      </div>
+      </label>
+      <label class="field"><span>What makes it great</span><textarea id="sgDetails" name="details" enterkeyhint="send"></textarea></label>
       <div class="lead-note">We read every suggestion and add the best ones to this guide. No spam, ever.</div>
-      <button type="submit" class="lead-btn">Send it in</button>
+      <button type="submit" class="btn-gold">Send it in</button>
     </form>
-    <div id="sgSuccess" style="display:none;text-align:center;padding:24px 0;">
+    <div id="sgSuccess" class="lead-success" style="display:none;">
       <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;margin:12px 0 8px;">Thank you — got it!</div>
-      <div style="font-size:14px;color:rgba(255,255,255,0.6);">Your suggestion is in. If it's a great fit, you'll see it in this guide soon.</div>
+      <b>Thank you — got it!</b>
+      <span>Your suggestion is in. If it's a great fit, you'll see it in this guide soon.</span>
+    </div>
+    </div>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-in">
-    <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
-    <span class="copy">&copy; 2026 PCSHomes</span>
-    <div class="foot-links">
+  <div class="f-in">
+    <a href="index.html" style="text-decoration:none;"><b>PCS<i>Homes</i></b></a>
+    <span>&copy; 2026 PCSHomes &middot; Free for military families</span>
+    <div class="f-links">
       <a href="pcshomes-fortdrum.html">Fort Drum Guide</a>
       <a href="pcshomes-discover.html">Discover</a>
       <a href="pcshomes-network.html">Our Network</a>
@@ -666,7 +594,7 @@
   }).addTo(map);
 
   // Add Fort Drum label (static — not part of vendor data)
-  L.marker([44.04,-75.82],{icon:L.divIcon({className:'',html:'<div style="font-size:10px;font-weight:700;color:rgba(201,168,76,0.6);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">FORT DRUM</div>',iconAnchor:[30,5]})}).addTo(map);
+  L.marker([44.04,-75.82],{icon:L.divIcon({className:'',html:'<div style="font-size:10px;font-weight:700;color:rgba(217,180,91,0.6);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">FORT DRUM</div>',iconAnchor:[30,5]})}).addTo(map);
 
   // Default fallback notes per category, used when a vendor has no description
   var DEFAULT_NOTES = { commissary: 'Tax-free · Military ID required', grocery: 'Full-service grocery', discount: 'Budget-friendly' };
@@ -693,7 +621,7 @@
         document.getElementById('gpName').textContent = v.name;
         document.getElementById('gpAddress').textContent = v.address;
         document.getElementById('gpNotes').textContent = v.description || DEFAULT_NOTES[v.category] || '';
-        var linkStyle = 'display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--gold-bright);text-decoration:none;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:5px 12px;';
+        var linkStyle = 'display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--gold-bright);text-decoration:none;background:rgba(217,180,91,0.1);border:1px solid rgba(217,180,91,0.25);padding:5px 12px;';
         var linksHtml = '';
         if (v.phone) {
           var telDigits = String(v.phone).replace(/\D/g, '');
@@ -722,64 +650,64 @@
 <!-- QUICK LINKS BACKDROP -->
 <div id="qlBackdrop" onclick="toggleQuickLinks()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s ease;"></div>
 <!-- MOBILE QUICK LINKS PANEL -->
-<div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0F1D35;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
+<div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0E1C30;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
   <div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 14px;"></div>
   <div style="display:flex;flex-direction:column;gap:2px;">
     <!-- GROUP: Tools & Planning -->
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:8px 16px 4px;">Fort Drum Guide</div>
-    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(217,180,91,0.08);border:1px solid rgba(217,180,91,0.2);">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#va" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">VA Calculator</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#rvb" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Rent vs Buy</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#map" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Neighborhood Map</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#pcs" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">PCS Checklist</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <!-- GROUP: Area & Lifestyle -->
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
     <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#family-kids" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Family &amp; Kids</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#outdoors" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors &amp; Adventures</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#day-trips" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Day Trips &amp; Events</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <!-- BOTTOM CTAs -->
-    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
+    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(217,180,91,0.08);border:1px solid rgba(217,180,91,0.2);margin-top:6px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
     <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
       <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
-      <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
+      <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(217,180,91,0.12);border:1px solid rgba(217,180,91,0.25);font-size:12px;font-weight:700;color:#D9B45B;">Talk to an Expert</a>
     </div>
   </div>
 </div>
@@ -889,9 +817,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 })();
 </script>
 
-<!-- BACK TO TOP -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:24px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-bright,#C9A84C);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">&uarr;</button>
-<script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
+<script src="js/chassis.js"></script>
 
 <!-- SUGGESTION FORM — AJAX submit with inline success panel (same pattern as index.html lead forms) -->
 <script>
