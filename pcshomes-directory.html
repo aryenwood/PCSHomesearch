@@ -24,14 +24,21 @@
     [id] { scroll-margin-top: 84px; }
     body { overflow-wrap: break-word; }
 
-    /* crisis wall (static HTML — works without JS) */
-    .em-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 14px; overflow: hidden;
-               background: rgba(246,241,230,0.04); border: 1px solid rgba(246,241,230,0.12); margin-top: 30px; }
-    .em { padding: 20px 24px; border-right: 1px solid rgba(246,241,230,0.1); border-bottom: 1px solid rgba(246,241,230,0.1); }
-    .em .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(246,241,230,0.55); }
-    .em .val { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--gold-bright); margin-top: 4px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-    .em .val a { display: inline-block; padding: 10px 2px; margin: -10px -2px; text-decoration: none; }
-    .em .note { font-size: var(--t-xs); color: rgba(246,241,230,0.6); margin-top: 2px; }
+    /* crisis wall (static HTML — works without JS). Built to be read in a bad moment:
+       near-full-ink text, numbers as large solid buttons, secondary numbers as their own targets. */
+    .em-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
+    .em { padding: 18px 18px 16px; background: rgba(8,15,26,0.55); border: 1px solid rgba(246,241,230,0.18); border-radius: 12px; }
+    .em .label { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.95); }
+    .em-call { display: flex; align-items: center; justify-content: center; min-height: 56px; margin-top: 12px;
+               background: var(--gold-bright); color: var(--plate-deep); border-radius: 10px; text-decoration: none;
+               font: 700 20px 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+    .em-call:active, .em-call:hover { filter: brightness(1.08); }
+    .em-alts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .em-alt { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 14px; flex: 1 1 auto;
+              border: 1.5px solid rgba(217,180,91,0.75); color: var(--gold-bright); border-radius: 10px; text-decoration: none;
+              font: 700 15px 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; }
+    .em-alt:active, .em-alt:hover { background: rgba(217,180,91,0.15); }
+    .em .note { font-size: 15px; line-height: 1.5; color: rgba(246,241,230,0.85); margin-top: 10px; }
 
     /* search + intent chips */
     .search-wrap { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--paper); padding: 10px 0 12px; }
@@ -124,20 +131,20 @@
     <h2>Help <em>now.</em></h2>
     <p class="lede">Every line below is answered around the clock. Tap to call.</p>
     <div class="em-grid">
-      <div class="em"><div class="label">Emergency</div><div class="val"><a href="tel:911">911</a></div><div class="note">On post, a cell call may reach county dispatch first — say you're on Fort Drum.</div></div>
-      <div class="em"><div class="label">Suicide &amp; crisis · military</div><div class="val"><a href="tel:988">988</a>, press 1</div><div class="note">Military / Veterans Crisis Line, 24/7</div></div>
-      <div class="em"><div class="label">Domestic abuse · Fort Drum</div><div class="val"><a href="tel:+13159554321">(315) 955-4321</a></div><div class="note">FAP victim advocate, 24/7</div></div>
-      <div class="em"><div class="label">Sexual assault · SHARP</div><div class="val"><a href="tel:+13157676128">(315) 767-6128</a></div><div class="note">DoD Safe Helpline: <a href="tel:+18779955247" style="color:inherit;">877-995-5247</a></div></div>
-      <div class="em"><div class="label">DV &amp; SA · off post</div><div class="val"><a href="tel:+13157821855">(315) 782-1855</a></div><div class="note">Victims Assistance Center, 24-hour hotline</div></div>
-      <div class="em"><div class="label">NY State DV hotline</div><div class="val"><a href="tel:+18009426906">800-942-6906</a></div><div class="note">Or text <a href="sms:+18449972121" style="color:inherit;">844-997-2121</a></div></div>
-      <div class="em"><div class="label">Mental health · local</div><div class="val"><a href="tel:+13157854516">(315) 785-4516</a></div><div class="note">Samaritan urgent line, 24/7 · County crisis: <a href="tel:+13157822327" style="color:inherit;">(315) 782-2327</a></div></div>
-      <div class="em"><div class="label">Child abuse</div><div class="val"><a href="tel:+18004224453">800-422-4453</a></div><div class="note">Childhelp national hotline, 24/7</div></div>
-      <div class="em"><div class="label">Poison control</div><div class="val"><a href="tel:+18002221222">800-222-1222</a></div><div class="note">24/7</div></div>
-      <div class="em"><div class="label">Chaplain, any hour</div><div class="val"><a href="tel:+13154861144">(315) 486-1144</a></div><div class="note">Emergency chaplain support: <a href="tel:+13157728620" style="color:inherit;">(315) 772-8620</a></div></div>
-      <div class="em"><div class="label">Reach a deployed soldier</div><div class="val"><a href="tel:+18772727337">877-272-7337</a></div><div class="note">Red Cross Hero Care, 24/7</div></div>
-      <div class="em"><div class="label">National DV hotline</div><div class="val"><a href="tel:+18007997233">800-799-7233</a></div><div class="note">Or text START to <a href="sms:88788" style="color:inherit;">88788</a></div></div>
+      <div class="em"><div class="label">Emergency</div><a class="em-call" href="tel:911">Call 911</a><div class="note">On post, a cell call may reach county dispatch first — say you're on Fort Drum.</div></div>
+      <div class="em"><div class="label">Suicide &amp; crisis · military</div><a class="em-call" href="tel:988">Call 988, press 1</a><div class="note">Military / Veterans Crisis Line, 24/7.</div></div>
+      <div class="em"><div class="label">Domestic abuse · Fort Drum</div><a class="em-call" href="tel:+13159554321">(315) 955-4321</a><div class="note">FAP victim advocate, 24/7.</div></div>
+      <div class="em"><div class="label">Sexual assault · SHARP</div><a class="em-call" href="tel:+13157676128">(315) 767-6128</a><div class="em-alts"><a class="em-alt" href="tel:+18779955247">Safe Helpline 877-995-5247</a></div><div class="note">SHARP on post · Safe Helpline is DoD-wide and confidential.</div></div>
+      <div class="em"><div class="label">DV &amp; SA · off post</div><a class="em-call" href="tel:+13157821855">(315) 782-1855</a><div class="note">Victims Assistance Center, 24-hour hotline.</div></div>
+      <div class="em"><div class="label">NY State DV hotline</div><a class="em-call" href="tel:+18009426906">800-942-6906</a><div class="em-alts"><a class="em-alt" href="sms:+18449972121">Text 844-997-2121</a></div><div class="note">Statewide, 24/7, most languages.</div></div>
+      <div class="em"><div class="label">Mental health · local</div><a class="em-call" href="tel:+13157854516">(315) 785-4516</a><div class="em-alts"><a class="em-alt" href="tel:+13157822327">County (315) 782-2327</a></div><div class="note">Samaritan urgent line, 24/7.</div></div>
+      <div class="em"><div class="label">Child abuse</div><a class="em-call" href="tel:+18004224453">800-422-4453</a><div class="note">Childhelp national hotline, 24/7.</div></div>
+      <div class="em"><div class="label">Poison control</div><a class="em-call" href="tel:+18002221222">800-222-1222</a><div class="note">24/7.</div></div>
+      <div class="em"><div class="label">Chaplain, any hour</div><a class="em-call" href="tel:+13154861144">(315) 486-1144</a><div class="em-alts"><a class="em-alt" href="tel:+13157728620">(315) 772-8620</a></div><div class="note">Any hour, any reason — both lines reach a chaplain.</div></div>
+      <div class="em"><div class="label">Reach a deployed soldier</div><a class="em-call" href="tel:+18772727337">877-272-7337</a><div class="note">Red Cross Hero Care, 24/7.</div></div>
+      <div class="em"><div class="label">National DV hotline</div><a class="em-call" href="tel:+18007997233">800-799-7233</a><div class="em-alts"><a class="em-alt" href="sms:88788">Text START to 88788</a></div><div class="note">24/7, confidential.</div></div>
     </div>
-    <p style="font-size:var(--t-xs);color:rgba(246,241,230,0.5);margin:16px 0 0;">These lines connect you directly to each service. PCSHomes never asks who you are on this page.</p>
+    <p style="font-size:var(--t-s);color:rgba(246,241,230,0.8);margin:18px 0 0;">These lines connect you directly to each service. PCSHomes never asks who you are on this page.</p>
   </div>
 </div>
 
