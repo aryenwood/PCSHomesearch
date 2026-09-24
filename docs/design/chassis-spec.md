@@ -32,8 +32,8 @@ plates, and reveal behavior were extracted verbatim into:
 
 - [x] index.html (Sep 2026)
 - [ ] pcshomes-fortdrum.html (272KB — converts during the Phase 3 split into chapters)
-- [ ] pcshomes-spouse.html
-- [ ] pcshomes-discover.html (renames to Living Here in Phase 3)
+- [x] pcshomes-spouse.html (Sep 2026)
+- [x] pcshomes-discover.html (Sep 2026; renames to Living Here in Phase 3)
 - [x] pcshomes-network.html (Sep 2026; merges with contact into Get Help in Phase 3)
 - [x] pcshomes-contact.html (Sep 2026)
 - [x] pcshomes-glossary.html (Sep 2026)
