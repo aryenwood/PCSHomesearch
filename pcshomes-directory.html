@@ -26,15 +26,16 @@
 
     /* crisis wall (static HTML — works without JS). Built to be read in a bad moment:
        near-full-ink text, numbers as large solid buttons, secondary numbers as their own targets. */
-    .em-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
+    .em-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 30px; }
+    .em-grid > .em:last-child:nth-child(odd) { grid-column: 1 / -1; }
     .em { padding: 18px 18px 16px; background: rgba(8,15,26,0.55); border: 1px solid rgba(246,241,230,0.18); border-radius: 12px; }
     .em .label { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.95); }
     .em-call { display: flex; align-items: center; justify-content: center; min-height: 56px; margin-top: 12px;
                background: var(--gold-bright); color: var(--plate-deep); border-radius: 10px; text-decoration: none;
-               font: 700 20px 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+               font: 700 20px 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; white-space: nowrap; }
     .em-call:active, .em-call:hover { filter: brightness(1.08); }
     .em-alts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-    .em-alt { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 14px; flex: 1 1 auto;
+    .em-alt { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 14px; flex: 1 1 100%; white-space: nowrap;
               border: 1.5px solid rgba(217,180,91,0.75); color: var(--gold-bright); border-radius: 10px; text-decoration: none;
               font: 700 15px 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; }
     .em-alt:active, .em-alt:hover { background: rgba(217,180,91,0.15); }
@@ -136,7 +137,6 @@
     .m-only { display: none; }
 
     @media (min-width: 781px) { .search-wrap { top: 73px; } }
-    @media (max-width: 900px) { .em-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .bar { position: static; }
@@ -175,7 +175,7 @@
 </div></header>
 
 <!-- SEARCH: the front door. Results appear right under the box; nothing renders until asked. -->
-<section id="search" style="padding:0;"><div class="wrap" style="max-width:800px;">
+<section id="search" style="padding:0;"><div class="wrap">
   <p class="crisis-skip"><a href="#help-now">In crisis? The 24/7 lines are right below&nbsp;↓</a></p>
   <div class="search-wrap" role="search">
     <input type="search" class="dir-search" id="dirSearch" aria-label="Search the directory"
@@ -200,15 +200,15 @@
       <div class="em"><div class="label">Sexual assault · SHARP</div><a class="em-call" href="tel:+13157676128">(315) 767-6128</a><div class="em-alts"><a class="em-alt" href="tel:+18779955247">Safe Helpline 877-995-5247</a></div><div class="note">SHARP on post · Safe Helpline is DoD-wide and confidential.</div></div>
     </div>
     <details class="em-more">
-      <summary>7 more 24/7 lines<span>NY and national DV hotlines, local mental health, child abuse, poison, a chaplain, reaching a deployed soldier</span></summary>
+      <summary>7 more 24/7 lines<span>NY and national DV hotlines, local mental health, a chaplain, child abuse, poison control, reaching a deployed soldier</span></summary>
       <div class="em-grid">
       <div class="em"><div class="label">NY State DV hotline</div><a class="em-call" href="tel:+18009426906">800-942-6906</a><div class="em-alts"><a class="em-alt" href="sms:+18449972121">Text 844-997-2121</a></div><div class="note">Statewide, 24/7, most languages.</div></div>
+      <div class="em"><div class="label">National DV hotline</div><a class="em-call" href="tel:+18007997233">800-799-7233</a><div class="em-alts"><a class="em-alt" href="sms:88788">Text START to 88788</a></div><div class="note">24/7, confidential.</div></div>
       <div class="em"><div class="label">Mental health · local</div><a class="em-call" href="tel:+13157854516">(315) 785-4516</a><div class="em-alts"><a class="em-alt" href="tel:+13157822327">County (315) 782-2327</a></div><div class="note">Samaritan urgent line, 24/7.</div></div>
+      <div class="em"><div class="label">Chaplain, any hour</div><a class="em-call" href="tel:+13154861144">(315) 486-1144</a><div class="em-alts"><a class="em-alt" href="tel:+13157728620">(315) 772-8620</a></div><div class="note">Any hour, any reason. Both lines reach a chaplain.</div></div>
       <div class="em"><div class="label">Child abuse</div><a class="em-call" href="tel:+18004224453">800-422-4453</a><div class="note">Childhelp national hotline, 24/7.</div></div>
       <div class="em"><div class="label">Poison control</div><a class="em-call" href="tel:+18002221222">800-222-1222</a><div class="note">24/7.</div></div>
-      <div class="em"><div class="label">Chaplain, any hour</div><a class="em-call" href="tel:+13154861144">(315) 486-1144</a><div class="em-alts"><a class="em-alt" href="tel:+13157728620">(315) 772-8620</a></div><div class="note">Any hour, any reason. Both lines reach a chaplain.</div></div>
       <div class="em"><div class="label">Reach a deployed soldier</div><a class="em-call" href="tel:+18772727337">877-272-7337</a><div class="note">Red Cross Hero Care, 24/7.</div></div>
-      <div class="em"><div class="label">National DV hotline</div><a class="em-call" href="tel:+18007997233">800-799-7233</a><div class="em-alts"><a class="em-alt" href="sms:88788">Text START to 88788</a></div><div class="note">24/7, confidential.</div></div>
       </div>
     </details>
     <p style="font-size:var(--t-s);color:rgba(246,241,230,0.8);margin:18px 0 0;">These lines connect you directly to each service. PCSHomes never asks who you are on this page.</p>
@@ -217,7 +217,7 @@
 
 
 <!-- REACH THE COMMAND — static HTML, works without JS -->
-<section id="command"><div class="wrap" style="max-width:800px;">
+<section id="command"><div class="wrap">
   <p class="eyebrow rv">Your soldier's unit</p>
   <h2 class="rv">Reach your soldier's <em>command.</em></h2>
   <p class="sub rv">Can't reach your soldier? These three cover most situations, any hour. Every brigade's 24/7 desk is in the unit list below them.</p>
@@ -252,7 +252,7 @@
 </div></section>
 
 <!-- BROWSE BY NEED: categories only; each opens in place -->
-<section id="browse"><div class="wrap" style="max-width:800px;">
+<section id="browse"><div class="wrap">
   <p class="eyebrow rv">Everything else</p>
   <h2 class="rv">Browse by <em>need.</em></h2>
   <p class="sub rv">Tap a need to open it. Each one starts with the most important numbers.</p>
