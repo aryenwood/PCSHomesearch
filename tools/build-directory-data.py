@@ -20,6 +20,7 @@ OUT = os.path.join(ROOT, "data/directory.json")
 ADMIN_NOTE_ALLOWLIST = {
     "medical-018",  # Guthrie has no ER/urgent care
     "medical-025",  # confirm Watertown VA address on the appointment
+    "unit-080",     # 2nd MBCT: two published numbers
     "legal-047",    # NY divorce is Supreme Court, not Family Court
 }
 # builder-instruction notes that must NOT be shown to users

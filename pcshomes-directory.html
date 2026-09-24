@@ -148,6 +148,31 @@
   </div>
 </div>
 
+
+<!-- REACH THE COMMAND — static HTML, works without JS -->
+<section id="command"><div class="wrap" style="max-width:800px;">
+  <p class="eyebrow rv">Your soldier's unit</p>
+  <h2 class="rv">Reach your soldier's <em>command.</em></h2>
+  <p class="sub rv">Every brigade at Fort Drum keeps a staff duty desk staffed around the clock. When you can't reach your soldier, it can get word to their leadership.</p>
+
+  <div class="right-row"><span class="n">01</span><div><h3>Start with the company</h3><p>Your soldier's first sergeant, company commander, and SFRG (Soldier and Family Readiness Group) leader are the fastest route. Get their numbers from your soldier or the SFRG now, before you need them.</p></div></div>
+  <div class="right-row"><span class="n">02</span><div><h3>After hours, or no answer: the staff duty desk</h3><p>Find your soldier's battalion below and call that brigade's desk, 24/7. Have ready: their full name, rank, company and battalion, your relationship, and a number to call you back.</p></div></div>
+  <div class="right-row"><span class="n">03</span><div><h3>A family emergency while they're deployed or in the field</h3><p>Use the Red Cross Hero Care Center, <a href="tel:+18772727337" style="color:var(--navy);font-weight:700;">877-272-7337</a>, 24/7. It's the Army's official channel for emergency messages about a death, a serious illness, or a birth.</p></div></div>
+  <div class="right-row"><span class="n">04</span><div><h3>Not safe at home?</h3><p>Go to <a href="#help-now" style="color:var(--navy);font-weight:700;">Help Now</a> first. The crisis lines come before the chain of command.</p></div></div>
+
+  <h3 class="dir-group-h" style="margin-top:40px;">Find the desk by battalion</h3>
+  <div class="dir-row"><h3>1st Mobile Brigade Combat Team</h3><p class="use">1-32 Infantry · 2-22 Infantry · 1-87 Infantry · HHC · Company M · 293rd Signal</p><div class="dir-acts"><a class="call" href="tel:+13157724228">Staff duty (315) 772-4228</a></div></div>
+  <div class="dir-row"><h3>2nd Mobile Brigade Combat Team</h3><p class="use">2-14 Infantry · 2-87 Infantry · 4-31 Infantry · HHC · Company M · 94th Signal</p><div class="dir-acts"><a class="call" href="tel:+13157742199">Staff duty (315) 774-2199</a><a class="alt" href="tel:+13157722199">(315) 772-2199</a></div><p class="rnote">Army pages list two numbers for this desk. If one doesn't connect, try the other.</p></div>
+  <div class="dir-row"><h3>10th Combat Aviation Brigade</h3><p class="use">1-10 Attack Recon (Dragons) · 2-10 Assault Helicopter (Knighthawks) · 3-10 General Support (Phoenix) · 277th Aviation Support (Eagles) · HHC (Renegades)</p><div class="dir-acts"><a class="call" href="tel:+13157741100">Staff duty (315) 774-1100</a></div></div>
+  <div class="dir-row"><h3>Division Artillery (DIVARTY)</h3><p class="use">2-15 Field Artillery · 5-25 Field Artillery · 3-6 Field Artillery</p><div class="dir-acts"><a class="call" href="tel:+13157724116">Staff duty (315) 772-4116</a></div></div>
+  <div class="dir-row"><h3>Division Sustainment Brigade</h3><p class="use">10th, 210th &amp; 710th Support Battalions · 548th Support Battalion HHC · Headquarters and Special Troops Battalion · 226th Signal · 510th Personnel Co. · 52nd Personnel Det.</p><div class="dir-acts"><a class="call" href="tel:+13157728254">Staff duty (315) 772-8254</a></div></div>
+  <div class="dir-row"><h3>Headquarters and Headquarters Battalion (HHBN)</h3><p class="use">Headquarters Support Company · Signal, Intelligence and Sustainment Company</p><div class="dir-acts"><a class="call" href="tel:+13157728120">Staff duty (315) 772-8120</a></div></div>
+  <div class="dir-row"><h3>41st Engineer Battalion</h3><p class="use">63rd, 84th, 513th &amp; 642nd Engineer Companies · HHC · Forward Support Company</p><div class="dir-acts"><a class="call" href="tel:+13157725100">Staff duty (315) 772-5100</a></div></div>
+  <div class="dir-row"><h3>Don't know the unit?</h3><p class="use">Fort Drum Installation Operations is staffed around the clock and can route you.</p><div class="dir-acts"><a class="call" href="tel:+13157723632">(315) 772-3632</a><a class="alt" href="tel:+13157728620">(315) 772-8620</a></div></div>
+
+  <p class="dir-verified" style="margin-top:18px;">These are the numbers the Army publishes on its <a href="https://home.army.mil/drum/units-tenants/10th-mountain-division-li" target="_blank" rel="noopener">Fort Drum unit pages ↗</a>, verified Sep 24, 2026. Units reorganize as the Army transforms, so if a number fails, the unit page is the authority. The division's 3rd Brigade Combat Team is stationed at Fort Johnson, Louisiana: (337) 531-0517.</p>
+</div></section>
+
 <!-- SEARCH + DIRECTORY -->
 <section style="padding-top:44px;"><div class="wrap" style="max-width:800px;">
   <div class="search-wrap">
@@ -161,6 +186,7 @@
     <button class="intent-chip" data-cat="Food, Money &amp; Benefits" type="button">Food, money &amp; benefits</button>
     <button class="intent-chip" data-cat="Legal, Divorce &amp; Family" type="button">Legal &amp; family</button>
     <button class="intent-chip" data-cat="Kids, School &amp; Child Care" type="button">Kids &amp; child care</button>
+    <button class="intent-chip" data-cat="Your Soldier&#39;s Unit" type="button">Your soldier's unit</button>
     <button class="intent-chip" data-cat="Military &amp; PCS" type="button">Fort Drum &amp; PCS</button>
     <button class="intent-chip" data-cat="Veterans &amp; VA" type="button">Veterans &amp; VA</button>
     <button class="intent-chip" data-cat="Groceries, Clothes &amp; Everyday Life" type="button">Everyday life</button>
@@ -168,6 +194,7 @@
     <button class="intent-chip" data-cat="Safety &amp; Crisis" type="button">Safety &amp; crisis</button>
   </div>
   <p class="dir-count" id="dirCount"></p>
+  <p class="dir-count" id="dirHint" style="display:none;"></p>
   <div id="dirResults"></div>
   <div class="dir-empty" id="dirEmpty">No matches — try <strong>SNAP</strong>, <strong>daycare</strong>, <strong>VA</strong>, or <strong>legal</strong>. Can't find it? Fort Drum ACS Information &amp; Referral, <a href="tel:+13157726799" style="color:var(--gold);font-weight:700;text-decoration:none;">(315) 772-6799</a>, exists for exactly that.</div>
   <noscript><p style="margin-top:24px;font-size:var(--t-m);color:var(--ink);">The searchable directory needs JavaScript. Every crisis line above works without it, and Fort Drum ACS Information &amp; Referral, (315) 772-6799, can route any other question.</p></noscript>
@@ -239,10 +266,16 @@ var ALIASES = {
   "who do i call": ["information", "referral", "acs", "directory"],
   "drunk": ["substance abuse", "asap"], "alcohol": ["substance abuse", "asap"], "drugs": ["substance abuse", "asap"],
   "chaplain": ["chaplain"], "church": ["chaplain"], "pastor": ["chaplain"],
-  "deployed": ["red cross", "hero care", "military onesource"], "deployment": ["red cross", "military onesource"]
+  "deployed": ["red cross", "hero care", "military onesource"], "deployment": ["red cross", "military onesource"],
+  "chain of command": ["staff duty"], "command": ["staff duty"], "commander": ["staff duty"],
+  "first sergeant": ["staff duty"], "1sg": ["staff duty"], "rear detachment": ["staff duty"], "rear d": ["staff duty"],
+  "staff duty": ["staff duty"], "sdo": ["staff duty"], "duty desk": ["staff duty"],
+  "reach my soldier": ["staff duty", "hero care"], "contact my soldier": ["staff duty", "hero care"],
+  "can't reach": ["staff duty", "installation operations"], "cant reach": ["staff duty", "installation operations"],
+  "battalion": ["staff duty"], "brigade": ["staff duty"], "company": ["staff duty"]
 };
 var CAT_ORDER = ["Safety & Crisis", "Health & Medical", "Veterans & VA", "Food, Money & Benefits",
-                 "Legal, Divorce & Family", "Kids, School & Child Care", "Military & PCS",
+                 "Legal, Divorce & Family", "Kids, School & Child Care", "Your Soldier's Unit", "Military & PCS",
                  "Groceries, Clothes & Everyday Life", "Outdoors & Local Life"];
 var activeCat = "all";
 
@@ -262,6 +295,7 @@ function expand(q) {
     var re = new RegExp(k.length <= 3 ? "\\b" + esc + "\\b" : "\\b" + esc);
     if (re.test(q)) terms = terms.concat(ALIASES[k]);
   }
+  (q.match(/\b\d{1,3}-\d{1,3}\b/g) || []).forEach(function (u) { terms.push(u); }); // unit designators: 2-14, 1-87
   q.split(/[^a-z0-9]+/).forEach(function (w) {
     if (w.length > 2 && !STOP[w]) {
       terms.push(w);
@@ -281,6 +315,11 @@ function score(r, terms, hay) {
     if (hay.indexOf(t) > -1) s += 1;
   });
   if (s > 0 && r.emergency) s += 3; // crisis lines outrank duty-hour offices on close calls
+  // a named unit (2-14, Knighthawks, 710th) beats generic wording like "can't reach"
+  if (r.cat === "Your Soldier's Unit") {
+    var q0 = terms[0];
+    if ((r.tags || []).some(function (t) { t = t.toLowerCase(); return t.length > 2 && !{"staff duty":1,"chain of command":1}[t] && q0.indexOf(t) > -1; })) s += 12;
+  }
   return s;
 }
 
@@ -329,8 +368,32 @@ function render(list, grouped) {
     ? list.length + " of " + DIR.length + " resources" : "";
 }
 
+var UNIT_CAT = "Your Soldier's Unit";
+var GENERIC_CMD = /\b(chain of command|command|commander|first sergeant|1sg|rear d|rear detachment|staff duty|sdo|duty desk|reach my soldier|contact my soldier|battalion|brigade|company|can'?t reach)/;
+var GENERIC_UNIT_TAGS = { "staff duty": 1, "chain of command": 1 };
+function setHint(html) {
+  var h = document.getElementById("dirHint");
+  h.innerHTML = html || ""; h.style.display = html ? "block" : "none";
+}
 function dirFilter() {
   var q = document.getElementById("dirSearch").value.trim().toLowerCase();
+  setHint("");
+  // a generic "reach the command" search with no specific unit named: show every desk in
+  // canonical order rather than letting one brigade win a tie
+  if (q && GENERIC_CMD.test(q)) {
+    var specific = DIR.some(function (r) {
+      return r.cat === UNIT_CAT && (r.tags || []).some(function (t) {
+        t = t.toLowerCase(); return !GENERIC_UNIT_TAGS[t] && t.length > 2 && q.indexOf(t) > -1;
+      });
+    });
+    if (!specific) {
+      var units = DIR.filter(function (r) { return r.cat === UNIT_CAT; })
+        .sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+      render(units, false);
+      setHint('Find your soldier\'s battalion below, then call that brigade\'s 24/7 desk. <a href="#command" style="color:var(--gold);font-weight:700;text-decoration:none;">Full guide: reach your soldier\'s command ↑</a>');
+      return;
+    }
+  }
   if (!q) {
     var base = activeCat === "all" ? DIR : DIR.filter(function (r) { return r.cat === activeCat; });
     render(base, true);
