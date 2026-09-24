@@ -1,5 +1,5 @@
 """QA for a Fort Drum chapter page and the guide hub it left. Run against the local server:
-python3 tools/qa-chapter.py [base_url] [chapter_path] [hash_to_forward] [district_id]
+python3 tools/qa-chapter.py [base_url] [chapter_path] [hash_to_forward] [district_id or - to skip]
 Checks: console clean, no horizontal scroll at 390/768/1440, screenshots, expander + hash-open,
 ask-band POST body (intercepted, nothing sent), every same-site link resolves, and the hub's
 old #hash forwards to the chapter while its map still initializes."""
@@ -35,14 +35,16 @@ with sync_playwright() as p:
         pg.close()
 
     pg = b.new_page(viewport={"width": 390, "height": 844})
-    # expander + hash-open
-    pg.goto(BASE + CHAPTER + "#" + DISTRICT, wait_until="networkidle")
-    report["hash_opens_district"] = pg.evaluate(f"document.querySelector('#{DISTRICT} details.dx').open")
     pg.goto(BASE + CHAPTER, wait_until="networkidle")
-    closed = pg.evaluate("[...document.querySelectorAll('details.dx')].every(d => !d.open)")
-    pg.locator("details.dx summary").first.click()
-    report["expanders_closed_by_default"] = closed
-    report["expander_opens_on_tap"] = pg.evaluate("document.querySelector('details.dx').open")
+    if DISTRICT != "-" and pg.evaluate("!!document.querySelector('details.dx')"):
+        # expander + hash-open (chapters that have district expanders)
+        pg.goto(BASE + CHAPTER + "#" + DISTRICT, wait_until="networkidle")
+        report["hash_opens_district"] = pg.evaluate(f"document.querySelector('#{DISTRICT} details.dx').open")
+        pg.goto(BASE + CHAPTER, wait_until="networkidle")
+        closed = pg.evaluate("[...document.querySelectorAll('details.dx')].every(d => !d.open)")
+        pg.locator("details.dx summary").first.click()
+        report["expanders_closed_by_default"] = closed
+        report["expander_opens_on_tap"] = pg.evaluate("document.querySelector('details.dx').open")
 
     # ask band: intercept the POST, never send it
     posted = {}

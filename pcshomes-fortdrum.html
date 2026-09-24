@@ -52,14 +52,6 @@
       },
       {
         "@type": "Question",
-        "name": "How much is Dislocation Allowance (DLA) for a 2026 PCS?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "2026 DLA ranges from $1,018 (E-1 without dependents) to $6,385 (senior officers with dependents), depending on rank and dependent status. It is a one-time payment meant to offset PCS costs like deposits and utility hookups, paid automatically with PCS orders, but verify with finance. Also file your travel voucher within 30 days of arrival. For household goods, report loss or damage within 180 days of delivery, then file the itemized claim within 9 months (12 months for shipments picked up on or after May 15, 2026)."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "What property tax breaks do veterans get on a home near Fort Drum?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -501,7 +493,7 @@
 <body>
 <script>
 // Chapters that moved out of this page: forward old #deep-links to their new home.
-(function () { var moved = { schools: '/fort-drum/schools' }; var h = location.hash.slice(1);
+(function () { var moved = { schools: '/fort-drum/schools', pcs: '/fort-drum/pcs-checklist' }; var h = location.hash.slice(1);
   if (moved[h]) location.replace(moved[h]); })();
 </script>
 
@@ -1439,97 +1431,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 <!-- PCS PLANNER -->
-<section class="pcs" id="pcs">
-  <div class="inner">
-    <div class="section-label">PCS Move Planner</div>
-    <h2 class="section-title light">Your family's Fort Drum PCS starts here.</h2>
-    <p class="section-sub light">A Fort Drum–specific checklist with real links and resources built into every step.</p>
-    <div id="stagePrompt">Where are you? Tap your stage.</div>
-    <div class="pcs-layout">
-      <div class="timeline">
-        <div class="tl-item" data-stage="orders" role="button" tabindex="0" onclick="setStage(this)"><div class="tl-left"><div class="tl-dot"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><div class="tl-line"></div></div><div class="tl-content"><div class="tl-week">120+ Days Out</div><h3 class="tl-title">Orders & Research</h3><div class="tl-desc">Research Watertown neighborhoods, apply for on-post housing at fortdrummch.com the day you have orders (waitlist: 0–35 days off-peak, 3–9 months during PCS season, the list moves on need dates), start your VA pre-approval.</div></div></div>
-        <div class="tl-item" data-stage="orders" role="button" tabindex="0" onclick="setStage(this)"><div class="tl-left"><div class="tl-dot"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="tl-line"></div></div><div class="tl-content"><div class="tl-week">90 Days Out</div><h3 class="tl-title">Housing Decisions</h3><div class="tl-desc">Connect with a PCSHomes partner, decide buy vs. rent, schedule a house-hunting trip or remote viewing with an agent. Book early -- spring/summer slots fill fast.</div></div></div>
-        <div class="tl-item" data-stage="sixty" role="button" tabindex="0" onclick="setStage(this)"><div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div><div class="tl-content"><div class="tl-week">60 Days Out</div><h3 class="tl-title">Prepare for the Cold</h3><div class="tl-desc">Order winter gear, plan your HHG move, research 4WD vehicles. Check if your arrival overlaps with snow season (Oct–Apr).</div></div></div>
-        <div class="tl-item" data-stage="arriving" role="button" tabindex="0" onclick="setStage(this)"><div class="tl-left"><div class="tl-dot"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="tl-line"></div></div><div class="tl-content"><div class="tl-week">30 Days Out</div><h3 class="tl-title">Final Steps</h3><div class="tl-desc">Transfer TRICARE to Samaritan Medical Center, notify kids' schools, confirm closing or lease start, schedule utilities.</div></div></div>
-        <div class="tl-item" data-stage="here" role="button" tabindex="0" onclick="setStage(this)"><div class="tl-left"><div class="tl-dot"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div></div><div class="tl-content"><div class="tl-week">Arrival Week</div><h3 class="tl-title">In-Processing</h3><div class="tl-desc">Report to Mountain Reception Company, Bldg. 10720. Complete in-processing, register vehicles in NY (30-day deadline for new residents), enroll dependents in schools, and file your travel voucher within 30 days.</div></div></div>
-      </div>
-      <div class="checklist-panel">
-        <h3 class="checklist-phase">Fort Drum Housing Checklist</h3>
-        <div id="checklistStatus"></div>
-        <div class="check-items">
-          <div class="check-item" data-key="mch-waitlist" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Check Mountain Community Homes on-post waitlist<a class="check-link" href="https://www.fortdrummch.com" target="_blank" rel="noopener" onclick="event.stopPropagation()">→ fortdrummch.com</a></div></div>
-          <div class="check-item" data-key="coe" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Pull Certificate of Eligibility (COE) for VA loan<a class="check-link" href="https://www.va.gov/housing-assistance/home-loans/how-to-apply/" target="_blank" rel="noopener" onclick="event.stopPropagation()">→ Apply at va.gov</a></div></div>
-          <div class="check-item" data-key="bah-lookup" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Calculate BAH at Fort Drum ZIP (13602)<a class="check-link" href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/" target="_blank" rel="noopener" onclick="event.stopPropagation()">→ Official DoD BAH Calculator</a></div></div>
-          <div class="check-item" data-key="pre-approval" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Get pre-approved with a VA-approved lender</div></div>
-          <div class="check-item" data-key="partner-connect" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Connect with a PCSHomes partner: book house-hunting trip or <strong>schedule a remote viewing</strong></div></div>
-          <div class="check-item" data-key="schools-research" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Research school districts for your neighborhood<a class="check-link" href="#schools" onclick="event.stopPropagation()">→ Full School Enrollment Guide</a></div></div>
-          <div class="check-item" data-key="slo-call" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Call the Fort Drum School Liaison at (315) 772-3214. Start enrollment before you arrive<a class="check-link" href="#schools" onclick="event.stopPropagation()">→ SLO Contact & District Details</a></div></div>
-          <div class="check-item" data-key="tax-exemption" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Review NY veteran property tax exemption<a class="check-link" href="https://www.tax.ny.gov/pit/property/exemption/vetexempt.htm" target="_blank" rel="noopener" onclick="event.stopPropagation()">→ NY Veterans Exemption Info</a></div></div>
-          <div class="check-item" data-key="winter-plan" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Plan for winter: 4WD vehicle, heating type (natural gas recommended), winter gear budget</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PCS MONEY: entitlements, deadlines, movers-won't-pack -->
-    <div style="margin-top:56px;border-top:2px solid var(--gold);padding-top:28px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#8a6a1e;margin-bottom:8px;">PCS Money</div>
-      <h3 style="font-family:'Libre Baskerville',serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--navy);margin-bottom:6px;">Know what you're owed (2026)</h3>
-      <p style="font-size:13px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:18px;">These entitlements are paid with your orders, but only if the numbers are right and the paperwork is filed on time. Verify everything with your finance office.</p>
-
-      <div style="border-top:1px solid var(--line);">
-        <div style="display:flex;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65;"><strong style="color:var(--navy);flex:0 0 210px;">DLA (Dislocation Allowance)</strong><span style="color:var(--muted);flex:1;min-width:240px;">One-time payment: <strong style="color:var(--ink);">$1,018–$6,385</strong> depending on rank and dependents. Paid automatically with PCS orders, verify with finance.</span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65;"><strong style="color:var(--navy);flex:0 0 210px;">MALT (mileage)</strong><span style="color:var(--muted);flex:1;min-width:240px;"><strong style="color:var(--ink);">$0.205/mile</strong> for POV travel, based on the official distance between duty stations.</span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65;"><strong style="color:var(--navy);flex:0 0 210px;">Per diem (en route)</strong><span style="color:var(--muted);flex:1;min-width:240px;"><strong style="color:var(--ink);">$110/night lodging + $68/day</strong> meals &amp; incidentals for the service member; spouse at 75% of the rate, each additional dependent at 50%.</span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65;"><strong style="color:var(--navy);flex:0 0 210px;">TLE (temporary lodging)</strong><span style="color:var(--muted);flex:1;min-width:240px;"><strong style="color:var(--ink);">14 days standard</strong> (split between old and new duty station), up to 60 days in designated housing-shortage areas. Max <strong style="color:var(--ink);">$290/day</strong>, keep lodging receipts.</span></div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65;"><strong style="color:var(--navy);flex:0 0 210px;">Unaccompanied baggage</strong><span style="color:var(--muted);flex:1;min-width:240px;">Up to <strong style="color:var(--ink);">2,000 lbs</strong> per household, separate from your HHG weight allowance.</span></div>
-      </div>
-
-      <div style="margin-top:22px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">HHG weight allowance by rank (with / without dependents)</div>
-      <div class="tbl-hint" aria-hidden="true">Swipe the table sideways for more →</div>
-      <div class="table-scroll-x" style="overflow-x:auto;background-color:transparent;">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;color:var(--ink);min-width:420px;">
-          <thead>
-            <tr style="border-bottom:2px solid rgba(43,52,66,0.25);text-align:left;">
-              <th style="padding:8px 12px 8px 0;font-weight:700;color:var(--navy);">Pay grade</th>
-              <th style="padding:8px 12px;font-weight:700;color:var(--navy);">With dependents</th>
-              <th style="padding:8px 0;font-weight:700;color:var(--navy);">Without</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 12px 7px 0;">E-1 to E-3</td><td style="padding:7px 12px;">8,000 lbs</td><td style="padding:7px 0;">5,000 lbs</td></tr>
-            <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 12px 7px 0;">E-4 / E-5</td><td style="padding:7px 12px;">8,000 / 9,000 lbs</td><td style="padding:7px 0;">7,000 lbs</td></tr>
-            <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 12px 7px 0;">E-6 / E-7</td><td style="padding:7px 12px;">11,000 / 13,000 lbs</td><td style="padding:7px 0;">8,000 / 11,000 lbs</td></tr>
-            <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 12px 7px 0;">E-8 / E-9</td><td style="padding:7px 12px;">14,000 / 15,000 lbs</td><td style="padding:7px 0;">12,000 / 13,000 lbs</td></tr>
-            <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 12px 7px 0;">W-1/O-1 · W-2/O-2</td><td style="padding:7px 12px;">12,000 / 13,500 lbs</td><td style="padding:7px 0;">10,000 / 12,500 lbs</td></tr>
-            <tr style="border-bottom:1px solid var(--line);"><td style="padding:7px 12px 7px 0;">W-3/O-3 · W-4/O-4</td><td style="padding:7px 12px;">14,500 / 17,000 lbs</td><td style="padding:7px 0;">13,000 / 14,000 lbs</td></tr>
-            <tr><td style="padding:7px 12px 7px 0;">W-5/O-5 · O-6+</td><td style="padding:7px 12px;">17,500 / 18,000 lbs</td><td style="padding:7px 0;">16,000 / 18,000 lbs</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6;">Packing materials count against your weight. Overweight fees run hundreds to thousands of dollars. Weigh before you pack.</div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:32px;">
-        <div>
-          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6a1e;margin-bottom:6px;">Deadlines that cost money</div>
-          <ul style="list-style:none;font-size:13px;color:var(--muted);line-height:1.7;">
-            <li style="padding:9px 0;border-bottom:1px solid var(--line);">File your <strong style="color:var(--ink);">travel voucher within 30 days</strong> of arrival at Fort Drum.</li>
-            <li style="padding:9px 0;border-bottom:1px solid var(--line);">Report HHG <strong style="color:var(--ink);">loss/damage within 180 days</strong> of delivery, then file the itemized claim within 9 months (12 months for pickups on/after May 15, 2026), and note visible damage on the inventory before signing.</li>
-            <li style="padding:9px 0;border-bottom:1px solid var(--line);"><strong style="color:var(--ink);">Photograph belongings and serial numbers before pack day</strong>, it's your evidence for claims.</li>
-            <li style="padding:9px 0;">Doing a PPM? Get <strong style="color:var(--ink);">certified weight tickets, empty AND loaded</strong>. Warning: PPM reimbursement rules changed, get a cost estimate from your Transportation Office before committing.</li>
-          </ul>
-        </div>
-        <div>
-          <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8a6a1e;margin-bottom:6px;">Movers won't pack these</div>
-          <ul style="list-style:none;font-size:13px;color:var(--muted);line-height:1.7;">
-            <li style="padding:9px 0;border-bottom:1px solid var(--line);">Cleaners with bleach or ammonia, paint, gasoline &amp; other hazmat</li>
-            <li style="padding:9px 0;border-bottom:1px solid var(--line);">Propane tanks (even small camping ones), ammunition, fireworks</li>
-            <li style="padding:9px 0;border-bottom:1px solid var(--line);">Plants, perishable food, and open containers</li>
-            <li style="padding:9px 0;">Medications, important documents, and jewelry: <strong style="color:var(--ink);">keep these with you</strong> in an essentials bag.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="toc-return on-dark"><a href="#contents">▲ Contents</a></div>
+<section id="pcs" style="background:var(--paper);padding:56px 48px;">
+  <div style="max-width:760px;margin:0 auto;padding:56px 20px 24px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#46688A;margin-bottom:10px;">PCS checklist &amp; money</div>
+    <h2 style="font-family:'Libre Baskerville',serif;font-size:clamp(26px,3.4vw,34px);font-weight:700;color:var(--navy);line-height:1.2;margin:0 0 12px;">The PCS checklist has its own chapter now.</h2>
+    <p style="font-size:17px;line-height:1.7;color:var(--ink);margin:0 0 20px;">The stage-by-stage timeline, the housing checklist (your saved progress comes with it), what you're owed in 2026, HHG weight by rank, and the deadlines that cost families money, all on one page you can bookmark or text to your spouse.</p>
+    <a href="/fort-drum/pcs-checklist" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:9px;background:var(--navy);color:#fff;font-weight:700;font-size:15px;text-decoration:none;">Open the PCS checklist</a>
+    <p style="font-size:15px;color:var(--muted);margin:16px 0 0;">Just arrived? Your travel voucher is due within 30 days. <a href="/fort-drum/pcs-checklist#deadlines" style="color:var(--navy);font-weight:700;">See every deadline</a></p>
   </div>
 </section>
 
