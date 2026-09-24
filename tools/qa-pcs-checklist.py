@@ -53,7 +53,7 @@ with sync_playwright() as p:
     R["v2_restores"] = pg.evaluate(checked)
     R["status_text"] = pg.evaluate("document.getElementById('checklistStatus').textContent")
     # tick one more by tapping its label text, reload, still there
-    pg.locator(".checks label", has_text="Calculate BAH").click()
+    pg.locator(".checks label", has_text="housing allowance (BAH)").click()
     pg.reload(wait_until="networkidle")
     R["tick_survives_reload"] = pg.evaluate(checked)
     R["saved_record"] = json.loads(pg.evaluate("localStorage.getItem('pcshomes_checklist_v2')"))["lists"]["pcs"]
