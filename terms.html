@@ -10,31 +10,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/chassis.css">
   <style>
-    :root { --paper:#FBF7EF; --card:#FFFFFF; --navy:#1D3557; --ink:#2B3442; --muted:#6B7280; --gold:#B98A2F; --gold-soft:#D9B45B; --line:#E8DFCD; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; font-size:17px; line-height:1.7; }
-    nav { position:fixed; top:0; left:0; right:0; z-index:9999; background:rgba(251,247,239,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); display:flex; align-items:center; justify-content:space-between; padding:0 24px; height:66px; border-bottom:1px solid var(--line); }
-    .nav-logo { font-family:'Libre Baskerville',serif; font-size:20px; font-weight:700; color:var(--navy); text-decoration:none; }
-    .nav-logo span { color:var(--gold); }
-    .nav-call { background:var(--navy); color:#fff; font-size:13px; font-weight:700; padding:12px 18px; border-radius:100px; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; min-height:44px; }
-    main { max-width:720px; margin:0 auto; padding:120px 24px 72px; }
-    h1 { font-family:'Libre Baskerville',serif; color:var(--navy); font-size:clamp(28px,5vw,38px); line-height:1.2; margin-bottom:8px; }
+    /* legal-page chrome on top of the chassis */
+    main { max-width:720px; margin:0 auto; padding:48px 24px 72px; }
+    h1 { font-size:clamp(30px,5vw,40px); line-height:1.15; margin-bottom:8px; }
     .updated { color:var(--muted); font-size:14px; margin-bottom:36px; }
-    h2 { font-family:'Libre Baskerville',serif; color:var(--navy); font-size:21px; margin:40px 0 10px; padding-top:24px; border-top:1px solid var(--line); }
+    main h2 { font-size:22px; margin:40px 0 10px; padding-top:24px; border-top:1px solid var(--rule); }
     p, li { color:var(--ink); margin-bottom:12px; }
     ul { padding-left:22px; margin-bottom:12px; }
-    a { color:var(--gold); font-weight:600; }
-    footer { padding:40px 24px; border-top:1px solid var(--line); text-align:center; color:var(--muted); font-size:13px; }
+    main a { color:var(--gold); font-weight:700; }
+    footer { text-align:center; color:var(--muted); font-size:13px; padding:40px 24px 58px; }
     footer a { color:var(--muted); font-weight:400; margin:0 10px; }
   </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
-  <a href="tel:+13152214857" class="nav-call">Call</a>
-</nav>
+<div class="bar"><nav class="bar-in" aria-label="Site">
+  <a href="index.html" style="text-decoration:none;"><b>PCS<em>Homes</em></b></a>
+  <a href="tel:+13152214857" class="bar-cta" style="margin-left:auto;" aria-label="Call PCSHomes">Call</a>
+</nav></div>
 <main>
   <h1>Terms of Use</h1>
   <p class="updated">Effective September 23, 2026 &middot; PCSHomes is operated by Wood Consulting LLC</p>
