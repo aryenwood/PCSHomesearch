@@ -22,7 +22,7 @@ def fresh(b, seed=None):
     pg.reload(wait_until="networkidle")
     return ctx, pg, errs
 
-pressed = "[...document.querySelectorAll('.stage[aria-pressed=true]')].map(b => b.querySelector('.when').textContent)"
+pressed = "[...document.querySelectorAll('.stage[aria-current=step]')].map(b => b.querySelector('.when').textContent)"
 checked = "[...document.querySelectorAll('.checks input:checked')].map(i => i.dataset.key)"
 
 with sync_playwright() as p:

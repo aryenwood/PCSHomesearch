@@ -62,9 +62,9 @@
     .stage .d { font-size: 17.5px; color: var(--ink); line-height: 1.6; }
     .stage .here { display: none; margin-left: 10px; vertical-align: 3px; font: 700 var(--t-2xs) 'DM Sans', sans-serif; letter-spacing: 0.1em;
                    text-transform: uppercase; color: var(--plate-deep); background: var(--gold-bright); border-radius: 100px; padding: 3px 10px; }
-    .stage[aria-pressed="true"] { background: rgba(217,180,91,0.12); }
-    .stage[aria-pressed="true"]::before { width: 4px; }
-    .stage[aria-pressed="true"] .here { display: inline-block; }
+    .stage[aria-current="step"] { background: rgba(217,180,91,0.12); }
+    .stage[aria-current="step"]::before { width: 4px; }
+    .stage[aria-current="step"] .here { display: inline-block; }
 
     /* housing checklist: real checkboxes, progress saved on this phone only */
     #checklistStatus { font-size: var(--t-s); color: var(--muted); margin: 0 0 14px; }
@@ -184,11 +184,11 @@
   <p class="sub rv">Each stage has the next moves, with the Fort Drum details built in. Your stage is remembered on this phone.</p>
   <p id="stagePrompt" role="status">Pick the stage you're in right now.</p>
   <ol class="stages">
-    <li><button type="button" class="stage" data-stage="orders" aria-pressed="false"><span class="when">120+ days out</span><span class="t">Orders &amp; Research<span class="here">You are here</span></span><span class="d">Research Watertown neighborhoods, apply for on-post housing at fortdrummch.com the day you have orders (waitlist: 0&ndash;35 days off-peak, 3&ndash;9 months during PCS season, the list moves on need dates), start your VA pre-approval.</span></button></li>
-    <li><button type="button" class="stage" data-stage="orders" aria-pressed="false"><span class="when">90 days out</span><span class="t">Housing Decisions<span class="here">You are here</span></span><span class="d">Connect with a PCSHomes partner, decide buy vs. rent, schedule a house-hunting trip or remote viewing with an agent. Book early. Spring/summer slots fill fast.</span></button></li>
-    <li><button type="button" class="stage" data-stage="sixty" aria-pressed="false"><span class="when">60 days out</span><span class="t">Prepare for the Cold<span class="here">You are here</span></span><span class="d">Order winter gear, plan your HHG move, research 4WD vehicles. Check if your arrival overlaps with snow season (Oct&ndash;Apr).</span></button></li>
-    <li><button type="button" class="stage" data-stage="arriving" aria-pressed="false"><span class="when">30 days out</span><span class="t">Final Steps<span class="here">You are here</span></span><span class="d">Transfer TRICARE to Samaritan Medical Center, notify kids' schools, confirm closing or lease start, schedule utilities.</span></button></li>
-    <li><button type="button" class="stage" data-stage="here" aria-pressed="false"><span class="when">Arrival week</span><span class="t">In-Processing<span class="here">You are here</span></span><span class="d">Report to Mountain Reception Company, Bldg. 10720. Complete in-processing, register vehicles in NY (30-day deadline for new residents), enroll dependents in schools, and file your travel voucher within 30 days.</span></button></li>
+    <li><button type="button" class="stage" data-stage="orders"><span class="when">120+ days out</span><span class="t">Orders &amp; Research<span class="here">You are here</span></span><span class="d">Research Watertown neighborhoods, apply for on-post housing at fortdrummch.com the day you have orders (waitlist: 0&ndash;35 days off-peak, 3&ndash;9 months during PCS season, the list moves on need dates), start your VA pre-approval.</span></button></li>
+    <li><button type="button" class="stage" data-stage="orders"><span class="when">90 days out</span><span class="t">Housing Decisions<span class="here">You are here</span></span><span class="d">Connect with a PCSHomes partner, decide buy vs. rent, schedule a house-hunting trip or remote viewing with an agent. Book early. Spring/summer slots fill fast.</span></button></li>
+    <li><button type="button" class="stage" data-stage="sixty"><span class="when">60 days out</span><span class="t">Prepare for the Cold<span class="here">You are here</span></span><span class="d">Order winter gear, plan your HHG move, research 4WD vehicles. Check if your arrival overlaps with snow season (Oct&ndash;Apr).</span></button></li>
+    <li><button type="button" class="stage" data-stage="arriving"><span class="when">30 days out</span><span class="t">Final Steps<span class="here">You are here</span></span><span class="d">Transfer TRICARE to Samaritan Medical Center, notify kids' schools, confirm closing or lease start, schedule utilities.</span></button></li>
+    <li><button type="button" class="stage" data-stage="here"><span class="when">Arrival week</span><span class="t">In-Processing<span class="here">You are here</span></span><span class="d">Report to Mountain Reception Company, Bldg. 10720. Complete in-processing, register vehicles in NY (30-day deadline for new residents), enroll dependents in schools, and file your travel voucher within 30 days.</span></button></li>
   </ol>
 </div></section>
 
@@ -226,7 +226,7 @@
     <colgroup><col class="grade"/><col/><col/></colgroup>
     <thead><tr><th scope="col" rowspan="2">Pay grade</th><th scope="colgroup" colspan="2" class="dep">Dependents</th></tr><tr><th scope="col">With</th><th scope="col">Without</th></tr></thead>
     <tbody>
-      <tr class="grp"><th scope="colgroup" colspan="3">Enlisted</th></tr>
+      <tr class="grp"><th scope="rowgroup" colspan="3">Enlisted</th></tr>
       <tr><th scope="row">E-1 to E-3</th><td>8,000</td><td>5,000</td></tr>
       <tr><th scope="row">E-4</th><td>8,000</td><td>7,000</td></tr>
       <tr><th scope="row">E-5</th><td>9,000</td><td>7,000</td></tr>
@@ -234,7 +234,9 @@
       <tr><th scope="row">E-7</th><td>13,000</td><td>11,000</td></tr>
       <tr><th scope="row">E-8</th><td>14,000</td><td>12,000</td></tr>
       <tr><th scope="row">E-9</th><td>15,000</td><td>13,000</td></tr>
-      <tr class="grp"><th scope="colgroup" colspan="3">Warrant &amp; officer</th></tr>
+    </tbody>
+    <tbody>
+      <tr class="grp"><th scope="rowgroup" colspan="3">Warrant &amp; officer</th></tr>
       <tr><th scope="row">W-1 / O-1</th><td>12,000</td><td>10,000</td></tr>
       <tr><th scope="row">W-2 / O-2</th><td>13,500</td><td>12,500</td></tr>
       <tr><th scope="row">W-3 / O-3</th><td>14,500</td><td>13,000</td></tr>
@@ -342,7 +344,8 @@ function submitAskBand(e, offer) {
   var prompt = document.getElementById('stagePrompt');
   var rows = document.querySelectorAll('.stage');
   function apply(stage) {
-    rows.forEach(function (b) { b.setAttribute('aria-pressed', stage && b.dataset.stage === stage ? 'true' : 'false'); });
+    // aria-current="step": the homepage's 'orders' stage spans two rows (120+ and 90 days out), so both read as current
+    rows.forEach(function (b) { if (stage && b.dataset.stage === stage) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
     prompt.hidden = !!stage;
   }
   rows.forEach(function (b) {
