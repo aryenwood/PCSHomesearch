@@ -511,7 +511,16 @@
     }
   
     @media (max-width: 768px) { #backToTop { bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; } }
-    </style>
+      .ask-band { background: var(--navy); border-radius: 14px; padding: 26px 28px; margin: 34px auto 0; max-width: 720px; }
+    .ask-band h4 { font-family: 'Libre Baskerville', serif; color: #fff; font-size: 20px; margin: 0 0 6px; }
+    .ask-band .ask-sub { color: rgba(255,255,255,0.75); font-size: 14px; margin: 0 0 14px; line-height: 1.6; }
+    .ask-band form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ask-band input { flex: 1 1 180px; min-height: 48px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); color: #fff; padding: 0 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; }
+    .ask-band input::placeholder { color: rgba(255,255,255,0.5); }
+    .ask-band button { min-height: 48px; border: none; border-radius: 8px; background: var(--gold); color: var(--navy); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; padding: 0 22px; cursor: pointer; }
+    .ask-band .ask-done { display: none; color: #fff; font-size: 15px; line-height: 1.6; }
+    .ask-band .ask-note { color: rgba(255,255,255,0.55); font-size: 12px; margin: 10px 0 0; }
+  </style>
 </head>
 <body>
 
@@ -1384,6 +1393,18 @@
     </div><!-- /schoolsContent collapsible -->
     <div class="toc-return"><a href="#contents">▲ Contents</a></div>
   </div>
+
+<div class="ask-band">
+  <h4>Want a home in the district you picked?</h4>
+  <p class="ask-sub">Tell us the district and your timeline. A real person from our Fort Drum network calls you within 24 hours. No spam, ever.</p>
+  <form onsubmit="return submitAskBand(event, 'schools')">
+    <input type="text" name="name" placeholder="Your name" autocomplete="name" required/>
+    <input type="text" name="contact" placeholder="Phone or email" autocomplete="on" enterkeyhint="send" required/>
+    <button type="submit">Have someone call me</button>
+  </form>
+  <div class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857" style="color:var(--gold);">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);">(315) 221-4857</a>.</div>
+  <p class="ask-note">Free for military families. We connect you, never spam you.</p>
+</div>
 </section>
 
 <style>
@@ -1898,6 +1919,18 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
     <div class="toc-return"><a href="#contents">▲ Contents</a></div>
   </div>
+
+<div class="ask-band">
+  <h4>Want homes that fit this payment?</h4>
+  <p class="ask-sub">You just saw your number against BAH. A real person from our Fort Drum network calls you within 24 hours. No spam, ever.</p>
+  <form onsubmit="return submitAskBand(event, 'va-calculator')">
+    <input type="text" name="name" placeholder="Your name" autocomplete="name" required/>
+    <input type="text" name="contact" placeholder="Phone or email" autocomplete="on" enterkeyhint="send" required/>
+    <button type="submit">Have someone call me</button>
+  </form>
+  <div class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857" style="color:var(--gold);">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);">(315) 221-4857</a>.</div>
+  <p class="ask-note">Free for military families. We connect you, never spam you.</p>
+</div>
 </section>
 
 <!-- RENT VS BUY -->
@@ -2031,6 +2064,18 @@ document.addEventListener('DOMContentLoaded', function(){
     </div>
     <div class="toc-return on-dark"><a href="#contents">▲ Contents</a></div>
   </div>
+
+<div class="ask-band">
+  <h4>Want real listings behind these numbers?</h4>
+  <p class="ask-sub">Rent or buy, we know who to hand you to. A real person from our Fort Drum network calls you within 24 hours. No spam, ever.</p>
+  <form onsubmit="return submitAskBand(event, 'rent-vs-buy')">
+    <input type="text" name="name" placeholder="Your name" autocomplete="name" required/>
+    <input type="text" name="contact" placeholder="Phone or email" autocomplete="on" enterkeyhint="send" required/>
+    <button type="submit">Have someone call me</button>
+  </form>
+  <div class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857" style="color:var(--gold);">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);">(315) 221-4857</a>.</div>
+  <p class="ask-note">Free for military families. We connect you, never spam you.</p>
+</div>
 </section>
 
 
@@ -2159,6 +2204,8 @@ document.addEventListener('DOMContentLoaded', function(){
           <a href="pcshomes-discover.html">Discover</a>
           <a href="pcshomes-network.html">Our Network</a>
           <a href="pcshomes-contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
         </div>
       </div>
       <div>
@@ -2428,6 +2475,18 @@ function setStage(item) {
 // ── POPUP ──
 window.__pageLoadTime = Date.now();
 let popupShown = false;
+
+// Reading-depth trigger: the same offer for phones (mouseleave never fires on touch)
+window.addEventListener('scroll', function() {
+  if (popupShown || sessionStorage.getItem('popupShown')) return;
+  if ((Date.now() - window.__pageLoadTime) < 15000) return;
+  var doc = document.documentElement;
+  if ((window.scrollY + window.innerHeight) / doc.scrollHeight < 0.6) return;
+  popupShown = true;
+  try { sessionStorage.setItem('popupShown', 'true'); } catch (err) {}
+  var popup = document.getElementById('pcshPopup');
+  if (popup) popup.classList.add('visible');
+}, { passive: true });
 
 document.addEventListener('mouseleave', function(e) {
   if (
@@ -2764,5 +2823,32 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 <!-- BACK TO TOP -->
 <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:24px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold,#B98A2F);color:#162D50;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
 <script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
+<script>
+function submitAskBand(e, offer) {
+  e.preventDefault();
+  var form = e.target, band = form.closest('.ask-band');
+  var btn = form.querySelector('button');
+  var name = form.querySelector('[name=name]').value.trim();
+  var contact = form.querySelector('[name=contact]').value.trim();
+  if (!name || !contact) return false;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  var data = new URLSearchParams();
+  data.append('form-name', 'popup-lead');
+  data.append('offer', offer);
+  data.append('name', name);
+  data.append('contact', contact);
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
+    .then(function(r) {
+      if (!r.ok) throw new Error(r.status);
+      form.style.display = 'none';
+      band.querySelector('.ask-done').style.display = 'block';
+    })
+    .catch(function() {
+      btn.disabled = false; btn.textContent = 'Have someone call me';
+      band.querySelector('.ask-note').innerHTML = 'That didn\'t send. <a href="sms:+13152214857" style="color:var(--gold);">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);">(315) 221-4857</a> instead.';
+    });
+  return false;
+}
+</script>
 </body>
 </html>

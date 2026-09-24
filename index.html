@@ -561,6 +561,8 @@
       <a href="pcshomes-network.html">Our Network</a>
       <a href="pcshomes-contact.html">Contact</a>
       <a href="pcshomes-glossary.html">Glossary</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="tel:+13152214857">(315) 221-4857</a>
     </div>
   </div>
@@ -789,6 +791,18 @@ function submitVaLead() {
 // ── EXIT-INTENT POPUP ──
 window.__pageLoadTime = Date.now();
 let popupShown = false;
+
+// Reading-depth trigger: the same offer for phones (mouseleave never fires on touch)
+window.addEventListener('scroll', function() {
+  if (popupShown || sessionStorage.getItem('popupShown')) return;
+  if ((Date.now() - window.__pageLoadTime) < 15000) return;
+  var doc = document.documentElement;
+  if ((window.scrollY + window.innerHeight) / doc.scrollHeight < 0.6) return;
+  popupShown = true;
+  try { sessionStorage.setItem('popupShown', 'true'); } catch (err) {}
+  var popup = document.getElementById('pcshPopup');
+  if (popup) popup.classList.add('visible');
+}, { passive: true });
 
 document.addEventListener('mouseleave', function(e) {
   if (
