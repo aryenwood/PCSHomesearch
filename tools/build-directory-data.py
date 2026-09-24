@@ -37,9 +37,9 @@ def user_note(rec):
         parts.append(rec["admin_notes"])
     # curated replacements for records whose master note mixes user + builder text
     if rec["id"] == "safety-006":
-        parts = ["Restricted (confidential) and unrestricted reporting options both exist — the SARC can explain each before you decide."]
+        parts = ["Restricted (confidential) and unrestricted reporting options both exist. The SARC can explain each before you decide."]
     if rec["id"] == "safety-017":
-        parts = ["Fort Drum publishes both a 24-hour chaplain line and an emergency chaplain support line — either reaches a chaplain."]
+        parts = ["Fort Drum publishes both a 24-hour chaplain line and an emergency chaplain support line. Either reaches a chaplain."]
     return " ".join(parts) or None
 
 def slim(rec):

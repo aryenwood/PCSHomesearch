@@ -3172,10 +3172,10 @@
   },
   {
    "id": "unit-079",
-   "name": "1st Mobile Brigade Combat Team — Staff Duty",
+   "name": "1st Mobile Brigade Combat Team · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
-   "use_this_when": "Reach 1st MBCT around the clock — the duty desk can route your call to your soldier's leadership. Battalions: 1-32 Infantry, 2-22 Infantry, 1-87 Infantry, HHC, Company M, 293rd Signal.",
+   "use_this_when": "Reach 1st MBCT around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 1-32 Infantry, 2-22 Infantry, 1-87 Infantry, HHC, Company M, 293rd Signal.",
    "intent_tags": [
     "1st MBCT",
     "1st BCT",
@@ -3236,10 +3236,10 @@
   },
   {
    "id": "unit-080",
-   "name": "2nd Mobile Brigade Combat Team — Staff Duty",
+   "name": "2nd Mobile Brigade Combat Team · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
-   "use_this_when": "Reach 2nd MBCT around the clock — the duty desk can route your call to your soldier's leadership. Battalions: 2-14 Infantry, 2-87 Infantry, 4-31 Infantry, HHC, Company M, 94th Signal.",
+   "use_this_when": "Reach 2nd MBCT around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 2-14 Infantry, 2-87 Infantry, 4-31 Infantry, HHC, Company M, 94th Signal.",
    "intent_tags": [
     "2nd MBCT",
     "2nd BCT",
@@ -3299,7 +3299,7 @@
   },
   {
    "id": "unit-081",
-   "name": "10th Combat Aviation Brigade — Staff Duty",
+   "name": "10th Combat Aviation Brigade · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
    "use_this_when": "Reach the Combat Aviation Brigade around the clock. Units: 1-10 Attack Recon (Dragons), 2-10 Assault Helicopter (Knighthawks), 3-10 General Support Aviation (Phoenix), 277th Aviation Support (Eagles), HHC (Renegades).",
@@ -3364,7 +3364,7 @@
   },
   {
    "id": "unit-082",
-   "name": "10th Mountain Division Artillery (DIVARTY) — Staff Duty",
+   "name": "10th Mountain Division Artillery (DIVARTY) · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
    "use_this_when": "Reach DIVARTY around the clock. Battalions: 2-15 Field Artillery, 5-25 Field Artillery, 3-6 Field Artillery.",
@@ -3423,7 +3423,7 @@
   },
   {
    "id": "unit-083",
-   "name": "10th Mountain Division Sustainment Brigade — Staff Duty",
+   "name": "10th Mountain Division Sustainment Brigade · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
    "use_this_when": "Reach the Sustainment Brigade around the clock. Units: 10th, 210th, and 710th Support Battalions, 548th Support Battalion HHC, Headquarters and Special Troops Battalion, 226th Signal, 510th Personnel Company, 52nd Personnel Detachment.",
@@ -3486,7 +3486,7 @@
   },
   {
    "id": "unit-084",
-   "name": "Headquarters and Headquarters Battalion (HHBN) — Staff Duty",
+   "name": "Headquarters and Headquarters Battalion (HHBN) · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Battalion Staff Duty (24/7)",
    "use_this_when": "Reach division headquarters units around the clock: Headquarters Support Company and the Signal, Intelligence and Sustainment Company.",
@@ -3537,7 +3537,7 @@
   },
   {
    "id": "unit-085",
-   "name": "41st Engineer Battalion — Staff Duty",
+   "name": "41st Engineer Battalion · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Battalion Staff Duty (24/7)",
    "use_this_when": "Reach the 41st Engineers around the clock. Companies: 63rd, 84th, 513th, and 642nd Engineer, HHC, Forward Support Company.",

@@ -33,6 +33,7 @@
     .inquiry-type:hover { border-color: var(--gold-bright); }
     .inquiry-type.selected { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
     .inquiry-type.selected svg { stroke: var(--plate-deep); }
+    .inquiry-type svg { width: 16px; height: 16px; flex: none; }
     .form-label { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--plate-sub); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     #pcshomesForm { display: flex; flex-direction: column; gap: 10px; }
@@ -99,7 +100,7 @@
 <header class="hero"><div class="wrap">
   <p class="eyebrow rv">Get in touch</p>
   <h1 class="rv">Let us connect you with the <em>right expert.</em></h1>
-  <p class="dek rv">Whether you're the service member, the spouse, or managing this move together — PCSHomes connects your family with <strong>trusted professionals who know Fort Drum:</strong> vetted agents, lenders, inspectors, and home service providers.</p>
+  <p class="dek rv">Whether you're the service member, the spouse, or managing this move together, PCSHomes connects your family with <strong>trusted professionals who know Fort Drum:</strong> vetted agents, lenders, inspectors, and home service providers.</p>
 </div></header>
 
 <!-- THE FORM — the page's one conversion moment, on the living plate -->
@@ -145,7 +146,7 @@
               Family Support
             </button>
           </div>
-          <div class="reassure" style="margin-bottom:10px;">Whether you're a soldier, spouse, or both — we're here for your whole family.</div>
+          <div class="reassure" style="margin-bottom:10px;">Whether you're a soldier, spouse, or both, we're here for your whole family.</div>
         </div>
 
         <div class="form-row">
@@ -181,9 +182,9 @@
 
         <label class="field"><span>Message</span><textarea id="message" name="message" rows="4" enterkeyhint="send"></textarea></label>
 
-        <div class="reassure">No spam, no pressure — a real person who knows Fort Drum reads every message.</div>
+        <div class="reassure">No spam, no pressure: a real person who knows Fort Drum reads every message.</div>
         <button type="submit" class="btn-gold">Connect Me with an Expert &rarr;</button>
-        <div class="reassure" style="text-align:center;">Backed by a 5.0&#9733; network — 120+ verified reviews across our partners.</div>
+        <div class="reassure" style="text-align:center;">Backed by a 5.0&#9733; network: 120+ verified reviews across our partners.</div>
         <div class="reassure" style="text-align:center;">Questions? <a href="sms:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">(315) 221-4857</a></div>
         <div id="formError" style="display:none;"></div>
       </form>
@@ -205,7 +206,7 @@
 <section><div class="wrap">
   <p class="eyebrow rv">How it works</p>
   <h2 class="rv">What happens next</h2>
-  <div class="right-row"><span class="n">01</span><div><h3>Tell us what you need</h3><p>The form above, a text, or a call — whatever is easiest from wherever you are.</p></div></div>
+  <div class="right-row"><span class="n">01</span><div><h3>Tell us what you need</h3><p>The form above, a text, or a call, whatever is easiest from wherever you are.</p></div></div>
   <div class="right-row"><span class="n">02</span><div><h3>We match you with a vetted expert</h3><p>Someone whose record with military families we know personally.</p></div></div>
   <div class="right-row"><span class="n">03</span><div><h3>Get personalized help, fast</h3><p>A real person replies within 24 hours. No obligation at any step.</p></div></div>
 </div></section>
@@ -389,7 +390,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       document.getElementById('contactForm').style.display = 'none';
       document.getElementById('successState').style.display = 'block';
     }).catch(function() {
-      errorEl.innerHTML = '<div class="form-error">Something went wrong — please try again, or call/text <a href="tel:+13152214857" style="color:inherit;font-weight:600;">(315) 221-4857</a>.</div>';
+      errorEl.innerHTML = '<div class="form-error">Something went wrong. Please try again, or call/text <a href="tel:+13152214857" style="color:inherit;font-weight:600;">(315) 221-4857</a>.</div>';
       errorEl.style.display = 'block';
       setTimeout(function() { errorEl.style.display = 'none'; }, 6000);
     });

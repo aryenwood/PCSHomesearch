@@ -191,7 +191,7 @@
   <div>
     <p class="eyebrow rv">Vetted &amp; trusted</p>
     <h1 class="rv">Our trusted <em>network.</em></h1>
-    <p class="dek rv">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. <strong>We connect you &mdash; they deliver.</strong></p>
+    <p class="dek rv">Every partner on PCSHomes is handpicked for their expertise with military families at Fort Drum. <strong>We connect you. They deliver.</strong></p>
     <div class="proof rv">
       <span>Vetted on their <b>record</b></span>
       <span>Partners never pay for <b>placement</b></span>
@@ -260,7 +260,7 @@
           <label class="field-label" for="vrMessage">What do you need help with?</label>
           <textarea class="modal-input" id="vrMessage" name="message" rows="3" enterkeyhint="send" placeholder="e.g. Buying our first home, arriving in June"></textarea>
         </div>
-        <div class="form-reassure">No spam, no pressure — a PCSHomes team member makes the introduction personally.</div>
+        <div class="form-reassure">No spam, no pressure: a PCSHomes team member makes the introduction personally.</div>
         <button class="modal-submit" type="submit">Send my request</button>
         <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Questions? <a href="sms:+13152214857" style="color:var(--gold);font-weight:600;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
       </form>
@@ -316,7 +316,7 @@
           <label class="field-label field-label-navy" for="paMessage">Tell Us About Your Services</label>
           <textarea class="partner-input" id="paMessage" name="message" rows="4" enterkeyhint="send" placeholder="e.g. 10 years helping Fort Drum families buy and sell"></textarea>
         </div>
-        <div class="form-reassure form-reassure-navy full-width">We review every application personally — no fees, no pay-for-placement.</div>
+        <div class="form-reassure form-reassure-navy full-width">We review every application personally: no fees, no pay-for-placement.</div>
         <button class="partner-submit full-width" type="submit">Apply to Join Our Network</button>
         <div class="full-width" style="font-size:12px;color:rgba(255,255,255,0.6);text-align:center;">Questions? <a href="sms:+13152214857" style="color:var(--gold-soft);text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-soft);text-decoration:none;">(315) 221-4857</a></div>
       </form>
@@ -520,7 +520,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     vendorModalInvoker = document.activeElement;
     document.getElementById('modalVendorName').value = name;
     document.getElementById('modalVendorCategory').value = category;
-    document.getElementById('modalTitle').textContent = 'Request Info \u2014 ' + name;
+    document.getElementById('modalTitle').textContent = 'Request Info: ' + name;
     document.getElementById('modalFormWrapper').style.display = 'block';
     document.getElementById('modalSuccess').style.display = 'none';
     document.getElementById('vendorRequestForm').reset();
@@ -598,7 +598,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       document.getElementById('modalFormWrapper').style.display = 'none';
       document.getElementById('modalSuccess').style.display = 'block';
     }).catch(function() {
-      showFormError(form, 'Something went wrong — please try again, or call/text (315) 221-4857.');
+      showFormError(form, 'Something went wrong. Please try again, or call/text (315) 221-4857.');
     });
   });
 
@@ -621,7 +621,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     if(!fd.get('full-name')||!fd.get('business-name')||!fd.get('phone')||!fd.get('email')){alert('Please fill in all required fields.');return;}
     fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()})
     .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);form.style.display='none';document.getElementById('partnerInquirySuccess').style.display='block';})
-    .catch(function(){alert('Something went wrong — please try again, or call/text (315) 221-4857.');});
+    .catch(function(){alert('Something went wrong. Please try again, or call/text (315) 221-4857.');});
   }
 
   // Partner application form — submit via fetch (no page reload)
@@ -638,7 +638,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       document.getElementById('partnerFormWrapper').style.display = 'none';
       document.getElementById('partnerSuccess').style.display = 'block';
     }).catch(function() {
-      showFormError(form, 'Something went wrong — please try again, or call/text (315) 221-4857.');
+      showFormError(form, 'Something went wrong. Please try again, or call/text (315) 221-4857.');
     });
   });
 </script>
