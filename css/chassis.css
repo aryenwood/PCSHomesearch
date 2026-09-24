@@ -207,6 +207,10 @@ footer span.tag { margin-left: auto; letter-spacing: 0.12em; text-transform: upp
   .resolve a { grid-template-columns: 1fr; padding-inline: 10px; }
   .resolve .call { grid-column: 1; grid-row: auto; margin-top: 6px; }
   .resolve .call.go { display: none; }
+  /* phones get no hover: the arrow rides the title and touches tint the row */
+  .resolve .towns::after { content: " \2192"; color: var(--gold); font-weight: 700; }
+  .resolve a:active { background: rgba(217,180,91,0.12); }
+  .resolve a:active::before { width: 4px; }
   .dist-row { grid-template-columns: 1fr; padding-inline: 10px; }
   .dist-row .pct { grid-column: 1; grid-row: auto; text-align: left; margin-top: 10px; }
   .right-row { grid-template-columns: 40px 1fr; gap: 12px; }
