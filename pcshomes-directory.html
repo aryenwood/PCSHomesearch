@@ -67,30 +67,58 @@
     details.cat { border-bottom: 1px solid var(--rule); }
     details.cat:first-of-type { border-top: 2px solid var(--navy); }
     details.cat > summary { list-style: none; cursor: pointer; position: relative; display: flex; align-items: baseline; gap: 10px;
-      min-height: 60px; padding: 18px 48px 16px 4px; font: 700 19px 'DM Sans', sans-serif; color: var(--navy); }
+      min-height: 60px; padding: 18px 48px 16px 0; font: 700 19px 'DM Sans', sans-serif; color: var(--navy); }
     details.cat > summary small { font: 600 var(--t-xs) 'DM Sans', sans-serif; color: var(--muted); }
-    details.cat > summary::after { color: var(--gold); right: 8px; }
+    details.cat > summary::after { color: var(--gold); right: 2px; }
     .cat-body { padding: 0 0 18px; }
-    .cat-more { margin-top: 12px; min-height: 48px; padding: 0 20px; border-radius: 9px; border: 1.5px solid var(--rule-strong);
+    .cat-more { display: block; width: 100%; margin-top: 14px; min-height: 48px; padding: 0 20px; border-radius: 9px; border: 1.5px solid var(--rule-strong);
       background: var(--card); color: var(--navy); font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; }
 
     .crisis-skip { margin: 0 0 10px; }
+    #help-now.plate { margin: 68px 0 64px; }
+    /* the unit desk list is a reference list: tighter rows and steps than the featured rows above it */
+    #unit-desks .right-row { grid-template-columns: 32px 1fr; gap: 10px; padding: 16px 0 14px; }
+    #unit-desks .right-row .n { font-size: var(--t-lg); }
+    #unit-desks .right-row h3 { font: 700 var(--t-m)/1.35 'DM Sans', sans-serif; margin-bottom: 4px; }
+    #unit-desks .right-row p { font-size: var(--t-m); }
+    #unit-desks .dir-row { padding: 14px 0 12px; }
+    #unit-desks .dir-row h3 { font: 700 var(--t-m)/1.35 'DM Sans', sans-serif; }
+    #unit-desks .dir-row .use { font-size: var(--t-s); margin-top: 3px; }
+    #unit-desks .dir-acts { margin-top: 10px; }
+    #unit-desks .dir-group-h { line-height: 1.25; }
+    #other-units { border-top: 0; }
+    .dir-more .dir-verified { font-size: var(--t-s); }
+    #command, #browse { padding: 0; }
+    #browse { margin-top: 64px; }
+    .dir-count:empty { display: none; }
     .crisis-skip a { display: inline-flex; align-items: center; min-height: 44px; color: var(--err); font: 700 var(--t-s) 'DM Sans', sans-serif; text-decoration: underline; text-underline-offset: 3px; }
     /* result groups + rows */
     .dir-group-h { font-family: 'Libre Baskerville', serif; font-size: 25px; font-weight: 700; color: var(--navy);
                    margin: 46px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
-    .dir-row { padding: 20px 2px 18px; border-bottom: 1px solid var(--rule); }
+    .dir-row { padding: 18px 0 16px; border-bottom: 1px solid var(--rule); }
     .dir-row h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3; }
     .dir-row .use { font-size: var(--t-m); color: var(--ink); margin: 6px 0 0; max-width: 46em; }
-    .dir-row .meta { font-size: var(--t-xs); color: var(--muted); margin-top: 6px; }
-    .dir-row .meta b { color: var(--steel); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--t-2xs); }
+    .dir-row .meta { font-size: var(--t-s); color: var(--ink); margin-top: 10px; }
+    .dir-row .meta b { color: var(--steel); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--t-xs); }
     .dir-row .rnote { font-size: var(--t-s); color: var(--ink); font-style: italic; margin-top: 8px; max-width: 46em; }
-    .dir-acts { display: flex; gap: 8px 10px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
-    .dir-acts a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 9px;
-                  font-size: var(--t-s); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
+    /* buttons in a row are always equal width: halves on a phone, a fixed column on wider screens */
+    .dir-acts { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 10px; margin-top: 12px; }
+    .dir-acts a, .dir-acts button { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 12px;
+                  border-radius: 9px; background: none; font: 700 var(--t-s) 'DM Sans', sans-serif; text-decoration: none;
+                  white-space: nowrap; cursor: pointer; font-variant-numeric: tabular-nums; }
+    .dir-acts-2 { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
+    .dir-acts-2 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+    @media (min-width: 561px) {
+      .dir-acts { grid-auto-columns: 210px; justify-content: start; }
+      .dir-acts-2 { grid-template-columns: repeat(2, 210px); }
+      .dir-acts-2 > :last-child:nth-child(odd) { grid-column: auto; }
+    }
+    .dir-more { padding-top: 2px; }
+    .dir-more[hidden] { display: none; }
     .dir-acts .call { background: var(--navy); color: #fff; }
     .dir-acts .call:hover { background: var(--gold-bright); color: var(--plate-deep); }
     .dir-acts .alt { border: 1px solid var(--rule-strong); color: var(--navy); }
+    .dir-acts .call { border: 1px solid var(--navy); }
     .dir-acts .alt:hover { border-color: var(--gold-bright); }
     .dir-verified { font-size: var(--t-xs); color: var(--muted); margin-top: 10px; }
     .dir-verified a { color: var(--gold); font-weight: 700; text-decoration: none; display: inline-block; padding: 8px 2px; margin: -8px -2px; }
@@ -147,11 +175,11 @@
 </div></header>
 
 <!-- SEARCH: the front door. Results appear right under the box; nothing renders until asked. -->
-<section id="search" style="padding:0 0 6px;"><div class="wrap" style="max-width:800px;">
+<section id="search" style="padding:0;"><div class="wrap" style="max-width:800px;">
   <p class="crisis-skip"><a href="#help-now">In crisis? The 24/7 lines are right below&nbsp;↓</a></p>
   <div class="search-wrap" role="search">
     <input type="search" class="dir-search" id="dirSearch" aria-label="Search the directory"
-           placeholder='Try "daycare," "divorce," or "2-14"' oninput="dirFilter()"/>
+           placeholder='Try "daycare," "divorce," or "2-14"' oninput="dirInput()"/>
   </div>
   <p class="dir-count" id="dirCount" role="status" aria-live="polite"></p>
   <p class="dir-count" id="dirHint" style="display:none;"></p>
@@ -193,31 +221,31 @@
   <p class="eyebrow rv">Your soldier's unit</p>
   <h2 class="rv">Reach your soldier's <em>command.</em></h2>
   <p class="sub rv">Can't reach your soldier? These three cover most situations, any hour. Every brigade's 24/7 desk is in the unit list below them.</p>
-  <div class="dir-row"><h3>Just arrived? 10th Mountain Reception Company</h3><p class="use">Soldiers in-processing at Fort Drum report here first. If you can't reach your newly arrived soldier, this desk is open around the clock.</p><div class="dir-acts"><a class="call" href="tel:+13157740165">Open 24/7 (315) 774-0165</a></div></div>
-  <div class="dir-row"><h3>Don't know the unit, or no answer?</h3><p class="use">Fort Drum Installation Operations is staffed around the clock and can route you.</p><div class="dir-acts"><a class="call" href="tel:+13157723632">Any hour (315) 772-3632</a><a class="alt" href="tel:+13157728620">(315) 772-8620</a></div></div>
-  <div class="dir-row"><h3>Family emergency while they're deployed or in the field</h3><p class="use">The Red Cross Hero Care Center is the Army's official channel for emergency messages: a death, a serious illness, a birth.</p><div class="dir-acts"><a class="call" href="tel:+18772727337">24/7 877-272-7337</a></div></div>
+  <div class="dir-row"><h3>Just arrived? 10th Mountain Reception Company</h3><p class="use">Soldiers in-processing at Fort Drum report here first. If you can't reach your newly arrived soldier, this desk is open around the clock.</p><div class="dir-acts"><a class="call" href="tel:+13157740165" aria-label="Call Just arrived? 10th Mountain Reception Company, (315) 774-0165">(315) 774-0165</a></div></div>
+  <div class="dir-row"><h3>Don't know the unit, or no answer?</h3><p class="use">Fort Drum Installation Operations is staffed around the clock and can route you.</p><div class="dir-acts"><a class="call" href="tel:+13157723632" aria-label="Call Don&#39;t know the unit, or no answer?, (315) 772-3632">(315) 772-3632</a><a class="alt" href="tel:+13157728620" aria-label="Call, other number, Don&#39;t know the unit, or no answer?, (315) 772-8620">(315) 772-8620</a></div></div>
+  <div class="dir-row"><h3>Family emergency while they're deployed or in the field</h3><p class="use">The Red Cross Hero Care Center is the Army's official channel for emergency messages: a death, a serious illness, a birth.</p><div class="dir-acts"><a class="call" href="tel:+18772727337" aria-label="Call Family emergency while they&#39;re deployed or in the field, 877-272-7337">877-272-7337</a></div></div>
   <details class="dx-big" id="unit-desks">
     <summary>Open the unit desk list<span>Every brigade and unit on post, by battalion, plus who to call first</span></summary>
     <div class="dx-big-body">
-  <div class="right-row"><span class="n">01</span><div><h3>Start with the company</h3><p>Your soldier's first sergeant, company commander, and SFRG (Soldier and Family Readiness Group) leader are the fastest route. Get their numbers from your soldier or the SFRG now, before you need them.</p></div></div>
-  <div class="right-row"><span class="n">02</span><div><h3>After hours, or no answer: the staff duty desk</h3><p>Find your soldier's battalion below and call that brigade's desk, 24/7. Have ready: their full name, rank, company and battalion, your relationship, and a number to call you back.</p></div></div>
-  <div class="right-row"><span class="n">03</span><div><h3>A family emergency while they're deployed or in the field</h3><p>Use the Red Cross Hero Care Center, <a href="tel:+18772727337" style="color:var(--navy);font-weight:700;">877-272-7337</a>, 24/7. It's the Army's official channel for emergency messages about a death, a serious illness, or a birth.</p></div></div>
-  <div class="right-row"><span class="n">04</span><div><h3>Not safe at home?</h3><p>Go to <a href="#help-now" style="color:var(--navy);font-weight:700;">Help Now</a> first. The crisis lines come before the chain of command.</p></div></div>
-  <h3 class="dir-group-h" style="margin-top:40px;">Find the desk by battalion</h3>
-  <div class="dir-row"><h3>1st Mobile Brigade Combat Team</h3><p class="use">1-32 Infantry · 2-22 Infantry · 1-87 Infantry · HHC · Company M · 293rd Signal</p><div class="dir-acts"><a class="call" href="tel:+13157724228">Staff duty (315) 772-4228</a></div></div>
-  <div class="dir-row"><h3>2nd Mobile Brigade Combat Team</h3><p class="use">2-14 Infantry · 2-87 Infantry · 4-31 Infantry · HHC · Company M · 94th Signal</p><div class="dir-acts"><a class="call" href="tel:+13157742199">Staff duty (315) 774-2199</a><a class="alt" href="tel:+13157722199">(315) 772-2199</a></div><p class="rnote">Army pages list two numbers for this desk. If one doesn't connect, try the other.</p></div>
-  <div class="dir-row"><h3>10th Combat Aviation Brigade</h3><p class="use">1-10 Attack Recon (Dragons) · 2-10 Assault Helicopter (Knighthawks) · 3-10 General Support (Phoenix) · 277th Aviation Support (Eagles) · HHC (Renegades)</p><div class="dir-acts"><a class="call" href="tel:+13157741100">Staff duty (315) 774-1100</a></div></div>
-  <div class="dir-row"><h3>Division Artillery (DIVARTY)</h3><p class="use">2-15 Field Artillery · 5-25 Field Artillery · 3-6 Field Artillery</p><div class="dir-acts"><a class="call" href="tel:+13157724116">Staff duty (315) 772-4116</a></div></div>
-  <div class="dir-row"><h3>Division Sustainment Brigade</h3><p class="use">10th, 210th &amp; 710th Support Battalions · 548th Support Battalion HHC · Headquarters and Special Troops Battalion · 226th Signal · 510th Personnel Co. · 52nd Personnel Det.</p><div class="dir-acts"><a class="call" href="tel:+13157728254">Staff duty (315) 772-8254</a></div></div>
-  <div class="dir-row"><h3>Headquarters and Headquarters Battalion (HHBN)</h3><p class="use">Headquarters Support Company · Signal, Intelligence and Sustainment Company</p><div class="dir-acts"><a class="call" href="tel:+13157728120">Staff duty (315) 772-8120</a></div></div>
-  <div class="dir-row"><h3>41st Engineer Battalion</h3><p class="use">63rd, 84th, 513th &amp; 642nd Engineer Companies · HHC · Forward Support Company</p><div class="dir-acts"><a class="call" href="tel:+13157725100">Staff duty (315) 772-5100</a></div></div>
-  <h3 class="dir-group-h" style="margin-top:40px;font-size:21px;">Other units on post</h3>
-  <p class="rnote" style="margin-top:10px;">These offices keep weekday hours. After hours, call Installation Operations (above); it is staffed around the clock.</p>
-  <div class="dir-row"><h3>Mountain Training Group</h3><p class="use">9 a.m.-5 p.m. Monday-Friday</p><div class="dir-acts"><a class="call" href="tel:+13157721974">(315) 772-1974</a></div></div>
-  <div class="dir-row"><h3>NCO Academy (BLC and other courses)</h3><p class="use">For a soldier attending a course · 9 a.m.-5 p.m. Monday-Saturday</p><div class="dir-acts"><a class="call" href="tel:+13157788187">(315) 778-8187</a></div></div>
-  <div class="dir-row"><h3>10th Mountain Division Band</h3><p class="use">Band Operations · 9:30 a.m.-4:30 p.m. Monday-Friday</p><div class="dir-acts"><a class="call" href="tel:+13157722308">(315) 772-2308</a></div></div>
+  <div class="right-row"><span class="n">01</span><div><h3>Start with the company</h3><p>Your soldier's first sergeant, company commander, or SFRG (Soldier and Family Readiness Group) leader is the fastest route. Save their numbers now, before you need them.</p></div></div>
+  <div class="right-row"><span class="n">02</span><div><h3>After hours or no answer: staff duty</h3><p>Find your soldier's battalion below and call that brigade's 24/7 desk. Have ready: their full name, rank, company, battalion, and your callback number.</p></div></div>
+  <div class="right-row"><span class="n">03</span><div><h3>Not safe at home?</h3><p>Use <a href="#help-now" style="color:var(--navy);font-weight:700;">Help Now</a> first. Crisis lines come before the chain of command.</p></div></div>
+  <h3 class="dir-group-h" style="margin-top:40px;">Staff duty desks: find your soldier's battalion</h3>
+  <div class="dir-row"><h3>1st Mobile Brigade Combat Team</h3><p class="use">1-32 Infantry · 2-22 Infantry · 1-87 Infantry · HHC · Company M · 293rd Signal</p><div class="dir-acts"><a class="call" href="tel:+13157724228" aria-label="Call 1st Mobile Brigade Combat Team, (315) 772-4228">(315) 772-4228</a></div></div>
+  <div class="dir-row"><h3>2nd Mobile Brigade Combat Team</h3><p class="use">2-14 Infantry · 2-87 Infantry · 4-31 Infantry · HHC · Company M · 94th Signal</p><div class="dir-acts"><a class="call" href="tel:+13157742199" aria-label="Call 2nd Mobile Brigade Combat Team, (315) 774-2199">(315) 774-2199</a><a class="alt" href="tel:+13157722199" aria-label="Call, other number, 2nd Mobile Brigade Combat Team, (315) 772-2199">(315) 772-2199</a></div><p class="rnote">Army pages list two numbers for this desk. If one doesn't connect, try the other.</p></div>
+  <div class="dir-row"><h3>10th Combat Aviation Brigade</h3><p class="use">1-10 Attack Recon (Dragons) · 2-10 Assault Helicopter (Knighthawks) · 3-10 General Support (Phoenix) · 277th Aviation Support (Eagles) · HHC (Renegades)</p><div class="dir-acts"><a class="call" href="tel:+13157741100" aria-label="Call 2nd Mobile Brigade Combat Team, (315) 774-1100">(315) 774-1100</a></div></div>
+  <div class="dir-row"><h3>Division Artillery (DIVARTY)</h3><p class="use">2-15 Field Artillery · 5-25 Field Artillery · 3-6 Field Artillery</p><div class="dir-acts"><a class="call" href="tel:+13157724116" aria-label="Call Division Artillery (DIVARTY), (315) 772-4116">(315) 772-4116</a></div></div>
+  <div class="dir-row"><h3>Division Sustainment Brigade</h3><p class="use">10th, 210th &amp; 710th Support Battalions · 548th Support Battalion HHC · Headquarters and Special Troops Battalion · 226th Signal · 510th Personnel Co. · 52nd Personnel Det.</p><div class="dir-acts"><a class="call" href="tel:+13157728254" aria-label="Call Division Sustainment Brigade, (315) 772-8254">(315) 772-8254</a></div></div>
+  <div class="dir-row"><h3>Headquarters and Headquarters Battalion (HHBN)</h3><p class="use">Headquarters Support Company · Signal, Intelligence and Sustainment Company</p><div class="dir-acts"><a class="call" href="tel:+13157728120" aria-label="Call Headquarters and Headquarters Battalion (HHBN), (315) 772-8120">(315) 772-8120</a></div></div>
+  <div class="dir-row"><h3>41st Engineer Battalion</h3><p class="use">63rd, 84th, 513th &amp; 642nd Engineer Companies · HHC · Forward Support Company</p><div class="dir-acts"><a class="call" href="tel:+13157725100" aria-label="Call 41st Engineer Battalion, (315) 772-5100">(315) 772-5100</a></div></div>
+  <details class="cat" id="other-units"><summary>Other units on post <small>4</small></summary><div class="cat-body">
+  <p class="rnote" style="margin-top:0;">These offices keep weekday hours. After hours, call Installation Operations (above); it is staffed around the clock.</p>
+  <div class="dir-row"><h3>Mountain Training Group</h3><p class="use">9 a.m.-5 p.m. Monday-Friday</p><div class="dir-acts"><a class="call" href="tel:+13157721974" aria-label="Call Mountain Training Group, (315) 772-1974">(315) 772-1974</a></div></div>
+  <div class="dir-row"><h3>NCO Academy (BLC and other courses)</h3><p class="use">For a soldier attending a course · 9 a.m.-5 p.m. Monday-Saturday</p><div class="dir-acts"><a class="call" href="tel:+13157788187" aria-label="Call NCO Academy (BLC and other courses), (315) 778-8187">(315) 778-8187</a></div></div>
+  <div class="dir-row"><h3>10th Mountain Division Band</h3><p class="use">Band Operations · 9:30 a.m.-4:30 p.m. Monday-Friday</p><div class="dir-acts"><a class="call" href="tel:+13157722308" aria-label="Call 10th Mountain Division Band, (315) 772-2308">(315) 772-2308</a></div></div>
   <div class="dir-row"><h3>20th Air Support Operations Squadron (Air Force)</h3><p class="use">7:30 a.m.-4:30 p.m. Monday-Friday · the squadron has no staff duty desk</p><div class="dir-acts"><a class="call" href="tel:+13157726958">(315) 772-6958</a></div><p class="rnote">Families of airmen in the 18th Combat Weather Squadron detachment: its only published lines are forecaster desks, so start with Installation Operations.</p></div>
 
+  </div></details>
   <p class="dir-verified" style="margin-top:18px;">These are the numbers the Army publishes on its <a href="https://home.army.mil/drum/units-tenants/10th-mountain-division-li" target="_blank" rel="noopener">Fort Drum unit pages ↗</a>, verified Sep 24, 2026. Units reorganize as the Army transforms, so if a number fails, the unit page is the authority. The division's 3rd Brigade Combat Team is stationed at Fort Johnson, Louisiana: (337) 531-0517.</p>
     </div>
   </details>
@@ -362,36 +390,55 @@ function score(r, terms, hay) {
   return s;
 }
 
+var ROWSEQ = 0;
 function rowHtml(r) {
   var meta = [];
   if (r.hours) meta.push("<b>Hours</b> " + esc(r.hours));
   if (r.elig) meta.push("<b>Who</b> " + esc(r.elig));
   if (r.cost) meta.push("<b>Cost</b> " + esc(r.cost));
-  var acts = [];
-  if (r.phone) acts.push('<a class="call" href="' + telHref(r.phone) + '">Call ' + esc(r.phone) + "</a>");
-  if (r.phone2 && /\d{3}/.test(r.phone2)) acts.push('<a class="alt" href="' + telHref(r.phone2) + '">' + esc(r.phone2) + "</a>");
-  if (r.sms && /\d/.test(r.sms)) { var sd = String(r.sms).replace(/[^\d]/g, ""); acts.push('<a class="alt" href="sms:' + (sd.length === 10 ? "+1" + sd : sd) + '">Text</a>'); }
+  var primary = "", extra = [];
+  if (r.phone) primary = '<a class="call" href="' + telHref(r.phone) + '" aria-label="Call ' + esc(r.name) + ", " + esc(r.phone) + '">' + esc(r.phone) + "</a>";
+  if (r.phone2 && /\d{3}/.test(r.phone2)) extra.push('<a class="alt" href="' + telHref(r.phone2) + '">' + esc(r.phone2) + "</a>");
+  if (r.sms && /\d/.test(r.sms)) { var sd = String(r.sms).replace(/[^\d]/g, ""); extra.push('<a class="alt" href="sms:' + (sd.length === 10 ? "+1" + sd : sd) + '">Text</a>'); }
   if (r.address || r.city) {
     var q = encodeURIComponent([r.name, r.address, r.city, "NY"].filter(Boolean).join(", "));
-    acts.push('<a class="alt" href="https://www.google.com/maps/search/?api=1&query=' + q + '" target="_blank" rel="noopener">Directions</a>');
+    var dirs = '<a class="' + (primary ? "alt" : "call") + '" href="https://www.google.com/maps/search/?api=1&query=' + q + '" target="_blank" rel="noopener">Directions</a>';
+    if (primary) extra.push(dirs); else primary = dirs;
   }
   var ver = "";
   if (r.verified) {
     ver = "Verified " + fmtDate(r.verified);
     if (r.source) ver += ' · <a href="' + esc(r.source) + '" target="_blank" rel="noopener">Source: ' + esc(r.source_name || "official site") + " ↗</a>";
   }
+  var panel = (meta.length ? '<p class="meta">' + meta.join(" &nbsp;·&nbsp; ") + "</p>" : "")
+    + (r.note ? '<p class="rnote">' + esc(r.note) + "</p>" : "")
+    + (extra.length ? '<div class="dir-acts dir-acts-2">' + extra.join("") + "</div>" : "")
+    + (ver ? '<p class="dir-verified">' + ver + "</p>" : "");
+  var id = "dm-" + (++ROWSEQ);
   return '<div class="dir-row" data-id="' + esc(r.id) + '">'
     + "<h3>" + esc(r.name) + "</h3>"
     + '<p class="use">' + esc(r.use) + "</p>"
-    + (meta.length ? '<p class="meta">' + meta.join(" &nbsp;·&nbsp; ") + "</p>" : "")
-    + (r.note ? '<p class="rnote">' + esc(r.note) + "</p>" : "")
-    + (acts.length ? '<div class="dir-acts">' + acts.join("") + "</div>" : "")
-    + (ver ? '<p class="dir-verified">' + ver + "</p>" : "")
+    + '<div class="dir-acts">' + primary
+    + (panel ? '<button type="button" class="alt dir-more-btn" aria-expanded="false" aria-controls="' + id + '">Details</button>' : "")
+    + "</div>"
+    + (panel ? '<div class="dir-more" id="' + id + '" hidden>' + panel + "</div>" : "")
     + "</div>";
 }
+document.addEventListener("click", function (e) {
+  var btn = e.target.closest(".dir-more-btn"); if (!btn) return;
+  var panel = document.getElementById(btn.getAttribute("aria-controls"));
+  var open = btn.getAttribute("aria-expanded") !== "true";
+  panel.hidden = !open;
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
+  btn.textContent = open ? "Hide details" : "Details";
+});
 
-function render(list) {
-  document.getElementById("dirResults").innerHTML = list.map(rowHtml).join("");
+var RES_CAP = 6, lastList = [];
+function render(list, all) {
+  lastList = list;
+  var shown = all ? list : list.slice(0, RES_CAP);
+  document.getElementById("dirResults").innerHTML = shown.map(rowHtml).join("")
+    + (list.length > shown.length ? '<button type="button" class="cat-more" id="dirShowAll">Show all ' + list.length + " matches</button>" : "");
   document.getElementById("dirEmpty").style.display = list.length ? "none" : "block";
   document.getElementById("dirCount").textContent = list.length
     ? list.length + (list.length === 1 ? " match" : " matches") : "No matches";
@@ -409,9 +456,16 @@ function setHint(html) {
   var h = document.getElementById("dirHint");
   h.innerHTML = html || ""; h.style.display = html ? "block" : "none";
 }
+var dirTimer = null;
+function dirInput() { clearTimeout(dirTimer); dirTimer = setTimeout(dirFilter, 150); }
+document.getElementById("dirResults").addEventListener("click", function (e) {
+  if (e.target.id === "dirShowAll") render(lastList, true);
+});
 function dirFilter() {
   var q = document.getElementById("dirSearch").value.trim().toLowerCase();
   setHint("");
+  // one character matches nearly everything; wait for a second
+  if (q.replace(/[^a-z0-9]/g, "").length < 2) { clearResults(); return; }
   // a generic "reach the command" search with no specific unit named: show every desk in
   // canonical order rather than letting one brigade win a tie
   if (q && GENERIC_CMD.test(q)) {
@@ -426,7 +480,7 @@ function dirFilter() {
           var rank = function (r) { return r.id === "unit-086" ? 999 : r.id === "unit-087" ? 0 : parseInt(r.id.split("-")[1], 10); };
           return rank(a) - rank(b);
         });
-      render(units);
+      render(units, true);
       setHint('Find your soldier\'s battalion below, then call that brigade\'s 24/7 desk. <a href="#unit-desks" style="color:var(--gold);font-weight:700;text-decoration:none;">Who to call first, and the full unit list ↓</a>');
       return;
     }

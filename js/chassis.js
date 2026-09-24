@@ -68,9 +68,26 @@ document.documentElement.classList.add('js');
         ctx.stroke();
       }
     }
-    function loop(now) { t = now; draw(); if (running) raf = requestAnimationFrame(loop); }
+    // ~30fps is plenty for a drift measured in tens of seconds, and halves the phone's paint work
+    var last = 0;
+    function loop(now) {
+      if (now - last >= 33) { last = now; t = now; draw(); }
+      if (running) raf = requestAnimationFrame(loop);
+    }
     size();
-    window.addEventListener('resize', function () { size(); draw(); }, { passive: true });
+    // Re-measure only when the plate itself changes size (an expander opening inside it).
+    // window resize fires on every iPhone toolbar show/hide while scrolling; reallocating
+    // the canvas there makes the plate flicker.
+    if ('ResizeObserver' in window) {
+      var lastW = cv.clientWidth, lastH = cv.clientHeight;
+      new ResizeObserver(function () {
+        if (cv.clientWidth === lastW && cv.clientHeight === lastH) return;
+        lastW = cv.clientWidth; lastH = cv.clientHeight;
+        size(); draw();
+      }).observe(cv);
+    } else {
+      window.addEventListener('resize', function () { size(); draw(); }, { passive: true });
+    }
     if (reduce) { draw(); }
     else if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
