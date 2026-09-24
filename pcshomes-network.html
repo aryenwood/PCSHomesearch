@@ -67,7 +67,7 @@
     .vendor-tag { background: var(--gold-tint); color: var(--gold); font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
     .vendor-desc { font-size: var(--t-s); color: var(--muted); line-height: 1.65; margin-bottom: 20px; flex: 1; }
     .vendor-cta { display: block; width: 100%; padding: 13px; background: var(--navy); color: #fff; border: none; border-radius: 9px;
-      font: 700 14px 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, color .2s; text-align: center; min-height: 44px; }
+      font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, color .2s; text-align: center; min-height: 44px; }
     .vendor-cta:hover { background: var(--gold-bright); color: var(--plate-deep); }
 
     /* modals — light surfaces; the chassis .field (dark, self-labeled) is reset here */
@@ -90,12 +90,12 @@
     .modal-input:focus, .pim-input:focus { border-color: var(--gold); }
     .modal-input::placeholder, .pim-input::placeholder { color: rgba(43,53,71,0.35); }
     textarea.modal-input, textarea.pim-input { resize: vertical; min-height: 90px; }
-    .modal-submit { background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 15px; font: 700 15px 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, color .2s; margin-top: 4px; width: 100%; min-height: 46px; }
+    .modal-submit { background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 15px; font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, color .2s; margin-top: 4px; width: 100%; min-height: 46px; }
     .modal-submit:hover { background: var(--gold-bright); color: var(--plate-deep); }
     .modal-success { display: none; text-align: center; padding: 24px 0; }
     .modal-success .check-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(47,107,79,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
     .modal-success h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
-    .modal-success p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .modal-success p { font-size: var(--t-s); color: var(--muted); line-height: 1.6; margin: 0; }
     .pim-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 520px) { .pim-row { grid-template-columns: 1fr; } }
     select.pim-input, .partner-select { appearance: none; cursor: pointer; background-repeat: no-repeat; background-position: right 14px center; }
@@ -113,12 +113,12 @@
     .partner-select option { background: var(--plate-deep); color: var(--plate-ink); }
     textarea.partner-input { resize: vertical; min-height: 100px; }
     .partner-submit { background: var(--gold-bright); color: var(--plate-deep); border: none; border-radius: 9px; padding: 16px;
-      font: 700 15px 'DM Sans', sans-serif; cursor: pointer; transition: filter .2s; width: 100%; min-height: 46px; }
+      font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; transition: filter .2s; width: 100%; min-height: 46px; }
     .partner-submit:hover { filter: brightness(1.08); }
     .partner-success { display: none; text-align: center; padding: 32px 0; }
     .partner-success .check-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(217,180,91,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
     .partner-success h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 0 0 8px; }
-    .partner-success p { font-size: 14px; color: var(--plate-sub); line-height: 1.6; margin: 0; }
+    .partner-success p { font-size: var(--t-s); color: var(--plate-sub); line-height: 1.6; margin: 0; }
 
     /* vendor card reveal (renderer attaches these classes) */
     .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
@@ -150,15 +150,14 @@
       input, select, textarea { font-size: 16px !important; }
       .modal-overlay { padding: 12px; }
       .modal-card { margin: 0; max-height: calc(100dvh - 24px); padding: 24px; }
-      .category-badge { font-size: 13px; letter-spacing: .5px; }
+      .category-badge { font-size: 15px; letter-spacing: .5px; }
       .partner-form { grid-template-columns: 1fr; }
       .partner-form .full-width { grid-column: 1; }
-      [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"],
-      [style*="font-size:12px"], [style*="font-size:12.5px"] { font-size: 13px !important; }
-      .vendor-company, .vendor-trusted { font-size: 13px; }
-      .vendor-tag { font-size: 13px; letter-spacing: .5px; }
-      .field-label { font-size: 13px; }
-      .form-reassure { font-size: 13px; }
+      .vendor-company { font-size: 15px; }
+      .vendor-trusted { font-size: 17px; }
+      .vendor-tag { font-size: 15px; letter-spacing: .5px; }
+      .field-label { font-size: 15px; }
+      .form-reassure { font-size: 17px; }
       form a[href^="tel:"], .plate a[href^="tel:"] { display: inline-block; padding: 12px 8px; margin: -6px 0; }
       .featured-agent .vendor-cta { flex: 1 1 100% !important; width: 100%; }
       .featured-agent a[href^="tel:"] { flex: 1 1 100%; }

@@ -18,6 +18,8 @@
 body { background: var(--paper); color: var(--ink); margin: 0;
        font: 400 var(--t-body)/1.7 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
+/* a bare phone-number link never breaks mid-number (row-style tel links hold child spans and wrap normally) */
+a[href^="tel:"]:not(:has(*)) { white-space: nowrap; }
 img { max-width: 100%; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .plate :focus-visible { outline-color: var(--gold-bright); }
@@ -61,7 +63,8 @@ h1 em { font-weight: 400; color: var(--gold); }
 .hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/4.6; }
 .chip, figure figcaption { position: absolute; left: 14px; bottom: 14px; background: rgba(251,247,239,0.93); color: var(--navy);
         font-size: var(--t-xs); font-weight: 700; padding: 9px 14px; border-radius: 100px; }
-.proof { display: flex; gap: 10px 28px; flex-wrap: wrap; margin-top: 28px; padding: 14px 0;
+/* one claim per line: a wrapped row leaves a lone claim under a pair */
+.proof { display: grid; gap: 10px; margin-top: 28px; padding: 14px 0;
          border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); }
 .proof span { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--steel); }
 .proof span b { color: var(--navy); }
@@ -127,7 +130,9 @@ h2 em { font-weight: 400; font-style: italic; color: var(--gold); }
 
 /* ── facts strip: the ledger numerals as a row of answers ───── */
 .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--navy); border-bottom: 1px solid var(--rule); }
-.facts > div { padding: 22px 18px 20px 14px; border-right: 1px solid var(--rule); min-width: 0; }
+.facts > div { padding: 22px 18px 20px 14px; border-right: 1px solid var(--rule); min-width: 0;
+                /* label, value and note share rows across the set, so a two-line label never drops its neighbour's number */
+                display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
 .facts > div:last-child { border-right: none; }
 .facts .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 .facts .val { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); color: var(--navy); margin-top: 2px; font-variant-numeric: tabular-nums; line-height: 1.25; overflow-wrap: anywhere; }
@@ -178,6 +183,9 @@ h2 em { font-weight: 400; font-style: italic; color: var(--gold); }
 .ask small, .plate form ~ small, .form-note { display: block; color: rgba(246,241,230,0.5); font-size: var(--t-xs); margin-top: 12px; }
 .form-note a { color: var(--gold-bright); font-weight: 700; display: inline-block; padding: 10px 2px; margin: -10px -2px; text-decoration: none; }
 
+/* phone tab bar: five equal slots, so the icons sit evenly whatever the label length */
+.mobile-tab-bar .tab-item { flex: 1 1 0; min-width: 0; padding-inline: 2px; white-space: nowrap; }
+
 /* ── footer ─────────────────────────────────────────────────── */
 footer { margin-top: 84px; border-top: 1px solid var(--rule); padding: 32px 0 58px; }
 footer .f-in { max-width: 1100px; margin: 0 auto; padding-inline: 20px; display: flex; gap: 18px; flex-wrap: wrap; align-items: baseline; }
@@ -203,6 +211,23 @@ footer span.tag { margin-left: auto; letter-spacing: 0.12em; text-transform: upp
   .plate-ask { grid-template-columns: 1fr; gap: var(--s-4); }
 }
 @media (max-width: 780px) {
+  /* phone type gate (owner, Sep 24): reading text >= 17px at weight 500, labels >= 15px,
+     and display type a step smaller so headlines stop running edge to edge */
+  :root { --t-2xs: 15px; --t-xs: 17px; --t-s: 17px; --t-m: 18px; }
+  body { font-weight: 500; }
+  .eyebrow, .proof span { font-size: 15px; }
+  .mobile-tab-bar .tab-item { font-size: 12px; }
+  /* older sections still size text inline: lift it to the phone floor */
+  [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"], [style*="font-size:12px"], [style*="font-size:12.5px"], [style*="font-size:13px"], [style*="font-size:13.5px"], [style*="font-size:14px"], [style*="font-size:15px"] { font-size: 17px !important; }
+  [style*="font-size:10px"][style*="uppercase"], [style*="font-size:10.5px"][style*="uppercase"], [style*="font-size:11px"][style*="uppercase"], [style*="font-size:12px"][style*="uppercase"], [style*="font-size:12.5px"][style*="uppercase"], [style*="font-size:13px"][style*="uppercase"], [style*="font-size:13.5px"][style*="uppercase"], [style*="font-size:14px"][style*="uppercase"], [style*="font-size:15px"][style*="uppercase"] { font-size: 15px !important; }
+  h1 { font-size: 31px; }
+  h2 { font-size: 25px; }
+  .eyebrow { letter-spacing: 0.08em; }
+  .right-row h3 { font-size: 20px; }
+  .dist-row h3 { font-size: 22px; }
+  .kicker, .ask p { font-size: 17px; }
+  .field > span { font-size: 13px; }
+  footer span.tag { font-size: 15px; }
   .hero-grid { grid-template-columns: 1fr; gap: 26px; }
   .hero-photo img { aspect-ratio: 4/3; }
   .resolve a { grid-template-columns: 1fr; padding-inline: 10px; }
@@ -220,5 +245,9 @@ footer span.tag { margin-left: auto; letter-spacing: 0.12em; text-transform: upp
   .facts > div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
   .trio { grid-template-columns: 1fr; }
   .bar-links { display: none; }
+  .bar-cta { margin-left: auto; }
+  /* footer links: two balanced columns, so no link is left alone on a last row */
+  .f-links { flex-basis: 100%; margin-left: 0; display: block; columns: 2; column-gap: 14px; }
+  .f-links a { display: block; margin: 0 -4px; padding: 10px 4px; break-inside: avoid; }
   input, select, textarea { font-size: 16px !important; }
 }

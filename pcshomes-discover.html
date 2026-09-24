@@ -116,7 +116,7 @@
     /* situation chips */
     .sit-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 44px; }
     .sit-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', sans-serif;
-                font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+                font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
                 border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color .15s, background .15s, border-color .15s; }
     .sit-chip:hover { color: var(--navy); border-color: var(--gold-bright); }
     .sit-chip.active { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
@@ -231,9 +231,6 @@
       #groceryMap { height: 380px; }
       .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 20px !important; }
       .tip a, .dt-row a, .eat-row a, .callout a, .lede a, .mo-row a { display: inline-block; padding: 11px 2px; margin: -11px -2px; }
-      [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"],
-      [style*="font-size:12px"], [style*="font-size:12.5px"] { font-size: 13px !important; }
-      .brief td small { font-size: 13px; }
     }
   </style>
 </head>
@@ -291,7 +288,7 @@
 <section class="band" id="essentials">
   <div id="groceries"></div>
   <div class="shell">
-    <div class="sec-head"><div class="sec-eyebrow">Start Here</div><h2>The essentials — on one map</h2><span>Groceries · medical · dining · storage</span></div>
+    <div class="sec-head"><div class="sec-eyebrow">Start Here</div><h2>The essentials, on one map</h2><span>Groceries · medical · dining · storage</span></div>
     <p class="lede">Everything you need in your first month, pinned. Click any pin for the name, address, tap-to-call, and directions.</p>
     <div class="map-legend">
       <span><i style="background:#C9A84C;"></i>Commissary</span>

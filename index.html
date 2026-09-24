@@ -49,7 +49,7 @@
     .stage-row::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,28,48,0) 30%, rgba(14,28,48,0.84) 100%); }
     .stage-row b { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2; color: #fff; font-size: var(--t-s); font-weight: 700; line-height: 1.3; }
     .stage-row .step { position: absolute; left: 12px; top: 12px; z-index: 2; background: rgba(251,247,239,0.93); color: var(--navy);
-                       padding: 6px 11px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+                       padding: 6px 11px; border-radius: 100px; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
     .stage-row[aria-expanded="true"] { box-shadow: 0 0 0 3px var(--gold-bright), var(--shadow-photo); transform: translateY(-3px); }
     .stage-links { display: none; margin-top: 22px; }
     .stage-links.open { display: block; }
@@ -68,7 +68,7 @@
     /* plate form success */
     .lead-success { text-align: center; padding: 24px 0; }
     .lead-success b { display: block; font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 12px 0 8px; }
-    .lead-success span { font-size: 14px; color: var(--plate-sub); }
+    .lead-success span { font-size: var(--t-s); color: var(--plate-sub); }
 
     /* mobile/desktop switches */
     .m-only { display: none; }
@@ -85,7 +85,7 @@
     .popup-close { position: absolute; top: 10px; right: 12px; background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6);
                    width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
     .popup-close:hover { background: rgba(255,255,255,0.2); }
-    .popup-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 8px; }
+    .popup-eyebrow { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 8px; }
     .popup-headline { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 8px; }
     .popup-sub { font-size: var(--t-xs); color: rgba(255,255,255,0.65); line-height: 1.6; }
     .popup-body { padding: 28px; overflow-y: auto; }
@@ -94,8 +94,8 @@
                     cursor: pointer; transition: all 0.2s; background: #fff; }
     .popup-option:hover { border-color: var(--navy); background: rgba(29,53,87,0.03); }
     .popup-option-icon { flex-shrink: 0; display: flex; }
-    .popup-option-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-    .popup-option-desc { font-size: var(--t-2xs); color: var(--muted); line-height: 1.4; }
+    .popup-option-title { font-size: var(--t-s); font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .popup-option-desc { font-size: var(--t-xs); color: var(--muted); line-height: 1.4; }
     .popup-option-arrow { margin-left: auto; font-size: 18px; color: var(--gold); flex-shrink: 0; }
     .popup-form { display: none; flex-direction: column; gap: 14px; }
     .popup-form-title { font-family: 'Libre Baskerville', serif; font-size: var(--t-m); font-weight: 700; color: var(--navy); margin-bottom: 4px; }
@@ -105,7 +105,7 @@
     .popup-form .field:focus-within { border-color: var(--gold); }
     .popup-note { font-size: var(--t-xs); color: var(--muted); line-height: 1.6; }
     .popup-btn { width: 100%; background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 14px;
-                 font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 46px; margin-top: 4px; }
+                 font-family: 'DM Sans', sans-serif; font-size: var(--t-s); font-weight: 700; cursor: pointer; min-height: 46px; margin-top: 4px; }
     .popup-btn:hover { background: var(--gold); color: #fff; }
     .popup-back { background: none; border: none; font-family: 'DM Sans', sans-serif; font-size: var(--t-2xs); color: var(--muted);
                   cursor: pointer; padding: 10px 0; margin: -10px 0 -10px; text-align: left; }
@@ -114,7 +114,7 @@
     .popup-success-title { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
     .popup-success-sub { font-size: var(--t-xs); color: var(--muted); line-height: 1.6; }
     .popup-trust { display: flex; justify-content: center; gap: 20px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
-    .popup-trust-item { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    .popup-trust-item { font-size: var(--t-xs); color: var(--muted); display: flex; align-items: center; gap: 5px; }
 
     /* mobile tab bar — the one fixed layer on phones */
     .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
@@ -197,7 +197,7 @@
 <header class="hero"><div class="hero-grid">
   <div>
     <p class="eyebrow rv">Fort Drum · 10th Mountain Division</p>
-    <h1 class="rv">Moving to Fort Drum? <em>You've got this</em> — and you've got us.</h1>
+    <h1 class="rv">Moving to Fort Drum? <em>You've got this</em>, and you've got us.</h1>
     <p class="dek rv">Boxes everywhere, partner in the field, three kids and a timeline? Every guide here is free, honest, and written for <strong>the person actually running the move.</strong></p>
     <div class="proof rv">
       <span><b>Free</b> for military families</span>
@@ -309,7 +309,7 @@
   <div class="right-row"><span class="n">02</span><div><h3>Same street, different school district</h3><p>Fort Drum spans 4 districts and the boundary lines are confusing. Confirm the district before you offer — not after.</p></div></div>
   <div class="right-row"><span class="n">03</span><div><h3>Register for CYSS childcare the day you get orders</h3><p>The waitlist runs 3–6 months. Sign up at militarychildcare.com before you arrive.</p></div></div>
   <div class="right-row"><span class="n">04</span><div><h3>NY fast-tracks military-spouse licenses</h3><p>Expedited review, a halved application fee, and a supervised 6-month temporary permit in eligible professions like nursing, teaching, and real estate. Not automatic — start the paperwork early.</p></div></div>
-  <div class="right-row"><span class="n">05</span><div><h3>NY has 3 veteran property-tax exemptions — you can claim one</h3><p>Alternative (458-a) is usually the biggest; Cold War (458-b) and Eligible Funds are the others. Pick the one that fits, stack it with STAR, and file by March 1 — none of it happens automatically.</p></div></div>
+  <div class="right-row"><span class="n">05</span><div><h3>NY has 3 veteran property-tax exemptions, and you can claim one</h3><p>Alternative (458-a) is usually the biggest; Cold War (458-b) and Eligible Funds are the others. Pick the one that fits, stack it with STAR, and file by March 1 — none of it happens automatically.</p></div></div>
   <div class="right-row"><span class="n">06</span><div><h3>Snow tires aren't optional</h3><p>140+ inches a year. Budget $400–800 for a set, and strongly consider AWD. Studded tires are legal Oct 16 – Apr 30.</p></div></div>
 </div></section>
 
