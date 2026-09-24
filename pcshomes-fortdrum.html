@@ -133,7 +133,7 @@
     .hero { background: var(--paper); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 24px 60px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 110%, rgba(185,138,47,0.06) 0%, transparent 70%); }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #8a6a1e; background: var(--gold-tint); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; border-radius: 100px; margin-bottom: 26px; position: relative; animation: fadeUp 0.5s ease both; }
-    .hero-toc { max-width: 880px; margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; text-align: left; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); padding: 18px 28px; position: relative; z-index: 1; }
+    .hero-toc { max-width: 880px; margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; text-align: left; background: var(--card); border-radius: var(--r); box-shadow: var(--shadow); padding: 18px 28px; position: relative; z-index: 1; height: auto; border-bottom: 0; }
     .hero-toc a { display: flex; align-items: baseline; gap: 14px; padding: 13px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }
     .hero-toc .n { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gold); font-variant-numeric: tabular-nums; }
     .hero-toc b { font-size: 16px; font-weight: 700; color: var(--navy); }
@@ -441,7 +441,7 @@
     a.drum-fact:hover { border-color: var(--gold); }
   
     .nav-call-mobile { display: none !important; margin-left: auto; }
-    @media (max-width: 768px) { .nav-call-mobile { display: inline-flex !important; align-items: center; min-height: 40px; padding: 8px 16px; } }
+    @media (max-width: 768px) { .nav-call-mobile { display: inline-flex !important; align-items: center; min-height: 44px; padding: 8px 16px; } }
 
     /* ===== QOL PASS ===== */
     /* Skip link — visually hidden until keyboard focus */
@@ -510,7 +510,7 @@
     }
   
     @media (max-width: 768px) { #backToTop { bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; } }
-  </style>
+    </style>
 </head>
 <body>
 
