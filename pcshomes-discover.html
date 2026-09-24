@@ -608,7 +608,7 @@
   }).addTo(map);
 
   // Add Fort Drum label (static — not part of vendor data)
-  L.marker([44.04,-75.82],{icon:L.divIcon({className:'',html:'<div style="font-size:10px;font-weight:700;color:rgba(217,180,91,0.6);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">FORT DRUM</div>',iconAnchor:[30,5]})}).addTo(map);
+  L.marker([44.04,-75.82],{icon:L.divIcon({className:'',html:'<div style="font-size:10px;font-weight:700;color:rgba(217,180,91,0.6);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;">FORT DRUM</div>',iconAnchor:[30,5]}),interactive:false,keyboard:false}).addTo(map);
 
   // Default fallback notes per category, used when a vendor has no description
   var DEFAULT_NOTES = { commissary: 'Tax-free · Military ID required', grocery: 'Full-service grocery', discount: 'Budget-friendly' };
@@ -630,7 +630,8 @@
         html: '<div style="width:14px;height:14px;border-radius:50%;background:' + col + ';border:2.5px solid rgba(255,255,255,0.85);box-shadow:0 2px 8px rgba(0,0,0,0.5);cursor:pointer;"></div>',
         iconAnchor: [7, 7]
       });
-      var marker = L.marker([v.lat, v.lng], { icon: icon }).addTo(map);
+      var marker = L.marker([v.lat, v.lng], { icon: icon, title: v.name }).addTo(map);
+      marker.getElement().setAttribute('aria-label', v.name);
       marker.on('click', function(){
         document.getElementById('gpName').textContent = v.name;
         document.getElementById('gpAddress').textContent = v.address;
