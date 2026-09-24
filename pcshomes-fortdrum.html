@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23B98A2F' font-weight='bold'>P</text></svg>">
   <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23B98A2F' font-weight='bold'>P</text></svg>">
   <script type="application/ld+json">
@@ -739,6 +740,8 @@
 
 <!-- INTERACTIVE MAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js" defer></script>
 <section style="background:var(--paper);padding:56px 48px;position:relative;z-index:0;isolation:isolate;" id="map">
   <div class="inner">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
@@ -1450,14 +1453,19 @@ function showDistrict(id) {
 document.addEventListener('DOMContentLoaded', function(){
   const map = L.map('drumMap', { center:[44.02,-75.82], zoom:10, scrollWheelZoom:false });
 
-  // CartoDB dark tiles - best dark aesthetic, free, no API key
-  const tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains:'abcd', maxZoom:19
-  }).addTo(map);
+  // OpenFreeMap vector tiles via MapLibre (keyless; same solution as the WC App)
+  let tileLayer = null;
+  if (typeof L.maplibreGL === 'function') {
+    tileLayer = L.maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark',
+      attribution:'&copy; <a href="https://openfreemap.org">OpenFreeMap</a> &copy; OpenMapTiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  } else {
+    const msg = document.getElementById('mapTileError');
+    if (msg) msg.style.display = 'flex';
+  }
 
   // If tiles fail to load, show a helpful message
-  tileLayer.on('tileerror', function() {
+  if (tileLayer) tileLayer.on('tileerror', function() {
     const msg = document.getElementById('mapTileError');
     if (msg) msg.style.display = 'flex';
   });
