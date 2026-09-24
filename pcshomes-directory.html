@@ -4,11 +4,11 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Who Do I Call? Fort Drum Family Directory | PCSHomes</title>
-  <meta name="description" content="Who to call and where to go at Fort Drum — crisis lines, medical, VA, food and benefits, legal help, childcare, and everyday life. Every number source-verified, with dates.">
+  <meta name="description" content="Who to call and where to go at Fort Drum: crisis lines, medical, VA, food and benefits, legal help, childcare, and everyday life. Every number source-verified, with dates.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pcshomes.com/pcshomes-directory.html">
   <meta property="og:title" content="Who Do I Call? Fort Drum Family Directory | PCSHomes">
-  <meta property="og:description" content="Crisis lines, medical, VA, benefits, legal, childcare, and everyday life around Fort Drum — every number source-verified, with dates.">
+  <meta property="og:description" content="Crisis lines, medical, VA, benefits, legal, childcare, and everyday life around Fort Drum. Every number source-verified, with dates.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pcshomes.com/pcshomes-directory.html">
   <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
@@ -74,6 +74,8 @@
     .cat-more { margin-top: 12px; min-height: 48px; padding: 0 20px; border-radius: 9px; border: 1.5px solid var(--rule-strong);
       background: var(--card); color: var(--navy); font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; }
 
+    .crisis-skip { margin: 0 0 10px; }
+    .crisis-skip a { display: inline-flex; align-items: center; min-height: 44px; color: var(--err); font: 700 var(--t-s) 'DM Sans', sans-serif; text-decoration: underline; text-underline-offset: 3px; }
     /* result groups + rows */
     .dir-group-h { font-family: 'Libre Baskerville', serif; font-size: 25px; font-weight: 700; color: var(--navy);
                    margin: 46px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
@@ -146,14 +148,15 @@
 
 <!-- SEARCH: the front door. Results appear right under the box; nothing renders until asked. -->
 <section id="search" style="padding:0 0 6px;"><div class="wrap" style="max-width:800px;">
-  <div class="search-wrap">
+  <p class="crisis-skip"><a href="#help-now">In crisis? The 24/7 lines are right below&nbsp;↓</a></p>
+  <div class="search-wrap" role="search">
     <input type="search" class="dir-search" id="dirSearch" aria-label="Search the directory"
            placeholder='Try "daycare," "divorce," or "2-14"' oninput="dirFilter()"/>
   </div>
-  <p class="dir-count" id="dirCount"></p>
+  <p class="dir-count" id="dirCount" role="status" aria-live="polite"></p>
   <p class="dir-count" id="dirHint" style="display:none;"></p>
   <div id="dirResults"></div>
-  <div class="dir-empty" id="dirEmpty">No matches — try <strong>SNAP</strong>, <strong>daycare</strong>, <strong>VA</strong>, or <strong>legal</strong>. Can't find it? Fort Drum ACS Information &amp; Referral, <a href="tel:+13157726799" style="color:var(--gold);font-weight:700;text-decoration:none;">(315) 772-6799</a>, exists for exactly that.</div>
+  <div class="dir-empty" id="dirEmpty">Try <strong>SNAP</strong>, <strong>daycare</strong>, <strong>VA</strong>, or <strong>legal</strong>. Can't find it? Fort Drum ACS Information &amp; Referral, <a href="tel:+13157726799" style="color:var(--gold);font-weight:700;text-decoration:none;">(315) 772-6799</a>, exists for exactly that.</div>
 </div></section>
 
 <!-- HELP NOW — static HTML on purpose: this section works even if everything else fails -->
@@ -163,20 +166,19 @@
     <h2>Help <em>now.</em></h2>
     <p class="lede">Every line below is answered around the clock. Tap to call.</p>
     <div class="em-grid">
-      <div class="em"><div class="label">Emergency</div><a class="em-call" href="tel:911">Call 911</a><div class="note">On post, a cell call may reach county dispatch first — say you're on Fort Drum.</div></div>
+      <div class="em"><div class="label">Emergency</div><a class="em-call" href="tel:911">Call 911</a><div class="note">On post, a cell call may reach county dispatch first, so say you're on Fort Drum.</div></div>
       <div class="em"><div class="label">Suicide &amp; crisis · military</div><a class="em-call" href="tel:988">Call 988, press 1</a><div class="note">Military / Veterans Crisis Line, 24/7.</div></div>
-      <div class="em"><div class="label">Domestic abuse · Fort Drum</div><a class="em-call" href="tel:+13159554321">(315) 955-4321</a><div class="note">FAP victim advocate, 24/7.</div></div>
+      <div class="em"><div class="label">Domestic abuse</div><a class="em-call" href="tel:+13159554321">(315) 955-4321</a><div class="em-alts"><a class="em-alt" href="tel:+13157821855">Off post (315) 782-1855</a></div><div class="note">Fort Drum FAP victim advocate, 24/7. Off post: the civilian Victims Assistance Center, 24/7, also for sexual assault.</div></div>
       <div class="em"><div class="label">Sexual assault · SHARP</div><a class="em-call" href="tel:+13157676128">(315) 767-6128</a><div class="em-alts"><a class="em-alt" href="tel:+18779955247">Safe Helpline 877-995-5247</a></div><div class="note">SHARP on post · Safe Helpline is DoD-wide and confidential.</div></div>
     </div>
     <details class="em-more">
-      <summary>8 more 24/7 lines<span>Off-post abuse and assault, NY and national DV hotlines, child abuse, poison, chaplain, local mental health, reaching a deployed soldier</span></summary>
+      <summary>7 more 24/7 lines<span>NY and national DV hotlines, local mental health, child abuse, poison, a chaplain, reaching a deployed soldier</span></summary>
       <div class="em-grid">
-      <div class="em"><div class="label">DV &amp; SA · off post</div><a class="em-call" href="tel:+13157821855">(315) 782-1855</a><div class="note">Victims Assistance Center, 24-hour hotline.</div></div>
       <div class="em"><div class="label">NY State DV hotline</div><a class="em-call" href="tel:+18009426906">800-942-6906</a><div class="em-alts"><a class="em-alt" href="sms:+18449972121">Text 844-997-2121</a></div><div class="note">Statewide, 24/7, most languages.</div></div>
       <div class="em"><div class="label">Mental health · local</div><a class="em-call" href="tel:+13157854516">(315) 785-4516</a><div class="em-alts"><a class="em-alt" href="tel:+13157822327">County (315) 782-2327</a></div><div class="note">Samaritan urgent line, 24/7.</div></div>
       <div class="em"><div class="label">Child abuse</div><a class="em-call" href="tel:+18004224453">800-422-4453</a><div class="note">Childhelp national hotline, 24/7.</div></div>
       <div class="em"><div class="label">Poison control</div><a class="em-call" href="tel:+18002221222">800-222-1222</a><div class="note">24/7.</div></div>
-      <div class="em"><div class="label">Chaplain, any hour</div><a class="em-call" href="tel:+13154861144">(315) 486-1144</a><div class="em-alts"><a class="em-alt" href="tel:+13157728620">(315) 772-8620</a></div><div class="note">Any hour, any reason — both lines reach a chaplain.</div></div>
+      <div class="em"><div class="label">Chaplain, any hour</div><a class="em-call" href="tel:+13154861144">(315) 486-1144</a><div class="em-alts"><a class="em-alt" href="tel:+13157728620">(315) 772-8620</a></div><div class="note">Any hour, any reason. Both lines reach a chaplain.</div></div>
       <div class="em"><div class="label">Reach a deployed soldier</div><a class="em-call" href="tel:+18772727337">877-272-7337</a><div class="note">Red Cross Hero Care, 24/7.</div></div>
       <div class="em"><div class="label">National DV hotline</div><a class="em-call" href="tel:+18007997233">800-799-7233</a><div class="em-alts"><a class="em-alt" href="sms:88788">Text START to 88788</a></div><div class="note">24/7, confidential.</div></div>
       </div>
@@ -250,7 +252,7 @@
     <a href="terms.html">Terms</a>
   </div>
 </div>
-<div style="max-width:1100px;margin:14px auto 0;padding-inline:20px;font-size:var(--t-xs);color:var(--muted);">Numbers, hours, and programs change. Every entry shows its official source and verification date — for anything time-sensitive, the source is the authority.</div>
+<div style="max-width:1100px;margin:14px auto 0;padding-inline:20px;font-size:var(--t-xs);color:var(--muted);">Numbers, hours, and programs change. Every entry shows its official source and verification date. For anything time-sensitive, the source is the authority.</div>
 </footer>
 
 <!-- MOBILE BOTTOM TAB BAR -->
@@ -392,7 +394,7 @@ function render(list) {
   document.getElementById("dirResults").innerHTML = list.map(rowHtml).join("");
   document.getElementById("dirEmpty").style.display = list.length ? "none" : "block";
   document.getElementById("dirCount").textContent = list.length
-    ? list.length + (list.length === 1 ? " match" : " matches") : "";
+    ? list.length + (list.length === 1 ? " match" : " matches") : "No matches";
 }
 function clearResults() {
   document.getElementById("dirResults").innerHTML = "";

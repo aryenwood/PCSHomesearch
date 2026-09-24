@@ -20,6 +20,7 @@ body { background: var(--paper); color: var(--ink); margin: 0;
 a { color: inherit; }
 img { max-width: 100%; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.plate :focus-visible { outline-color: var(--gold-bright); }
 .skip { position: absolute; left: -9999px; top: 0; background: var(--navy); color: #fff; padding: 12px 18px; z-index: 100; border-radius: 0 0 8px 0; }
 .skip:focus { left: 0; }
 
