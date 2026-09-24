@@ -16,300 +16,70 @@
   <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a1628'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23D9B45B' font-weight='bold'>P</text></svg>">
+  <link rel="stylesheet" href="css/chassis.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    a { color: inherit; text-decoration: none; }
-    :root {
-      --navy: #1D3557; --navy-deep: #14263F;
-      --ink: #2B3442; --muted: #6B7280;
-      --gold: #B98A2F; --gold-soft: #D9B45B;
-      --gold-tint: rgba(185,138,47,0.12);
-      --paper: #FBF7EF; --card: #FFFFFF;
-      --line: rgba(43,52,66,0.10);
-      --shadow: 0 2px 6px rgba(43,52,66,0.06), 0 12px 32px rgba(43,52,66,0.08);
-      --r: 16px;
-    }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
-    [id] { scroll-margin-top: 84px; }
-    /* form-card's fadeUp entrance starts 20px low; pad the anchor so it still lands clear of the fixed nav */
-    #contactForm { scroll-margin-top: 108px; }
-    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-    .skip-link { position: absolute; left: -9999px; top: 0; z-index: 10001; background: var(--navy); color: #fff; padding: 14px 22px; border-radius: 0 0 10px 0; font-weight: 700; font-size: 14px; }
-    .skip-link:focus { left: 0; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-    }
+    /* contact-only chrome on top of the chassis */
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-      background-color: rgba(251,247,239,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 66px;
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-logo { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; min-height: 44px; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 600; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
-    .nav-cta-link { background: var(--navy); color: #fff; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 700; cursor: pointer; border: none; text-decoration: none; }
-    .nav-cta-link:hover { background: var(--navy-deep); }
+    /* the ask plate carries the whole form */
+    .ask-plate .plate-in { max-width: 760px; }
+    .inquiry-types { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; }
+    .inquiry-type { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px;
+                    border: 1px solid rgba(246,241,230,0.3); border-radius: 100px; background: transparent;
+                    color: var(--plate-ink); font: 700 var(--t-xs) 'DM Sans', sans-serif; cursor: pointer;
+                    transition: background .2s, border-color .2s, color .2s; }
+    .inquiry-type:hover { border-color: var(--gold-bright); }
+    .inquiry-type.selected { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
+    .inquiry-type.selected svg { stroke: var(--plate-deep); }
+    .form-label { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--plate-sub); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    #pcshomesForm { display: flex; flex-direction: column; gap: 10px; }
+    #pcshomesForm .field { flex: 0 0 auto; }
+    .field textarea, .field select { border: 0; background: transparent; color: var(--plate-ink); padding: 0;
+                                     font: 500 16.5px 'DM Sans', sans-serif; outline: none; width: 100%; }
+    .field textarea { resize: vertical; min-height: 88px; }
+    .field select option { background: var(--plate-deep); color: var(--plate-ink); }
+    .extras-toggle { background: none; border: none; color: var(--plate-sub); font: 500 var(--t-xs) 'DM Sans', sans-serif;
+                     cursor: pointer; text-align: left; padding: 12px 0; text-decoration: underline; min-height: 44px; }
+    #contactExtras { display: none; flex-direction: column; gap: 10px; border-top: 1px solid rgba(246,241,230,0.14); padding-top: 14px; margin-top: 4px; }
+    .reassure { font-size: var(--t-xs); color: rgba(246,241,230,0.55); }
+    .form-error { background: rgba(163,58,43,0.25); border: 1px solid var(--err); color: #F6D9D3;
+                  border-radius: 9px; padding: 12px 16px; font-size: var(--t-s); margin-top: 10px; }
+    .success-state { display: none; text-align: center; padding: 24px 0 8px; }
+    .success-state h3 { font-family: 'Libre Baskerville', serif; font-size: 24px; color: var(--plate-ink); margin: 14px 0 8px; }
+    .success-state p { font-size: var(--t-s); color: var(--plate-sub); margin: 0; max-width: 34em; margin-inline: auto; }
 
-    /* HERO — light, warm */
-    .hero {
-      background: transparent;
-      padding: 110px 48px 48px;
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--gold-tint);
-      color: #8a6a1e; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      padding: 7px 18px; border-radius: 100px; margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(34px, 5vw, 54px); font-weight: 700; line-height: 1.15;
-      color: var(--navy); max-width: 700px; margin: 0 auto;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.75; margin: 18px auto 0; }
+    /* serving strip */
+    .serving-tags { display: flex; gap: 8px 18px; flex-wrap: wrap; margin-top: 10px;
+                    font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--steel); }
 
-    /* INFO BAR */
-    .info-bar {
-      background: var(--gold-tint); border-top: 1px solid rgba(185,138,47,0.18); border-bottom: 1px solid rgba(185,138,47,0.18);
-      padding: 16px 48px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center;
-    }
-    .info-bar svg { flex-shrink: 0; }
-    .info-bar p {
-      font-size: 13px; font-weight: 500; color: #6b5a2e; line-height: 1.6;
-    }
+    /* mobile tab bar — the one fixed layer on phones */
+    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
+                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+                      justify-content: space-around; align-items: center; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
+                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
+    .tab-item svg { stroke: currentColor; }
+    .tab-item.active { color: var(--gold-bright); }
+    .m-only { display: none; }
 
-    /* MAIN LAYOUT */
-    .contact-wrapper { background: transparent; }
-    .contact-main { max-width: 1100px; margin: 0 auto; padding: 72px 48px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
-
-    /* FORM CARD — white on paper */
-    .form-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 36px; animation: fadeUp 0.5s 0.2s ease both; }
-    .contact-sidebar > div { animation: fadeUp 0.5s ease both; }
-    .contact-sidebar > div:nth-child(2) { animation-delay: 0.15s; }
-    .contact-sidebar > div:nth-child(3) { animation-delay: 0.3s; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #8a6a1e; margin-bottom: 10px; }
-    .section-label::after { content:''; display:block; width:40px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-soft), var(--gold)); margin-top:8px; border-radius:2px; }
-    .form-title { font-family: 'Libre Baskerville', serif; font-size: clamp(24px, 2.6vw, 30px); font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .form-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
-
-    /* INQUIRY TYPES — white pills, gold selected */
-    .inquiry-types { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .inquiry-type {
-      display: flex; align-items: center; gap: 6px;
-      background: var(--card); border: 1.5px solid var(--line);
-      box-shadow: 0 1px 3px rgba(43,52,66,0.06);
-      color: var(--muted); font-size: 12px; font-weight: 600;
-      padding: 8px 14px; border-radius: 100px; cursor: pointer;
-      transition: all 0.18s; font-family: 'DM Sans', sans-serif;
-    }
-    .inquiry-type:hover { border-color: rgba(185,138,47,0.4); color: #8a6a1e; background: var(--gold-tint); }
-    .inquiry-type.selected { background: var(--gold-tint); border-color: rgba(185,138,47,0.55); color: #8a6a1e; font-weight: 700; }
-
-    /* FORM FIELDS */
-    .contact-form { display: flex; flex-direction: column; gap: 16px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 7px; }
-    .form-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
-    .form-input {
-      background: #fff; border: 1.5px solid var(--line);
-      border-radius: 10px; padding: 13px 14px;
-      font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink);
-      outline: none; transition: border-color 0.2s, background 0.2s;
-    }
-    .form-input:focus { border-color: var(--gold); background: #fff; }
-    .form-input::placeholder { color: rgba(43,52,66,0.35); }
-    .form-select {
-      appearance: none; cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(43,52,66,0.45)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 14px center;
-      background-color: #fff;
-    }
-    .form-select option { background: #fff; color: var(--ink); }
-    .form-textarea { resize: vertical; min-height: 120px; }
-
-    .submit-btn {
-      background: var(--navy); color: #fff; border: none; border-radius: 100px;
-      padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-      cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 4px;
-      letter-spacing: 0.02em; width: 100%; min-height: 46px;
-    }
-    .form-reassure { font-size: 12.5px; color: var(--muted); text-align: center; line-height: 1.5; }
-    .submit-btn:hover { background: var(--navy-deep); transform: translateY(-1px); }
-    .submit-btn:active { transform: translateY(0); }
-
-    /* SIDEBAR */
-    .contact-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 16px; }
-
-    .sidebar-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); padding: 28px; }
-    .sidebar-card-accent { border-color: rgba(185,138,47,0.3); }
-    .sidebar-card-title { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .sidebar-card-sub { font-size: 11px; color: #8a6a1e; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px; }
-
-    /* How It Works Steps */
-    .steps { display: flex; flex-direction: column; gap: 0; }
-    .step { display: flex; gap: 14px; align-items: flex-start; position: relative; }
-    .step-number {
-      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-      background: var(--gold-tint); border: 1.5px solid rgba(185,138,47,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; color: #8a6a1e;
-    }
-    .step-content { padding: 4px 0 20px; }
-    .step:last-child .step-content { padding-bottom: 0; }
-    .step-text { font-size: 14px; color: var(--ink); font-weight: 500; line-height: 1.5; }
-    .step-line {
-      position: absolute; left: 15px; top: 36px; width: 2px; bottom: 0;
-      background: linear-gradient(to bottom, rgba(185,138,47,0.35), rgba(185,138,47,0.08));
-    }
-    .step:last-child .step-line { display: none; }
-
-    /* Categories List */
-    .category-list { display: flex; flex-direction: column; gap: 0; }
-    .category-item {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 0; border-bottom: 1px solid var(--line);
-      font-size: 13.5px; color: var(--ink); font-weight: 500;
-      transition: color 0.2s;
-    }
-    .category-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .category-item:first-child { padding-top: 0; }
-    .category-item:hover { color: var(--navy); }
-    .category-item-left { display: flex; align-items: center; gap: 10px; }
-    .category-item-left svg { flex-shrink: 0; opacity: 0.6; }
-    .category-item:hover .category-item-left svg { opacity: 1; }
-    .category-browse { font-size: 12px; color: var(--muted); font-weight: 600; transition: color 0.2s; }
-    .category-item:hover .category-browse { color: #8a6a1e; }
-
-    /* Serving Card */
-    .serving-text { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
-    .serving-tags { font-size: 12px; color: var(--muted); font-weight: 500; }
-    .serving-tags span { display: inline-block; margin: 0 6px; opacity: 0.4; }
-
-    /* SUCCESS STATE */
-    .success-state {
-      display: none; text-align: center; padding: 56px 24px;
-      background: var(--paper); border-radius: var(--r); border: 1px solid var(--line);
-    }
-    .success-icon { margin-bottom: 18px; }
-    .success-icon svg { width: 56px; height: 56px; }
-    .success-title { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-    .success-sub { font-size: 15px; color: var(--muted); line-height: 1.7; max-width: 380px; margin: 0 auto; }
-
-    /* ERROR STATE */
-    .form-error {
-      color: #b3362b; font-size: 13px; text-align: center; margin-top: 8px;
-      padding: 10px; background: rgba(220,80,80,0.08); border-radius: 8px;
-      border: 1px solid rgba(220,80,80,0.25);
-    }
-
-    /* FOOTER — paper, top hairline */
-    footer { background: transparent; padding: 40px 48px; border-top: 1px solid var(--line); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
-    .footer-logo span { color: var(--gold); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: var(--muted); font-size: 13px; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--navy); }
-    .footer-copy { font-size: 12px; color: var(--muted); }
-
-    /* MOBILE TAB BAR */
-    .mobile-tab-bar { display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0F1D35;border-top:1px solid rgba(201,168,76,0.3);padding:8px 0 env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:center; }
-    .tab-item { display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.55);font-size:13px;font-weight:600;padding:4px 4px;min-width:44px;white-space:nowrap; }
-    .tab-item svg { stroke:currentColor; }
-    .tab-item.active { color:#C9A84C; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none !important; }
-      nav .nav-cta-link { display: none !important; }
-      .hero { padding: 100px 20px 60px; }
-      .info-bar { padding: 14px 20px; }
-      .contact-main { grid-template-columns: 1fr; padding: 40px 20px; gap: 32px; }
-      .contact-sidebar { position: static; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 32px 20px; }
-      .footer-inner { flex-direction: column; text-align: center; gap: 20px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
-      /* MOBILE FOOTER: center and wrap nicely */
-      footer > div { flex-direction:column !important; align-items:center !important; text-align:center; }
-    }
-    @media (max-width: 768px) {
+    @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+      .bar { position: static; }
       .mobile-tab-bar { display: flex; }
-      h1 { font-size: clamp(26px, 7vw, 40px); }
-      .form-card { padding: 24px; }
-      .sidebar-card { padding: 22px; }
-
-      /* Touch targets — min 44px */
-      .nav-cta-link { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
-      .inquiry-type { min-height: 44px; padding: 10px 16px; }
-      .submit-btn { min-height: 44px; }
-      .tab-item { min-height: 44px; }
-
-      /* iOS zoom fix — inputs must be 16px */
-      input, select, textarea { font-size: 16px !important; }
-
-      /* Form usability */
-      .form-input, .form-select, .form-textarea { width: 100%; }
-
-      /* Hero padding */
-      .hero { padding: 100px 20px 56px; }
-
-      /* Footer mobile stacking */
-      .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-      .footer-links a { display: inline-block; padding: 10px 6px; min-width: 44px; text-align: center; }
-      .footer-copy { font-size: 13px; }
-      footer { padding: 32px 18px; }
-
-      /* Text overflow protection */
-      body { word-break: break-word; }
-      a { word-break: break-word; }
-
-      /* Readability: no computed type below 13px on phones */
-      .hero-eyebrow, .section-label, .sidebar-card-sub, .form-label { font-size: 13px; letter-spacing: 1px; }
-      .inquiry-type { font-size: 13px; }
-      .form-reassure { font-size: 13px; }
-      .category-browse, .serving-tags { font-size: 13px; }
-      /* Inline-styled micro type (fine print, quick-links sheet) */
-      [style*="font-size:10px"], [style*="font-size:10.5px"], [style*="font-size:11px"],
-      [style*="font-size:12px"], [style*="font-size:12.5px"] { font-size: 13px !important; }
-
-      /* Sidebar category rows: full-height tap targets */
-      .category-item { min-height: 48px; }
-
-      /* Tel fine-print links: comfortable tap area without shifting layout */
-      form a[href^="tel:"] { display: inline-block; padding: 12px 8px; margin: -6px 0; }
+      .m-only { display: inline-flex; }
+      .d-only { display: none; }
+      .form-row { grid-template-columns: 1fr; }
     }
-
-    .nav-call-mobile { display: none !important; margin-left: auto; }
-    @media (max-width: 768px) { nav .nav-call-mobile { display: inline-flex !important; align-items: center; min-height: 44px; padding: 8px 16px; } }
-  
-    @media (max-width: 768px) { #backToTop { bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; } }
-    </style>
+  </style>
 </head>
 <body>
+<a class="skip" href="#main-content">Skip to main content</a>
 
-<a class="skip-link" href="#main-content">Skip to main content</a>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">PCS<span>Homes</span></a>
-  <ul class="nav-links">
+<div class="bar"><nav class="bar-in" aria-label="Site">
+  <a href="index.html" style="text-decoration:none;"><b>PCS<em>Homes</em></b></a>
+  <ul class="bar-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="pcshomes-fortdrum.html">Fort Drum Guide</a></li>
     <li><a href="pcshomes-discover.html">Discover</a></li>
@@ -317,331 +87,235 @@
     <li><a href="pcshomes-network.html">Our Network</a></li>
     <li><a href="pcshomes-contact.html" class="active">Contact</a></li>
   </ul>
-  <a href="#contactForm" class="nav-cta-link">Message us</a>
-  <a href="tel:+13152214857" class="nav-cta-link nav-call-mobile" aria-label="Call PCSHomes">Call</a>
-</nav>
+  <a href="#contactForm" class="bar-cta d-only">Message us</a>
+  <a href="tel:+13152214857" class="bar-cta m-only" aria-label="Call PCSHomes">Call</a>
+</nav></div>
 
-<!-- HERO -->
-<section class="hero" id="main-content" tabindex="-1">
-  <div style="position:relative;z-index:1;">
-    <div class="hero-eyebrow">
-      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      Get in Touch
-    </div>
-    <h1>Let us connect you with<br/>the <em>right expert.</em></h1>
-    <p class="hero-sub">Whether you're the service member, the spouse, or managing this move together — PCSHomes connects your family with trusted professionals who know Fort Drum.</p>
-  </div>
-</section>
+<main id="main-content" tabindex="-1">
 
-<!-- INFO BAR -->
-<div class="info-bar">
-  <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-  <p>PCSHomes connects you with vetted agents, lenders, inspectors, and home service providers.</p>
-</div>
+<!-- HERO — type only, the form is the destination -->
+<header class="hero"><div class="wrap">
+  <p class="eyebrow rv">Get in touch</p>
+  <h1 class="rv">Let us connect you with the <em>right expert.</em></h1>
+  <p class="dek rv">Whether you're the service member, the spouse, or managing this move together — PCSHomes connects your family with <strong>trusted professionals who know Fort Drum:</strong> vetted agents, lenders, inspectors, and home service providers.</p>
+</div></header>
 
-<!-- MAIN CONTENT -->
-<div class="contact-wrapper">
-  <div class="contact-main">
+<!-- THE FORM — the page's one conversion moment, on the living plate -->
+<div class="plate ask-plate rv" style="margin-top:40px;">
+  <canvas class="ground" aria-hidden="true"></canvas>
+  <div class="plate-in">
+    <h2 id="contactFormTitle">How can <em>we help?</em></h2>
+    <p class="lede">Tell us what your family needs and we'll connect you with the right expert within 24 hours.</p>
 
-    <!-- FORM COLUMN -->
-    <div>
-      <div class="form-card">
-        <div class="section-label">Send a Message</div>
-        <h2 class="form-title">How can we help?</h2>
-        <p class="form-sub">Tell us what your family needs and we'll connect you with the right expert within 24 hours.</p>
+    <div id="contactForm" style="margin-top:26px;">
+      <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)" aria-labelledby="contactFormTitle">
+        <input type="hidden" name="form-name" value="pcshomes-contact"/>
+        <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
+        <input type="hidden" name="need-type" id="needTypeInput" value="general"/>
+        <input type="hidden" name="area" id="areaInput" value=""/>
+        <input type="hidden" name="lead-source" id="leadSourceInput" value=""/>
 
-        <div id="contactForm">
-          <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)">
-            <input type="hidden" name="form-name" value="pcshomes-contact"/>
-            <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
-            <input type="hidden" name="need-type" id="needTypeInput" value="general"/>
-            <input type="hidden" name="area" id="areaInput" value=""/>
-            <input type="hidden" name="lead-source" id="leadSourceInput" value=""/>
-
-            <!-- INQUIRY TYPE -->
-            <div style="margin-bottom:24px;">
-              <div class="form-label" id="inquiryTypeLabel" style="margin-bottom:12px;">What do you need? (pick one)</div>
-              <div class="inquiry-types" role="group" aria-labelledby="inquiryTypeLabel">
-                <button type="button" class="inquiry-type" aria-pressed="false" data-type="real-estate-agent" onclick="selectType(this)">
-                  <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                  Find a Real Estate Agent
-                </button>
-                <button type="button" class="inquiry-type" aria-pressed="false" data-type="va-lender" onclick="selectType(this)">
-                  <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
-                  Get VA Loan Guidance
-                </button>
-                <button type="button" class="inquiry-type" aria-pressed="false" data-type="property-inspector" onclick="selectType(this)">
-                  <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
-                  Find a Property Inspector
-                </button>
-                <button type="button" class="inquiry-type" aria-pressed="false" data-type="home-services" onclick="selectType(this)">
-                  <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                  Home Services
-                </button>
-                <button type="button" class="inquiry-type" aria-pressed="false" data-type="general" onclick="selectType(this)">
-                  <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                  General PCS Question
-                </button>
-                <button type="button" class="inquiry-type" aria-pressed="false" data-type="family-support" onclick="selectType(this)">
-                  <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                  Family Support
-                </button>
-              </div>
-              <div style="font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.5;">Whether you're a soldier, spouse, or both — we're here for your whole family.</div>
-            </div>
-
-            <div class="contact-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="firstName">First Name (required)</label>
-                  <input class="form-input" id="firstName" name="first-name" type="text" placeholder="John" required autocomplete="given-name"/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="lastName">Last Name (required)</label>
-                  <input class="form-input" id="lastName" name="last-name" type="text" placeholder="Smith" required autocomplete="family-name"/>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="email">Email (required)</label>
-                  <input class="form-input" id="email" name="email" type="email" placeholder="your.email@example.com" required autocomplete="email"/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="phone">Phone</label>
-                  <input class="form-input" id="phone" name="phone" type="tel" inputmode="tel" placeholder="(315) 000-0000" autocomplete="tel"/>
-                </div>
-              </div>
-
-              <button type="button" id="contactExtrasToggle" onclick="toggleExtras()" style="background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;text-align:left;padding:12px 0;text-decoration:underline;width:auto;font-family:'DM Sans',sans-serif;margin-top:4px;min-height:44px;">+ Add details (optional)</button>
-              <div id="contactExtras" style="display:none;flex-direction:column;gap:16px;border-top:1px solid rgba(43,52,66,0.10);padding-top:16px;margin-top:12px;">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label class="form-label" for="rank">Rank</label>
-                    <input class="form-input" id="rank" name="rank" type="text" placeholder="e.g. E5, O3, W2"/>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="dutyStation">Current Duty Station</label>
-                    <input class="form-input" id="dutyStation" name="duty-station" type="text" placeholder="e.g. Fort Bragg"/>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label class="form-label" for="pcsDate">PCS / Report Date</label>
-                    <input class="form-input" id="pcsDate" name="pcs-date" type="text" placeholder="e.g. June 2026"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="budget">Budget Range</label>
-                  <select class="form-input form-select" id="budget" name="budget">
-                    <option value="">Select a range...</option>
-                    <option>Under $150,000</option>
-                    <option>$150,000 - $200,000</option>
-                    <option>$200,000 - $250,000</option>
-                    <option>$250,000 - $300,000</option>
-                    <option>$300,000+</option>
-                    <option>Not sure yet</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="message">Message</label>
-                <textarea class="form-input form-textarea" id="message" name="message" rows="4" enterkeyhint="send" placeholder="e.g. Family of four, PCSing in June, first home purchase"></textarea>
-              </div>
-
-              <div class="form-reassure">No spam, no pressure — a real person who knows Fort Drum reads every message.</div>
-              <button type="submit" class="submit-btn">Connect Me with an Expert &rarr;</button>
-              <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Backed by a 5.0&#9733; network — 120+ verified reviews across our partners.</div>
-              <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Questions? <a href="sms:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
-              <div id="formError" style="display:none;"></div>
-            </div>
-          </form>
-        </div>
-
-        <div class="success-state" id="successState">
-          <div class="success-icon">
-            <svg aria-hidden="true" focusable="false" width="56" height="56" viewBox="0 0 56 56" fill="none">
-              <circle cx="28" cy="28" r="28" fill="rgba(185,138,47,0.12)"/>
-              <circle cx="28" cy="28" r="20" fill="rgba(185,138,47,0.15)"/>
-              <path d="M20 28l5.5 5.5L36 22" stroke="#B98A2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3 class="success-title">We got your message!</h3>
-          <p class="success-sub">A PCSHomes team member will review your request and connect you with the right expert within 24 hours.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SIDEBAR -->
-    <div class="contact-sidebar">
-
-      <!-- How It Works -->
-      <div class="sidebar-card sidebar-card-accent">
-        <div class="sidebar-card-sub">How It Works</div>
-        <h3 class="sidebar-card-title" style="margin-bottom:20px;">PCSHomes Trusted Network</h3>
-        <div class="steps">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content"><div class="step-text">Tell us what you need</div></div>
-            <div class="step-line"></div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content"><div class="step-text">We match you with a vetted expert</div></div>
-            <div class="step-line"></div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content"><div class="step-text">Get personalized help — fast</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Our Categories -->
-      <div class="sidebar-card">
-        <h3 class="sidebar-card-title" style="margin-bottom:16px;">
-          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          Our Categories
-        </h3>
-        <div class="category-list">
-          <a href="pcshomes-network.html" class="category-item">
-            <span class="category-item-left">
-              <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              Real Estate Agents
-            </span>
-            <span class="category-browse">Browse &rarr;</span>
-          </a>
-          <a href="pcshomes-network.html" class="category-item">
-            <span class="category-item-left">
-              <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
-              VA Lenders
-            </span>
-            <span class="category-browse">Browse &rarr;</span>
-          </a>
-          <a href="pcshomes-network.html" class="category-item">
-            <span class="category-item-left">
-              <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
-              Property Inspectors
-            </span>
-            <span class="category-browse">Browse &rarr;</span>
-          </a>
-          <a href="pcshomes-network.html" class="category-item">
-            <span class="category-item-left">
-              <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <div>
+          <div class="form-label" id="inquiryTypeLabel">What do you need? (pick one)</div>
+          <div class="inquiry-types" role="group" aria-labelledby="inquiryTypeLabel">
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="real-estate-agent" onclick="selectType(this)">
+              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Find a Real Estate Agent
+            </button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="va-lender" onclick="selectType(this)">
+              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
+              Get VA Loan Guidance
+            </button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="property-inspector" onclick="selectType(this)">
+              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+              Find a Property Inspector
+            </button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="home-services" onclick="selectType(this)">
+              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
               Home Services
-            </span>
-            <span class="category-browse">Browse &rarr;</span>
-          </a>
+            </button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="general" onclick="selectType(this)">
+              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              General PCS Question
+            </button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="family-support" onclick="selectType(this)">
+              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              Family Support
+            </button>
+          </div>
+          <div class="reassure" style="margin-bottom:10px;">Whether you're a soldier, spouse, or both — we're here for your whole family.</div>
         </div>
-      </div>
 
-      <!-- Serving Fort Drum -->
-      <div class="sidebar-card">
-        <h3 class="sidebar-card-title" style="margin-bottom:12px;">
-          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Serving Fort Drum
-        </h3>
-        <p class="serving-text">PCSHomes exclusively serves military families at Fort Drum and the surrounding North Country.</p>
-        <div class="serving-tags">10th Mountain Division<span>&middot;</span>Watertown<span>&middot;</span>Evans Mills<span>&middot;</span>Carthage</div>
-      </div>
+        <div class="form-row">
+          <label class="field"><span>First name</span><input id="firstName" name="first-name" type="text" required aria-required="true" autocomplete="given-name"/></label>
+          <label class="field"><span>Last name</span><input id="lastName" name="last-name" type="text" required aria-required="true" autocomplete="family-name"/></label>
+        </div>
+        <div class="form-row">
+          <label class="field"><span>Email</span><input id="email" name="email" type="email" required aria-required="true" autocomplete="email"/></label>
+          <label class="field"><span>Phone</span><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"/></label>
+        </div>
 
+        <button type="button" id="contactExtrasToggle" class="extras-toggle" onclick="toggleExtras()">+ Add details (optional)</button>
+        <div id="contactExtras">
+          <div class="form-row">
+            <label class="field"><span>Rank</span><input id="rank" name="rank" type="text"/></label>
+            <label class="field"><span>Current duty station</span><input id="dutyStation" name="duty-station" type="text"/></label>
+          </div>
+          <div class="form-row">
+            <label class="field"><span>PCS / report date</span><input id="pcsDate" name="pcs-date" type="text"/></label>
+            <label class="field"><span>Budget range</span>
+              <select id="budget" name="budget">
+                <option value="">Select a range...</option>
+                <option>Under $150,000</option>
+                <option>$150,000 - $200,000</option>
+                <option>$200,000 - $250,000</option>
+                <option>$250,000 - $300,000</option>
+                <option>$300,000+</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <label class="field"><span>Message</span><textarea id="message" name="message" rows="4" enterkeyhint="send"></textarea></label>
+
+        <div class="reassure">No spam, no pressure — a real person who knows Fort Drum reads every message.</div>
+        <button type="submit" class="btn-gold">Connect Me with an Expert &rarr;</button>
+        <div class="reassure" style="text-align:center;">Backed by a 5.0&#9733; network — 120+ verified reviews across our partners.</div>
+        <div class="reassure" style="text-align:center;">Questions? <a href="sms:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">(315) 221-4857</a></div>
+        <div id="formError" style="display:none;"></div>
+      </form>
+    </div>
+
+    <div class="success-state" id="successState">
+      <svg aria-hidden="true" focusable="false" width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="28" fill="rgba(217,180,91,0.12)"/>
+        <circle cx="28" cy="28" r="20" fill="rgba(217,180,91,0.15)"/>
+        <path d="M20 28l5.5 5.5L36 22" stroke="#D9B45B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>We got your message!</h3>
+      <p>A PCSHomes team member will review your request and connect you with the right expert within 24 hours.</p>
     </div>
   </div>
 </div>
+
+<!-- WHAT HAPPENS NEXT -->
+<section><div class="wrap">
+  <p class="eyebrow rv">How it works</p>
+  <h2 class="rv">What happens next</h2>
+  <div class="right-row"><span class="n">01</span><div><h3>Tell us what you need</h3><p>The form above, a text, or a call — whatever is easiest from wherever you are.</p></div></div>
+  <div class="right-row"><span class="n">02</span><div><h3>We match you with a vetted expert</h3><p>Someone whose record with military families we know personally.</p></div></div>
+  <div class="right-row"><span class="n">03</span><div><h3>Get personalized help — fast</h3><p>A real person replies within 24 hours. No obligation at any step.</p></div></div>
+</div></section>
+
+<!-- BROWSE THE NETWORK -->
+<section><div class="split">
+  <div>
+    <p class="eyebrow rv">Our categories</p>
+    <h2 class="rv">Browse the network</h2>
+    <p class="sub rv">Every category, vetted on their record with military families.</p>
+    <div class="resolve">
+      <a href="pcshomes-network.html"><span class="towns">Real Estate Agents</span><span class="dist">PCS timelines and VA loans every week</span><span class="call go">→</span></a>
+      <a href="pcshomes-network.html"><span class="towns">VA Lenders</span><span class="dist">What $0 down actually covers</span><span class="call go">→</span></a>
+      <a href="pcshomes-network.html"><span class="towns">Property Inspectors</span><span class="dist">North Country winters change what matters in a house</span><span class="call go">→</span></a>
+      <a href="pcshomes-network.html"><span class="towns">Home Services</span><span class="dist">Contractors, water filtration, energy savings</span><span class="call go">→</span></a>
+    </div>
+    <div style="margin-top:30px;">
+      <p class="eyebrow">Serving Fort Drum</p>
+      <p style="margin:6px 0 0;font-size:var(--t-m);color:var(--ink);max-width:36em;">PCSHomes exclusively serves military families at Fort Drum and the surrounding North Country.</p>
+      <div class="serving-tags"><span>10th Mountain Division</span><span>Watertown</span><span>Evans Mills</span><span>Carthage</span></div>
+    </div>
+  </div>
+  <div class="side rv"><figure><img src="images/fort-drum-gate.jpg" srcset="images/fort-drum-gate.jpg 1080w, images/fort-drum-gate-800.jpg 800w" sizes="(max-width: 980px) 100vw, 360px" alt="The Fort Drum main gate sign, home of the 10th Mountain Division" loading="lazy" decoding="async" width="1080" height="468" style="height:340px;"/><figcaption>Fort Drum main gate</figcaption></figure></div>
+</div></section>
+
+</main>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">PCS<span>Homes</span></div>
-      <span class="footer-copy">&copy; 2026 PCSHomes</span>
-    </div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="pcshomes-fortdrum.html">Fort Drum Guide</a>
-      <a href="pcshomes-discover.html">Discover</a>
-      <a href="pcshomes-network.html">Our Network</a>
-      <a href="pcshomes-contact.html">Contact</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="tel:+13152214857" style="color:#6B7280;text-decoration:none;font-size:13px;">(315) 221-4857</a>
-    </div>
-    <!-- Social links: add when accounts are created -->
+<footer><div class="f-in">
+  <a href="index.html" style="text-decoration:none;"><b>PCS<i>Homes</i></b></a>
+  <span>© 2026 PCSHomes · Free for military families</span>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="pcshomes-fortdrum.html">Fort Drum Guide</a>
+    <a href="pcshomes-discover.html">Discover</a>
+    <a href="pcshomes-network.html">Our Network</a>
+    <a href="pcshomes-glossary.html">Glossary</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="tel:+13152214857">(315) 221-4857</a>
   </div>
-</footer>
+</div></footer>
 
 <!-- QUICK LINKS BACKDROP -->
 <div id="qlBackdrop" onclick="toggleQuickLinks()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s ease;"></div>
 <!-- MOBILE QUICK LINKS PANEL -->
-<div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0F1D35;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
+<div id="quickLinksPanel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#0E1C30;border-radius:20px 20px 0 0;padding:16px 16px calc(72px + env(safe-area-inset-bottom,8px) + 8px);box-shadow:0 -16px 48px rgba(0,0,0,0.5);max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s ease;">
   <div style="width:40px;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin:0 auto 14px;"></div>
   <div style="display:flex;flex-direction:column;gap:2px;">
-    <!-- GROUP: Tools & Planning -->
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:8px 16px 4px;">Fort Drum Guide</div>
-    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+    <a href="pcshomes-fortdrum.html#schools" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(217,180,91,0.08);border:1px solid rgba(217,180,91,0.2);">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Schools</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#va" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">VA Calculator</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#rvb" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Rent vs Buy</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#map" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Neighborhood Map</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-fortdrum.html#pcs" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">PCS Checklist</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
-    <!-- GROUP: Area & Lifestyle -->
     <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:14px 16px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:6px;">Discover the Area</div>
     <a href="pcshomes-discover.html#groceries" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#family-kids" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-      <div style="font-size:13px;font-weight:700;color:#fff;">Family & Kids</div>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Family &amp; Kids</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="pcshomes-discover.html#outdoors" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
-      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BA4F5" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
-      <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors & Adventures</div>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors &amp; Adventures</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
-    <!-- BOTTOM CTAs -->
-    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);margin-top:6px;"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
-    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
+    <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(217,180,91,0.08);border:1px solid rgba(217,180,91,0.2);margin-top:6px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
+    <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
       <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
-      <a href="pcshomes-contact.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);font-size:12px;font-weight:700;color:#C9A84C;">Talk to an Expert</a>
+      <a href="#contactForm" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(217,180,91,0.12);border:1px solid rgba(217,180,91,0.25);font-size:12px;font-weight:700;color:#D9B45B;">Talk to an Expert</a>
     </div>
   </div>
 </div>
 
-<!-- MOBILE TAB BAR -->
+<!-- MOBILE BOTTOM TAB BAR -->
 <div class="mobile-tab-bar">
-  <a href="index.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
-  <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
-  <a href="pcshomes-discover.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
-  <a href="pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
-  <a href="pcshomes-contact.html" class="tab-item active"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+  <a href="index.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="#" onclick="toggleQuickLinks();return false;" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Quick Links</span></a>
+  <a href="pcshomes-discover.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg><span>Discover</span></a>
+  <a href="pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
+  <a href="pcshomes-contact.html" class="tab-item active"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
 </div>
 <script>
 function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
   var p=document.getElementById('quickLinksPanel');
-  if(p.style.display==='none'){b.style.display='block';p.style.display='block';setTimeout(function(){b.style.opacity='1';p.style.transform='translateY(0)';},10);}
+  if(p.style.display==='none'||p.style.display===''){b.style.display='block';p.style.display='block';setTimeout(function(){b.style.opacity='1';p.style.transform='translateY(0)';},10);}
   else{b.style.opacity='0';p.style.transform='translateY(100%)';setTimeout(function(){b.style.display='none';p.style.display='none';},300);}
 }
 </script>
@@ -718,9 +392,6 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     });
   }
 </script>
-
-<!-- BACK TO TOP -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;position:fixed;bottom:24px;right:16px;z-index:9998;width:44px;height:44px;border-radius:50%;background:var(--gold-soft,#D9B45B);color:#1D3557;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(43,52,66,0.25);-webkit-tap-highlight-color:transparent;">↑</button>
-<script>window.addEventListener("scroll",function(){document.getElementById("backToTop").style.display=window.scrollY>600?"block":"none";},{passive:true});</script>
+<script src="js/chassis.js"></script>
 </body>
 </html>
