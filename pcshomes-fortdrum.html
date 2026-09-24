@@ -1538,7 +1538,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('mpType').innerHTML  = typeLbl[type] || '';
     const schoolRow = d.school !== 'N/A' ? `<div class="mprow"><span class="mprow-lbl">School District</span><span class="mprow-val">${d.school}</span></div>` : '';
     const priceRow  = d.price  !== 'N/A' ? `<div class="mprow"><span class="mprow-lbl"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Avg Home Price</span><span class="mprow-val">${d.price}</span></div>` : '';
-    const ctaBtn    = type === 'town' ? `<button onclick="window.location='pcshomes-contact.html'" style="width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;">Get Matched in ${d.name} →</button>` : '';
+    const ctaBtn    = type === 'town' ? `<button onclick="window.location='pcshomes-contact.html?need=agent&area=${encodeURIComponent(d.name)}#contactForm'" style="width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:10px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;">Get Matched in ${d.name} →</button>` : '';
     document.getElementById('mpBody').innerHTML = `
       <div class="mprow"><span class="mprow-lbl"> Commute to Gate</span><span class="mprow-val">${d.commute}</span></div>
       <div class="mprow"><span class="mprow-lbl"> Snow Severity</span><span class="mprow-val">${d.snow}</span></div>
@@ -1869,7 +1869,7 @@ document.addEventListener('DOMContentLoaded', function(){
           <div style="text-align:right"><div class="result-label">BAH Coverage</div><div class="result-value" id="bahCoverage" style="font-size:20px">—</div></div>
         </div>
         <button class="calc-btn" onclick="calcPayment()">Calculate</button>
-        <div style="margin-top:12px;font-size:11px;color:var(--gray);line-height:1.6;font-style:italic;">Estimate includes principal, interest, and estimated property taxes only — it excludes the VA funding fee and homeowners insurance. Talk to a VA lender for exact numbers.</div>
+        <div style="margin-top:12px;font-size:11px;color:var(--gray);line-height:1.6;font-style:italic;">Estimate includes principal, interest, and estimated property taxes only — it excludes the VA funding fee and homeowners insurance. <a href="pcshomes-contact.html?need=lender#contactForm" style="color:var(--gold);font-weight:700;font-style:normal;">Talk to a VA lender</a> for exact numbers.</div>
       </div>
       <div class="tool-card">
         <h3 class="tool-title"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B98A2F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg> Your VA Benefit at Fort Drum</h3>
@@ -2136,7 +2136,7 @@ document.addEventListener('DOMContentLoaded', function(){
   <h2>Ready for your Fort Drum PCS?</h2>
   <p>Talk to a human who's done this move. Free, no pressure.</p>
   <div class="cta-btns">
-    <button class="btn-primary" onclick="window.location='pcshomes-contact.html'">Get Started</button>
+    <button class="btn-primary" onclick="window.location='pcshomes-contact.html#contactForm'">Get Started</button>
     <button class="btn-outline" onclick="window.location='pcshomes-network.html'">Explore Our Network</button>
   </div>
   </div>
@@ -2578,7 +2578,7 @@ if (popupEl) {
           <label for="popupContact">Email or phone <span style="text-transform:none;letter-spacing:0;font-weight:500;">(required)</span></label>
           <input class="popup-input" type="text" id="popupContact" placeholder="you@email.com or (315) 555-0100" autocomplete="on" enterkeyhint="send"/>
         </div>
-        <div class="popup-note">A real person replies within 24 hours — no spam, ever. Questions now? Call or text <a href="tel:+13152214857">(315) 221-4857</a>.</div>
+        <div class="popup-note">A real person replies within 24 hours — no spam, ever. Questions now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</div>
         <button class="popup-btn" onclick="submitPopup()">Send My Request →</button>
       </div>
 

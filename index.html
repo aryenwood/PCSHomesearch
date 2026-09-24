@@ -385,6 +385,7 @@
       <a class="ix" href="pcshomes-spouse.html#career"><b>Your career</b><small>License &amp; paperwork you can start early</small><span class="arrow">→</span></a>
     </div>
     <div class="stage-links" id="stageList-sixty">
+      <a class="ix" href="pcshomes-fortdrum.html#schools"><b>School districts</b><small>Check the district before you sign a lease</small><span class="arrow">→</span></a>
       <a class="ix" href="pcshomes-fortdrum.html#rvb"><b>Rent vs. buy</b><small>Run your own numbers, not a stranger's</small><span class="arrow">→</span></a>
       <a class="ix" href="pcshomes-fortdrum.html#map"><b>Neighborhood map</b><small>Commutes &amp; character, gate by gate</small><span class="arrow">→</span></a>
       <a class="ix" href="pcshomes-fortdrum.html#va"><b>VA loan tools</b><small>What $0 down actually covers</small><span class="arrow">→</span></a>
@@ -506,7 +507,7 @@
     <div class="tip"><b>2. We intro you to a vetted local</b><span>Someone who works PCS timelines and VA loans every week.</span></div>
     <div class="tip"><b>3. You talk to a human</b><span>No obligation — if it's not a fit, that's fine.</span></div>
   </div>
-  <p style="margin-top:14px;font-size:13px;color:var(--muted);">Partners never pay for placement or ranking. <a href="pcshomes-contact.html" style="font-weight:700;color:var(--navy);border-bottom:1.5px solid var(--gold-soft);display:inline-block;padding:12px 2px;margin:-12px -2px;">Ready for the intro? →</a></p>
+  <p style="margin-top:14px;font-size:13px;color:var(--muted);">Partners never pay for placement or ranking. <a href="#vaLeadForm" style="font-weight:700;color:var(--navy);border-bottom:1.5px solid var(--gold-soft);display:inline-block;padding:12px 2px;margin:-12px -2px;">Ready for the intro? →</a></p>
 </section>
 
 <!-- CTA — navy card on paper, holds the lead form -->
@@ -515,7 +516,7 @@
     <div class="cta-copy">
       <div class="cta-eyebrow">Get started</div>
       <h2>Start with one conversation.</h2>
-      <p>Tell us where you are in the move — a real person from our Fort Drum network calls you back, usually the same day.</p>
+      <p>Tell us where you are in the move — a real person from our Fort Drum network calls you back within 24 hours.</p>
       <div class="cta-points">
         <div>Free, no obligation — no contracts, no pressure, no catch</div>
         <div>Every partner vetted on VA loan experience and military family track record</div>
@@ -534,7 +535,7 @@
           <label for="vaContact">Email or phone <span style="text-transform:none;letter-spacing:0;font-weight:500;">(required)</span></label>
           <input class="lead-input" type="text" id="vaContact" name="contact" placeholder="you@email.com or (315) 555-0100" autocomplete="on" enterkeyhint="send"/>
         </div>
-        <div class="lead-note">A real person calls you — usually the same day. No spam, ever. Questions now? Call or text <a href="tel:+13152214857">(315) 221-4857</a>.</div>
+        <div class="lead-note">A real person calls you within 24 hours. No spam, ever. Questions now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</div>
         <button type="button" class="lead-btn" onclick="submitVaLead()">Have someone call me</button>
       </form>
       <div id="vaLeadSuccess" style="display:none;text-align:center;padding:24px 0;">
@@ -733,6 +734,8 @@ function toggleStage(key) {
     list.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
     try { localStorage.setItem('pcshomes_stage', key); } catch (e) {}
+    var motion = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ? 'auto' : 'smooth';
+    setTimeout(function() { list.scrollIntoView({ behavior: motion, block: 'nearest' }); }, 80);
   }
 }
 function resumeStage() {

@@ -348,13 +348,15 @@
       <div class="form-card">
         <div class="section-label">Send a Message</div>
         <h2 class="form-title">How can we help?</h2>
-        <p class="form-sub">Tell us what your family needs and we'll connect you with the right expert — usually within a few hours.</p>
+        <p class="form-sub">Tell us what your family needs and we'll connect you with the right expert within 24 hours.</p>
 
         <div id="contactForm">
           <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)">
             <input type="hidden" name="form-name" value="pcshomes-contact"/>
             <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
             <input type="hidden" name="need-type" id="needTypeInput" value="general"/>
+            <input type="hidden" name="area" id="areaInput" value=""/>
+            <input type="hidden" name="lead-source" id="leadSourceInput" value=""/>
 
             <!-- INQUIRY TYPE -->
             <div style="margin-bottom:24px;">
@@ -450,7 +452,7 @@
               <div class="form-reassure">No spam, no pressure — a real person who knows Fort Drum reads every message.</div>
               <button type="submit" class="submit-btn">Connect Me with an Expert &rarr;</button>
               <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Backed by a 5.0&#9733; network — 120+ verified reviews across our partners.</div>
-              <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Questions? Call or text <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
+              <div style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">Questions? <a href="sms:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:#8a6a1e;font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
               <div id="formError" style="display:none;"></div>
             </div>
           </form>
@@ -465,7 +467,7 @@
             </svg>
           </div>
           <h3 class="success-title">We got your message!</h3>
-          <p class="success-sub">A PCSHomes team member will review your request and connect you with the right expert — usually within a few hours.</p>
+          <p class="success-sub">A PCSHomes team member will review your request and connect you with the right expert within 24 hours.</p>
         </div>
       </div>
     </div>
@@ -649,6 +651,30 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     btn.setAttribute('aria-pressed', 'true');
     document.getElementById('needTypeInput').value = btn.dataset.type;
   }
+
+  (function prefillFromUrl() {
+    try {
+      var q = new URLSearchParams(window.location.search);
+      var alias = { agent: 'real-estate-agent', lender: 'va-lender', inspector: 'property-inspector', services: 'home-services', family: 'family-support' };
+      var need = q.get('need');
+      if (need) {
+        var btn = document.querySelector('.inquiry-type[data-type="' + (alias[need] || need) + '"]');
+        if (btn) selectType(btn);
+      }
+      var area = (q.get('area') || '').slice(0, 80);
+      if (area) {
+        var af = document.getElementById('areaInput');
+        if (af) af.value = area;
+        var msg = document.getElementById('message');
+        if (msg && !msg.value) msg.value = 'Interested in the ' + area + ' area. ';
+      }
+      var src = [];
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function(k) { var v = q.get(k); if (v) src.push(k + '=' + v.slice(0, 60)); });
+      if (document.referrer) src.push('ref=' + document.referrer.slice(0, 120));
+      var sf = document.getElementById('leadSourceInput');
+      if (sf && src.length) sf.value = src.join(' | ');
+    } catch (e) {}
+  })();
 
   function toggleExtras() {
     var el = document.getElementById('contactExtras');
