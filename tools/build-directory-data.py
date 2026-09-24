@@ -21,6 +21,8 @@ ADMIN_NOTE_ALLOWLIST = {
     "medical-018",  # Guthrie has no ER/urgent care
     "medical-025",  # confirm Watertown VA address on the appointment
     "unit-080",     # 2nd MBCT: two published numbers
+    "unit-088", "unit-089", "unit-090", "unit-091",  # after-hours routing
+    "drum-092",     # pay office line guide
     "legal-047",    # NY divorce is Supreme Court, not Family Court
 }
 # builder-instruction notes that must NOT be shown to users

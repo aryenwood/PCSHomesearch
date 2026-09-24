@@ -161,6 +161,7 @@
   <div class="right-row"><span class="n">04</span><div><h3>Not safe at home?</h3><p>Go to <a href="#help-now" style="color:var(--navy);font-weight:700;">Help Now</a> first. The crisis lines come before the chain of command.</p></div></div>
 
   <h3 class="dir-group-h" style="margin-top:40px;">Find the desk by battalion</h3>
+  <div class="dir-row"><h3>Just arrived? 10th Mountain Reception Company</h3><p class="use">Soldiers in-processing at Fort Drum report here first. If you can't reach your newly arrived soldier, this desk is open around the clock.</p><div class="dir-acts"><a class="call" href="tel:+13157740165">Open 24/7 (315) 774-0165</a></div></div>
   <div class="dir-row"><h3>1st Mobile Brigade Combat Team</h3><p class="use">1-32 Infantry · 2-22 Infantry · 1-87 Infantry · HHC · Company M · 293rd Signal</p><div class="dir-acts"><a class="call" href="tel:+13157724228">Staff duty (315) 772-4228</a></div></div>
   <div class="dir-row"><h3>2nd Mobile Brigade Combat Team</h3><p class="use">2-14 Infantry · 2-87 Infantry · 4-31 Infantry · HHC · Company M · 94th Signal</p><div class="dir-acts"><a class="call" href="tel:+13157742199">Staff duty (315) 774-2199</a><a class="alt" href="tel:+13157722199">(315) 772-2199</a></div><p class="rnote">Army pages list two numbers for this desk. If one doesn't connect, try the other.</p></div>
   <div class="dir-row"><h3>10th Combat Aviation Brigade</h3><p class="use">1-10 Attack Recon (Dragons) · 2-10 Assault Helicopter (Knighthawks) · 3-10 General Support (Phoenix) · 277th Aviation Support (Eagles) · HHC (Renegades)</p><div class="dir-acts"><a class="call" href="tel:+13157741100">Staff duty (315) 774-1100</a></div></div>
@@ -168,6 +169,12 @@
   <div class="dir-row"><h3>Division Sustainment Brigade</h3><p class="use">10th, 210th &amp; 710th Support Battalions · 548th Support Battalion HHC · Headquarters and Special Troops Battalion · 226th Signal · 510th Personnel Co. · 52nd Personnel Det.</p><div class="dir-acts"><a class="call" href="tel:+13157728254">Staff duty (315) 772-8254</a></div></div>
   <div class="dir-row"><h3>Headquarters and Headquarters Battalion (HHBN)</h3><p class="use">Headquarters Support Company · Signal, Intelligence and Sustainment Company</p><div class="dir-acts"><a class="call" href="tel:+13157728120">Staff duty (315) 772-8120</a></div></div>
   <div class="dir-row"><h3>41st Engineer Battalion</h3><p class="use">63rd, 84th, 513th &amp; 642nd Engineer Companies · HHC · Forward Support Company</p><div class="dir-acts"><a class="call" href="tel:+13157725100">Staff duty (315) 772-5100</a></div></div>
+  <h3 class="dir-group-h" style="margin-top:40px;font-size:21px;">Other units on post</h3>
+  <p class="rnote" style="margin-top:10px;">These offices keep weekday hours. After hours, call Installation Operations below; it is staffed around the clock.</p>
+  <div class="dir-row"><h3>Mountain Training Group</h3><p class="use">9 a.m.-5 p.m. Monday-Friday</p><div class="dir-acts"><a class="call" href="tel:+13157721974">(315) 772-1974</a></div></div>
+  <div class="dir-row"><h3>NCO Academy (BLC and other courses)</h3><p class="use">For a soldier attending a course · 9 a.m.-5 p.m. Monday-Saturday</p><div class="dir-acts"><a class="call" href="tel:+13157788187">(315) 778-8187</a></div></div>
+  <div class="dir-row"><h3>10th Mountain Division Band</h3><p class="use">Band Operations · 9:30 a.m.-4:30 p.m. Monday-Friday</p><div class="dir-acts"><a class="call" href="tel:+13157722308">(315) 772-2308</a></div></div>
+  <div class="dir-row"><h3>20th Air Support Operations Squadron (Air Force)</h3><p class="use">7:30 a.m.-4:30 p.m. Monday-Friday · the squadron has no staff duty desk</p><div class="dir-acts"><a class="call" href="tel:+13157726958">(315) 772-6958</a></div><p class="rnote">Families of airmen in the 18th Combat Weather Squadron detachment: its only published lines are forecaster desks, so start with Installation Operations.</p></div>
   <div class="dir-row"><h3>Don't know the unit?</h3><p class="use">Fort Drum Installation Operations is staffed around the clock and can route you.</p><div class="dir-acts"><a class="call" href="tel:+13157723632">(315) 772-3632</a><a class="alt" href="tel:+13157728620">(315) 772-8620</a></div></div>
 
   <p class="dir-verified" style="margin-top:18px;">These are the numbers the Army publishes on its <a href="https://home.army.mil/drum/units-tenants/10th-mountain-division-li" target="_blank" rel="noopener">Fort Drum unit pages ↗</a>, verified Sep 24, 2026. Units reorganize as the Army transforms, so if a number fails, the unit page is the authority. The division's 3rd Brigade Combat Team is stationed at Fort Johnson, Louisiana: (337) 531-0517.</p>
@@ -272,7 +279,12 @@ var ALIASES = {
   "staff duty": ["staff duty"], "sdo": ["staff duty"], "duty desk": ["staff duty"],
   "reach my soldier": ["staff duty", "hero care"], "contact my soldier": ["staff duty", "hero care"],
   "can't reach": ["staff duty", "installation operations"], "cant reach": ["staff duty", "installation operations"],
-  "battalion": ["staff duty"], "brigade": ["staff duty"], "company": ["staff duty"]
+  "battalion": ["staff duty"], "brigade": ["staff duty"], "company": ["staff duty"],
+  "in-processing": ["reception company"], "inprocessing": ["reception company"], "just arrived": ["reception company"],
+  "reception": ["reception company"], "blc": ["nco academy"], "ncoa": ["nco academy"],
+  "air force": ["air force"], "airman": ["air force"],
+  "my pay": ["military pay", "finance"], "paycheck": ["military pay", "finance"], "pay problem": ["military pay", "finance"],
+  "pay is wrong": ["military pay", "finance"], "finance": ["military pay", "finance"], "travel voucher": ["travel voucher", "military pay"]
 };
 var CAT_ORDER = ["Safety & Crisis", "Health & Medical", "Veterans & VA", "Food, Money & Benefits",
                  "Legal, Divorce & Family", "Kids, School & Child Care", "Your Soldier's Unit", "Military & PCS",
@@ -388,7 +400,10 @@ function dirFilter() {
     });
     if (!specific) {
       var units = DIR.filter(function (r) { return r.cat === UNIT_CAT; })
-        .sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+        .sort(function (a, b) {
+          var rank = function (r) { return r.id === "unit-086" ? 999 : r.id === "unit-087" ? 0 : parseInt(r.id.split("-")[1], 10); };
+          return rank(a) - rank(b);
+        });
       render(units, false);
       setHint('Find your soldier\'s battalion below, then call that brigade\'s 24/7 desk. <a href="#command" style="color:var(--gold);font-weight:700;text-decoration:none;">Full guide: reach your soldier\'s command ↑</a>');
       return;
