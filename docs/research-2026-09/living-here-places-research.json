@@ -4705,5 +4705,29 @@
   "confidence": "unverified",
   "excluded_reason": "no official site of its own",
   "lead_from": "outdoors-pass-2026-09"
+ },
+ {
+  "name": "Burrville Cider Mill",
+  "category": "cider-mill",
+  "town": "Burrville",
+  "county": "Jefferson",
+  "address": "18176 County Route 156, Watertown, NY 13601",
+  "official_url": "http://burrvillecidermill.com/",
+  "source_url": "http://burrvillecidermill.com/",
+  "cost": "paid",
+  "indoor": false,
+  "season": "Late August to about Thanksgiving",
+  "on_post": false,
+  "good_for_kids": "Watch apples pressed into cider on Tuesday, Thursday, Saturday or Sunday; 10 to noon is best.",
+  "what_to_do": "An 1801 mill on a 30-foot waterfall: fresh sweet cider and cider donuts in season.",
+  "phone": "(315) 788-7292",
+  "lat": 43.93146,
+  "lon": -75.85884,
+  "osm": null,
+  "drive_min": 18,
+  "drive_mi": 12.8,
+  "confidence": "confirmed",
+  "lead_from": "owner-link-2026-09-25",
+  "geocoded_from": "Census geocoder: 18176 CO RD 156, WATERTOWN, NY 13601"
  }
 ]

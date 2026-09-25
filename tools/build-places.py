@@ -19,7 +19,7 @@ KIND = {  # category -> (finder group, label on the row)
     "beach": ("water", "Beach"), "pool": ("water", "Pool"), "trail": ("nature", "Trail"),
     "nature-center": ("nature", "Nature center"), "waterfall": ("nature", "Waterfall"), "campground": ("nature", "Campground"),
     "museum": ("history", "Museum"), "historic-site": ("history", "Historic site"), "library": ("library", "Library"),
-    "zoo-farm": ("animals", "Zoo & farm"), "pick-your-own": ("animals", "Farm"), "indoor-play": ("indoor", "Indoor play"),
+    "zoo-farm": ("animals", "Zoo & farm"), "pick-your-own": ("animals", "Farm"), "cider-mill": ("animals", "Cider mill"), "indoor-play": ("indoor", "Indoor play"),
     "bowling-skating": ("indoor", "Bowling & skating"), "theater": ("indoor", "Theater"), "winter": ("winter", "Winter fun"),
     "festival-venue": ("other", "Events"), "other": ("other", "More to do"),
 }
