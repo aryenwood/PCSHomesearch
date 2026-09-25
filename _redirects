@@ -1,3 +1,11 @@
-/pcshomes-agent.html  /pcshomes-network.html  301
+/pcshomes-agent.html  /get-help#network  301
 /pcshomes-about.html  /  301
 /pcshomes-dashboard.html  /  301
+# Renames (Sep 2026): Contact + Network became Get Help; Discover became Living Here.
+# Query strings pass through, so ?need=agent&area=Watertown#contactForm links keep their context.
+/pcshomes-contact.html  /get-help  301
+/pcshomes-contact  /get-help  301
+/pcshomes-network.html  /get-help#network  301
+/pcshomes-network  /get-help#network  301
+/pcshomes-discover.html  /living-here  301
+/pcshomes-discover  /living-here  301

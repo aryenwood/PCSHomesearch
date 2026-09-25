@@ -1,6 +1,6 @@
 // Shared partner card renderer.
 // Used by:
-//   - pcshomes-network.html (public Network page)
+//   - /get-help#network (public Network page)
 //   - admin/dashboard.js   (live preview pane in the partner add/edit form)
 //
 // Public API: window.renderPartnerCard(partner) -> HTML string
@@ -62,7 +62,7 @@
   function ctaHtml(p) {
     var label = p.ctaLabel || 'Request Info';
     if (p.isPlaceholder) {
-      return '<a class="vendor-cta" href="' + escapeAttr(p.ctaHref || 'pcshomes-network.html#partner-apply') + '" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
+      return '<a class="vendor-cta" href="' + escapeAttr(p.ctaHref || '/get-help#partner-apply') + '" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';
     }
     if (p.websiteUrl) {
       return '<a class="vendor-cta" href="' + escapeAttr(p.websiteUrl) + '" target="_blank" style="text-decoration:none;display:block;text-align:center;">' + escapeHtml(label) + '</a>';

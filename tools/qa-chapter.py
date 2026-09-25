@@ -71,8 +71,9 @@ with sync_playwright() as p:
         if h.startswith(("tel:", "mailto:", "sms:", "http", "#")):
             continue
         path = h.split("#")[0]
-        if path.startswith("/fort-drum/") and not path.endswith(".html"):
-            path += ".html"
+        # clean URLs (/fort-drum/x, /get-help, /living-here) are Netlify pretty URLs: test the .html
+        if path not in ("", "/") and "." not in path.rsplit("/", 1)[-1]:
+            path = path.split("?")[0] + ".html"
         r = pg.request.get(urljoin(BASE + CHAPTER, path))
         if r.status >= 400:
             broken.append(f"{r.status} {h}")

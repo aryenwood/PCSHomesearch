@@ -123,7 +123,7 @@ with sync_playwright() as p:
     # both ask bands post to popup-lead with their own offer
     bodies = []
     pg.route(BASE + "/", lambda route: (bodies.append(route.request.post_data), route.fulfill(status=200, body="ok")))
-    for i in range(2):
+    for i in range(pg.locator(".ask-band").count()):
         band = pg.locator(".ask-band").nth(i)
         band.locator("[name=name]").fill("QA Test")
         band.locator("[name=contact]").fill("qa@example.com")
@@ -131,7 +131,10 @@ with sync_playwright() as p:
         pg.wait_for_timeout(300)
     R["ask_offers"] = [parse_qs(x).get("offer", [None])[0] for x in bodies]
     R["ask_forms"] = [parse_qs(x).get("form-name", [None])[0] for x in bodies]
-    if R["ask_offers"] != ["va-calculator", "rent-vs-buy"] or R["ask_forms"] != ["popup-lead"] * 2: FAIL.append("ask_bands")
+    # one lead form on the page (owner, Sep 24 2026), right after the payment calculator
+    if R["ask_offers"] != ["va-calculator"] or R["ask_forms"] != ["popup-lead"]: FAIL.append("ask_bands")
+    R["rvb_next_step"] = pg.get_attribute(".next-step a", "href")
+    if R["rvb_next_step"] != "/get-help?need=agent#contactForm": FAIL.append("rvb_next_step")
     R["page_errors"] = errs
     if errs: FAIL.append("page_errors")
     b.close()
