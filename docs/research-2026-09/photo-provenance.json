@@ -104,5 +104,90 @@
   "military-family.webp": "homepage 'Arriving this month' tile, kept by the same ruling; not traced",
   "soldier-spouse-on-post.webp": "PCS Checklist hero; filename suggests home.army.mil (Fort Novosel), which would be public domain, but the page wasn't found",
   "licensed fallback on hand": "DVIDS/Commons 'Waiting to be reunited' (141105-A-VH456-019), a 2014 Fort Drum homecoming in UCP, public domain"
+ },
+ "day_trips": {
+  "thumbnails": "images/trips/*.webp, 480x360 crops",
+  "new_sources": [
+   {
+    "file": "images/trips/thompson-zoo.webp",
+    "title": "File:New Zoo Mountain Lion Kitten.jpg",
+    "author": "Kurt Thomas Hunt",
+    "license": "CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:New_Zoo_Mountain_Lion_Kitten.jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/sackets.webp",
+    "title": "File:SACKETTS HARBOR BATTLEFIELD.jpg",
+    "author": "JERRYE & ROY KLOTZ MD",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:SACKETTS_HARBOR_BATTLEFIELD.jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/cape-vincent.webp",
+    "title": "File:Tibbets Point Light from St. Lawrence River 2.jpg",
+    "author": "Tomrobertsphoto",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tibbets_Point_Light_from_St._Lawrence_River_2.jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/salmon-river-falls.webp",
+    "title": "File:Salmon River Falls Spring 2009.JPG",
+    "author": "Antepenultimate",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Salmon_River_Falls_Spring_2009.JPG",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/kingston.webp",
+    "title": "File:Kingston Fort Henry Guard with goats.jpg",
+    "author": "Ymblanter",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Kingston_Fort_Henry_Guard_with_goats.jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/syracuse.webp",
+    "title": "File:Ailurus fulgens - Syracuse Zoo.jpg",
+    "author": "Dave Pape",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Ailurus_fulgens_-_Syracuse_Zoo.jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/old-forge.webp",
+    "title": "File:Old Forge Dam.jpg",
+    "author": "Mmrvideo",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Old_Forge_Dam.jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/ottawa.webp",
+    "title": "File:Rideau Canal (3373400659).jpg",
+    "author": "Vince Alongi from Delta, B.C., Canada",
+    "license": "CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Rideau_Canal_(3373400659).jpg",
+    "ai_assisted": false
+   },
+   {
+    "file": "images/trips/montreal.webp",
+    "title": "File:375th Anniversary Of Montreal 08.jpg",
+    "author": "Thomas1313",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:375th_Anniversary_Of_Montreal_08.jpg",
+    "ai_assisted": false
+   }
+  ],
+  "reused_site_photos": [
+   "black-river (black-river-falls)",
+   "clayton (clayton-waterfront)",
+   "wellesley (wellesley-island-shore)",
+   "boldt (boldt-from-alexandria-bay, tighter crop)",
+   "singer (singer-castle)"
+  ],
+  "no_photo": "Burrville Cider Mill: no licensed photo exists on Commons or Openverse; the row shows a 'Since 1801' tile (a fact from the row) until the owner or the mill supplies one"
  }
 }
