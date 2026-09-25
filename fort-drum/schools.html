@@ -409,10 +409,14 @@ function submitAskBand(e, offer) {
 }
 // open the district named in the URL hash (links like /fort-drum/schools#carthage land on the details)
 (function () {
-  var h = location.hash.slice(1);
-  var row = h && document.getElementById(h);
-  var d = row && row.querySelector('details.dx');
-  if (d) d.open = true;
+  function openFromHash() {
+    var h = location.hash.slice(1);
+    var row = h && document.getElementById(h);
+    var d = row && row.querySelector('details.dx');
+    if (d) d.open = true;
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);  // in-page links to a district open it too
 })();
 </script>
 <script src="/js/chassis.js"></script>
