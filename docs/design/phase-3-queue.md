@@ -12,6 +12,10 @@ was re-checked against official sources first (owner rule: carrying a figure ove
 verifying it). Remaining: step 8 renames (Get Help, Living Here), and the Fable audit before
 the push.
 
+## Status note (Sep 25 2026)
+
+Phase 3 is complete and live. The running build queue is now `docs/design/queue.md`.
+
 ## Why
 
 `pcshomes-fortdrum.html` is 278 KB, 916 inline styles, one URL. Nobody can land on "Fort Drum
