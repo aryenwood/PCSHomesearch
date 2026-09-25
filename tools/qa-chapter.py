@@ -11,7 +11,10 @@ BASE = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8611"
 CHAPTER = sys.argv[2] if len(sys.argv) > 2 else "/fort-drum/schools.html"
 HASH = sys.argv[3] if len(sys.argv) > 3 else "schools"
 DISTRICT = sys.argv[4] if len(sys.argv) > 4 else "carthage"
-OUT = os.environ.get("QA_OUT", ".")
+# screenshots go to a temp folder, never the repo root (a draft deploy uploads the whole folder)
+import tempfile
+OUT = os.environ.get("QA_OUT", os.path.join(tempfile.gettempdir(), "pcshomes-qa"))
+os.makedirs(OUT, exist_ok=True)
 report = {"chapter": CHAPTER}
 
 with sync_playwright() as p:

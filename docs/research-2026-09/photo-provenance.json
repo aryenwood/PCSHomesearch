@@ -1,0 +1,108 @@
+{
+ "updated": "2026-09-25",
+ "method": "Sources found on Wikimedia Commons, Openverse and DVIDS; licenses read on each file page. Old site photos were fingerprint-matched (difference hash, crop-tolerant) against candidates; none traced to a free license.",
+ "added": [
+  {
+   "file": "images/places/thompson-park-fall-path(-500).webp",
+   "title": "Thompson Park, Watertown, NY (October 2010)",
+   "author": "Kurt Thomas Hunt (Flickr: Lallint)",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Thompson_Park_-_5188624026.jpg",
+   "license_url": "https://creativecommons.org/licenses/by/2.0",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/places/thompson-park-fall-maple(-800).webp",
+   "title": "Thompson Park, Watertown, NY (October 2010)",
+   "author": "Kurt Thomas Hunt (Flickr: Lallint)",
+   "license": "CC BY 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Thompson_Park_-_5188624996.jpg",
+   "license_url": "https://creativecommons.org/licenses/by/2.0",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/places/sackets-harbor-sunset(-600).webp",
+   "title": "Sacketts Harbor, NY — Lake Ontario at sunset",
+   "author": "Aaronyoung777",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Sacketts_Harbor,_NY.jpg",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/places/watertown-from-thompson-park-snow-city(-800).webp",
+   "title": "File:Watertown, New York skyline (384903634).jpg",
+   "author": "wtrtwnguy from Akron, OH, United States",
+   "license": "CC BY-SA 2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Watertown,_New_York_skyline_(384903634).jpg",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/places/public-square-winter(-800).webp",
+   "title": "File:Public Square Watertown NY 2022.jpg",
+   "author": "Lallint",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Public_Square_Watertown_NY_2022.jpg",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/places/public-square-fountain-winter(-800).webp",
+   "title": "File:Fountain Watertown NY 2022.jpg",
+   "author": "Lallint",
+   "license": "CC0",
+   "page": "https://commons.wikimedia.org/wiki/File:Fountain_Watertown_NY_2022.jpg",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/fort-drum/blackhawk-in-snow(-800).webp",
+   "title": "File:Winter Camouflaged cargo helicopter (51736301519).jpg",
+   "author": "Fort Drum &amp; 10th Mountain Division (LI) from Fort Drum, ",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Winter_Camouflaged_cargo_helicopter_(51736301519).jpg",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/fort-drum/school-safety-bus(-800).webp",
+   "title": "File:Fort Drum Family Advocacy Program hosts safety-themed car show (9259768).jpg",
+   "author": "U.S. Army FDGPA by Michael Strasser",
+   "license": "Public domain",
+   "page": "https://commons.wikimedia.org/wiki/File:Fort_Drum_Family_Advocacy_Program_hosts_safety-themed_car_show_(9259768).jpg",
+   "ai_assisted": false
+  },
+  {
+   "file": "images/fort-drum/starbase-stem(-800).webp",
+   "title": "Students Practice Hands-on STEM learning at Fort Drum STARBASE",
+   "author": "Pfc. Alyssa Norton",
+   "license": "Public domain (U.S. Army / DVIDS)",
+   "page": "https://www.dvidshub.net/image/8968333/students-practice-hands-stem-learning-fort-drum-starbase",
+   "ai_assisted": false
+  }
+ ],
+ "crops": {
+  "watertown-from-thompson-park-snow-city": "lower 58% of the original (the city and snow, not the sky)",
+  "school-safety-bus": "top 74% of the original (above the painted stripe)"
+ },
+ "share_card": {
+  "file": "images/og-2026-09-25.jpg",
+  "what": "a real 1200x630 screenshot of the Living Here hero (Boldt Castle photo: Dirk Ingo Franke, CC BY 3.0)"
+ },
+ "removed_unlicensed": [
+  "thompson-park (a signed aerial: photographer's signature in the corner)",
+  "sackets-harbor",
+  "boldt-castle",
+  "north-country-winter (jpg + webp)",
+  "fort-drum-gate",
+  "watertown-downtown",
+  "thousand-islands",
+  "og-card (composed on fort-drum-gate)",
+  "fort-drum-banner, soldiers-mountain, 10th-mountain-patch (unused)",
+  "Novosel_Soldier and Spouse originals (unused; a recompressed copy is still live, see unresolved)"
+ ],
+ "unresolved_owner_question": {
+  "servicemember-returning-home.jpg": "homepage hero; owner ruling Sep 24 keeps it for its GWOT-era look. Not traced to a free license; looks like iStock/Getty stock. Was it bought?",
+  "soldier-home-front-door.webp": "the same photo re-encoded (fingerprint distance 0); Buying hero",
+  "military-family.webp": "homepage 'Arriving this month' tile, kept by the same ruling; not traced",
+  "soldier-spouse-on-post.webp": "PCS Checklist hero; filename suggests home.army.mil (Fort Novosel), which would be public domain, but the page wasn't found",
+  "licensed fallback on hand": "DVIDS/Commons 'Waiting to be reunited' (141105-A-VH456-019), a 2014 Fort Drum homecoming in UCP, public domain"
+ }
+}

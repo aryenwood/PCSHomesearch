@@ -276,3 +276,7 @@ footer span.tag { margin-left: auto; letter-spacing: 0.12em; text-transform: upp
   .f-links a { display: block; margin: 0 -4px; padding: 10px 4px; break-inside: avoid; }
   input, select, textarea { font-size: 16px !important; }
 }
+
+/* photo credits: a quiet line at the end of the page for the licensed photos it uses */
+.photo-credits { font-size: var(--t-xs); color: var(--muted); line-height: 1.6; max-width: 60em; margin: 28px 0 0; }
+.photo-credits a { color: var(--muted); }
