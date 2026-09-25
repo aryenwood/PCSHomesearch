@@ -198,6 +198,13 @@ h2 em { font-weight: 400; font-style: italic; color: var(--gold); }
 .form-note a { color: var(--gold-bright); font-weight: 700; display: inline-block; padding: 10px 2px; margin: -10px -2px; text-decoration: none; }
 
 /* phone tab bar: five equal slots, so the icons sit evenly whatever the label length */
+/* the phone tab bar and phone-only links, once for every page (were copied into each page's <style>) */
+.mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep); border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px); justify-content: space-around; align-items: center; }
+.tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55); font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
+.tab-item svg { stroke: currentColor; }
+.tab-item.active { color: var(--gold-bright); }
+.m-only { display: none; }
+@media (max-width: 780px) { .mobile-tab-bar { display: flex; } .m-only { display: inline-flex; } }
 .mobile-tab-bar .tab-item { flex: 1 1 0; min-width: 0; padding-inline: 2px; white-space: nowrap; }
 
 /* ── footer ─────────────────────────────────────────────────── */

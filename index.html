@@ -71,7 +71,6 @@
     .lead-success span { font-size: var(--t-s); color: var(--plate-sub); }
 
     /* mobile/desktop switches */
-    .m-only { display: none; }
 
     /* exit/depth popup */
     .popup-overlay { position: fixed; inset: 0; z-index: 20000; background: rgba(7,15,30,0.75); backdrop-filter: blur(4px);
@@ -117,13 +116,6 @@
     .popup-trust-item { font-size: var(--t-xs); color: var(--muted); display: flex; align-items: center; gap: 5px; }
 
     /* mobile tab bar — the one fixed layer on phones */
-    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
-                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
-                      justify-content: space-around; align-items: center; }
-    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
-                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
-    .tab-item svg { stroke: currentColor; }
-    .tab-item.active { color: var(--gold-bright); }
 
     @media (max-width: 900px) {
       .stage-grid { grid-template-columns: repeat(2, 1fr); }
@@ -133,8 +125,6 @@
     @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .bar { position: static; }
-      .mobile-tab-bar { display: flex; }
-      .m-only { display: inline-flex; }
       .d-only { display: none; }
       .stage-welcome { padding-inline: 17px 12px; }
     }

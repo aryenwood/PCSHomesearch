@@ -78,20 +78,10 @@
     .ask-done { display: none; color: var(--plate-ink); font-size: var(--t-m); margin: 0; }
     .ask-done a, .ask-note a { color: var(--gold-bright); font-weight: 700; }
 
-    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
-                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
-                      justify-content: space-around; align-items: center; }
-    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
-                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
-    .tab-item svg { stroke: currentColor; }
-    .tab-item.active { color: var(--gold-bright); }
-    .m-only { display: none; }
 
     @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .bar { position: static; }
-      .mobile-tab-bar { display: flex; }
-      .m-only { display: inline-flex; }
       .hero-banner img { aspect-ratio: 16 / 9; }
       input { font-size: 16px !important; }
     }
