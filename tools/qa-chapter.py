@@ -2,7 +2,7 @@
 python3 tools/qa-chapter.py [base_url] [chapter_path] [hash_to_forward] [district_id or - to skip]
 Checks: console clean, no horizontal scroll at 390/768/1440, screenshots, expander + hash-open,
 ask-band POST body (intercepted, nothing sent), every same-site link resolves, and the hub's
-old #hash forwards to the chapter while its map still initializes."""
+old #hash forwards to the chapter, and the Housing chapter's map initializes."""
 import json, sys, os
 from urllib.parse import urljoin, urlparse
 from playwright.sync_api import sync_playwright
@@ -52,12 +52,17 @@ with sync_playwright() as p:
         posted["body"] = route.request.post_data
         route.fulfill(status=200, body="ok")
     pg.route(BASE + "/", handle)
-    pg.fill(".ask-band [name=name]", "QA Test")
-    pg.fill(".ask-band [name=contact]", "qa@example.com")
-    pg.click(".ask-band button[type=submit]")
-    pg.wait_for_timeout(500)
-    report["ask_post_body"] = posted.get("body")
-    report["ask_success_shown"] = pg.evaluate("getComputedStyle(document.querySelector('.ask-done')).display") != "none"
+    if pg.locator(".ask-band").count():
+        pg.fill(".ask-band [name=name]", "QA Test")
+        pg.fill(".ask-band [name=contact]", "qa@example.com")
+        pg.click(".ask-band button[type=submit]")
+        pg.wait_for_timeout(500)
+        report["ask_post_body"] = posted.get("body")
+        report["ask_success_shown"] = pg.evaluate("getComputedStyle(document.querySelector('.ask-done')).display") != "none"
+    else:
+        # chapters next to crisis numbers (Healthcare) carry no lead form, by rule
+        report["ask_post_body"] = "no ask band on this chapter"
+        report["ask_success_shown"] = None
 
     # every same-site link resolves (clean /fort-drum/<x> URLs are Netlify pretty URLs: test the .html)
     hrefs = pg.evaluate("[...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href'))")
@@ -88,9 +93,12 @@ with sync_playwright() as p:
     errs3 = []
     pg3.on("pageerror", lambda e: errs3.append(str(e)))
     pg3.goto(BASE + "/pcshomes-fortdrum.html", wait_until="networkidle")
+    report["hub_page_errors"] = errs3[:]
+    # the neighborhood map moved from the hub to the Housing chapter (Sep 24 2026)
+    pg3.goto(BASE + "/fort-drum/housing.html", wait_until="networkidle")
     pg3.wait_for_timeout(1500)
-    report["hub_map_initialized"] = pg3.evaluate("!!document.querySelector('#drumMap.leaflet-container')")
-    report["hub_page_errors"] = errs3
+    report["housing_map_initialized"] = pg3.evaluate("!!document.querySelector('#drumMap.leaflet-container')")
+    report["housing_page_errors"] = errs3[len(report["hub_page_errors"]):]
     b.close()
 
 print(json.dumps(report, indent=1))

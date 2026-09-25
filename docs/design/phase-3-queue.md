@@ -4,6 +4,14 @@ Queued 2026-09-24 (owner: "queue the next build"). Direction approved in the Pho
 the chassis (`css/chassis.css`, `docs/design/chassis-spec.md`) is the design law. Starts on
 the owner's "go".
 
+## Status (Sep 24 2026)
+
+Chapters 1-6 and the hub are built: schools and pcs-checklist are live; buying, housing,
+healthcare, winter and the rebuilt hub are committed, draft only. Every fact on the new pages
+was re-checked against official sources first (owner rule: carrying a figure over is not
+verifying it). Remaining: step 8 renames (Get Help, Living Here), and the Fable audit before
+the push.
+
 ## Why
 
 `pcshomes-fortdrum.html` is 278 KB, 916 inline styles, one URL. Nobody can land on "Fort Drum

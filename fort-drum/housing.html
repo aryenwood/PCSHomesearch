@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Fort Drum Housing: On-Post Homes, Towns by School District &amp; Drive (2026) | PCSHomes</title>
+  <meta name="description" content="How Fort Drum on-post family housing works, free off-post help from the Housing Services Office, Fort Drum's gates, and a map of 30 nearby towns with their school district and measured drive time to the gates.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pcshomes.com/fort-drum/housing">
+  <meta property="og:title" content="Fort Drum Housing: On Post or Off, Town by Town | PCSHomes">
+  <meta property="og:description" content="How on-post housing works at Fort Drum, who helps with off-post rentals for free, and every nearby town with its school district and drive time.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://pcshomes.com/fort-drum/housing">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23C9A84C'>P</text></svg>">
+  <link rel="stylesheet" href="/css/chassis.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the Fort Drum on-post housing wait list work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Apply with Mountain Community Homes' Welcome Home Center (315-955-6644) as soon as you have orders. You become active on the list when you sign out of your last duty station and your documents are received. Your rank, number of dependents and eligibility date (the day you signed out of your last duty station) set your place."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does on-post rent cover at Fort Drum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On-post rent is your whole BAH, paid by allotment. It covers rent, utilities up to a set allowance, and renters insurance, and Mountain Community Homes handles maintenance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who helps with off-post housing at Fort Drum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Housing Services Office in Clark Hall (Bldg. 10720, 315-772-9397) offers free housing counseling, lease reviews and rental inspections, and helps settle landlord disputes. Soldiers are required to check in with it before renting, leasing or buying off post."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pcshomes.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Fort Drum Guide", "item": "https://pcshomes.com/pcshomes-fortdrum.html"},
+    {"@type": "ListItem", "position": 3, "name": "Housing", "item": "https://pcshomes.com/fort-drum/housing"}]}
+  </script>
+  <style>
+    /* housing chapter chrome on top of the chassis */
+    [id] { scroll-margin-top: 84px; }
+    body { overflow-wrap: break-word; }
+    .crumb { font-size: var(--t-xs); color: var(--muted); margin: 0 0 14px; }
+    .crumb a { color: var(--steel); font-weight: 700; text-decoration: none; display: inline-block; padding: 10px 0; margin: -10px 0; }
+    header.hero .facts { margin-top: 34px; grid-template-columns: 1fr 1fr; }
+    header.hero .facts > div:nth-child(2n) { border-right: none; }
+    header.hero .facts > div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .facts .val a { white-space: nowrap; }
+
+    .ruled { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
+    .ruled li { padding: 20px 4px 18px; border-bottom: 1px solid var(--rule); }
+    .ruled h3 { font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
+    .ruled p { margin: 0; font-size: 17.5px; color: var(--ink); max-width: 42em; }
+    .ruled strong { color: var(--navy); }
+    .ruled a, .fine a { color: var(--gold); font-weight: 700; text-decoration: none; }
+    .fine { font-size: var(--t-s); color: var(--muted); margin: 18px 0 0; max-width: 42em; line-height: 1.6; }
+
+    /* the map on the living plate */
+    .map-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 26px 0 14px; }
+    .map-tools button { min-height: 48px; border-radius: 9px; border: 1px solid rgba(217,180,91,0.55); background: transparent; color: var(--gold-bright);
+                        font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+    .map-tools button[aria-pressed="true"] { background: rgba(217,180,91,0.16); border-color: var(--gold-bright); }
+    .map-tools i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.85); flex: none; }
+    #drumMap { width: 100%; height: 520px; border-radius: 14px; background: var(--plate-deep); }
+    .map-wrap { position: relative; }
+    #mapPanel { position: absolute; top: 12px; right: 12px; z-index: 500; width: min(300px, calc(100% - 24px)); background: rgba(14,28,48,0.96);
+                border: 1px solid rgba(217,180,91,0.35); border-radius: 12px; padding: 16px 18px; color: var(--plate-sub); }
+    #mapPanel[hidden] { display: none; }
+    #mapPanel h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--plate-ink); margin: 0 30px 8px 0; line-height: 1.25; }
+    #mapPanel p { margin: 0 0 6px; font-size: var(--t-s); line-height: 1.5; }
+    #mapPanel b { color: var(--plate-ink); }
+    #mapPanel .close { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: 0; background: none; color: var(--plate-sub); font-size: 24px; cursor: pointer; }
+    #mapPanel a.go { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; color: var(--gold-bright); font-weight: 700; text-decoration: none; }
+    #mapError { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--plate-sub); }
+    .plate .fine { color: var(--plate-sub); }
+    .leaflet-control-attribution { font-size: 11px !important; }
+    .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 20px !important; }
+
+    /* town list: the map's data as rows anyone can read */
+    .resolve .call { font-size: var(--t-s); }
+    .towns-more { margin-top: 0; }
+    .towns-more summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; min-height: 48px; color: var(--gold); font-weight: 700; font-size: var(--t-s); margin-top: 10px; }
+    .towns-more summary::-webkit-details-marker { display: none; }
+    .towns-more[open] summary { display: none; }
+
+    .page-verified { font-size: var(--t-xs); color: var(--muted); margin-top: 40px; }
+    .page-verified a { color: var(--gold); font-weight: 700; text-decoration: none; }
+
+    .ask form .field { flex: 1 1 200px; }
+    .ask-done { display: none; color: var(--plate-ink); font-size: var(--t-m); margin: 0; }
+    .ask-done a, .ask-note a { color: var(--gold-bright); font-weight: 700; }
+
+    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
+                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+                      justify-content: space-around; align-items: center; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
+                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
+    .tab-item svg { stroke: currentColor; }
+    .tab-item.active { color: var(--gold-bright); }
+    .m-only { display: none; }
+
+    @media (max-width: 780px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+      .bar { position: static; }
+      .mobile-tab-bar { display: flex; }
+      .m-only { display: inline-flex; }
+      header.hero .facts { grid-template-columns: 1fr; }
+      header.hero .facts > div { border-right: none; border-bottom: 1px solid var(--rule); }
+      header.hero .facts > div:last-child { border-bottom: none; }
+      #drumMap { height: 400px; }
+      #mapPanel { top: auto; bottom: 12px; right: 12px; }
+      .map-tools button { font-size: 17px; }
+      input { font-size: 16px !important; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="bar"><nav class="bar-in" aria-label="Site">
+  <a href="/" style="text-decoration:none;"><b>PCS<em>Homes</em></b></a>
+  <ul class="bar-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/pcshomes-fortdrum.html" class="active">Fort Drum Guide</a></li>
+    <li><a href="/pcshomes-directory.html">Directory</a></li>
+    <li><a href="/pcshomes-discover.html">Discover</a></li>
+    <li><a href="/pcshomes-spouse.html">Spouse HQ</a></li>
+    <li><a href="/pcshomes-network.html">Our Network</a></li>
+    <li><a href="/pcshomes-contact.html">Contact</a></li>
+  </ul>
+  <a href="tel:+13152214857" class="bar-cta m-only" aria-label="Call PCSHomes">Call</a>
+</nav><div class="progress" id="prog"></div></div>
+
+<main id="main">
+
+<header class="hero"><div class="wrap">
+  <p class="crumb"><a href="/pcshomes-fortdrum.html">Fort Drum Guide</a> &rsaquo; Housing</p>
+  <p class="eyebrow rv">Chapter &middot; Housing near Fort Drum</p>
+  <h1 class="rv">On post or off? <em>Choose with the facts.</em></h1>
+  <p class="dek rv">How on-post housing works, who helps with off-post rentals for free, and 30 nearby towns with their school district and drive time. <strong>Drive times are measured to the gates, not guessed.</strong></p>
+  <div class="facts rv">
+    <div><span class="label">On-post housing</span><span class="val"><a href="tel:+13159556644">(315) 955-6644</a></span><span class="note">Welcome Home Center</span></div>
+    <div><span class="label">Off-post help</span><span class="val"><a href="tel:+13157729397">(315) 772-9397</a></span><span class="note">Housing Services, free</span></div>
+    <div><span class="label">Main Gate</span><span class="val">Open 24/7</span><span class="note">Off I-781</span></div>
+    <div><span class="label">On-post schools</span><span class="val">2 districts</span><span class="note">Carthage or Indian River</span></div>
+  </div>
+</div></header>
+
+<!-- ON POST -->
+<section id="onpost"><div class="wrap">
+  <h2 class="rv">On-post housing, <em>how it works.</em></h2>
+  <p class="sub rv">Fort Drum Mountain Community Homes runs on-post family housing for the Army. These rules come from the Army's Fort Drum housing FAQ.</p>
+  <ul class="ruled">
+    <li><h3>Who can live on post</h3><p>Family housing is for soldiers who are married, with or without children, or single with custody of a child who lives with them. Single soldiers E-5 and below live in the barracks.</p></li>
+    <li><h3>When to apply</h3><p><strong>As soon as you have orders</strong>, at the Welcome Home Center, <a href="tel:+13159556644">(315) 955-6644</a>. You go active on the wait list when you sign out of your last duty station and your documents arrive. You can list the neighborhoods you prefer.</p></li>
+    <li><h3>How the wait list is ordered</h3><p>Your rank, number of dependents and eligibility date (the day you signed out of your last duty station) set your place. Decline two offers and you go to the bottom of the list.</p></li>
+    <li><h3>What rent covers</h3><p>Rent is <strong>your whole BAH</strong>, paid by allotment. It covers rent, utilities up to a set allowance, and renters insurance, and Mountain Community Homes handles all maintenance. For pets, see <a href="https://www.fortdrummch.com/welcome-home/#footer-pet-policy" target="_blank" rel="noopener">their pet policy</a>.</p></li>
+    <li><h3>Moving out</h3><p>Give 30 days' notice, attend a move-out briefing, and provide a copy of your orders.</p></li>
+    <li><h3>Schools</h3><p>There's no school on post. Children living on post attend Carthage or Indian River schools, depending on the neighborhood. See the <a href="/fort-drum/schools">Schools chapter</a>.</p></li>
+  </ul>
+  <div class="kicker rv"><b>The money, side by side</b>On post, your whole BAH goes to rent, with utilities (to the allowance) and renters insurance included. Off post, your BAH is set from local rent, utilities and renters insurance for your rank; you pay those bills and keep what's left, or cover the gap. <a href="/fort-drum/buying#rvb">Compare renting and buying &rarr;</a></div>
+</div></section>
+
+<!-- OFF POST -->
+<section id="offpost"><div class="wrap">
+  <h2 class="rv">Off post, <em>you get free help.</em></h2>
+  <p class="sub rv">The Army's Housing Services Office works for you, not the landlord. <strong>Soldiers are required to check in with it before renting, leasing or buying off post.</strong></p>
+  <ul class="ruled">
+    <li><h3>What it does, free</h3><p>Housing counseling and referrals, lease reviews before you sign, safety and habitability inspections of rentals, and help settling disputes with a landlord.</p></li>
+    <li><h3>Where to find it</h3><p>Clark Hall, Bldg. 10720 Mount Belvedere Blvd, Room A2-54. Weekdays 7:30 a.m. to 4 p.m. Call <a href="tel:+13157729397">(315) 772-9397</a> or <a href="tel:+13157728751">(315) 772-8751</a>.</p></li>
+    <li><h3>Thinking of buying?</h3><p>Run your payment against your BAH, and compare renting and buying, in the <a href="/fort-drum/buying">Buying chapter</a>.</p></li>
+  </ul>
+</div></section>
+
+<!-- MAP: the plate -->
+<div class="plate rv" id="map">
+  <canvas class="ground" aria-hidden="true"></canvas>
+  <div class="plate-in wide-in">
+    <h2>Every town, <em>its district and its drive.</em></h2>
+    <p class="lede">Tap a town for its school district and the drive to each open gate. The same towns are listed below the map.</p>
+    <div class="map-tools" role="group" aria-label="Map layers">
+      <button type="button" data-layer="towns" aria-pressed="true"><i style="background:#5B9BD5"></i>Towns</button>
+      <button type="button" data-layer="gates" aria-pressed="true"><i style="background:#D9B45B"></i>Gates</button>
+      <button type="button" data-layer="places" aria-pressed="true"><i style="background:#6FBF8E"></i>Medical</button>
+    </div>
+    <div class="map-wrap">
+      <div id="drumMap" role="region" aria-label="Map of towns near Fort Drum"></div>
+      <div id="mapError">The map couldn't load. Every town is listed below.</div>
+      <div id="mapPanel" hidden aria-live="polite"><button type="button" class="close" aria-label="Close">&times;</button><div id="mpBody"></div></div>
+    </div>
+    <p class="fine">Drive times: OpenStreetMap routing from each village center to each gate, with no traffic or snow. District: the one serving the village center; the exact address decides, so confirm with the district before you sign. The Gasoline Alley Gate on Route 3 is closed until further notice.</p>
+  </div>
+</div>
+
+<!-- TOWNS -->
+<section id="towns"><div class="wrap">
+  <h2 class="rv">Towns by <em>drive time.</em></h2>
+  <p class="sub rv">Closest first, to the nearest open gate. Tap a town to ask about homes there.</p>
+  <div class="resolve">
+      <a href="/pcshomes-contact.html?need=agent&area=Black%20River#contactForm"><span class="towns">Black River</span><span class="dist">Carthage CSD &middot; Plummer Gate</span><span class="call">5 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Felts%20Mills#contactForm"><span class="towns">Felts Mills</span><span class="dist">Carthage CSD &middot; Plummer Gate</span><span class="call">5 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Calcium#contactForm"><span class="towns">Calcium</span><span class="dist">Indian River CSD &middot; Main Gate</span><span class="call">6 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Evans%20Mills#contactForm"><span class="towns">Evans Mills</span><span class="dist">Indian River CSD &middot; Main Gate</span><span class="call">6 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Watertown#contactForm"><span class="towns">Watertown</span><span class="dist">Watertown City SD &middot; Main Gate</span><span class="call">10 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Philadelphia#contactForm"><span class="towns">Philadelphia</span><span class="dist">Indian River CSD &middot; Main Gate</span><span class="call">13 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Glen%20Park#contactForm"><span class="towns">Glen Park</span><span class="dist">General Brown CSD &middot; Main Gate</span><span class="call">14 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Carthage#contactForm"><span class="towns">Carthage &amp; West Carthage</span><span class="dist">Carthage CSD &middot; Wheeler-Sack Gate</span><span class="call">15 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Brownville#contactForm"><span class="towns">Brownville</span><span class="dist">General Brown CSD &middot; Main Gate</span><span class="call">17 min</span></a>
+  </div>
+  <details class="towns-more">
+    <summary>Show all 30 towns</summary>
+    <div class="resolve" style="border-top:0;">
+      <a href="/pcshomes-contact.html?need=agent&area=Antwerp#contactForm"><span class="towns">Antwerp</span><span class="dist">Indian River CSD &middot; Main Gate</span><span class="call">20 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Natural%20Bridge#contactForm"><span class="towns">Natural Bridge</span><span class="dist">Carthage CSD &middot; Wheeler-Sack Gate</span><span class="call">20 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Dexter#contactForm"><span class="towns">Dexter</span><span class="dist">General Brown CSD &middot; Main Gate</span><span class="call">22 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Theresa#contactForm"><span class="towns">Theresa</span><span class="dist">Indian River CSD &middot; Main Gate</span><span class="call">23 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Adams%20Center#contactForm"><span class="towns">Adams Center</span><span class="dist">South Jefferson CSD &middot; Main Gate</span><span class="call">25 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Copenhagen#contactForm"><span class="towns">Copenhagen</span><span class="dist">Copenhagen CSD &middot; Plummer Gate</span><span class="call">27 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Sackets%20Harbor#contactForm"><span class="towns">Sackets Harbor</span><span class="dist">Sackets Harbor CSD &middot; Main Gate</span><span class="call">27 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=LaFargeville#contactForm"><span class="towns">LaFargeville</span><span class="dist">LaFargeville CSD &middot; Main Gate</span><span class="call">28 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Adams#contactForm"><span class="towns">Adams</span><span class="dist">South Jefferson CSD &middot; Main Gate</span><span class="call">29 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Chaumont#contactForm"><span class="towns">Chaumont</span><span class="dist">Lyme CSD &middot; Main Gate</span><span class="call">29 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Rodman#contactForm"><span class="towns">Rodman</span><span class="dist">South Jefferson CSD &middot; Main Gate</span><span class="call">30 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Gouverneur#contactForm"><span class="towns">Gouverneur</span><span class="dist">Gouverneur CSD &middot; Main Gate</span><span class="call">34 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Three%20Mile%20Bay#contactForm"><span class="towns">Three Mile Bay</span><span class="dist">Lyme CSD &middot; Main Gate</span><span class="call">35 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Clayton#contactForm"><span class="towns">Clayton</span><span class="dist">Thousand Islands CSD &middot; Main Gate</span><span class="call">36 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Lowville#contactForm"><span class="towns">Lowville</span><span class="dist">Lowville Academy &amp; CSD &middot; Wheeler-Sack Gate</span><span class="call">36 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Pierrepont%20Manor#contactForm"><span class="towns">Pierrepont Manor</span><span class="dist">South Jefferson CSD &middot; Main Gate</span><span class="call">36 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Belleville#contactForm"><span class="towns">Belleville</span><span class="dist">Belleville Henderson CSD &middot; Main Gate</span><span class="call">37 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Harrisville#contactForm"><span class="towns">Harrisville</span><span class="dist">Harrisville CSD &middot; Wheeler-Sack Gate</span><span class="call">37 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Henderson#contactForm"><span class="towns">Henderson</span><span class="dist">Belleville Henderson CSD &middot; Main Gate</span><span class="call">40 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Cape%20Vincent#contactForm"><span class="towns">Cape Vincent</span><span class="dist">Thousand Islands CSD &middot; Main Gate</span><span class="call">47 min</span></a>
+      <a href="/pcshomes-contact.html?need=agent&area=Lyons%20Falls#contactForm"><span class="towns">Lyons Falls</span><span class="dist">South Lewis CSD &middot; Wheeler-Sack Gate</span><span class="call">55 min</span></a>
+    </div>
+  </details>
+</div></section>
+
+<!-- GATES -->
+<section id="gates"><div class="wrap">
+  <h2 class="rv">Fort Drum's <em>gates.</em></h2>
+  <ul class="ruled">
+    <li><h3>Lt. Gen. Paul Cerjan / Main Gate</h3><p>Open 24/7, on Iraqi Freedom Drive off I-781. The Visitor Control Center (Bldg. 11008, just outside) is open 5:30 a.m. to 10 p.m. daily.</p></li>
+    <li><h3>Col. Michael Plummer Gate</h3><p>On Mount Belvedere Blvd, near Black River. Open 4:30 a.m. to 10 p.m. daily.</p></li>
+    <li><h3>Wheeler-Sack Army Airfield Gate</h3><p>Open 24/7. All commercial traffic uses this gate.</p></li>
+    <li><h3>Oneida &ldquo;Gasoline Alley&rdquo; Gate</h3><p>Closed until further notice.</p></li>
+  </ul>
+  <p class="fine">Gate hours change. Check <a href="https://home.army.mil/drum/my-fort/all-services/gate-information" target="_blank" rel="noopener">Fort Drum's gate page</a> before you drive in.</p>
+
+  <div class="ask ask-band rv">
+    <h2>Want help picking <em style="font-style:italic;color:var(--gold-bright);font-weight:400;">a town?</em></h2>
+    <p>Tell us your unit, your kids' ages and your budget. A real person from our Fort Drum network calls you within 24 hours.</p>
+    <form onsubmit="return submitAskBand(event, 'housing')">
+      <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required aria-required="true"/></label>
+      <label class="field"><span>Phone or email</span><input type="text" name="contact" autocomplete="on" enterkeyhint="send" required aria-required="true"/></label>
+      <button type="submit" class="btn-gold">Have someone call me</button>
+    </form>
+    <p class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
+    <small class="ask-note">Free for military families. We connect you, never spam you.</small>
+  </div>
+
+  <p class="page-verified">Checked Sep 24, 2026 against the Army's Fort Drum housing FAQ, Fort Drum's Housing Division and gate pages, Mountain Community Homes, and each school district's schools. Town positions and drive times come from OpenStreetMap.</p>
+</div></section>
+
+</main>
+
+<footer><div class="f-in">
+  <a href="/" style="text-decoration:none;"><b>PCS<i>Homes</i></b></a>
+  <span>&copy; 2026 PCSHomes &middot; Free for military families</span>
+  <div class="f-links">
+    <a href="/pcshomes-fortdrum.html">Fort Drum Guide</a>
+    <a href="/pcshomes-directory.html">Directory</a>
+    <a href="/pcshomes-spouse.html">Spouse HQ</a>
+    <a href="/pcshomes-discover.html">Discover</a>
+    <a href="/pcshomes-contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="tel:+13152214857">(315) 221-4857</a>
+  </div>
+</div></footer>
+
+<div class="mobile-tab-bar">
+  <a href="/" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="/pcshomes-directory.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>Directory</span></a>
+  <a href="/pcshomes-fortdrum.html" class="tab-item active"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span>Guide</span></a>
+  <a href="/pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
+  <a href="/pcshomes-contact.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+</div>
+
+<script>
+function submitAskBand(e, offer) {
+  e.preventDefault();
+  var form = e.target, band = form.closest('.ask-band');
+  var btn = form.querySelector('button');
+  var name = form.querySelector('[name=name]').value.trim();
+  var contact = form.querySelector('[name=contact]').value.trim();
+  if (!name || !contact) return false;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  var data = new URLSearchParams();
+  data.append('form-name', 'popup-lead');
+  data.append('offer', offer);
+  data.append('name', name);
+  data.append('contact', contact);
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
+    .then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.style.display = 'none';
+      band.querySelector('.ask-done').style.display = 'block';
+    })
+    .catch(function () {
+      btn.disabled = false; btn.textContent = 'Have someone call me';
+      band.querySelector('.ask-note').innerHTML = 'That didn’t send. <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a> instead.';
+    });
+  return false;
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
+<script>
+// Town centers and gates: OpenStreetMap (Nominatim/Overpass). Drive minutes: OSRM routing, no traffic.
+var TOWNS = [{"n":"Black River","lat":44.0126,"lon":-75.794,"d":"Carthage CSD","t":{"main":10,"plummer":5,"wsaaf":12}},{"n":"Felts Mills","lat":44.0162,"lon":-75.7665,"d":"Carthage CSD","t":{"main":11,"plummer":5,"wsaaf":7}},{"n":"Calcium","lat":44.0408,"lon":-75.851,"d":"Indian River CSD","t":{"main":6,"plummer":7,"wsaaf":18}},{"n":"Evans Mills","lat":44.0883,"lon":-75.8074,"d":"Indian River CSD","t":{"main":6,"plummer":11,"wsaaf":10}},{"n":"Watertown","lat":43.9748,"lon":-75.9108,"d":"Watertown City SD","t":{"main":10,"plummer":12,"wsaaf":22}},{"n":"Philadelphia","lat":44.1546,"lon":-75.7088,"d":"Indian River CSD","t":{"main":13,"plummer":18,"wsaaf":17}},{"n":"Glen Park","lat":44.0012,"lon":-75.9663,"d":"General Brown CSD","t":{"main":14,"plummer":16,"wsaaf":26}},{"n":"Carthage & West Carthage","lat":43.9782,"lon":-75.6098,"d":"Carthage CSD","t":{"main":25,"plummer":21,"wsaaf":15}},{"n":"Brownville","lat":44.007,"lon":-75.9841,"d":"General Brown CSD","t":{"main":17,"plummer":18,"wsaaf":28}},{"n":"Antwerp","lat":44.1994,"lon":-75.6069,"d":"Indian River CSD","t":{"main":20,"plummer":26,"wsaaf":24}},{"n":"Natural Bridge","lat":44.0719,"lon":-75.4988,"d":"Carthage CSD","t":{"main":31,"plummer":27,"wsaaf":20}},{"n":"Dexter","lat":44.0078,"lon":-76.0444,"d":"General Brown CSD","t":{"main":22,"plummer":24,"wsaaf":34}},{"n":"Theresa","lat":44.2154,"lon":-75.7974,"d":"Indian River CSD","t":{"main":23,"plummer":27,"wsaaf":26}},{"n":"Adams Center","lat":43.8627,"lon":-75.9982,"d":"South Jefferson CSD","t":{"main":25,"plummer":27,"wsaaf":37}},{"n":"Copenhagen","lat":43.8934,"lon":-75.6738,"d":"Copenhagen CSD","t":{"main":28,"plummer":27,"wsaaf":29}},{"n":"Sackets Harbor","lat":43.9462,"lon":-76.1191,"d":"Sackets Harbor CSD","t":{"main":27,"plummer":30,"wsaaf":39}},{"n":"LaFargeville","lat":44.1948,"lon":-75.9661,"d":"LaFargeville CSD","t":{"main":28,"plummer":32,"wsaaf":39}},{"n":"Adams","lat":43.8092,"lon":-76.0241,"d":"South Jefferson CSD","t":{"main":29,"plummer":31,"wsaaf":41}},{"n":"Chaumont","lat":44.067,"lon":-76.1302,"d":"Lyme CSD","t":{"main":29,"plummer":30,"wsaaf":40}},{"n":"Rodman","lat":43.8512,"lon":-75.9408,"d":"South Jefferson CSD","t":{"main":30,"plummer":32,"wsaaf":42}},{"n":"Gouverneur","lat":44.3367,"lon":-75.4631,"d":"Gouverneur CSD","t":{"main":34,"plummer":39,"wsaaf":38}},{"n":"Three Mile Bay","lat":44.0859,"lon":-76.1964,"d":"Lyme CSD","t":{"main":35,"plummer":36,"wsaaf":47}},{"n":"Clayton","lat":44.2395,"lon":-76.0858,"d":"Thousand Islands CSD","t":{"main":36,"plummer":39,"wsaaf":48}},{"n":"Lowville","lat":43.7867,"lon":-75.4922,"d":"Lowville Academy & CSD","t":{"main":44,"plummer":42,"wsaaf":36}},{"n":"Pierrepont Manor","lat":43.7376,"lon":-76.0619,"d":"South Jefferson CSD","t":{"main":36,"plummer":38,"wsaaf":48}},{"n":"Belleville","lat":43.7883,"lon":-76.1158,"d":"Belleville Henderson CSD","t":{"main":37,"plummer":39,"wsaaf":49}},{"n":"Harrisville","lat":44.1522,"lon":-75.3212,"d":"Harrisville CSD","t":{"main":48,"plummer":43,"wsaaf":37}},{"n":"Henderson","lat":43.847,"lon":-76.1819,"d":"Belleville Henderson CSD","t":{"main":40,"plummer":43,"wsaaf":52}},{"n":"Cape Vincent","lat":44.1289,"lon":-76.3343,"d":"Thousand Islands CSD","t":{"main":47,"plummer":49,"wsaaf":59}},{"n":"Lyons Falls","lat":43.6188,"lon":-75.3634,"d":"South Lewis CSD","t":{"main":63,"plummer":62,"wsaaf":55}}];
+var GATES = [
+  {n: 'Lt. Gen. Paul Cerjan / Main Gate', lat: 44.0514, lon: -75.8254, h: 'Open 24/7. Visitor Control Center outside it, 5:30 a.m. to 10 p.m.'},
+  {n: 'Col. Michael Plummer Gate', lat: 44.0269, lon: -75.8016, h: 'Open 4:30 a.m. to 10 p.m. daily.'},
+  {n: 'Wheeler-Sack Army Airfield Gate', lat: 44.0445, lon: -75.7190, h: 'Open 24/7. All commercial traffic uses this gate.'}
+];
+var PLACES = [
+  {n: 'Samaritan Medical Center', lat: 43.9648, lon: -75.9144, h: 'Watertown\'s hospital and emergency room, 830 Washington St. <a class="go" href="tel:+13157854000">(315) 785-4000</a>'},
+  {n: 'Guthrie Army Health Clinic', lat: 44.0596, lon: -75.8121, h: 'On-post outpatient clinic. Appointments <a class="go" href="tel:+18888381303">1-888-838-1303</a>'}
+];
+(function () {
+  var panel = document.getElementById('mapPanel'), body = document.getElementById('mpBody');
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function show(html) { body.innerHTML = html; panel.hidden = false; }
+  panel.querySelector('.close').addEventListener('click', function () { panel.hidden = true; });
+  if (typeof L === 'undefined' || typeof L.maplibreGL !== 'function') { document.getElementById('mapError').style.display = 'flex'; return; }
+  var map = L.map('drumMap', { center: [44.02, -75.85], zoom: 10, scrollWheelZoom: false });
+  L.maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark',
+    attribution: '&copy; <a href="https://openfreemap.org">OpenFreeMap</a> &copy; OpenMapTiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+  function icon(col, size) {
+    return L.divIcon({ className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2],
+      html: '<div style="width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:' + col + ';border:2.5px solid rgba(255,255,255,0.9);box-shadow:0 2px 8px rgba(0,0,0,0.5);"></div>' });
+  }
+  function pin(layer, d, col, size, html) {
+    var m = L.marker([d.lat, d.lon], { icon: icon(col, size), title: d.n, keyboard: true }).addTo(layer);
+    m.getElement().setAttribute('aria-label', d.n);
+    m.on('click', function () { show(html); });
+  }
+  var layers = { towns: L.layerGroup().addTo(map), gates: L.layerGroup().addTo(map), places: L.layerGroup().addTo(map) };
+  TOWNS.forEach(function (t) {
+    var ask = '/pcshomes-contact.html?need=agent&area=' + encodeURIComponent(t.n) + '#contactForm';
+    pin(layers.towns, t, '#5B9BD5', 14, '<h3>' + esc(t.n) + '</h3><p><b>School district:</b> ' + esc(t.d) + '</p>' +
+      '<p><b>Drive:</b> Main Gate ' + t.t.main + ' min &middot; Plummer ' + t.t.plummer + ' min &middot; Wheeler-Sack ' + t.t.wsaaf + ' min</p>' +
+      '<a class="go" href="' + ask + '">Ask about homes in ' + esc(t.n) + ' &rarr;</a>');
+  });
+  GATES.forEach(function (g) { pin(layers.gates, g, '#D9B45B', 20, '<h3>' + esc(g.n) + '</h3><p>' + esc(g.h) + '</p>'); });
+  PLACES.forEach(function (p) { pin(layers.places, p, '#6FBF8E', 18, '<h3>' + esc(p.n) + '</h3><p>' + p.h + '</p>'); });
+  map.on('click', function () { panel.hidden = true; });
+  document.querySelectorAll('.map-tools button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var layer = layers[b.dataset.layer], on = map.hasLayer(layer);
+      if (on) map.removeLayer(layer); else map.addLayer(layer);
+      b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    });
+  });
+  // the plate reveals after load; size the map once it's visible
+  setTimeout(function () { map.invalidateSize(); }, 400);
+  if ('ResizeObserver' in window) new ResizeObserver(function () { map.invalidateSize(); }).observe(document.getElementById('drumMap'));
+})();
+</script>
+
+<script src="/js/chassis.js"></script>
+</body>
+</html>

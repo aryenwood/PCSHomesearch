@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Buying a Home Near Fort Drum: VA Loan &amp; Rent vs. Buy (2026) | PCSHomes</title>
+  <meta name="description" content="What a VA loan does near Fort Drum, a payment calculator that checks your 2026 BAH by rank, a rent vs. buy comparison with North Country utilities, and the New York tax breaks veteran homeowners have to file for.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pcshomes.com/fort-drum/buying">
+  <meta property="og:title" content="Buying Near Fort Drum: VA Loan &amp; Rent vs. Buy (2026) | PCSHomes">
+  <meta property="og:description" content="Check a home payment against your 2026 Fort Drum BAH, compare renting and buying with real utility costs, and see the New York tax breaks you have to file for.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://pcshomes.com/fort-drum/buying">
+  <meta property="og:image" content="https://pcshomes.com/images/og-card.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23C9A84C'>P</text></svg>">
+  <link rel="stylesheet" href="/css/chassis.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the 2026 BAH at Fort Drum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fort Drum is housing area NY225 (Fort Drum/Watertown). 2026 monthly BAH with dependents runs from $1,569 (E-1 to E-4) to $2,823 (O-7 and up); an E-5 with dependents gets $1,665 and an O-3 gets $2,469. Without dependents it runs from $1,356 to $2,496."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much is the VA funding fee in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For a purchase loan it is 2.15% of the loan on first use with less than 5% down, 3.3% on later use with less than 5% down, 1.5% with 5% or more down, and 1.25% with 10% or more down. It can be added to the loan. Veterans receiving VA disability compensation and active-duty Purple Heart recipients don't pay it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can active-duty soldiers get New York's veterans property tax exemption?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually only after discharge. A service member still on active duty can qualify for the Alternative Veterans Exemption (RPTL 458-a) after at least 10 years of active service, having reenlisted past the first obligation, if they served during a period of war and meet the other rules. File Form RP-458-a with the town or city assessor."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pcshomes.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Fort Drum Guide", "item": "https://pcshomes.com/pcshomes-fortdrum.html"},
+    {"@type": "ListItem", "position": 3, "name": "Buying", "item": "https://pcshomes.com/fort-drum/buying"}]}
+  </script>
+  <style>
+    /* buying chapter chrome on top of the chassis */
+    [id] { scroll-margin-top: 84px; }
+    body { overflow-wrap: break-word; }
+    .crumb { font-size: var(--t-xs); color: var(--muted); margin: 0 0 14px; }
+    .crumb a { color: var(--steel); font-weight: 700; text-decoration: none; display: inline-block; padding: 10px 0; margin: -10px 0; }
+    .hero-banner { margin: 32px 0 0; }
+    .hero-banner img { aspect-ratio: 16 / 7; object-position: center 45%; }
+
+    /* VA facts ledger */
+    .va .dist-row .towns { color: var(--ink); }
+    .va .dist-row strong { color: var(--navy); }
+    @media (max-width: 780px) {
+      .va .dist-row .pct { grid-row: 2; margin: 4px 0 0; }
+      .va .dist-row .towns { grid-row: 3; }
+    }
+
+    /* payment calculator on the living plate */
+    .plate form.calc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 30px; }
+    .calc .span2 { grid-column: 1 / -1; }
+    .calc select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+    .calc select option, .calc select optgroup { color: #1D3557; background: #fff; }
+    .calc .field { flex: none; }
+    .rates { grid-column: 1 / -1; border: 0; margin: 6px 0 0; padding: 0; min-width: 0; }
+    .rates legend { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.65); padding: 0; margin-bottom: 8px; }
+    .rates .row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+    .rates button { min-height: 48px; border-radius: 9px; border: 1px solid rgba(217,180,91,0.55); background: transparent; color: var(--gold-bright);
+                    font: 700 var(--t-s) 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; cursor: pointer; white-space: nowrap; padding: 0 4px; transition: background .2s; }
+    .rates button:hover { background: rgba(217,180,91,0.14); }
+    .rates button[aria-pressed="true"] { background: var(--gold-bright); color: var(--plate-deep); border-color: var(--gold-bright); }
+    #customRateRow[hidden] { display: none; }
+    .calc-out { display: grid; grid-template-columns: 1fr 1fr; margin-top: 30px; border-top: 2px solid var(--gold-bright); border-bottom: 1px solid rgba(246,241,230,0.14); }
+    .calc-out > div { padding: 20px 14px 18px; min-width: 0; display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
+    .calc-out > div + div { border-left: 1px solid rgba(246,241,230,0.14); }
+    .calc-out .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--plate-sub); }
+    .calc-out b { font-family: 'Libre Baskerville', serif; font-size: clamp(30px, 4.4vw, 44px); color: var(--plate-ink); font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 1.2; }
+    .calc-out .note { font-size: var(--t-s); color: var(--plate-sub); }
+    .plate .form-note { color: var(--plate-sub); font-size: var(--t-s); line-height: 1.6; }
+    .fee-line { color: var(--plate-ink); font-size: var(--t-s); margin: 14px 0 0; }
+    .fee-line:empty { display: none; }
+
+    /* rent vs. buy: light-ground fields */
+    .rvb-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .lf { display: flex; flex-direction: column; gap: 4px; min-width: 0; border: 1px solid var(--rule-strong); border-radius: 9px; background: var(--card); padding: 9px 14px 8px; }
+    .lf:focus-within { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
+    .lf > span { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .lf input, .lf select { border: 0; background: transparent; color: var(--navy); padding: 0; min-height: 28px; font: 700 var(--t-m) 'DM Sans', sans-serif; outline: none; width: 100%; min-width: 0; font-variant-numeric: tabular-nums; }
+    .lf select { cursor: pointer; }
+    .lf small { font-size: var(--t-xs); color: var(--muted); line-height: 1.5; }
+    .btn-navy { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border: 0; border-radius: 9px;
+                background: var(--navy); color: #fff; font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; margin-top: 22px; }
+    .btn-navy:hover { background: var(--plate); }
+    .cmp { width: 100%; border-collapse: collapse; border-top: 2px solid var(--navy); font-variant-numeric: tabular-nums; margin-top: 28px; }
+    .cmp th, .cmp td { padding: 13px 10px; border-bottom: 1px solid var(--rule); text-align: right; font-size: var(--t-m); }
+    .cmp th:first-child { text-align: left; padding-left: 4px; font-weight: 500; color: var(--ink); }
+    .cmp td { white-space: nowrap; color: var(--navy); font-weight: 700; }
+    .cmp thead th { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); vertical-align: bottom; }
+    .cmp thead th:first-child { color: var(--muted); font-weight: 700; }
+    .cmp col.metric { width: 48%; }
+    .cmp tr.total th, .cmp tr.total td { border-top: 1px solid var(--rule-strong); font-weight: 700; color: var(--navy); }
+    .cmp tr.grp th { padding-top: 22px; font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--steel); font-style: italic; font-weight: 400; }
+    .cmp .neg { color: var(--err); }
+    .verdict { margin-top: 26px; padding: 22px 24px; border-left: 4px solid var(--gold-bright); background: rgba(217,180,91,0.08); border-radius: 0 12px 12px 0; font-size: 17.5px; color: var(--ink); }
+    .verdict strong { color: var(--navy); }
+    #rvbOut[hidden], #rvbGo[hidden] { display: none; }
+
+    /* pros and cons: two ruled columns with the same rows */
+    /* the two lists share row lines, so each point sits level with its neighbour */
+    .pc { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto repeat(9, auto); gap: 0 40px; margin-top: 64px; }
+    .pc > div { display: grid; grid-row: span 10; grid-template-rows: subgrid; }
+    .pc ul { display: grid; grid-row: span 9; grid-template-rows: subgrid; }
+    .pc h3 { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); margin: 0 0 12px; }
+    .pc ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
+    .pc li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 13px 4px 12px; border-bottom: 1px solid var(--rule); font-size: 17px; color: var(--ink); line-height: 1.55; }
+    .pc li::before { font-weight: 700; }
+    .pc li.pro::before { content: '+'; color: var(--ok); }
+    .pc li.con::before { content: '\2212'; color: var(--err); }
+
+    /* New York money: ruled rows */
+    .ny { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
+    .ny li { padding: 20px 4px 18px; border-bottom: 1px solid var(--rule); }
+    .ny h3 { font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
+    .ny p { margin: 0; font-size: 17.5px; color: var(--ink); max-width: 42em; }
+    .ny strong { color: var(--navy); }
+    .ny a, .fine a { color: var(--gold); font-weight: 700; text-decoration: none; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .fine { font-size: var(--t-s); color: var(--muted); margin: 18px 0 0; max-width: 42em; line-height: 1.6; }
+    .lf-check select { font-size: var(--t-s); }
+    .page-verified { font-size: var(--t-xs); color: var(--muted); margin-top: 40px; }
+    .page-verified a { color: var(--gold); font-weight: 700; text-decoration: none; }
+
+    /* ask band fields on the dark band */
+    .ask form .field { flex: 1 1 200px; }
+    .ask-done { display: none; color: var(--plate-ink); font-size: var(--t-m); margin: 0; }
+    .ask-done a, .ask-note a { color: var(--gold-bright); font-weight: 700; }
+
+    .mobile-tab-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: var(--plate-deep);
+                      border-top: 1px solid rgba(217,180,91,0.3); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+                      justify-content: space-around; align-items: center; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: rgba(255,255,255,0.55);
+                font-size: 10px; font-weight: 600; padding: 4px 12px; min-height: 44px; text-decoration: none; }
+    .tab-item svg { stroke: currentColor; }
+    .tab-item.active { color: var(--gold-bright); }
+    .m-only { display: none; }
+
+    @media (max-width: 780px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+      .bar { position: static; }
+      .mobile-tab-bar { display: flex; }
+      .m-only { display: inline-flex; }
+      .hero-banner img { aspect-ratio: 16 / 9; }
+      .plate form.calc { grid-template-columns: 1fr; }
+      .rates legend { font-size: 15px; letter-spacing: 0.05em; }
+      .calc-out .label { letter-spacing: 0.05em; }
+      .rates .row { gap: 6px; }
+      .calc-out > div { padding: 16px 10px 14px; }
+      .calc-out b { font-size: 28px; }
+      .rvb-form { grid-template-columns: 1fr; }
+      .lf > span { font-size: 15px; letter-spacing: 0.05em; }
+      .cmp th, .cmp td { padding-inline: 6px; }
+      .cmp col.metric { width: auto; }
+      .pc { grid-template-columns: 1fr; grid-template-rows: none; gap: 40px; }
+      .pc > div, .pc ul { display: block; }
+      .btn-navy { width: 100%; }
+      input, select { font-size: 16px !important; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="bar"><nav class="bar-in" aria-label="Site">
+  <a href="/" style="text-decoration:none;"><b>PCS<em>Homes</em></b></a>
+  <ul class="bar-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/pcshomes-fortdrum.html" class="active">Fort Drum Guide</a></li>
+    <li><a href="/pcshomes-directory.html">Directory</a></li>
+    <li><a href="/pcshomes-discover.html">Discover</a></li>
+    <li><a href="/pcshomes-spouse.html">Spouse HQ</a></li>
+    <li><a href="/pcshomes-network.html">Our Network</a></li>
+    <li><a href="/pcshomes-contact.html">Contact</a></li>
+  </ul>
+  <a href="tel:+13152214857" class="bar-cta m-only" aria-label="Call PCSHomes">Call</a>
+</nav><div class="progress" id="prog"></div></div>
+
+<main id="main">
+
+<header class="hero"><div class="wrap">
+  <p class="crumb"><a href="/pcshomes-fortdrum.html">Fort Drum Guide</a> &rsaquo; Buying</p>
+  <p class="eyebrow rv">Chapter &middot; Buying near Fort Drum</p>
+  <h1 class="rv">Buy near Drum, <em>or rent?</em> Run your numbers.</h1>
+  <p class="dek rv">Check a home payment against your 2026 housing allowance, then compare renting and buying with North Country utility bills in the math. <strong>No sign-up, and nothing you type leaves this page.</strong></p>
+  <div class="proof rv">
+    <span>Your <b>2026 BAH</b> by rank, built in</span>
+    <span>Rent vs. buy with <b>heat counted</b></span>
+    <span>New York <b>tax breaks</b> to file for</span>
+  </div>
+  <figure class="hero-photo hero-banner rv"><img src="/images/soldier-home-front-door.webp" alt="A soldier home from duty hugs his daughter at the front door while his wife watches" width="1400" height="934" loading="eager"/></figure>
+</div></header>
+
+<!-- WHAT THE VA LOAN DOES HERE -->
+<section id="va" class="va"><div class="wrap">
+  <h2 class="rv">What your VA loan <em>does here.</em></h2>
+  <p class="sub rv">The VA loan is a home loan benefit for soldiers and veterans. The VA backs part of the loan, so lenders ask for less from you.</p>
+  <div class="dist-row"><h3>No down payment</h3><p class="towns">If your lender approves the loan, the VA doesn't require a down payment. You still pay closing costs, and only the funding fee below can be added to the loan.</p><div class="pct"><b class="txt">$0</b><span>Down</span></div></div>
+  <div class="dist-row"><h3>No loan limit</h3><p class="towns">With your <strong>full VA entitlement</strong> (you haven't used it, or you've restored it), there has been no VA loan limit since 2020. Your income and credit decide how much a lender approves.</p><div class="pct"><b class="txt">None</b><span>Full entitlement</span></div></div>
+  <div class="dist-row"><h3>No mortgage insurance</h3><p class="towns">Conventional loans with a small down payment usually add private mortgage insurance (PMI) to the monthly bill. VA loans don't.</p><div class="pct"><b class="txt">$0</b><span>PMI a month</span></div></div>
+  <div class="dist-row"><h3>The VA funding fee</h3><p class="towns">A one-time fee, usually added to the loan: <strong>2.15%</strong> on your first VA loan with less than 5% down, <strong>3.3%</strong> if you've used it before, 1.5% with 5% down, 1.25% with 10% down. You pay <strong>no fee</strong> if you receive VA disability compensation, or you're on active duty and received a Purple Heart.</p><div class="pct"><b class="txt">2.15%</b><span>First use, $0 down</span></div></div>
+  <p class="fine rv">First step: get your <a href="https://www.va.gov/housing-assistance/home-loans/how-to-apply/" target="_blank" rel="noopener">Certificate of Eligibility (COE)</a>, the document that shows a lender you qualify. Your lender can request it for you.</p>
+</div></section>
+
+<!-- PAYMENT VS. BAH: the plate -->
+<div class="plate rv" id="payment">
+  <canvas class="ground" aria-hidden="true"></canvas>
+  <div class="plate-in">
+    <h2>Your payment <em>against your BAH.</em></h2>
+    <p class="lede">Pick your rank and it fills in your 2026 Fort Drum housing allowance. Change any number and the payment updates.</p>
+    <form class="calc" onsubmit="return false" aria-label="VA loan payment calculator">
+      <label class="field"><span>Your rank</span><select id="bahRank">
+          <option value="">Choose your rank&hellip;</option>
+          <optgroup label="With dependents">
+            <option value="1569">E-1 to E-4 with dependents ($1,569)</option>
+            <option value="1665">E-5 with dependents ($1,665)</option>
+            <option value="1893">E-6 with dependents ($1,893)</option>
+            <option value="2103">E-7 with dependents ($2,103)</option>
+            <option value="2331">E-8 with dependents ($2,331)</option>
+            <option value="2526">E-9 with dependents ($2,526)</option>
+            <option value="1914">W-1 with dependents ($1,914)</option>
+            <option value="2196">W-2 with dependents ($2,196)</option>
+            <option value="2478">W-3 with dependents ($2,478)</option>
+            <option value="2544">W-4 with dependents ($2,544)</option>
+            <option value="2631">W-5 with dependents ($2,631)</option>
+            <option value="2145">O-1E with dependents ($2,145)</option>
+            <option value="2436">O-2E with dependents ($2,436)</option>
+            <option value="2559">O-3E with dependents ($2,559)</option>
+            <option value="1701">O-1 with dependents ($1,701)</option>
+            <option value="1890">O-2 with dependents ($1,890)</option>
+            <option value="2469">O-3 with dependents ($2,469)</option>
+            <option value="2655">O-4 with dependents ($2,655)</option>
+            <option value="2784">O-5 with dependents ($2,784)</option>
+            <option value="2805">O-6 with dependents ($2,805)</option>
+            <option value="2823">O-7 and up with dependents ($2,823)</option>
+          </optgroup>
+          <optgroup label="Without dependents">
+            <option value="1356">E-1 to E-4 without dependents ($1,356)</option>
+            <option value="1422">E-5 without dependents ($1,422)</option>
+            <option value="1476">E-6 without dependents ($1,476)</option>
+            <option value="1578">E-7 without dependents ($1,578)</option>
+            <option value="1749">E-8 without dependents ($1,749)</option>
+            <option value="1896">E-9 without dependents ($1,896)</option>
+            <option value="1548">W-1 without dependents ($1,548)</option>
+            <option value="1713">W-2 without dependents ($1,713)</option>
+            <option value="1899">W-3 without dependents ($1,899)</option>
+            <option value="1938">W-4 without dependents ($1,938)</option>
+            <option value="2154">W-5 without dependents ($2,154)</option>
+            <option value="1662">O-1E without dependents ($1,662)</option>
+            <option value="1827">O-2E without dependents ($1,827)</option>
+            <option value="1920">O-3E without dependents ($1,920)</option>
+            <option value="1470">O-1 without dependents ($1,470)</option>
+            <option value="1638">O-2 without dependents ($1,638)</option>
+            <option value="1902">O-3 without dependents ($1,902)</option>
+            <option value="2115">O-4 without dependents ($2,115)</option>
+            <option value="2244">O-5 without dependents ($2,244)</option>
+            <option value="2457">O-6 without dependents ($2,457)</option>
+            <option value="2496">O-7 and up without dependents ($2,496)</option>
+          </optgroup>
+        </select></label>
+      <label class="field"><span>Your BAH, per month</span><input type="number" id="bah" inputmode="numeric" enterkeyhint="done" min="0" placeholder="Pick your rank"/></label>
+      <label class="field"><span>Home price</span><input type="number" id="homePrice" inputmode="numeric" enterkeyhint="done" min="0" value="200000"/></label>
+      <label class="field"><span>Down payment</span><input type="number" id="downPayment" inputmode="numeric" enterkeyhint="done" min="0" value="0"/></label>
+      <label class="field"><span>VA funding fee</span><select id="feeType">
+          <option value="first">First VA loan</option>
+          <option value="subsequent">Used a VA loan before</option>
+          <option value="exempt">Exempt (VA disability pay or Purple Heart)</option>
+        </select></label>
+      <label class="field"><span>Property tax, % a year</span><input type="number" id="taxPct" inputmode="decimal" enterkeyhint="done" min="0" max="10" step="0.1" value="1.5"/></label>
+      <fieldset class="rates">
+        <legend>Interest rate, 30-year fixed</legend>
+        <div class="row">
+          <button type="button" data-rate="6.5" aria-pressed="false">6.5%</button>
+          <button type="button" data-rate="6.75" aria-pressed="false">6.75%</button>
+          <button type="button" data-rate="7" aria-pressed="true">7.0%</button>
+          <button type="button" data-rate="7.25" aria-pressed="false">7.25%</button>
+          <button type="button" data-rate="custom" aria-pressed="false">Other</button>
+        </div>
+      </fieldset>
+      <label class="field span2" id="customRateRow" hidden><span>Your rate, %</span><input type="number" id="customRate" inputmode="decimal" enterkeyhint="done" min="1" max="15" step="0.01" placeholder="6.9"/></label>
+    </form>
+    <div class="calc-out" aria-live="polite">
+      <div><span class="label">Your payment</span><b id="payOut">&ndash;</b><span class="note" id="payNote">Loan payment plus property tax</span></div>
+      <div><span class="label">BAH covers</span><b id="bahOut">&ndash;</b><span class="note" id="bahNote">Pick your rank or type your BAH</span></div>
+    </div>
+    <p class="fee-line" id="feeLine" aria-live="polite"></p>
+    <p class="form-note">Freddie Mac's weekly average for a 30-year fixed loan was 7.03% on Sep 24, 2026; your lender quotes your real rate. This estimate covers the loan payment and property tax only, not homeowners insurance. <a href="/pcshomes-contact.html?need=lender#contactForm">Talk to a VA lender</a> for exact numbers.</p>
+  </div>
+</div>
+
+<section id="after-payment" style="padding-top:0;"><div class="wrap">
+  <div class="ask ask-band rv" style="margin-top:0;">
+    <h2>Want homes that fit <em style="font-style:italic;color:var(--gold-bright);font-weight:400;">this payment?</em></h2>
+    <p>You just saw your number against your BAH. A real person from our Fort Drum network calls you within 24 hours. No spam, ever.</p>
+    <form onsubmit="return submitAskBand(event, 'va-calculator')">
+      <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required aria-required="true"/></label>
+      <label class="field"><span>Phone or email</span><input type="text" name="contact" autocomplete="on" enterkeyhint="send" required aria-required="true"/></label>
+      <button type="submit" class="btn-gold">Have someone call me</button>
+    </form>
+    <p class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
+    <small class="ask-note">Free for military families. We connect you, never spam you.</small>
+  </div>
+</div></section>
+
+<!-- RENT VS. BUY -->
+<section id="rvb"><div class="wrap">
+  <h2 class="rv">Rent or buy? <em>Side by side.</em></h2>
+  <p class="sub rv">Put in a real listing and your real bills. The comparison uses the interest rate, funding fee and tax rate you set above.</p>
+  <form class="rvb-form" onsubmit="return false" aria-label="Rent vs. buy inputs">
+    <label class="lf"><span>Home price</span><input type="number" id="rvbPrice" inputmode="numeric" enterkeyhint="done" min="0" value="200000"/><small>Jefferson County's median sale in 2025: $200,000</small></label>
+    <label class="lf"><span>Rent, per month</span><input type="number" id="rvbRent" inputmode="numeric" enterkeyhint="done" min="0" value="1400"/><small>Use the rent on a real listing</small></label>
+    <label class="lf"><span>Your BAH</span><input type="number" id="rvbBah" inputmode="numeric" enterkeyhint="done" min="0" value="1665"/><small>E-5 with dependents shown; your rank above fills it</small></label>
+    <label class="lf"><span>Heat + electric</span><input type="number" id="rvbHeat" inputmode="numeric" enterkeyhint="done" min="0" value="350"/><small>An example. Ask for 12 months of real bills</small></label>
+    <label class="lf"><span>Water, sewer + trash</span><input type="number" id="rvbWater" inputmode="numeric" enterkeyhint="done" min="0" value="125"/><small>An example. Watertown's 64-gallon trash cart is $117 a quarter</small></label>
+    <label class="lf lf-check"><span>Water + trash, if renting</span><select id="rvbIncl"><option value="no">I pay them</option><option value="yes">Included in rent</option></select><small>An owner always pays them</small></label>
+  </form>
+  <button type="button" class="btn-navy" id="rvbGo">Show my comparison</button>
+
+  <div id="rvbOut" hidden aria-live="polite">
+    <table class="cmp">
+      <caption class="sr-only">Monthly and three-year costs of buying compared with renting</caption>
+      <colgroup><col class="metric"/><col/><col/></colgroup>
+      <thead><tr><th scope="col">Each month</th><th scope="col">Buy</th><th scope="col">Rent</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Housing payment</th><td id="cHouse1">&ndash;</td><td id="cHouse2">&ndash;</td></tr>
+        <tr><th scope="row">Heat + electric</th><td id="cHeat1">&ndash;</td><td id="cHeat2">&ndash;</td></tr>
+        <tr><th scope="row">Water, sewer + trash</th><td id="cWater1">&ndash;</td><td id="cWater2">&ndash;</td></tr>
+        <tr class="total"><th scope="row">Total</th><td id="cTotal1">&ndash;</td><td id="cTotal2">&ndash;</td></tr>
+        <tr><th scope="row">BAH left over</th><td id="cLeft1">&ndash;</td><td id="cLeft2">&ndash;</td></tr>
+      </tbody>
+      <tbody>
+        <tr class="grp"><th scope="rowgroup" colspan="3">After 3 years, if values rise 3% a year</th></tr>
+        <tr><th scope="row">Loan paid down</th><td id="cPaid">&ndash;</td><td>&ndash;</td></tr>
+        <tr><th scope="row">Value gained</th><td id="cGain">&ndash;</td><td>&ndash;</td></tr>
+        <tr class="total"><th scope="row">Your equity</th><td id="cEquity">&ndash;</td><td>$0</td></tr>
+      </tbody>
+    </table>
+    <div class="verdict" id="rvbVerdict"></div>
+    <p class="fine">Estimates only. The 3% yearly rise in value is an assumption, not a forecast, and prices can fall. Equity here doesn't subtract closing costs or the cost of selling (agent and closing fees), which matter most on a short tour. Talk to a lender and a real estate agent before you decide.</p>
+  </div>
+
+  <div class="pc">
+    <div>
+      <h3>Buying</h3>
+      <ul>
+        <li class="pro">With a VA loan: $0 down and no monthly mortgage insurance</li>
+        <li class="pro">Each payment builds equity instead of paying a landlord</li>
+        <li class="pro">A fixed-rate payment stays level (taxes and insurance can still rise)</li>
+        <li class="pro">No landlord rules on pets, paint or changes</li>
+        <li class="pro">You can keep it as a rental when you PCS</li>
+        <li class="con">Repairs are yours, from the furnace to the roof</li>
+        <li class="con">Winter heat and snow removal are on you</li>
+        <li class="con">On a short tour, closing and selling costs can eat the equity</li>
+        <li class="con">Renting it out from your next duty station takes planning</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Renting</h3>
+      <ul>
+        <li class="pro">Federal law (the SCRA) lets you end a lease early with PCS orders</li>
+        <li class="pro">The landlord handles repairs</li>
+        <li class="pro">Some rentals include water, sewer or trash</li>
+        <li class="pro">You learn the area before you commit to a town</li>
+        <li class="pro">No closing costs, and no house to sell when you leave</li>
+        <li class="con">Rent builds no equity</li>
+        <li class="con">Pet limits and pet fees are common</li>
+        <li class="con">The landlord can sell or not renew</li>
+        <li class="con">Rent can go up at renewal</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ask ask-band rv">
+    <h2>Want real listings <em style="font-style:italic;color:var(--gold-bright);font-weight:400;">behind these numbers?</em></h2>
+    <p>Rent or buy, we know who to hand you to. A real person from our Fort Drum network calls you within 24 hours. No spam, ever.</p>
+    <form onsubmit="return submitAskBand(event, 'rent-vs-buy')">
+      <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required aria-required="true"/></label>
+      <label class="field"><span>Phone or email</span><input type="text" name="contact" autocomplete="on" enterkeyhint="send" required aria-required="true"/></label>
+      <button type="submit" class="btn-gold">Have someone call me</button>
+    </form>
+    <p class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
+    <small class="ask-note">Free for military families. We connect you, never spam you.</small>
+  </div>
+</div></section>
+
+<!-- NEW YORK MONEY -->
+<section id="ny-money"><div class="wrap">
+  <h2 class="rv">New York money <em>you have to ask for.</em></h2>
+  <p class="sub rv">None of these arrive on their own. File for them, and check the deadline with your town or city assessor.</p>
+  <ul class="ny">
+    <li><h3>Veterans property tax exemption</h3><p>New York's Alternative Veterans Exemption takes <strong>15% off your home's assessed value</strong> for wartime service, another 10% for combat-zone service, and half your VA disability rating, each up to a dollar cap your town sets. It lowers county, city and town taxes, and school taxes only where the district opts in. <strong>Still serving?</strong> You can qualify once you have at least 10 years of active service and reenlisted past your first obligation; otherwise it starts after you're discharged. File Form RP-458-a with your assessor (<a href="https://www.tax.ny.gov/pit/property/exemption/vetexempt.htm" target="_blank" rel="noopener">New York's veterans exemption page</a>).</p></li>
+    <li><h3>Other veteran exemptions</h3><p>New York also has a Cold War veterans exemption and an eligible funds exemption. You generally get one veteran exemption, so ask your assessor which saves you more.</p></li>
+    <li><h3>STAR school tax credit</h3><p>New homeowners get STAR as a credit, a check from the state toward school taxes, if household income is <strong>$500,000 or less</strong>. Register once at <a href="https://www.tax.ny.gov/star/" target="_blank" rel="noopener">tax.ny.gov/star</a>.</p></li>
+    <li><h3>New York income tax</h3><p>If your legal residence (domicile) is another state, <strong>New York doesn't tax your military pay</strong>. Give your finance office Form IT-2104-MS to stop New York withholding. Military retirement pay, including what a beneficiary receives, is fully exempt from New York income tax.</p></li>
+  </ul>
+
+  <p class="page-verified">Checked Sep 24, 2026 against the VA's loan limit and funding fee pages, the 2026 DFAS BAH rates for Fort Drum (MHA NY225), Freddie Mac's weekly mortgage survey, the New York State tax department (veterans exemption manual, STAR, military pay, county sale prices) and the City of Watertown refuse page. Rates and rules change, so confirm with your lender, assessor and finance office.</p>
+</div></section>
+
+</main>
+
+<footer><div class="f-in">
+  <a href="/" style="text-decoration:none;"><b>PCS<i>Homes</i></b></a>
+  <span>&copy; 2026 PCSHomes &middot; Free for military families</span>
+  <div class="f-links">
+    <a href="/pcshomes-fortdrum.html">Fort Drum Guide</a>
+    <a href="/pcshomes-directory.html">Directory</a>
+    <a href="/pcshomes-spouse.html">Spouse HQ</a>
+    <a href="/pcshomes-discover.html">Discover</a>
+    <a href="/pcshomes-contact.html">Contact</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="tel:+13152214857">(315) 221-4857</a>
+  </div>
+</div></footer>
+
+<div class="mobile-tab-bar">
+  <a href="/" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="/pcshomes-directory.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span>Directory</span></a>
+  <a href="/pcshomes-fortdrum.html" class="tab-item active"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span>Guide</span></a>
+  <a href="/pcshomes-spouse.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>Spouse HQ</span></a>
+  <a href="/pcshomes-contact.html" class="tab-item"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Contact</span></a>
+</div>
+
+<script>
+function submitAskBand(e, offer) {
+  e.preventDefault();
+  var form = e.target, band = form.closest('.ask-band');
+  var btn = form.querySelector('button');
+  var name = form.querySelector('[name=name]').value.trim();
+  var contact = form.querySelector('[name=contact]').value.trim();
+  if (!name || !contact) return false;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  var data = new URLSearchParams();
+  data.append('form-name', 'popup-lead');
+  data.append('offer', offer);
+  data.append('name', name);
+  data.append('contact', contact);
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
+    .then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.style.display = 'none';
+      band.querySelector('.ask-done').style.display = 'block';
+    })
+    .catch(function () {
+      btn.disabled = false; btn.textContent = 'Have someone call me';
+      band.querySelector('.ask-note').innerHTML = 'That didn’t send. <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a> instead.';
+    });
+  return false;
+}
+
+// Both calculators share the rate, funding fee and tax rate set on the payment calculator.
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function num(id) { var v = parseFloat($(id).value); return isNaN(v) ? 0 : v; }
+  function money(n) { return '$' + Math.round(Math.abs(n)).toLocaleString('en-US'); }
+  function signed(n) { return (n < 0 ? '−' : '+') + money(n); }
+  var rate = 7;
+
+  function monthlyPI(loan, pct) {
+    var r = pct / 1200, n = 360;
+    return r ? loan * r / (1 - Math.pow(1 + r, -n)) : loan / n;
+  }
+  function balanceAfter(loan, pct, k) {
+    var r = pct / 1200, p = monthlyPI(loan, pct);
+    return r ? loan * Math.pow(1 + r, k) - p * (Math.pow(1 + r, k) - 1) / r : loan - p * k;
+  }
+  // VA purchase-loan funding fee (va.gov, rates in effect since Apr 7, 2023)
+  function feePct(price, down) {
+    var type = $('feeType').value;
+    if (type === 'exempt' || !price) return 0;
+    var share = down / price;
+    if (share >= 0.10) return 1.25;
+    if (share >= 0.05) return 1.5;
+    return type === 'subsequent' ? 3.3 : 2.15;
+  }
+  function currentRate() {
+    if (!$('customRateRow').hidden) { var c = parseFloat($('customRate').value); return c > 0 ? c : null; }
+    return rate;
+  }
+  // loan payment + property tax for a price, with this page's settings
+  function buyCost(price, down) {
+    var pct = currentRate(); if (pct === null) return null;
+    down = Math.min(Math.max(down, 0), price);
+    var fee = feePct(price, down);
+    var loan = (price - down) * (1 + fee / 100);
+    var pi = monthlyPI(loan, pct), tax = price * num('taxPct') / 100 / 12;
+    return { pct: pct, fee: fee, feeAmt: (price - down) * fee / 100, loan: loan, pi: pi, tax: tax, total: pi + tax, down: down };
+  }
+
+  function calcPayment() {
+    var price = num('homePrice'), bah = num('bah');
+    var c = price ? buyCost(price, num('downPayment')) : null;
+    if (!c) {
+      $('payOut').textContent = '–';
+      $('payNote').textContent = price ? 'Type your interest rate' : 'Type a home price';
+      $('bahOut').textContent = '–';
+      $('bahNote').textContent = 'Pick your rank or type your BAH';
+      $('feeLine').textContent = '';
+      return;
+    }
+    $('payOut').textContent = money(c.total);
+    $('payNote').textContent = money(c.pi) + ' loan + ' + money(c.tax) + ' tax';
+    $('feeLine').textContent = c.fee ? 'Includes a ' + c.fee + '% VA funding fee (' + money(c.feeAmt) + ') added to the loan.' : 'No funding fee in this estimate.';
+    if (bah) {
+      var left = bah - c.total;
+      $('bahOut').textContent = Math.round(bah / c.total * 100) + '%';
+      $('bahNote').textContent = left >= 0 ? money(left) + ' a month left over' : money(left) + ' a month short';
+    } else {
+      $('bahOut').textContent = '–';
+      $('bahNote').textContent = 'Pick your rank or type your BAH';
+    }
+  }
+
+  var shown = false;
+  function calcRvB() {
+    if (!shown) return;
+    var price = num('rvbPrice'), rent = num('rvbRent'), bah = num('rvbBah');
+    var heat = num('rvbHeat'), water = num('rvbWater'), incl = $('rvbIncl').value === 'yes';
+    var c = price ? buyCost(price, 0) : null;
+    var ids = ['cHouse1','cHouse2','cHeat1','cHeat2','cWater1','cWater2','cTotal1','cTotal2','cLeft1','cLeft2','cPaid','cGain','cEquity'];
+    if (!c || !rent) {
+      ids.forEach(function (id) { $(id).textContent = '–'; $(id).classList.remove('neg'); });
+      $('rvbVerdict').textContent = 'Put in a home price, a rent and an interest rate to see the comparison.';
+      return;
+    }
+    var rentWater = incl ? 0 : water;
+    var buyTotal = c.total + heat + water, rentTotal = rent + heat + rentWater;
+    var paid = c.loan - balanceAfter(c.loan, c.pct, 36);
+    var value3 = price * Math.pow(1.03, 3);
+    var equity = value3 - balanceAfter(c.loan, c.pct, 36);
+    var put = function (id, text, neg) { $(id).textContent = text; $(id).classList.toggle('neg', !!neg); };
+    put('cHouse1', money(c.total)); put('cHouse2', money(rent));
+    put('cHeat1', money(heat)); put('cHeat2', money(heat));
+    put('cWater1', money(water)); put('cWater2', incl ? 'Included' : money(water));
+    put('cTotal1', money(buyTotal)); put('cTotal2', money(rentTotal));
+    if (bah) { put('cLeft1', signed(bah - buyTotal), bah - buyTotal < 0); put('cLeft2', signed(bah - rentTotal), bah - rentTotal < 0); }
+    else { put('cLeft1', '–'); put('cLeft2', '–'); }
+    put('cPaid', money(paid)); put('cGain', money(value3 - price)); put('cEquity', money(equity), equity < 0);
+
+    var diff = buyTotal - rentTotal, v;
+    var eq = equity > 0 ? ' Buying also builds about <strong>' + money(equity) + ' in equity over 3 years</strong> if prices rise 3% a year, before the costs of selling.' : ' After 3 years the loan would still be larger than the home is worth at these numbers.';
+    if (Math.abs(diff) < 100) v = 'At these numbers, buying and renting cost about the same each month (<strong>' + money(buyTotal) + '</strong> vs. <strong>' + money(rentTotal) + '</strong>).' + eq + ' Owning also means repairs, snow and the furnace are yours. Tour length and how sure your orders are should decide it.';
+    else if (diff > 0) v = 'Buying runs about <strong>' + money(diff) + ' a month more</strong> than renting at these numbers.' + eq + ' Whether that trade is worth it depends on your tour length and whether you want to rent the house out after you PCS.';
+    else v = 'Buying comes out about <strong>' + money(diff) + ' a month cheaper</strong> than renting at these numbers.' + eq + ' Owning still means repairs and committing to a town; renting stays the easier exit if your orders could change.';
+    $('rvbVerdict').innerHTML = v;
+  }
+
+  document.querySelectorAll('.rates button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.rates button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      var custom = b.dataset.rate === 'custom';
+      $('customRateRow').hidden = !custom;
+      if (custom) $('customRate').focus(); else rate = parseFloat(b.dataset.rate);
+      calcPayment(); calcRvB();
+    });
+  });
+  $('bahRank').addEventListener('change', function () {
+    if (!this.value) return;
+    $('bah').value = this.value; $('rvbBah').value = this.value;
+    calcPayment(); calcRvB();
+  });
+  ['bah','homePrice','downPayment','taxPct','customRate'].forEach(function (id) { $(id).addEventListener('input', function () { calcPayment(); calcRvB(); }); });
+  $('feeType').addEventListener('change', function () { calcPayment(); calcRvB(); });
+  ['rvbPrice','rvbRent','rvbBah','rvbHeat','rvbWater'].forEach(function (id) { $(id).addEventListener('input', calcRvB); });
+  $('rvbIncl').addEventListener('change', calcRvB);
+  // no verdict until it's asked for
+  $('rvbGo').addEventListener('click', function () {
+    shown = true;
+    $('rvbOut').hidden = false;
+    this.hidden = true;
+    calcRvB();
+    $('rvbOut').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  });
+  calcPayment();
+})();
+</script>
+<script src="/js/chassis.js"></script>
+</body>
+</html>

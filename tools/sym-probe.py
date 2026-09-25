@@ -122,6 +122,19 @@ JS = r"""
     const rg = document.createRange(); rg.selectNodeContents(el); const tops = new Set([...rg.getClientRects()].map(r => Math.round(r.top)));
     if (tops.size > 1) out.push({ kind: 'LABELWRAP', where: name(el), detail: t.slice(0, 44) });
   }
+  // OVERFLOW: text that can't wrap (a number, a nowrap label) spilling out of its column or into a neighbour
+  for (const el of document.querySelectorAll('body *')) {
+    if (!inViewTree(el) || !vis(el) || el.closest('.leaflet-container, svg, select, option')) continue;
+    if (!el.childNodes.length || ![...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) continue;
+    let box = el.parentElement;
+    while (box && getComputedStyle(box).display.startsWith('inline')) box = box.parentElement;
+    if (!box) continue;
+    // measure the glyphs, not the element box: touch targets widened with padding and negative margins are fine
+    const tr = document.createRange(); tr.selectNodeContents(el);
+    const r = tr.getBoundingClientRect(), br = box.getBoundingClientRect(), bs = getComputedStyle(box);
+    const right = br.right + 5;  // past the column's border edge, not into its padding (touch-target margins are fine)
+    if (r.right > right && bs.overflowX === 'visible') out.push({ kind: 'OVERFLOW', where: name(el), detail: el.textContent.trim().slice(0, 40) + ' +' + Math.round(r.right - right) + 'px' });
+  }
   return out;
 }
 """
