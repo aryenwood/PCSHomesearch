@@ -723,9 +723,6 @@
 </footer>
 
 <!-- LEAFLET (deferred) + MAP INIT -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js" defer></script>
 <script>
 (function(){
   function showMapError(){
@@ -786,11 +783,25 @@
   });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-  } else {
-    initMap();
+  // The map sits far down the page: its libraries load only when a visitor scrolls near it,
+  // so they don't compete with the hero photo on a phone connection.
+  var LIBS = ['https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
+              'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js',
+              'https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js'];
+  var started = false;
+  function load(i) {
+    if (i === LIBS.length) { initMap(); return; }
+    var sc = document.createElement('script'); sc.src = LIBS[i];
+    sc.onload = function () { load(i + 1); };
+    sc.onerror = showMapError;
+    document.head.appendChild(sc);
   }
+  function start() { if (started) return; started = true; load(0); }
+  var el = document.getElementById('groceryMap');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); start(); } }, { rootMargin: '800px 0px' });
+    io.observe(el);
+  } else { start(); }
 })();
 </script>
 
