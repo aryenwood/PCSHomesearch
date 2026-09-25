@@ -25,8 +25,8 @@ it ships (owner rule: carrying a figure over is not verifying it). Push only on 
 - **Provenance audit:** the older site photos (thompson-park, sackets-harbor, north-country-winter,
   thousand-islands, military-family, servicemember-returning-home, soldier-spouse-on-post) have no
   recorded source or license. Find each one's origin; replace anything unlicensed.
-- The legacy `images/the-heights-evans-mills-ny-building-photo.jpg` looks like an apartments.com
-  listing photo; it left the site with the old guide. Delete it from the repo once confirmed unused.
+- Done Sep 25: the legacy `the-heights-evans-mills-ny-building-photo` images (an apartments.com
+  listing photo, unused since the old guide was retired) were removed from the repo.
 
 ## 3. Fact re-verification on pages built before the rule
 
