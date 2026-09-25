@@ -91,6 +91,7 @@ with sync_playwright() as p:
     check("rvb_left_buy", dollars(pg.text_content("#cLeft1").replace("/mo", "")), 1665 - (house + 475), tol=2)
     check("rvb_paid", dollars(pg.text_content("#cPaid")), loan - bal(loan, 7, 36))
     check("rvb_equity", dollars(pg.text_content("#cEquity")), 200000 * 1.03 ** 3 - bal(loan, 7, 36))
+    check("rvb_equity_flat", dollars(pg.text_content("#cEqFlat")), 200000 - bal(loan, 7, 36))
     pg.select_option("#rvbIncl", "yes")
     R["rvb_included"] = pg.text_content("#cWater2")
     if R["rvb_included"] != "Included": FAIL.append("rvb_included")

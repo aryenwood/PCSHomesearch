@@ -125,9 +125,9 @@
 
     /* pros and cons: two ruled columns with the same rows */
     /* the two lists share row lines, so each point sits level with its neighbour */
-    .pc { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto repeat(9, auto); gap: 0 40px; margin-top: 64px; }
-    .pc > div { display: grid; grid-row: span 10; grid-template-rows: subgrid; }
-    .pc ul { display: grid; grid-row: span 9; grid-template-rows: subgrid; }
+    .pc { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto repeat(6, auto); gap: 0 40px; margin-top: 64px; }
+    .pc > div { display: grid; grid-row: span 7; grid-template-rows: subgrid; }
+    .pc ul { display: grid; grid-row: span 6; grid-template-rows: subgrid; }
     .pc h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; color: var(--navy); margin: 0 0 12px; }
     .pc ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
     .pc li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 13px 4px 12px; border-bottom: 1px solid var(--rule); font-size: 17px; color: var(--ink); line-height: 1.55; }
@@ -356,10 +356,10 @@
         <tr><th scope="row">BAH left over</th><td id="cLeft1">&ndash;</td><td id="cLeft2">&ndash;</td></tr>
       </tbody>
       <tbody>
-        <tr class="grp"><th scope="rowgroup" colspan="3">After 3 years, if values rise 3% a year</th></tr>
+        <tr class="grp"><th scope="rowgroup" colspan="3">After 3 years, before selling costs</th></tr>
         <tr><th scope="row">Loan paid down</th><td id="cPaid">&ndash;</td><td>&ndash;</td></tr>
-        <tr><th scope="row">Value gained</th><td id="cGain">&ndash;</td><td>&ndash;</td></tr>
-        <tr class="total"><th scope="row">Your equity</th><td id="cEquity">&ndash;</td><td>$0</td></tr>
+        <tr><th scope="row">Equity if prices stay flat</th><td id="cEqFlat">&ndash;</td><td>$0</td></tr>
+        <tr><th scope="row">Equity if prices rise 3% a year</th><td id="cEquity">&ndash;</td><td>$0</td></tr>
       </tbody>
     </table>
     <div class="verdict" id="rvbVerdict"></div>
@@ -372,11 +372,8 @@
       <ul>
         <li class="pro">With a VA loan: $0 down and no monthly mortgage insurance</li>
         <li class="pro">Each payment builds equity instead of paying a landlord</li>
-        <li class="pro">A fixed-rate payment stays level (taxes and insurance can still rise)</li>
-        <li class="pro">No landlord rules on pets, paint or changes</li>
-        <li class="pro">You can keep it as a rental when you PCS</li>
-        <li class="con">Repairs are yours, from the furnace to the roof</li>
-        <li class="con">Winter heat and snow removal are on you</li>
+        <li class="pro">Your house, your rules on pets, paint and changes</li>
+        <li class="con">Repairs, heat and snow removal are yours</li>
         <li class="con">On a short tour, closing and selling costs can eat the equity</li>
         <li class="con">Renting it out from your next duty station takes planning</li>
       </ul>
@@ -386,13 +383,10 @@
       <ul>
         <li class="pro">Federal law (the SCRA) lets you end a lease early with PCS orders</li>
         <li class="pro">The landlord handles repairs</li>
-        <li class="pro">Some rentals include water, sewer or trash</li>
         <li class="pro">You learn the area before you commit to a town</li>
-        <li class="pro">No closing costs, and no house to sell when you leave</li>
         <li class="con">Rent builds no equity</li>
         <li class="con">Pet limits and pet fees are common</li>
-        <li class="con">The landlord can sell or not renew</li>
-        <li class="con">Rent can go up at renewal</li>
+        <li class="con">Rent can go up, or the landlord can sell</li>
       </ul>
     </div>
   </div>
@@ -545,7 +539,7 @@ function submitAskBand(e, offer) {
     var price = num('rvbPrice'), rent = num('rvbRent'), bah = num('rvbBah');
     var heat = num('rvbHeat'), water = num('rvbWater'), incl = $('rvbIncl').value === 'yes';
     var c = price ? buyCost(price, 0) : null;
-    var ids = ['cHouse1','cHouse2','cHeat1','cHeat2','cWater1','cWater2','cTotal1','cTotal2','cLeft1','cLeft2','cPaid','cGain','cEquity'];
+    var ids = ['cHouse1','cHouse2','cHeat1','cHeat2','cWater1','cWater2','cTotal1','cTotal2','cLeft1','cLeft2','cPaid','cEqFlat','cEquity'];
     if (!c || !rent) {
       ids.forEach(function (id) { $(id).textContent = '–'; $(id).classList.remove('neg'); });
       $('rvbVerdict').textContent = 'Put in a home price, a rent and an interest rate to see the comparison.';
@@ -555,7 +549,8 @@ function submitAskBand(e, offer) {
     var buyTotal = c.total + heat + water, rentTotal = rent + heat + rentWater;
     var paid = c.loan - balanceAfter(c.loan, c.pct, 36);
     var value3 = price * Math.pow(1.03, 3);
-    var equity = value3 - balanceAfter(c.loan, c.pct, 36);
+    var bal36 = balanceAfter(c.loan, c.pct, 36);
+    var equity = value3 - bal36, eqFlat = price - bal36;
     var put = function (id, text, neg) { $(id).textContent = text; $(id).classList.toggle('neg', !!neg); };
     put('cHouse1', money(c.total)); put('cHouse2', money(rent));
     put('cHeat1', money(heat)); put('cHeat2', money(heat));
@@ -563,10 +558,10 @@ function submitAskBand(e, offer) {
     put('cTotal1', money(buyTotal)); put('cTotal2', money(rentTotal));
     if (bah) { put('cLeft1', signed(bah - buyTotal), bah - buyTotal < 0); put('cLeft2', signed(bah - rentTotal), bah - rentTotal < 0); }
     else { put('cLeft1', '–'); put('cLeft2', '–'); }
-    put('cPaid', money(paid)); put('cGain', money(value3 - price)); put('cEquity', money(equity), equity < 0);
+    put('cPaid', money(paid)); put('cEqFlat', (eqFlat < 0 ? '−' : '') + money(eqFlat), eqFlat < 0); put('cEquity', (equity < 0 ? '−' : '') + money(equity), equity < 0);
 
     var diff = buyTotal - rentTotal, v;
-    var eq = equity > 0 ? ' Buying also builds about <strong>' + money(equity) + ' in equity over 3 years</strong> if prices rise 3% a year, before the costs of selling.' : ' After 3 years the loan would still be larger than the home is worth at these numbers.';
+    var eq = ' After 3 years your equity would be about <strong>' + (eqFlat < 0 ? '−' : '') + money(eqFlat) + ' if prices stay flat</strong> and ' + (equity < 0 ? '−' : '') + money(equity) + ' if they rise 3% a year, before the costs of selling.';
     if (Math.abs(diff) < 100) v = 'At these numbers, buying and renting cost about the same each month (<strong>' + money(buyTotal) + '</strong> vs. <strong>' + money(rentTotal) + '</strong>).' + eq + ' Owning also means repairs, snow and the furnace are yours. Tour length and how sure your orders are should decide it.';
     else if (diff > 0) v = 'Buying runs about <strong>' + money(diff) + ' a month more</strong> than renting at these numbers.' + eq + ' Whether that trade is worth it depends on your tour length and whether you want to rent the house out after you PCS.';
     else v = 'Buying comes out about <strong>' + money(diff) + ' a month cheaper</strong> than renting at these numbers.' + eq + ' Owning still means repairs and committing to a town; renting stays the easier exit if your orders could change.';
