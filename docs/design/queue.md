@@ -23,6 +23,28 @@ it ships (owner rule: carrying a figure over is not verifying it). Push only on 
 - To add more: put the record in the research file, run `python3 tools/geo-places.py` on it,
   regenerate `data/places.json`, then `python3 tools/build-places.py` and `tools/qa-living-here.py`.
 
+## 1b. Living Here: outdoors (done Sep 25, 61 spots)
+
+- A separate "Hunt, fish, paddle, ride" section with its own finder (Fishing, Boat launches, Paddle &
+  raft, Hunting & ranges, Sleds & ATVs) and four rule cards (resident-price licenses for soldiers
+  stationed here over 30 days, the Fort Drum Recreational Access Pass, hunter education, snowmobile
+  registration). Every rule was read on the DEC, Fort Drum iSportsman, DMV or Lewis County page.
+- Research caught and removed: a $5 range fee that isn't on MWR's page, a 10 hp limit DEC gives for
+  Sixberry and Lake of the Woods but not Payne Lake, a "reopened" note for Butterfield Lake, "youth
+  pass free" (not on the iSportsman page), and unsourced lot sizes, superlatives and prices.
+- Pins that are an area, not a point: the Salmon River public fishing stretch is pinned to the
+  village of Pulaski; the four snowmobile clubs to their home hamlets; the Lewis County ATV system
+  to the county permit office in Lowville.
+- Left out (reasons in the research file): Indian Lake (no pin; also needs a Fort Drum pass), three
+  village docks (for visiting boats), the Black River "whitewater park" (only a city feasibility
+  study), Black River Outfitters (site's security certificate expired, no current season; B.O.B.
+  Rafting closed for 2026 by its own notice), over 75 minutes (Independence River and Otter Creek
+  state forests, Southern Tug Hill Sno-Riders, Wilson Hill WMA, St. Lawrence County trails).
+- Gaps: no DEC-run public shooting range exists in the four counties; Fort Drum's own range is
+  limited (archery by reservation, trap and skeet for groups). The on-post lake names for fishing
+  are in Fort Drum's recreation map PDF, which didn't parse; worth a manual read.
+- The free fishing days in the licenses card are 2026 dates: update them when DEC posts 2027.
+
 ## 2. Photos
 
 - **Gaps with no freely licensed photo:** Dry Hill and Snow Ridge ski areas, fall foliage in
