@@ -242,7 +242,7 @@ footer span.tag { margin-left: auto; letter-spacing: 0.12em; text-transform: upp
   .right-row h3 { font-size: 20px; }
   .dist-row h3 { font-size: 22px; }
   .kicker, .ask p { font-size: 17px; }
-  .field > span { font-size: 13px; }
+  .field > span { font-size: 15px; letter-spacing: 0.05em; }
   footer span.tag { font-size: 15px; }
   .hero-grid { grid-template-columns: 1fr; gap: 26px; }
   .hero-photo img { aspect-ratio: 4/3; }

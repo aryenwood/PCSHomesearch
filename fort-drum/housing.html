@@ -97,6 +97,8 @@
     #mapError { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--plate-sub); }
     .plate .fine { color: var(--plate-sub); }
     .leaflet-control-attribution { font-size: 11px !important; }
+    .pin { background: none; border: 0; }
+    .pin:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; border-radius: 50%; }
     .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 20px !important; }
 
     /* town list: the map's data as rows anyone can read */
@@ -131,7 +133,8 @@
       header.hero .facts > div { border-right: none; border-bottom: 1px solid var(--rule); }
       header.hero .facts > div:last-child { border-bottom: none; }
       #drumMap { height: 400px; }
-      #mapPanel { top: auto; bottom: 12px; right: 12px; }
+      /* phones: the panel sits under the map so it never hides the town you tapped */
+      #mapPanel { position: relative; top: auto; right: auto; width: auto; margin-top: 12px; }
       .map-tools button { font-size: 17px; }
       input { font-size: 16px !important; }
     }
@@ -160,7 +163,7 @@
   <p class="crumb"><a href="/pcshomes-fortdrum.html">Fort Drum Guide</a> &rsaquo; Housing</p>
   <p class="eyebrow rv">Chapter &middot; Housing near Fort Drum</p>
   <h1 class="rv">On post or off? <em>Choose with the facts.</em></h1>
-  <p class="dek rv">How on-post housing works, who helps with off-post rentals for free, and 30 nearby towns with their school district and drive time. <strong>Drive times are measured to the gates, not guessed.</strong></p>
+  <p class="dek rv">How on-post housing works, who helps with off-post rentals for free, and 30 nearby towns with their school district and drive time. <strong>Drive times come from map routing to each gate, not guesses.</strong></p>
   <div class="facts rv">
     <div><span class="label">On-post housing</span><span class="val"><a href="tel:+13159556644">(315) 955-6644</a></span><span class="note">Welcome Home Center</span></div>
     <div><span class="label">Off-post help</span><span class="val"><a href="tel:+13157729397">(315) 772-9397</a></span><span class="note">Housing Services, free</span></div>
@@ -189,7 +192,7 @@
   <h2 class="rv">Off post, <em>you get free help.</em></h2>
   <p class="sub rv">The Army's Housing Services Office works for you, not the landlord. <strong>Soldiers are required to check in with it before renting, leasing or buying off post.</strong></p>
   <ul class="ruled">
-    <li><h3>What it does, free</h3><p>Housing counseling and referrals, lease reviews before you sign, safety and habitability inspections of rentals, and help settling disputes with a landlord.</p></li>
+    <li><h3>What it does, free</h3><p>Housing counseling and referrals, lease reviews before you sign, safety and habitability inspections of rentals, and help settling disputes with a landlord. The Army also advises not sending a deposit before you've talked to this office.</p></li>
     <li><h3>Where to find it</h3><p>Clark Hall, Bldg. 10720 Mount Belvedere Blvd, Room A2-54. Weekdays 7:30 a.m. to 4 p.m. Call <a href="tel:+13157729397">(315) 772-9397</a> or <a href="tel:+13157728751">(315) 772-8751</a>.</p></li>
     <li><h3>Thinking of buying?</h3><p>Run your payment against your BAH, and compare renting and buying, in the <a href="/fort-drum/buying">Buying chapter</a>.</p></li>
   </ul>
@@ -361,19 +364,24 @@ document.addEventListener('DOMContentLoaded', function () {
   var map = L.map('drumMap', { center: [44.02, -75.85], zoom: 10, scrollWheelZoom: false });
   L.maplibreGL({ style: 'https://tiles.openfreemap.org/styles/dark',
     attribution: '&copy; <a href="https://openfreemap.org">OpenFreeMap</a> &copy; OpenMapTiles &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+  // the dot is small; the tap target around it is 32px
   function icon(col, size) {
-    return L.divIcon({ className: '', iconSize: [size, size], iconAnchor: [size / 2, size / 2],
-      html: '<div style="width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:' + col + ';border:2.5px solid rgba(255,255,255,0.9);box-shadow:0 2px 8px rgba(0,0,0,0.5);"></div>' });
+    return L.divIcon({ className: 'pin', iconSize: [32, 32], iconAnchor: [16, 16],
+      html: '<div style="width:' + size + 'px;height:' + size + 'px;margin:' + (16 - size / 2) + 'px;border-radius:50%;background:' + col + ';border:2.5px solid rgba(255,255,255,0.9);box-shadow:0 2px 8px rgba(0,0,0,0.5);box-sizing:border-box;"></div>' });
   }
   function pin(layer, d, col, size, html) {
     var m = L.marker([d.lat, d.lon], { icon: icon(col, size), title: d.n, keyboard: true }).addTo(layer);
-    m.getElement().setAttribute('aria-label', d.n);
+    var el = m.getElement();
+    el.setAttribute('aria-label', d.n);
     m.on('click', function () { show(html); });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); show(html); }
+    });
   }
   var layers = { towns: L.layerGroup().addTo(map), gates: L.layerGroup().addTo(map), places: L.layerGroup().addTo(map) };
   TOWNS.forEach(function (t) {
     var ask = '/pcshomes-contact.html?need=agent&area=' + encodeURIComponent(t.n) + '#contactForm';
-    pin(layers.towns, t, '#5B9BD5', 14, '<h3>' + esc(t.n) + '</h3><p><b>School district:</b> ' + esc(t.d) + '</p>' +
+    pin(layers.towns, t, '#5B9BD5', 14, '<h3>' + esc(t.n) + '</h3><p><b>School district:</b> <span style="white-space:nowrap">' + esc(t.d) + '</span></p>' +
       '<p><b>Drive:</b> Main Gate ' + t.t.main + ' min &middot; Plummer ' + t.t.plummer + ' min &middot; Wheeler-Sack ' + t.t.wsaaf + ' min</p>' +
       '<a class="go" href="' + ask + '">Ask about homes in ' + esc(t.n) + ' &rarr;</a>');
   });

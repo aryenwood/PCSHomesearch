@@ -37,7 +37,7 @@
         "name": "How much is the VA funding fee in 2026?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For a purchase loan it is 2.15% of the loan on first use with less than 5% down, 3.3% on later use with less than 5% down, 1.5% with 5% or more down, and 1.25% with 10% or more down. It can be added to the loan. Veterans receiving VA disability compensation and active-duty Purple Heart recipients don't pay it."
+          "text": "For a purchase loan it is 2.15% of the loan on first use with less than 5% down, 3.3% on later use with less than 5% down, 1.5% with 5% or more down, and 1.25% with 10% or more down. It can be added to the loan. It isn't charged to those receiving VA disability compensation (or eligible for it but taking retirement or active-duty pay instead), service members with a proposed or memorandum disability rating before closing, active-duty Purple Heart recipients, or surviving spouses receiving DIC."
         }
       },
       {
@@ -222,10 +222,10 @@
 <section id="va" class="va"><div class="wrap">
   <h2 class="rv">What your VA loan <em>does here.</em></h2>
   <p class="sub rv">The VA loan is a home loan benefit for soldiers and veterans. The VA backs part of the loan, so lenders ask for less from you.</p>
-  <div class="dist-row"><h3>No down payment</h3><p class="towns">If your lender approves the loan, the VA doesn't require a down payment. You still pay closing costs, and only the funding fee below can be added to the loan.</p><div class="pct"><b class="txt">$0</b><span>Down</span></div></div>
+  <div class="dist-row"><h3>No down payment</h3><p class="towns">If your lender approves the loan, the VA doesn't require a down payment. Closing costs still apply, and you and the seller negotiate who pays them. Only the funding fee below can be added to the loan.</p><div class="pct"><b class="txt">$0</b><span>Down</span></div></div>
   <div class="dist-row"><h3>No loan limit</h3><p class="towns">With your <strong>full VA entitlement</strong> (you haven't used it, or you've restored it), there has been no VA loan limit since 2020. Your income and credit decide how much a lender approves.</p><div class="pct"><b class="txt">None</b><span>Full entitlement</span></div></div>
   <div class="dist-row"><h3>No mortgage insurance</h3><p class="towns">Conventional loans with a small down payment usually add private mortgage insurance (PMI) to the monthly bill. VA loans don't.</p><div class="pct"><b class="txt">$0</b><span>PMI a month</span></div></div>
-  <div class="dist-row"><h3>The VA funding fee</h3><p class="towns">A one-time fee, usually added to the loan: <strong>2.15%</strong> on your first VA loan with less than 5% down, <strong>3.3%</strong> if you've used it before, 1.5% with 5% down, 1.25% with 10% down. You pay <strong>no fee</strong> if you receive VA disability compensation, or you're on active duty and received a Purple Heart.</p><div class="pct"><b class="txt">2.15%</b><span>First use, $0 down</span></div></div>
+  <div class="dist-row"><h3>The VA funding fee</h3><p class="towns">A one-time fee, usually added to the loan: <strong>2.15%</strong> on your first VA loan with less than 5% down, <strong>3.3%</strong> if you've used it before, 1.5% with 5% down, 1.25% with 10% down. You pay <strong>no fee</strong> if you receive VA disability compensation, would get it but take retirement or active-duty pay instead, have a proposed or memorandum disability rating before closing, are on active duty and received a Purple Heart, or are a surviving spouse receiving DIC.</p><div class="pct"><b class="txt">2.15%</b><span>First use, $0 down</span></div></div>
   <p class="fine rv">First step: get your <a href="https://www.va.gov/housing-assistance/home-loans/how-to-apply/" target="_blank" rel="noopener">Certificate of Eligibility (COE)</a>, the document that shows a lender you qualify. Your lender can request it for you.</p>
 </div></section>
 
@@ -291,7 +291,7 @@
       <label class="field"><span>VA funding fee</span><select id="feeType">
           <option value="first">First VA loan</option>
           <option value="subsequent">Used a VA loan before</option>
-          <option value="exempt">Exempt (VA disability pay or Purple Heart)</option>
+          <option value="exempt">Exempt from the fee (see who qualifies above)</option>
         </select></label>
       <label class="field"><span>Property tax, % a year</span><input type="number" id="taxPct" inputmode="decimal" enterkeyhint="done" min="0" max="10" step="0.1" value="1.5"/></label>
       <fieldset class="rates">
@@ -310,7 +310,7 @@
       <div><span class="label">Your payment</span><b id="payOut">&ndash;</b><span class="note" id="payNote">Loan payment plus property tax</span></div>
       <div><span class="label">BAH covers</span><b id="bahOut">&ndash;</b><span class="note" id="bahNote">Pick your rank or type your BAH</span></div>
     </div>
-    <p class="fee-line" id="feeLine" aria-live="polite"></p>
+    <p class="fee-line" id="feeLine"></p>
     <p class="form-note">Freddie Mac's weekly average for a 30-year fixed loan was 7.03% on Sep 24, 2026; your lender quotes your real rate. This estimate covers the loan payment and property tax only, not homeowners insurance. <a href="/pcshomes-contact.html?need=lender#contactForm">Talk to a VA lender</a> for exact numbers.</p>
   </div>
 </div>
@@ -332,7 +332,7 @@
 <!-- RENT VS. BUY -->
 <section id="rvb"><div class="wrap">
   <h2 class="rv">Rent or buy? <em>Side by side.</em></h2>
-  <p class="sub rv">Put in a real listing and your real bills. The comparison uses the interest rate, funding fee and tax rate you set above.</p>
+  <p class="sub rv">Put in a real listing and your real bills. The comparison uses the down payment, interest rate, funding fee and tax rate you set above.</p>
   <form class="rvb-form" onsubmit="return false" aria-label="Rent vs. buy inputs">
     <label class="lf"><span>Home price</span><input type="number" id="rvbPrice" inputmode="numeric" enterkeyhint="done" min="0" value="200000"/><small>Jefferson County's median sale in 2025: $200,000</small></label>
     <label class="lf"><span>Rent, per month</span><input type="number" id="rvbRent" inputmode="numeric" enterkeyhint="done" min="0" value="1400"/><small>Use the rent on a real listing</small></label>
@@ -343,9 +343,9 @@
   </form>
   <button type="button" class="btn-navy" id="rvbGo">Show my comparison</button>
 
-  <div id="rvbOut" hidden aria-live="polite">
+  <div id="rvbOut" hidden>
     <table class="cmp">
-      <caption class="sr-only">Monthly and three-year costs of buying compared with renting</caption>
+      <caption class="sr-only" id="rvbCap" tabindex="-1">Monthly and three-year costs of buying compared with renting</caption>
       <colgroup><col class="metric"/><col/><col/></colgroup>
       <thead><tr><th scope="col">Each month</th><th scope="col">Buy</th><th scope="col">Rent</th></tr></thead>
       <tbody>
@@ -362,7 +362,7 @@
         <tr><th scope="row">Equity if prices rise 3% a year</th><td id="cEquity">&ndash;</td><td>$0</td></tr>
       </tbody>
     </table>
-    <div class="verdict" id="rvbVerdict"></div>
+    <div class="verdict" id="rvbVerdict" role="status"></div>
     <p class="fine">Estimates only. The 3% yearly rise in value is an assumption, not a forecast, and prices can fall. Equity here doesn't subtract closing costs or the cost of selling (agent and closing fees), which matter most on a short tour. Talk to a lender and a real estate agent before you decide.</p>
   </div>
 
@@ -409,10 +409,10 @@
   <h2 class="rv">New York money <em>you have to ask for.</em></h2>
   <p class="sub rv">None of these arrive on their own. File for them, and check the deadline with your town or city assessor.</p>
   <ul class="ny">
-    <li><h3>Veterans property tax exemption</h3><p>New York's Alternative Veterans Exemption takes <strong>15% off your home's assessed value</strong> for wartime service, another 10% for combat-zone service, and half your VA disability rating, each up to a dollar cap your town sets. It lowers county, city and town taxes, and school taxes only where the district opts in. <strong>Still serving?</strong> You can qualify once you have at least 10 years of active service and reenlisted past your first obligation; otherwise it starts after you're discharged. File Form RP-458-a with your assessor (<a href="https://www.tax.ny.gov/pit/property/exemption/vetexempt.htm" target="_blank" rel="noopener">New York's veterans exemption page</a>).</p></li>
+    <li><h3>Veterans property tax exemption</h3><p>New York's Alternative Veterans Exemption takes <strong>15% off your home's assessed value</strong> for wartime service, another 10% for combat-zone service, and half your VA disability rating, each up to dollar caps set locally. It lowers county, city and town taxes, and school taxes only where the district opts in. <strong>Still serving?</strong> You can qualify once you have at least 10 years of active service and reenlisted past your first obligation; otherwise it starts after you're discharged. File Form RP-458-a with your assessor (<a href="https://www.tax.ny.gov/pit/property/exemption/vetexempt.htm" target="_blank" rel="noopener">New York's veterans exemption page</a>).</p></li>
     <li><h3>Other veteran exemptions</h3><p>New York also has a Cold War veterans exemption and an eligible funds exemption. You generally get one veteran exemption, so ask your assessor which saves you more.</p></li>
     <li><h3>STAR school tax credit</h3><p>New homeowners get STAR as a credit, a check from the state toward school taxes, if household income is <strong>$500,000 or less</strong>. Register once at <a href="https://www.tax.ny.gov/star/" target="_blank" rel="noopener">tax.ny.gov/star</a>.</p></li>
-    <li><h3>New York income tax</h3><p>If your legal residence (domicile) is another state, <strong>New York doesn't tax your military pay</strong>. Give your finance office Form IT-2104-MS to stop New York withholding. Military retirement pay, including what a beneficiary receives, is fully exempt from New York income tax.</p></li>
+    <li><h3>New York income tax</h3><p>If your legal residence (domicile) is another state, <strong>New York doesn't tax your military pay</strong>. If New York tax shows up on your LES, ask your finance office to check your state of legal residence. Military retirement pay, including what a beneficiary receives, is fully exempt from New York income tax.</p></li>
   </ul>
 
   <p class="page-verified">Checked Sep 24, 2026 against the VA's loan limit and funding fee pages, the 2026 DFAS BAH rates for Fort Drum (MHA NY225), Freddie Mac's weekly mortgage survey, the New York State tax department (veterans exemption manual, STAR, military pay, county sale prices) and the City of Watertown refuse page. Rates and rules change, so confirm with your lender, assessor and finance office.</p>
@@ -473,7 +473,7 @@ function submitAskBand(e, offer) {
 // Both calculators share the rate, funding fee and tax rate set on the payment calculator.
 (function () {
   function $(id) { return document.getElementById(id); }
-  function num(id) { var v = parseFloat($(id).value); return isNaN(v) ? 0 : v; }
+  function num(id) { var v = parseFloat($(id).value); return isNaN(v) || v < 0 ? 0 : v; }  // no negative money
   function money(n) { return '$' + Math.round(Math.abs(n)).toLocaleString('en-US'); }
   function signed(n) { return (n < 0 ? '−' : '+') + money(n); }
   var rate = 7;
@@ -512,6 +512,14 @@ function submitAskBand(e, offer) {
   function calcPayment() {
     var price = num('homePrice'), bah = num('bah');
     var c = price ? buyCost(price, num('downPayment')) : null;
+    if (c && c.down >= price) {
+      $('payOut').textContent = money(c.tax);
+      $('payNote').textContent = 'No loan needed: property tax only';
+      $('feeLine').textContent = '';
+      if (bah) { $('bahOut').textContent = money(bah - c.tax); $('bahNote').textContent = 'left each month after tax'; }
+      else { $('bahOut').textContent = '–'; $('bahNote').textContent = 'Pick your rank or type your BAH'; }
+      return;
+    }
     if (!c) {
       $('payOut').textContent = '–';
       $('payNote').textContent = price ? 'Type your interest rate' : 'Type a home price';
@@ -538,7 +546,7 @@ function submitAskBand(e, offer) {
     if (!shown) return;
     var price = num('rvbPrice'), rent = num('rvbRent'), bah = num('rvbBah');
     var heat = num('rvbHeat'), water = num('rvbWater'), incl = $('rvbIncl').value === 'yes';
-    var c = price ? buyCost(price, 0) : null;
+    var c = price ? buyCost(price, num('downPayment')) : null;
     var ids = ['cHouse1','cHouse2','cHeat1','cHeat2','cWater1','cWater2','cTotal1','cTotal2','cLeft1','cLeft2','cPaid','cEqFlat','cEquity'];
     if (!c || !rent) {
       ids.forEach(function (id) { $(id).textContent = '–'; $(id).classList.remove('neg'); });
@@ -592,6 +600,7 @@ function submitAskBand(e, offer) {
     $('rvbOut').hidden = false;
     this.hidden = true;
     calcRvB();
+    $('rvbCap').focus({ preventScroll: true });  // keyboard and screen reader users land on the results
     $('rvbOut').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
   calcPayment();

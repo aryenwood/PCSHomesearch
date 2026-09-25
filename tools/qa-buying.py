@@ -98,6 +98,28 @@ with sync_playwright() as p:
     check("rvb_rent_total_incl", dollars(pg.text_content("#cTotal2")), 1400 + 350)
     R["verdict"] = pg.text_content("#rvbVerdict")[:90]
 
+    # rent vs. buy uses the down payment set above; focus lands on the results after the reveal
+    R["focus_after_reveal"] = pg.evaluate("document.activeElement.id")
+    if R["focus_after_reveal"] != "rvbCap": FAIL.append("focus_after_reveal")
+    pg.fill("#downPayment", "20000")
+    _, want = expect(200000, 20000, "first", 7, 1.5)
+    check("rvb_uses_down", dollars(pg.text_content("#cHouse1")), want)
+    # edge cases: no negative money, no Infinity, a clear state when no loan is needed
+    pg.fill("#downPayment", "250000")
+    R["no_loan_note"] = pg.text_content("#payNote")
+    if "No loan needed" not in R["no_loan_note"]: FAIL.append("no_loan_note")
+    pg.fill("#taxPct", "0")
+    R["no_infinity"] = pg.text_content("#bahOut")
+    if "Infinity" in R["no_infinity"] or "NaN" in R["no_infinity"]: FAIL.append("no_infinity")
+    pg.fill("#downPayment", "0"); pg.fill("#taxPct", "1.5")
+    pg.fill("#homePrice", "-200000")
+    R["negative_price"] = pg.text_content("#payOut")
+    if R["negative_price"] != "–": FAIL.append("negative_price")
+    pg.fill("#homePrice", "200000"); pg.fill("#taxPct", "-5")
+    _, want = expect(200000, 0, "first", 7, 0)
+    check("negative_tax_ignored", out(), want)
+    pg.fill("#taxPct", "1.5")
+
     # both ask bands post to popup-lead with their own offer
     bodies = []
     pg.route(BASE + "/", lambda route: (bodies.append(route.request.post_data), route.fulfill(status=200, body="ok")))
