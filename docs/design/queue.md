@@ -1,6 +1,6 @@
 # PCSHomes build queue
 
-Updated 2026-09-25, after push #7 (Living Here live, a750aec). Phase 3 is complete. Items run in
+Updated 2026-09-25, after push #9 (outdoors live, c7bca24) and the photo + fact pass. Phase 3 is complete. Items run in
 this order unless the owner reorders them. Every fact is checked against an official source before
 it ships (owner rule: carrying a figure over is not verifying it). Push only on the owner's "push".
 
@@ -45,26 +45,32 @@ it ships (owner rule: carrying a figure over is not verifying it). Push only on 
   are in Fort Drum's recreation map PDF, which didn't parse; worth a manual read.
 - The free fishing days in the licenses card are 2026 dates: update them when DEC posts 2027.
 
-## 2. Photos
+## 2. Photos (done Sep 25, except the owner's question)
 
-- **Gaps with no freely licensed photo:** Dry Hill and Snow Ridge ski areas, fall foliage in
-  Jefferson and Lewis counties, maple sugaring, Chaumont Bay, Zoo New York animals, a Sackets Harbor
-  village shot at full resolution. Options: the owner's own photos, direct permission from the
-  venue, or licensed stock (record the license).
-- **Provenance audit:** the older site photos (thompson-park, sackets-harbor, north-country-winter,
-  thousand-islands, military-family, servicemember-returning-home, soldier-spouse-on-post) have no
-  recorded source or license. Find each one's origin; replace anything unlicensed.
-- Done Sep 25: the legacy `the-heights-evans-mills-ny-building-photo` images (an apartments.com
-  listing photo, unused since the old guide was retired) were removed from the repo.
+- Provenance audit: none of the older site photos traced to a free license (fingerprint matching
+  against Commons, Openverse, Unsplash and Pexels; the Thompson Park aerial carries a
+  photographer's signature). Every place photo was replaced with a licensed one and credited on its
+  page; 22 unlicensed or unused files left the site. Record: docs/research-2026-09/photo-provenance.json.
+- **Owner question:** the homecoming hero (servicemember-returning-home, kept by the Sep 24 ruling),
+  its copy on Buying, the "Arriving this month" tile (military-family) and the PCS Checklist hero
+  (the Fort Novosel file) have no traced license. If they weren't bought, a public-domain 2014 Fort
+  Drum homecoming in UCP ("Waiting to be reunited", DVIDS) is on hand.
+- Still no free photos: Dry Hill and Snow Ridge, maple sugaring in the North Country, Chaumont Bay,
+  snowmobiling on the Tug Hill. Options: the owner's own photos, or asking the venue.
+- Share card: a real screenshot of the Living Here hero (images/og-2026-09-25.jpg). When the
+  homepage hero's license is settled, each page can get its own hero screenshot.
 
 ## 3. Fact re-verification on pages built before the rule
 
-- **Spouse HQ:** SpouseWorks, relicensure, "1,000+ MSEP partner employers", the Nurse Licensure
-  Compact line, childcare wait-list wording, NY expedited licensure terms.
-- **Homepage and Glossary:** every number and superlative (the glossary DLA line was fixed Sep 24).
-- **Directory:** re-verify the ~60 non-crisis records (the 15 crisis lines and the unit desks were
-  verified Sep 24); reconcile the Mountain Community Homes number (the directory has 836-4168; the
-  Welcome Home Center page says 955-6644).
+- Done Sep 25: **Spouse HQ** (four wrong phone numbers, the relicensing date, a past job fair, HEAP,
+  the NYSED permit wording), **homepage** (Singer Castle's rate had been credited to Boldt, veteran
+  exemption and NYSED lines, unsourced heating/waitlist numbers, Thompson Park acreage, review
+  counts) and **glossary** (BAH range, the SCRA lease rule, unsourced numbers).
+- Left: **Directory** (re-verify the ~60 non-crisis records; reconcile Mountain Community Homes
+  836-4168 vs 955-6644). Mob/Dep has two official numbers (772-0509 on the garrison directory,
+  772-2848 on MWR): the site uses 772-0509; worth a test call.
+- Joe's review counts (66 Zillow + 54 Facebook) live in data/partners.json as partner-supplied
+  figures; the homepage no longer shows counts. Settle them in the partner-network pass (item 4).
 
 ## 4. Partner network (Phoenix Phase 5)
 
@@ -90,7 +96,9 @@ it ships (owner rule: carrying a figure over is not verifying it). Push only on 
 
 ## 7. Housekeeping
 
-- Move the chapter pages' repeated CSS (crumb, ruled lists, ask band, tab bar) into `css/chassis.css`.
+- Done Sep 25: the tab bar CSS (identical in all 13 pages) moved into `css/chassis.css`; proven by
+  full-page pixel diffs (0 differing pixels). The chapter-only rules (crumb, ruled lists, ask band)
+  are small and differ slightly per page; left in place.
 - The final Fable audit of Phase 3 didn't run (monthly spend limit); an Opus 5.5 audit ran instead.
   Run the Fable pass when the limit resets if the owner wants it.
 - The rename of the site itself comes last (Phoenix Phase 6).
