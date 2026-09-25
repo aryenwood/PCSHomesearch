@@ -135,6 +135,15 @@ JS = r"""
     const right = br.right + 5;  // past the column's border edge, not into its padding (touch-target margins are fine)
     if (r.right > right && bs.overflowX === 'visible') out.push({ kind: 'OVERFLOW', where: name(el), detail: el.textContent.trim().slice(0, 40) + ' +' + Math.round(r.right - right) + 'px' });
   }
+  // EDGE: on a wide screen, body text should sit in the centered column, not flush against the left edge
+  if (innerWidth >= 1200) {
+    const seenEdge = new Set();
+    for (const el of document.querySelectorAll('main h1, main h2, main h3, main p, main li')) {
+      if (!inViewTree(el) || !vis(el) || el.closest('.bar, footer, .leaflet-container, .plate, .modal-overlay, .mobile-tab-bar')) continue;
+      const r = el.getBoundingClientRect();
+      if (r.left < 120) { const k = name(el.parentElement); if (!seenEdge.has(k)) { seenEdge.add(k); out.push({ kind: 'EDGE', where: k, detail: 'left ' + Math.round(r.left) + 'px: ' + el.textContent.trim().slice(0, 30) }); } }
+    }
+  }
   return out;
 }
 """
