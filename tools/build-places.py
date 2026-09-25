@@ -95,6 +95,9 @@ def main():
     i, j = page.index(START), page.index(END) + len(END)
     page = page[:i] + block + page[j:]
     page = page.replace("{{PLACES_COUNT}}", str(len(live)))
+    # every place count on the page follows the data
+    import re
+    page = re.sub(r'<span class="pcount">\d+</span>', f'<span class="pcount">{len(live)}</span>', page)
     open(PAGE, "w").write(page)
     print(f"published {len(live)} of {len(places)} places")
 

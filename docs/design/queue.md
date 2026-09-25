@@ -4,17 +4,24 @@ Updated 2026-09-25, after push #7 (Living Here live, a750aec). Phase 3 is comple
 this order unless the owner reorders them. Every fact is checked against an official source before
 it ships (owner rule: carrying a figure over is not verifying it). Push only on the owner's "push".
 
-## 1. Living Here: more places (in progress)
+## 1. Living Here: more places (done Sep 25, 104 places)
 
-- **Pin 24 confirmed places** that no geocoder could place: small village parks in Watertown, West
-  Carthage, Sackets Harbor, Chaumont and Lowville; land-trust preserves; Robert Moses State Park;
-  Wilson Hill WMA; Tug Hill State Forest; Old McDonald's Farm. Coordinates need evidence (the
-  official page, an OSM object in the right town, or the Census geocoder), never a town center.
-- **Verify 30 leads** the first pass couldn't confirm: small-town libraries (Dexter, Black River,
-  Theresa, Antwerp, Harrisville, Croghan), preserves, village parks, Carthage YMCA, Maple Ridge
-  Snow Park, the Lewis County Historical Society, the Thousand Islands Arts Center.
-- Rebuild with `python3 tools/build-places.py`, then `python3 tools/qa-living-here.py`.
-- Research files: `docs/research-2026-09/living-here-places-research.json` (never served).
+- 36 places added (68 to 104): pinned with evidence (official-page coordinates, OSM objects in the
+  right town, or the Census geocoder) and every new lead confirmed on an official page first.
+- Left out, with reasons in `docs/research-2026-09/living-here-places-research.json`:
+  - over 75 minutes from the gate: Robert Moses State Park, Wilson Hill WMA, Keller Mohawk Hill,
+    East Branch of Fish Creek, Tug Hill Traverse Trail;
+  - no pin with evidence: Veteran's Memorial Park (Lowville), David S. Smith Preserve, Lyons Falls,
+    the Great Lakes Seaway Trail (a 454-mile route, not a place);
+  - not confirmed on an official page: Overlook Park (Black River), Port Leyden Village Park,
+    Beaver Falls Town Park; Wellesley Island Preserve has no public access (its land trust says so);
+  - closed or stale: Maple Ridge Snow Park (the BOCES isn't running the tubing hill), the Sci-Tech
+    Center building (exhibits moved to Zoo New York), Dodge Farms (site stops at 2019/2020);
+  - weak source only: Cape Vincent's East End Park (a non-government village site);
+  - boat access only: Grindstone Island preserves, Canoe-Picnic Point;
+  - duplicate: Northern Credit Union Community Arena is the Watertown Municipal Arena.
+- To add more: put the record in the research file, run `python3 tools/geo-places.py` on it,
+  regenerate `data/places.json`, then `python3 tools/build-places.py` and `tools/qa-living-here.py`.
 
 ## 2. Photos
 
