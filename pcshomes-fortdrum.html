@@ -39,7 +39,10 @@
     /* guide hub chrome on top of the chassis */
     [id] { scroll-margin-top: 84px; }
     body { overflow-wrap: break-word; }
-    header.hero .facts { margin-top: 34px; }
+    /* two answers per row at every width: four across leaves each figure too narrow to stay on one line */
+    header.hero .facts { margin-top: 34px; grid-template-columns: 1fr 1fr; }
+    header.hero .facts > div:nth-child(2n) { border-right: none; }
+    header.hero .facts > div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
     .facts .val a { text-decoration: none; }
     .resolve .call { font-size: var(--t-s); }
     .ruled { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
@@ -48,7 +51,6 @@
     .ruled p { margin: 0; font-size: 17.5px; color: var(--ink); max-width: 42em; }
     .ruled strong { color: var(--navy); }
     .ruled a, .fine a { color: var(--gold); font-weight: 700; text-decoration: none; }
-    .nw { white-space: nowrap; }
     .fine { font-size: var(--t-s); color: var(--muted); margin: 18px 0 0; max-width: 42em; line-height: 1.6; }
     .page-verified { font-size: var(--t-xs); color: var(--muted); margin-top: 40px; }
 

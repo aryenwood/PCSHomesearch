@@ -31,6 +31,8 @@ body { background: var(--paper); color: var(--ink); margin: 0;
 a { color: inherit; }
 /* a bare phone-number link never breaks mid-number (row-style tel links hold child spans and wrap normally) */
 a[href^="tel:"]:not(:has(*)) { white-space: nowrap; }
+/* a number in running text stays on one line too */
+.nw { white-space: nowrap; }
 img { max-width: 100%; }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .plate :focus-visible { outline-color: var(--gold-bright); }
