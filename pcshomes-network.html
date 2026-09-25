@@ -38,7 +38,7 @@
     .filter-bar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; max-width: 1060px; margin: 0 auto; padding: 26px 20px 0; }
     @media (max-width: 780px) { .filter-bar { grid-template-columns: 1fr 1fr; } .filter-bar > :first-child { grid-column: 1 / -1; } .filter-btn { padding: 6px 12px; border-radius: 12px; line-height: 1.25; } }
     .filter-btn { background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 100px;
-      padding: 0 22px; min-height: 44px; font: 700 var(--t-xs) 'DM Sans', sans-serif; cursor: pointer; transition: all .2s; }
+      padding: 0 22px; min-height: 44px; font: 700 var(--t-xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; transition: all .2s; }
     .filter-btn:hover { border-color: var(--gold-bright); color: var(--navy); }
     .filter-btn.active { background: var(--gold-bright); color: var(--plate-deep); border-color: var(--gold-bright); }
 
@@ -58,18 +58,18 @@
     .vendor-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
     .vendor-avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--gold); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--navy); }
     .vendor-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .vendor-avatar .initials { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--gold-bright); }
+    .vendor-avatar .initials { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; font-weight: 700; color: var(--gold-bright); }
     .vendor-avatar .icon-placeholder { font-size: 24px; color: var(--gold-bright); display: flex; align-items: center; justify-content: center; }
     .vendor-info { min-width: 0; }
     .vendor-company { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-    .vendor-name { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.25; }
+    .vendor-name { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.25; }
     .vendor-trusted { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 700; color: var(--gold); }
     .vendor-trusted svg { flex-shrink: 0; }
     .vendor-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .vendor-tag { background: var(--gold-tint); color: var(--gold); font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
     .vendor-desc { font-size: var(--t-s); color: var(--muted); line-height: 1.65; margin-bottom: 20px; flex: 1; }
     .vendor-cta { display: block; width: 100%; padding: 13px; background: var(--navy); color: #fff; border: none; border-radius: 9px;
-      font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, color .2s; text-align: center; min-height: 44px; }
+      font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; transition: background .2s, color .2s; text-align: center; min-height: 44px; }
     .vendor-cta:hover { background: var(--gold-bright); color: var(--plate-deep); }
 
     /* modals — light surfaces; the chassis .field (dark, self-labeled) is reset here */
@@ -78,7 +78,7 @@
     .modal-card { background: var(--card); border-radius: 18px; max-width: 480px; width: 100%; padding: 36px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-photo); }
     .modal-close { position: absolute; top: 12px; right: 14px; background: none; border: none; font-size: 24px; color: var(--muted); cursor: pointer; line-height: 1; min-width: 44px; min-height: 44px; }
     .modal-close:hover { color: var(--navy); }
-    .modal-title { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin: 0 0 6px; padding-right: 32px; }
+    .modal-title { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin: 0 0 6px; padding-right: 32px; }
     .modal-sub { font-size: var(--t-xs); color: var(--muted); margin: 0 0 24px; }
     .modal-form { display: flex; flex-direction: column; gap: 14px; }
     .modal-form .field, .partner-form .field, #partnerInquiryForm .field {
@@ -88,15 +88,15 @@
     .form-reassure { font-size: var(--t-xs); color: var(--muted); text-align: center; line-height: 1.5; }
     .form-reassure-navy { color: rgba(246,241,230,0.55); }
     .modal-input, .pim-input { width: 100%; background: #fff; border: 1.5px solid var(--rule); border-radius: 9px; padding: 13px 14px;
-      font: 500 15px 'DM Sans', sans-serif; color: var(--ink); outline: none; transition: border-color .2s; }
+      font: 500 15px 'DM Sans', 'DM Fallback', system-ui, sans-serif; color: var(--ink); outline: none; transition: border-color .2s; }
     .modal-input:focus, .pim-input:focus { border-color: var(--gold); }
     .modal-input::placeholder, .pim-input::placeholder { color: rgba(43,53,71,0.35); }
     textarea.modal-input, textarea.pim-input { resize: vertical; min-height: 90px; }
-    .modal-submit { background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 15px; font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; transition: background .2s, color .2s; margin-top: 4px; width: 100%; min-height: 46px; }
+    .modal-submit { background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 15px; font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; transition: background .2s, color .2s; margin-top: 4px; width: 100%; min-height: 46px; }
     .modal-submit:hover { background: var(--gold-bright); color: var(--plate-deep); }
     .modal-success { display: none; text-align: center; padding: 24px 0; }
     .modal-success .check-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(47,107,79,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-    .modal-success h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+    .modal-success h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
     .modal-success p { font-size: var(--t-s); color: var(--muted); line-height: 1.6; margin: 0; }
     .pim-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     @media (max-width: 520px) { .pim-row { grid-template-columns: 1fr; } }
@@ -108,18 +108,18 @@
     .plate form.partner-form, .partner-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left; margin-top: 34px; }
     .partner-form .full-width { grid-column: 1 / -1; }
     .partner-input { background-color: rgba(246,241,230,0.07); border: 1px solid rgba(246,241,230,0.25); border-radius: 9px; padding: 13px 14px;
-      font: 500 15px 'DM Sans', sans-serif; color: var(--plate-ink); outline: none; transition: border-color .2s, background .2s; width: 100%; }
+      font: 500 15px 'DM Sans', 'DM Fallback', system-ui, sans-serif; color: var(--plate-ink); outline: none; transition: border-color .2s, background .2s; width: 100%; }
     .partner-input:focus { border-color: var(--gold-bright); background-color: rgba(246,241,230,0.1); }
     .partner-input::placeholder { color: rgba(246,241,230,0.25); }
     .partner-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(246,241,230,0.4)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); }
     .partner-select option { background: var(--plate-deep); color: var(--plate-ink); }
     textarea.partner-input { resize: vertical; min-height: 100px; }
     .partner-submit { background: var(--gold-bright); color: var(--plate-deep); border: none; border-radius: 9px; padding: 16px;
-      font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; transition: filter .2s; width: 100%; min-height: 46px; }
+      font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; transition: filter .2s; width: 100%; min-height: 46px; }
     .partner-submit:hover { filter: brightness(1.08); }
     .partner-success { display: none; text-align: center; padding: 32px 0; }
     .partner-success .check-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(217,180,91,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-    .partner-success h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 0 0 8px; }
+    .partner-success h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 0 0 8px; }
     .partner-success p { font-size: var(--t-s); color: var(--plate-sub); line-height: 1.6; margin: 0; }
 
     /* vendor card reveal (renderer attaches these classes) */
@@ -225,7 +225,7 @@
     <div style="width:52px;height:52px;border-radius:50%;background:var(--gold-tint);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
       <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8A6520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     </div>
-    <h3 style="font-family:'Libre Baskerville',serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
+    <h3 style="font-family:'Libre Baskerville', 'LB Fallback', serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
     <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:var(--gold);padding:13px 22px;border-radius:100px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
   </div>
@@ -341,7 +341,7 @@
     <div style="background:var(--navy);padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;">
       <div>
         <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#D9B45B;margin-bottom:8px;">Partner With Us</div>
-        <div id="partnerModalTitle" style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;">Partner with PCSHomes</div>
+        <div id="partnerModalTitle" style="font-family:'Libre Baskerville', 'LB Fallback', serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;">Partner with PCSHomes</div>
         <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;line-height:1.7;">We're looking for ethical, military-friendly businesses to partner with. Reach thousands of families PCSing to Fort Drum. Partners never pay for placement or ranking.</div>
       </div>
       <button onclick="closePartnerModal()" aria-label="Close dialog" style="background:rgba(255,255,255,0.12);border:none;color:rgba(255,255,255,0.7);width:44px;height:44px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0;">×</button>
@@ -385,12 +385,12 @@
         <textarea class="pim-input" id="piMessage" name="message" rows="3" enterkeyhint="send" placeholder="e.g. Military discounts, 8 years serving Fort Drum families"></textarea>
       </div>
       <div class="form-reassure">We review every inquiry personally and reply within 48 hours.</div>
-      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:100px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:46px;">Send inquiry</button>
+      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:100px;padding:14px;font-family:'DM Sans', 'DM Fallback', system-ui, sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:46px;">Send inquiry</button>
       <div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px;">Questions? <a href="sms:+13152214857" style="color:var(--gold);font-weight:600;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
     </form>
     <div id="partnerInquirySuccess" style="display:none;padding:40px 28px;text-align:center;">
       <svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8A6520" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:#1D3557;margin:12px 0 8px;">Inquiry received!</div>
+      <div style="font-family:'Libre Baskerville', 'LB Fallback', serif;font-size:18px;font-weight:700;color:#1D3557;margin:12px 0 8px;">Inquiry received!</div>
       <div style="font-size:14px;color:#6B7280;">We'll review your application and be in touch within 48 hours.</div>
     </div>
   </div>

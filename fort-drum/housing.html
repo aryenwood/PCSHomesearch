@@ -19,7 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' font-weight='700' fill='%23C9A84C'>P</text></svg>">
   <link rel="stylesheet" href="/css/chassis.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <!-- the map sits far down the page: its stylesheet loads without holding up the first paint -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" media="print" onload="this.media='all'"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,7 +72,7 @@
 
     .ruled { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
     .ruled li { padding: 20px 4px 18px; border-bottom: 1px solid var(--rule); }
-    .ruled h3 { font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
+    .ruled h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
     .ruled p { margin: 0; font-size: 17.5px; color: var(--ink); max-width: 42em; }
     .ruled strong { color: var(--navy); }
     .ruled a, .fine a { color: var(--gold); font-weight: 700; text-decoration: none; }
@@ -80,7 +81,7 @@
     /* the map on the living plate */
     .map-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 26px 0 14px; }
     .map-tools button { min-height: 48px; border-radius: 9px; border: 1px solid rgba(217,180,91,0.55); background: transparent; color: var(--gold-bright);
-                        font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+                        font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
     .map-tools button[aria-pressed="true"] { background: rgba(217,180,91,0.16); border-color: var(--gold-bright); }
     .map-tools i { width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.85); flex: none; }
     #drumMap { width: 100%; height: 520px; border-radius: 14px; background: var(--plate-deep); }
@@ -88,7 +89,7 @@
     #mapPanel { position: absolute; top: 12px; right: 12px; z-index: 500; width: min(300px, calc(100% - 24px)); background: rgba(14,28,48,0.96);
                 border: 1px solid rgba(217,180,91,0.35); border-radius: 12px; padding: 16px 18px; color: var(--plate-sub); }
     #mapPanel[hidden] { display: none; }
-    #mapPanel h3 { font-family: 'Libre Baskerville', serif; font-size: 20px; color: var(--plate-ink); margin: 0 30px 8px 0; line-height: 1.25; }
+    #mapPanel h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; color: var(--plate-ink); margin: 0 30px 8px 0; line-height: 1.25; }
     #mapPanel p { margin: 0 0 6px; font-size: var(--t-s); line-height: 1.5; }
     #mapPanel b { color: var(--plate-ink); }
     #mapPanel .close { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: 0; background: none; color: var(--plate-sub); font-size: 24px; cursor: pointer; }
@@ -336,9 +337,9 @@ function submitAskBand(e, offer) {
 }
 
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js" defer></script>
 <script>
 // Town centers and gates: OpenStreetMap (Nominatim/Overpass). Drive minutes: OSRM routing, no traffic.
 var TOWNS = [{"n":"Black River","lat":44.0126,"lon":-75.794,"d":"Carthage CSD","t":{"main":10,"plummer":5,"wsaaf":12}},{"n":"Felts Mills","lat":44.0162,"lon":-75.7665,"d":"Carthage CSD","t":{"main":11,"plummer":5,"wsaaf":7}},{"n":"Calcium","lat":44.0408,"lon":-75.851,"d":"Indian River CSD","t":{"main":6,"plummer":7,"wsaaf":18}},{"n":"Evans Mills","lat":44.0883,"lon":-75.8074,"d":"Indian River CSD","t":{"main":6,"plummer":11,"wsaaf":10}},{"n":"Watertown","lat":43.9748,"lon":-75.9108,"d":"Watertown City SD","t":{"main":10,"plummer":12,"wsaaf":22}},{"n":"Philadelphia","lat":44.1546,"lon":-75.7088,"d":"Indian River CSD","t":{"main":13,"plummer":18,"wsaaf":17}},{"n":"Glen Park","lat":44.0012,"lon":-75.9663,"d":"General Brown CSD","t":{"main":14,"plummer":16,"wsaaf":26}},{"n":"Carthage & West Carthage","lat":43.9782,"lon":-75.6098,"d":"Carthage CSD","t":{"main":25,"plummer":21,"wsaaf":15}},{"n":"Brownville","lat":44.007,"lon":-75.9841,"d":"General Brown CSD","t":{"main":17,"plummer":18,"wsaaf":28}},{"n":"Antwerp","lat":44.1994,"lon":-75.6069,"d":"Indian River CSD","t":{"main":20,"plummer":26,"wsaaf":24}},{"n":"Natural Bridge","lat":44.0719,"lon":-75.4988,"d":"Carthage CSD","t":{"main":31,"plummer":27,"wsaaf":20}},{"n":"Dexter","lat":44.0078,"lon":-76.0444,"d":"General Brown CSD","t":{"main":22,"plummer":24,"wsaaf":34}},{"n":"Theresa","lat":44.2154,"lon":-75.7974,"d":"Indian River CSD","t":{"main":23,"plummer":27,"wsaaf":26}},{"n":"Adams Center","lat":43.8627,"lon":-75.9982,"d":"South Jefferson CSD","t":{"main":25,"plummer":27,"wsaaf":37}},{"n":"Copenhagen","lat":43.8934,"lon":-75.6738,"d":"Copenhagen CSD","t":{"main":28,"plummer":27,"wsaaf":29}},{"n":"Sackets Harbor","lat":43.9462,"lon":-76.1191,"d":"Sackets Harbor CSD","t":{"main":27,"plummer":30,"wsaaf":39}},{"n":"LaFargeville","lat":44.1948,"lon":-75.9661,"d":"LaFargeville CSD","t":{"main":28,"plummer":32,"wsaaf":39}},{"n":"Adams","lat":43.8092,"lon":-76.0241,"d":"South Jefferson CSD","t":{"main":29,"plummer":31,"wsaaf":41}},{"n":"Chaumont","lat":44.067,"lon":-76.1302,"d":"Lyme CSD","t":{"main":29,"plummer":30,"wsaaf":40}},{"n":"Rodman","lat":43.8512,"lon":-75.9408,"d":"South Jefferson CSD","t":{"main":30,"plummer":32,"wsaaf":42}},{"n":"Gouverneur","lat":44.3367,"lon":-75.4631,"d":"Gouverneur CSD","t":{"main":34,"plummer":39,"wsaaf":38}},{"n":"Three Mile Bay","lat":44.0859,"lon":-76.1964,"d":"Lyme CSD","t":{"main":35,"plummer":36,"wsaaf":47}},{"n":"Clayton","lat":44.2395,"lon":-76.0858,"d":"Thousand Islands CSD","t":{"main":36,"plummer":39,"wsaaf":48}},{"n":"Lowville","lat":43.7867,"lon":-75.4922,"d":"Lowville Academy & CSD","t":{"main":44,"plummer":42,"wsaaf":36}},{"n":"Pierrepont Manor","lat":43.7376,"lon":-76.0619,"d":"South Jefferson CSD","t":{"main":36,"plummer":38,"wsaaf":48}},{"n":"Belleville","lat":43.7883,"lon":-76.1158,"d":"Belleville Henderson CSD","t":{"main":37,"plummer":39,"wsaaf":49}},{"n":"Harrisville","lat":44.1522,"lon":-75.3212,"d":"Harrisville CSD","t":{"main":48,"plummer":43,"wsaaf":37}},{"n":"Henderson","lat":43.847,"lon":-76.1819,"d":"Belleville Henderson CSD","t":{"main":40,"plummer":43,"wsaaf":52}},{"n":"Cape Vincent","lat":44.1289,"lon":-76.3343,"d":"Thousand Islands CSD","t":{"main":47,"plummer":49,"wsaaf":59}},{"n":"Lyons Falls","lat":43.6188,"lon":-75.3634,"d":"South Lewis CSD","t":{"main":63,"plummer":62,"wsaaf":55}}];
@@ -351,7 +352,7 @@ var PLACES = [
   {n: 'Samaritan Medical Center', lat: 43.9648, lon: -75.9144, h: 'Watertown\'s hospital and emergency room, 830 Washington St. <a class="go" href="tel:+13157854000">(315) 785-4000</a>'},
   {n: 'Guthrie Army Health Clinic', lat: 44.0596, lon: -75.8121, h: 'On-post outpatient clinic. Appointments <a class="go" href="tel:+18888381303">1-888-838-1303</a>'}
 ];
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   var panel = document.getElementById('mapPanel'), body = document.getElementById('mpBody');
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
   function show(html) { body.innerHTML = html; panel.hidden = false; }
@@ -389,7 +390,7 @@ var PLACES = [
   // the plate reveals after load; size the map once it's visible
   setTimeout(function () { map.invalidateSize(); }, 400);
   if ('ResizeObserver' in window) new ResizeObserver(function () { map.invalidateSize(); }).observe(document.getElementById('drumMap'));
-})();
+});
 </script>
 
 <script src="/js/chassis.js"></script>

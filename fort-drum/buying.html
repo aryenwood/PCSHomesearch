@@ -84,7 +84,7 @@
     .rates legend { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.65); padding: 0; margin-bottom: 8px; }
     .rates .row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
     .rates button { min-height: 48px; border-radius: 9px; border: 1px solid rgba(217,180,91,0.55); background: transparent; color: var(--gold-bright);
-                    font: 700 var(--t-s) 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; cursor: pointer; white-space: nowrap; padding: 0 4px; transition: background .2s; }
+                    font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; font-variant-numeric: tabular-nums; cursor: pointer; white-space: nowrap; padding: 0 4px; transition: background .2s; }
     .rates button:hover { background: rgba(217,180,91,0.14); }
     .rates button[aria-pressed="true"] { background: var(--gold-bright); color: var(--plate-deep); border-color: var(--gold-bright); }
     #customRateRow[hidden] { display: none; }
@@ -92,7 +92,7 @@
     .calc-out > div { padding: 20px 14px 18px; min-width: 0; display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
     .calc-out > div + div { border-left: 1px solid rgba(246,241,230,0.14); }
     .calc-out .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--plate-sub); }
-    .calc-out b { font-family: 'Libre Baskerville', serif; font-size: clamp(30px, 4.4vw, 44px); color: var(--plate-ink); font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 1.2; }
+    .calc-out b { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: clamp(30px, 4.4vw, 44px); color: var(--plate-ink); font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 1.2; }
     .calc-out .note { font-size: var(--t-s); color: var(--plate-sub); }
     .plate .form-note { color: var(--plate-sub); font-size: var(--t-s); line-height: 1.6; }
     .fee-line { color: var(--plate-ink); font-size: var(--t-s); margin: 14px 0 0; }
@@ -103,11 +103,11 @@
     .lf { display: flex; flex-direction: column; gap: 4px; min-width: 0; border: 1px solid var(--rule-strong); border-radius: 9px; background: var(--card); padding: 9px 14px 8px; }
     .lf:focus-within { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
     .lf > span { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-    .lf input, .lf select { border: 0; background: transparent; color: var(--navy); padding: 0; min-height: 28px; font: 700 var(--t-m) 'DM Sans', sans-serif; outline: none; width: 100%; min-width: 0; font-variant-numeric: tabular-nums; }
+    .lf input, .lf select { border: 0; background: transparent; color: var(--navy); padding: 0; min-height: 28px; font: 700 var(--t-m) 'DM Sans', 'DM Fallback', system-ui, sans-serif; outline: none; width: 100%; min-width: 0; font-variant-numeric: tabular-nums; }
     .lf select { cursor: pointer; }
     .lf small { font-size: var(--t-xs); color: var(--muted); line-height: 1.5; }
     .btn-navy { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border: 0; border-radius: 9px;
-                background: var(--navy); color: #fff; font: 700 var(--t-s) 'DM Sans', sans-serif; cursor: pointer; margin-top: 22px; }
+                background: var(--navy); color: #fff; font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; margin-top: 22px; }
     .btn-navy:hover { background: var(--plate); }
     .cmp { width: 100%; border-collapse: collapse; border-top: 2px solid var(--navy); font-variant-numeric: tabular-nums; margin-top: 28px; }
     .cmp th, .cmp td { padding: 13px 10px; border-bottom: 1px solid var(--rule); text-align: right; font-size: var(--t-m); }
@@ -117,7 +117,7 @@
     .cmp thead th:first-child { color: var(--muted); font-weight: 700; }
     .cmp col.metric { width: 48%; }
     .cmp tr.total th, .cmp tr.total td { border-top: 1px solid var(--rule-strong); font-weight: 700; color: var(--navy); }
-    .cmp tr.grp th { padding-top: 22px; font-family: 'Libre Baskerville', serif; font-size: 19px; color: var(--steel); font-style: italic; font-weight: 400; }
+    .cmp tr.grp th { padding-top: 22px; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 19px; color: var(--steel); font-style: italic; font-weight: 400; }
     .cmp .neg { color: var(--err); }
     .verdict { margin-top: 26px; padding: 22px 24px; border-left: 4px solid var(--gold-bright); background: rgba(217,180,91,0.08); border-radius: 0 12px 12px 0; font-size: 17.5px; color: var(--ink); }
     .verdict strong { color: var(--navy); }
@@ -128,7 +128,7 @@
     .pc { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto repeat(9, auto); gap: 0 40px; margin-top: 64px; }
     .pc > div { display: grid; grid-row: span 10; grid-template-rows: subgrid; }
     .pc ul { display: grid; grid-row: span 9; grid-template-rows: subgrid; }
-    .pc h3 { font-family: 'Libre Baskerville', serif; font-size: 22px; color: var(--navy); margin: 0 0 12px; }
+    .pc h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; color: var(--navy); margin: 0 0 12px; }
     .pc ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
     .pc li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 13px 4px 12px; border-bottom: 1px solid var(--rule); font-size: 17px; color: var(--ink); line-height: 1.55; }
     .pc li::before { font-weight: 700; }
@@ -138,7 +138,7 @@
     /* New York money: ruled rows */
     .ny { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
     .ny li { padding: 20px 4px 18px; border-bottom: 1px solid var(--rule); }
-    .ny h3 { font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
+    .ny h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; color: var(--navy); margin: 0 0 6px; line-height: 1.3; }
     .ny p { margin: 0; font-size: 17.5px; color: var(--ink); max-width: 42em; }
     .ny strong { color: var(--navy); }
     .ny a, .fine a { color: var(--gold); font-weight: 700; text-decoration: none; }
@@ -208,7 +208,7 @@
 <header class="hero"><div class="wrap">
   <p class="crumb"><a href="/pcshomes-fortdrum.html">Fort Drum Guide</a> &rsaquo; Buying</p>
   <p class="eyebrow rv">Chapter &middot; Buying near Fort Drum</p>
-  <h1 class="rv">Buy near Drum, <em>or rent?</em> Run your numbers.</h1>
+  <h1 class="rv">Buy or rent? <em>Run your numbers.</em></h1>
   <p class="dek rv">Check a home payment against your 2026 housing allowance, then compare renting and buying with North Country utility bills in the math. <strong>No sign-up, and nothing you type leaves this page.</strong></p>
   <div class="proof rv">
     <span>Your <b>2026 BAH</b> by rank, built in</span>

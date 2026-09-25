@@ -86,7 +86,7 @@
     .ans { padding: 20px 18px 18px 14px; border-right: 1px solid var(--rule); min-width: 0; }
     .ans:last-child { border-right: none; }
     .ans .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .ans .val { font-family: 'Libre Baskerville', serif; font-size: clamp(20px, 2vw, 25px); color: var(--navy); margin-top: 2px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .ans .val { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: clamp(20px, 2vw, 25px); color: var(--navy); margin-top: 2px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
     .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; text-decoration: none; }
     .ans .note { font-size: var(--t-xs); color: var(--gold); font-weight: 700; margin-top: 2px; }
     .ans .note a { text-decoration: none; display: inline-block; padding: 10px 2px; margin: -10px -2px; }
@@ -96,9 +96,9 @@
     .band { width: auto; max-width: none; margin: 0; padding: 58px 0 6px; background: none; border-radius: 0; box-shadow: none; color: var(--ink); }
     .sec-head { border-bottom: none; padding-bottom: 0; margin-bottom: 6px; }
     .sec-eyebrow { display: block; font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--steel); margin-bottom: 12px; }
-    .sec-head h2 { font-family: 'Libre Baskerville', serif; font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; color: var(--navy); line-height: 1.15; text-wrap: balance; }
+    .sec-head h2 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; color: var(--navy); line-height: 1.15; text-wrap: balance; }
     .sec-head span { display: block; font-size: var(--t-body); color: var(--ink); margin-top: 8px; max-width: 36em; }
-    .sub-h { width: auto; max-width: 100%; margin-top: 38px; font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 700;
+    .sub-h { width: auto; max-width: 100%; margin-top: 38px; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; font-weight: 700;
              color: var(--navy); background: none; padding: 0; border-radius: 0; letter-spacing: 0; text-transform: none; }
     .lede { margin-top: 14px; font-size: var(--t-m); color: var(--ink); max-width: 42em; }
     .lede a { color: var(--navy); font-weight: 700; border-bottom: 1px dotted var(--gold); text-decoration: none; }
@@ -118,7 +118,7 @@
     .sit-chips { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 44px; }
     @media (max-width: 900px) { .sit-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .sit-chips { grid-template-columns: 1fr 1fr; } .sit-chip { padding-inline: 10px; } }
-    .sit-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', sans-serif;
+    .sit-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', 'DM Fallback', system-ui, sans-serif;
                 font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
                 border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color .15s, background .15s, border-color .15s; }
     .sit-chip:hover { color: var(--navy); border-color: var(--gold-bright); }
@@ -184,20 +184,20 @@
     @media (prefers-reduced-motion: reduce) { .bcard img { transition: none; } .bcard:hover img { transform: none; } }
     .bcard .bd { padding: 14px 4px 0; display: block; }
     .tag { display: block; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); background: none; padding: 0; border-radius: 0; margin-bottom: 4px; }
-    .bcard h3 { font-family: 'Libre Baskerville', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 0; }
+    .bcard h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 0; }
     .bcard p { font-size: var(--t-s); color: var(--muted); margin: 4px 0 6px; }
     .bcard .go { font-size: var(--t-s); font-weight: 700; color: var(--gold); }
     .bcard .go::after { content: ' →'; }
 
     /* plate form extras */
-    .lead-form-title { font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 700; color: var(--plate-ink); flex-basis: 100%; }
+    .lead-form-title { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; font-weight: 700; color: var(--plate-ink); flex-basis: 100%; }
     #suggestForm .field { flex: 1 1 100%; }
     #suggestForm .field textarea { resize: vertical; min-height: 72px; }
     #suggestForm .field select option { background: var(--plate-deep); color: var(--plate-ink); }
     .lead-note { font-size: var(--t-xs); color: rgba(246,241,230,0.5); line-height: 1.6; flex-basis: 100%; }
     .lead-note a { color: var(--gold-bright); font-weight: 700; text-decoration: none; }
     .lead-success { text-align: center; padding: 24px 0; }
-    .lead-success b { display: block; font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 12px 0 8px; }
+    .lead-success b { display: block; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; font-weight: 700; color: var(--plate-ink); margin: 12px 0 8px; }
     .lead-success span { font-size: 14px; color: var(--plate-sub); }
 
     /* mobile tab bar — the one fixed layer on phones */
@@ -318,7 +318,7 @@
       <div id="groceryPanel" style="position:absolute;bottom:16px;left:16px;right:16px;max-width:360px;background:rgba(11,18,28,0.97);backdrop-filter:blur(20px);box-shadow:0 8px 32px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.15);padding:18px 20px;display:none;z-index:1000;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;">
           <div>
-            <div id="gpName" style="font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;color:#fff;line-height:1.25;"></div>
+            <div id="gpName" style="font-family:'Libre Baskerville', 'LB Fallback', serif;font-size:16px;font-weight:700;color:#fff;line-height:1.25;"></div>
             <div id="gpAddress" style="font-size:12px;color:rgba(255,255,255,0.62);margin-top:4px;line-height:1.5;"></div>
             <div id="gpNotes" style="font-size:11px;color:var(--gold-bright);margin-top:6px;font-weight:600;"></div>
             <div id="gpLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"></div>

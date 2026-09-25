@@ -28,14 +28,14 @@
     .glossary { max-width: 800px; margin: 0 auto; padding: 8px 20px 96px; }
     .search-wrap { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--paper); padding: 10px 0 14px; }
     .glossary-search { width: 100%; padding: 14px 20px; background: var(--card); border: 1px solid var(--rule-strong); border-radius: 9px;
-                       color: var(--ink); font: 500 16px 'DM Sans', sans-serif; outline: none; transition: border-color .2s; }
+                       color: var(--ink); font: 500 16px 'DM Sans', 'DM Fallback', system-ui, sans-serif; outline: none; transition: border-color .2s; }
     .glossary-search::placeholder { color: var(--muted); }
     .glossary-search:focus { border-color: var(--gold-bright); }
-    .glossary-letter { font-family: 'Libre Baskerville', serif; font-size: 25px; font-weight: 700; color: var(--navy);
+    .glossary-letter { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 25px; font-weight: 700; color: var(--navy);
                        margin: 46px 0 0; padding-bottom: 8px; border-bottom: 2px solid var(--navy); }
     .glossary-letter:first-of-type { margin-top: 26px; }
     .term { padding: 20px 2px 18px; border-bottom: 1px solid var(--rule); }
-    .term-name { font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
+    .term-name { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
     .term-abbr { font-size: var(--t-xs); color: var(--gold); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
     .term-def { font-size: var(--t-m); color: var(--ink); line-height: 1.7; margin-top: 8px; }
     .term-example { font-size: var(--t-xs); color: var(--muted); font-style: italic; margin-top: 8px; }

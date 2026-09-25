@@ -64,7 +64,7 @@
     .dx-body a { color: var(--navy); font-weight: 700; border-bottom: 1px dotted var(--gold); text-decoration: none; }
     .facts-mini { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule); margin-top: 6px; }
     .facts-mini > div { padding: 12px 10px 10px 2px; }
-    .facts-mini b { display: block; font-family: 'Libre Baskerville', serif; font-size: 21px; color: var(--navy); font-variant-numeric: tabular-nums; }
+    .facts-mini b { display: block; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; color: var(--navy); font-variant-numeric: tabular-nums; }
     .facts-mini span { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
     .who ul { margin: 12px 0 0; padding-left: 20px; }
@@ -88,6 +88,10 @@
     .tab-item.active { color: var(--gold-bright); }
     .m-only { display: none; }
 
+    /* the hero keeps the page's one column edge: type, then the photo as a banner under it */
+    .hero-banner { margin: 32px 0 0; }
+    .hero-banner img { aspect-ratio: 2 / 1; object-position: center 60%; }
+
     @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .bar { position: static; }
@@ -95,7 +99,7 @@
       .m-only { display: inline-flex; }
       .d-only { display: none; }
       .dx-grid { grid-template-columns: 1fr; }
-      .hero-photo img { aspect-ratio: 16 / 7; object-position: center 35%; }
+      .hero-banner img { aspect-ratio: 16 / 9; }
       .facts-mini b { font-size: 18px; }
       input { font-size: 16px !important; }
     }
@@ -122,19 +126,17 @@
 
 <main id="main">
 
-<header class="hero"><div class="hero-grid">
-  <div>
-    <p class="crumb"><a href="/pcshomes-fortdrum.html">Fort Drum Guide</a> &rsaquo; Schools</p>
-    <p class="eyebrow rv">Chapter &middot; Schools &amp; enrollment</p>
-    <h1 class="rv">Your address picks the school. <em>Pick it on purpose.</em></h1>
-    <p class="dek rv">Four districts serve Fort Drum families, and the line between them can run down the middle of a street. Find yours, then call the registrar. <strong>Every number below reaches the office whose job is enrolling your kid.</strong></p>
-    <div class="proof rv">
-      <span><b>4</b> districts</span>
-      <span>Pre-enroll <b>before you arrive</b></span>
-      <span>Protected by <b>MIC3</b></span>
-    </div>
+<header class="hero"><div class="wrap">
+  <p class="crumb"><a href="/pcshomes-fortdrum.html">Fort Drum Guide</a> &rsaquo; Schools</p>
+  <p class="eyebrow rv">Chapter &middot; Schools &amp; enrollment</p>
+  <h1 class="rv">Your address picks the school. <em>Pick it on purpose.</em></h1>
+  <p class="dek rv">Four districts serve Fort Drum families, and the line between them can run down the middle of a street. Find yours, then call the registrar. <strong>Every number below reaches the office whose job is enrolling your kid.</strong></p>
+  <div class="proof rv">
+    <span><b>4</b> districts</span>
+    <span>Pre-enroll <b>before you arrive</b></span>
+    <span>Protected by <b>MIC3</b></span>
   </div>
-  <figure class="hero-photo rv" style="margin:0;"><img src="/images/military-family.webp" srcset="/images/military-family.webp 1200w, /images/military-family-800.webp 800w" sizes="(max-width: 780px) 100vw, 480px" alt="A military family together" width="1200" height="800" loading="eager"/></figure>
+  <figure class="hero-photo hero-banner rv"><img src="/images/military-family.webp" srcset="/images/military-family.webp 1200w, /images/military-family-800.webp 800w" sizes="(max-width: 780px) 100vw, 720px" alt="A military family together" width="1200" height="800" loading="eager"/></figure>
 </div></header>
 
 <!-- FIND YOUR DISTRICT -->
