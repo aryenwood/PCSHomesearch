@@ -85,9 +85,11 @@ JS = r"""
     while ((n = tw.nextNode())) {
       if (n.textContent.trim().length < 2) continue;
       const el = n.parentElement; if (!el || seenEl.has(el) || el.closest('script,style,.mobile-tab-bar,.popup-overlay,[hidden],.leaflet-container,.snav,#sectionNav,.skip')) continue;
-      let e = el, hid = false; while (e) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') { hid = true; break; } e = e.parentElement; } if (hid) continue;
+      let e = el, hid = false, rail = false; while (e) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') { hid = true; break; }
+        // content inside a sideways-scrolling rail sits off-screen by design (the next card peeks in)
+        if (/(auto|scroll)/.test(cs.overflowX) && e.scrollWidth > e.clientWidth + 1) rail = true; e = e.parentElement; } if (hid) continue;
       const rg = document.createRange(); rg.selectNodeContents(n);
-      for (const r of rg.getClientRects()) { if (r.width < 1) continue;
+      for (const r of rg.getClientRects()) { if (r.width < 1 || rail) continue;
         if (r.left < 12 || r.right > innerWidth - 12) { seenEl.add(el); out.push({ kind: 'GUTTER', where: name(el), detail: n.textContent.trim().slice(0, 40) + ' @' + Math.round(r.left) + '..' + Math.round(r.right) }); break; } }
     }
   }

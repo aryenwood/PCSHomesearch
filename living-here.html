@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Living Here: Life Around Fort Drum &amp; the North Country | PCSHomes</title>
-  <meta name="description" content="The real guide to life around Fort Drum: beaches 20 minutes out, day-trip castles, ski hills, a year of festivals, kid-tested indoor spots, and every military discount worth knowing in the North Country.">
+  <meta name="description" content="Family places near Fort Drum, closest first: parks, beaches, trails, libraries, museums, farms and winter fun, each checked on its official page, with drive times from the Main Gate. Plus a year of seasons and day trips.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://pcshomes.com/living-here">
   <meta property="og:title" content="Living Here: Life Around Fort Drum | PCSHomes">
@@ -16,8 +16,10 @@
   <meta name="twitter:image" content="https://pcshomes.com/images/og-card.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css"/>
+  <link rel="preload" as="image" href="/images/places/boldt-from-alexandria-bay-phone.webp" media="(max-width: 780px)">
+  <link rel="preload" as="image" href="/images/places/boldt-from-alexandria-bay.webp" imagesrcset="/images/places/boldt-from-alexandria-bay-800.webp 800w, /images/places/boldt-from-alexandria-bay.webp 2000w" imagesizes="100vw" media="(min-width: 781px)">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" media="print" onload="this.media='all'"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css" media="print" onload="this.media='all'"/>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
   <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230E1C30'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='Georgia,serif' fill='%23C9A84C' font-weight='bold'>P</text></svg>">
@@ -28,7 +30,7 @@
       {
         "@type": "Event",
         "name": "Jefferson County Fair",
-        "description": "The oldest continuously running county fair in the United States, held since 1817. 209th fair in 2026.",
+        "description": "The longest continuously operating fair in the United States; 2026 is the 209th fair.",
         "startDate": "2026-07-14",
         "endDate": "2026-07-19",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -42,7 +44,7 @@
       {
         "@type": "Event",
         "name": "Bill Johnston's Pirate Days",
-        "description": "Ten days of pirate invasions, live entertainment, and a downtown parade in Alexandria Bay.",
+        "description": "Three days of pirate invasions, live entertainment and a downtown parade in Alexandria Bay.",
         "startDate": "2026-08-14",
         "endDate": "2026-08-16",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -56,7 +58,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/chassis.css">
+  <link rel="stylesheet" href="/css/chassis.css">
   <style>
     /* discover chrome on top of the chassis — same content classes, chassis skin */
     :root { --gold-soft: var(--gold-bright); --gold-tint: rgba(138,101,32,0.12);
@@ -66,30 +68,7 @@
     section[id], div[id] { scroll-margin-top: 130px; }
     body { overflow-wrap: break-word; }
 
-    /* sticky section nav (desktop reading aid; phones use the tab bar sheet) */
-    #sectionNav { position: fixed; top: 0; left: 0; right: 0; z-index: 49; background: rgba(251,247,239,0.94);
-                  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); display: none; }
-    #sectionNav .snav-in { max-width: 1060px; margin: 0 auto; display: flex; gap: 26px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 11px 20px; }
-    #sectionNav .snav-in::-webkit-scrollbar { display: none; }
-    .snav-link { white-space: nowrap; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
-                 color: var(--muted); border-bottom: 2px solid transparent; padding-bottom: 2px; text-decoration: none; transition: color 0.15s; }
-    .snav-link:hover { color: var(--navy); }
-    .snav-link.active { color: var(--navy); border-bottom-color: var(--gold-bright); }
 
-    /* hero */
-    header.hero.shell { padding: clamp(44px, 7vh, 72px) 20px 0; }
-    .hero-sub { margin-top: 22px; font-size: clamp(19px, 2vw, 21px); line-height: 1.65; color: var(--ink); max-width: 36em; }
-
-    /* answers strip */
-    .answers { margin-top: 34px; }
-    .answers-box { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--navy); border-bottom: 1px solid var(--rule); }
-    .ans { padding: 20px 18px 18px 14px; border-right: 1px solid var(--rule); min-width: 0; }
-    .ans:last-child { border-right: none; }
-    .ans .label { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-    .ans .val { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: clamp(20px, 2vw, 25px); color: var(--navy); margin-top: 2px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-    .ans .val a { display: inline-block; padding: 8px 2px; margin: -8px -2px; text-decoration: none; }
-    .ans .note { font-size: var(--t-xs); color: var(--gold); font-weight: 700; margin-top: 2px; }
-    .ans .note a { text-decoration: none; display: inline-block; padding: 10px 2px; margin: -10px -2px; }
 
     /* sections back on the paper */
     .section { width: auto; margin-block: 0; padding-block: 58px 6px; background: none; border-radius: 0; box-shadow: none; }
@@ -113,16 +92,6 @@
     .tips.one-col { grid-template-columns: 1fr; }
     .tip .fact { display: block; font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--steel); font-style: normal; margin: 3px 0 4px; font-variant-numeric: tabular-nums; }
 
-    /* situation chips */
-    /* six intent chips, equal slots: one row on desktop, three even rows of two on phones */
-    .sit-chips { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 44px; }
-    @media (max-width: 900px) { .sit-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (max-width: 560px) { .sit-chips { grid-template-columns: 1fr 1fr; } .sit-chip { padding-inline: 10px; } }
-    .sit-chip { background: var(--card); border: 1px solid var(--rule); cursor: pointer; font-family: 'DM Sans', 'DM Fallback', system-ui, sans-serif;
-                font-size: var(--t-2xs); font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
-                border-radius: 100px; padding: 11px 18px; min-height: 44px; transition: color .15s, background .15s, border-color .15s; }
-    .sit-chip:hover { color: var(--navy); border-color: var(--gold-bright); }
-    .sit-chip.active { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
 
     /* navy accents ride the plate gradient */
     .callout { margin-top: 26px; background: linear-gradient(160deg, var(--plate) 0%, var(--plate-deep) 100%); color: var(--plate-sub); padding: 20px 24px; border-radius: 14px; }
@@ -213,9 +182,6 @@
     .m-only { display: none; }
 
     @media (max-width: 900px) {
-      .answers-box { grid-template-columns: 1fr 1fr; }
-      .ans:nth-child(2n) { border-right: none; }
-      .ans:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
       .tips { grid-template-columns: 1fr; }
       .dt-row { grid-template-columns: 1fr; gap: 3px; }
       .dt-row .price { text-align: left; }
@@ -239,7 +205,6 @@
     @media (max-width: 780px) {
       body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
       .bar { position: static; }
-      #sectionNav { display: none !important; }
       section[id], div[id] { scroll-margin-top: 20px; }
       .mobile-tab-bar { display: flex; }
       .m-only { display: inline-flex; }
@@ -248,6 +213,154 @@
       #groceryMap { height: 380px; }
       .leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 20px !important; }
       .tip a, .dt-row a, .eat-row a, .callout a, .lede a, .mo-row a { display: inline-block; padding: 11px 2px; margin: -11px -2px; }
+    }
+
+    /* ── Living Here, the approved frame (Sep 2026) ───────────────── */
+    .lh-sec { padding-block: 72px 8px; }
+    .lh-sub { font-size: var(--t-body); color: var(--ink); max-width: 36em; margin: 10px 0 0; }
+    .lh-sec h2, .lh-hero h1 { text-wrap: balance; }
+    .fine { font-size: var(--t-s); color: var(--muted); margin: 18px 0 0; max-width: 42em; line-height: 1.6; }
+    .fine a, .page-verified a { color: var(--gold); font-weight: 700; text-decoration: none; }
+    .page-verified { font-size: var(--t-xs); color: var(--muted); margin-top: 34px; max-width: 60em; }
+
+    /* hero: the castle is the answer */
+    .lh-hero { position: relative; min-height: clamp(520px, 76vh, 740px); display: grid; align-items: end; overflow: hidden; background: var(--plate-deep); }
+    .lh-hero picture { position: absolute; inset: 0; }
+    .lh-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+    /* phones get their own crop of the same photo, the castle in the top third above the words */
+    @media (max-width: 780px) { .lh-hero img { object-position: 50% 0%; } }
+    @media (prefers-reduced-motion: no-preference) { .lh-hero img { animation: lh-drift 30s ease-in-out infinite alternate; } }
+    @keyframes lh-drift { from { transform: scale(1.02); } to { transform: scale(1.08) translate(-1.2%, -0.8%); } }
+    .lh-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,28,48,0) 24%, rgba(14,28,48,.6) 56%, rgba(14,28,48,.94) 100%); }
+    .lh-hero .shell { position: relative; z-index: 1; width: 100%; padding-block: 0 44px; }
+    .lh-hero .eyebrow { color: var(--gold-bright); }
+    .lh-hero h1 { color: #fff; font-size: clamp(40px, 7vw, 76px); line-height: 1.04; max-width: 12em; }
+    .lh-hero h1 em { color: var(--gold-bright); }
+    .lh-hero .answer { color: #fff; font-size: clamp(19px, 2.2vw, 23px); line-height: 1.55; max-width: 31em; margin: 18px 0 0; }
+    .lh-hero .answer b { color: var(--gold-bright); }
+
+    /* postcards: three surprises, measured from the Main Gate */
+    .postcards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 22px; }
+    .postcard { display: grid; grid-template-rows: auto 1fr; gap: 8px; background: var(--card); border-radius: 16px; box-shadow: var(--shadow-photo);
+                padding: 18px 20px 16px; border-top: 4px solid var(--gold-bright); text-decoration: none; color: var(--ink); font-size: var(--t-m); line-height: 1.45; }
+    .postcard .min { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 34px; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+    .postcard .min small { font-family: 'DM Sans', 'DM Fallback', system-ui, sans-serif; font-size: var(--t-2xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+    .postcard b { color: var(--navy); }
+
+    /* first free Saturday */
+    .picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 30px; }
+    .pick { display: block; text-decoration: none; color: inherit; }
+    .pick figure { margin: 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); aspect-ratio: 4 / 5; position: relative; }
+    .pick img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.6,.2,1); }
+    .pick:hover img { transform: scale(1.04); }
+    .pick .tag { position: absolute; left: 12px; top: 12px; margin: 0; background: rgba(251,247,239,.94); color: var(--navy); font-size: var(--t-s); letter-spacing: .02em; text-transform: none; padding: 6px 12px; border-radius: 100px; }
+    .pick h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; color: var(--navy); margin: 14px 0 0; }
+    .pick p { margin: 4px 0 0; font-size: var(--t-m); color: var(--muted); }
+
+    /* a year here */
+    /* the four cards share row lines, so every list starts at the same height */
+    .year { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto 1fr; gap: 0 18px; margin-top: 30px; }
+    .season { background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+    .season figure { margin: 0; aspect-ratio: 4 / 3; position: relative; }
+    .season img { width: 100%; height: 100%; object-fit: cover; }
+    .season .label { position: absolute; left: 12px; bottom: 12px; color: #fff; font: 700 var(--t-2xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+    .season h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; color: var(--navy); margin: 0; padding: 16px 18px 0; line-height: 1.3; }
+    .season ul { list-style: none; margin: 10px 0 0; padding: 0 18px 18px; }
+    .season li { font-size: var(--t-m); line-height: 1.45; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); }
+    .season li b { color: var(--navy); }
+    .season.w .label { background: #46688A; } .season.sp .label { background: #2F6B4F; } .season.su .label { background: #1F6F9A; } .season.f .label { background: #A4561B; }
+    .swipe-hint { display: none; font-size: var(--t-s); color: var(--muted); margin: 10px 0 0; }
+
+    /* the places finder */
+    .pf-tools { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 14px; align-items: end; margin-top: 26px; }
+    .chips { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+    .chips button { min-height: 46px; border-radius: 100px; border: 1px solid var(--rule-strong); background: var(--card); color: var(--navy);
+                    font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; padding: 0 8px; }
+    .chips button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .lf { display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--rule-strong); border-radius: 9px; background: var(--card); padding: 8px 14px 7px; }
+    .lf > span { font-size: var(--t-2xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .lf select { border: 0; background: transparent; color: var(--navy); padding: 0; min-height: 28px; font: 700 var(--t-m) 'DM Sans', 'DM Fallback', system-ui, sans-serif; outline: none; width: 100%; cursor: pointer; }
+    .lf:focus-within { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
+    .pf-count { font-size: var(--t-s); color: var(--muted); margin: 18px 0 10px; }
+    .pf-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--navy); }
+    .pf { border-bottom: 1px solid var(--rule); }
+    .pf[hidden], .pf.later { display: none; }
+    .pf summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 18px; align-items: baseline; padding: 15px 4px 13px; min-height: 56px; }
+    .pf summary::-webkit-details-marker { display: none; }
+    .pf summary:hover { background: rgba(217,180,91,0.07); }
+    .pf-name { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 19px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+    .pf-meta { grid-column: 1; font-size: var(--t-s); color: var(--muted); }
+    .pf-min { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-weight: 700; color: var(--gold); font-size: var(--t-s); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .pf-min::after { content: ' \25BE'; color: var(--rule-strong); }
+    .pf details[open] .pf-min::after { content: ' \25B4'; }
+    .pf-body { padding: 0 4px 18px; max-width: 46em; }
+    .pf-body p { margin: 0 0 8px; font-size: var(--t-m); color: var(--ink); }
+    .pf-kids b, .pf-facts b { color: var(--navy); }
+    .pf-facts { display: flex; flex-direction: column; gap: 4px; font-size: var(--t-s) !important; color: var(--muted) !important; }
+    .pf-facts a, .pf-links a { color: var(--gold); font-weight: 700; text-decoration: none; }
+    .pf-links { display: flex; gap: 6px 22px; flex-wrap: wrap; }
+    .pf-links a { display: inline-flex; min-height: 44px; align-items: center; }
+    .pf-more { margin-top: 18px; min-height: 52px; padding: 0 26px; border-radius: 9px; border: 1px solid var(--navy); background: var(--card); color: var(--navy); font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; }
+    .pf-more[hidden] { display: none; }
+    .pf-none { font-size: var(--t-m); color: var(--muted); padding: 18px 4px; }
+
+    /* worth the drive */
+    .drives { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 30px; }
+    .drives figure { margin: 0; }
+    .drives .ph { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); aspect-ratio: 16 / 11; }
+    .drives img { width: 100%; height: 100%; object-fit: cover; }
+    .drives figcaption { position: static; background: none; padding: 12px 2px 0; border-radius: 0; font-weight: 400; }
+    .drives figcaption b { display: block; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; color: var(--navy); }
+    .drives figcaption span { display: block; font-size: var(--t-s); color: var(--muted); margin-top: 3px; }
+
+    /* the drive ladder */
+    .ladder { list-style: none; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); position: relative; }
+    .ladder::before { content: ''; position: absolute; left: 0; right: 0; top: 13px; height: 3px; background: linear-gradient(90deg, var(--gold-bright), var(--steel)); border-radius: 3px; }
+    .ladder li { position: relative; padding: 36px 12px 0 0; }
+    .ladder li::before { content: ''; position: absolute; left: 0; top: 5px; width: 19px; height: 19px; border-radius: 50%; background: var(--paper); border: 3px solid var(--navy); box-sizing: border-box; }
+    .ladder .t { display: block; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 25px; color: var(--navy); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ladder .p { display: block; font-size: var(--t-s); color: var(--ink); line-height: 1.4; margin-top: 4px; }
+
+    /* everything else, folded */
+    .folds { margin-top: 26px; border-top: 2px solid var(--navy); }
+    .fold { border-bottom: 1px solid var(--rule); }
+    .fold > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 18px 4px; min-height: 60px; }
+    .fold > summary::-webkit-details-marker { display: none; }
+    .fold > summary b { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; color: var(--navy); }
+    .fold > summary span { font-size: var(--t-2xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+    .fold > summary span::after { content: ' \25BE'; }
+    .fold[open] > summary span::after { content: ' \25B4'; }
+    .fold-in { padding: 0 0 26px; }
+    .fold-in .sub-h:first-child { margin-top: 6px; }
+    .credits { font-size: var(--t-xs); color: var(--muted); margin: 10px 0 0; max-width: 60em; line-height: 1.6; }
+    .credits a { color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .pf-tools { grid-template-columns: 1fr; }
+      .chips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .drives { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+      .lh-hero { min-height: 560px; }
+      .postcards { grid-template-columns: 1fr; gap: 10px; }
+      .postcard { grid-template-columns: 92px minmax(0, 1fr); grid-template-rows: none; align-items: center; gap: 14px; padding: 14px 16px; }
+      .postcard .min small { display: block; margin: 4px 0 0; }
+      .picks { grid-template-columns: 1fr; gap: 28px; }
+      .pick figure { aspect-ratio: 4 / 3; }
+      /* the year swipes: one season a screen, the next one peeking */
+      .year { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 84%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin-inline: -20px; padding-inline: 20px; scroll-padding-inline: 20px; }
+      .season { scroll-snap-align: start; }
+      /* the next season peeks in and fades, so no line of text runs into the screen edge */
+      .year { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 44px), transparent); }
+      .swipe-hint { display: block; }
+      .chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pf summary { padding-inline: 2px; }
+      .ladder { grid-template-columns: 1fr; padding-left: 4px; }
+      .ladder::before { left: 13px; right: auto; top: 0; bottom: 0; width: 3px; height: auto; background: linear-gradient(180deg, var(--gold-bright), var(--steel)); }
+      .ladder li { padding: 0 0 22px 42px; }
+      .ladder li::before { left: 4px; top: 6px; }
+      .ladder .p { margin-top: 0; }
+      .lf > span { font-size: 15px; letter-spacing: .05em; }
     }
   </style>
 </head>
@@ -269,43 +382,175 @@
 </nav></div>
 
 <!-- STICKY SECTION NAV -->
-<div id="sectionNav">
-  <div class="snav-in">
-    <a href="#essentials" class="snav-link">Essentials &amp; Map</a>
-    <a href="#family-kids" class="snav-link">With Kids</a>
-    <a href="#outdoors" class="snav-link">Outdoors</a>
-    <a href="#day-trips" class="snav-link">Day Trips</a>
-    <a href="#events" class="snav-link">The Year</a>
-    <a href="#eats" class="snav-link">Eats</a>
-    <a href="#military-deals" class="snav-link">Discounts</a>
-  </div>
-</div>
-
 <main id="main-content">
 
-<!-- HERO -->
-<header class="hero shell">
-  <p class="eyebrow rv">Living here · Life around Fort Drum</p>
-  <h1 class="rv">&ldquo;Is Fort Drum <em>really that bad?</em>&rdquo;</h1>
-  <p class="hero-sub rv">We get it. Nobody Googles Fort Drum and gets excited. But the families who actually live here? Most don't want to leave. Beaches 20 minutes out, castles on islands, the snowiest hills east of the Rockies, and a festival calendar that runs all twelve months. Here's the whole brief.</p>
+<!-- HERO: the castle is the answer to the question -->
+<header class="lh-hero" id="top">
+  <picture><source media="(max-width: 780px)" srcset="/images/places/boldt-from-alexandria-bay-phone.webp" width="900" height="1080"><img src="/images/places/boldt-from-alexandria-bay.webp" srcset="/images/places/boldt-from-alexandria-bay-800.webp 800w, /images/places/boldt-from-alexandria-bay.webp 2000w" sizes="100vw" alt="Boldt Castle on Heart Island, seen across the St. Lawrence River from Alexandria Bay, with a jet ski crossing the water" width="2000" height="1329" fetchpriority="high"></picture>
+  <div class="shell">
+    <p class="eyebrow">Living here &middot; Fort Drum</p>
+    <h1>Is Fort Drum <em>really that bad?</em></h1>
+    <p class="answer">That's Boldt Castle, on an island in the St. Lawrence, about <b>44 minutes from post.</b> There's a Lake Ontario beach about 34 minutes away, a free city park with a zoo next door, and 68 family places below, closest first.</p>
+  </div>
 </header>
 
-<!-- ANSWER BAR -->
-<div class="answers shell">
-  <div class="answers-box">
-    <div class="ans"><div class="label">Free &amp; indoor today</div><div class="val"><a href="#family-kids">Storytimes</a></div><div class="note"><a href="#family-kids">Library storytimes in 4 towns ↓</a></div></div>
-    <div class="ans"><div class="label">Energy burn-off</div><div class="val"><a href="#family-kids">Billy Beez</a></div><div class="note"><a href="#family-kids">+ Pine Plains bowling, on post ↓</a></div></div>
-    <div class="ans"><div class="label">Free outdoors</div><div class="val"><a href="#outdoors">Thompson Park</a></div><div class="note"><a href="#outdoors">+ flat trails &amp; the sledding hill ↓</a></div></div>
-    <div class="ans"><div class="label">Discount tickets</div><div class="val"><a href="tel:+13157728222">ITR office</a></div><div class="note">Call <a href="tel:+13157728222">(315) 772-8222</a></div></div>
+<div class="shell">
+  <div class="postcards">
+    <a class="postcard" href="#first-saturday"><span class="min">18<small>min</small></span><span><b>A free city park</b> with a splash pad, a pool, the sledding hill and Zoo New York next door</span></a>
+    <a class="postcard" href="#first-saturday"><span class="min">29<small>min</small></span><span><b>Lake Ontario sunsets</b> and a War of 1812 battlefield in Sackets Harbor</span></a>
+    <a class="postcard" href="#seasons"><span class="min">44<small>min</small></span><span><b>1,864 islands, two countries,</b> and Boldt Castle by boat</span></a>
   </div>
 </div>
 
+<!-- FIRST FREE SATURDAY -->
+<section class="lh-sec" id="first-saturday"><div class="shell">
+  <p class="eyebrow">Your first free Saturday</p>
+  <h2>Three free places to go <em>before the boxes are unpacked.</em></h2>
+  <div class="picks">
+    <a class="pick" href="#places" data-open="Thompson Park"><figure><img src="/images/thompson-park-800.jpg" alt="Aerial view of Thompson Park’s green hills above Watertown" loading="lazy" decoding="async" width="800" height="450"><span class="tag">18 min &middot; Free</span></figure><h3>Thompson Park</h3><p>An Olmsted-designed city park: playground, splash pad, pool, paved paths, and Zoo New York on the grounds.</p></a>
+    <a class="pick" href="#places" data-open="Sackets Harbor Battlefield State Historic Site"><figure><img src="/images/sackets-harbor-800.webp" alt="Sackets Harbor village and marina on Lake Ontario from above" loading="lazy" decoding="async" width="800" height="536"><span class="tag">29 min &middot; Grounds free</span></figure><h3>Sackets Harbor</h3><p>A War of 1812 battlefield on Lake Ontario, a walkable village, and kids 12 and under free at the historic site.</p></a>
+    <a class="pick" href="#places" data-open="Black River Trail"><figure><img src="/images/places/black-river-falls-800.webp" alt="Water pouring over rock ledges on the Black River near Watertown" loading="lazy" decoding="async" width="800" height="426"><span class="tag">10 min &middot; Free</span></figure><h3>Black River Trail</h3><p>4.5 flat, paved miles along the river: bikes, strollers, and a picnic at the end.</p></a>
+  </div>
+</div></section>
+
+<!-- A YEAR HERE -->
+<section class="lh-sec" id="seasons"><div class="shell">
+  <p class="eyebrow">A year here</p>
+  <h2>Every season has <em>its thing.</em></h2>
+  <p class="lh-sub">What families here do, season by season, with 2026 dates where the organizers have posted them.</p>
+  <div class="year" tabindex="0" aria-label="Seasons, scroll sideways on a phone">
+    <article class="season w"><figure><img src="/images/north-country-winter-800.jpg" alt="Snow-covered riverbanks near Fort Drum in winter" loading="lazy" decoding="async" width="800" height="532"><span class="label">Winter</span></figure><h3>Snow is the playground</h3><ul><li><b>Snowtown USA</b> at Thompson Park, January and February</li><li><b>Thompson Park's sledding hill</b>, free</li><li><b>Dry Hill Ski Area</b>: skiing, snowboarding and a tubing park</li></ul></article>
+    <article class="season sp"><figure><img src="/images/places/whetstone-gulf-800.webp" alt="A creek tumbling over rocks under green trees at Whetstone Gulf State Park" loading="lazy" decoding="async" width="800" height="600"><span class="label">Spring</span></figure><h3>Maple, fish and first boats</h3><ul><li><b>Maple Weekend</b> sugarhouses, March</li><li><b>Salmon River Fish Hatchery</b> opens its visitor building in April, free</li><li><b>Boldt Castle</b> opens May 9, 2026</li></ul></article>
+    <article class="season su"><figure><img src="/images/places/wellesley-island-shore-800.webp" alt="Pines and a picnic table on the rocky shore of Wellesley Island State Park" loading="lazy" decoding="async" width="800" height="600"><span class="label">Summer</span></figure><h3>Lake days, every weekend</h3><ul><li><b>Westcott Beach</b> swim season, June 19 to Sept 6, 2026</li><li><b>Jefferson County Fair</b>, July 14&ndash;19, 2026</li><li><b>Pirate Days</b> in Alexandria Bay, Aug 14&ndash;16, 2026</li></ul></article>
+    <article class="season f"><figure><img src="/images/thousand-islands-800.jpg" alt="The Thousand Islands Bridge over the St. Lawrence in fall color" loading="lazy" decoding="async" width="800" height="548"><span class="label">Fall</span></figure><h3>Cider, corn mazes and color</h3><ul><li><b>Burrville Cider Mill</b> donuts, Labor Day to Thanksgiving</li><li><b>Old McDonald's Farm</b> corn maze and pumpkins, through Oct 31</li><li><b>Boo at the Zoo</b>, October weekends</li></ul></article>
+  </div>
+  <p class="swipe-hint">Swipe for the next season &rarr;</p>
+</div></section>
+
+<!-- THE PLACES FINDER -->
+<section class="lh-sec" id="places"><div class="shell">
+  <p class="eyebrow">Places to take the family</p>
+  <h2>68 places, <em>closest first.</em></h2>
+  <p class="lh-sub">Parks, beaches, trails, libraries, museums, farms and winter fun. Each one checked on its own official page; drive times measured from the Main Gate. Tap one for what to do there.</p>
+<!--PLACES:START-->
+  <div class="pf-tools">
+    <div class="chips" role="group" aria-label="Filter places">
+      <button type="button" aria-pressed="true" data-f="all">All</button>
+      <button type="button" aria-pressed="false" data-f="free">Free</button>
+      <button type="button" aria-pressed="false" data-f="indoor">Indoor</button>
+      <button type="button" aria-pressed="false" data-f="near">Under 20 min</button>
+      <button type="button" aria-pressed="false" data-f="winter">Good in winter</button>
+      <button type="button" aria-pressed="false" data-f="post">On post</button>
+    </div>
+    <label class="lf pf-kind"><span>Kind of place</span><select id="pfKind"><option value="all">Any kind of place</option><option value="parks">Parks & playgrounds</option><option value="water">Beaches, pools & splash pads</option><option value="nature">Trails & nature</option><option value="history">Museums & history</option><option value="library">Libraries</option><option value="animals">Zoos & farms</option><option value="indoor">Indoor fun</option><option value="winter">Winter fun</option><option value="other">More to do</option></select></label>
+  </div>
+  <p class="pf-count" id="pfCount" role="status">68 places, closest first</p>
+  <ul class="pf-list" id="pfList" data-show="12">
+      <li class="pf" data-group="other" data-f="free indoor near post winter" data-min="5"><details><summary><span class="pf-name">Fort Drum Youth Center</span><span class="pf-meta">Fort Drum &middot; More to do &middot; Free &middot; On post</span><span class="pf-min">On post</span></summary><div class="pf-body"><p>Free after-school and weekend center for middle- and high-school-age military kids, with sports, clubs, and special events.</p><p class="pf-kids"><b>With kids:</b> Free membership for grades 6-12; computer labs, art rooms, and dance classes after school.</p><p class="pf-facts"><span><b>Where:</b> Chapel Drive, BLDG 10788, Fort Drum, NY 13602</span><span><b>Call:</b> <a href="tel:+13157726719">(315) 772-6719</a></span></p><p class="pf-links"><a href="https://drum.armymwr.com/programs/youth-center-and-youth-programs" target="_blank" rel="noopener">Official page &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="indoor near post winter" data-min="5"><details><summary><span class="pf-name">Magrath Sports Complex &amp; Pool</span><span class="pf-meta">Fort Drum &middot; Pool &middot; On post</span><span class="pf-min">On post</span></summary><div class="pf-body"><p>On-post MWR sports complex with a 25-meter indoor pool, basketball/volleyball courts, and an indoor track, open for family/open swim.</p><p class="pf-kids"><b>With kids:</b> Lifeguarded 25m pool with diving platforms; kids under 17 must pass a swim test for full pool use.</p><p class="pf-facts"><span><b>Where:</b> Tigris River Valley Road, BLDG 10050, Fort Drum, NY 13602</span><span><b>Call:</b> <a href="tel:+13157726663">(315) 772-6663</a></span></p><p class="pf-links"><a href="https://drum.armymwr.com/programs/Magrath-sports-complex" target="_blank" rel="noopener">Official page &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="other" data-f="near post" data-min="5"><details><summary><span class="pf-name">Outdoor Recreation / Gear to Go</span><span class="pf-meta">Fort Drum &middot; More to do &middot; On post</span><span class="pf-min">On post</span></summary><div class="pf-body"><p>On-post equipment rental counter for winter gear (skis, snowshoes, snowboards) and summer gear (boats, bikes, camping equipment).</p><p class="pf-kids"><b>With kids:</b> Family gear rentals (snowshoes, sleds, bikes, boats) support outdoor outings with kids of any age.</p><p class="pf-facts"><span><b>Where:</b> Iraqi Freedom Drive, BLDG 11115, Fort Drum, NY 13602</span><span><b>Call:</b> <a href="tel:+13157728222">(315) 772-8222</a></span></p><p class="pf-links"><a href="https://drum.armymwr.com/programs/outdoor-recreation/gear-go" target="_blank" rel="noopener">Official page &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="indoor" data-f="indoor near post winter" data-min="5"><details><summary><span class="pf-name">Pine Plains Bowling Center</span><span class="pf-meta">Fort Drum &middot; Bowling & skating &middot; On post</span><span class="pf-min">On post</span></summary><div class="pf-body"><p>On-post bowling center with interactive HyperBowling lanes, a snack bar, and birthday-party bookings.</p><p class="pf-kids"><b>With kids:</b> HyperBowling interactive lanes and a snack bar suit a family outing.</p><p class="pf-facts"><span><b>Where:</b> Conway Road, BLDG 4320, Fort Drum, NY 13602</span><span><b>Call:</b> <a href="tel:+13157726601">(315) 772-6601</a></span></p><p class="pf-links"><a href="https://drum.armymwr.com/programs/pine-plains-bowling-center" target="_blank" rel="noopener">Official page &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor near post winter" data-min="5"><details><summary><span class="pf-name">Robert C. McEwen Library</span><span class="pf-meta">Fort Drum &middot; Library &middot; Free &middot; On post</span><span class="pf-min">On post</span></summary><div class="pf-body"><p>On-post MWR library with a dedicated children&#x27;s library section, multimedia area, and story/event programming.</p><p class="pf-kids"><b>With kids:</b> Dedicated children&#x27;s library area within an 18,000 sq ft facility.</p><p class="pf-facts"><span><b>Where:</b> Camp Hale Road, BLDG 4300, Fort Drum, NY 13602</span><span><b>Call:</b> <a href="tel:+13157729099">(315) 772-9099</a></span></p><p class="pf-links"><a href="https://drum.armymwr.com/programs/robert-c-mcewen-library" target="_blank" rel="noopener">Official page &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="history" data-f="indoor near post winter" data-min="6"><details><summary><span class="pf-name">10th Mountain Division &amp; Fort Drum Museum</span><span class="pf-meta">Fort Drum &middot; Museum &middot; On post</span><span class="pf-min">6 min</span></summary><div class="pf-body"><p>On-post museum preserving the history of the 10th Mountain Division and Fort Drum, with group tours available on request.</p><p class="pf-kids"><b>With kids:</b> Military-history exhibits that suit school-age kids, especially those with a parent in the 10th Mountain Division.</p><p class="pf-facts"><span><b>Where:</b> Heritage Center, South Riva Ridge Loop, Fort Drum, NY 13602</span></p><p class="pf-links"><a href="https://home.army.mil/drum/about/10th-mountain-division-fort-drum-museum" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.05274%2C-75.7844" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor near winter" data-min="7"><details><summary><span class="pf-name">Evans Mills Public Library</span><span class="pf-meta">Evans Mills &middot; Library &middot; Free</span><span class="pf-min">7 min</span></summary><div class="pf-body"><p>Small library near Fort Drum&#x27;s north gate serving the Evans Mills/Philadelphia area with toddler storytime and an early-literacy tracking program.</p><p class="pf-kids"><b>With kids:</b> Toddler story-and-craft time weekly, plus a 1000 Books Before Kindergarten early-literacy program.</p><p class="pf-facts"><span><b>Where:</b> 8706 Noble St, Evans Mills, NY 13637</span><span><b>Call:</b> <a href="tel:+13156294483">315-629-4483</a></span></p><p class="pf-links"><a href="https://evansmillspubliclibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.08826%2C-75.80725" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free near" data-min="9"><details><summary><span class="pf-name">Jack Williams Community Park</span><span class="pf-meta">Evans Mills &middot; Park &middot; Free</span><span class="pf-min">9 min</span></summary><div class="pf-body"><p>Village community park that hosts the Evans Mills summer recreation program.</p><p class="pf-kids"><b>With kids:</b> The village&#x27;s community park, used for the summer recreation program; closest public park to the Evans Mills/LeRay side of Fort Drum.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Where:</b> 8135 Schell Ave, Evans Mills, NY 13637</span><span><b>Call:</b> <a href="tel:+13156294753">(315) 629-4753</a></span></p><p class="pf-links"><a href="https://www.villageofevansmills.gov/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.0914%2C-75.79877" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free near" data-min="10"><details><summary><span class="pf-name">Black River Trail</span><span class="pf-meta">Black River &middot; Trail &middot; Free</span><span class="pf-min">10 min</span></summary><div class="pf-body"><p>4.5-mile paved rail-trail for walking, biking, and cross-country skiing, with a picnic area and river access.</p><p class="pf-kids"><b>With kids:</b> Flat, paved former rail bed, fine for bikes and strollers; picnic area and river access at the Black River end.</p><p class="pf-facts"><span><b>When:</b> Year-round</span></p><p class="pf-links"><a href="https://tughilltomorrowlandtrust.org/explore/black-river-trail/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.99697%2C-75.81836" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="history" data-f="indoor near winter" data-min="11"><details><summary><span class="pf-name">Jefferson County Historical Society (Paddock Mansion)</span><span class="pf-meta">Watertown &middot; Museum</span><span class="pf-min">11 min</span></summary><div class="pf-body"><p>History museum in an 1870s mansion with 100,000+ local artifacts, an outdoor Victorian garden, pioneer cabin, and one-room schoolhouse.</p><p class="pf-kids"><b>With kids:</b> Grade-school kids enjoy the Victorian garden, pioneer cabin, and one-room schoolhouse outdoors; kids 5 and under free.</p><p class="pf-facts"><span><b>Where:</b> 228 Washington Street, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157823491">(315) 782-3491</a></span></p><p class="pf-links"><a href="https://www.jeffersoncountyhistoricalsociety.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.97332%2C-75.91179" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="near post" data-min="11"><details><summary><span class="pf-name">Remington Park</span><span class="pf-meta">Fort Drum &middot; Park &middot; On post</span><span class="pf-min">11 min</span></summary><div class="pf-body"><p>Fort Drum&#x27;s main recreation park on Remington Pond, with pavilions, playgrounds, volleyball, horseshoes, a fitness trail, and a summer swimming beach with paddle boat and kayak rentals.</p><p class="pf-kids"><b>With kids:</b> Playgrounds, a beach with a lifeguard, and paddle boat/kayak rentals on Remington Pond; on-post, so bring installation access/ID.</p><p class="pf-facts"><span><b>When:</b> Beach/pond activities summer only, weather permitting; park grounds year-round</span><span><b>Where:</b> 11430 Pech River Road, Fort Drum, NY 13602</span><span><b>Call:</b> <a href="tel:+13157747330">(315) 774-7330</a></span></p><p class="pf-links"><a href="https://drum.armymwr.com/programs/remington-park" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.05602%2C-75.76172" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="indoor" data-f="indoor near winter" data-min="11"><details><summary><span class="pf-name">Seaway Lanes</span><span class="pf-meta">Watertown &middot; Bowling & skating</span><span class="pf-min">11 min</span></summary><div class="pf-body"><p>30-lane bowling alley with a bar and cafe, junior and military discounts, and family-themed bowling nights.</p><p class="pf-kids"><b>With kids:</b> Junior pricing (16 and under) and family-bowling nights suit most ages.</p><p class="pf-facts"><span><b>Where:</b> 22116 US Route 11, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157884050">(315) 788-4050</a></span></p><p class="pf-links"><a href="https://www.seawaylanes.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.99475%2C-75.89895" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="indoor" data-f="indoor near winter" data-min="12"><details><summary><span class="pf-name">Little Theatre of Watertown</span><span class="pf-meta">Watertown &middot; Theater</span><span class="pf-min">12 min</span></summary><div class="pf-body"><p>North Country&#x27;s longest-running community theater (est. 1931), staging family-friendly productions, often at the Strand Theatre in Watertown.</p><p class="pf-kids"><b>With kids:</b> Family-friendly shows suit school-age kids and up; check each show&#x27;s content before bringing younger kids.</p><p class="pf-facts"><span><b>Where:</b> 120 Washington Street, Suite 16, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157758348">315-775-8348</a></span></p><p class="pf-links"><a href="https://www.littletheatreofwatertown.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.98139%2C-75.89389" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor near winter" data-min="12"><details><summary><span class="pf-name">Roswell P. Flower Memorial Library</span><span class="pf-meta">Watertown &middot; Library &middot; Free</span><span class="pf-min">12 min</span></summary><div class="pf-body"><p>Public library with a children&#x27;s department, preschool story programs, and a summer reading club for kids and teens.</p><p class="pf-kids"><b>With kids:</b> Redesigned children&#x27;s room, preschool storytime and a summer reading club.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Where:</b> 229 Washington Street, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157857705">(315) 785-7705</a></span></p><p class="pf-links"><a href="https://www.flowermemoriallibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.97296%2C-75.91048" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="indoor near winter" data-min="12"><details><summary><span class="pf-name">Watertown Family YMCA Downtown Aquatic Center</span><span class="pf-meta">Watertown &middot; Pool</span><span class="pf-min">12 min</span></summary><div class="pf-body"><p>New $27.5M community and aquatic center downtown with an indoor recreation pool, lap pool, splash pad, and family swim lessons.</p><p class="pf-kids"><b>With kids:</b> Recreation pool and splash pad suit toddlers; lap pool and swim lessons for older kids.</p><p class="pf-facts"><span><b>Where:</b> 146 Arsenal Street, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157823100">(315) 782-3100</a></span></p><p class="pf-links"><a href="https://www.watertownymca.org/locations/downtown-ymca-community-center" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.976%2C-75.91306" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free near" data-min="13"><details><summary><span class="pf-name">Bicentennial Park (Watertown)</span><span class="pf-meta">Watertown &middot; Park &middot; Free</span><span class="pf-min">13 min</span></summary><div class="pf-body"><p>Riverside park along the Black River in downtown Watertown.</p><p class="pf-kids"><b>With kids:</b> Another easy Black River stop downtown.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Call:</b> <a href="tel:+13157857775">(315) 785-7775</a></span></p><p class="pf-links"><a href="https://www.watertown-ny.gov/departments/ParksandRecreation" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.98612%2C-75.92676" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="indoor" data-f="indoor near winter" data-min="13"><details><summary><span class="pf-name">Watertown Municipal Arena (Northern Credit Union Community Arena)</span><span class="pf-meta">Watertown &middot; Bowling & skating</span><span class="pf-min">13 min</span></summary><div class="pf-body"><p>Municipal ice rink with daily public skating in winter, a learn-to-skate program, and family skate nights with music.</p><p class="pf-kids"><b>With kids:</b> Toddler-to-adult skate rentals and a learn-to-skate program suit beginners.</p><p class="pf-facts"><span><b>When:</b> Public skating September-April</span><span><b>Where:</b> 600 William T Field Dr, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157857836">315-785-7836</a></span></p><p class="pf-links"><a href="https://www.watertown-ny.gov/arena" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.98511%2C-75.92741" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="other" data-f="near" data-min="14"><details><summary><span class="pf-name">Jefferson County Fairgrounds</span><span class="pf-meta">Watertown &middot; Events</span><span class="pf-min">14 min</span></summary><div class="pf-body"><p>Home of the annual Jefferson County Fair.</p><p class="pf-kids"><b>With kids:</b> County fair with rides, animals and exhibits; classic summer outing.</p><p class="pf-facts"><span><b>When:</b> Annual fair, summer</span></p><p class="pf-links"><a href="https://jeffcofair.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.99028%2C-75.92738" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free near" data-min="15"><details><summary><span class="pf-name">Marble Street Park</span><span class="pf-meta">Watertown &middot; Park &middot; Free</span><span class="pf-min">15 min</span></summary><div class="pf-body"><p>Riverside park along the Black River with picnic space and scenic views.</p><p class="pf-kids"><b>With kids:</b> Small downtown river park for a quick break.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Call:</b> <a href="tel:+13157857775">(315) 785-7775</a></span></p><p class="pf-links"><a href="https://www.watertown-ny.gov/departments/ParksandRecreation" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.97758%2C-75.87351" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="indoor" data-f="indoor near winter" data-min="16"><details><summary><span class="pf-name">Billy Beez</span><span class="pf-meta">Watertown &middot; Indoor play</span><span class="pf-min">16 min</span></summary><div class="pf-body"><p>Indoor play center inside Salmon Run Mall with slides, bumper cars, a ball pit arena, arcade games and a toddler-only play area.</p><p class="pf-kids"><b>With kids:</b> Slides, ball pit and bumper cars, plus a separate quieter toddler area (Mini Beez); good rainy or subzero-day option.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Where:</b> 21182 Salmon Run Mall Loop W, Suite A101, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13158164515">(315) 816-4515</a></span></p><p class="pf-links"><a href="https://billybeezus.com/location/salmon-run-mall/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.97683%2C-75.9546" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="winter" data-f="free near winter" data-min="16"><details><summary><span class="pf-name">Thompson Park sledding hill</span><span class="pf-meta">Watertown &middot; Winter fun &middot; Free</span><span class="pf-min">16 min</span></summary><div class="pf-body"><p>Historic city park with a well-known free sledding hill, plus an outdoor skating area, in winter.</p><p class="pf-kids"><b>With kids:</b> A long-standing free sledding tradition (&#x27;The Hill&#x27;) that suits most kid ages with adult supervision.</p><p class="pf-facts"><span><b>When:</b> Winter</span><span><b>Where:</b> Thompson Park, Watertown, NY 13601</span></p><p class="pf-links"><a href="https://www.watertown-ny.gov/ThompsonPark" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.96175%2C-75.89092" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free near" data-min="18"><details><summary><span class="pf-name">Thompson Park</span><span class="pf-meta">Watertown &middot; Park &middot; Free</span><span class="pf-min">18 min</span></summary><div class="pf-body"><p>Olmsted-designed city park with a playground, splash pad, swimming pool, tennis courts, a golf course, walking trails, a bandstand, and Zoo New York on the grounds.</p><p class="pf-kids"><b>With kids:</b> Playground and splash pad right next to the zoo, plus paved paths that work fine with a stroller.</p><p class="pf-facts"><span><b>When:</b> Year-round (pool and splash pad are summer-only)</span><span><b>Where:</b> 1 Thompson Park, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157857775">(315) 785-7775</a></span></p><p class="pf-links"><a href="https://www.watertown-ny.gov/departments/ParksandRecreation/thompsonpark" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.95884%2C-75.88695" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="animals" data-f="near" data-min="18"><details><summary><span class="pf-name">Zoo New York at Thompson Park</span><span class="pf-meta">Watertown &middot; Zoo & farm</span><span class="pf-min">18 min</span></summary><div class="pf-body"><p>State zoo dedicated to species native to New York, including wolverines, black bears, eagles, mountain lions, Canada lynx and grey wolves, inside Thompson Park.</p><p class="pf-kids"><b>With kids:</b> Small enough to walk in an hour with toddlers; focuses on animals native to New York like black bears and wolves.</p><p class="pf-facts"><span><b>When:</b> Year-round, shorter hours Nov-Mar</span><span><b>Where:</b> 1 Thompson Park, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157826180">(315) 782-6180</a></span></p><p class="pf-links"><a href="https://zoonewyork.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.95884%2C-75.88695" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="winter" data-f="winter" data-min="22"><details><summary><span class="pf-name">Dry Hill Ski Area</span><span class="pf-meta">Watertown &middot; Winter fun</span><span class="pf-min">22 min</span></summary><div class="pf-body"><p>Watertown&#x27;s family ski, snowboard, and tubing hill since 1960, with 7 trails, night skiing, and a rental shop.</p><p class="pf-kids"><b>With kids:</b> Beginner-friendly slopes and a snow-tubing park suit most kids; nursery/lessons available for young children.</p><p class="pf-facts"><span><b>When:</b> Winter, night skiing until 9pm weekdays/10pm weekends</span><span><b>Where:</b> 18160 Alpine Ridge Rd, Watertown, NY 13601</span><span><b>Call:</b> <a href="tel:+13157828584">(315) 782-8584</a></span></p><p class="pf-links"><a href="https://www.skidryhill.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.93104%2C-75.90164" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor winter" data-min="26"><details><summary><span class="pf-name">Carthage Free Library</span><span class="pf-meta">Carthage &middot; Library &middot; Free</span><span class="pf-min">26 min</span></summary><div class="pf-body"><p>Small-town library with a summer reading program, family activities, and a Thursday therapy-dog reading session for early readers.</p><p class="pf-kids"><b>With kids:</b> Storytime plus a therapy-dog reading program that suits preK through grade 6.</p><p class="pf-facts"><span><b>Where:</b> 412 Budd St, Carthage, NY 13619</span><span><b>Call:</b> <a href="tel:+13154932620">315-493-2620</a></span></p><p class="pf-links"><a href="https://carthagefreelibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.97963%2C-75.60926" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free" data-min="27"><details><summary><span class="pf-name">Carthage Park</span><span class="pf-meta">Carthage &middot; Park &middot; Free</span><span class="pf-min">27 min</span></summary><div class="pf-body"><p>Village park with a recreation building, skate park, wooded walking trail system, and playground; new splash pad and playground construction is funded via a state grant.</p><p class="pf-kids"><b>With kids:</b> Large wooden playground (Kids&#x27; World), a skate park and marked woods trails; a splash pad and new playground are funded and planned but not yet built as of late 2026.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Where:</b> 2 Park Drive, Carthage, NY 13619</span><span><b>Call:</b> <a href="tel:+31549310601">315-493-1060 Ext. 1</a></span></p><p class="pf-links"><a href="https://villageofcarthageny.gov/parks" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.98628%2C-75.60516" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="other" data-f="free" data-min="27"><details><summary><span class="pf-name">Carthage Village Park (Kids&#x27; World &amp; Riders Edge Skate Park)</span><span class="pf-meta">Carthage &middot; More to do &middot; Free</span><span class="pf-min">27 min</span></summary><div class="pf-body"><p>Village park with a large wooden playground (Kids&#x27; World), the Riders Edge skate park, ball fields, and walking trails.</p><p class="pf-kids"><b>With kids:</b> Kids&#x27; World wooden playground suits younger kids; the skate park suits older kids on boards or scooters.</p><p class="pf-facts"><span><b>Where:</b> Outer State Street, Carthage, NY 13619</span><span><b>Call:</b> <a href="tel:+13154931060">315-493-1060</a></span></p><p class="pf-links"><a href="https://www.villageofcarthageny.gov/recreation" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.97937%2C-75.61325" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="27"><details><summary><span class="pf-name">Perch River Wildlife Management Area</span><span class="pf-meta">Orleans/Pamelia/Brownville &middot; Trail &middot; Free</span><span class="pf-min">27 min</span></summary><div class="pf-body"><p>Walk the access roads and trails and look for waterfowl, eagles, and osprey.</p><p class="pf-kids"><b>With kids:</b> Wide-open wetland and grassland good for a birdwatching walk; a plainer, less-developed area better suited to kids who are fine on unpaved roads and paths.</p><p class="pf-facts"><span><b>Where:</b> accessed from State Route 12 and Allen, Buckminster, Vaadi, and Perch Lake roads</span><span><b>Call:</b> <a href="tel:+13157852263">315-785-2263</a></span></p><p class="pf-links"><a href="https://dec.ny.gov/places/perch-river-wildlife-management-area" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.11139%2C-75.91554" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free" data-min="28"><details><summary><span class="pf-name">Fort Pike Park</span><span class="pf-meta">Sackets Harbor &middot; Park &middot; Free</span><span class="pf-min">28 min</span></summary><div class="pf-body"><p>Village park built around the surviving War of 1812 earthworks of Fort Pike (originally Fort Volunteer), with a walking trail, interpretive signs, picnic table and observation deck.</p><p class="pf-kids"><b>With kids:</b> Short walking loop around 1812-era earthworks with interpretive signs, a picnic table and an observation deck overlooking the harbor and Lake Ontario; good for older kids interested in history.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Where:</b> 109 Bayview Pl, Sackets Harbor, NY 13685</span><span><b>Call:</b> <a href="tel:+13156463548">(315) 646-3548</a></span></p><p class="pf-links"><a href="https://sacketsharbor-ny.gov/locations/fort-pike-park" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.95148%2C-76.11309" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free" data-min="28"><details><summary><span class="pf-name">Stoodley Park</span><span class="pf-meta">Sackets Harbor &middot; Park &middot; Free</span><span class="pf-min">28 min</span></summary><div class="pf-body"><p>Village-run park in Sackets Harbor.</p><p class="pf-kids"><b>With kids:</b> Small neighborhood village park; call the village office for current equipment.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Call:</b> <a href="tel:+13156463548">(315) 646-3548</a></span></p><p class="pf-links"><a href="https://sacketsharbor-ny.gov/parks-recreation-facilities/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.94619%2C-76.11783" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor winter" data-min="29"><details><summary><span class="pf-name">Hay Memorial Library</span><span class="pf-meta">Sackets Harbor &middot; Library &middot; Free</span><span class="pf-min">29 min</span></summary><div class="pf-body"><p>Village library with a kids&#x27; corner, a Lego club, take-and-make craft kits, and seasonal family programs.</p><p class="pf-kids"><b>With kids:</b> Kid&#x27;s Korner and a Lego Club suit elementary-age kids; Teen Scene for older kids.</p><p class="pf-facts"><span><b>Where:</b> 105 South Broad Street, Sackets Harbor, NY 13685</span><span><b>Call:</b> <a href="tel:+13156462228">(315) 646-2228</a></span></p><p class="pf-links"><a href="https://haymemoriallibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.94578%2C-76.11917" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free" data-min="29"><details><summary><span class="pf-name">Market Square Park</span><span class="pf-meta">Sackets Harbor &middot; Park &middot; Free</span><span class="pf-min">29 min</span></summary><div class="pf-body"><p>Village-run park in downtown Sackets Harbor.</p><p class="pf-kids"><b>With kids:</b> Downtown village green, good stop while walking the historic district.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Call:</b> <a href="tel:+13156463548">(315) 646-3548</a></span></p><p class="pf-links"><a href="https://sacketsharbor-ny.gov/parks-recreation-facilities/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.94867%2C-76.12243" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="history" data-f="" data-min="29"><details><summary><span class="pf-name">Sackets Harbor Battlefield State Historic Site</span><span class="pf-meta">Sackets Harbor &middot; Historic site</span><span class="pf-min">29 min</span></summary><div class="pf-body"><p>War of 1812 battlefield and naval yard site with a visitor center/museum, historic buildings, costumed interpreters, a picnic area, and walking trails.</p><p class="pf-kids"><b>With kids:</b> Open lawns for running around, a National Recreation Trail, costumed-interpreter demonstrations, and a picnic area; kids 12 and under are free.</p><p class="pf-facts"><span><b>When:</b> Grounds open year-round at dark; visitor center/buildings open seasonally (May-Oct)</span><span><b>Where:</b> 504 W. Main Street, Sackets Harbor, NY 13685</span><span><b>Call:</b> <a href="tel:+13156463634">(315) 646-3634</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/visit/historic-sites/sackets-harbor-battlefield-state-historic-site" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.9497%2C-76.12436" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor winter" data-min="30"><details><summary><span class="pf-name">Adams Free Library</span><span class="pf-meta">Adams &middot; Library &middot; Free</span><span class="pf-min">30 min</span></summary><div class="pf-body"><p>Small village library in Adams (the &#x27;Arbor Day Village&#x27;) carrying a wide range of children&#x27;s books; call ahead for current program schedule.</p><p class="pf-kids"><b>With kids:</b> Small rural library with a kids&#x27; book section, good for browsing with young readers.</p><p class="pf-facts"><span><b>Where:</b> 2 North Main Street, Adams, NY 13605</span><span><b>Call:</b> <a href="tel:+13152322265">315-232-2265</a></span></p><p class="pf-links"><a href="https://adamsfreelibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.80956%2C-76.02428" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="31"><details><summary><span class="pf-name">Joseph A. Blake Wildlife Sanctuary</span><span class="pf-meta">Rutland &middot; Trail &middot; Free</span><span class="pf-min">31 min</span></summary><div class="pf-body"><p>Hike or bike the trail network and watch for birds and wildlife around the ponds.</p><p class="pf-kids"><b>With kids:</b> 144 acres of connected trails close to Watertown with ponds to look for wildlife; there&#x27;s a trail kiosk and a portable restroom at the parking area.</p><p class="pf-facts"><span><b>Where:</b> 31827 Middle Road, Watertown, NY (trailhead parking about 3 miles down Middle Road)</span></p><p class="pf-links"><a href="https://tughilltomorrowlandtrust.org/explore/joseph-blake-wildlife-sanctuary/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.93478%2C-75.75902" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="33"><details><summary><span class="pf-name">Redwood Hill Preserve</span><span class="pf-meta">Redwood &middot; Trail &middot; Free</span><span class="pf-min">33 min</span></summary><div class="pf-body"><p>Nature preserve with 1.2 miles of easy trails including an ADA-accessible all-access trail to a Butterfield Lake overlook deck and trailside learning center.</p><p class="pf-kids"><b>With kids:</b> The Beatrice Rosamond Trail is a wheelchair/stroller-accessible all-access path to a lake overlook deck; a composting toilet is on site.</p><p class="pf-facts"><span><b>When:</b> Year-round, dawn to dusk</span><span><b>Where:</b> 44010 Stine Road, Redwood, NY 13679</span><span><b>Call:</b> <a href="tel:+13154824757">315-482-4757</a></span></p><p class="pf-links"><a href="https://indianriverlakes.org/preserve/redwood-hill-preserve/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.30618%2C-75.79724" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="" data-min="34"><details><summary><span class="pf-name">Grass Point State Park</span><span class="pf-meta">Orleans &middot; Beach</span><span class="pf-min">34 min</span></summary><div class="pf-body"><p>114-acre St. Lawrence River state park in the Town of Orleans with a swimming beach, playground, playing fields, boat launch and camping.</p><p class="pf-kids"><b>With kids:</b> Playground, playing fields and a swimming beach.</p><p class="pf-facts"><span><b>When:</b> Mid-May-mid-October</span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/grasspoint" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.28144%2C-75.99759" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="" data-min="34"><details><summary><span class="pf-name">Westcott Beach State Park</span><span class="pf-meta">Henderson &middot; Beach</span><span class="pf-min">34 min</span></summary><div class="pf-body"><p>Lake Ontario state park with a sandy swimming beach, playground, boat launch, hiking trails, camping and cottages.</p><p class="pf-kids"><b>With kids:</b> Sandy Lake Ontario beach with a children&#x27;s playground and camping right on site.</p><p class="pf-facts"><span><b>When:</b> Camping mid-May-Columbus Day; 2026 swim season June 19-Sept 6</span><span><b>Where:</b> Route 3, Henderson, NY 13650</span><span><b>Call:</b> <a href="tel:+13159385083">(315) 938-5083</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/westcottbeach" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.89756%2C-76.11756" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="35"><details><summary><span class="pf-name">Keewaydin State Park</span><span class="pf-meta">Alexandria Bay &middot; Park</span><span class="pf-min">35 min</span></summary><div class="pf-body"><p>Swim in the pool, watch ships from the marina, and picnic along the river.</p><p class="pf-kids"><b>With kids:</b> A park with a swimming pool (not just river swimming) plus a marina where kids can watch St. Lawrence Seaway freighters go by.</p><p class="pf-facts"><span><b>When:</b> Vehicle use fee charged in peak season</span><span><b>Where:</b> 45165 NYS Route 12, Alexandria Bay, NY 13607</span><span><b>Call:</b> <a href="tel:+13154823331">(315) 482-3331</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/keewaydin/details.aspx" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.3174%2C-75.92573" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="36"><details><summary><span class="pf-name">Cerow Recreation Park</span><span class="pf-meta">Clayton &middot; Park</span><span class="pf-min">36 min</span></summary><div class="pf-body"><p>Town recreation complex with an outdoor community pool, walking trail, lighted tennis courts, basketball court, ball fields, and an ice arena (skating October-early March).</p><p class="pf-kids"><b>With kids:</b> Outdoor community pool in summer, plus tennis, basketball, ball fields and an ice arena in winter.</p><p class="pf-facts"><span><b>When:</b> Year-round (ice arena Oct-early March; pool summer)</span><span><b>Where:</b> 600 East Line Road, Clayton, NY 13624</span><span><b>Call:</b> <a href="tel:+13156864310">315-686-4310</a></span></p><p class="pf-links"><a href="https://townofclaytonny.gov/living-here/government/parks-recreation/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.23024%2C-76.07842" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="37"><details><summary><span class="pf-name">Otter Creek Preserve</span><span class="pf-meta">Alexandria Bay &middot; Trail &middot; Free</span><span class="pf-min">37 min</span></summary><div class="pf-body"><p>Cross the suspension bridge, climb the observation tower, and walk the creekside trail.</p><p class="pf-kids"><b>With kids:</b> A wildlife-watching tower and a suspension bridge kids will enjoy crossing, on almost 2 miles of trail with a paved accessible section.</p><p class="pf-facts"><span><b>Where:</b> 23010 State Route 25, Alexandria Bay, NY 13607</span></p><p class="pf-links"><a href="https://www.tilandtrust.org/preserves-trails/otter-creek-preserve/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.3281%2C-75.91467" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="history" data-f="indoor winter" data-min="38"><details><summary><span class="pf-name">Antique Boat Museum</span><span class="pf-meta">Clayton &middot; Museum</span><span class="pf-min">38 min</span></summary><div class="pf-body"><p>Museum with the largest collection of antique and classic boats on display in North America, over 300 vessels.</p><p class="pf-kids"><b>With kids:</b> Large collection of boats to look at indoors and on the water; check ahead for kid programming.</p><p class="pf-facts"><span><b>When:</b> Seasonal (open for the 2026 season; call for exact dates)</span><span><b>Where:</b> 750 Mary Street, Clayton, NY 13624</span><span><b>Call:</b> <a href="tel:+13156864104">315.686.4104</a></span></p><p class="pf-links"><a href="https://www.abm.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.2378%2C-76.08942" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="38"><details><summary><span class="pf-name">Dewolf Point State Park</span><span class="pf-meta">Orleans &middot; Park</span><span class="pf-min">38 min</span></summary><div class="pf-body"><p>Small 13-acre island state park on the St. Lawrence River with camping, a boat launch, fishing and a gazebo; no playground.</p><p class="pf-kids"><b>With kids:</b> Small, rustic island park; better for older kids into fishing/boating than for a playground visit (no playground on site).</p><p class="pf-facts"><span><b>When:</b> Seasonal (camping season)</span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/dewolfpoint" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.33265%2C-75.98974" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor winter" data-min="38"><details><summary><span class="pf-name">Hawn Memorial Library</span><span class="pf-meta">Clayton &middot; Library &middot; Free</span><span class="pf-min">38 min</span></summary><div class="pf-body"><p>Clayton&#x27;s public library runs seasonal themed programming, a weekly story hour with a craft, and hands-on kids&#x27; activities most summer Saturdays.</p><p class="pf-kids"><b>With kids:</b> Themed summer programs (crafts, movies, story hour) that suit elementary-age kids.</p><p class="pf-facts"><span><b>Where:</b> 220 John Street, Clayton, NY 13624</span><span><b>Call:</b> <a href="tel:+13156863762">(315) 686-3762</a></span></p><p class="pf-links"><a href="https://www.hawnmemoriallibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.24201%2C-76.08818" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="38"><details><summary><span class="pf-name">Wellesley Island State Park</span><span class="pf-meta">Fineview &middot; Park</span><span class="pf-min">38 min</span></summary><div class="pf-body"><p>Large St. Lawrence River state park with a swimming beach, playground, marina, golf course, camping, and the Minna Anthony Common Nature Center on site.</p><p class="pf-kids"><b>With kids:</b> Swimming beach and playground plus the nature center next door; the largest camping complex in the Thousand Islands if you want to make a weekend of it.</p><p class="pf-facts"><span><b>When:</b> Year-round; camping May 1-Oct 11, 2026</span><span><b>Where:</b> 44927 Cross Island Road, Fineview, NY 13640</span><span><b>Call:</b> <a href="tel:+13154822722">(315) 482-2722</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/wellesleyisland" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.28794%2C-76.01346" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="indoor" data-f="indoor winter" data-min="39"><details><summary><span class="pf-name">Clayton Opera House</span><span class="pf-meta">Clayton &middot; Theater</span><span class="pf-min">39 min</span></summary><div class="pf-body"><p>Historic 1903 riverside theater hosting children&#x27;s theater, family movies, and a summer theater program for kids.</p><p class="pf-kids"><b>With kids:</b> Children&#x27;s theater shows and a summer theater program for ages 5-16.</p><p class="pf-facts"><span><b>Where:</b> 403 Riverside Drive, Clayton, NY 13624</span><span><b>Call:</b> <a href="tel:+13156862200">315-686-2200</a></span></p><p class="pf-links"><a href="https://www.claytonoperahouse.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.24289%2C-76.08653" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="free" data-min="39"><details><summary><span class="pf-name">Scenic View Park</span><span class="pf-meta">Alexandria Bay &middot; Beach &middot; Free</span><span class="pf-min">39 min</span></summary><div class="pf-body"><p>Village park on the St. Lawrence River with a seasonal swimming beach, playground, picnic pavilion, and a boardwalk with views of Boldt Castle.</p><p class="pf-kids"><b>With kids:</b> Lifeguarded sand beach, a pirate-ship-themed playground, and a boardwalk with an elevator instead of stairs down to the picnic area.</p><p class="pf-facts"><span><b>When:</b> Seasonal swimming beach, summer</span></p><p class="pf-links"><a href="https://www.villageofalexandriabay.com/scenic-view-park-and-walking-trail-information/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.33701%2C-75.92178" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="39"><details><summary><span class="pf-name">Zenda Farms Preserve</span><span class="pf-meta">Clayton &middot; Trail &middot; Free</span><span class="pf-min">39 min</span></summary><div class="pf-body"><p>Walk one of three short loop trails past farm fields and historic buildings.</p><p class="pf-kids"><b>With kids:</b> An old farm property with three short loop trails, historic barns, community gardens, and boulders kids can climb on.</p><p class="pf-facts"><span><b>Where:</b> 38973 Zenda Road, Clayton, NY 13624</span></p><p class="pf-links"><a href="https://www.tilandtrust.org/preserves-trails/zenda-farms-preserve/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.23148%2C-76.10962" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="41"><details><summary><span class="pf-name">Baker Woods Preserve</span><span class="pf-meta">Natural Bridge &middot; Trail &middot; Free</span><span class="pf-min">41 min</span></summary><div class="pf-body"><p>Pick a loop from the trail network, visit the pollinator garden, or cross-country ski in winter.</p><p class="pf-kids"><b>With kids:</b> The biggest Indian River Lakes Conservancy trail network (over 10 miles across 16 connected trails), so families can pick a short loop or go longer; a pollinator garden blooms in spring.</p><p class="pf-facts"><span><b>Where:</b> 4114 Factory Road, Natural Bridge, NY</span></p><p class="pf-links"><a href="https://indianriverlakes.org/preserve/baker-woods-preserve/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.05604%2C-75.45709" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="41"><details><summary><span class="pf-name">French Creek Wildlife Management Area</span><span class="pf-meta">Clayton &middot; Trail &middot; Free</span><span class="pf-min">41 min</span></summary><div class="pf-body"><p>Paddle the creek from the hand launch or walk the meadow and woodland trails.</p><p class="pf-kids"><b>With kids:</b> A calm creek with a hand launch, good for a first canoe or kayak trip with kids, plus meadow and woodland walking.</p><p class="pf-facts"><span><b>Where:</b> via Crystal Springs Road (CR 4) to French Creek Road, about 4 miles from Clayton</span></p><p class="pf-links"><a href="https://dec.ny.gov/places/french-creek-wildlife-management-area" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.20281%2C-76.12667" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="history" data-f="indoor winter" data-min="44"><details><summary><span class="pf-name">Boldt Castle</span><span class="pf-meta">Alexandria Bay &middot; Historic site</span><span class="pf-min">44 min</span></summary><div class="pf-body"><p>Historic island castle and gardens in the St. Lawrence River, reachable only by boat/shuttle from Alexandria Bay; 2026 admission is $14 adult, $10 child (5-12).</p><p class="pf-kids"><b>With kids:</b> Big grounds and a real castle to explore; boat-only access via a shuttle, so budget time and a life jacket for little ones on the water.</p><p class="pf-facts"><span><b>When:</b> May 9 to October 12, 2026</span><span><b>Where:</b> Heart Island, Alexandria Bay, NY 13607</span><span><b>Call:</b> <a href="tel:+13154829724">315-482-9724</a></span></p><p class="pf-links"><a href="https://www.boldtcastle.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.34455%2C-75.92248" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="library" data-f="free indoor winter" data-min="44"><details><summary><span class="pf-name">Lowville Free Library</span><span class="pf-meta">Lowville &middot; Library &middot; Free</span><span class="pf-min">44 min</span></summary><div class="pf-body"><p>Lewis County&#x27;s main library, with a regular storytime, Lego and craft activities, and a summer reading program for kids.</p><p class="pf-kids"><b>With kids:</b> Weekly Tuesday storytime (Oct-May) plus a June-August summer reading program.</p><p class="pf-facts"><span><b>Where:</b> 5387 Dayan St, Lowville, NY 13367</span><span><b>Call:</b> <a href="tel:+13153762131">315-376-2131</a></span></p><p class="pf-links"><a href="https://lowvillefreelibrary.org/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.78665%2C-75.49394" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="" data-min="47"><details><summary><span class="pf-name">Cedar Point State Park</span><span class="pf-meta">Clayton &middot; Beach</span><span class="pf-min">47 min</span></summary><div class="pf-body"><p>St. Lawrence River state park with a sandy swimming beach, boat docks, fishing pier, playground and camping.</p><p class="pf-kids"><b>With kids:</b> Sandy beach and playground, one of the oldest state parks in the region.</p><p class="pf-facts"><span><b>When:</b> Early May-Columbus Day; 2026 swim season June 27-Sept 6</span><span><b>Where:</b> 36661 Cedar Point State Park Drive, Clayton, NY 13624</span><span><b>Call:</b> <a href="tel:+13156542522">(315) 654-2522</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/cedarpoint" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.20285%2C-76.19491" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="other" data-f="winter" data-min="47"><details><summary><span class="pf-name">Lewis County Fairgrounds</span><span class="pf-meta">Lowville &middot; Events</span><span class="pf-min">47 min</span></summary><div class="pf-body"><p>County fairgrounds hosting the annual Lewis County Fair and a seasonal outdoor ice rink.</p><p class="pf-kids"><b>With kids:</b> Home of the Lewis County Fair; also has a winter ice rink with posted public hours.</p><p class="pf-facts"><span><b>When:</b> Fair in summer; ice rink in winter (opens around Jan 6, weather permitting)</span><span><b>Where:</b> Bostwick Street, Lowville, NY 13367</span><span><b>Call:</b> <a href="tel:+13153766528">(315) 376-6528</a></span></p><p class="pf-links"><a href="https://villageoflowville.gov/parks-recreation/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.79691%2C-75.48325" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="indoor winter" data-min="47"><details><summary><span class="pf-name">Minna Anthony Common Nature Center</span><span class="pf-meta">Fineview &middot; Nature center</span><span class="pf-min">47 min</span></summary><div class="pf-body"><p>Nature center inside Wellesley Island State Park with trails, exhibits, educational programs and seasonal canoe tours.</p><p class="pf-kids"><b>With kids:</b> Nature trails and educational programs inside Wellesley Island State Park, plus seasonal canoe tours through Eel Bay.</p><p class="pf-facts"><span><b>When:</b> May-Columbus Day (weekdays 9am-3pm, weekends 9am-6pm); limited off-season hours</span><span><b>Where:</b> 44927 Cross Island Road, Fineview, NY 13640</span><span><b>Call:</b> <a href="tel:+13154822722">(315) 482-2722</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/wellesleyisland" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.3063%2C-76.03341" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="48"><details><summary><span class="pf-name">Ashland Flats Wildlife Management Area</span><span class="pf-meta">Lyme/Cape Vincent &middot; Trail &middot; Free</span><span class="pf-min">48 min</span></summary><div class="pf-body"><p>Climb the observation tower and watch for wetland birds.</p><p class="pf-kids"><b>With kids:</b> An accessible observation tower overlooking a wetland, an easy stop for younger kids to spot birds without a long walk.</p><p class="pf-facts"><span><b>Where:</b> off Depot and Ashland roads, about 2 miles northeast of Three Mile Bay</span></p><p class="pf-links"><a href="https://dec.ny.gov/places/ashland-flats-wildlife-management-area" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.11723%2C-76.19799" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="free" data-min="48"><details><summary><span class="pf-name">Cape Vincent Recreation Park</span><span class="pf-meta">Cape Vincent &middot; Park &middot; Free</span><span class="pf-min">48 min</span></summary><div class="pf-body"><p>Town recreation park with tennis courts, basketball courts, an ice rink, baseball fields and a commercial kitchen/hall available for events.</p><p class="pf-kids"><b>With kids:</b> Tennis and basketball courts, ball fields and an ice rink in winter.</p><p class="pf-facts"><span><b>When:</b> Year-round</span><span><b>Where:</b> James Street, Cape Vincent, NY 13618</span><span><b>Call:</b> <a href="tel:+13154051893">(315) 405-1893</a></span></p><p class="pf-links"><a href="https://townofcapevincent.gov/departments/recreation/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.12323%2C-76.33133" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="water" data-f="" data-min="48"><details><summary><span class="pf-name">Southwick Beach State Park</span><span class="pf-meta">Henderson &middot; Beach</span><span class="pf-min">48 min</span></summary><div class="pf-body"><p>Swim at the guarded beach, play on the fields, and picnic among the dune grass.</p><p class="pf-kids"><b>With kids:</b> A very long, wide dune beach that&#x27;s shallow near shore, plus open playing fields for running around after swimming.</p><p class="pf-facts"><span><b>When:</b> Vehicle use fee charged in peak season</span><span><b>Where:</b> 8119 Southwicks Place, Henderson, NY 13650</span><span><b>Call:</b> <a href="tel:+13158465338">(315) 846-5338</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/visit/state-parks/southwick-beach-state-park" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.76128%2C-76.20135" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="52"><details><summary><span class="pf-name">Burnham Point State Park</span><span class="pf-meta">Cape Vincent &middot; Park</span><span class="pf-min">52 min</span></summary><div class="pf-body"><p>Small St. Lawrence River state park with a playground, boat launch, fishing, camping and cabins.</p><p class="pf-kids"><b>With kids:</b> Small, quiet campground-style state park with a playground; good for a low-key picnic stop on the river.</p><p class="pf-facts"><span><b>When:</b> Memorial Day weekend to Labor Day</span><span><b>Where:</b> 34075 NYS Route 12E, Cape Vincent, NY 13618</span><span><b>Call:</b> <a href="tel:+13156542522">(315) 654-2522</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/burnhampoint" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.1626%2C-76.26462" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="52"><details><summary><span class="pf-name">Lakeview Wildlife Management Area (South Sandy Creek Access)</span><span class="pf-meta">Ellisburg &middot; Trail &middot; Free</span><span class="pf-min">52 min</span></summary><div class="pf-body"><p>Fish from the accessible pier or bank along South Sandy Creek.</p><p class="pf-kids"><b>With kids:</b> A wheelchair-accessible fishing pier on South Sandy Creek, an easy option for a family fishing stop.</p><p class="pf-facts"><span><b>Where:</b> NYS Route 3, Town of Ellisburg</span></p><p class="pf-links"><a href="https://dec.ny.gov/things-to-do/freshwater-fishing/places-to-fish/north-central-ny/access-for-anglers-with-disabilities" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.72918%2C-76.19226" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="53"><details><summary><span class="pf-name">Whitaker Park</span><span class="pf-meta">Martinsburg &middot; Park</span><span class="pf-min">53 min</span></summary><div class="pf-body"><p>Seasonal camping park with tent sites ($10/night) and RV sites ($15/night).</p><p class="pf-kids"><b>With kids:</b> Tent and RV camping park; good base for a family camping weekend.</p><p class="pf-facts"><span><b>When:</b> Mother&#x27;s Day weekend through Columbus Day weekend</span><span><b>Where:</b> Glendale Road, Martinsburg, NY</span><span><b>Call:</b> <a href="tel:+13152866487">(315) 286-6487</a></span></p><p class="pf-links"><a href="https://villageoflowville.gov/parks-recreation/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.73408%2C-75.46002" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="55"><details><summary><span class="pf-name">Kring Point State Park</span><span class="pf-meta">Redwood &middot; Park</span><span class="pf-min">55 min</span></summary><div class="pf-body"><p>St. Lawrence River peninsula state park with a playground, boat launch, camping, cabins and dockage.</p><p class="pf-kids"><b>With kids:</b> Playground on a peninsula with river/bay views; about half the campsites are waterfront.</p><p class="pf-facts"><span><b>When:</b> Year-round grounds; camping May 1-Oct 11, 2026</span><span><b>Where:</b> 25950 Kring Point Road, Redwood, NY 13679</span><span><b>Call:</b> <a href="tel:+13154822444">(315) 482-2444</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/kringpoint" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.37721%2C-75.8556" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="winter" data-min="55"><details><summary><span class="pf-name">Whetstone Gulf State Park</span><span class="pf-meta">Lowville &middot; Park</span><span class="pf-min">55 min</span></summary><div class="pf-body"><p>515-acre state park built around a 3-mile gorge on the Tug Hill Plateau, with a playground, swimming area, campground, hiking and cross-country ski trails.</p><p class="pf-kids"><b>With kids:</b> Man-made swimming area and playground at the campground; the gorge-rim trail is more of a hike for older kids.</p><p class="pf-facts"><span><b>When:</b> Summer: Memorial Day-mid September; winter: Dec 15-March 15; 2026 swim season June 28-Sept 7 (beach weekends only from Aug 19)</span><span><b>Where:</b> 6065 West Road, Lowville, NY 13367</span><span><b>Call:</b> <a href="tel:+13153766630">(315) 376-6630</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/whetstonegulf" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.70272%2C-75.45975" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="winter" data-f="winter" data-min="62"><details><summary><span class="pf-name">Snow Ridge Ski Resort</span><span class="pf-meta">Turin &middot; Winter fun</span><span class="pf-min">62 min</span></summary><div class="pf-body"><p>Tug Hill ski resort averaging 230 inches of snow a year, with 22 trails, night skiing, glades, a terrain park, and tubing.</p><p class="pf-kids"><b>With kids:</b> 22 trails plus a tubing area and a nursery for ages 1-4 suit a range of kid ages.</p><p class="pf-facts"><span><b>When:</b> Winter (roughly December-early April)</span><span><b>Where:</b> 4173 West Road, Turin, NY 13473</span><span><b>Call:</b> <a href="tel:+13153488456">315-348-8456</a></span></p><p class="pf-links"><a href="https://snowridge.com/" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.6397%2C-75.42017" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="63"><details><summary><span class="pf-name">Selkirk Shores State Park</span><span class="pf-meta">Pulaski &middot; Park</span><span class="pf-min">63 min</span></summary><div class="pf-body"><p>Swim at the guarded beach, hike or bike the trails, and watch for migrating birds.</p><p class="pf-kids"><b>With kids:</b> A supervised Lake Ontario beach plus a playground and easy woodland trails, a solid full-day option a bit further south.</p><p class="pf-facts"><span><b>When:</b> Vehicle use fee charged in peak season (park states May 22-Sept 7 for the 2026 season)</span><span><b>Where:</b> 7101 State Route 3, Pulaski, NY 13142</span><span><b>Call:</b> <a href="tel:+13152077750">(315) 207-7750</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/visit/state-parks/selkirk-shores-state-park" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.55395%2C-76.21228" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="nature" data-f="free" data-min="64"><details><summary><span class="pf-name">Salmon River Falls Unique Area</span><span class="pf-meta">Orwell &middot; Waterfall &middot; Free</span><span class="pf-min">64 min</span></summary><div class="pf-body"><p>Walk the accessible trail to two railed overlook platforms of the falls.</p><p class="pf-kids"><b>With kids:</b> A short, flat, stroller- and wheelchair-friendly packed-stone path (about a fifth of a mile) leads to railed overlooks of a 110-foot waterfall.</p><p class="pf-facts"><span><b>Where:</b> Falls Road parking area off County Route 22, near Altmar</span></p><p class="pf-links"><a href="https://dec.ny.gov/places/salmon-river-falls-unique-area" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.54674%2C-75.94348" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="other" data-f="free indoor winter" data-min="64"><details><summary><span class="pf-name">Salmon River Fish Hatchery</span><span class="pf-meta">Altmar &middot; More to do &middot; Free</span><span class="pf-min">64 min</span></summary><div class="pf-body"><p>Watch fish in the raceways and fish ladder, and read the displays on salmon and trout life stages.</p><p class="pf-kids"><b>With kids:</b> Walk-through viewing decks over the fish ladder where kids can watch real salmon and trout up close, plus indoor displays on how the fish are raised.</p><p class="pf-facts"><span><b>When:</b> Visitor building open daily roughly April through November; outdoor viewing decks open until dusk</span><span><b>Where:</b> 2133 County Route 22, Altmar, NY 13302</span><span><b>Call:</b> <a href="tel:+13152985051">315-298-5051</a></span></p><p class="pf-links"><a href="https://dec.ny.gov/things-to-do/freshwater-fishing/hatcheries/salmon-river" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=43.51008%2C-75.99207" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+      <li class="pf" data-group="parks" data-f="" data-min="65"><details><summary><span class="pf-name">Long Point State Park</span><span class="pf-meta">Three Mile Bay &middot; Park</span><span class="pf-min">65 min</span></summary><div class="pf-body"><p>Chaumont Bay state park with a playground, camping, cabins, boat launch and dockage.</p><p class="pf-kids"><b>With kids:</b> Playground on a protected bay, breezes help keep mosquitoes down.</p><p class="pf-facts"><span><b>When:</b> Early May-Labor Day; 2026 camping season May 15-Sept 6</span><span><b>Where:</b> 7495 State Park Road, Three Mile Bay, NY 13693</span><span><b>Call:</b> <a href="tel:+13156495258">(315) 649-5258</a></span></p><p class="pf-links"><a href="https://parks.ny.gov/parks/longpoint" target="_blank" rel="noopener">Official page &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=44.02844%2C-76.21731" target="_blank" rel="noopener">Directions &rarr;</a></p></div></details></li>
+  </ul>
+  <button type="button" class="pf-more" id="pfMore">Show all 68 places</button>
+  <!--PLACES:END-->
+</div></section>
+
+<!-- HOW FAR IS EVERYTHING -->
+<section class="lh-sec" id="distance"><div class="shell">
+  <p class="eyebrow">How far is everything</p>
+  <h2>Closer than it <em>looks on a map.</em></h2>
+  <ol class="ladder">
+    <li><span class="t">10 min</span><span class="p">Black River Trail, flat and paved</span></li>
+    <li><span class="t">18 min</span><span class="p">Thompson Park and Zoo New York</span></li>
+    <li><span class="t">29 min</span><span class="p">Sackets Harbor and Lake Ontario</span></li>
+    <li><span class="t">34 min</span><span class="p">Westcott Beach State Park</span></li>
+    <li><span class="t">44 min</span><span class="p">Alexandria Bay and Boldt Castle</span></li>
+    <li><span class="t">1 hr 34</span><span class="p">Syracuse: the zoo, the MOST, the airport</span></li>
+  </ol>
+  <p class="fine">Drive times from the Main Gate by map routing, with no traffic or snow.</p>
+</div></section>
+
+<!-- WORTH THE DRIVE -->
+<section class="lh-sec" id="worth-the-drive"><div class="shell">
+  <p class="eyebrow">Worth the drive</p>
+  <h2>Weekends that feel <em>like a vacation.</em></h2>
+  <div class="drives">
+    <figure><div class="ph"><img src="/images/places/singer-castle-800.webp" srcset="/images/places/singer-castle-800.webp 800w, /images/places/singer-castle.webp 1600w" sizes="(max-width: 900px) 100vw, 340px" alt="Singer Castle's stone towers and red roofs on Dark Island, with a Canadian flag at the dock" loading="lazy" decoding="async" width="800" height="600"></div><figcaption><b>Singer Castle</b><span>50 min to the boats at Schermerhorn Harbor &middot; guided tours of a castle with hidden passages</span></figcaption></figure>
+    <figure><div class="ph"><img src="/images/places/thousand-islands-bridge-800.webp" srcset="/images/places/thousand-islands-bridge-800.webp 800w, /images/places/thousand-islands-bridge.webp 1600w" sizes="(max-width: 900px) 100vw, 340px" alt="The green Thousand Islands Bridge crossing wooded islands on the St. Lawrence River in summer" loading="lazy" decoding="async" width="800" height="535"></div><figcaption><b>The Thousand Islands</b><span>38 min to Wellesley Island State Park &middot; beaches, a nature center, the bridge to Canada</span></figcaption></figure>
+    <figure><div class="ph"><img src="/images/places/clayton-waterfront-800.webp" srcset="/images/places/clayton-waterfront-800.webp 800w, /images/places/clayton-waterfront.webp 1600w" sizes="(max-width: 900px) 100vw, 340px" alt="Clayton's waterfront pavilion with the tall masts of a sailing ship behind it" loading="lazy" decoding="async" width="800" height="524"></div><figcaption><b>Clayton</b><span>38 min &middot; the Antique Boat Museum and a walkable river town</span></figcaption></figure>
+  </div>
+</div></section>
+
 <!-- ESSENTIALS + MAP -->
-<section class="band" id="essentials">
+<section class="band" id="essentials" style="padding-top:72px;">
   <div id="groceries"></div>
   <div class="shell">
-    <div class="sec-head"><div class="sec-eyebrow">Start Here</div><h2>The essentials, on one map</h2><span>Groceries · medical · dining · storage</span></div>
-    <p class="lede">Everything you need in your first month, pinned. Click any pin for the name, address, tap-to-call, and directions.</p>
+    <p class="eyebrow">Your first month</p><h2>The essentials, <em>on one map.</em></h2><p class="lh-sub">Groceries, medical, food and storage, pinned.</p>
+    <p class="lede">Tap any pin for the name, address, phone and directions.</p>
     <div class="map-legend">
       <span><i style="background:#C9A84C;"></i>Commissary</span>
       <span><i style="background:#5BA4F5;"></i>Grocery</span>
@@ -329,201 +574,88 @@
       </div>
     </div>
     <div class="tips" style="margin-top:24px;">
-      <div class="tip"><b>Grocery</b><span>17 stores across 5 towns. Walmart + ALDI near the gate. Hannaford + Price Chopper in Watertown. Commissary on post: tax-free with military ID.</span></div>
-      <div class="tip"><b>Medical</b><span>Guthrie Clinic on post. Samaritan ER 24/7. Urgent care in Evans Mills (walk-in, near gate). OB/GYN delivers at Samaritan.</span></div>
-      <div class="tip"><b>Food &amp; dining</b><span>Garland City Beer Works, Chatterbox Diner, Pete's Pizza, Sackets Harbor Brewing. Growing food scene, not just chains. Full list below.</span></div>
-      <div class="tip"><b>Storage</b><span>ABC Self Storage (largest in NNY), Watertown Storage Solutions near the gate, U-Haul, KO Storage. Climate-controlled options available.</span></div>
+      <div class="tip"><b>Groceries</b><span>The commissary on post, plus supermarkets in Watertown and near the gates. Tap a pin for the address and directions.</span></div>
+      <div class="tip"><b>Medical</b><span>Guthrie clinic on post, Samaritan hospital in Watertown, and who to call first: see the <a href="/fort-drum/healthcare">Healthcare chapter</a>.</span></div>
+      <div class="tip"><b>Food</b><span>Restaurants are pinned on the map; the local institutions are under "Worth the table" below.</span></div>
+      <div class="tip"><b>Storage</b><span>Storage options are pinned too. Ask about climate control before you sign: the winters are long.</span></div>
     </div>
   </div>
 </section>
 
-<!-- SITUATION CHIPS -->
-<div class="shell">
-  <div class="sit-chips" id="sitChips" role="group" aria-label="Filter family activities">
-    <button class="sit-chip active" data-filter="all" type="button">All</button>
-    <button class="sit-chip" data-filter="free" type="button">Free</button>
-    <button class="sit-chip" data-filter="indoor" type="button">Indoor</button>
-    <button class="sit-chip" data-filter="under20" type="button">Under 20 min</button>
-    <button class="sit-chip" data-filter="baby" type="button">Baby-friendly</button>
-    <button class="sit-chip" data-filter="winter" type="button">Winter-proof</button>
+
+
+<!-- EVERYTHING ELSE, FOLDED -->
+<section class="lh-sec" id="more"><div class="shell">
+  <p class="eyebrow">Everything else</p>
+  <h2>The rest of the list, <em>one tap away.</em></h2>
+  <div class="folds">
+    <details class="fold" id="day-trips"><summary><b>Day trips, ranked by drive</b><span>15 trips</span></summary><div class="fold-in">
+      <h3 class="sub-h">Under 30 minutes</h3>
+      <div class="dt-row"><b>Thompson Park + Zoo New York</b><span class="drv">18 min</span><small>355-acre Olmsted-designed park above the city: zoo, pool, splash pad, playgrounds, an easy loop trail and cross-country ski trails.</small><span class="price">Park free &middot; zoo admission</span></div>
+      <div class="dt-row"><b>Burrville Cider Mill</b><span class="drv">18 min</span><small>An 1801 mill with its own waterfall: cider donuts and fresh cider, Labor Day weekend to the day before Thanksgiving.</small><span class="price">Fall only &middot; <a href="tel:+13157887292">(315) 788-7292</a></span></div>
+      <div class="dt-row"><b>Sackets Harbor</b><span class="drv">29 min</span><small>War of 1812 battlefield with summer reenactors, the restored Navy Yard, a walkable Main Street and Lake Ontario sunsets.</small><span class="price">Battlefield grounds free</span></div>
+      <div class="dt-row"><b>Black River village</b><span class="drv">10 min</span><small>Ride or stroll the flat, paved 4.5-mile Black River Trail along the river.</small><span class="price">Free</span></div>
+      <h3 class="sub-h">30 to 60 minutes</h3>
+      <div class="dt-row"><b>Clayton</b><span class="drv">38 min</span><small>The Antique Boat Museum: 300+ boats, kids' programs, skiff rowing and speedboat rides, plus a walkable riverfront downtown.</small><span class="price">Museum <a href="tel:+13156864104">(315) 686-4104</a></span></div>
+      <div class="dt-row"><b>Alexandria Bay &middot; Boldt Castle</b><span class="drv">44 min</span><small>A castle on Heart Island, reached by boat, open May 9 to Oct 12 in 2026. Uncle Sam Boat Tours (since 1926) runs castle stopovers: <a href="tel:+13154822611">(315) 482-2611</a>.</small><span class="price">$14 adult &middot; $10 child 5&ndash;12 &middot; under 5 free</span></div>
+      <div class="dt-row"><b>Wellesley Island State Park</b><span class="drv">38 min</span><small>The largest camping complex in the Thousand Islands: a beach, plus the Minna Anthony Common Nature Center with trails and programs.</small><span class="price">State park fee in season</span></div>
+      <div class="dt-row"><b>Cape Vincent</b><span class="drv">48 min</span><small>Tibbetts Point Lighthouse (1827), where Lake Ontario meets the St. Lawrence, still with its original Fresnel lens. The Wolfe Island ferry leaves from the village.</small><span class="price">Grounds free, daylight hours</span></div>
+      <div class="dt-row"><b>Singer Castle, Dark Island</b><span class="drv">50 min</span><small>A guided tour of four floors, hidden passages included. The shuttle leaves Schermerhorn Harbor Wednesday to Saturday, June 17 to Aug 29, 2026: <a href="tel:+13153245966">(315) 324-5966</a>.</small><span class="price">$14.75 / <b>military $12.75</b> &middot; child $7.75 / <b>$6.75</b></span></div>
+      <h3 class="sub-h">1 to 2 hours</h3>
+      <div class="dt-row"><b>Salmon River Falls</b><span class="drv">1 hr 4 min</span><small>A 110-foot waterfall and a flat 0.2-mile path to railed overlooks, stroller-friendly.</small><span class="price">Free</span></div>
+      <div class="dt-row"><b>Kingston, Ontario</b><span class="drv">1 hr 12 min</span><small>Fort Henry's costumed interpreters and the Marine Museum of the Great Lakes, over the Thousand Islands Bridge. Add time for the border.</small><span class="price">Passport required</span></div>
+      <div class="dt-row"><b>Syracuse</b><span class="drv">1 hr 34 min</span><small>Rosamond Gifford Zoo (700+ animals), the MOST science museum and its domed National Grid ExploraDome, and Destiny USA for a rainy day.</small><span class="price">&nbsp;</span></div>
+      <div class="dt-row"><b>Old Forge, Adirondacks</b><span class="drv">2 hr</span><small>Enchanted Forest Water Safari, New York's largest water theme park, plus the McCauley Mountain scenic chairlift.</small><span class="price">Seasonal</span></div>
+      <h3 class="sub-h">Worth a weekend</h3>
+      <div class="dt-row"><b>Ottawa, Ontario</b><span class="drv">2 hr 24 min</span><small>Winterlude and the Rideau Canal Skateway in winter (free), plus free Parliament tours, the national museums and ByWard Market.</small><span class="price">Skateway free</span></div>
+      <div class="dt-row"><b>Montreal, Quebec</b><span class="drv">3 hr 37 min</span><small>The bigger weekend: Old Montreal, the food scene and festivals year-round.</small><span class="price">&nbsp;</span></div>
+      <p class="lede" style="margin-top:16px;"><b>Crossing into Canada:</b> a passport, passport card or NEXUS is required at the Thousand Islands Bridge (toll both ways). Soldiers: confirm the current leave and pass policy for international travel with your chain of command. Fort Drum has an on-post passport office.</p>
+      <p class="fine">Drive times from the Main Gate by map routing, with no traffic, snow or border wait.</p>
+    </div></details>
+
+    <details class="fold" id="events"><summary><b>The year, month by month</b><span>The calendar</span></summary><div class="fold-in">
+      <div class="mo-row"><b>Jan &ndash; Feb</b><span>Snowtown USA at Thompson Park: skating at the rotary pavilion; the "Snowtown" name goes back to Walter Cronkite's Blizzard of '77 coverage. <i>&middot;</i> Ottawa's Winterlude, Jan 30 to Feb 16 in 2026: ice sculptures and a snow playground, mostly free.</span></div>
+      <div class="mo-row"><b>March</b><span>NYS Maple Weekend: sugarhouses across Lewis and Jefferson counties open their doors over two weekends; the Maple Museum in Croghan runs pancake breakfasts ($12 adult / $7 child).</span></div>
+      <div class="mo-row"><b>May</b><span>Boldt Castle opens for the season, May 9 in 2026.</span></div>
+      <div class="mo-row"><b>June</b><span>Beaches open; Westcott Beach's swim season runs June 19 to Sept 6 in 2026 <i>&middot;</i> the Singer Castle shuttle starts June 17 <i>&middot;</i> Mountainfest on post: a free festival with kids' games, military demos and a free headline concert (2026: Nate Smith and Chayce Beckham).</span></div>
+      <div class="mo-row"><b>July</b><span>Cape Vincent French Festival, July 10&ndash;12 in 2026 (the 57th): pastries, a parade and fireworks <i>&middot;</i> <b style="font-weight:700;">Jefferson County Fair, July 14&ndash;19, 2026</b>: the longest continuously operating fair in the USA, per the fair itself, and 2026 is the 209th <i>&middot;</i> Can-Am Festival in Sackets Harbor: parade, fireworks, vintage baseball, soapbox derby; confirm dates with the village.</span></div>
+      <div class="mo-row"><b>August</b><span>Antique Boat Show &amp; Auction in Clayton, America's oldest, the first weekend <i>&middot;</i> Bill Johnston's Pirate Days, Alexandria Bay, Aug 14&ndash;16 in 2026: a pirate invasion Saturday and a downtown parade Sunday.</span></div>
+      <div class="mo-row"><b>Sept &ndash; Oct</b><span>The salmon run hits the Salmon River <i>&middot;</i> Burrville cider season <i>&middot;</i> Boo at the Zoo: October weekends, costumed trick-or-treating <i>&middot;</i> Old McDonald's Farm corn maze and pumpkins, through Oct 31.</span></div>
+      <div class="mo-row"><b>Nov &ndash; Mar</b><span>Watertown Wolves hockey at the Municipal Arena, with a Salute the Military Night each season. (Watertown Rapids collegiate baseball takes the summer shift.)</span></div>
+      <div class="mo-row"><b>December</b><span>Watertown Christmas Parade: Washington Street to City Hall, with free hot chocolate from the downtown businesses.</span></div>
+    </div></details>
+
+    <details class="fold" id="eats"><summary><b>Worth the table</b><span>Local institutions</span></summary><div class="fold-in">
+      <div class="eat-row"><b>Crystal Restaurant</b><small>Watertown's oldest restaurant: original tin ceilings, one of the last stand-up bars in the country, and the famous winter Tom &amp; Jerry.</small><span class="where">Public Square &middot; since 1925</span></div>
+      <div class="eat-row"><b>Art's Jug</b><small>Four generations of the Sboro family, the North Country red-sauce institution.</small><span class="where">Watertown &middot; since 1933</span></div>
+      <div class="eat-row"><b>1812 Brewing Company</b><small>Local "gold medal beer" and pub food. The Sackets Harbor brewpub (once Sackets Harbor Brewing Co.) sits in the former New York Central railroad station.</small><span class="where">Watertown &middot; Sackets Harbor</span></div>
+      <div class="eat-row"><b>Tin Pan Galley</b><small>A garden patio and live music, the date-night pick.</small><span class="where">Sackets Harbor</span></div>
+      <div class="eat-row"><b>Wood Boat Brewery</b><small>Farm-sourced brews, brick-oven pizza and a dog-friendly deck near the river.</small><span class="where">Clayton</span></div>
+      <div class="eat-row"><b>Burrville Cider Mill</b><small>The donuts. Fresh cider from an 1801 mill with a waterfall out back, fall only.</small><span class="where">Burrville &middot; fall</span></div>
+    </div></details>
+
+    <details class="fold" id="military-deals"><summary><b>The military discount stack</b><span>Bring your ID</span></summary><div class="fold-in">
+      <div class="tips">
+        <div class="tip"><b>LTS/ITR office &middot; on post, first stop</b><span>Mon&ndash;Fri 8:00&ndash;2:30 &middot; <a href="tel:+13157728222">(315) 772-8222</a> or <a href="tel:+13157725169">(315) 772-5169</a>. Current examples: Disney World 4&ndash;6 day Park Hoppers $409&ndash;$449, Disneyland $314&ndash;$505, Universal Orlando $215&ndash;$255, Legoland NY from $49.50, all under gate price. Call for the full list.</span></div>
+        <div class="tip"><b>Singer Castle</b><span>Published military rate: $12.75 adult / $6.75 child (vs. $14.75 / $7.75).</span></div>
+        <div class="tip"><b>Dry Hill Ski Area</b><span>Military discounts on skiing and tubing.</span></div>
+        <div class="tip"><b>Watertown Wolves</b><span>A Salute the Military Night each season: discounted admission and the color guard on the ice.</span></div>
+        <div class="tip"><b>New York State Fair, Syracuse</b><span>A free-admission military day every year (the fair runs late August to Labor Day).</span></div>
+        <div class="tip"><b>Hotels for visiting family</b><span>TripAdvisor keeps a <a href="https://www.tripadvisor.com/HotelsList-Watertown-Hotels-With-Military-Discounts-zfp32734981.html" target="_blank" rel="noopener">list of Watertown hotels with military rates</a>.</span></div>
+      </div>
+      <p class="lede" style="margin-top:14px;">Other attractions often have military prices they don't publish: ask at the window with your ID before you pay full price.</p>
+    </div></details>
+
+    <details class="fold" id="photo-credits"><summary><b>Photo credits</b><span>Licenses</span></summary><div class="fold-in">
+      <p class="credits">Boldt Castle from Alexandria Bay: <a href="https://commons.wikimedia.org/wiki/File:Alexandria_bay_saint_lawrence_castle_05.07.2012.jpg" target="_blank" rel="noopener">Dirk Ingo Franke</a>, <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a>; The Black River: <a href="https://commons.wikimedia.org/wiki/File:Black_River,_New_York,_Nov_2015.jpg" target="_blank" rel="noopener">Ahodges7</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>; Whetstone Gulf: <a href="https://commons.wikimedia.org/wiki/File:Whetstone_Gulf_State_Park_-_New_York_-_6146419037.jpg" target="_blank" rel="noopener">Doug Kerr (Dougtone)</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener">CC BY-SA 2.0</a>; Wellesley Island State Park: <a href="https://commons.wikimedia.org/wiki/File:Wellesley_Island_camping_spot.jpg" target="_blank" rel="noopener">Laurel Wreath of Victors</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a>; Singer Castle: <a href="https://commons.wikimedia.org/wiki/File:Singer_Castle_2.JPG" target="_blank" rel="noopener">Ad Meskens</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a>; Thousand Islands Bridge: <a href="https://commons.wikimedia.org/wiki/File:Thousand_Islands_Bridge1.jpg" target="_blank" rel="noopener">Mykola Swarnyk</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>; Clayton waterfront: <a href="https://commons.wikimedia.org/wiki/File:Clayton-NY-2019.jpg" target="_blank" rel="noopener">Smerdis</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>. All via Wikimedia Commons; resized for the web, and the Boldt Castle photo is also cropped for phones.</p>
+    </div></details>
+
   </div>
-</div>
-
-<!-- FAMILY & KIDS -->
-<section class="section shell" id="family-kids">
-  <div class="sec-head"><div class="sec-eyebrow">Family &amp; Kids</div><h2>With kids, week to week</h2><span>What actually fills a Tuesday in January</span></div>
-  <p class="lede">Honest answer: yes, this is a good place to raise kids. The community is tight, the outdoor access is unreal, and the week-to-week routine is more full than the Google results suggest.</p>
-
-  <div class="callout">
-    <div class="label">Solo-parenting this weekend?</div>
-    <p>Filter for <b>Free</b> + <b>Indoor</b> above, and the storytimes are full of other moms who get it.</p>
-  </div>
-
-  <h3 class="sub-h">Indoor play: winter-critical</h3>
-  <div class="tips">
-    <div class="tip" data-tags="indoor winter"><b>Billy Beez · Salmon Run Mall</b><i class="fact">Indoor · call for hours &amp; prices</i><span>The big indoor play park, and effectively <i>the</i> indoor playground now: the mall's other play spots have closed. Plan on it all winter. <a href="tel:+13158164515">(315) 816-4515</a></span></div>
-    <div class="tip" data-tags="indoor winter under20"><b>Pine Plains Bowling Center · on post</b><i class="fact">Indoor · on post · closed Mon–Tue</i><span>24 lanes with bumpers, HyperBowling, snack bar, birthday parties. Closed Mon–Tue. <a href="tel:+13157726601">(315) 772-6601</a></span></div>
-    <div class="tip" data-tags="indoor winter baby"><b>Watertown Family YMCA</b><i class="fact">≈$38/mo members · from 18 months · indoor</i><span>Gymnastics from 18 months (Parent &amp; Tot, Tumbling Tigers, Ninja classes) at the Fairgrounds and Carthage sites, around $38/mo for members.</span></div>
-    <div class="tip" data-tags="indoor winter under20"><b>CYSS + SKIES Unlimited · on post</b><i class="fact">On post · via WebTrac · indoor</i><span>Dance, piano, gymnastics, martial arts, STEM/robotics via WebTrac. Register with Parent Central the day you get orders: the childcare waitlist runs 3–6 months. <a href="tel:+13157728675">(315) 772-8675</a></span></div>
-  </div>
-  <p class="lede" data-keep="1" style="margin-top:10px;">January Saturday, everything above closed or crowded? Honest answer: the library, the pool at Magrath, and a fort made of moving boxes. It counts.</p>
-
-  <h3 class="sub-h">Storytimes: one at nearly every library</h3>
-  <div class="tips">
-    <div class="tip" data-tags="free indoor baby winter"><b><a href="https://carthagefreelibrary.org/children-and-teens/" target="_blank" rel="noopener">Carthage Free Library</a></b><i class="fact">Free · Wed 10:30–11:45am · ages 0–4</i><span>Story Time Wednesdays 10:30–11:45am, ages 0–4: stories, craft, music. Summer reading for K–6.</span></div>
-    <div class="tip" data-tags="free indoor baby winter under20"><b><a href="https://www.flowermemoriallibrary.org" target="_blank" rel="noopener">Flower Memorial Library, Watertown</a></b><i class="fact">Free · preschool programs · call for schedule</i><span>Children's department with playrooms, puppet theater, costume area. Preschool story programs. Call Children's for the current schedule: <a href="tel:+13157857709">(315) 785-7709</a></span></div>
-    <div class="tip" data-tags="free indoor baby winter"><b><a href="https://haymemoriallibrary.org/" target="_blank" rel="noopener">Hay Memorial Library, Sackets Harbor</a></b><i class="fact">Free · morning storytimes</i><span>Morning storytimes plus interactive Story Walks. <a href="tel:+13156462228">(315) 646-2228</a></span></div>
-    <div class="tip" data-tags="free indoor baby winter under20"><b><a href="https://evansmillspubliclibrary.org/library-hours/" target="_blank" rel="noopener">Evans Mills Public Library</a> &amp; <a href="https://bodmanmemoriallibrary.org/" target="_blank" rel="noopener">Bodman Memorial, Philadelphia</a></b><i class="fact">Free · preschool story programs · gate-side</i><span>Preschool story programs and summer reading closest to the gate-side villages.</span></div>
-  </div>
-
-  <h3 class="sub-h">Swim &amp; splash</h3>
-  <div class="tips">
-    <div class="tip" data-tags="indoor winter under20"><b>Magrath indoor pool · on post</b><i class="fact">Indoor · on post · lessons free for AD soldiers</i><span>25m pool with "Learn to Swim" family and private lessons: free for active-duty soldiers. <a href="tel:+13157724806">(315) 772-4806</a></span></div>
-    <div class="tip" data-tags="indoor winter baby"><b>Watertown Family YMCA</b><i class="fact">Indoor · lessons from 6 months · Saturdays</i><span>Lessons from 6 months to adult at the downtown aquatic center: Saturday blocks for Parent &amp; Tot through Level 6, plus Carthage-site lessons.</span></div>
-    <div class="tip" data-tags="under20"><b>City pools</b><i class="fact">Summer · Thompson Park &amp; the fairgrounds</i><span>Thompson Park Pool and the Alteri Pool at the Duffy Fairgrounds. <a href="tel:+13157857775">(315) 785-7775</a></span></div>
-    <div class="tip" data-tags="free under20"><b>Splash pads</b><i class="fact">Free · mid-May on · ~10am–8pm daily</i><span>Thompson Park and North Elementary (Flynn), open mid-May, roughly 10am–8pm daily in season. Free.</span></div>
-  </div>
-
-  <h3 class="sub-h">Worth the trip, every time</h3>
-  <div class="tips one-col">
-    <div class="tip" data-tags="under20"><b>Zoo New York at Thompson Park</b><i class="fact">~20 min · admission charged · May–Oct daily 10–5</i><span>The only zoo in the world devoted to New York–native species: bears, wolves, wolverines, eagles, mountain lions. May–Oct daily 10–5; April weekends 10–5; Nov–Mar weekends 11–3 plus school breaks. A 2025 funding crisis nearly closed it. Go, your admission genuinely matters. <a href="tel:+13157826180">(315) 782-6180</a></span></div>
-    <div class="tip"><b>Old McDonald's Farm · Sackets Harbor</b><i class="fact">$15.95 ages 2+ · closed Mon–Tue</i><span>200+ animals, storybook hayride, mini golf, bounce pad; corn maze and pumpkin patch in fall. $15.95 ages 2+, closed Mon–Tue.</span></div>
-    <div class="tip" data-tags="free"><b>Sackets Harbor Battlefield, with kids</b><i class="fact">Free grounds · flat year-round trail · ~30 min</i><span>Living-history reenactors in 1813 uniform all summer, a flat year-round interpretive trail, and picnic tables over Lake Ontario. Free grounds, the easiest history lesson you'll ever run.</span></div>
-  </div>
-</section>
-
-<!-- PHOTO CARDS 1 (Warm Journal photo-card row) -->
-<div class="blog-grid">
-  <a class="bcard" href="#outdoors"><div class="im"><img src="images/thompson-park.jpg" srcset="images/thompson-park.jpg 1200w, images/thompson-park-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Thompson Park, Watertown NY" loading="lazy" decoding="async" width="1200" height="676"/></div><div class="bd"><span class="tag">~20 min · Free</span><h3>Thompson Park</h3><p>355 acres · zoo · pool · splash pad · the sledding hill</p><span class="go">Outdoors</span></div></a>
-  <a class="bcard" href="#day-trips"><div class="im"><img src="images/boldt-castle.jpg" srcset="images/boldt-castle.jpg 1200w, images/boldt-castle-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Boldt Castle in the Thousand Islands" loading="lazy" decoding="async" width="1200" height="800"/></div><div class="bd"><span class="tag">~45 min · Day trip</span><h3>Boldt Castle</h3><p>Boat access from Alexandria Bay, mid-May to mid-Oct</p><span class="go">Day trips</span></div></a>
-  <a class="bcard" href="#day-trips"><div class="im"><img src="images/sackets-harbor.webp" srcset="images/sackets-harbor.webp 1000w, images/sackets-harbor-800.webp 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Sackets Harbor on Lake Ontario" loading="lazy" decoding="async" width="1000" height="669"/></div><div class="bd"><span class="tag">~30 min</span><h3>Sackets Harbor</h3><p>1812 battlefield · breweries · Lake Ontario sunsets</p><span class="go">Day trips</span></div></a>
-</div>
-
-<!-- OUTDOORS BY SEASON -->
-<section class="section shell" id="outdoors">
-  <div class="sec-head"><div class="sec-eyebrow">Outdoors</div><h2>Outside, by season</h2><span>Drive times approx. from post</span></div>
-
-  <h3 class="sub-h">Hiking: spring through fall</h3>
-  <div class="tbl-wrap">
-    <table class="brief">
-      <thead><tr><th>Trail</th><th>Drive</th><th>Difficulty</th><th>Kid-friendly?</th></tr></thead>
-      <tbody>
-        <tr><td><b>Thompson Park Trails</b><small>Watertown · paved/gravel 1.7-mi loop</small></td><td class="num">~20 min</td><td>Easy</td><td>Yes, good from ages 2–4 up</td></tr>
-        <tr><td><b>Black River Trail</b><small>Flat rail-trail, ~4.5 mi to Black River village</small></td><td class="num">~10–20 min</td><td>Easy · flat</td><td>Yes, strollers and bikes</td></tr>
-        <tr><td><b>Wellesley Island · Minna Anthony Common</b><small>Nature center with live animals, miles of trails</small></td><td class="num">~50 min</td><td>Easy</td><td>Yes, built for families</td></tr>
-        <tr><td><b>Whetstone Gulf, Lowville</b><small>3-mile gorge on the Tug Hill edge; rim loop 5.6 mi</small></td><td class="num">~55 min</td><td>Moderate</td><td>Older kids, cliff edges</td></tr>
-        <tr><td><b>Salmon River Falls, Orwell</b><small>110-ft waterfall, 0.2-mi trail to overlook platforms</small></td><td class="num">~1 hr 10</td><td>Easy (falls trail)</td><td>Yes, the biggest payoff per step</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="lede" style="margin-top:10px;">Bigger days out: Inman Gulf's Rainbow Falls loop (6.9 mi over a 200–300-ft canyon), Gleasmans Falls (6.6 mi round trip), and Robert G. Wehle State Park's Lake Ontario bluffs, famous sunsets, but keep kids off the edges. On post: the Fort Drum Trails and James R. Kanik Nature Trail.</p>
-
-  <h3 class="sub-h">Beaches: summer</h3>
-  <div class="tips">
-    <div class="tip" data-tags="under20"><b>Westcott Beach State Park</b><span>The closest real beach: ~20 min, $7/car, lifeguarded swimming, picnic tables, minutes from Sackets Harbor.</span></div>
-    <div class="tip"><b>Southwick Beach State Park</b><span>3,500 feet of sand, among the best on Lake Ontario. ~40 min, $8/car May–Oct; guarded swimming June 19–Sept 6 in 2026.</span></div>
-    <div class="tip" data-tags="under20"><b>Remington Park · on post</b><span>Beach on Remington Pond, May–Oct, plus pavilions, playgrounds, fishing docks, and cabin/RV rentals. <a href="tel:+13157728222">(315) 772-8222</a></span></div>
-    <div class="tip"><b>Wellesley Island State Park</b><span>Beach at the largest camping complex in the Thousand Islands: pair it with the nature center.</span></div>
-  </div>
-
-  <h3 class="sub-h">Fishing: year-round</h3>
-  <div class="tips">
-    <div class="tip"><b>Henderson Harbor · the "Golden Crescent"</b><span>60+ Lake Ontario charters: lake trout, king salmon, browns, steelhead, smallmouth. Season runs roughly April–September.</span></div>
-    <div class="tip" data-tags="under20"><b>Black River</b><span>Bass and pike water 10 minutes from post, plus fall salmon and steelhead runs. Charters from around $120.</span></div>
-    <div class="tip"><b>Salmon River, Pulaski (~50 min)</b><span>The most famous Lake Ontario tributary: 15–40-lb king salmon Sept–Oct, steelhead fall through spring.</span></div>
-    <div class="tip" data-tags="winter"><b>Ice fishing</b><span>Rent everything from MWR Outdoor Rec's Gear to Go: see winter, below.</span></div>
-  </div>
-
-  <h3 class="sub-h">Winter: the Tug Hill snow machine</h3>
-  <div class="tips">
-    <div class="tip" data-tags="winter"><b>Dry Hill Ski Area</b><span>10 min south of downtown Watertown: 7 trails, 300-ft vertical, terrain park, snow tubing with snowmaking. The learn-to-ski hill, with military discounts. <a href="tel:+13157828584">(315) 782-8584</a></span></div>
-    <div class="tip" data-tags="winter"><b>Snow Ridge, Turin (~50 min)</b><span>230&Prime; average snowfall: 22 trails, 6 lifts, night skiing, glades, tubing, backcountry acreage.</span></div>
-    <div class="tip" data-tags="winter"><b>Maple Ridge Snow Park, Lowville</b><span>The longest tubing lanes in the North Country: 1,200 ft with a tube tow, weekends and school holidays 12–5, natural snow only. Operations have changed hands: verify it's running each season before you drive.</span></div>
-    <div class="tip" data-tags="winter under20"><b>MWR Gear to Go · on post</b><span>Rent ski/snowboard packages, snowshoes, XC skis, fat-tire bikes, and ice-fishing gear cheap; boats, campers, and canoes in summer. <a href="tel:+13157728222">(315) 772-8222</a></span></div>
-    <div class="tip" data-tags="winter"><b>Snowmobiling on Tug Hill</b><span>Club-groomed trail networks: Osceola Snowmobile Club, Penn Mountain Snow Riders, Turin Ridge Riders, Valley Snow Travelers. Trail info at <a href="https://tughill.org/links-local/" target="_blank" rel="noopener">tughill.org</a>.</span></div>
-    <div class="tip" data-tags="free winter under20"><b>Sledding, free version</b><span>Thompson Park's famous hill, or Dry Hill's tubing park for the lift-served upgrade. XC ski and snowshoe at Whetstone Gulf, Wellesley Island, and Wehle.</span></div>
-  </div>
-</section>
-
-<!-- DAY TRIPS -->
-<section class="section shell" id="day-trips">
-  <div class="sec-head"><div class="sec-eyebrow">Day Trips</div><h2>Day trips, ranked by drive</h2><span>All times approx. from Fort Drum/Watertown</span></div>
-
-  <h3 class="sub-h">Under 30 minutes</h3>
-  <div class="dt-row"><b>Thompson Park + Zoo New York</b><span class="drv">~20 min</span><small>355-acre Olmsted-designed park above the city: zoo, pool, splash pad, playgrounds, easy loop trail, cross-country ski trails.</small><span class="price">Park free · zoo details above</span></div>
-  <div class="dt-row"><b>Burrville Cider Mill</b><span class="drv">~20 min</span><small>1801 mill with its own waterfall: cider donuts daily, pressing you can watch Tue/Thu/Sat/Sun mornings. Roughly Labor Day–Thanksgiving.</small><span class="price">Fall only · <a href="tel:+13157887292" style="font-weight:600;">(315) 788-7292</a></span></div>
-  <div class="dt-row"><b>Sackets Harbor</b><span class="drv">~30 min</span><small>War of 1812 battlefield with summer reenactors, restored 1850s Navy Yard, walkable Main Street, breweries, Lake Ontario sunsets.</small><span class="price">Battlefield grounds free</span></div>
-  <div class="dt-row"><b>Black River village</b><span class="drv">~10–20 min</span><small>Ride or stroll the flat 4.5-mile Black River Trail along the river, the easiest outing on this page.</small><span class="price">Free</span></div>
-
-  <h3 class="sub-h">30–60 minutes</h3>
-  <div class="dt-row"><b>Clayton</b><span class="drv">~40 min</span><small>Antique Boat Museum: 300+ boats, kids' programs, skiff rowing, speedboat rides, plus a walkable riverfront downtown and Wood Boat Brewery.</small><span class="price"><i>Castle boats: (315) 686-4820</i></span></div>
-  <div class="dt-row"><b>Alexandria Bay · Boldt Castle</b><span class="drv">~45 min</span><small>Boat-access castle on Heart Island, mid-May to mid-Oct. Uncle Sam Boat Tours (since 1926) runs Millionaires Row and castle stopovers: <a href="tel:+13154822611" style="font-weight:600;">(315) 482-2611</a>.</small><span class="price">~$10 adult / $7 child 5–12, <i>confirm at boldtcastle.com</i></span></div>
-  <div class="dt-row"><b>Cape Vincent</b><span class="drv">~50 min</span><small>Tibbetts Point Lighthouse (1827), where Lake Ontario meets the St. Lawrence: the only original working Fresnel lens on the lake. Village farmers market and the Wolfe Island ferry.</small><span class="price">Grounds free, daylight hours</span></div>
-  <div class="dt-row"><b>Wellesley Island State Park</b><span class="drv">~50 min</span><small>Largest camping complex in the Thousand Islands: beach, plus the Minna Anthony Common Nature Center with live animals and family trails.</small><span class="price">&nbsp;</span></div>
-  <div class="dt-row"><b>Singer Castle, Dark Island</b><span class="drv">~1 hr</span><small>45-minute guided tour of four floors: hidden passages, the Great Hall, the 4th-floor dormitory. Shuttle from Schermerhorn Harbor Wed–Sat in summer: <a href="tel:+13153245966" style="font-weight:600;">(315) 324-5966</a>.</small><span class="price">$14.75 / <b>military $12.75</b> · child $7.75 / <b>$6.75</b></span></div>
-
-  <h3 class="sub-h">1–2 hours</h3>
-  <div class="dt-row"><b>Salmon River Falls</b><span class="drv">~1 hr 10</span><small>110-ft waterfall with a 0.2-mile kid-friendly trail to overlook platforms. Limited parking, no restrooms.</small><span class="price">Free</span></div>
-  <div class="dt-row"><b>Syracuse</b><span class="drv">~1 hr 15</span><small>Rosamond Gifford Zoo (700+ animals), the MOST science museum with NY's only domed IMAX, and Destiny USA for the rainy-day mall run.</small><span class="price">&nbsp;</span></div>
-  <div class="dt-row"><b>Kingston, Ontario</b><span class="drv">~1.5 hr</span><small>Fort Henry's costumed interpreters, the Marine Museum of the Great Lakes, a dinosaur-and-AR geology museum, a real international day trip over the Thousand Islands Bridge.</small><span class="price">Passport required</span></div>
-  <div class="dt-row"><b>Old Forge, Adirondacks</b><span class="drv">~1.5–2 hr</span><small>Enchanted Forest Water Safari: New York's largest water theme park, 50+ rides including 32 heated water rides, plus go-karts at Calypso's Cove and the McCauley Mountain scenic chairlift.</small><span class="price">Seasonal</span></div>
-
-  <h3 class="sub-h">Worth a weekend</h3>
-  <div class="dt-row"><b>Ottawa, Ontario</b><span class="drv">~2.5 hr</span><small>Winterlude and the Rideau Canal Skateway in winter (the world's largest naturally frozen rink, free), plus free Parliament tours, national museums, and ByWard Market.</small><span class="price">Skateway free</span></div>
-  <div class="dt-row"><b>Montreal, Quebec</b><span class="drv">~3.5 hr</span><small>The bigger weekend: Old Montreal, the food scene, festivals year-round.</small><span class="price">&nbsp;</span></div>
-
-  <p class="lede" style="margin-top:16px;"><b>Crossing into Canada:</b> passport, passport card, or NEXUS required at the Thousand Islands Bridge (toll both ways). Service members: confirm the current leave/pass policy for international travel with your chain of command; Fort Drum has an on-post Official Passport and Visa Center.</p>
-</section>
-
-<!-- PHOTO CARDS 2 (Warm Journal photo-card row) -->
-<div class="blog-grid">
-  <a class="bcard" href="#day-trips"><div class="im"><img src="images/thousand-islands.jpg" srcset="images/thousand-islands.jpg 950w, images/thousand-islands-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Thousand Islands, St. Lawrence River" loading="lazy" decoding="async" width="950" height="650"/></div><div class="bd"><span class="tag">Two countries</span><h3>Thousand Islands</h3><p>1,864 islands · two countries · one river</p><span class="go">Day trips</span></div></a>
-  <a class="bcard" href="#outdoors"><div class="im"><img src="images/north-country-winter.jpg" srcset="images/north-country-winter.jpg 1800w, images/north-country-winter-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="North Country winter on the Tug Hill Plateau" loading="lazy" decoding="async" width="1800" height="1198"/></div><div class="bd"><span class="tag">Winter</span><h3>Tug Hill winter</h3><p>The snowiest region east of the Rockies</p><span class="go">Outdoors</span></div></a>
-  <a class="bcard" href="#events"><div class="im"><img src="images/watertown-downtown.jpg" srcset="images/watertown-downtown.jpg 1200w, images/watertown-downtown-800.jpg 800w" sizes="(max-width: 900px) 100vw, 340px" alt="Downtown Watertown NY" loading="lazy" decoding="async" width="1200" height="832"/></div><div class="bd"><span class="tag">Public Square</span><h3>Downtown Watertown</h3><p>Wednesday farmers market</p><span class="go">The year</span></div></a>
-</div>
-
-<!-- EVENTS -->
-<section class="section shell" id="events">
-  <div class="sec-head"><div class="sec-eyebrow">The Calendar</div><h2>The year, month by month</h2><span>There is always something on the calendar</span></div>
-  <div class="mo-row"><b>Jan – Feb</b><span>Snowtown USA at Thompson Park: skating at the rotary pavilion; the "Snowtown" name goes back to Walter Cronkite's Blizzard of '77 coverage. <i>·</i> Ottawa's Winterlude, Jan 30–Feb 16 in 2026: ice sculptures, a snow playground, mostly free.</span></div>
-  <div class="mo-row"><b>March</b><span>NYS Maple Weekend: sugarhouses across Lewis and Jefferson counties open their doors over two weekends; the Maple Museum in Croghan runs pancake breakfasts ($12 adult / $7 child).</span></div>
-  <div class="mo-row"><b>May</b><span>Boldt Castle opens for the season, mid-May.</span></div>
-  <div class="mo-row"><b>June</b><span>Beaches open <i>·</i> Singer Castle shuttle season starts (June 17 in 2026) <i>·</i> Mountainfest on post: free festival with kids' games, military demos, and a free headline concert (2026: Nate Smith and Chayce Beckham).</span></div>
-  <div class="mo-row"><b>July</b><span>Cape Vincent French Festival, July 10–11 in 2026 (56th year): pastries, parade, fireworks <i>·</i> <b style="font-weight:700;">Jefferson County Fair, July 14–19, 2026</b>: the oldest continuously running fair in the US, since 1817 (per jeffcofair.org) <i>·</i> Can-Am Festival in Sackets Harbor: parade, fireworks, vintage baseball, soapbox derby; confirm dates with the village.</span></div>
-  <div class="mo-row"><b>August</b><span>Antique Boat Show &amp; Auction in Clayton: America's oldest, first weekend <i>·</i> Bill Johnston's Pirate Days, Alexandria Bay, Aug 14–16 in 2026: pirate invasion Saturday, downtown parade Sunday.</span></div>
-  <div class="mo-row"><b>Sept – Oct</b><span>The salmon run hits the Salmon River (kings 15–40 lb) <i>·</i> Burrville cider season peaks with the foliage <i>·</i> Boo at the Zoo: Halloween-season weekends 10–3, costumed trick-or-treating.</span></div>
-  <div class="mo-row"><b>Nov – Mar</b><span>Watertown Wolves hockey at the Municipal Arena: family-priced pro hockey with frequent military appreciation nights. (Watertown Rapids collegiate baseball takes the summer shift.)</span></div>
-  <div class="mo-row"><b>December</b><span>Watertown Christmas Parade: Washington Street to City Hall, free hot chocolate from the downtown businesses.</span></div>
-</section>
-
-<!-- EATS -->
-<section class="section shell" id="eats">
-  <div class="sec-head"><div class="sec-eyebrow">Food &amp; Drink</div><h2>Worth the table</h2><span>The verified institutions</span></div>
-  <div class="eat-row"><b>Crystal Restaurant</b><small>Watertown's oldest restaurant: original tin ceilings, one of the last stand-up bars in the country, and the famous winter Tom &amp; Jerry cocktail.</small><span class="where">Public Square · since 1925</span></div>
-  <div class="eat-row"><b>Art's Jug</b><small>Four generations of the Sboro family, the North Country red-sauce institution.</small><span class="where">Watertown · since 1933</span></div>
-  <div class="eat-row"><b>1812 Brewing Company</b><small>Local "gold medal beer" and pub food.</small><span class="where">Watertown</span></div>
-  <div class="eat-row"><b>Sackets Harbor Brewing Co.</b><small>One of NY's oldest continuing microbreweries, in the former NY Central railroad station: 30+ house beers and a sunset deck on the lake.</small><span class="where">Sackets Harbor</span></div>
-  <div class="eat-row"><b>Tin Pan Galley</b><small>Garden patio and live music, the date-night pick.</small><span class="where">Sackets Harbor</span></div>
-  <div class="eat-row"><b>Wood Boat Brewery</b><small>Farm-sourced brews, brick-oven pizza, dog-friendly deck near the river.</small><span class="where">Clayton</span></div>
-  <div class="eat-row"><b>Burrville Cider Mill</b><small>The donuts. Fresh cider daily from an 1801 mill with a waterfall out back, fall only.</small><span class="where">Burrville · fall</span></div>
-  <p class="lede" style="margin-top:14px;">Locals also name Garland City Beer Works, Maggie's on the River (Black River patio), Pete's Trattoria, and Friede's diner-car breakfasts: ask any spouse group.</p>
-</section>
-
-<!-- MILITARY DEALS -->
-<section class="section shell" id="military-deals">
-  <div class="sec-head"><div class="sec-eyebrow">Military Discounts</div><h2>The discount stack</h2><span>Bring your ID everywhere</span></div>
-  <div class="tips">
-    <div class="tip"><b>LTS/ITR office · on post, first stop</b><span>Mon–Fri 8:00–2:30 · <a href="tel:+13157728222">(315) 772-8222</a> or <a href="tel:+13157725169">(315) 772-5169</a>. Current price list examples: Disney World 4–6 day Park Hoppers $409–$479, Disneyland $314–$505, Universal Orlando $215–$255, Legoland NY from $49.50, all under gate price. Call for the full list.</span></div>
-    <div class="tip"><b>Singer Castle</b><span>Published military rate: $12.75 adult / $6.75 child (vs $14.75 / $7.75).</span></div>
-    <div class="tip"><b>Dry Hill Ski Area</b><span>Military discounts on skiing and tubing, and it's the cheap local hill to begin with.</span></div>
-    <div class="tip"><b>Watertown Wolves</b><span>Recurring military appreciation nights: discounted admission, color guard, re-enlistment ceremonies on the ice.</span></div>
-    <div class="tip"><b>New York State Fair, Syracuse</b><span>Free-admission military day every year (fair runs late Aug–Labor Day).</span></div>
-    <div class="tip"><b>Hotels</b><span>TripAdvisor keeps a <a href="https://www.tripadvisor.com/HotelsList-Watertown-Hotels-With-Military-Discounts-zfp32734981.html" target="_blank" rel="noopener">running list of Watertown hotels with military rates</a>, useful for visiting family.</span></div>
-  </div>
-  <p class="lede" style="margin-top:14px;">Water Safari, Uncle Sam Boat Tours, and Boldt Castle discounts are commonly reported but not published: ask at the window with your ID before you pay full price.</p>
-</section>
+  <p class="page-verified">Places, prices and dates checked in September 2026 against each place's official page, New York State Parks, the DEC, the land trusts and Fort Drum MWR. Hours and prices change: check the official page before you drive.</p>
+</div></section>
 
 </main>
+
 
 <!-- THE CONVERSION PLATE + SUGGESTION FORM -->
 <div class="plate rv">
@@ -702,14 +834,14 @@
       <div style="font-size:13px;font-weight:700;color:#fff;">Grocery · Medical · Storage</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
-    <a href="/living-here#family-kids" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+    <a href="/living-here#places" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
       <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
       <div style="font-size:13px;font-weight:700;color:#fff;">Family &amp; Kids</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
-    <a href="/living-here#outdoors" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
+    <a href="/living-here#day-trips" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
       <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6CEDB" stroke-width="2"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
-      <div style="font-size:13px;font-weight:700;color:#fff;">Outdoors &amp; Adventures</div>
+      <div style="font-size:13px;font-weight:700;color:#fff;">Day trips</div>
       <div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div>
     </a>
     <a href="/living-here#day-trips" onclick="toggleQuickLinks()" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;">
@@ -744,95 +876,74 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
 </script>
 
 <script>
-// Sticky section nav: show after scrolling past hero, highlight current section
-(function(){
-  var nav = document.getElementById('sectionNav');
-  var links = document.querySelectorAll('.snav-link');
-  var sections = [];
-  links.forEach(function(l){
-    var t = document.querySelector(l.getAttribute('href'));
-    if(t) sections.push({el:t, link:l});
-  });
-
-  function update(){
-    // Show/hide nav based on scroll position
-    nav.style.display = window.scrollY > 400 ? 'block' : 'none';
-
-    // Highlight current section
-    var current = null;
-    sections.forEach(function(s){
-      if(s.el.getBoundingClientRect().top <= 150) current = s;
+// Places finder: the rows are static HTML (built by tools/build-places.py); this only filters them.
+(function () {
+  var list = document.getElementById('pfList');
+  if (!list) return;
+  var rows = [].slice.call(list.querySelectorAll('.pf'));
+  var chips = document.querySelectorAll('.pf-tools .chips button');
+  var kind = document.getElementById('pfKind');
+  var more = document.getElementById('pfMore');
+  var count = document.getElementById('pfCount');
+  var show = parseInt(list.dataset.show, 10) || 24, expanded = false, flag = 'all';
+  var none = document.createElement('p');
+  none.className = 'pf-none'; none.hidden = true;
+  none.textContent = 'Nothing matches both of those yet. Try another filter, or tell us a place below.';
+  list.parentNode.insertBefore(none, more);
+  function apply() {
+    var k = kind.value, shown = 0, matched = 0;
+    rows.forEach(function (r) {
+      var ok = (flag === 'all' || r.dataset.f.split(' ').indexOf(flag) !== -1) && (k === 'all' || r.dataset.group === k);
+      r.hidden = !ok;
+      if (ok) { matched++; r.classList.toggle('later', !expanded && matched > show); if (!expanded && matched > show) return; shown++; }
+      else r.classList.remove('later');
     });
-    links.forEach(function(l){ l.classList.remove('active'); });
-    if(current) {
-      current.link.classList.add('active');
-    }
+    none.hidden = matched !== 0;
+    more.hidden = expanded || matched <= show;
+    more.textContent = 'Show all ' + matched + ' places';
+    count.textContent = (flag === 'all' && k === 'all' ? matched + ' places, closest first' : matched + (matched === 1 ? ' place' : ' places') + ' match, closest first');
   }
-
-  window.addEventListener('scroll', update, {passive:true});
-  update();
-
-  // Smooth scroll on click
-  links.forEach(function(l){
-    l.addEventListener('click', function(e){
-      e.preventDefault();
-      var target = document.querySelector(this.getAttribute('href'));
-      if(target) window.scrollTo({top: target.offsetTop - 120, behavior:'smooth'});
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      flag = c.dataset.f; apply();
     });
   });
+  kind.addEventListener('change', apply);
+  more.addEventListener('click', function () { expanded = true; apply(); });
+  // the photo picks above open their place in the list
+  document.querySelectorAll('[data-open]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var name = a.dataset.open;
+      var row = rows.filter(function (r) { return r.querySelector('.pf-name').textContent === name; })[0];
+      if (!row) return;
+      flag = 'all'; kind.value = 'all'; expanded = true;
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.f === 'all' ? 'true' : 'false'); });
+      apply();
+      row.querySelector('details').open = true;
+      setTimeout(function () { row.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); }, 30);
+    });
+  });
+  apply();
 })();
 </script>
-
 <script>
-// Situation chips: filter tagged rows in #family-kids and #outdoors (glossary filter idiom)
-(function(){
-  var chips = document.querySelectorAll('.sit-chip');
-  if(!chips.length) return;
-  var secs = [document.getElementById('family-kids'), document.getElementById('outdoors')];
-
-  function apply(tag){
-    secs.forEach(function(sec){
-      if(!sec) return;
-      // Tagged rows: show on match (or All)
-      sec.querySelectorAll('[data-tags]').forEach(function(row){
-        var show = tag === 'all' || row.getAttribute('data-tags').split(' ').indexOf(tag) > -1;
-        row.style.display = show ? '' : 'none';
-      });
-      // Untagged rows and prose blocks step aside while a filter is on
-      sec.querySelectorAll('.tip:not([data-tags]), .tbl-wrap, .lede:not([data-keep])').forEach(function(el){
-        el.style.display = tag === 'all' ? '' : 'none';
-      });
-      // Hide group headers with nothing visible beneath them
-      sec.querySelectorAll('.sub-h').forEach(function(h){
-        var n = h.nextElementSibling, visible = false;
-        while(n && !visible && !n.classList.contains('sub-h')){
-          if(n.style.display !== 'none'){
-            if(n.hasAttribute('data-tags') || n.classList.contains('tbl-wrap')){ visible = true; }
-            else if(n.querySelectorAll){
-              var rows = n.querySelectorAll('.tip, [data-tags]');
-              for(var i = 0; i < rows.length; i++){
-                if(rows[i].style.display !== 'none'){ visible = true; break; }
-              }
-            }
-          }
-          n = n.nextElementSibling;
-        }
-        h.style.display = (tag === 'all' || visible) ? '' : 'none';
-      });
-    });
+// Links into the folded sections open them; links to sections that moved land on their new home.
+(function () {
+  var moved = { 'family-kids': 'places', 'outdoors': 'places', 'map': 'essentials' };
+  function go() {
+    var h = location.hash.slice(1), wasMoved = !!moved[h];
+    if (wasMoved) { h = moved[h]; history.replaceState(null, '', '#' + h); }
+    var el = h && document.getElementById(h);
+    if (!el) return;
+    if (el.tagName === 'DETAILS') el.open = true;
+    if (wasMoved || el.tagName === 'DETAILS') el.scrollIntoView();
   }
-
-  chips.forEach(function(c){
-    c.addEventListener('click', function(){
-      chips.forEach(function(x){ x.classList.remove('active'); });
-      this.classList.add('active');
-      apply(this.getAttribute('data-filter'));
-    });
-  });
+  go();
+  window.addEventListener('hashchange', go);
 })();
 </script>
-
-<script src="js/chassis.js"></script>
+<script src="/js/chassis.js"></script>
 
 <!-- SUGGESTION FORM — AJAX submit with inline success panel (same pattern as index.html lead forms) -->
 <script>
