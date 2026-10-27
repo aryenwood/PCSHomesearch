@@ -193,9 +193,7 @@ function renderLead(formName, data, createdAt) {
     lead.message || 'No note was added.',
     '',
     ...(lead.homes.length ? ['HOMES THEY LIKE', ...lead.homes.map((h, i) => `${i + 1}. ${h.kind === 'link' ? `${h.label}: ${h.href}` : h.text}${h.note ? ` (${h.note})` : ''}`), ''] : []),
-    'ASK ON THE FIRST CALL',
-    ...asks.map((q) => `[ ] ${q}`),
-    '',
+    ...(asks.length ? ['ASK ON THE FIRST CALL', ...asks.map((q) => `[ ] ${q}`), ''] : ['EVERYTHING ASKED HAS BEEN ANSWERED', '']),
     'WHAT WE TOLD THEM',
     promise,
     'Say nothing different on the call. Introduce an agent only after the family agrees.',
@@ -242,7 +240,7 @@ function renderLead(formName, data, createdAt) {
     ${heading('Their note')}
     <p style="margin:0;padding:12px 14px;background:${paper};border:1px solid ${rule};border-radius:8px;font:400 18px/1.55 ${sans};color:${ink};white-space:pre-wrap;">${lead.message ? e(lead.message) : 'No note was added.'}</p>
     ${lead.homes.length ? heading('Homes they like') + `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${lead.homes.map((h) => `<tr><td style="padding:10px 0;border-top:1px solid ${rule};font:400 18px/1.45 ${sans};color:${ink};">${h.kind === 'link' ? `<a href="${e(h.href)}" style="color:#1D4E9E;font-weight:700;">${e(h.label)}: open the listing</a><br><span style="font-size:14px;color:#4A5568;word-break:break-all;">${e(h.text)}</span>` : `<b>${e(h.text)}</b><br><a href="https://www.google.com/maps/search/${encodeURIComponent(h.text + ' NY')}" style="color:#1D4E9E;font-size:16px;">Open on a map</a>`}${h.note ? `<br>They like: ${e(h.note)}` : ''}</td></tr>`).join('')}</table>` : ''}
-    ${heading('Ask on the first call')}
+    ${asks.length ? heading('Ask on the first call') : ''}
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${asks.map((q) => `<tr><td style="width:30px;padding:6px 0;vertical-align:top;font:400 20px/1.35 ${sans};color:${ink};">&#9744;</td><td style="padding:6px 0;font:400 18px/1.45 ${sans};color:${ink};">${e(q)}</td></tr>`).join('')}</table>
     ${heading('What we told them')}
     <p style="margin:0;font:400 16px/1.55 ${sans};color:${ink};">${e(promise)}</p>

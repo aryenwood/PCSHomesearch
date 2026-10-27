@@ -33,7 +33,7 @@ for (const [form, data] of Object.entries(sample)) {
   check(r.html.includes('mailto:') && r.text.includes('@example.com'), `${form}: email button and text part present`);
   check(r.html.includes(fn.PROMISES[form]) && r.text.includes(fn.PROMISES[form]), `${form}: shows exactly what the family was told`);
   check(!/[—–]/.test(r.subject + r.html + r.text), `${form}: no dashes of the banned kind`);
-  check(r.text.includes('ASK ON THE FIRST CALL'), `${form}: first-call questions present`);
+  check(form === 'pcshomes-contact' ? !r.text.includes('ASK ON THE FIRST CALL') && !r.html.includes('Ask on the first call') : r.text.includes('ASK ON THE FIRST CALL'), `${form}: first-call questions only when something is unanswered`);
   check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent') && !r.text.includes('[ ] Report date?') && !r.text.includes('[ ] Renting or buying?') && !r.text.includes('[ ] Using a VA loan?')), `${form}: new optional answers appear when given`);
 }
 
