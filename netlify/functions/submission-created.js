@@ -59,6 +59,21 @@ function formatPhone(raw) {
 
 const looksLikeEmail = (value) => /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(value);
 
+// Homes the family likes: a link or an address, each with an optional note. A link is only clickable if it is http(s).
+const HOST_LABELS = { 'zillow.com': 'Zillow', 'realtor.com': 'Realtor.com', 'redfin.com': 'Redfin', 'trulia.com': 'Trulia', 'homes.com': 'Homes.com', 'apartments.com': 'Apartments.com', 'facebook.com': 'Facebook' };
+function parseHome(link, note) {
+  const raw = clean(link, 300), n = clean(note, 300);
+  if (!raw && !n) return null;
+  const candidate = /^www\./i.test(raw) ? `https://${raw}` : raw;
+  if (/^https?:\/\/[^\s]+$/i.test(candidate)) {
+    let host = '';
+    try { host = new URL(candidate).hostname.replace(/^www\./, ''); } catch (error) { host = ''; }
+    const label = Object.keys(HOST_LABELS).find((k) => host === k || host.endsWith(`.${k}`));
+    return { kind: 'link', href: candidate, label: label ? HOST_LABELS[label] : host || 'Link', text: raw, note: n };
+  }
+  return { kind: 'address', text: raw, note: n };
+}
+
 function normalize(formName, data, createdAt) {
   const first = clean(data['first-name'], 80);
   const last = clean(data['last-name'], 80);
@@ -89,6 +104,7 @@ function normalize(formName, data, createdAt) {
     preapproved: clean(data.preapproved, 20),
     preAmount: clean(data['preapproved-amount'], 40),
     preferredTown: clean(data['preferred-town'], 120),
+    homes: [1, 2, 3, 4, 5].map((i) => parseHome(data[`home-${i}-link`], data[`home-${i}-note`])).filter(Boolean),
     dutyStation: clean(data['duty-station'], 120),
     pcsDate: clean(data['pcs-date'], 120),
     budget: clean(data.budget, 80),
@@ -176,6 +192,7 @@ function renderLead(formName, data, createdAt) {
     'THEIR NOTE',
     lead.message || 'No note was added.',
     '',
+    ...(lead.homes.length ? ['HOMES THEY LIKE', ...lead.homes.map((h, i) => `${i + 1}. ${h.kind === 'link' ? `${h.label}: ${h.href}` : h.text}${h.note ? ` (${h.note})` : ''}`), ''] : []),
     'ASK ON THE FIRST CALL',
     ...asks.map((q) => `[ ] ${q}`),
     '',
@@ -224,6 +241,7 @@ function renderLead(formName, data, createdAt) {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>
     ${heading('Their note')}
     <p style="margin:0;padding:12px 14px;background:${paper};border:1px solid ${rule};border-radius:8px;font:400 18px/1.55 ${sans};color:${ink};white-space:pre-wrap;">${lead.message ? e(lead.message) : 'No note was added.'}</p>
+    ${lead.homes.length ? heading('Homes they like') + `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${lead.homes.map((h) => `<tr><td style="padding:10px 0;border-top:1px solid ${rule};font:400 18px/1.45 ${sans};color:${ink};">${h.kind === 'link' ? `<a href="${e(h.href)}" style="color:#1D4E9E;font-weight:700;">${e(h.label)}: open the listing</a><br><span style="font-size:14px;color:#4A5568;word-break:break-all;">${e(h.text)}</span>` : `<b>${e(h.text)}</b><br><a href="https://www.google.com/maps/search/${encodeURIComponent(h.text + ' NY')}" style="color:#1D4E9E;font-size:16px;">Open on a map</a>`}${h.note ? `<br>They like: ${e(h.note)}` : ''}</td></tr>`).join('')}</table>` : ''}
     ${heading('Ask on the first call')}
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${asks.map((q) => `<tr><td style="width:30px;padding:6px 0;vertical-align:top;font:400 20px/1.35 ${sans};color:${ink};">&#9744;</td><td style="padding:6px 0;font:400 18px/1.45 ${sans};color:${ink};">${e(q)}</td></tr>`).join('')}</table>
     ${heading('What we told them')}

@@ -46,6 +46,14 @@ check(!inferred.text.includes('VA loan:') && inferred.text.includes('[ ] Using a
 check(inferred.text.includes('[ ] Preapproved? For how much?'), 'an unanswered preapproval becomes a question');
 const noAmount = fn.renderLead('pcshomes-contact', { 'first-name': 'Lee', email: 'lee@example.com', phone: '3155550111', preapproved: 'Yes' });
 check(noAmount.text.includes('Preapproved: Yes, amount not given') && noAmount.text.includes('[ ] Preapproved for how much?'), 'preapproved without an amount is flagged and asked');
+// Homes they like.
+const homes = fn.renderLead('pcshomes-contact', { ...sample['pcshomes-contact'], 'home-1-link': 'https://www.zillow.com/homedetails/123-Main-St-Evans-Mills-NY/1_zpid/', 'home-1-note': 'fenced yard', 'home-2-link': '45 County Route 59, Evans Mills', 'home-3-link': 'javascript:alert(1)', 'home-4-link': 'www.redfin.com/NY/Watertown/home/1' }, '2026-10-27T18:30:00Z');
+check(homes.html.includes('Zillow: open the listing') && homes.text.includes('Zillow: https://www.zillow.com/homedetails'), 'a Zillow link is labeled and clickable');
+check(homes.html.includes('Open on a map') && homes.text.includes('45 County Route 59'), 'an address becomes a map link');
+check(!homes.html.includes('href="javascript:'), 'a javascript: link is never clickable');
+check(homes.html.includes('Redfin: open the listing') && homes.text.includes('4. Redfin: https://www.redfin.com/'), 'a www link without https is fixed and labeled');
+check(homes.text.includes('(fenced yard)'), 'the note about a home is kept');
+check(!fn.renderLead('va-home-list', sample['va-home-list']).text.includes('HOMES THEY LIKE'), 'no homes section when none were given');
 const hostile = fn.renderLead('popup-lead', { name: '<script>alert(1)</script>', email: 'x@example.com', phone: '12', message: '<img src=x onerror=1>' });
 check(!hostile.html.includes('<script>alert') && !hostile.html.includes('<img src=x'), 'hostile input is escaped in the HTML');
 check(hostile.html.includes('check this number'), 'a short phone number is flagged');

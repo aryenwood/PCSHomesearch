@@ -39,6 +39,8 @@
     .lf-group { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 10px; }
     .lf-group legend { padding: 0; margin-bottom: 4px; }
     .req { color: var(--gold-bright); }
+    .home-row { display: grid; gap: 10px; padding: 12px; border: 1px solid rgba(246,241,230,0.18); border-radius: 12px; }
+    .add-home { background: none; border: 0; color: var(--gold-bright); font: 700 var(--t-m) 'DM Sans', 'DM Fallback', system-ui, sans-serif; min-height: 48px; text-align: left; cursor: pointer; padding: 0; }
     .lf-sec { color: var(--gold-bright); font-size: var(--t-s); letter-spacing: .06em; margin-top: 6px; padding-top: 14px; border-top: 1px solid rgba(246,241,230,0.18); }
     .lf-sec:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
     [hidden] { display: none !important; }
@@ -307,6 +309,30 @@
             <div><div class="form-label">School age kids</div><div class="lf-chips" data-target="kidsInput"><button type="button" class="lf-chip" aria-pressed="false">Yes</button><button type="button" class="lf-chip" aria-pressed="false">No</button></div></div>
             <label class="field"><span>Where do you want to live?</span><input id="preferredTown" name="preferred-town" type="text" placeholder="Town or area"/></label>
 
+            <div class="form-label lf-sec">Homes you like</div>
+            <p class="reassure" style="margin:-6px 0 0">Seen a place online? Paste the link or address and we'll look at it before we call. Skip this if you haven't.</p>
+            <div class="home-row" id="homeRow1">
+              <label class="field"><span>Home 1: link or address</span><input id="home1Link" name="home-1-link" type="text" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="Paste a Zillow, Realtor.com or Redfin link, or type an address"/></label>
+              <label class="field"><span>What do you like about it? (optional)</span><input id="home1Note" name="home-1-note" type="text" placeholder="Fenced yard, near the gate, price"/></label>
+            </div>
+            <div class="home-row" id="homeRow2" hidden>
+              <label class="field"><span>Home 2: link or address</span><input id="home2Link" name="home-2-link" type="text" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="Paste a Zillow, Realtor.com or Redfin link, or type an address"/></label>
+              <label class="field"><span>What do you like about it? (optional)</span><input id="home2Note" name="home-2-note" type="text" placeholder="Fenced yard, near the gate, price"/></label>
+            </div>
+            <div class="home-row" id="homeRow3" hidden>
+              <label class="field"><span>Home 3: link or address</span><input id="home3Link" name="home-3-link" type="text" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="Paste a Zillow, Realtor.com or Redfin link, or type an address"/></label>
+              <label class="field"><span>What do you like about it? (optional)</span><input id="home3Note" name="home-3-note" type="text" placeholder="Fenced yard, near the gate, price"/></label>
+            </div>
+            <div class="home-row" id="homeRow4" hidden>
+              <label class="field"><span>Home 4: link or address</span><input id="home4Link" name="home-4-link" type="text" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="Paste a Zillow, Realtor.com or Redfin link, or type an address"/></label>
+              <label class="field"><span>What do you like about it? (optional)</span><input id="home4Note" name="home-4-note" type="text" placeholder="Fenced yard, near the gate, price"/></label>
+            </div>
+            <div class="home-row" id="homeRow5" hidden>
+              <label class="field"><span>Home 5: link or address</span><input id="home5Link" name="home-5-link" type="text" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="Paste a Zillow, Realtor.com or Redfin link, or type an address"/></label>
+              <label class="field"><span>What do you like about it? (optional)</span><input id="home5Note" name="home-5-note" type="text" placeholder="Fenced yard, near the gate, price"/></label>
+            </div>
+            <button type="button" class="add-home" id="addHome">+ Add another home</button>
+
             <div class="form-label lf-sec">About the money</div>
             <label class="field"><span>Monthly payment or price range</span>
               <select id="budget" name="budget">
@@ -347,7 +373,7 @@
       <h3 id="sentTitle">Got it. A person has your note.</h3>
       <p>We'll call, text and email you within 24 hours.</p>
       <p id="sentVia" class="sent-via"></p>
-      <p>Need to talk sooner? Call or text <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;">(315) 221-4857</a>. Nobody else sees your details unless you say yes.</p>
+      <p>Have a home in mind, or need to talk sooner? Text us the links or call <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;">(315) 221-4857</a>. Nobody else sees your details unless you say yes.</p>
     </div>
   </div>
 </div>
@@ -692,6 +718,13 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
         if (!yes) document.getElementById('preAmount').value = '';
       }
     });
+  });
+
+  // Homes they like: one row shows, "Add another" reveals up to five. Every row is in the page so Netlify records them.
+  document.getElementById('addHome').addEventListener('click', function() {
+    var next = document.querySelector('.home-row[hidden]');
+    if (next) { next.hidden = false; next.querySelector('input').focus(); }
+    if (!document.querySelector('.home-row[hidden]')) this.hidden = true;
   });
 
   function validPhone(v) { var d = v.replace(/\D/g, ''); return d.length === 10 || (d.length === 11 && d.charAt(0) === '1'); }
