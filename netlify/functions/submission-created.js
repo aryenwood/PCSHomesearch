@@ -71,7 +71,7 @@ function normalize(formName, data, createdAt) {
     emailValid: looksLikeEmail(email),
     phone,
     needKey,
-    need: NEED_LABELS[needKey] || (needKey ? needKey : 'Not specified'),
+    need: NEED_LABELS[needKey] || needKey || (formName === 'va-home-list' ? 'VA home list' : 'Not specified'),
     area: clean(data.area, 120),
     leadSource: clean(data['lead-source'], 120),
     rank: clean(data.rank, 80),

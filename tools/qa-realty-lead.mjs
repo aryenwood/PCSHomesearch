@@ -40,6 +40,7 @@ const hostile = fn.renderLead('popup-lead', { name: '<script>alert(1)</script>',
 check(!hostile.html.includes('<script>alert') && !hostile.html.includes('<img src=x'), 'hostile input is escaped in the HTML');
 check(hostile.html.includes('check this number'), 'a short phone number is flagged');
 
+check(fn.renderLead('va-home-list', sample['va-home-list']).subject.includes('| VA home list |'), 'the VA home list form is labeled in the subject');
 const none = fn.renderLead('va-home-list', { name: 'No Phone', email: 'bad-address' });
 check(none.html.includes('check this address') && !none.html.includes('tel:'), 'bad email flagged, no call button without a phone');
 
