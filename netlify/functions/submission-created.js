@@ -102,133 +102,113 @@ function formatWhen(iso) {
   }).format(date) + ' ET';
 }
 
-// Questions the agent should settle on the first call. A known answer is shown, an unknown one is a prompt.
-function firstCallPrompts(lead) {
-  return [
-    ['Arrival or report date', lead.pcsDate, 'When do orders say they report, and is there any flexibility?'],
-    ['Rent or buy', lead.rentBuy || (lead.needKey === 'real-estate-agent' || lead.needKey === 'homes' ? 'Asked for an agent' : ''), 'Renting first, buying now, or waiting on the on-post list?'],
-    ['Budget or BAH', lead.budget, 'What monthly payment or price range is comfortable?'],
-    ['VA loan status', lead.needKey === 'va-lender' || lead.needKey === 'lender' ? 'Asked about VA loans' : '', 'Not started, prequalified, or preapproved? Lender picked yet?'],
-    ['Bedrooms, pets, schools', '', 'How many bedrooms, any pets, school age kids, a commute limit?'],
-    ['Preferred towns', lead.area, 'Watertown, Evans Mills, Calcium, Black River, Lowville, or somewhere else?'],
-    ['Who is moving', [lead.movingAs, lead.dutyStation && `from ${lead.dutyStation}`].filter(Boolean).join(' '), 'Service member, spouse, veteran? Coming from where?'],
-  ];
-}
-
 function renderLead(formName, data, createdAt) {
   const lead = normalize(formName, data, createdAt);
   const when = formatWhen(lead.createdAt);
   const area = lead.area || 'Area not given';
   const subject = `A NEW WC REALTY LEAD | ${lead.need} | ${lead.name} | ${area}`;
-  const prompts = firstCallPrompts(lead);
   const promise = PROMISES[formName] || PROMISE_SHORT;
 
   const phoneLine = lead.phone.display ? lead.phone.display + (lead.phone.valid ? '' : ' (check this number)') : 'Not given';
   const emailLine = lead.email ? lead.email + (lead.emailValid ? '' : ' (check this address)') : 'Not given';
+
+  // What the family gave us, in the order an agent reads it. Blank answers are left out, not shown as "not given".
+  const facts = [
+    ['Phone', phoneLine],
+    ['Email', emailLine],
+    ['Best time', lead.bestTime],
+    ['Needs', lead.need],
+    ['Area', lead.area],
+    ['Moving as', lead.movingAs],
+    ['Coming from', lead.dutyStation],
+    ['Report date', lead.pcsDate],
+    ['Rent or buy', lead.rentBuy],
+    ['Budget', lead.budget],
+  ].filter(([, v]) => v);
+
+  // Only what is still unknown becomes a question for the first call.
+  const asks = [];
+  if (!lead.pcsDate) asks.push('When do orders say they report?');
+  if (!lead.rentBuy) asks.push('Renting, buying, or waiting on the on-post list?');
+  if (!lead.budget) asks.push('What monthly payment or price range is comfortable?');
+  asks.push('VA loan: not started, prequalified or preapproved? Lender picked?');
+  asks.push('Bedrooms, pets, school age kids, commute limit?');
+  if (!lead.area) asks.push('Which towns: Watertown, Evans Mills, Calcium, Black River, Lowville?');
+  if (!lead.movingAs) asks.push('Service member, spouse or veteran? Coming from where?');
+
   const origin = [
-    lead.sourcePage && ['Page', lead.sourcePage],
-    lead.referrer && ['Came from', lead.referrer],
-    lead.utmSource && ['UTM source', lead.utmSource],
-    lead.utmMedium && ['UTM medium', lead.utmMedium],
-    lead.utmCampaign && ['UTM campaign', lead.utmCampaign],
-    lead.leadSource && ['Lead source', lead.leadSource],
-  ].filter(Boolean);
-  const picks = [['Moving as', lead.movingAs], ['Rent or buy', lead.rentBuy], ['Best time', lead.bestTime], ['Budget', lead.budget], ['Report date', lead.pcsDate], ['Coming from', lead.dutyStation]]
-    .filter(([, v]) => v);
+    lead.sourcePage && `page ${lead.sourcePage}`,
+    lead.referrer && `from ${lead.referrer}`,
+    (lead.utmSource || lead.utmMedium || lead.utmCampaign) && `ad tags ${[lead.utmSource, lead.utmMedium, lead.utmCampaign].filter(Boolean).join(' / ')}`,
+    lead.leadSource && `source ${lead.leadSource}`,
+  ].filter(Boolean).join(', ');
 
   const text = [
     'A NEW WC REALTY LEAD',
     `${lead.name} | ${lead.need} | ${when}`,
     '',
-    'REACH THEM: call, then text, then email',
-    `Phone: ${phoneLine}`,
-    `Email: ${emailLine}`,
-    ...(lead.bestTime ? [`Best time: ${lead.bestTime}`] : []),
+    'Call first, then text, then email.',
     '',
-    'WHAT THEY ASKED FOR',
-    `Need: ${lead.need}`,
-    `Form: ${lead.formLabel}`,
-    ...(lead.area ? [`Area: ${lead.area}`] : []),
+    ...facts.map(([k, v]) => `${k}: ${v}`),
     '',
-    'WHAT THEY TOLD US',
-    ...(picks.length ? picks.map(([k, v]) => `${k}: ${v}`) : ['Nothing beyond contact details.']),
-    '',
-    'THEIR NOTE, IN THEIR WORDS',
+    'THEIR NOTE',
     lead.message || 'No note was added.',
     '',
-    'FIRST CALL: CONFIRM THESE',
-    ...prompts.map(([label, known, ask], i) => `${i + 1}. ${label}: ${known || 'Ask'}. ${ask}`),
+    'ASK ON THE FIRST CALL',
+    ...asks.map((q) => `[ ] ${q}`),
     '',
     'WHAT WE TOLD THEM',
     promise,
+    'Say nothing different on the call. Introduce an agent only after the family agrees.',
     '',
-    'WHERE IT CAME FROM',
-    ...(origin.length ? origin.map(([k, v]) => `${k}: ${v}`) : ['No page or campaign details were captured.']),
-    '',
+    origin ? `Where it came from: ${origin}` : 'No page or campaign details were captured.',
     'Everything above is reported by the family. Nothing has been verified.',
   ].join('\n');
 
-  // Design language follows the PCSHomes site: navy plate, serif headline with a gold italic phrase,
-  // cream page, gold primary action, numbered rows for a real sequence. Solid colors only, so mail apps
-  // that recolor for dark mode keep the text readable. Georgia and Arial are the email-safe stand-ins
-  // for Libre Baskerville and DM Sans.
+  // Plain and large on purpose: 17px dark text on white, one column, navy header with the call button.
+  // Solid colors only so mail apps that recolor for dark mode stay readable.
   const e = escapeHtml;
-  const gold = '#D9B45B', goldInk = '#8A6520', navy = '#14263F', deep = '#0E1C30', paper = '#FBF7EF',
-    rule = '#E4DAC4', ink = '#2B3547', muted = '#647080', steel = '#46688A', plateSub = '#C6CEDB';
-  const serif = "Georgia,'Times New Roman',serif";
+  const gold = '#D9B45B', navy = '#14263F', deep = '#0E1C30', ink = '#1A1F2B', rule = '#D9D2C2', paper = '#FBF7EF';
   const sans = 'Arial,Helvetica,sans-serif';
-
   const button = (href, label, primary) =>
-    `<a href="${e(href)}" style="display:inline-block;margin:0 8px 10px 0;padding:16px 24px;border-radius:10px;font:700 17px/1 ${sans};text-decoration:none;`
-    + (primary ? `background:${gold};color:${deep};border:1px solid ${gold};` : `background:${navy};color:#F6F1E6;border:1px solid #8E9BB0;`)
+    `<a href="${e(href)}" style="display:inline-block;margin:0 8px 10px 0;padding:16px 22px;border-radius:10px;font:700 18px/1 ${sans};text-decoration:none;`
+    + (primary ? `background:${gold};color:${deep};border:1px solid ${gold};` : `background:${navy};color:#ffffff;border:1px solid #9FB0C8;`)
     + `">${e(label)}</a>`;
   const buttons = [
     lead.phone.tel && button(`tel:${lead.phone.tel}`, `Call ${lead.phone.display}`, true),
     lead.phone.tel && button(`sms:${lead.phone.tel}`, 'Text', false),
     lead.emailValid && button(`mailto:${lead.email}?subject=${encodeURIComponent('Your Fort Drum move')}`, 'Email', false),
   ].filter(Boolean).join('');
-
-  const chip = (label, value) =>
-    `<span style="display:inline-block;margin:0 8px 8px 0;padding:8px 14px;border:1px solid ${rule};border-radius:10px;background:#ffffff;font:500 15px/1.3 ${sans};color:${ink};">`
-    + `<span style="font:700 12px/1.3 ${sans};letter-spacing:.08em;text-transform:uppercase;color:${muted};">${e(label)}</span><br>${e(value)}</span>`;
-
-  const h2 = (title) => `<p style="margin:0 0 12px;font:700 22px/1.3 ${serif};color:#1D3557;">${e(title)}</p>`;
-  const block = (inner) => `<tr><td style="padding:26px 28px 4px;">${inner}</td></tr>`;
-  const kv = (label, value, warn) =>
-    `<tr><td style="padding:10px 14px 10px 0;width:34%;vertical-align:top;border-top:1px solid ${rule};font:700 12px/1.4 ${sans};letter-spacing:.08em;text-transform:uppercase;color:${muted};">${e(label)}</td>`
-    + `<td style="padding:10px 0;vertical-align:top;border-top:1px solid ${rule};font:500 16px/1.5 ${sans};color:${warn ? '#A33A2B' : ink};">${value}</td></tr>`;
-  const kvTable = (rows) => `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>`;
-
-  const askBadge = `<span style="display:inline-block;padding:3px 10px;border-radius:6px;background:${gold};color:${deep};font:700 13px/1.3 ${sans};">Ask</span>`;
-  const stepRows = prompts.map(([label, known, ask], i) =>
-    `<tr><td style="width:40px;padding:14px 0;vertical-align:top;border-top:${i ? '1' : '2'}px solid ${i ? rule : '#1D3557'};font:italic 400 24px/1.2 ${serif};color:${steel};">${i + 1}</td>`
-    + `<td style="padding:14px 0;vertical-align:top;border-top:${i ? '1' : '2'}px solid ${i ? rule : '#1D3557'};">`
-    + `<p style="margin:0;font:700 16px/1.4 ${sans};color:${ink};">${e(label)} &nbsp;${known ? `<span style="font-weight:500;">${e(known)}</span>` : askBadge}</p>`
-    + `<p style="margin:3px 0 0;font:400 15px/1.5 ${sans};color:${muted};">${e(ask)}</p></td></tr>`).join('');
+  const heading = (t) => `<p style="margin:26px 0 8px;font:700 20px/1.3 ${sans};color:${ink};">${e(t)}</p>`;
+  const badValue = (k) => (k === 'Phone' && !lead.phone.valid) || (k === 'Email' && !lead.emailValid);
+  const rows = facts.map(([k, v]) =>
+    `<tr><td style="padding:9px 14px 9px 0;width:32%;vertical-align:top;border-top:1px solid ${rule};font:700 17px/1.45 ${sans};color:${ink};">${e(k)}</td>`
+    + `<td style="padding:9px 0;vertical-align:top;border-top:1px solid ${rule};font:400 18px/1.45 ${sans};color:${badValue(k) ? '#B3261E' : ink};">${e(v)}</td></tr>`).join('');
 
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light only"><meta name="supported-color-schemes" content="light only"><title>${e(subject)}</title></head>
 <body style="margin:0;padding:0;background:${paper};" bgcolor="${paper}">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${paper}" style="background:${paper};"><tr><td align="center" style="padding:20px 12px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="max-width:640px;background:#ffffff;border:1px solid ${rule};border-radius:16px;overflow:hidden;">
-  <tr><td bgcolor="${navy}" style="background:${navy};padding:30px 28px 24px;">
-    <p style="margin:0 0 10px;font:700 13px/1.4 ${sans};letter-spacing:.12em;text-transform:uppercase;color:${gold};">A new WC Realty lead &nbsp;|&nbsp; ${e(when)}</p>
-    <p style="margin:0;font:700 32px/1.2 ${serif};color:#F6F1E6;">${e(lead.name)}</p>
-    <p style="margin:8px 0 22px;font:italic 400 20px/1.4 ${serif};color:${gold};">${e(lead.need)}${lead.area ? ` in ${e(lead.area)}` : ''}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${paper}" style="background:${paper};"><tr><td align="center" style="padding:16px 10px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="max-width:600px;background:#ffffff;border:1px solid ${rule};border-radius:14px;overflow:hidden;">
+  <tr><td bgcolor="${navy}" style="background:${navy};padding:24px 22px 16px;">
+    <p style="margin:0 0 8px;font:700 14px/1.4 ${sans};letter-spacing:.1em;text-transform:uppercase;color:${gold};">A new WC Realty lead</p>
+    <p style="margin:0;font:700 30px/1.2 Georgia,'Times New Roman',serif;color:#ffffff;">${e(lead.name)}</p>
+    <p style="margin:6px 0 18px;font:400 18px/1.4 ${sans};color:#E6EBF3;">${e(lead.need)}${lead.area ? ` in ${e(lead.area)}` : ''}<br>${e(when)}</p>
     ${buttons}
-    <p style="margin:6px 0 0;font:500 15px/1.5 ${sans};color:${plateSub};">Call first, then text, then email.${lead.bestTime ? ` Best time to reach them: <b style="color:#F6F1E6;">${e(lead.bestTime)}</b>.` : ''}</p>
+    <p style="margin:2px 0 0;font:400 16px/1.5 ${sans};color:#E6EBF3;">Call first, then text, then email.</p>
   </td></tr>
-  ${block(h2('Reach them') + kvTable(kv('Phone', e(phoneLine), !lead.phone.valid) + kv('Email', e(emailLine), !lead.emailValid)))}
-  ${picks.length ? block(h2('What they told us') + `<div>${picks.map(([k, v]) => chip(k, v)).join('')}</div>`) : ''}
-  ${block(h2('Their note, in their words') + `<p style="margin:0;padding:14px 16px;border-radius:10px;background:${paper};border:1px solid ${rule};font:500 16px/1.6 ${sans};color:${ink};white-space:pre-wrap;">${lead.message ? e(lead.message) : `<span style="color:${muted};">No note was added.</span>`}</p>`)}
-  ${block(h2('First call: confirm these') + `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${stepRows}</table>`)}
-  <tr><td style="padding:26px 28px 4px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td bgcolor="${navy}" style="background:${navy};border-radius:12px;padding:20px 22px;">
-    <p style="margin:0 0 6px;font:700 19px/1.3 ${serif};color:#F6F1E6;">What we told them</p>
-    <p style="margin:0;font:400 15px/1.6 ${sans};color:${plateSub};">${e(promise)}</p>
-    <p style="margin:10px 0 0;font:700 15px/1.5 ${sans};color:${gold};">Say nothing different on the call. Introduce an agent only after the family agrees.</p>
-  </td></tr></table></td></tr>
-  ${block(h2('Where it came from') + (origin.length ? kvTable(origin.map(([k, v]) => kv(k, e(v))).join('')) : `<p style="margin:0;font:400 15px/1.5 ${sans};color:${muted};">No page or campaign details were captured.</p>`))}
-  <tr><td style="padding:22px 28px 28px;"><p style="margin:0;font:400 13px/1.5 ${sans};color:${muted};">Everything above is reported by the family. Nothing has been verified. Netlify keeps the original submission.</p></td></tr>
+  <tr><td style="padding:6px 22px 24px;">
+    ${heading('About them')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>
+    ${heading('Their note')}
+    <p style="margin:0;padding:12px 14px;background:${paper};border:1px solid ${rule};border-radius:8px;font:400 18px/1.55 ${sans};color:${ink};white-space:pre-wrap;">${lead.message ? e(lead.message) : 'No note was added.'}</p>
+    ${heading('Ask on the first call')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${asks.map((q) => `<tr><td style="width:30px;padding:6px 0;vertical-align:top;font:400 20px/1.35 ${sans};color:${ink};">&#9744;</td><td style="padding:6px 0;font:400 18px/1.45 ${sans};color:${ink};">${e(q)}</td></tr>`).join('')}</table>
+    ${heading('What we told them')}
+    <p style="margin:0;font:400 16px/1.55 ${sans};color:${ink};">${e(promise)}</p>
+    <p style="margin:8px 0 0;font:700 16px/1.5 ${sans};color:${ink};">Say nothing different on the call. Introduce an agent only after the family agrees.</p>
+    <p style="margin:24px 0 0;font:400 14px/1.5 ${sans};color:#4A5568;">${origin ? `Where it came from: ${e(origin)}. ` : ''}Everything above is reported by the family and has not been verified.</p>
+  </td></tr>
 </table>
 </td></tr></table>
 </body></html>`;

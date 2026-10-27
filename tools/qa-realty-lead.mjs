@@ -33,8 +33,8 @@ for (const [form, data] of Object.entries(sample)) {
   check(r.html.includes('mailto:') && r.text.includes('@example.com'), `${form}: email button and text part present`);
   check(r.html.includes(fn.PROMISES[form]) && r.text.includes(fn.PROMISES[form]), `${form}: shows exactly what the family was told`);
   check(!/[—–]/.test(r.subject + r.html + r.text), `${form}: no dashes of the banned kind`);
-  check(r.text.includes('FIRST CALL: CONFIRM THESE'), `${form}: first-call checklist present`);
-  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent')), `${form}: new optional answers appear when given`);
+  check(r.text.includes('ASK ON THE FIRST CALL'), `${form}: first-call questions present`);
+  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent') && !r.text.includes('[ ] When do orders say') && !r.text.includes('[ ] Renting, buying')), `${form}: new optional answers appear when given`);
 }
 
 const hostile = fn.renderLead('popup-lead', { name: '<script>alert(1)</script>', email: 'x@example.com', phone: '12', message: '<img src=x onerror=1>' });
