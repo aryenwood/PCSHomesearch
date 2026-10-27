@@ -125,7 +125,7 @@
       ? '<a href="tel:' + escapeAttr(p.phone) + '" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-decoration:none;font-family:\'DM Sans\',sans-serif;min-height:44px;">Call/Text</a>'
       : '';
     var reviewsLink = p.reviewsUrl
-      ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:12px;font-weight:600;color:#C9A84C;text-decoration:none;">' + escapeHtml(p.reviewsLinkLabel || 'Read all reviews on Zillow →') + '</a>'
+      ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:6px;font-size:15px;font-weight:700;color:var(--gold-bright);text-decoration:none;">' + escapeHtml(p.reviewsLinkLabel || 'Read all reviews on Zillow →') + '</a>'
       : '';
     var platformBadges = (p.platformBadges || []).map(function(b) {
       return '<span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:#E2C57A;">' + escapeHtml(b) + '</span>';
