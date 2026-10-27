@@ -266,11 +266,12 @@
     <p>Tell us your unit, your kids' ages and your budget. A real person from our Fort Drum network calls you within 24 hours.</p>
     <form onsubmit="return submitAskBand(event, 'housing')">
       <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required aria-required="true"/></label>
-      <label class="field"><span>Phone or email</span><input type="text" name="contact" autocomplete="on" enterkeyhint="send" required aria-required="true"/></label>
+      <label class="field"><span>Phone</span><input type="tel" name="phone" inputmode="tel" autocomplete="tel" required aria-required="true"/></label>
+      <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" enterkeyhint="send" required aria-required="true"/></label>
       <button type="submit" class="btn-gold">Have someone call me</button>
     </form>
     <p class="ask-done">Got it. A real person calls you within 24 hours. Need someone now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
-    <small class="ask-note">Free for military families. We connect you, never spam you.</small>
+    <small class="ask-note"><b>We call, text and email within 24 hours.</b> By sending, you agree we may reach you that way. Message rates may apply. Reply STOP to opt out. Your details go only to our team and to an agent you agree to meet.</small>
   </div>
 
   <p class="page-verified">Checked Sep 24, 2026 against the Army's Fort Drum housing FAQ, Fort Drum's Housing Division and gate pages, Mountain Community Homes, and each school district's schools. Town positions and drive times come from OpenStreetMap.</p>
@@ -306,24 +307,37 @@ function submitAskBand(e, offer) {
   e.preventDefault();
   var form = e.target, band = form.closest('.ask-band');
   var btn = form.querySelector('button');
-  var name = form.querySelector('[name=name]').value.trim();
-  var contact = form.querySelector('[name=contact]').value.trim();
-  if (!name || !contact) return false;
+  var name = form.querySelector('[name=name]');
+  var phone = form.querySelector('[name=phone]');
+  var email = form.querySelector('[name=email]');
+  var digits = phone.value.replace(/\D/g, '');
+  var checks = [[name, name.value.trim().length > 0], [phone, digits.length === 10 || (digits.length === 11 && digits[0] === '1')], [email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())]];
+  var first = null;
+  checks.forEach(function (c) { c[0].closest('.field').classList.toggle('error', !c[1]); c[0].setAttribute('aria-invalid', c[1] ? 'false' : 'true'); if (!c[1] && !first) first = c[0]; });
+  if (first) { first.focus(); band.querySelector('.ask-note').textContent = 'Add your name, a 10 digit phone number and an email so we can reach you.'; return false; }
   btn.disabled = true; btn.textContent = 'Sending…';
+  var q = new URLSearchParams(location.search);
   var data = new URLSearchParams();
   data.append('form-name', 'popup-lead');
   data.append('offer', offer);
-  data.append('name', name);
-  data.append('contact', contact);
+  data.append('name', name.value.trim());
+  data.append('phone', phone.value.trim());
+  data.append('email', email.value.trim());
+  data.append('source-page', location.pathname);
+  data.append('referrer', document.referrer.slice(0, 200));
+  data.append('utm-source', (q.get('utm_source') || '').slice(0, 120));
+  data.append('utm-medium', (q.get('utm_medium') || '').slice(0, 120));
+  data.append('utm-campaign', (q.get('utm_campaign') || '').slice(0, 120));
   fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
     .then(function (r) {
       if (!r.ok) throw new Error(r.status);
       form.style.display = 'none';
+      band.querySelector('.ask-note').style.display = 'none';
       band.querySelector('.ask-done').style.display = 'block';
     })
     .catch(function () {
       btn.disabled = false; btn.textContent = 'Have someone call me';
-      band.querySelector('.ask-note').innerHTML = 'That didn’t send. <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a> instead.';
+      band.querySelector('.ask-note').innerHTML = 'That didn’t send, and nothing was lost. <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a> instead.';
     });
   return false;
 }

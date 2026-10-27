@@ -31,11 +31,18 @@ const NEED_LABELS = {
   'family-support': 'Family support',
   homes: 'Homes',
   lender: 'VA lender',
+  // guide-page bands post the page they came from as the offer
+  pcs: 'Talk to a person (PCS checklist page)',
+  'va-calculator': 'Talk to a person (VA loan calculator)',
+  housing: 'Talk to a person (Housing guide)',
+  winter: 'Talk to a person (Winter guide)',
+  schools: 'Talk to a person (Schools guide)',
+  guide: 'Talk to a person (Fort Drum guide)',
 };
 
 const FORM_LABELS = {
   'pcshomes-contact': 'Get Help form',
-  'popup-lead': 'Homepage popup',
+  'popup-lead': 'Guide page "Have someone call me"',
   'va-home-list': 'Homepage VA home list form',
 };
 

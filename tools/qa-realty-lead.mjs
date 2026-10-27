@@ -110,5 +110,16 @@ const plain = (html) => html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
 check(plain(index).includes(fn.PROMISE_SHORT.replace(/ Questions now.*/, '')), 'index.html shows the short contact promise the email repeats');
 check(plain(help).includes(fn.PROMISE_FULL), 'get-help.html shows the full contact promise the email repeats');
 
+// Guide-page bands: phone and email both required, and Netlify knows every field they send.
+for (const page of ['fort-drum/pcs-checklist.html', 'fort-drum/buying.html', 'fort-drum/housing.html', 'fort-drum/winter.html', 'fort-drum/schools.html', 'pcshomes-fortdrum.html']) {
+  const html = readFileSync(path.join(root, page), 'utf8');
+  check(/type="tel" name="phone"[^>]*required/.test(html) && /type="email" name="email"[^>]*required/.test(html) && !/name="contact"/.test(html), `${page}: band asks for phone and email`);
+  const sent = [...html.matchAll(/data\.append\('([a-z-]+)'/g)].map((m) => m[1]).filter((n) => n !== 'form-name');
+  const reg = formBlock(index, 'popup-lead');
+  check(sent.length > 0 && sent.every((n) => reg.includes(`name="${n}"`)), `${page}: every field it sends is registered on index.html`);
+  check(plain(html).includes(fn.PROMISE_SHORT), `${page}: shows the short promise the email repeats`);
+}
+check(fn.renderLead('popup-lead', { name: 'A', email: 'a@example.com', phone: '3155550100', offer: 'housing' }).subject.includes('Talk to a person (Housing guide)'), 'a guide-page lead says which page it came from');
+
 console.log(failed ? `\n${failed} check(s) FAILED` : '\nAll checks passed');
 process.exit(failed ? 1 : 0);
