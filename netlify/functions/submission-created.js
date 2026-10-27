@@ -7,8 +7,9 @@
 //           REALTY_LEAD_MAIL_FROM (default the WC appointments sender).
 // Logs never contain customer details.
 const crypto = require('crypto');
+const { renderChecklistEmail } = require('./_lib/checklist');
 
-const ROUTED_FORMS = new Set(['pcshomes-contact', 'popup-lead', 'va-home-list']);
+const ROUTED_FORMS = new Set(['pcshomes-contact', 'popup-lead', 'va-home-list', 'pcs-checklist']);
 const DEFAULT_TO = 'aryen@woodconsultingllc.net';
 const DEFAULT_FROM = 'Wood Consulting <appointments@updates.woodconsultingllc.net>';
 const TIME_ZONE = 'America/New_York';
@@ -20,7 +21,10 @@ const PROMISE_FULL =
 const PROMISE_SHORT =
   'We call, text and email within 24 hours. By sending, you agree we may reach you that way. Message rates may apply. Reply STOP to opt out. '
   + 'Your details go only to our team and to an agent you agree to meet.';
-const PROMISES = { 'pcshomes-contact': PROMISE_FULL, 'popup-lead': PROMISE_SHORT, 'va-home-list': PROMISE_SHORT };
+const PROMISE_CHECKLIST =
+  'We email you the checklist right away. A person from our team may also call, text or email to help with your move. Message rates may apply. Reply STOP to opt out. '
+  + 'Your details go only to our team and to an agent you agree to meet.';
+const PROMISES = { 'pcshomes-contact': PROMISE_FULL, 'popup-lead': PROMISE_SHORT, 'va-home-list': PROMISE_SHORT, 'pcs-checklist': PROMISE_CHECKLIST };
 
 const NEED_LABELS = {
   'real-estate-agent': 'Real estate agent',
@@ -44,6 +48,7 @@ const FORM_LABELS = {
   'pcshomes-contact': 'Get Help form',
   'popup-lead': 'Guide page "Have someone call me"',
   'va-home-list': 'Homepage VA home list form',
+  'pcs-checklist': 'Checklist page: emailed the PCS + VA loan checklist',
 };
 
 const env = (key, fallback = '') => process.env[key] || fallback;
@@ -97,7 +102,7 @@ function normalize(formName, data, createdAt) {
     emailValid: looksLikeEmail(email),
     phone,
     needKey,
-    need: NEED_LABELS[needKey] || needKey || (formName === 'va-home-list' ? 'VA home list' : 'Not specified'),
+    need: NEED_LABELS[needKey] || needKey || ({ 'va-home-list': 'VA home list', 'pcs-checklist': 'PCS + VA loan checklist' })[formName] || 'Not specified',
     area: clean(data.area, 120),
     leadSource: clean(data['lead-source'], 120),
     rentBuy: clean(data['rent-or-buy'], 60),
@@ -258,31 +263,47 @@ function renderLead(formName, data, createdAt) {
   return { lead, subject, html, text };
 }
 
-async function sendEmail(rendered, submissionId, fetcher = fetch) {
+async function resendPost(body, key, fetcher = fetch) {
   const apiKey = env('RESEND_API_KEY') || env('PCSHomes_Resend');
   if (!apiKey) {
     console.warn('submission-created skipped: no Resend key is configured');
-    return { skipped: 'no RESEND_API_KEY' };
+    return { skipped: 'no Resend key' };
   }
-  const key = crypto.createHash('sha256').update(String(submissionId || rendered.subject)).digest('hex').slice(0, 40);
   const response = await fetcher('https://api.resend.com/emails', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-      'Idempotency-Key': `pcshomes-realty-lead/${key}`,
-    },
-    body: JSON.stringify({
-      from: env('REALTY_LEAD_MAIL_FROM', DEFAULT_FROM),
-      to: [env('REALTY_LEAD_MAIL_TO', DEFAULT_TO)],
-      ...(rendered.lead.emailValid ? { reply_to: rendered.lead.email } : {}),
-      subject: rendered.subject,
-      html: rendered.html,
-      text: rendered.text,
-    }),
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': key },
+    body: JSON.stringify(body),
   });
   if (!response.ok) throw new Error(`Resend delivery failed with status ${response.status}`);
   return { ok: true };
+}
+
+const keyFor = (prefix, id, fallback) =>
+  `${prefix}/${crypto.createHash('sha256').update(String(id || fallback)).digest('hex').slice(0, 40)}`;
+
+async function sendEmail(rendered, submissionId, fetcher = fetch) {
+  return resendPost({
+    from: env('REALTY_LEAD_MAIL_FROM', DEFAULT_FROM),
+    to: [env('REALTY_LEAD_MAIL_TO', DEFAULT_TO)],
+    ...(rendered.lead.emailValid ? { reply_to: rendered.lead.email } : {}),
+    subject: rendered.subject,
+    html: rendered.html,
+    text: rendered.text,
+  }, keyFor('pcshomes-realty-lead', submissionId, rendered.subject), fetcher);
+}
+
+// The family's own copy of the checklist they asked for. Replies go to our team.
+async function sendChecklist(lead, submissionId, fetcher = fetch) {
+  if (!lead.emailValid) return { skipped: 'no valid email' };
+  const mail = renderChecklistEmail(lead.first);
+  return resendPost({
+    from: env('PCS_FAMILY_MAIL_FROM', 'PCSHomes <appointments@updates.woodconsultingllc.net>'),
+    to: [lead.email],
+    reply_to: env('REALTY_LEAD_MAIL_TO', DEFAULT_TO),
+    subject: mail.subject,
+    html: mail.html,
+    text: mail.text,
+  }, keyFor('pcshomes-checklist', submissionId, lead.email), fetcher);
 }
 
 exports.handler = async (event) => {
@@ -292,7 +313,10 @@ exports.handler = async (event) => {
     const formName = clean(payload.form_name || data['form-name'], 80);
     if (!ROUTED_FORMS.has(formName)) return { statusCode: 200, body: 'not routed' };
     const rendered = renderLead(formName, data, payload.created_at);
-    await sendEmail(rendered, payload.id);
+    const sends = [sendEmail(rendered, payload.id)];
+    if (formName === 'pcs-checklist') sends.push(sendChecklist(rendered.lead, payload.id));
+    const results = await Promise.allSettled(sends);
+    for (const r of results) if (r.status === 'rejected') console.error('submission-created delivery failed:', r.reason && r.reason.message ? r.reason.message : 'unknown');
     return { statusCode: 200, body: 'ok' };
   } catch (error) {
     console.error('submission-created failed:', error && error.message ? error.message : 'unknown');
@@ -303,6 +327,7 @@ exports.handler = async (event) => {
 
 exports.renderLead = renderLead;
 exports.sendEmail = sendEmail;
+exports.sendChecklist = sendChecklist;
 exports.PROMISES = PROMISES;
 exports.PROMISE_FULL = PROMISE_FULL;
 exports.PROMISE_SHORT = PROMISE_SHORT;

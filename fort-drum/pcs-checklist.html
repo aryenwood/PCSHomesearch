@@ -152,6 +152,28 @@
       .wt th, .wt td { padding-inline: 6px; }
       input { font-size: 16px !important; }
     }
+
+    /* the checklist tripwire: a light card, so the page keeps its one navy plate */
+    .tw { margin: 34px 0 0; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 22px 18px 20px; scroll-margin-top: 84px; }
+    .tw h2 { font-size: clamp(26px, 5.6vw, 32px); margin: 0 0 8px; }
+    .tw > p { margin: 0 0 16px; color: var(--ink); font-size: var(--t-m); max-width: 36em; }
+    .tw form { display: grid; gap: 10px; }
+    .tw .field { background: var(--paper); border-color: var(--rule-strong); }
+    .tw .field > span { color: var(--muted); }
+    .tw .field > span + input { color: var(--ink); }
+    .tw .field:focus-within { border-color: var(--navy); }
+    .tw .msg { color: var(--err); }
+    .tw .field.error { border-color: var(--err); }
+    .tw .opt { font: 700 var(--t-xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 6px 0 8px; }
+    .tw .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tw .chip-b { min-height: 48px; min-width: 64px; padding: 0 16px; border: 1px solid var(--rule-strong); border-radius: 10px; background: var(--paper); color: var(--ink); font: 500 var(--t-m) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; }
+    .tw .chip-b[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--plate-ink); font-weight: 700; }
+    .tw .btn-gold { min-height: 56px; width: 100%; font-size: 18px; margin-top: 6px; }
+    .tw small { display: block; margin-top: 12px; color: var(--muted); font-size: var(--t-xs); line-height: 1.55; }
+    .tw small b { color: var(--ink); }
+    .tw .tw-done { display: none; font-size: var(--t-m); color: var(--ink); }
+    .tw .tw-done b { display: block; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+    @media (min-width: 720px) { .tw { padding: 30px 32px 28px; } .tw form { grid-template-columns: 1fr 1fr 1fr; align-items: start; } .tw .tw-opt, .tw .btn-gold, .tw form > small { grid-column: 1 / -1; } .tw .btn-gold { width: auto; justify-self: start; padding: 0 32px; } }
   </style>
 </head>
 <body>
@@ -183,6 +205,24 @@
     <span>Your checklist <b>saves on this phone</b></span>
   </div>
   <figure class="hero-photo hero-banner rv"><img src="/images/soldier-spouse-on-post.webp" alt="A soldier and spouse walking past on-post family homes" width="800" height="519" loading="eager"/></figure>
+
+  <section class="tw rv" id="get-checklist" aria-labelledby="twTitle">
+    <h2 id="twTitle">Take this checklist <em>with you.</em></h2>
+    <p>Everything on this page, plus the VA loan steps and your 2026 moving pay, in one email you can come back to. Free.</p>
+    <form name="pcs-checklist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="twForm" novalidate>
+      <input type="hidden" name="form-name" value="pcs-checklist"/>
+      <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
+      <input type="hidden" name="va-loan" id="twVa" value=""/>
+      <input type="hidden" name="source-page" value=""/><input type="hidden" name="referrer" value=""/><input type="hidden" name="utm-source" value=""/><input type="hidden" name="utm-medium" value=""/><input type="hidden" name="utm-campaign" value=""/>
+      <div><label class="field"><span>First name</span><input type="text" id="twName" name="first-name" autocomplete="given-name" required aria-required="true"/></label><p class="msg">Add your first name.</p></div>
+      <div><label class="field"><span>Email</span><input type="email" id="twEmail" name="email" autocomplete="email" required aria-required="true"/></label><p class="msg">Check the email address. It should look like name@example.com.</p></div>
+      <div><label class="field"><span>Phone</span><input type="tel" id="twPhone" name="phone" inputmode="tel" autocomplete="tel" required aria-required="true"/></label><p class="msg">Enter a 10 digit phone number, like (315) 555-0142.</p></div>
+      <div class="tw-opt"><p class="opt" id="twVaLabel">Using a VA loan? (optional)</p><div class="chips" role="group" aria-labelledby="twVaLabel"><button type="button" class="chip-b" aria-pressed="false">Yes</button><button type="button" class="chip-b" aria-pressed="false">No</button><button type="button" class="chip-b" aria-pressed="false">Not sure</button></div></div>
+      <button type="submit" class="btn-gold" id="twGo">Email me the checklist</button>
+      <small><b>We email you the checklist right away.</b> A person from our team may also call, text or email to help with your move. Message rates may apply. Reply STOP to opt out. Your details go only to our team and to an agent you agree to meet.</small>
+    </form>
+    <div class="tw-done" id="twDone" role="status" aria-live="polite"><b>Sent. Check your inbox.</b>Look for &ldquo;Your Fort Drum PCS + VA loan checklist&rdquo;. It can take a minute; if it isn't there, check spam. Questions? Text or call <a href="tel:+13152214857">(315) 221-4857</a>.</div>
+  </section>
 </div></header>
 
 <!-- STAGE TIMELINE -->
@@ -430,6 +470,34 @@ function submitAskBand(e, offer) {
       showStatus(data);
     }
   } catch (e) {}
+})();
+</script>
+<script>
+// Checklist tripwire: three required fields, an optional VA answer, then the email goes out from the server.
+(function () {
+  var form = document.getElementById('twForm'); if (!form) return;
+  form.querySelector('.chips').addEventListener('click', function (e) {
+    var b = e.target.closest('.chip-b'); if (!b) return;
+    var on = b.getAttribute('aria-pressed') === 'true';
+    form.querySelectorAll('.chip-b').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    document.getElementById('twVa').value = on ? '' : b.textContent.trim();
+  });
+  function bad(el, isBad) { el.closest('.field').classList.toggle('error', isBad); el.setAttribute('aria-invalid', isBad ? 'true' : 'false'); }
+  form.addEventListener('input', function (e) { var f = e.target.closest('.field'); if (f) f.classList.remove('error'); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = document.getElementById('twName'), em = document.getElementById('twEmail'), ph = document.getElementById('twPhone');
+    var d = ph.value.replace(/\D/g, '');
+    var checks = [[n, n.value.trim().length > 0], [em, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())], [ph, d.length === 10 || (d.length === 11 && d[0] === '1')]];
+    var first = null; checks.forEach(function (c) { bad(c[0], !c[1]); if (!c[1] && !first) first = c[0]; });
+    if (first) { first.focus(); return; }
+    if (window.pcshFillAttribution) pcshFillAttribution(form);
+    var go = document.getElementById('twGo'); go.disabled = true; go.textContent = 'Sending...';
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); form.style.display = 'none'; document.getElementById('twDone').style.display = 'block'; })
+      .catch(function () { go.disabled = false; go.textContent = 'Email me the checklist'; form.querySelector('small').innerHTML = 'That did not send, and nothing was lost. Try again, or text or call <a href="tel:+13152214857">(315) 221-4857</a>.'; });
+  });
 })();
 </script>
 <script src="/js/chassis.js"></script>
