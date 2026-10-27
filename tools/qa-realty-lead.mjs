@@ -19,7 +19,7 @@ const check = (ok, label) => {
 const sample = {
   'pcshomes-contact': {
     'form-name': 'pcshomes-contact', 'first-name': 'Dana', 'last-name': 'Reyes', email: 'dana@example.com', phone: '315-555-0142',
-    'need-type': 'real-estate-agent', area: 'Evans Mills', rank: 'SSG', 'duty-station': 'Fort Bragg', 'pcs-date': 'July 2027',
+    'need-type': 'real-estate-agent', area: 'Evans Mills', 'moving-as': 'Spouse', 'rent-or-buy': 'Rent', 'best-time': 'Evening', 'duty-station': 'Fort Bragg', 'pcs-date': 'July 2027',
     budget: '$250,000 - $300,000', message: 'Two dogs.\nNeed a fenced yard.', 'source-page': '/get-help.html', referrer: 'https://facebook.com/', 'utm-source': 'fb',
   },
   'popup-lead': { 'form-name': 'popup-lead', name: 'Sam Ortiz', email: 'sam@example.com', phone: '(315) 555-0100', offer: 'homes', 'source-page': '/' },
@@ -31,9 +31,10 @@ for (const [form, data] of Object.entries(sample)) {
   check(r.subject.startsWith('A NEW WC REALTY LEAD | '), `${form}: subject starts with the route name`);
   check(r.html.includes('tel:+1315555') && r.html.includes('sms:+1315555'), `${form}: call and text buttons present`);
   check(r.html.includes('mailto:') && r.text.includes('@example.com'), `${form}: email button and text part present`);
-  check(r.html.includes(fn.PROMISE.replace(/&/g, '&amp;')), `${form}: shows what the family was told`);
+  check(r.html.includes(fn.PROMISES[form]) && r.text.includes(fn.PROMISES[form]), `${form}: shows exactly what the family was told`);
   check(!/[—–]/.test(r.subject + r.html + r.text), `${form}: no dashes of the banned kind`);
   check(r.text.includes('FIRST CALL: CONFIRM THESE'), `${form}: first-call checklist present`);
+  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent')), `${form}: new optional answers appear when given`);
 }
 
 const hostile = fn.renderLead('popup-lead', { name: '<script>alert(1)</script>', email: 'x@example.com', phone: '12', message: '<img src=x onerror=1>' });
@@ -80,15 +81,16 @@ const formBlock = (html, name) => {
 };
 const requiredInput = (block, field, type) =>
   new RegExp(`<input[^>]*type="${type}"[^>]*name="${field}"[^>]*required|<input[^>]*name="${field}"[^>]*type="${type}"[^>]*required|<input[^>]*name="${field}"[^>]*required[^>]*type="${type}"`).test(block);
-for (const [name, html] of [['pcshomes-contact', help], ['popup-lead', index], ['va-home-list', index]]) {
+for (const [name, html] of [['pcshomes-contact', help], ['va-home-list', index]]) {
   const block = formBlock(html, name);
   check(block.length > 0, `${name}: form found`);
   check(requiredInput(block, 'email', 'email'), `${name}: email is required`);
   check(requiredInput(block, 'phone', 'tel'), `${name}: phone is required`);
   check(/name="source-page"/.test(block) && /name="utm-campaign"/.test(block), `${name}: carries page and UTM fields`);
 }
-check(index.includes(fn.PROMISE), 'index.html shows the full contact promise');
-check(help.includes(fn.PROMISE.slice(fn.PROMISE.indexOf('By sending this'))), 'get-help.html shows the consent and sharing wording');
+const plain = (html) => html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+check(plain(index).includes(fn.PROMISE_SHORT.replace(/ Questions now.*/, '')), 'index.html shows the short contact promise the email repeats');
+check(plain(help).includes(fn.PROMISE_FULL), 'get-help.html shows the full contact promise the email repeats');
 
 console.log(failed ? `\n${failed} check(s) FAILED` : '\nAll checks passed');
 process.exit(failed ? 1 : 0);

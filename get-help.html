@@ -28,15 +28,30 @@
     .ask-plate .plate-in { max-width: 760px; }
     /* six options, two equal columns at every width */
     .inquiry-types { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0 6px; }
-    .inquiry-type { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 14px; text-align: center; line-height: 1.25;
-                    border: 1px solid rgba(246,241,230,0.3); border-radius: 12px; background: transparent;
-                    color: var(--plate-ink); font: 700 var(--t-xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer;
+    .inquiry-type, .lf-chip { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 8px 14px; text-align: center; line-height: 1.25;
+                    border: 1px solid rgba(246,241,230,0.38); border-radius: 10px; background: rgba(246,241,230,0.08);
+                    color: var(--plate-ink); font: 500 var(--t-m) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer;
                     transition: background .2s, border-color .2s, color .2s; }
-    .inquiry-type:hover { border-color: var(--gold-bright); }
-    .inquiry-type.selected { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); }
+    .inquiry-type:hover, .lf-chip:hover { border-color: var(--gold-bright); }
+    .inquiry-type.selected, .lf-chip[aria-pressed="true"] { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--plate-deep); font-weight: 700; }
+    .lf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .lf-chip { padding-inline: 16px; }
+    .lf-group { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 10px; }
+    .lf-group legend { padding: 0; margin-bottom: 4px; }
+    .req { color: var(--gold-bright); }
+    details.lf-more { border: 1px solid rgba(246,241,230,0.38); border-radius: 12px; }
+    details.lf-more > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; min-height: 56px; font: 700 var(--t-m)/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; }
+    details.lf-more > summary::-webkit-details-marker { display: none; }
+    details.lf-more > summary { color: var(--plate-ink); }
+    details.lf-more > summary > span { flex: 1; }
+    details.lf-more > summary small { display: block; font: 400 var(--t-s)/1.4 'DM Sans', 'DM Fallback', system-ui, sans-serif; color: var(--plate-sub); }
+    details.lf-more > summary::after { content: '+'; font: 700 26px/1 'DM Sans', system-ui, sans-serif; color: var(--gold-bright); flex: none; }
+    details.lf-more[open] > summary::after { content: '\2212'; }
+    #contactExtras { display: grid; gap: 20px; padding: 4px 16px 18px; }
+    .sent-via { color: var(--plate-ink); font-weight: 700; }
     .inquiry-type.selected svg { stroke: var(--plate-deep); }
     .inquiry-type svg { width: 16px; height: 16px; flex: none; }
-    .form-label { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--plate-sub); }
+    .form-label { font-size: var(--t-xs); font-weight: 700; margin-bottom: 0; letter-spacing: 0.09em; text-transform: uppercase; color: var(--plate-sub); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     #pcshomesForm { display: flex; flex-direction: column; gap: 10px; }
     #pcshomesForm .field { flex: 0 0 auto; }
@@ -44,9 +59,6 @@
                                      font: 500 16.5px 'DM Sans', 'DM Fallback', system-ui, sans-serif; outline: none; width: 100%; }
     .field textarea { resize: vertical; min-height: 88px; }
     .field select option { background: var(--plate-deep); color: var(--plate-ink); }
-    .extras-toggle { background: none; border: none; color: var(--plate-sub); font: 500 var(--t-xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif;
-                     cursor: pointer; text-align: left; padding: 12px 0; text-decoration: underline; min-height: 44px; }
-    #contactExtras { display: none; flex-direction: column; gap: 10px; border-top: 1px solid rgba(246,241,230,0.14); padding-top: 14px; margin-top: 4px; }
     .reassure { font-size: var(--t-xs); color: rgba(246,241,230,0.55); }
     .form-error { background: rgba(163,58,43,0.25); border: 1px solid var(--err); color: #F6D9D3;
                   border-radius: 9px; padding: 12px 16px; font-size: var(--t-s); margin-top: 10px; }
@@ -212,7 +224,7 @@
 
 <header class="hero"><div class="wrap">
   <p class="eyebrow rv">Get help</p>
-  <h1 class="rv">Tell us what you need. <em>We'll connect you.</em></h1>
+  <h1 class="rv">Built for service members, <em>by service members.</em></h1>
   <p class="dek rv">Whether you're the service member, the spouse, or managing this move together, a real person who knows Fort Drum reads every message and connects you with <strong>agents, lenders, inspectors and home services we trust.</strong></p>
   <div class="proof rv">
     <span>A real person replies <b>within 24 hours</b></span>
@@ -225,11 +237,11 @@
 <div class="plate ask-plate rv" style="margin-top:40px;">
   <canvas class="ground" aria-hidden="true"></canvas>
   <div class="plate-in">
-    <h2 id="contactFormTitle">How can <em>we help?</em></h2>
-    <p class="lede">Tell us what your family needs and we'll connect you with the right expert within 24 hours.</p>
+    <h2 id="contactFormTitle">Tell us about your move. <em>We'll take it from here.</em></h2>
+    <p class="lede">Your name and two ways to reach you. Everything else is optional.</p>
 
     <div id="contactForm" style="margin-top:26px;">
-      <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)" aria-labelledby="contactFormTitle">
+      <form name="pcshomes-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="pcshomesForm" onsubmit="submitForm(event)" novalidate aria-labelledby="contactFormTitle">
         <input type="hidden" name="form-name" value="pcshomes-contact"/>
         <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
         <input type="hidden" name="need-type" id="needTypeInput" value="general"/>
@@ -240,87 +252,82 @@
         <input type="hidden" name="utm-source" value=""/>
         <input type="hidden" name="utm-medium" value=""/>
         <input type="hidden" name="utm-campaign" value=""/>
+        <input type="hidden" name="moving-as" id="movingAsInput" value=""/>
+        <input type="hidden" name="rent-or-buy" id="rentBuyInput" value=""/>
+        <input type="hidden" name="best-time" id="bestTimeInput" value=""/>
 
-        <div>
-          <div class="form-label" id="inquiryTypeLabel">What do you need? (pick one)</div>
+        <fieldset class="lf-group">
+          <legend class="form-label" id="inquiryTypeLabel">What do you need?</legend>
           <div class="inquiry-types" role="group" aria-labelledby="inquiryTypeLabel">
-            <button type="button" class="inquiry-type" aria-pressed="false" data-type="real-estate-agent" onclick="selectType(this)">
-              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              Find a Real Estate Agent
-            </button>
-            <button type="button" class="inquiry-type" aria-pressed="false" data-type="va-lender" onclick="selectType(this)">
-              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M12 14v7"/><path d="M9 18l3 3 3-3"/></svg>
-              Get VA Loan Guidance
-            </button>
-            <button type="button" class="inquiry-type" aria-pressed="false" data-type="property-inspector" onclick="selectType(this)">
-              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
-              Find a Property Inspector
-            </button>
-            <button type="button" class="inquiry-type" aria-pressed="false" data-type="home-services" onclick="selectType(this)">
-              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-              Home Services
-            </button>
-            <button type="button" class="inquiry-type" aria-pressed="false" data-type="general" onclick="selectType(this)">
-              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              General PCS Question
-            </button>
-            <button type="button" class="inquiry-type" aria-pressed="false" data-type="family-support" onclick="selectType(this)">
-              <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-              Family Support
-            </button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="real-estate-agent" onclick="selectType(this)">Find an agent</button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="va-lender" onclick="selectType(this)">VA loan help</button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="property-inspector" onclick="selectType(this)">Inspector</button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="home-services" onclick="selectType(this)">Home services</button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="general" onclick="selectType(this)">PCS question</button>
+            <button type="button" class="inquiry-type" aria-pressed="false" data-type="family-support" onclick="selectType(this)">Family support</button>
           </div>
-          <div class="reassure" style="margin-bottom:10px;">Whether you're a soldier, spouse, or both, we're here for your whole family.</div>
-        </div>
+        </fieldset>
 
-        <div class="form-row">
-          <label class="field"><span>First name</span><input id="firstName" name="first-name" type="text" required aria-required="true" autocomplete="given-name"/></label>
-          <label class="field"><span>Last name</span><input id="lastName" name="last-name" type="text" required aria-required="true" autocomplete="family-name"/></label>
-        </div>
-        <div class="form-row">
-          <label class="field"><span>Email</span><input id="email" name="email" type="email" required aria-required="true" autocomplete="email"/></label>
-          <label class="field"><span>Phone</span><input id="phone" name="phone" type="tel" inputmode="tel" required aria-required="true" autocomplete="tel"/></label>
-        </div>
-
-        <button type="button" id="contactExtrasToggle" class="extras-toggle" onclick="toggleExtras()">+ Add details (optional)</button>
-        <div id="contactExtras">
+        <fieldset class="lf-group">
+          <legend class="form-label">How do we reach you? <span class="req">First name, phone and email are required</span></legend>
           <div class="form-row">
-            <label class="field"><span>Rank</span><input id="rank" name="rank" type="text"/></label>
-            <label class="field"><span>Current duty station</span><input id="dutyStation" name="duty-station" type="text"/></label>
+            <div><label class="field"><span>First name</span><input id="firstName" name="first-name" type="text" required aria-required="true" autocomplete="given-name"/></label><p class="msg" id="firstNameMsg">Add your first name so we know who to ask for.</p></div>
+            <div><label class="field"><span>Last name (optional)</span><input id="lastName" name="last-name" type="text" autocomplete="family-name"/></label></div>
           </div>
           <div class="form-row">
-            <label class="field"><span>PCS / report date</span><input id="pcsDate" name="pcs-date" type="text"/></label>
-            <label class="field"><span>Budget range</span>
+            <div><label class="field"><span>Phone</span><input id="phone" name="phone" type="tel" inputmode="tel" required aria-required="true" autocomplete="tel"/></label><p class="msg" id="phoneMsg">Enter a 10 digit phone number, like (315) 555-0142.</p></div>
+            <div><label class="field"><span>Email</span><input id="email" name="email" type="email" required aria-required="true" autocomplete="email"/></label><p class="msg" id="emailMsg">Check the email address. It should look like name@example.com.</p></div>
+          </div>
+          <div class="reassure">We call, text and email, so you can answer whichever is easiest.</div>
+        </fieldset>
+
+        <details class="lf-more" id="moreDetails">
+          <summary><span>Add details for a faster first call<small>Optional. Skip it if you're short on time.</small></span></summary>
+          <div class="more-in" id="contactExtras">
+            <div><div class="form-label">I'm moving as</div><div class="lf-chips" data-target="movingAsInput">
+              <button type="button" class="lf-chip" aria-pressed="false">Service member</button><button type="button" class="lf-chip" aria-pressed="false">Spouse</button><button type="button" class="lf-chip" aria-pressed="false">Veteran</button><button type="button" class="lf-chip" aria-pressed="false">Other</button></div></div>
+            <div class="form-row">
+              <label class="field"><span>Report date</span><input id="pcsDate" name="pcs-date" type="text" placeholder="Month and year"/></label>
+              <label class="field"><span>Coming from</span><input id="dutyStation" name="duty-station" type="text" placeholder="Base or city"/></label>
+            </div>
+            <div><div class="form-label">Rent or buy</div><div class="lf-chips" data-target="rentBuyInput">
+              <button type="button" class="lf-chip" aria-pressed="false">Rent</button><button type="button" class="lf-chip" aria-pressed="false">Buy</button><button type="button" class="lf-chip" aria-pressed="false">Not sure yet</button></div></div>
+            <label class="field"><span>Monthly payment or price range</span>
               <select id="budget" name="budget">
-                <option value="">Select a range...</option>
-                <option>Under $150,000</option>
-                <option>$150,000 - $200,000</option>
-                <option>$200,000 - $250,000</option>
-                <option>$250,000 - $300,000</option>
-                <option>$300,000+</option>
+                <option value="">Choose one</option>
+                <option>Under $1,200 a month</option>
+                <option>$1,200 to $1,800 a month</option>
+                <option>Over $1,800 a month</option>
+                <option>Buying under $200,000</option>
+                <option>Buying $200,000 to $300,000</option>
+                <option>Buying over $300,000</option>
                 <option>Not sure yet</option>
               </select>
             </label>
+            <div><div class="form-label">Best time to reach you</div><div class="lf-chips" data-target="bestTimeInput">
+              <button type="button" class="lf-chip" aria-pressed="false">Morning</button><button type="button" class="lf-chip" aria-pressed="false">Afternoon</button><button type="button" class="lf-chip" aria-pressed="false">Evening</button><button type="button" class="lf-chip" aria-pressed="false">Any time</button></div></div>
+            <label class="field"><span>Anything we should know?</span><textarea id="message" name="message" rows="4" enterkeyhint="send" placeholder="Pets, school needs, a deadline, a question."></textarea></label>
           </div>
-        </div>
+        </details>
 
-        <label class="field"><span>Message</span><textarea id="message" name="message" rows="4" enterkeyhint="send"></textarea></label>
-
-        <div class="reassure">No spam, no pressure: a real person who knows Fort Drum reads every message. We will call, text or email you within 24 hours. By sending this you agree we may reach you that way about your request (message rates may apply; reply STOP to opt out). Your details go only to our team and to an agent you agree to meet.</div>
-        <button type="submit" class="btn-gold">Connect Me with an Expert &rarr;</button>
+        <button type="submit" class="btn-gold lf-go">Send to our team</button>
+        <div class="reassure"><b>By sending, you agree we may call, text and email you about this request.</b> Message rates may apply. Reply STOP to opt out of texts. Your details go only to our team and to an agent you agree to meet.</div>
         <div class="reassure" style="text-align:center;">See what families say: <a href="https://www.zillow.com/profile/joe8963" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Joe Murtha's reviews on Zillow</a>, our Fort Drum agent.</div>
-        <div class="reassure" style="text-align:center;">Questions? <a href="sms:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">(315) 221-4857</a></div>
+        <div class="reassure" style="text-align:center;">Questions now? <a href="sms:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">(315) 221-4857</a></div>
         <div id="formError" style="display:none;"></div>
       </form>
     </div>
 
-    <div class="success-state" id="successState">
+    <div class="success-state" id="successState" role="status" aria-live="polite">
       <svg aria-hidden="true" focusable="false" width="56" height="56" viewBox="0 0 56 56" fill="none">
         <circle cx="28" cy="28" r="28" fill="rgba(217,180,91,0.12)"/>
         <circle cx="28" cy="28" r="20" fill="rgba(217,180,91,0.15)"/>
         <path d="M20 28l5.5 5.5L36 22" stroke="#D9B45B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <h3>We got your message!</h3>
-      <p>A PCSHomes team member will review your request and connect you with the right expert within 24 hours.</p>
+      <h3 id="sentTitle">Got it. A person has your note.</h3>
+      <p>We'll call, text and email you within 24 hours.</p>
+      <p id="sentVia" class="sent-via"></p>
+      <p>Need to talk sooner? Call or text <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;">(315) 221-4857</a>. Nobody else sees your details unless you say yes.</p>
     </div>
   </div>
 </div>
@@ -649,21 +656,47 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
     } catch (e) {}
   })();
 
-  function toggleExtras() {
-    var el = document.getElementById('contactExtras');
-    var btn = document.getElementById('contactExtrasToggle');
-    if (el.style.display === 'none' || el.style.display === '') {
-      el.style.display = 'flex';
-      btn.textContent = '− Hide details';
-    } else {
-      el.style.display = 'none';
-      btn.textContent = '+ Add details (optional)';
-    }
+  // Choice chips in the optional drawer write their pick into a hidden field the lead email reads.
+  document.querySelectorAll('.lf-chips').forEach(function(group) {
+    group.addEventListener('click', function(e) {
+      var chip = e.target.closest('.lf-chip');
+      if (!chip) return;
+      var wasOn = chip.getAttribute('aria-pressed') === 'true';
+      group.querySelectorAll('.lf-chip').forEach(function(c) { c.setAttribute('aria-pressed', 'false'); });
+      chip.setAttribute('aria-pressed', wasOn ? 'false' : 'true');
+      document.getElementById(group.dataset.target).value = wasOn ? '' : chip.textContent.trim();
+    });
+  });
+
+  function validPhone(v) { var d = v.replace(/\D/g, ''); return d.length === 10 || (d.length === 11 && d.charAt(0) === '1'); }
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function flag(input, bad) {
+    var f = input.closest('.field');
+    f.classList.toggle('error', bad);
+    input.setAttribute('aria-invalid', bad ? 'true' : 'false');
+    var m = document.getElementById(input.id + 'Msg');
+    if (m) input.setAttribute('aria-describedby', bad ? m.id : '');
   }
+  function checkContact(form) {
+    var first = null;
+    [['firstName', function(v) { return v.trim().length > 0; }], ['phone', validPhone], ['email', validEmail]].forEach(function(r) {
+      var el = form.querySelector('#' + r[0]);
+      var bad = !r[1](el.value.trim());
+      flag(el, bad);
+      if (bad && !first) first = el;
+    });
+    if (first) first.focus();
+    return !first;
+  }
+  document.getElementById('pcshomesForm').addEventListener('input', function(e) {
+    var f = e.target.closest && e.target.closest('.field');
+    if (f && f.classList.contains('error')) checkContact(this);
+  });
 
   function submitForm(e) {
     e.preventDefault();
     var form = e.target;
+    if (!checkContact(form)) return;
     pcshFillAttribution(form);
     var formData = new FormData(form);
     var selectedType = document.querySelector('.inquiry-type.selected');
@@ -673,7 +706,9 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       formData.set('need-type', 'general');
     }
     var errorEl = document.getElementById('formError');
+    var go = form.querySelector('.lf-go');
     errorEl.style.display = 'none';
+    go.disabled = true; go.textContent = 'Sending...';
 
     fetch('/', {
       method: 'POST',
@@ -681,12 +716,18 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       body: new URLSearchParams(formData).toString()
     }).then(function(response) {
       if (!response.ok) throw new Error('Form submission failed');
+      var name = (formData.get('first-name') || '').trim().replace(/[<>&]/g, '');
+      document.getElementById('sentTitle').textContent = name ? 'Got it, ' + name + '. A person has your note.' : 'Got it. A person has your note.';
+      var d = (formData.get('phone') || '').replace(/\D/g, '');
+      if (d.length === 11) d = d.slice(1);
+      var shown = d.length === 10 ? '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6) : formData.get('phone');
+      document.getElementById('sentVia').textContent = 'Reaching you at ' + shown + ' and ' + formData.get('email');
       document.getElementById('contactForm').style.display = 'none';
       document.getElementById('successState').style.display = 'block';
     }).catch(function() {
-      errorEl.innerHTML = '<div class="form-error">Something went wrong. Please try again, or call/text <a href="tel:+13152214857" style="color:inherit;font-weight:600;">(315) 221-4857</a>.</div>';
+      go.disabled = false; go.textContent = 'Send to our team';
+      errorEl.innerHTML = '<div class="form-error">That did not send, and nothing was lost. Try again, or call or text us at <a href="tel:+13152214857" style="color:inherit;font-weight:700;">(315) 221-4857</a>.</div>';
       errorEl.style.display = 'block';
-      setTimeout(function() { errorEl.style.display = 'none'; }, 6000);
     });
   }
 </script>

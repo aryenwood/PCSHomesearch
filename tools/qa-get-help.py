@@ -32,10 +32,10 @@ with sync_playwright() as p:
     need("anchors", all(R["anchors"]))
 
     # 1. the contact form (the working lead path)
-    pg.fill("#firstName", "QA"); pg.fill("#lastName", "Test"); pg.fill("#email", "qa@example.com")
+    pg.fill("#firstName", "QA"); pg.fill("#lastName", "Test"); pg.fill("#email", "qa@example.com"); pg.fill("#phone", "3155550142")
     pg.click("#pcshomesForm button[type=submit]"); pg.wait_for_timeout(500)
     c = posts[-1] if posts else {}
-    R["contact_post"] = {k: c.get(k, [None])[0] for k in ("form-name", "need-type", "area", "first-name", "email", "lead-source")}
+    R["contact_post"] = {k: c.get(k, [None])[0] for k in ("form-name", "need-type", "area", "first-name", "email", "phone", "lead-source")}
     need("contact_post", c.get("form-name") == ["pcshomes-contact"] and c.get("need-type") == ["real-estate-agent"] and c.get("area") == ["Watertown"])
     R["contact_success"] = pg.is_visible("#successState")
     need("contact_success", R["contact_success"])

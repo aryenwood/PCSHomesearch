@@ -72,49 +72,6 @@
 
     /* mobile/desktop switches */
 
-    /* exit/depth popup */
-    .popup-overlay { position: fixed; inset: 0; z-index: 20000; background: rgba(7,15,30,0.75); backdrop-filter: blur(4px);
-                     display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    .popup-overlay.visible { opacity: 1; pointer-events: all; }
-    .popup-box { background: #fff; border-radius: 18px; width: 100%; max-width: 520px; overflow: hidden; max-height: calc(100dvh - 40px);
-                 display: flex; flex-direction: column; transform: translateY(24px) scale(0.97);
-                 transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); box-shadow: 0 32px 80px rgba(0,0,0,0.35); }
-    .popup-overlay.visible .popup-box { transform: translateY(0) scale(1); }
-    .popup-top { background: linear-gradient(160deg, var(--plate) 0%, var(--plate-deep) 100%); padding: 28px 28px 24px; position: relative; }
-    .popup-close { position: absolute; top: 10px; right: 12px; background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.6);
-                   width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-    .popup-close:hover { background: rgba(255,255,255,0.2); }
-    .popup-eyebrow { font-size: var(--t-2xs); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 8px; }
-    .popup-headline { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 8px; }
-    .popup-sub { font-size: var(--t-xs); color: rgba(255,255,255,0.65); line-height: 1.6; }
-    .popup-body { padding: 28px; overflow-y: auto; }
-    .popup-options { display: flex; flex-direction: column; gap: 12px; }
-    .popup-option { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border: 1.5px solid var(--rule); border-radius: 12px;
-                    cursor: pointer; transition: all 0.2s; background: #fff; }
-    .popup-option:hover { border-color: var(--navy); background: rgba(29,53,87,0.03); }
-    .popup-option-icon { flex-shrink: 0; display: flex; }
-    .popup-option-title { font-size: var(--t-s); font-weight: 700; color: var(--navy); margin-bottom: 3px; }
-    .popup-option-desc { font-size: var(--t-xs); color: var(--muted); line-height: 1.4; }
-    .popup-option-arrow { margin-left: auto; font-size: 18px; color: var(--gold); flex-shrink: 0; }
-    .popup-form { display: none; flex-direction: column; gap: 14px; }
-    .popup-form-title { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: var(--t-m); font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .popup-form .field { flex: 0 0 auto; border-color: rgba(43,53,71,0.25); background: rgba(43,53,71,0.04); }
-    .popup-form .field > span { color: var(--muted); }
-    .popup-form .field input { color: var(--ink); }
-    .popup-form .field:focus-within { border-color: var(--gold); }
-    .popup-note { font-size: var(--t-xs); color: var(--muted); line-height: 1.6; }
-    .popup-btn { width: 100%; background: var(--navy); color: #fff; border: none; border-radius: 9px; padding: 14px;
-                 font-family: 'DM Sans', 'DM Fallback', system-ui, sans-serif; font-size: var(--t-s); font-weight: 700; cursor: pointer; min-height: 46px; margin-top: 4px; }
-    .popup-btn:hover { background: var(--gold); color: #fff; }
-    .popup-back { background: none; border: none; font-family: 'DM Sans', 'DM Fallback', system-ui, sans-serif; font-size: var(--t-2xs); color: var(--muted);
-                  cursor: pointer; padding: 10px 0; margin: -10px 0 -10px; text-align: left; }
-    .popup-success { display: none; text-align: center; padding: 16px 0 4px; }
-    .popup-success-icon { margin-bottom: 14px; }
-    .popup-success-title { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    .popup-success-sub { font-size: var(--t-xs); color: var(--muted); line-height: 1.6; }
-    .popup-trust { display: flex; justify-content: center; gap: 20px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
-    .popup-trust-item { font-size: var(--t-xs); color: var(--muted); display: flex; align-items: center; gap: 5px; }
-
     /* mobile tab bar — the one fixed layer on phones */
 
     @media (max-width: 900px) {
@@ -129,7 +86,7 @@
       .stage-welcome { padding-inline: 17px 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .stage-row, .popup-overlay, .popup-box { transition: none; }
+      .stage-row { transition: none; }
     }
   </style>
   <script type="application/ld+json">
@@ -361,7 +318,7 @@
         </div>
       </div>
       <div>
-        <form name="va-home-list" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="vaLeadForm">
+        <form name="va-home-list" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="vaLeadForm" novalidate>
           <input type="hidden" name="form-name" value="va-home-list"/>
           <input type="hidden" name="source-page" value=""/>
           <input type="hidden" name="referrer" value=""/>
@@ -369,12 +326,12 @@
           <input type="hidden" name="utm-medium" value=""/>
           <input type="hidden" name="utm-campaign" value=""/>
           <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
-          <label class="field"><span>Your name</span><input type="text" id="vaName" name="name" autocomplete="name" required aria-required="true"/></label>
-          <label class="field"><span>Email</span><input type="email" id="vaEmail" name="email" autocomplete="email" required aria-required="true"/></label>
-          <label class="field"><span>Phone</span><input type="tel" id="vaPhone" name="phone" inputmode="tel" autocomplete="tel" enterkeyhint="send" required aria-required="true"/></label>
-          <button type="button" class="btn-gold" onclick="submitVaLead()">Have someone call me</button>
+          <div><label class="field"><span>Your name</span><input type="text" id="vaName" name="name" autocomplete="name" required aria-required="true"/></label><p class="msg" id="vaNameMsg">Add your name so we know who to ask for.</p></div>
+          <div><label class="field"><span>Phone</span><input type="tel" id="vaPhone" name="phone" inputmode="tel" autocomplete="tel" required aria-required="true"/></label><p class="msg" id="vaPhoneMsg">Enter a 10 digit phone number, like (315) 555-0142.</p></div>
+          <div><label class="field"><span>Email</span><input type="email" id="vaEmail" name="email" autocomplete="email" enterkeyhint="send" required aria-required="true"/></label><p class="msg" id="vaEmailMsg">Check the email address. It should look like name@example.com.</p></div>
+          <button type="submit" class="btn-gold lf-go" id="vaGo">Have someone call me</button>
         </form>
-        <p class="form-note">A real person calls, texts or emails you within 24 hours. By sending this you agree we may reach you that way about your request (message rates may apply; reply STOP to opt out). Your details go only to our team and to an agent you agree to meet. Questions now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
+        <p class="form-note"><b>We call, text and email within 24 hours.</b> By sending, you agree we may reach you that way. Message rates may apply. Reply STOP to opt out. Your details go only to our team and to an agent you agree to meet. Questions now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
         <div id="vaLeadSuccess" class="lead-success" style="display:none;">
           <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <b>You're all set!</b>
@@ -404,76 +361,6 @@
     <a href="tel:+13152214857">(315) 221-4857</a>
   </div>
 </div></footer>
-
-<!-- EXIT-INTENT / READING-DEPTH POPUP -->
-<div class="popup-overlay" id="pcshPopup">
-  <div class="popup-box">
-    <div class="popup-top">
-      <button class="popup-close" onclick="closePopup()" aria-label="Close popup">×</button>
-      <div class="popup-eyebrow">Fort Drum PCS Resource</div>
-      <div class="popup-headline">Before you go, anything we can answer?</div>
-      <div class="popup-sub">Pick whichever is closest to where you are. Or just close this. The guides aren't going anywhere.</div>
-    </div>
-    <div class="popup-body">
-      <div class="popup-options" id="popupOptions">
-        <div class="popup-option" onclick="selectOffer('homes')">
-          <div class="popup-option-icon"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <div>
-            <div class="popup-option-title">Get Matched with a Local Agent</div>
-            <div class="popup-option-desc">We'll connect you with a vetted agent who matches your BAH, budget &amp; timeline.</div>
-          </div>
-          <div class="popup-option-arrow">›</div>
-        </div>
-        <a href="pcshomes-fortdrum.html" class="popup-option" style="text-decoration:none;">
-          <div class="popup-option-icon"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <div>
-            <div class="popup-option-title">Explore Fort Drum Resources</div>
-            <div class="popup-option-desc">Neighborhoods, schools, BAH breakdown, winter tips. Everything in one place.</div>
-          </div>
-          <div class="popup-option-arrow">›</div>
-        </a>
-        <div class="popup-option" onclick="selectOffer('lender')">
-          <div class="popup-option-icon"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-          <div>
-            <div class="popup-option-title">Connect with a VA Lender</div>
-            <div class="popup-option-desc">Get matched with a vetted VA loan specialist, no pressure, no obligation.</div>
-          </div>
-          <div class="popup-option-arrow">›</div>
-        </div>
-      </div>
-
-      <form class="popup-form" id="popupForm" name="popup-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="popup-lead"/>
-        <input type="hidden" name="source-page" value=""/>
-        <input type="hidden" name="referrer" value=""/>
-        <input type="hidden" name="utm-source" value=""/>
-        <input type="hidden" name="utm-medium" value=""/>
-        <input type="hidden" name="utm-campaign" value=""/>
-        <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
-        <button type="button" class="popup-back" onclick="document.getElementById('popupOptions').style.display='flex';document.getElementById('popupForm').style.display='none';">← Back</button>
-        <div class="popup-form-title" id="popupFormTitle"></div>
-        <input type="hidden" id="popupOfferType" name="offer" value=""/>
-        <label class="field"><span>Your name</span><input type="text" id="popupName" name="name" autocomplete="name" required aria-required="true"/></label>
-        <label class="field"><span>Email</span><input type="email" id="popupEmail" name="email" autocomplete="email" required aria-required="true"/></label>
-        <label class="field"><span>Phone</span><input type="tel" id="popupPhone" name="phone" inputmode="tel" autocomplete="tel" enterkeyhint="send" required aria-required="true"/></label>
-        <div class="popup-note">A real person calls, texts or emails you within 24 hours. By sending this you agree we may reach you that way about your request (message rates may apply; reply STOP to opt out). Your details go only to our team and to an agent you agree to meet.</div>
-        <button type="button" class="popup-btn" onclick="submitPopup()">Send My Request →</button>
-      </form>
-
-      <div class="popup-success" id="popupSuccess">
-        <div class="popup-success-icon"><svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <div class="popup-success-title">You're all set!</div>
-        <div class="popup-success-sub">A PCSHomes partner will be in touch shortly. Keep an eye on your email or phone.</div>
-      </div>
-
-      <div class="popup-trust" id="popupTrustBar">
-        <div class="popup-trust-item"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Vetted local partners</div>
-        <div class="popup-trust-item"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Military family focused</div>
-        <div class="popup-trust-item"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Free, no obligation</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- QUICK LINKS BACKDROP -->
 <div id="qlBackdrop" onclick="toggleQuickLinks()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s ease;"></div>
@@ -602,99 +489,46 @@ function clearStage() {
   }
 })();
 
-function submitVaLead() {
+function submitVaLead(ev) {
+  ev.preventDefault();
   const form = document.getElementById('vaLeadForm');
-  if (!form.reportValidity()) return;
+  const validPhone = (v) => { const d = v.replace(/\D/g, ''); return d.length === 10 || (d.length === 11 && d[0] === '1'); };
+  const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  let first = null;
+  [['vaName', (v) => v.length > 0], ['vaPhone', validPhone], ['vaEmail', validEmail]].forEach(([id, ok]) => {
+    const el = document.getElementById(id);
+    const bad = !ok(el.value.trim());
+    el.closest('.field').classList.toggle('error', bad);
+    el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+    if (bad && !first) first = el;
+  });
+  if (first) { first.focus(); return; }
   pcshFillAttribution(form);
   const formData = new FormData(form);
+  const go = document.getElementById('vaGo');
+  go.disabled = true; go.textContent = 'Sending...';
   fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(formData).toString()
   }).then((r) => {
     if (!r.ok) throw new Error('HTTP ' + r.status);
-    document.getElementById('vaLeadForm').style.display = 'none';
+    form.style.display = 'none';
     document.querySelector('.form-note').style.display = 'none';
     document.getElementById('vaLeadSuccess').style.display = 'block';
   }).catch(() => {
+    go.disabled = false; go.textContent = 'Have someone call me';
     const errorEl = document.createElement('p');
-    errorEl.textContent = 'Something went wrong. Please try again, or call/text (315) 221-4857.';
-    errorEl.style.cssText = 'color:#F08A7A;font-size:0.875rem;margin-top:0.75rem;text-align:center;flex-basis:100%;';
+    errorEl.textContent = 'That did not send, and nothing was lost. Try again, or call or text (315) 221-4857.';
+    errorEl.style.cssText = 'color:#FFB3A7;font-size:var(--t-s);margin-top:12px;';
     form.appendChild(errorEl);
-    setTimeout(() => errorEl.remove(), 6000);
   });
 }
-
-// ── EXIT-INTENT POPUP ──
-window.__pageLoadTime = Date.now();
-let popupShown = false;
-
-// Reading-depth trigger: the same offer for phones (mouseleave never fires on touch)
-window.addEventListener('scroll', function() {
-  if (popupShown || sessionStorage.getItem('popupShown')) return;
-  if ((Date.now() - window.__pageLoadTime) < 15000) return;
-  var doc = document.documentElement;
-  if ((window.scrollY + window.innerHeight) / doc.scrollHeight < 0.6) return;
-  popupShown = true;
-  try { sessionStorage.setItem('popupShown', 'true'); } catch (err) {}
-  var popup = document.getElementById('pcshPopup');
-  if (popup) popup.classList.add('visible');
-}, { passive: true });
-
-document.addEventListener('mouseleave', function(e) {
-  if (
-    e.clientY <= 20 &&
-    !popupShown &&
-    !sessionStorage.getItem('popupShown') &&
-    (Date.now() - window.__pageLoadTime) >= 10000
-  ) {
-    popupShown = true;
-    sessionStorage.setItem('popupShown', 'true');
-    const popup = document.getElementById('pcshPopup');
-    if (popup) popup.classList.add('visible');
-  }
+document.getElementById('vaLeadForm').addEventListener('submit', submitVaLead);
+document.getElementById('vaLeadForm').addEventListener('input', (e) => {
+  const f = e.target.closest('.field'); if (f) f.classList.remove('error');
 });
 
-function closePopup() {
-  document.getElementById('pcshPopup').classList.remove('visible');
-}
-function selectOffer(type) {
-  document.getElementById('popupOptions').style.display = 'none';
-  document.getElementById('popupForm').style.display = 'flex';
-  document.getElementById('popupFormTitle').innerHTML =
-    type === 'homes'   ? '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Get Matched with a Local Agent' :
-    type === 'lender'  ? '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg> Connect with a VA Lender' :
-                         '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule a Free Consultation';
-  document.getElementById('popupOfferType').value = type;
-}
-function submitPopup() {
-  const form = document.getElementById('popupForm');
-  if (!form.reportValidity()) return;
-  pcshFillAttribution(form);
-  const formData = new FormData(form);
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString()
-  }).then((r) => {
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    document.getElementById('popupForm').style.display = 'none';
-    document.getElementById('popupSuccess').style.display = 'block';
-    setTimeout(() => closePopup(), 3500);
-  }).catch(() => {
-    const errorEl = document.createElement('p');
-    errorEl.textContent = 'Something went wrong. Please try again, or call/text (315) 221-4857.';
-    errorEl.style.cssText = 'color:#e53e3e;font-size:0.875rem;margin-top:0.75rem;text-align:center;';
-    form.appendChild(errorEl);
-    setTimeout(() => errorEl.remove(), 6000);
-  });
-}
-const popupEl = document.getElementById('pcshPopup');
-if (popupEl) {
-  popupEl.addEventListener('click', function(e){
-    if(e.target === this) closePopup();
-  });
-}
 </script>
 <script src="js/chassis.js"></script>
 

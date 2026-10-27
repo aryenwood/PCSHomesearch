@@ -186,15 +186,22 @@ h2 em { font-weight: 400; font-style: italic; color: var(--gold); }
 .ask form, .plate form { display: flex; gap: 10px; flex-wrap: wrap; }
 .field { flex: 1 1 200px; display: flex; flex-direction: column; gap: 2px; border-radius: 9px;
          border: 1px solid rgba(246,241,230,0.25); background: rgba(246,241,230,0.07); padding: 8px 14px 7px; }
-.field > span { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,241,230,0.65); }
+.field > span { font-size: var(--t-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--plate-sub); }
 .field > span + input, .field > span + select, .field > span + textarea { border: 0; background: transparent; color: var(--plate-ink); padding: 0; min-height: 26px; font: 500 16.5px 'DM Sans', 'DM Fallback', system-ui, sans-serif; outline: none; width: 100%; }
 .field:focus-within { border-color: var(--gold-bright); }
-.field.error { border-color: var(--err); }
+.field.error { border-color: #E8826F; }
+.msg { display: none; margin: 6px 2px 0; color: #FFB3A7; font-size: var(--t-s); line-height: 1.4; }
+.field.error + .msg { display: block; }
+.lf-go { min-height: 56px; width: 100%; font-size: 18px; }
+.plate form > div { flex: 1 1 200px; min-width: 0; }
+#vaLeadForm { flex-direction: column; flex-wrap: nowrap; gap: 12px; }
+#vaLeadForm > div { flex: none; }
 .field.ok { border-color: var(--ok); }
 .btn-gold { min-height: 52px; border: none; border-radius: 9px; background: var(--gold-bright); color: var(--plate-deep);
             font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; padding: 0 28px; cursor: pointer; transition: filter .2s; }
 .btn-gold:hover { filter: brightness(1.08); }
-.ask small, .plate form ~ small, .form-note { display: block; color: rgba(246,241,230,0.5); font-size: var(--t-xs); margin-top: 12px; }
+.ask small, .plate form ~ small, .form-note { display: block; color: var(--plate-sub); font-size: var(--t-xs); line-height: 1.55; margin-top: 12px; }
+.form-note b { color: var(--plate-ink); }
 .form-note a { color: var(--gold-bright); font-weight: 700; display: inline-block; padding: 10px 2px; margin: -10px -2px; text-decoration: none; }
 
 /* phone tab bar: five equal slots, so the icons sit evenly whatever the label length */
