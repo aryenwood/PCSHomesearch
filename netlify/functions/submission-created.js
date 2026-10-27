@@ -81,6 +81,14 @@ function normalize(formName, data, createdAt) {
     movingAs: clean(data['moving-as'], 60),
     rentBuy: clean(data['rent-or-buy'], 60),
     bestTime: clean(data['best-time'], 60),
+    needBy: clean(data['need-by'], 80),
+    bedrooms: clean(data.bedrooms, 20),
+    pets: clean(data.pets, 40),
+    kids: clean(data['school-age-kids'], 20),
+    vaLoan: clean(data['va-loan'], 20),
+    preapproved: clean(data.preapproved, 20),
+    preAmount: clean(data['preapproved-amount'], 40),
+    preferredTown: clean(data['preferred-town'], 120),
     dutyStation: clean(data['duty-station'], 120),
     pcsDate: clean(data['pcs-date'], 120),
     budget: clean(data.budget, 80),
@@ -113,28 +121,42 @@ function renderLead(formName, data, createdAt) {
   const emailLine = lead.email ? lead.email + (lead.emailValid ? '' : ' (check this address)') : 'Not given';
 
   // What the family gave us, in the order an agent reads it. Blank answers are left out, not shown as "not given".
+  const preapprovedLine = lead.preapproved
+    ? (lead.preapproved === 'Yes' ? `Yes${lead.preAmount ? `, for ${lead.preAmount}` : ', amount not given'}` : lead.preapproved)
+    : '';
   const facts = [
     ['Phone', phoneLine],
     ['Email', emailLine],
     ['Best time', lead.bestTime],
     ['Needs', lead.need],
-    ['Area', lead.area],
+    ['Wants to live in', lead.preferredTown || lead.area],
     ['Moving as', lead.movingAs],
     ['Coming from', lead.dutyStation],
     ['Report date', lead.pcsDate],
+    ['Need a place by', lead.needBy],
     ['Rent or buy', lead.rentBuy],
+    ['Bedrooms', lead.bedrooms],
+    ['Pets', lead.pets],
+    ['School age kids', lead.kids],
     ['Budget', lead.budget],
+    ['VA loan', lead.vaLoan],
+    ['Preapproved', preapprovedLine],
   ].filter(([, v]) => v);
 
-  // Only what is still unknown becomes a question for the first call.
+  // Only fields left blank become a question for the first call. Nothing is guessed from what they asked for.
   const asks = [];
-  if (!lead.pcsDate) asks.push('When do orders say they report?');
-  if (!lead.rentBuy) asks.push('Renting, buying, or waiting on the on-post list?');
-  if (!lead.budget) asks.push('What monthly payment or price range is comfortable?');
-  asks.push('VA loan: not started, prequalified or preapproved? Lender picked?');
-  asks.push('Bedrooms, pets, school age kids, commute limit?');
-  if (!lead.area) asks.push('Which towns: Watertown, Evans Mills, Calcium, Black River, Lowville?');
-  if (!lead.movingAs) asks.push('Service member, spouse or veteran? Coming from where?');
+  if (!lead.pcsDate) asks.push('Report date?');
+  if (!lead.needBy) asks.push('Date they need a place by?');
+  if (!lead.rentBuy) asks.push('Renting or buying?');
+  if (!lead.bedrooms) asks.push('How many bedrooms?');
+  if (!lead.pets) asks.push('Any pets?');
+  if (!lead.kids) asks.push('School age kids?');
+  if (!lead.preferredTown && !lead.area) asks.push('Which town or area?');
+  if (!lead.budget) asks.push('Monthly payment or price range?');
+  if (!lead.vaLoan) asks.push('Using a VA loan?');
+  if (!lead.preapproved) asks.push('Preapproved? For how much?');
+  else if (lead.preapproved === 'Yes' && !lead.preAmount) asks.push('Preapproved for how much?');
+  if (!lead.movingAs) asks.push('Service member, spouse or veteran?');
 
   const origin = [
     lead.sourcePage && `page ${lead.sourcePage}`,

@@ -19,7 +19,7 @@ const check = (ok, label) => {
 const sample = {
   'pcshomes-contact': {
     'form-name': 'pcshomes-contact', 'first-name': 'Dana', 'last-name': 'Reyes', email: 'dana@example.com', phone: '315-555-0142',
-    'need-type': 'real-estate-agent', area: 'Evans Mills', 'moving-as': 'Spouse', 'rent-or-buy': 'Rent', 'best-time': 'Evening', 'duty-station': 'Fort Bragg', 'pcs-date': 'July 2027',
+    'need-type': 'real-estate-agent', area: 'Evans Mills', 'moving-as': 'Spouse', 'rent-or-buy': 'Rent', 'best-time': 'Evening', 'va-loan': 'Yes', preapproved: 'Yes', 'preapproved-amount': '$285,000', bedrooms: '3', pets: 'Dog', 'school-age-kids': 'Yes', 'preferred-town': 'Evans Mills', 'need-by': 'August 2027', 'duty-station': 'Fort Bragg', 'pcs-date': 'July 2027',
     budget: '$250,000 - $300,000', message: 'Two dogs.\nNeed a fenced yard.', 'source-page': '/get-help.html', referrer: 'https://facebook.com/', 'utm-source': 'fb',
   },
   'popup-lead': { 'form-name': 'popup-lead', name: 'Sam Ortiz', email: 'sam@example.com', phone: '(315) 555-0100', offer: 'homes', 'source-page': '/' },
@@ -34,9 +34,18 @@ for (const [form, data] of Object.entries(sample)) {
   check(r.html.includes(fn.PROMISES[form]) && r.text.includes(fn.PROMISES[form]), `${form}: shows exactly what the family was told`);
   check(!/[—–]/.test(r.subject + r.html + r.text), `${form}: no dashes of the banned kind`);
   check(r.text.includes('ASK ON THE FIRST CALL'), `${form}: first-call questions present`);
-  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent') && !r.text.includes('[ ] When do orders say') && !r.text.includes('[ ] Renting, buying')), `${form}: new optional answers appear when given`);
+  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent') && !r.text.includes('[ ] Report date?') && !r.text.includes('[ ] Renting or buying?') && !r.text.includes('[ ] Using a VA loan?')), `${form}: new optional answers appear when given`);
 }
 
+// Loan answers are shown exactly as given, and nothing is inferred from the need they picked.
+const loan = fn.renderLead('pcshomes-contact', sample['pcshomes-contact'], '2026-10-27T18:30:00Z');
+check(loan.text.includes('VA loan: Yes') && loan.text.includes('Preapproved: Yes, for $285,000'), 'VA loan and preapproval are shown exactly as answered');
+check(loan.text.includes('Bedrooms: 3') && loan.text.includes('Pets: Dog') && loan.text.includes('School age kids: Yes') && loan.text.includes('Need a place by: August 2027'), 'bedrooms, pets, kids and need-by date are shown');
+const inferred = fn.renderLead('pcshomes-contact', { 'first-name': 'Lee', email: 'lee@example.com', phone: '3155550111', 'need-type': 'va-lender' });
+check(!inferred.text.includes('VA loan:') && inferred.text.includes('[ ] Using a VA loan?'), 'asking about VA loan help does not mark them as using a VA loan');
+check(inferred.text.includes('[ ] Preapproved? For how much?'), 'an unanswered preapproval becomes a question');
+const noAmount = fn.renderLead('pcshomes-contact', { 'first-name': 'Lee', email: 'lee@example.com', phone: '3155550111', preapproved: 'Yes' });
+check(noAmount.text.includes('Preapproved: Yes, amount not given') && noAmount.text.includes('[ ] Preapproved for how much?'), 'preapproved without an amount is flagged and asked');
 const hostile = fn.renderLead('popup-lead', { name: '<script>alert(1)</script>', email: 'x@example.com', phone: '12', message: '<img src=x onerror=1>' });
 check(!hostile.html.includes('<script>alert') && !hostile.html.includes('<img src=x'), 'hostile input is escaped in the HTML');
 check(hostile.html.includes('check this number'), 'a short phone number is flagged');

@@ -39,6 +39,9 @@
     .lf-group { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 10px; }
     .lf-group legend { padding: 0; margin-bottom: 4px; }
     .req { color: var(--gold-bright); }
+    .lf-sec { color: var(--gold-bright); font-size: var(--t-s); letter-spacing: .06em; margin-top: 6px; padding-top: 14px; border-top: 1px solid rgba(246,241,230,0.18); }
+    .lf-sec:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
+    [hidden] { display: none !important; }
     details.lf-more { border: 1px solid rgba(246,241,230,0.38); border-radius: 12px; }
     details.lf-more > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; min-height: 56px; font: 700 var(--t-m)/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; }
     details.lf-more > summary::-webkit-details-marker { display: none; }
@@ -255,6 +258,11 @@
         <input type="hidden" name="moving-as" id="movingAsInput" value=""/>
         <input type="hidden" name="rent-or-buy" id="rentBuyInput" value=""/>
         <input type="hidden" name="best-time" id="bestTimeInput" value=""/>
+        <input type="hidden" name="bedrooms" id="bedroomsInput" value=""/>
+        <input type="hidden" name="pets" id="petsInput" value=""/>
+        <input type="hidden" name="school-age-kids" id="kidsInput" value=""/>
+        <input type="hidden" name="va-loan" id="vaLoanInput" value=""/>
+        <input type="hidden" name="preapproved" id="preapprovedInput" value=""/>
 
         <fieldset class="lf-group">
           <legend class="form-label" id="inquiryTypeLabel">What do you need?</legend>
@@ -284,14 +292,22 @@
         <details class="lf-more" id="moreDetails">
           <summary><span>Add details for a faster first call<small>Optional. Skip it if you're short on time.</small></span></summary>
           <div class="more-in" id="contactExtras">
-            <div><div class="form-label">I'm moving as</div><div class="lf-chips" data-target="movingAsInput">
-              <button type="button" class="lf-chip" aria-pressed="false">Service member</button><button type="button" class="lf-chip" aria-pressed="false">Spouse</button><button type="button" class="lf-chip" aria-pressed="false">Veteran</button><button type="button" class="lf-chip" aria-pressed="false">Other</button></div></div>
+            <div class="form-label lf-sec">About your move</div>
+            <div><div class="form-label">I'm moving as</div><div class="lf-chips" data-target="movingAsInput"><button type="button" class="lf-chip" aria-pressed="false">Service member</button><button type="button" class="lf-chip" aria-pressed="false">Spouse</button><button type="button" class="lf-chip" aria-pressed="false">Veteran</button><button type="button" class="lf-chip" aria-pressed="false">Other</button></div></div>
             <div class="form-row">
               <label class="field"><span>Report date</span><input id="pcsDate" name="pcs-date" type="text" placeholder="Month and year"/></label>
-              <label class="field"><span>Coming from</span><input id="dutyStation" name="duty-station" type="text" placeholder="Base or city"/></label>
+              <label class="field"><span>Need a place by</span><input id="needBy" name="need-by" type="text" placeholder="Month and year"/></label>
             </div>
-            <div><div class="form-label">Rent or buy</div><div class="lf-chips" data-target="rentBuyInput">
-              <button type="button" class="lf-chip" aria-pressed="false">Rent</button><button type="button" class="lf-chip" aria-pressed="false">Buy</button><button type="button" class="lf-chip" aria-pressed="false">Not sure yet</button></div></div>
+            <label class="field"><span>Coming from</span><input id="dutyStation" name="duty-station" type="text" placeholder="Base or city"/></label>
+
+            <div class="form-label lf-sec">About the home</div>
+            <div><div class="form-label">Rent or buy</div><div class="lf-chips" data-target="rentBuyInput"><button type="button" class="lf-chip" aria-pressed="false">Rent</button><button type="button" class="lf-chip" aria-pressed="false">Buy</button><button type="button" class="lf-chip" aria-pressed="false">Not sure yet</button></div></div>
+            <div><div class="form-label">Bedrooms</div><div class="lf-chips" data-target="bedroomsInput"><button type="button" class="lf-chip" aria-pressed="false">1</button><button type="button" class="lf-chip" aria-pressed="false">2</button><button type="button" class="lf-chip" aria-pressed="false">3</button><button type="button" class="lf-chip" aria-pressed="false">4</button><button type="button" class="lf-chip" aria-pressed="false">5 or more</button></div></div>
+            <div><div class="form-label">Pets</div><div class="lf-chips" data-target="petsInput"><button type="button" class="lf-chip" aria-pressed="false">None</button><button type="button" class="lf-chip" aria-pressed="false">Dog</button><button type="button" class="lf-chip" aria-pressed="false">Cat</button><button type="button" class="lf-chip" aria-pressed="false">Other</button></div></div>
+            <div><div class="form-label">School age kids</div><div class="lf-chips" data-target="kidsInput"><button type="button" class="lf-chip" aria-pressed="false">Yes</button><button type="button" class="lf-chip" aria-pressed="false">No</button></div></div>
+            <label class="field"><span>Where do you want to live?</span><input id="preferredTown" name="preferred-town" type="text" placeholder="Town or area"/></label>
+
+            <div class="form-label lf-sec">About the money</div>
             <label class="field"><span>Monthly payment or price range</span>
               <select id="budget" name="budget">
                 <option value="">Choose one</option>
@@ -304,9 +320,13 @@
                 <option>Not sure yet</option>
               </select>
             </label>
-            <div><div class="form-label">Best time to reach you</div><div class="lf-chips" data-target="bestTimeInput">
-              <button type="button" class="lf-chip" aria-pressed="false">Morning</button><button type="button" class="lf-chip" aria-pressed="false">Afternoon</button><button type="button" class="lf-chip" aria-pressed="false">Evening</button><button type="button" class="lf-chip" aria-pressed="false">Any time</button></div></div>
-            <label class="field"><span>Anything we should know?</span><textarea id="message" name="message" rows="4" enterkeyhint="send" placeholder="Pets, school needs, a deadline, a question."></textarea></label>
+            <div><div class="form-label">Using a VA loan?</div><div class="lf-chips" data-target="vaLoanInput"><button type="button" class="lf-chip" aria-pressed="false">Yes</button><button type="button" class="lf-chip" aria-pressed="false">No</button><button type="button" class="lf-chip" aria-pressed="false">Not sure</button></div></div>
+            <div><div class="form-label">Preapproved for a loan?</div><div class="lf-chips" data-target="preapprovedInput"><button type="button" class="lf-chip" aria-pressed="false">Yes</button><button type="button" class="lf-chip" aria-pressed="false">No</button></div></div>
+            <label class="field" id="preAmountWrap" hidden><span>Preapproved for how much?</span><input id="preAmount" name="preapproved-amount" type="text" inputmode="numeric" placeholder="$250,000"/></label>
+
+            <div class="form-label lf-sec">Reaching you</div>
+            <div><div class="form-label">Best time to reach you</div><div class="lf-chips" data-target="bestTimeInput"><button type="button" class="lf-chip" aria-pressed="false">Morning</button><button type="button" class="lf-chip" aria-pressed="false">Afternoon</button><button type="button" class="lf-chip" aria-pressed="false">Evening</button><button type="button" class="lf-chip" aria-pressed="false">Any time</button></div></div>
+            <label class="field"><span>Anything else we should know?</span><textarea id="message" name="message" rows="4" enterkeyhint="send" placeholder="A deadline, a question, anything that helps."></textarea></label>
           </div>
         </details>
 
@@ -665,6 +685,12 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
       group.querySelectorAll('.lf-chip').forEach(function(c) { c.setAttribute('aria-pressed', 'false'); });
       chip.setAttribute('aria-pressed', wasOn ? 'false' : 'true');
       document.getElementById(group.dataset.target).value = wasOn ? '' : chip.textContent.trim();
+      if (group.dataset.target === 'preapprovedInput') {
+        var yes = document.getElementById('preapprovedInput').value === 'Yes';
+        var wrap = document.getElementById('preAmountWrap');
+        wrap.hidden = !yes;
+        if (!yes) document.getElementById('preAmount').value = '';
+      }
     });
   });
 
