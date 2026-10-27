@@ -59,8 +59,12 @@ const ignored = await fn.handler({ body: JSON.stringify({ payload: { form_name: 
 check(ignored.body === 'not routed', 'other forms are left alone');
 
 delete process.env.RESEND_API_KEY;
+process.env.PCSHomes_Resend = 'alt-name-key';
+await fn.sendEmail(rendered, 'sub-alt', stubFetch);
+check(calls.length === 2 && calls[1].init.headers.Authorization === 'Bearer alt-name-key', 'the PCSHomes_Resend variable name also works');
+delete process.env.PCSHomes_Resend;
 const skipped = await fn.sendEmail(rendered, 'sub-2', stubFetch);
-check(skipped.skipped && calls.length === 1, 'without the key it skips and does not call Resend');
+check(skipped.skipped && calls.length === 2, 'without the key it skips and does not call Resend');
 
 const bad = await fn.handler({ body: 'not json' });
 check(bad.statusCode === 200, 'a bad payload does not throw');

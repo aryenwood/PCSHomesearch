@@ -2,7 +2,7 @@
 // It turns a family's lead into "A new WC Realty Lead", a detailed hand-off email for the
 // person who calls them. Netlify keeps the durable record; this only sends the email.
 //
-// Required to send: RESEND_API_KEY (Netlify site env var).
+// Required to send: RESEND_API_KEY or PCSHomes_Resend (Netlify site env var; either name works).
 // Optional: REALTY_LEAD_MAIL_TO (default aryen@woodconsultingllc.net),
 //           REALTY_LEAD_MAIL_FROM (default the WC appointments sender).
 // Logs never contain customer details.
@@ -221,9 +221,9 @@ function renderLead(formName, data, createdAt) {
 }
 
 async function sendEmail(rendered, submissionId, fetcher = fetch) {
-  const apiKey = env('RESEND_API_KEY');
+  const apiKey = env('RESEND_API_KEY') || env('PCSHomes_Resend');
   if (!apiKey) {
-    console.warn('submission-created skipped: RESEND_API_KEY is not configured');
+    console.warn('submission-created skipped: no Resend key is configured');
     return { skipped: 'no RESEND_API_KEY' };
   }
   const key = crypto.createHash('sha256').update(String(submissionId || rendered.subject)).digest('hex').slice(0, 40);
