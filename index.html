@@ -88,6 +88,82 @@
     @media (prefers-reduced-motion: reduce) {
       .stage-row { transition: none; }
     }
+    /* the route plate */
+    .route-plate { margin-top: 28px; }
+    .route { list-style: none; margin: 26px 0 0; padding: 0; }
+    .route li { display: grid; grid-template-columns: 52px 1fr; gap: 14px; padding: 22px 0; border-top: 1px solid rgba(246,241,230,0.16); }
+    .route li:first-child { border-top: 2px solid var(--gold-bright); }
+    .route .n { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-style: italic; font-size: 36px; line-height: 1; color: var(--gold-bright); }
+    .route h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; line-height: 1.3; color: var(--plate-ink); margin: 0 0 6px; }
+    .route p { margin: 0; color: var(--plate-sub); font-size: 17px; }
+    .route a { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; color: var(--gold-bright); font-weight: 700; text-decoration: none; }
+    .route-ask { margin-top: 30px; padding-top: 28px; border-top: 1px solid rgba(246,241,230,0.2); }
+    .route-ask h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: clamp(26px, 6vw, 32px); line-height: 1.2; color: var(--plate-ink); margin: 0 0 8px; }
+    .route-ask h3 em { color: var(--gold-bright); }
+    .route-plate .lead-success { color: var(--plate-ink); }
+    .route-plate .lead-success b { display: block; font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; margin-bottom: 4px; }
+    .route-more { margin: 4px 0 0; } .route-more a { display: inline-flex; align-items: center; min-height: 44px; color: var(--gold-bright); font-weight: 700; text-decoration: none; }
+
+/* v5 frame: no pills, one type scale, three weights. Phone sizes: 15 caption, 17 body, 19 lead, 22 h3, 26 h2, 32 h1. */
+.chip, figure figcaption { left: 0; right: 0; bottom: 0; border-radius: 0; background: linear-gradient(180deg, rgba(14,28,48,0) 0%, rgba(14,28,48,.82) 100%);
+  color: #fff; padding: 34px 14px 12px; font: 500 15px/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: 0; text-transform: none; box-shadow: none; }
+.stage-row .step { display: none; }
+.stage-row b { font-size: 17px; font-weight: 700; left: 14px; bottom: 12px; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+.stage-row::after { background: linear-gradient(180deg, rgba(14,28,48,0) 25%, rgba(14,28,48,.9) 100%); }
+.stage-row[aria-expanded="true"] { box-shadow: 0 0 0 3px var(--gold-bright), var(--shadow-photo); }
+.stage-row[aria-expanded="true"] b::before { content: "You're here"; display: block; color: var(--gold-bright); font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.promise { margin: 18px 0 0; font-size: 17px; line-height: 1.55; color: var(--ink); max-width: 34em; }
+.facts .label { font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--navy); }
+.facts .note { font-size: 17px; }
+.quote blockquote { font-size: 21px; }
+.more-guides > summary { cursor: pointer; list-style: none; min-height: 56px; display: flex; align-items: center; font-weight: 700; color: var(--gold); font-size: 17px; border-top: 1px solid var(--rule); }
+.more-guides > summary::-webkit-details-marker { display: none; }
+.more-guides > summary::after { content: '+'; margin-left: 8px; font-size: 22px; }
+.more-guides[open] > summary::after { content: '\2212'; }
+.route li { padding: 24px 0; }
+.route .n { font-size: 32px; }
+.route h3 { font-size: 22px; }
+.route-ask .field { min-height: 56px; }
+.resolve a { min-height: 56px; }
+@media (max-width: 780px) {
+  h1 { font-size: 32px; line-height: 1.18; }
+  h2, .stage-head h2 { font-size: 26px; }
+  .dek { font-size: 19px; }
+  .hero-photo img { aspect-ratio: auto; height: 200px; }
+  header.hero { padding-top: 22px !important; padding-bottom: 0 !important; }
+  header.hero .eyebrow { margin-bottom: 10px; }
+  header.hero .dek { margin-top: 12px; }
+  header.hero .hero-grid { gap: 18px; }
+  #stagePicker { padding-top: 26px !important; margin-top: 0 !important; }
+  #stagePicker h2 { margin-bottom: 14px; }
+  .stage-row { min-height: 120px; }
+  .facts .val { font-size: 22px; }
+  .trio .cap b { font-size: 22px; }
+  .trio { gap: 16px; }
+  .trio a:not(:first-child) { display: grid; grid-template-columns: 112px 1fr; gap: 14px; align-items: center; }
+  .trio a:not(:first-child) figure img { aspect-ratio: 1 / 1; width: 112px; height: 112px; }
+  .trio a:not(:first-child) figcaption { display: none; }
+  .trio a:not(:first-child) .cap { padding: 0; }
+  .trio a:first-child figure img { aspect-ratio: auto; height: 180px; }
+  .resolve .towns { font-size: 17px; } .resolve .dist { font-size: 17px; }
+  .more, .route a, .stage-resume { font-size: 17px; }
+  .resolve .call { font-size: 17px; }
+  .facts .val, .quote blockquote { font-weight: 400; }
+}
+@media (min-width: 1000px) {
+  .route-plate .plate-in { max-width: 1000px; display: grid; grid-template-columns: 1.15fr 1fr; column-gap: 56px; align-items: start; }
+  .route-plate .plate-in > .eyebrow, .route-plate .plate-in > h2, .route-plate .plate-in > .lede { grid-column: 1 / -1; }
+  .route { grid-column: 1; } .route-ask { grid-column: 2; margin-top: 26px; padding-top: 0; border-top: 0; }
+  .trio figure img { aspect-ratio: 3 / 2; }
+}
+
+/* v6: accessibility pass and color roles on the plate. Gold means "you can tap this" (links, the button) plus the
+   one italic phrase in each heading; everything else on navy is cream or the plate's soft blue-grey. */
+.route-plate .eyebrow { color: var(--plate-sub); }
+.route .n { color: var(--plate-sub); }
+.route li:first-child { border-top: 1px solid rgba(246,241,230,0.24); }
+.route-plate canvas.ground { opacity: .55; }
+@media (max-width: 360px) { .facts { grid-template-columns: 1fr; } .facts > div { border-right: none !important; border-bottom: 1px solid var(--rule); } }
   </style>
   <script type="application/ld+json">
   {
@@ -134,10 +210,6 @@
 
 <main id="main-content">
 
-<div class="stage-welcome" id="stageWelcome" style="display:none;">
-  <span>Welcome back. You're at: <b id="stageWelcomeLabel"></b>. <button type="button" class="stage-resume" onclick="resumeStage()">Pick up where you left off →</button></span>
-  <button type="button" class="stage-clear" onclick="clearStage()" aria-label="Clear saved stage">✕</button>
-</div>
 
 <!-- HERO — type + photo, chassis pattern -->
 <header class="hero"><div class="hero-grid">
@@ -145,11 +217,6 @@
     <p class="eyebrow rv">Fort Drum · 10th Mountain Division</p>
     <h1 class="rv">Moving to Fort Drum? <em>You've got this</em>, and you've got us.</h1>
     <p class="dek rv">Boxes everywhere, partner in the field, three kids and a timeline? Every guide here is free, honest, and written for <strong>the person actually running the move.</strong></p>
-    <div class="proof rv">
-      <span><b>Free</b> for military families</span>
-      <span>Built by <b>locals</b></span>
-      <span>Partners never pay for <b>placement</b></span>
-    </div>
   </div>
   <figure class="hero-photo rv" style="margin:0;">
     <img src="images/servicemember-returning-home.jpg" srcset="images/servicemember-returning-home.jpg 1400w, images/servicemember-returning-home-800.jpg 800w" sizes="(max-width: 780px) 100vw, 480px" alt="Service member returning home to family at Fort Drum" width="1400" height="934" loading="eager"/>
@@ -159,165 +226,29 @@
 
 <!-- STAGE PICKER — the front door: five photo tiles, panels open as resolver rows -->
 <section id="stagePicker"><div class="wide">
-  <p class="eyebrow rv">Start here</p>
   <h2 class="rv">Where are you <em>in the move?</em></h2>
   <div class="stage-grid">
-    <button type="button" class="stage-row" id="stageBtn-orders" aria-expanded="false" aria-controls="stageList-orders" onclick="toggleStage('orders')"><img src="images/fort-drum/blackhawk-in-snow-800.webp" srcset="images/fort-drum/blackhawk-in-snow-800.webp 800w, images/fort-drum/blackhawk-in-snow.webp 1600w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="800" height="571"/><span class="step">Step 1</span><b>Orders just dropped</b></button>
-    <button type="button" class="stage-row" id="stageBtn-sixty" aria-expanded="false" aria-controls="stageList-sixty" onclick="toggleStage('sixty')"><img src="images/places/watertown-from-thompson-park-snow-city-800.webp" srcset="images/places/watertown-from-thompson-park-snow-city-800.webp 800w, images/places/watertown-from-thompson-park-snow-city.webp 1600w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="800" height="348"/><span class="step">Step 2</span><b>60 days out</b></button>
-    <button type="button" class="stage-row" id="stageBtn-arriving" aria-expanded="false" aria-controls="stageList-arriving" onclick="toggleStage('arriving')"><img src="images/military-family.webp" srcset="images/military-family.webp 1200w, images/military-family-800.webp 800w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="1200" height="800"/><span class="step">Step 3</span><b>Arriving this month</b></button>
-    <button type="button" class="stage-row" id="stageBtn-here" aria-expanded="false" aria-controls="stageList-here" onclick="toggleStage('here')"><img src="images/places/thompson-park-fall-path-500.webp" srcset="images/places/thompson-park-fall-path-500.webp 500w, images/places/thompson-park-fall-path.webp 800w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="500" height="750"/><span class="step">Step 4</span><b>We just got here</b></button>
-    <button type="button" class="stage-row" id="stageBtn-deployed" aria-expanded="false" aria-controls="stageList-deployed" onclick="toggleStage('deployed')"><img src="images/places/public-square-fountain-winter-800.webp" srcset="images/places/public-square-fountain-winter-800.webp 800w, images/places/public-square-fountain-winter.webp 1600w" sizes="(max-width: 900px) 100vw, 200px" alt="" loading="lazy" decoding="async" width="800" height="600"/><span class="step">Anytime</span><b>My soldier is deploying (or deployed)</b></button>
+    <button type="button" class="stage-row" id="stageBtn-orders" aria-expanded="false" aria-controls="routePlate" onclick="toggleStage('orders')"><img src="images/fort-drum/blackhawk-in-snow-800.webp" srcset="images/fort-drum/blackhawk-in-snow-800.webp 800w, images/fort-drum/blackhawk-in-snow.webp 1600w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="800" height="571"/><span class="step">Step 1</span><b>Orders just dropped</b></button>
+    <button type="button" class="stage-row" id="stageBtn-sixty" aria-expanded="false" aria-controls="routePlate" onclick="toggleStage('sixty')"><img src="images/places/watertown-from-thompson-park-snow-city-800.webp" srcset="images/places/watertown-from-thompson-park-snow-city-800.webp 800w, images/places/watertown-from-thompson-park-snow-city.webp 1600w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="800" height="348"/><span class="step">Step 2</span><b>60 days out</b></button>
+    <button type="button" class="stage-row" id="stageBtn-arriving" aria-expanded="false" aria-controls="routePlate" onclick="toggleStage('arriving')"><img src="images/military-family.webp" srcset="images/military-family.webp 1200w, images/military-family-800.webp 800w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="1200" height="800"/><span class="step">Step 3</span><b>Arriving this month</b></button>
+    <button type="button" class="stage-row" id="stageBtn-here" aria-expanded="false" aria-controls="routePlate" onclick="toggleStage('here')"><img src="images/places/thompson-park-fall-path-500.webp" srcset="images/places/thompson-park-fall-path-500.webp 500w, images/places/thompson-park-fall-path.webp 800w" sizes="(max-width: 900px) 50vw, 200px" alt="" loading="lazy" decoding="async" width="500" height="750"/><span class="step">Step 4</span><b>We just got here</b></button>
+    <button type="button" class="stage-row" id="stageBtn-deployed" aria-expanded="false" aria-controls="routePlate" onclick="toggleStage('deployed')"><img src="images/places/public-square-fountain-winter-800.webp" srcset="images/places/public-square-fountain-winter-800.webp 800w, images/places/public-square-fountain-winter.webp 1600w" sizes="(max-width: 900px) 100vw, 200px" alt="" loading="lazy" decoding="async" width="800" height="600"/><span class="step">Anytime</span><b>My soldier is deploying (or deployed)</b></button>
   </div>
-  <div class="stage-panels">
-    <div class="stage-links resolve" id="stageList-orders">
-      <a href="/fort-drum/housing#onpost"><span class="towns">On-post housing</span><span class="dist">Apply with orders: rank, dependents and eligibility date set your place</span><span class="call go">→</span></a>
-      <a href="/fort-drum/schools"><span class="towns">Schools</span><span class="dist">Pre-enroll the kids from where you are</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#childcare"><span class="towns">Childcare waitlist</span><span class="dist">Register as soon as you have orders</span><span class="call go">→</span></a>
-      <a href="/fort-drum/pcs-checklist"><span class="towns">PCS checklist</span><span class="dist">What you're owed + the deadlines</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#career"><span class="towns">Your career</span><span class="dist">License &amp; paperwork you can start early</span><span class="call go">→</span></a>
-    </div>
-    <div class="stage-links resolve" id="stageList-sixty">
-      <a href="/fort-drum/schools"><span class="towns">School districts</span><span class="dist">Check the district before you sign a lease</span><span class="call go">→</span></a>
-      <a href="/fort-drum/buying#rvb"><span class="towns">Rent vs. buy</span><span class="dist">Run your own numbers, not a stranger's</span><span class="call go">→</span></a>
-      <a href="/fort-drum/housing#map"><span class="towns">Neighborhood map</span><span class="dist">School district and drive time, town by town</span><span class="call go">→</span></a>
-      <a href="/fort-drum/buying#payment"><span class="towns">VA loan tools</span><span class="dist">What $0 down actually covers</span><span class="call go">→</span></a>
-      <a href="/fort-drum/winter"><span class="towns">Winter &amp; heat</span><span class="dist">Lock a propane price in late summer</span><span class="call go">→</span></a>
-      <a href="/fort-drum/healthcare"><span class="towns">Medical</span><span class="dist">Line up the family's care before you land</span><span class="call go">→</span></a>
-    </div>
-    <div class="stage-links resolve" id="stageList-arriving">
-      <a href="/fort-drum/pcs-checklist"><span class="towns">Arrival week</span><span class="dist">Travel voucher in 5 working days · 180-day damage notice</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#health"><span class="towns">Family health care</span><span class="dist">Get everyone's care switched over</span><span class="call go">→</span></a>
-      <a href="/living-here#essentials"><span class="towns">First-week essentials</span><span class="dist">Groceries, medical, storage · where things are</span><span class="call go">→</span></a>
-      <a href="pcshomes-fortdrum.html#family"><span class="towns">The safety net</span><span class="dist">Family support on post, if the wheels wobble</span><span class="call go">→</span></a>
-    </div>
-    <div class="stage-links resolve" id="stageList-here">
-      <a href="pcshomes-spouse.html#community"><span class="towns">Find your people</span><span class="dist">Groups, meetups, and where everyone actually is</span><span class="call go">→</span></a>
-      <a href="/living-here#places"><span class="towns">Family &amp; kids</span><span class="dist">What's worth the drive, honestly</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#daily-life"><span class="towns">Daily life</span><span class="dist">The rhythms nobody explains up front</span><span class="call go">→</span></a>
-      <a href="pcshomes-fortdrum.html#family"><span class="towns">The safety net</span><span class="dist">Support on post if things get hard</span><span class="call go">→</span></a>
-    </div>
-    <div class="stage-links resolve" id="stageList-deployed">
-      <a href="pcshomes-directory.html#command"><span class="towns">Reach their command</span><span class="dist">24/7 staff duty desk for every brigade, by battalion</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#deployment"><span class="towns">When they're gone</span><span class="dist">What helps, from families who've done it</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#numbers"><span class="towns">The 2am numbers</span><span class="dist">Who to call when it can't wait</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#solo"><span class="towns">Doing the move without them</span><span class="dist">POA, house-hunting, arriving solo</span><span class="call go">→</span></a>
-      <a href="pcshomes-spouse.html#childcare"><span class="towns">Childcare</span><span class="dist">Waitlist &amp; hourly care options</span><span class="call go">→</span></a>
-      <a href="/living-here#places"><span class="towns">Family &amp; kids</span><span class="dist">Ways to fill the weekends</span><span class="call go">→</span></a>
-    </div>
-  </div>
+  <p class="promise">Free for military families. Built for service members, by service members. Partners never pay for placement.</p>
 </div></section>
 
-<!-- THREE DOORS — resolver rows -->
-<section><div class="wrap">
-  <div class="resolve rv">
-    <a href="pcshomes-fortdrum.html"><span class="towns">I have questions first</span><span class="dist">BAH, neighborhoods, winters, schools: read the guide or talk to a human, no pressure.</span><span class="call">Read the guide →</span></a>
-    <a href="#how-matching"><span class="towns">I need a place to live</span><span class="dist">Buy or rent: get matched with a vetted local agent who works PCS timelines and VA loans.</span><span class="call">How matching works →</span></a>
-    <a href="pcshomes-spouse.html"><span class="towns">My family is moving with me</span><span class="dist">School enrollment before you arrive, childcare waitlists, spouse employment, medical.</span><span class="call">Spouse &amp; Family HQ →</span></a>
-  </div>
-</div></section>
-
-<!-- FACTS STRIP — the four answers everyone looks up -->
-<div class="wide" style="margin-top:52px;">
-  <div class="facts rv">
-    <div><div class="label">BAH · E-5 w/ dep</div><div class="val">$1,665/mo</div><div class="note"><a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/" target="_blank" rel="noopener">Check your rate</a></div></div>
-    <div><div class="label">Median home sale</div><div class="val">$250,000</div><div class="note"><a href="https://www.redfin.com/county/1967/NY/Jefferson-County/housing-market" target="_blank" rel="noopener">Jefferson County, Jul to Sep 2026</a></div></div>
-    <div><div class="label">School districts</div><div class="val">4</div><div class="note"><a href="/fort-drum/schools">Which one fits →</a></div></div>
-    <div><div class="label">CYS Parent Central</div><div class="val"><a href="tel:+13157728675">(315) 772-8675</a></div><div class="note">childcare waitlist · call early</div></div>
-  </div>
-</div>
-
-<!-- THE GUIDE — resolver rows + sticky winter photo -->
-<section><div class="split">
-  <div>
-    <p class="eyebrow rv">The Guide</p>
-    <h2 class="rv">The Fort Drum Guide</h2>
-    <p class="sub rv">Honest intel from families who've lived it.</p>
-    <div class="resolve">
-      <a href="/fort-drum/schools"><span class="towns">Schools</span><span class="dist">Enroll them before you even arrive: four districts, MIC3 rights, and the registrar who picks up the phone</span><span class="call go">→</span></a>
-      <a href="/fort-drum/winter"><span class="towns">Winter &amp; heat</span><span class="dist">Lock a propane price in late summer, line up snow removal, love the snow anyway</span><span class="call go">→</span></a>
-      <a href="/fort-drum/pcs-checklist"><span class="towns">PCS money</span><span class="dist">What the Army pays for your move, and the deadlines that cost families real money</span><span class="call go">→</span></a>
-      <a href="/fort-drum/buying#payment"><span class="towns">Housing &amp; BAH tools</span><span class="dist">VA calculator · rent vs. buy</span><span class="call go">→</span></a>
-      <a href="/fort-drum/housing#map"><span class="towns">Neighborhood map</span><span class="dist">School district and drive time, town by town</span><span class="call go">→</span></a>
-      <a href="/fort-drum/housing#onpost"><span class="towns">On-post housing</span><span class="dist">How the wait list works &amp; what rent covers</span><span class="call go">→</span></a>
-      <a href="/living-here"><span class="towns">Life in the North Country</span><span class="dist">Day trips · family &amp; kids · winter, honestly</span><span class="call go">→</span></a>
-    </div>
-    <a class="more" href="pcshomes-fortdrum.html">All guides →</a>
-  </div>
-  <div class="side rv"><figure><img src="images/places/public-square-winter-800.webp" srcset="images/places/public-square-winter-800.webp 800w, images/places/public-square-winter.webp 1600w" sizes="(max-width: 980px) 100vw, 360px" alt="Snowbanks along Watertown's Public Square in winter" loading="lazy" decoding="async" width="800" height="600"/><figcaption>The North Country in January</figcaption></figure></div>
-</div></section>
-
-<!-- LOCAL INTEL — numbered rows -->
-<section><div class="wrap">
-  <p class="eyebrow rv">Local intel</p>
-  <h2 class="rv">Things <em>nobody tells you.</em></h2>
-  <p class="sub rv">The stuff you only learn after living here.</p>
-  <div class="right-row"><span class="n">01</span><div><h3>Natural gas or propane changes your heating bill</h3><p>Watertown has natural gas lines; many rural homes heat with propane or oil. Ask which a house uses and what last winter&rsquo;s bills were. We know which streets have gas.</p></div></div>
-  <div class="right-row"><span class="n">02</span><div><h3>Same street, different school district</h3><p>Fort Drum spans 4 districts and the boundary lines are confusing. Confirm the district before you offer, not after.</p></div></div>
-  <div class="right-row"><span class="n">03</span><div><h3>Register for CYSS childcare the day you get orders</h3><p>Families join the waitlist at militarychildcare.com, so sign up before you arrive.</p></div></div>
-  <div class="right-row"><span class="n">04</span><div><h3>NY fast-tracks military-spouse licenses</h3><p>Expedited review, half the application fee, and if you need it a temporary practice permit for up to six months in the professions NYSED licenses, like nursing. Not automatic: start the paperwork early.</p></div></div>
-  <div class="right-row"><span class="n">05</span><div><h3>NY has 3 veteran property-tax exemptions, and you can claim one</h3><p>Alternative, Cold War and Eligible Funds. The deadline in most towns is March 1: confirm it with your assessor. None of it happens automatically.</p></div></div>
-  <div class="right-row"><span class="n">06</span><div><h3>Snow tires aren't optional</h3><p>About 100 inches a year at Watertown, and far more on the Tug Hill. Strongly consider all-wheel drive. Studded tires are legal Oct. 16 through Apr. 30. <a href="/fort-drum/winter" style="color:var(--gold);font-weight:700;text-decoration:none;">Winter plan &rarr;</a></p></div></div>
-</div></section>
-
-<!-- THE NETWORK — resolver rows -->
-<section><div class="wrap">
-  <p class="eyebrow rv">Our partners</p>
-  <h2 class="rv">The network</h2>
-  <p class="sub rv">Vetted on their record with military families, not on who paid. Partners never pay for placement or ranking.</p>
-  <div class="resolve rv">
-    <a href="/get-help#network"><span class="towns">Joseph Murtha</span><span class="dist">Real estate · North Star Real Estate · #1 in Jefferson &amp; Lewis Co. 5 years running</span><span class="call">Request intro →</span></a>
-    <a href="tel:+13157674222"><span class="towns">DP Development &amp; Properties</span><span class="dist">High-end rentals built for veterans and active duty families</span><span class="call">(315) 767-4222</span></a>
-    <a href="/get-help#network"><span class="towns">Wood Consulting</span><span class="dist">Home services · contractors, water filtration, energy savings</span><span class="call">See the network →</span></a>
-  </div>
-</div></section>
-
-<!-- THIS WEEKEND — photo trio -->
-<section><div class="wide">
-  <p class="eyebrow rv">This weekend</p>
-  <h2 class="rv">This weekend, <em>with kids.</em></h2>
-  <p class="sub rv">free · indoor · survivable</p>
-  <div class="trio rv">
-    <a href="/living-here#places"><figure><img src="images/places/thompson-park-fall-maple-800.webp" srcset="images/places/thompson-park-fall-maple-800.webp 800w, images/places/thompson-park-fall-maple.webp 1600w" sizes="(max-width: 780px) 100vw, 340px" alt="A maple in full fall color at Thompson Park, Watertown" loading="lazy" decoding="async" width="800" height="533"/><figcaption>Free · Outdoors</figcaption></figure><span class="cap"><b>Thompson Park &amp; the zoo</b><span>An Olmsted park with playgrounds, a splash pad, and Zoo New York&rsquo;s gray wolves. 18 minutes from post.</span></span></a>
-    <a href="/living-here#day-trips"><figure><img src="images/places/boldt-from-alexandria-bay-800.webp" srcset="images/places/boldt-from-alexandria-bay-800.webp 800w, images/places/boldt-from-alexandria-bay.webp 2000w" sizes="(max-width: 780px) 100vw, 340px" alt="Boldt Castle on Heart Island, seen across the water from Alexandria Bay" loading="lazy" decoding="async" width="800" height="532"/><figcaption>Day trip · Summer</figcaption></figure><span class="cap"><b>Castles, actually</b><span>Boldt Castle is 44 minutes north, and Singer Castle&rsquo;s tour has a $12.75 military rate.</span></span></a>
-    <a href="/living-here#places"><figure><img src="images/places/sackets-harbor-sunset-600.webp" srcset="images/places/sackets-harbor-sunset-600.webp 600w, images/places/sackets-harbor-sunset.webp 1000w" sizes="(max-width: 780px) 100vw, 340px" alt="Sunset over the Sackets Harbor waterfront on Lake Ontario" loading="lazy" decoding="async" width="600" height="803"/><figcaption>Under 30 min</figcaption></figure><span class="cap"><b>Sackets Harbor with a stroller</b><span>Battlefield lawns, Lake Ontario views, breweries, history, and ice cream on Main Street.</span></span></a>
-  </div>
-  <a class="more" href="/living-here" style="margin-top:14px;">More about living here →</a>
-</div></section>
-
-<!-- PROOF — pull quote -->
-<div class="quote rv">
-  <div class="stars" aria-hidden="true">★★★★★</div>
-  <div class="lead-line">The person doing the move deserves someone who shows up:</div>
-  <blockquote>"When the snowstorm of the century came through and threatened our final walkthrough and closing, Joe went out and shoveled a path to the front door himself."</blockquote>
-  <div class="attr">Seller · Zillow Verified · <a href="https://www.zillow.com/profile/joe8963" target="_blank" rel="noopener">Read his reviews →</a></div>
-</div>
-
-<!-- HOW MATCHING WORKS — numbered rows -->
-<section id="how-matching"><div class="wrap">
-  <p class="eyebrow rv">Support</p>
-  <h2 class="rv">How matching works</h2>
-  <p class="sub rv">Three steps. No obligation at any of them.</p>
-  <div class="right-row"><span class="n">01</span><div><h3>Tell us what you need</h3><p>Buy or rent, timeline, budget, kids, pets, whatever matters.</p></div></div>
-  <div class="right-row"><span class="n">02</span><div><h3>We intro you to a vetted local</h3><p>Someone who works PCS timelines and VA loans every week.</p></div></div>
-  <div class="right-row"><span class="n">03</span><div><h3>You talk to a human</h3><p>No obligation: if it's not a fit, that's fine.</p></div></div>
-  <p style="margin-top:18px;font-size:var(--t-s);color:var(--muted);">Partners never pay for placement or ranking. <a class="more" href="#vaLeadForm">Ready for the intro? →</a></p>
-</div></section>
-
-<!-- THE CONVERSION PLATE — living ground, one ask -->
-<div class="plate rv">
+<!-- THE ROUTE: the stage's next three steps on the living plate, then the one ask. The page's only plate. -->
+<div class="plate route-plate" id="routePlate">
   <canvas class="ground" aria-hidden="true"></canvas>
-  <div class="plate-in wide-in">
-    <div class="plate-ask">
-      <div>
-        <h2>Start with <em>one conversation.</em></h2>
-        <p class="lede">Tell us where you are in the move. A real person from our Fort Drum network calls you back within 24 hours.</p>
-        <div class="points">
-          <div>Free, no obligation, no contracts, no pressure, no catch</div>
-          <div>Every partner vetted on VA loan experience and military family track record</div>
-          <div>For the service member, the spouse, and the kids</div>
-        </div>
-      </div>
-      <div>
+  <div class="plate-in">
+    <p class="eyebrow" id="routeStage">Orders just dropped</p>
+    <h2 id="routeTitle">Your next <em>three steps.</em></h2>
+    <p class="lede">Saved on this phone, nowhere else. Each one opens a guide checked against official pages.</p>
+    <ol class="route" id="routeSteps" aria-live="polite"></ol>
+    <p class="route-more"><a href="/fort-drum/pcs-checklist#get-checklist">Get the whole PCS + VA loan checklist by email &rarr;</a></p>
+    <div class="route-ask">
+      <h3>Tell us about your move. <em>We'll take it from here.</em></h3>
+      <p class="lede" style="margin-bottom:18px">Your name and two ways to reach you. A real person who knows Fort Drum.</p>
         <form name="va-home-list" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="vaLeadForm" novalidate>
           <input type="hidden" name="form-name" value="va-home-list"/>
           <input type="hidden" name="source-page" value=""/>
@@ -337,13 +268,69 @@
           <b>You're all set!</b>
           <span>A PCSHomes partner will be in touch shortly. Keep an eye on your email or phone.</span>
         </div>
-      </div>
     </div>
   </div>
 </div>
 
-<div class="wide"><p class="photo-credits">Photos: Thompson Park in fall: <a href="https://commons.wikimedia.org/wiki/File:Thompson_Park_-_5188624026.jpg" target="_blank" rel="noopener">Kurt Thomas Hunt</a>, <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a>; Thompson Park maple: <a href="https://commons.wikimedia.org/wiki/File:Thompson_Park_-_5188624996.jpg" target="_blank" rel="noopener">Kurt Thomas Hunt</a>, <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a>; Sackets Harbor sunset: <a href="https://commons.wikimedia.org/wiki/File:Sacketts_Harbor,_NY.jpg" target="_blank" rel="noopener">Aaronyoung777</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>; Watertown from Thompson Park in snow: <a href="https://commons.wikimedia.org/wiki/File:Watertown,_New_York_skyline_(384903634).jpg" target="_blank" rel="noopener">wtrtwnguy</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener">CC BY-SA 2.0</a>; Public Square in winter: <a href="https://commons.wikimedia.org/wiki/File:Public_Square_Watertown_NY_2022.jpg" target="_blank" rel="noopener">Lallint</a>, CC0; Public Square fountain in winter: <a href="https://commons.wikimedia.org/wiki/File:Fountain_Watertown_NY_2022.jpg" target="_blank" rel="noopener">Lallint</a>, CC0; Blackhawk in the snow: <a href="https://commons.wikimedia.org/wiki/File:Winter_Camouflaged_cargo_helicopter_(51736301519).jpg" target="_blank" rel="noopener">Fort Drum &amp; 10th Mountain Division public affairs</a>, public domain; Boldt Castle from Alexandria Bay: <a href="https://commons.wikimedia.org/wiki/File:Alexandria_bay_saint_lawrence_castle_05.07.2012.jpg" target="_blank" rel="noopener">Dirk Ingo Franke</a>, <a href="https://creativecommons.org/licenses/by/3.0" target="_blank" rel="noopener">CC BY 3.0</a>.</p></div>
-</main>
+<!-- FACTS STRIP — the four answers everyone looks up -->
+<div class="wide" style="margin-top:52px;">
+  <div class="facts rv">
+    <div><div class="label">BAH, E-5 with dependents</div><div class="val">$1,665/mo</div><div class="note"><a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/" target="_blank" rel="noopener">Check your rate</a></div></div>
+    <div><div class="label">Median home sale</div><div class="val">$250,000</div><div class="note"><a href="https://www.redfin.com/county/1967/NY/Jefferson-County/housing-market" target="_blank" rel="noopener">Jefferson County, Jul to Sep 2026</a></div></div>
+    <div><div class="label">School districts</div><div class="val">4</div><div class="note"><a href="/fort-drum/schools">Which one fits →</a></div></div>
+    <div><div class="label">CYS Parent Central</div><div class="val"><a href="tel:+13157728675">(315) 772-8675</a></div><div class="note">childcare waitlist · call early</div></div>
+  </div>
+</div>
+
+<!-- THIS WEEKEND — photo trio -->
+<section><div class="wide">
+  <h2 class="rv">This weekend, <em>with kids.</em></h2>
+  <p class="sub rv">free · indoor · survivable</p>
+  <div class="trio rv">
+    <a href="/living-here#places"><figure><img src="images/places/thompson-park-fall-maple-800.webp" srcset="images/places/thompson-park-fall-maple-800.webp 800w, images/places/thompson-park-fall-maple.webp 1600w" sizes="(max-width: 780px) 100vw, 340px" alt="A maple in full fall color at Thompson Park, Watertown" loading="lazy" decoding="async" width="800" height="533"/><figcaption>Free · Outdoors</figcaption></figure><span class="cap"><b>Thompson Park &amp; the zoo</b><span>An Olmsted park with playgrounds, a splash pad, and Zoo New York&rsquo;s gray wolves. 18 minutes from post.</span></span></a>
+    <a href="/living-here#day-trips"><figure><img src="images/places/boldt-from-alexandria-bay-800.webp" srcset="images/places/boldt-from-alexandria-bay-800.webp 800w, images/places/boldt-from-alexandria-bay.webp 2000w" sizes="(max-width: 780px) 100vw, 340px" alt="Boldt Castle on Heart Island, seen across the water from Alexandria Bay" loading="lazy" decoding="async" width="800" height="532"/><figcaption>Day trip · Summer</figcaption></figure><span class="cap"><b>Castles, actually</b><span>Boldt Castle is 44 minutes north, and Singer Castle&rsquo;s tour has a $12.75 military rate.</span></span></a>
+    <a href="/living-here#places"><figure><img src="images/places/sackets-harbor-sunset-600.webp" srcset="images/places/sackets-harbor-sunset-600.webp 600w, images/places/sackets-harbor-sunset.webp 1000w" sizes="(max-width: 780px) 100vw, 340px" alt="Sunset over the Sackets Harbor waterfront on Lake Ontario" loading="lazy" decoding="async" width="600" height="803"/><figcaption>Under 30 min</figcaption></figure><span class="cap"><b>Sackets Harbor with a stroller</b><span>Battlefield lawns, Lake Ontario views, breweries, history, and ice cream on Main Street.</span></span></a>
+  </div>
+  <a class="more" href="/living-here" style="margin-top:14px;">More about living here →</a>
+</div></section>
+
+<!-- PROOF — pull quote -->
+<div class="quote rv">
+<blockquote>"When the snowstorm of the century came through and threatened our final walkthrough and closing, Joe went out and shoveled a path to the front door himself."</blockquote>
+  <div class="attr">Seller · Zillow Verified · <a href="https://www.zillow.com/profile/joe8963" target="_blank" rel="noopener">Read his reviews →</a></div>
+</div>
+
+<!-- THE GUIDE — resolver rows + sticky winter photo -->
+<section><div class="split">
+  <div>
+    <h2 class="rv">The Fort Drum Guide</h2>
+    <p class="sub rv">Honest intel from families who've lived it.</p>
+    <div class="resolve">
+      <a href="/fort-drum/schools"><span class="towns">Schools</span><span class="dist">Enroll them before you even arrive: four districts, MIC3 rights, and the registrar who picks up the phone</span><span class="call go">→</span></a>
+      <a href="/fort-drum/winter"><span class="towns">Winter &amp; heat</span><span class="dist">Lock a propane price in late summer, line up snow removal, love the snow anyway</span><span class="call go">→</span></a>
+      <a href="/fort-drum/pcs-checklist"><span class="towns">PCS money</span><span class="dist">What the Army pays for your move, and the deadlines that cost families real money</span><span class="call go">→</span></a>
+      <a href="/fort-drum/buying#payment"><span class="towns">Housing &amp; BAH tools</span><span class="dist">VA calculator · rent vs. buy</span><span class="call go">→</span></a>
+      <details class="more-guides"><summary>More Fort Drum guides (3)</summary>
+      <a href="/fort-drum/housing#map"><span class="towns">Neighborhood map</span><span class="dist">School district and drive time, town by town</span><span class="call go">→</span></a>
+      <a href="/fort-drum/housing#onpost"><span class="towns">On-post housing</span><span class="dist">How the wait list works &amp; what rent covers</span><span class="call go">→</span></a>
+      <a href="/living-here"><span class="towns">Life in the North Country</span><span class="dist">Day trips · family &amp; kids · winter, honestly</span><span class="call go">→</span></a>
+      </details>
+    </div>
+    <a class="more" href="pcshomes-fortdrum.html">All guides →</a>
+  </div>
+  <div class="side rv"><figure><img src="images/places/public-square-winter-800.webp" srcset="images/places/public-square-winter-800.webp 800w, images/places/public-square-winter.webp 1600w" sizes="(max-width: 980px) 100vw, 360px" alt="Snowbanks along Watertown's Public Square in winter" loading="lazy" decoding="async" width="800" height="600"/><figcaption>The North Country in January</figcaption></figure></div>
+</div></section>
+
+<!-- THE NETWORK — resolver rows -->
+<section><div class="wrap">
+  <h2 class="rv">The network</h2>
+  <p class="sub rv">Vetted on their record with military families, not on who paid. Partners never pay for placement or ranking.</p>
+  <div class="resolve rv">
+    <a href="/get-help#network"><span class="towns">Joseph Murtha</span><span class="dist">Real estate · North Star Real Estate · #1 in Jefferson &amp; Lewis Co. 5 years running</span><span class="call">Request intro →</span></a>
+    <a href="tel:+13157674222"><span class="towns">DP Development &amp; Properties</span><span class="dist">High-end rentals built for veterans and active duty families</span><span class="call">(315) 767-4222</span></a>
+    <a href="https://www.woodconsultingllc.net" target="_blank" rel="noopener"><span class="towns">Wood Consulting</span><span class="dist">Home services: water treatment and solar for homes around Fort Drum</span><span class="call">Book a home service →</span></a>
+  </div>
+</div></section>
 
 <!-- Netlify form registration for the guide pages' "Have someone call me" bands (they post by script as popup-lead).
      Every field the bands send must be listed here or Netlify drops it. -->
@@ -447,53 +434,44 @@ function toggleQuickLinks(){
   }
 }
 
-// ── STAGE PICKER ──
-var STAGE_LABELS = {
-  orders: 'Orders just dropped',
-  sixty: '60 days out',
-  arriving: 'Arriving this month',
-  here: 'We just got here',
-  deployed: 'My soldier is deploying (or deployed)'
+// ── STAGE ROUTE ── a tile picks the stage; the plate shows that stage's next three steps.
+var STAGES = {
+  orders: ['Orders just dropped', [
+    ['Register for childcare', 'Join the waitlist the day you get orders. Waitlists at Fort Drum are long.', 'Spouse HQ: childcare', 'pcshomes-spouse.html#childcare'],
+    ['Apply for on-post housing', 'Rank, dependents and eligibility date set your place, so apply with orders in hand.', 'Housing guide', '/fort-drum/housing#onpost'],
+    ['Pre-enroll the kids', 'Start school enrollment from where you are, before you arrive.', 'Schools guide', '/fort-drum/schools']]],
+  sixty: ['60 days out', [
+    ['Check the school district before you sign a lease', 'Fort Drum spans four districts and the lines are confusing. Confirm first.', 'Schools guide', '/fort-drum/schools'],
+    ['Run your own rent vs. buy numbers', "See what $0 down actually covers with your own figures, not a stranger's.", 'Buying guide', '/fort-drum/buying#rvb'],
+    ["Line up the family's care before you land", 'Medical on and off post, and who to call first.', 'Healthcare guide', '/fort-drum/healthcare']]],
+  arriving: ['Arriving this month', [
+    ['File your travel voucher within 5 working days', 'Also note the 180-day window to report damage to your household goods.', 'Arrival checklist', '/fort-drum/pcs-checklist'],
+    ["Switch the family's health care over", "Get everyone's care moved so nobody is without coverage.", 'Spouse HQ: health', 'pcshomes-spouse.html#health'],
+    ['Find groceries, medical and storage', 'First-week essentials, pinned on one map.', 'Living Here: essentials', '/living-here#essentials']]],
+  here: ['We just got here', [
+    ['Find your people', 'Groups, meetups and where families actually are.', 'Spouse HQ: community', 'pcshomes-spouse.html#community'],
+    ['Pick a free Saturday', 'Family places worth the drive, closest first, with drive times from the gate.', 'Living Here: places', '/living-here#places'],
+    ['Know the safety net on post', 'Support for the days the wheels wobble.', 'Fort Drum guide: family', 'pcshomes-fortdrum.html#family']]],
+  deployed: ['My soldier is deploying', [
+    ['Save the 2am numbers', 'Who to call when it cannot wait.', 'Spouse HQ: numbers', 'pcshomes-spouse.html#numbers'],
+    ['Know how to reach their command', 'A 24/7 staff duty desk for every brigade, listed by battalion.', 'Directory: command', 'pcshomes-directory.html#command'],
+    ["Read what helps while they're gone", 'From families who have done it, including moving without them.', 'Spouse HQ: deployment', 'pcshomes-spouse.html#deployment']]]
 };
-function toggleStage(key) {
-  var list = document.getElementById('stageList-' + key);
-  var btn = document.getElementById('stageBtn-' + key);
-  if (!list || !btn) return;
-  var wasOpen = list.classList.contains('open');
-  document.querySelectorAll('.stage-links').forEach(function(l) { l.classList.remove('open'); });
-  document.querySelectorAll('.stage-row').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
-  if (!wasOpen) {
-    list.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    try { localStorage.setItem('pcshomes_stage', key); } catch (e) {}
+function renderStage(key, scroll) {
+  var s = STAGES[key]; if (!s) return;
+  document.querySelectorAll('.stage-row').forEach(function (b) { b.setAttribute('aria-expanded', String(b.id === 'stageBtn-' + key)); });
+  document.getElementById('routeStage').textContent = s[0];
+  document.getElementById('routeSteps').innerHTML = s[1].map(function (st, i) {
+    return '<li><span class="n" aria-hidden="true">' + (i + 1) + '</span><div><h3>' + st[0] + '</h3><p>' + st[1] + '</p><a href="' + st[3] + '">' + st[2] + ' &rarr;</a></div></li>';
+  }).join('');
+  try { localStorage.setItem('pcshomes_stage', key); } catch (e) {}
+  if (scroll) {
     var motion = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ? 'auto' : 'smooth';
-    setTimeout(function() { list.scrollIntoView({ behavior: motion, block: 'nearest' }); }, 80);
+    document.getElementById('routePlate').scrollIntoView({ behavior: motion, block: 'start' });
   }
 }
-function resumeStage() {
-  var key = null;
-  try { key = localStorage.getItem('pcshomes_stage'); } catch (e) {}
-  if (!key) return;
-  var list = document.getElementById('stageList-' + key);
-  var btn = document.getElementById('stageBtn-' + key);
-  if (!list || !btn) return;
-  if (!list.classList.contains('open')) toggleStage(key);
-  btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-function clearStage() {
-  try { localStorage.removeItem('pcshomes_stage'); } catch (e) {}
-  var w = document.getElementById('stageWelcome');
-  if (w) w.style.display = 'none';
-}
-(function() {
-  var key = null;
-  try { key = localStorage.getItem('pcshomes_stage'); } catch (e) {}
-  if (key && STAGE_LABELS[key]) {
-    var lbl = document.getElementById('stageWelcomeLabel');
-    var w = document.getElementById('stageWelcome');
-    if (lbl && w) { lbl.textContent = STAGE_LABELS[key]; w.style.display = 'flex'; }
-  }
-})();
+function toggleStage(key) { renderStage(key, true); }
+(function () { var k = null; try { k = localStorage.getItem('pcshomes_stage'); } catch (e) {} renderStage(STAGES[k] ? k : 'orders', false); })();
 
 function submitVaLead(ev) {
   ev.preventDefault();
