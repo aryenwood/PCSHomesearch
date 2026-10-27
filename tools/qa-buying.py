@@ -82,16 +82,17 @@ with sync_playwright() as p:
 
     # rent vs. buy: hidden until asked, then matches the independent math
     R["rvb_hidden_first"] = pg.evaluate("document.getElementById('rvbOut').hidden")
+    RVB = float(pg.input_value("#rvbPrice"))  # the page default: the sourced county median
     pg.click("#rvbGo")
     R["rvb_shown"] = pg.is_visible("#rvbOut") and not pg.is_visible("#rvbGo")
-    loan, house = expect(200000, 0, "first", 7, 1.5)
+    loan, house = expect(RVB, 0, "first", 7, 1.5)
     check("rvb_house", dollars(pg.text_content("#cHouse1")), house)
     check("rvb_buy_total", dollars(pg.text_content("#cTotal1")), house + 350 + 125)
     check("rvb_rent_total", dollars(pg.text_content("#cTotal2")), 1400 + 350 + 125)
     check("rvb_left_buy", dollars(pg.text_content("#cLeft1").replace("/mo", "")), 1665 - (house + 475), tol=2)
     check("rvb_paid", dollars(pg.text_content("#cPaid")), loan - bal(loan, 7, 36))
-    check("rvb_equity", dollars(pg.text_content("#cEquity")), 200000 * 1.03 ** 3 - bal(loan, 7, 36))
-    check("rvb_equity_flat", dollars(pg.text_content("#cEqFlat")), 200000 - bal(loan, 7, 36))
+    check("rvb_equity", dollars(pg.text_content("#cEquity")), RVB * 1.03 ** 3 - bal(loan, 7, 36))
+    check("rvb_equity_flat", dollars(pg.text_content("#cEqFlat")), RVB - bal(loan, 7, 36))
     pg.select_option("#rvbIncl", "yes")
     R["rvb_included"] = pg.text_content("#cWater2")
     if R["rvb_included"] != "Included": FAIL.append("rvb_included")
@@ -102,7 +103,7 @@ with sync_playwright() as p:
     R["focus_after_reveal"] = pg.evaluate("document.activeElement.id")
     if R["focus_after_reveal"] != "rvbCap": FAIL.append("focus_after_reveal")
     pg.fill("#downPayment", "20000")
-    _, want = expect(200000, 20000, "first", 7, 1.5)
+    _, want = expect(RVB, 20000, "first", 7, 1.5)
     check("rvb_uses_down", dollars(pg.text_content("#cHouse1")), want)
     # edge cases: no negative money, no Infinity, a clear state when no loan is needed
     pg.fill("#downPayment", "250000")
