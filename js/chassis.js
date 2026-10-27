@@ -99,3 +99,18 @@ document.documentElement.classList.add('js');
     } else { draw(); }
   });
 })();
+
+// Lead forms carry where the visitor came from, so the person who calls knows the context.
+// Values come from the address bar and referrer only; nothing is stored or sent elsewhere.
+function pcshFillAttribution(form) {
+  var q = new URLSearchParams(location.search);
+  var set = function (name, value) {
+    var el = form.elements[name];
+    if (el) el.value = String(value || '').slice(0, 200);
+  };
+  set('source-page', location.pathname);
+  set('referrer', document.referrer);
+  set('utm-source', q.get('utm_source'));
+  set('utm-medium', q.get('utm_medium'));
+  set('utm-campaign', q.get('utm_campaign'));
+}

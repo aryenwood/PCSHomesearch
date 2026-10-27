@@ -235,6 +235,11 @@
         <input type="hidden" name="need-type" id="needTypeInput" value="general"/>
         <input type="hidden" name="area" id="areaInput" value=""/>
         <input type="hidden" name="lead-source" id="leadSourceInput" value=""/>
+        <input type="hidden" name="source-page" value=""/>
+        <input type="hidden" name="referrer" value=""/>
+        <input type="hidden" name="utm-source" value=""/>
+        <input type="hidden" name="utm-medium" value=""/>
+        <input type="hidden" name="utm-campaign" value=""/>
 
         <div>
           <div class="form-label" id="inquiryTypeLabel">What do you need? (pick one)</div>
@@ -273,7 +278,7 @@
         </div>
         <div class="form-row">
           <label class="field"><span>Email</span><input id="email" name="email" type="email" required aria-required="true" autocomplete="email"/></label>
-          <label class="field"><span>Phone</span><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"/></label>
+          <label class="field"><span>Phone</span><input id="phone" name="phone" type="tel" inputmode="tel" required aria-required="true" autocomplete="tel"/></label>
         </div>
 
         <button type="button" id="contactExtrasToggle" class="extras-toggle" onclick="toggleExtras()">+ Add details (optional)</button>
@@ -300,7 +305,7 @@
 
         <label class="field"><span>Message</span><textarea id="message" name="message" rows="4" enterkeyhint="send"></textarea></label>
 
-        <div class="reassure">No spam, no pressure: a real person who knows Fort Drum reads every message.</div>
+        <div class="reassure">No spam, no pressure: a real person who knows Fort Drum reads every message. We will call, text or email you within 24 hours. By sending this you agree we may reach you that way about your request (message rates may apply; reply STOP to opt out). Your details go only to our team and to an agent you agree to meet.</div>
         <button type="submit" class="btn-gold">Connect Me with an Expert &rarr;</button>
         <div class="reassure" style="text-align:center;">See what families say: <a href="https://www.zillow.com/profile/joe8963" target="_blank" rel="noopener" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Joe Murtha's reviews on Zillow</a>, our Fort Drum agent.</div>
         <div class="reassure" style="text-align:center;">Questions? <a href="sms:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold-bright);font-weight:700;text-decoration:none;">(315) 221-4857</a></div>
@@ -659,6 +664,7 @@ function toggleQuickLinks(){var b=document.getElementById('qlBackdrop');
   function submitForm(e) {
     e.preventDefault();
     var form = e.target;
+    pcshFillAttribution(form);
     var formData = new FormData(form);
     var selectedType = document.querySelector('.inquiry-type.selected');
     if (selectedType) {

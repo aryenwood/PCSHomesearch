@@ -363,12 +363,18 @@
       <div>
         <form name="va-home-list" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="vaLeadForm">
           <input type="hidden" name="form-name" value="va-home-list"/>
+          <input type="hidden" name="source-page" value=""/>
+          <input type="hidden" name="referrer" value=""/>
+          <input type="hidden" name="utm-source" value=""/>
+          <input type="hidden" name="utm-medium" value=""/>
+          <input type="hidden" name="utm-campaign" value=""/>
           <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
           <label class="field"><span>Your name</span><input type="text" id="vaName" name="name" autocomplete="name" required aria-required="true"/></label>
-          <label class="field"><span>Email or phone</span><input type="text" id="vaContact" name="contact" autocomplete="on" enterkeyhint="send" required aria-required="true"/></label>
+          <label class="field"><span>Email</span><input type="email" id="vaEmail" name="email" autocomplete="email" required aria-required="true"/></label>
+          <label class="field"><span>Phone</span><input type="tel" id="vaPhone" name="phone" inputmode="tel" autocomplete="tel" enterkeyhint="send" required aria-required="true"/></label>
           <button type="button" class="btn-gold" onclick="submitVaLead()">Have someone call me</button>
         </form>
-        <p class="form-note">A real person calls you within 24 hours. No spam, ever. Questions now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
+        <p class="form-note">A real person calls, texts or emails you within 24 hours. By sending this you agree we may reach you that way about your request (message rates may apply; reply STOP to opt out). Your details go only to our team and to an agent you agree to meet. Questions now? <a href="sms:+13152214857">Text</a> or call <a href="tel:+13152214857">(315) 221-4857</a>.</p>
         <div id="vaLeadSuccess" class="lead-success" style="display:none;">
           <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <b>You're all set!</b>
@@ -438,13 +444,19 @@
 
       <form class="popup-form" id="popupForm" name="popup-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="popup-lead"/>
+        <input type="hidden" name="source-page" value=""/>
+        <input type="hidden" name="referrer" value=""/>
+        <input type="hidden" name="utm-source" value=""/>
+        <input type="hidden" name="utm-medium" value=""/>
+        <input type="hidden" name="utm-campaign" value=""/>
         <p style="display:none"><input name="bot-field" tabindex="-1" autocomplete="off"/></p>
         <button type="button" class="popup-back" onclick="document.getElementById('popupOptions').style.display='flex';document.getElementById('popupForm').style.display='none';">← Back</button>
         <div class="popup-form-title" id="popupFormTitle"></div>
         <input type="hidden" id="popupOfferType" name="offer" value=""/>
         <label class="field"><span>Your name</span><input type="text" id="popupName" name="name" autocomplete="name" required aria-required="true"/></label>
-        <label class="field"><span>Email or phone</span><input type="text" id="popupContact" name="contact" autocomplete="on" enterkeyhint="send" required aria-required="true"/></label>
-        <div class="popup-note">A real person replies within 24 hours, no spam, ever.</div>
+        <label class="field"><span>Email</span><input type="email" id="popupEmail" name="email" autocomplete="email" required aria-required="true"/></label>
+        <label class="field"><span>Phone</span><input type="tel" id="popupPhone" name="phone" inputmode="tel" autocomplete="tel" enterkeyhint="send" required aria-required="true"/></label>
+        <div class="popup-note">A real person calls, texts or emails you within 24 hours. By sending this you agree we may reach you that way about your request (message rates may apply; reply STOP to opt out). Your details go only to our team and to an agent you agree to meet.</div>
         <button type="button" class="popup-btn" onclick="submitPopup()">Send My Request →</button>
       </form>
 
@@ -591,10 +603,9 @@ function clearStage() {
 })();
 
 function submitVaLead() {
-  const name = document.getElementById('vaName').value.trim();
-  const contact = document.getElementById('vaContact').value.trim();
-  if (!name || !contact) { alert('Please enter your name and a way to reach you.'); return; }
   const form = document.getElementById('vaLeadForm');
+  if (!form.reportValidity()) return;
+  pcshFillAttribution(form);
   const formData = new FormData(form);
   fetch('/', {
     method: 'POST',
@@ -657,10 +668,9 @@ function selectOffer(type) {
   document.getElementById('popupOfferType').value = type;
 }
 function submitPopup() {
-  const name    = document.getElementById('popupName').value.trim();
-  const contact = document.getElementById('popupContact').value.trim();
-  if (!name || !contact) { alert('Please enter your name and contact info.'); return; }
   const form = document.getElementById('popupForm');
+  if (!form.reportValidity()) return;
+  pcshFillAttribution(form);
   const formData = new FormData(form);
   fetch('/', {
     method: 'POST',
