@@ -93,7 +93,6 @@ function normalize(formName, data, createdAt) {
     need: NEED_LABELS[needKey] || needKey || (formName === 'va-home-list' ? 'VA home list' : 'Not specified'),
     area: clean(data.area, 120),
     leadSource: clean(data['lead-source'], 120),
-    movingAs: clean(data['moving-as'], 60),
     rentBuy: clean(data['rent-or-buy'], 60),
     bestTime: clean(data['best-time'], 60),
     needBy: clean(data['need-by'], 80),
@@ -146,7 +145,6 @@ function renderLead(formName, data, createdAt) {
     ['Best time', lead.bestTime],
     ['Needs', lead.need],
     ['Wants to live in', lead.preferredTown || lead.area],
-    ['Moving as', lead.movingAs],
     ['Coming from', lead.dutyStation],
     ['Report date', lead.pcsDate],
     ['Need a place by', lead.needBy],
@@ -172,7 +170,6 @@ function renderLead(formName, data, createdAt) {
   if (!lead.vaLoan) asks.push('Using a VA loan?');
   if (!lead.preapproved) asks.push('Preapproved? For how much?');
   else if (lead.preapproved === 'Yes' && !lead.preAmount) asks.push('Preapproved for how much?');
-  if (!lead.movingAs) asks.push('Service member, spouse or veteran?');
 
   const origin = [
     lead.sourcePage && `page ${lead.sourcePage}`,

@@ -19,7 +19,7 @@ const check = (ok, label) => {
 const sample = {
   'pcshomes-contact': {
     'form-name': 'pcshomes-contact', 'first-name': 'Dana', 'last-name': 'Reyes', email: 'dana@example.com', phone: '315-555-0142',
-    'need-type': 'real-estate-agent', area: 'Evans Mills', 'moving-as': 'Spouse', 'rent-or-buy': 'Rent', 'best-time': 'Evening', 'va-loan': 'Yes', preapproved: 'Yes', 'preapproved-amount': '$285,000', bedrooms: '3', pets: 'Dog', 'school-age-kids': 'Yes', 'preferred-town': 'Evans Mills', 'need-by': 'August 2027', 'duty-station': 'Fort Bragg', 'pcs-date': 'July 2027',
+    'need-type': 'real-estate-agent', area: 'Evans Mills', 'rent-or-buy': 'Rent', 'best-time': 'Evening', 'va-loan': 'Yes', preapproved: 'Yes', 'preapproved-amount': '$285,000', bedrooms: '3', pets: 'Dog', 'school-age-kids': 'Yes', 'preferred-town': 'Evans Mills', 'need-by': 'August 2027', 'duty-station': 'Fort Bragg', 'pcs-date': 'July 2027',
     budget: '$250,000 - $300,000', message: 'Two dogs.\nNeed a fenced yard.', 'source-page': '/get-help.html', referrer: 'https://facebook.com/', 'utm-source': 'fb',
   },
   'popup-lead': { 'form-name': 'popup-lead', name: 'Sam Ortiz', email: 'sam@example.com', phone: '(315) 555-0100', offer: 'homes', 'source-page': '/' },
@@ -34,7 +34,8 @@ for (const [form, data] of Object.entries(sample)) {
   check(r.html.includes(fn.PROMISES[form]) && r.text.includes(fn.PROMISES[form]), `${form}: shows exactly what the family was told`);
   check(!/[—–]/.test(r.subject + r.html + r.text), `${form}: no dashes of the banned kind`);
   check(form === 'pcshomes-contact' ? !r.text.includes('ASK ON THE FIRST CALL') && !r.html.includes('Ask on the first call') : r.text.includes('ASK ON THE FIRST CALL'), `${form}: first-call questions only when something is unanswered`);
-  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Moving as: Spouse') && r.text.includes('Rent or buy: Rent') && !r.text.includes('[ ] Report date?') && !r.text.includes('[ ] Renting or buying?') && !r.text.includes('[ ] Using a VA loan?')), `${form}: new optional answers appear when given`);
+  check(!r.text.includes('Moving as') && !r.html.includes('Moving as'), `${form}: no moving-as field`);
+  check(form !== 'pcshomes-contact' || (r.text.includes('Best time: Evening') && r.text.includes('Rent or buy: Rent') && !r.text.includes('[ ] Report date?') && !r.text.includes('[ ] Renting or buying?') && !r.text.includes('[ ] Using a VA loan?')), `${form}: new optional answers appear when given`);
 }
 
 // Loan answers are shown exactly as given, and nothing is inferred from the need they picked.
