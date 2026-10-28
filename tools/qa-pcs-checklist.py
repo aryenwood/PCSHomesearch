@@ -71,6 +71,22 @@ with sync_playwright() as p:
     ctx, pg, errs = fresh(b, {"pcshomes_checklist_v2": "{not json"})
     R["control_garbage_ticks_nothing"] = pg.evaluate(checked) == [] and not errs
     ctx.close()
+    # who's moving: the default is active duty; picking a path shows only its list, fills the form, survives a reload
+    shown = "[...document.querySelectorAll('section[data-who], div[data-who]')].filter(e => !e.hidden).map(e => e.id)"
+    ctx, pg, errs = fresh(b)
+    R["who_default_ad"] = pg.evaluate(shown)
+    pg.click('.who-b[data-who="vet"]')
+    R["who_vet_shows"] = pg.evaluate(shown)
+    R["who_form_field"] = pg.evaluate("document.getElementById('twWho').value")
+    pg.reload(wait_until="networkidle")
+    R["who_survives_reload"] = pg.evaluate("[...document.querySelectorAll('.who-b[aria-pressed=true]')].map(b => b.dataset.who)")
+    R["who_va_loan_always"] = pg.evaluate("!document.getElementById('va-loan').hidden")
+    R["who_page_errors"] = errs
+    ctx.close()
+    # negative control: a junk saved value falls back to active duty and fills nothing in the form
+    ctx, pg, _ = fresh(b, {"pcshomes_who": "<b>"})
+    R["control_junk_who"] = [pg.evaluate(shown), pg.evaluate("document.getElementById('twWho').value")]
+    ctx.close()
     b.close()
 
 want = {
@@ -82,9 +98,12 @@ want = {
     "saved_record": ["coe", "bah-lookup", "winter-plan"], "link_is_outside_label": True,
     "old_index_migrates": ["mch-waitlist", "bah-lookup"], "old_key_removed": True,
     "control_garbage_ticks_nothing": True,
+    "who_default_ad": ["timeline", "checklist", "owed", "deadlines", "wont-pack"], "who_vet_shows": ["path-vet"],
+    "who_form_field": "vet", "who_survives_reload": ["vet"], "who_va_loan_always": True, "who_page_errors": [],
+    "control_junk_who": [["timeline", "checklist", "owed", "deadlines", "wont-pack"], ""],
 }
 fails = {k: R.get(k) for k, v in want.items() if R.get(k) != v}
-R["status_text_ok"] = R.get("status_text", "").endswith("2 of 9 done")
+R["status_text_ok"] = R.get("status_text", "").endswith("2 of 21 done")  # the active duty list (default path)
 if not R["status_text_ok"]: fails["status_text"] = R.get("status_text")
 print(json.dumps({"passed": len(want) + 1 - len(fails), "total": len(want) + 1, "fails": fails}, indent=1))
 sys.exit(1 if fails else 0)

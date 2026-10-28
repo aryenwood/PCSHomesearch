@@ -129,19 +129,29 @@ check(mail.html.includes('Hi Dana') && !/[\u2014\u2013]/.test(mail.html + mail.t
 const checklistPage = readFileSync(path.join(root, 'fort-drum/pcs-checklist.html'), 'utf8');
 const buyingPage = readFileSync(path.join(root, 'fort-drum/buying.html'), 'utf8');
 const sources = plain(checklistPage + buyingPage + index);
-for (const fig of ['$1,870', '$6,385', '$0.235', '$178', '$110', '$68', '$290', '$550', '5 working days', '180 days', '12 months', 'May 15, 2026', '(315) 955-6644', '(315) 774-0165', '(315) 772-3214', '1-800-444-5445', '2.15%', '$1,665', 'Bldg. 4412']) {
+for (const fig of ['$1,870', '$6,385', '$0.235', '$181', '$113', '$68', '$290', '$550', '$500', '5 working days', '7 days', '180 days', '45 days', '12 months', 'May 15, 2026', '(315) 955-6644', '(315) 774-0165', '(315) 772-3214', '(315) 772-6384', '833-MIL-MOVE', '1-800-444-5445', '2.15%', '3.3%', '$832,750', '$1,025', 'March 1', 'Bldg. 4412']) {
   check(mail.text.includes(fig) && sources.includes(fig), `checklist figure ${fig} appears in the email and on the site`);
 }
+// Each path's own figures: the family that picked it sees them in the email, and the page carries them.
+const PATH_FIGS = { vet: ['877-222-8387', '(315) 425-8240', '(315) 785-3086', '(315) 782-5479', 'RP-458-a'], gr: ['$57.88', '$286.66', '1-866-237-0275', 'NGB Form 22'], ss: ['26-1817', '(315) 772-6357'] };
+for (const [who, figs] of Object.entries(PATH_FIGS)) {
+  const m = renderChecklistEmail('Dana', who);
+  for (const fig of figs) check(m.text.includes(fig) && plain(checklistPage).includes(fig), `${who} path: ${fig} appears in its email and on the page`);
+  check(!m.text.includes('Travel voucher') && !m.text.includes('MOVERS WILL NOT PACK'), `${who} email leaves out the active-duty-only moving items`);
+}
+check(renderChecklistEmail('Dana', 'ad').text.includes('Travel voucher') && renderChecklistEmail('Dana', 'vet').text.includes('set up for: Veteran or retiree'), 'active duty keeps the moving items; a veteran email says who it is set up for');
+check(!/\$178|\$110 for lodging/.test(plain(checklistPage) + mail.text), 'the old FY2026 per diem is gone');
 const twBlock = formBlock(checklistPage, 'pcs-checklist');
 check(/type="email"[^>]*required/.test(twBlock) && /type="tel"[^>]*required/.test(twBlock) && /name="first-name"[^>]*required/.test(twBlock), 'checklist form requires first name, email and phone');
-check(/name="va-loan"/.test(twBlock) && /name="source-page"/.test(twBlock), 'checklist form carries the VA answer and the page');
+check(/name="va-loan"/.test(twBlock) && /name="who"/.test(twBlock) && /name="source-page"/.test(twBlock), 'checklist form carries the VA answer, who is moving, and the page');
 check(plain(checklistPage).includes(fn.PROMISES['pcs-checklist']), 'checklist page shows the promise the lead email repeats');
-const twLead = fn.renderLead('pcs-checklist', { 'first-name': 'Dana', email: 'dana@example.com', phone: '3155550142', 'va-loan': 'Yes' });
-check(twLead.subject.includes('| PCS + VA loan checklist |') && twLead.text.includes('VA loan: Yes'), 'team lead email names the checklist and the VA answer');
+const twLead = fn.renderLead('pcs-checklist', { 'first-name': 'Dana', email: 'dana@example.com', phone: '3155550142', 'va-loan': 'Yes', who: 'vet' });
+check(twLead.subject.includes('| PCS + VA loan checklist |') && twLead.text.includes('VA loan: Yes') && twLead.text.includes('Who is moving: Veteran or retiree'), 'team lead email names the checklist, the VA answer and who is moving');
+check(!fn.renderLead('pcs-checklist', { 'first-name': 'X', email: 'x@example.com', phone: '3155550142', who: '<b>' }).lead.who, 'an unknown who value is dropped, not passed through');
 const famCalls = [];
 process.env.RESEND_API_KEY = 'test-key';
 await fn.sendChecklist(twLead.lead, 'sub-tw', async (url, init) => { famCalls.push(JSON.parse(init.body)); return { ok: true }; });
-check(famCalls.length === 1 && famCalls[0].to[0] === 'dana@example.com' && famCalls[0].reply_to === 'aryen@woodconsultingllc.net' && famCalls[0].subject === mail.subject, 'family gets the checklist; replies come to our team');
+check(famCalls.length === 1 && famCalls[0].to[0] === 'dana@example.com' && famCalls[0].reply_to === 'aryen@woodconsultingllc.net' && famCalls[0].subject === mail.subject && famCalls[0].text.includes('set up for: Veteran or retiree'), 'family gets the checklist set up for who is moving; replies come to our team');
 const noMail = await fn.sendChecklist(fn.renderLead('pcs-checklist', { 'first-name': 'X', email: 'bad', phone: '3155550142' }).lead, 'sub-x', async () => { throw new Error('should not send'); });
 check(noMail.skipped, 'no checklist is sent to an invalid address');
 delete process.env.RESEND_API_KEY;

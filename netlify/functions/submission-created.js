@@ -7,7 +7,7 @@
 //           REALTY_LEAD_MAIL_FROM (default the WC appointments sender).
 // Logs never contain customer details.
 const crypto = require('crypto');
-const { renderChecklistEmail } = require('./_lib/checklist');
+const { renderChecklistEmail, WHO } = require('./_lib/checklist');
 
 const ROUTED_FORMS = new Set(['pcshomes-contact', 'popup-lead', 'va-home-list', 'pcs-checklist']);
 const DEFAULT_TO = 'aryen@woodconsultingllc.net';
@@ -112,6 +112,7 @@ function normalize(formName, data, createdAt) {
     pets: clean(data.pets, 40),
     kids: clean(data['school-age-kids'], 20),
     vaLoan: clean(data['va-loan'], 20),
+    who: WHO[clean(data.who, 8)] ? clean(data.who, 8) : '',
     preapproved: clean(data.preapproved, 20),
     preAmount: clean(data['preapproved-amount'], 40),
     preferredTown: clean(data['preferred-town'], 120),
@@ -157,6 +158,7 @@ function renderLead(formName, data, createdAt) {
     ['Best time', lead.bestTime],
     ['Needs', lead.need],
     ['Wants to live in', lead.preferredTown || lead.area],
+    ['Who is moving', WHO[lead.who]],
     ['Coming from', lead.dutyStation],
     ['Report date', lead.pcsDate],
     ['Need a place by', lead.needBy],
@@ -295,7 +297,7 @@ async function sendEmail(rendered, submissionId, fetcher = fetch) {
 // The family's own copy of the checklist they asked for. Replies go to our team.
 async function sendChecklist(lead, submissionId, fetcher = fetch) {
   if (!lead.emailValid) return { skipped: 'no valid email' };
-  const mail = renderChecklistEmail(lead.first);
+  const mail = renderChecklistEmail(lead.first, lead.who);
   return resendPost({
     from: env('PCS_FAMILY_MAIL_FROM', 'PCSHomes <appointments@updates.woodconsultingllc.net>'),
     to: [lead.email],
