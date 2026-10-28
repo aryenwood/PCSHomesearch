@@ -57,7 +57,8 @@ with sync_playwright() as p:
     pg.route(BASE + "/", handle)
     if pg.locator(".ask-band").count():
         pg.fill(".ask-band [name=name]", "QA Test")
-        pg.fill(".ask-band [name=contact]", "qa@example.com")
+        pg.fill(".ask-band [name=phone]", "3155550142")
+        pg.fill(".ask-band [name=email]", "qa@example.com")
         pg.click(".ask-band button[type=submit]")
         pg.wait_for_timeout(500)
         report["ask_post_body"] = posted.get("body")

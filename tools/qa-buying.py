@@ -127,7 +127,8 @@ with sync_playwright() as p:
     for i in range(pg.locator(".ask-band").count()):
         band = pg.locator(".ask-band").nth(i)
         band.locator("[name=name]").fill("QA Test")
-        band.locator("[name=contact]").fill("qa@example.com")
+        band.locator("[name=phone]").fill("3155550142")
+        band.locator("[name=email]").fill("qa@example.com")
         band.locator("button[type=submit]").click()
         pg.wait_for_timeout(300)
     R["ask_offers"] = [parse_qs(x).get("offer", [None])[0] for x in bodies]
