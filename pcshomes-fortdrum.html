@@ -64,6 +64,12 @@
       .bar { position: static; }
       input { font-size: 16px !important; }
     }
+    .facts .bah > summary { list-style: none; cursor: pointer; min-height: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .facts .bah > summary::-webkit-details-marker { display: none; }
+    .facts .bah-open { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-weight: 700; font-size: 17px; color: var(--gold); }
+    .facts .bah-open::after { content: '+'; font-size: 20px; }
+    .facts .bah[open] .bah-open { display: none; }
+    .facts .bah .val, .facts .bah .note { display: block; }
   </style>
 </head>
 <body>
@@ -89,10 +95,10 @@
   <h1 class="rv">Fort Drum, <em>one chapter at a time.</em></h1>
   <p class="dek rv">Six chapters for the move to Fort Drum, each checked against official sources. <strong>Start with what comes next for you.</strong></p>
   <div class="facts rv">
-    <div><span class="label">E-5 BAH</span><span class="val">$1,665</span><span class="note">With dependents, 2026</span></div>
+    <div><details class="bah"><summary><span class="label">Housing allowance (BAH)</span><span class="bah-open">Show the rate</span></summary><span class="val">$1,665</span><span class="note">E-5 with dependents, 2026. <a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/" target="_blank" rel="noopener">Check your own rate</a></span></details></div>
     <div><span class="label">Snow a year</span><span class="val">~100 in.</span><span class="note"><a href="/fort-drum/winter">Watertown airport: see Winter</a></span></div>
-    <div><span class="label">Median sale</span><span class="val">$200,000</span><span class="note"><a href="/fort-drum/buying#payment">Jefferson County, 2025</a></span></div>
-    <div><span class="label">Soldiers</span><span class="val">13,000+</span><span class="note">10th Mountain Division, 2025</span></div>
+    <div><span class="label">Median sale</span><span class="val">$250,000</span><span class="note"><a href="https://www.redfin.com/county/1967/NY/Jefferson-County/housing-market" target="_blank" rel="noopener">Jefferson County, Jul to Sep 2026</a></span></div>
+    <div><span class="label">Soldiers &amp; families</span><span class="val">35,000+</span><span class="note"><a href="https://home.army.mil/drum/download_file/view/f774fbd2-2ba1-4870-ad4b-50228827e96e/806" target="_blank" rel="noopener">Fort Drum, FY2024</a></span></div>
   </div>
 </div></header>
 

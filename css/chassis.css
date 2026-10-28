@@ -350,3 +350,10 @@ figure figcaption, figure .tag, figure .label, .chip { left: 0; right: 0; bottom
 
 /* three weights only: bold inside bold stays 700 */
 b, strong { font-weight: 700; }
+
+/* the promise lines under a chapter headline read as plain sentences, not small caps labels */
+.proof span { font-size: var(--t-m) !important; letter-spacing: 0 !important; text-transform: none !important; font-weight: 500; color: var(--ink); }
+.proof span b { font-weight: 700; color: var(--navy); }
+
+/* facts labels in plain words, as on the homepage */
+.facts .label { font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--navy); }
