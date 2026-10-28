@@ -26,6 +26,47 @@ document.documentElement.classList.add('js');
     }
   }
 
+  // hero choreography: eyebrow, headline, intro and photo rise in order on load
+  document.querySelectorAll('.hero .rv').forEach(function (e, i) { e.style.transitionDelay = (i * 120) + 'ms'; });
+
+  // cascades: rows and cards inside a list arrive one after another as the list scrolls in
+  var lists = document.querySelectorAll('.resolve, .facts, .trio, .stage-grid, .right-row-list, .dist-rows, .places, .route-list, .pf-list');
+  lists.forEach(function (l) { l.classList.add('cascade'); });
+  if (reduce || !('IntersectionObserver' in window)) { lists.forEach(function (l) { l.classList.add('in'); }); }
+  else {
+    var lio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); lio.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    lists.forEach(function (l) { lio.observe(l); });
+  }
+
+  // numbers count up once when they scroll in. Screen readers get the final value only.
+  // Only plain figures ($250,000, 4, $1,665/mo, 18) count; phone numbers and ranges are left alone.
+  var nums = document.querySelectorAll('.facts .val, [data-count]');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var nio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return; nio.unobserve(en.target);
+        var el = en.target, shown = el.querySelector('[data-count-shown]'); if (!shown) return;
+        var final = shown.textContent, m = final.match(/^(\D*)([\d,]+)(.*)$/); if (!m) return;
+        var target = parseInt(m[2].replace(/,/g, ''), 10), t0 = null, dur = Math.min(1100, 500 + target / 300);
+        (function tick(now) {
+          if (t0 === null) t0 = now;
+          var k = Math.min(1, (now - t0) / dur), v = Math.round(target * (1 - Math.pow(1 - k, 3)));
+          shown.textContent = m[1] + v.toLocaleString('en-US') + m[3];
+          if (k < 1) requestAnimationFrame(tick); else shown.textContent = final;
+        })(performance.now());
+      });
+    }, { threshold: 0.4 });
+    nums.forEach(function (el) {
+      if (el.children.length) return;                      // links or markup inside: leave as is
+      var txt = el.textContent.trim();
+      if (!/^\$?[\d,]+(\/mo)?$/.test(txt)) return;           // not a plain figure
+      el.innerHTML = '<span class="count-sr">' + txt + '</span><span aria-hidden="true" data-count-shown>' + txt + '</span>';
+      nio.observe(el);
+    });
+  }
+
   // reading progress (chapter pages carry #prog in the bar)
   var prog = document.getElementById('prog');
   if (prog) {

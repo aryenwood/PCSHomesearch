@@ -170,6 +170,15 @@
     .facts .bah-open::after { content: '+'; font-size: 20px; }
     .facts .bah[open] .bah-open { display: none; }
     .facts .bah .note { color: var(--ink); font-weight: 500; }
+    /* the route steps step in, and the line between them draws down (motion v2) */
+    .route li { position: relative; }
+    @media (prefers-reduced-motion: no-preference) {
+      .route li { animation: pcsh-rise .5s var(--ease-out) both; animation-delay: calc(var(--i, 0) * .12s); }
+      .route li:not(:last-child)::after { content: ''; position: absolute; left: 11px; top: 62px; bottom: -18px; width: 2px; background: rgba(217,180,91,.5);
+        transform-origin: top; animation: pcsh-draw .6s var(--ease-out) both; animation-delay: calc(var(--i, 0) * .12s + .25s); }
+      .stage-row { transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), opacity .25s; }
+      .stage-grid.has-pick .stage-row:not([aria-expanded="true"]) { opacity: .82; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -466,9 +475,10 @@ var STAGES = {
 function renderStage(key, scroll) {
   var s = STAGES[key]; if (!s) return;
   document.querySelectorAll('.stage-row').forEach(function (b) { b.setAttribute('aria-expanded', String(b.id === 'stageBtn-' + key)); });
+  var grid = document.querySelector('.stage-grid'); if (grid) grid.classList.add('has-pick');
   document.getElementById('routeStage').textContent = s[0];
   document.getElementById('routeSteps').innerHTML = s[1].map(function (st, i) {
-    return '<li><span class="n" aria-hidden="true">' + (i + 1) + '</span><div><h3>' + st[0] + '</h3><p>' + st[1] + '</p><a href="' + st[3] + '">' + st[2] + ' &rarr;</a></div></li>';
+    return '<li style="--i:' + i + '"><span class="n" aria-hidden="true">' + (i + 1) + '</span><div><h3>' + st[0] + '</h3><p>' + st[1] + '</p><a href="' + st[3] + '">' + st[2] + ' &rarr;</a></div></li>';
   }).join('');
   try { localStorage.setItem('pcshomes_stage', key); } catch (e) {}
   if (scroll) {

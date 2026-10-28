@@ -300,3 +300,33 @@ footer > a { display: inline-flex; align-items: center; min-height: 44px; paddin
 .crumb a, .note a, .price a { display: inline-flex; align-items: center; min-height: 44px; }
 .points a, a[href^="sms:"] { padding-inline: 6px; }
 .f-links a { min-width: 44px; }
+
+/* ── motion v2 (Oct 2026): the page answers as you scroll ───────
+   Transform and opacity only. Hero rises in order, lists cascade, numbers count up once, photos drift slowly.
+   Reduced motion: everything is shown at rest, nothing moves. */
+:root { --ease-out: cubic-bezier(.16,.84,.36,1); }
+@keyframes pcsh-kenburns { from { transform: scale(1); } to { transform: scale(1.07) translateY(-1.5%); } }
+@keyframes pcsh-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes pcsh-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.js .hero .rv { transform: translateY(24px); transition-duration: .85s; transition-timing-function: var(--ease-out); }
+.hero-photo img, .hero-banner img { transform-origin: 50% 40%; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo img, .hero-banner img { animation: pcsh-kenburns 26s ease-in-out infinite alternate; }
+  .js .cascade > * { opacity: 0; transform: translateY(14px); transition: opacity .55s var(--ease-out), transform .55s var(--ease-out); }
+  .js .cascade.in > * { opacity: 1; transform: none; }
+  .js .cascade.in > :nth-child(2) { transition-delay: .07s; } .js .cascade.in > :nth-child(3) { transition-delay: .14s; }
+  .js .cascade.in > :nth-child(4) { transition-delay: .21s; } .js .cascade.in > :nth-child(5) { transition-delay: .28s; }
+  .js .cascade.in > :nth-child(6) { transition-delay: .35s; } .js .cascade.in > :nth-child(n+7) { transition-delay: .42s; }
+  .stage-row img, .trio figure img, .side figure img { transition: transform .6s var(--ease-out); }
+  .stage-row:active { transform: scale(.98); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .stage-row:hover img, .side figure:hover img { transform: scale(1.05); }
+  .btn-gold { transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), filter .2s; }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(14,28,48,.22); }
+}
+.count-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo img, .hero-banner img { animation: none !important; }
+  .js .cascade > * { opacity: 1 !important; transform: none !important; }
+}
