@@ -43,14 +43,14 @@
    "status": "active",
    "source_name": "Fort Drum / Jefferson County emergency guidance",
    "source_url": "https://home.army.mil/drum/contact/crisis-phone-numbers",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-002",
@@ -67,7 +67,7 @@
    ],
    "phone_primary": "988",
    "phone_secondary": "Press 1",
-   "sms": null,
+   "sms": "838255",
    "address": null,
    "city": null,
    "state": "NY",
@@ -85,28 +85,36 @@
    "status": "active",
    "source_name": "Veterans Crisis Line",
    "source_url": "https://www.veteranscrisisline.net/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
-   "change_history": [],
+   "recheck_at": "2026-11-04",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "sms",
+     "old": null,
+     "new": "838255",
+     "reason": "Veterans Crisis Line also takes texts at 838255 (veteranscrisisline.net)."
+    }
+   ],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-003",
-   "name": "Jefferson County Crisis Response",
+   "name": "Jefferson County Crisis Response and Mobile Crisis",
    "category": "Safety & Crisis",
    "subcategory": "Mental Health Crisis",
-   "use_this_when": "Local mental-health crisis support in Jefferson County.",
+   "use_this_when": "A mental-health crisis in Jefferson or Lewis County. Run by the Children's Home of Jefferson County, with a mobile crisis team and in-person follow-up.",
    "intent_tags": [
     "crisis response",
     "mental health",
     "jefferson county crisis"
    ],
    "phone_primary": "315-782-2327",
-   "phone_secondary": null,
+   "phone_secondary": "315-405-0696",
    "sms": null,
    "address": null,
    "city": null,
@@ -115,31 +123,74 @@
    "area": "Jefferson County",
    "lat": null,
    "lng": null,
-   "hours_display": "24/7 per Fort Drum crisis directory",
+   "hours_display": "24/7",
    "eligibility": "Local residents",
-   "cost": "Varies / crisis access",
+   "cost": "Free and confidential",
    "military_civilian": "both",
    "confidentiality_reporting_notes": null,
    "emergency": true,
    "priority": "P0",
    "status": "active",
    "source_name": "Fort Drum Crisis Phone Numbers",
-   "source_url": "https://home.army.mil/drum/contact/crisis-phone-numbers",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "source_url": "https://www.chjc.org/crisis-response/",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
-   "change_history": [],
+   "recheck_at": "2026-11-04",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "name",
+     "old": "Jefferson County Crisis Response",
+     "new": "Jefferson County Crisis Response and Mobile Crisis",
+     "reason": "Children's Home of Jefferson County runs the 24/7 crisis line and Mobile Crisis Response (chjc.org/crisis-response)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "phone_secondary",
+     "old": null,
+     "new": "315-405-0696",
+     "reason": "chjc.org: \"Call us 24/7 at 315-782-2327 or 315-405-0696.\""
+    },
+    {
+     "date": "2026-10-28",
+     "field": "cost",
+     "old": "Varies / crisis access",
+     "new": "Free and confidential",
+     "reason": "chjc.org: \"Free and confidential service offered for residents in Jefferson and Lewis County.\""
+    },
+    {
+     "date": "2026-10-28",
+     "field": "hours_display",
+     "old": "24/7 per Fort Drum crisis directory",
+     "new": "24/7",
+     "reason": "Confirmed on chjc.org."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "use_this_when",
+     "old": "Local mental-health crisis support in Jefferson County.",
+     "new": "A mental-health crisis in Jefferson or Lewis County. Run by the Children's Home of Jefferson County, with a mobile crisis team and in-person follow-up.",
+     "reason": "chjc.org crisis response page."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://home.army.mil/drum/contact/crisis-phone-numbers",
+     "new": "https://www.chjc.org/crisis-response/",
+     "reason": "Re-verified Oct 28, 2026 against this page."
+    }
+   ],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-004",
-   "name": "Jefferson County Mobile Crisis Services",
-   "category": "Safety & Crisis",
+   "name": "Mental Health Association Peer Warmline (not for emergencies)",
+   "category": "Health & Medical",
    "subcategory": "Mobile Crisis",
-   "use_this_when": "A mobile mental-health crisis response may be appropriate.",
+   "use_this_when": "You want to talk with a trained peer and it is not an emergency. In a crisis, call 988 (press 1 for the Military Crisis Line) or Jefferson County Crisis Response, (315) 782-2327.",
    "intent_tags": [
     "mobile crisis",
     "mental health",
@@ -155,24 +206,81 @@
    "area": "Jefferson County",
    "lat": null,
    "lng": null,
-   "hours_display": "24/7 per Fort Drum crisis directory",
+   "hours_display": "Monday to Friday, 8:30 a.m. to 4 p.m.",
    "eligibility": "Local residents",
-   "cost": "Varies",
+   "cost": null,
    "military_civilian": "both",
    "confidentiality_reporting_notes": null,
-   "emergency": true,
-   "priority": "P0",
+   "emergency": false,
+   "priority": "P2",
    "status": "active",
    "source_name": "Fort Drum Crisis Phone Numbers",
-   "source_url": "https://home.army.mil/drum/contact/crisis-phone-numbers",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "source_url": "https://www.211cny.com/resource/mental-health-association-in-jefferson-county-warmline/",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
-   "change_history": [],
+   "recheck_at": "2026-11-04",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "name",
+     "old": "Jefferson County Mobile Crisis Services",
+     "new": "Mental Health Association Peer Warmline (not for emergencies)",
+     "reason": "211 CNY lists 315-788-0970 as the Mental Health Association in Jefferson County business line and peer warmline: \"non-crisis\", Monday-Friday 8:30 AM-4 PM. Fort Drum's crisis page labels it Mobile Crisis Services; the 24/7 mobile crisis team is CHJC (safety-003)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "category",
+     "old": "Safety & Crisis",
+     "new": "Health & Medical",
+     "reason": "211 CNY lists 315-788-0970 as the Mental Health Association in Jefferson County business line and peer warmline: \"non-crisis\", Monday-Friday 8:30 AM-4 PM. Fort Drum's crisis page labels it Mobile Crisis Services; the 24/7 mobile crisis team is CHJC (safety-003)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "hours_display",
+     "old": "24/7 per Fort Drum crisis directory",
+     "new": "Monday to Friday, 8:30 a.m. to 4 p.m.",
+     "reason": "211 CNY lists 315-788-0970 as the Mental Health Association in Jefferson County business line and peer warmline: \"non-crisis\", Monday-Friday 8:30 AM-4 PM. Fort Drum's crisis page labels it Mobile Crisis Services; the 24/7 mobile crisis team is CHJC (safety-003)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "emergency",
+     "old": true,
+     "new": false,
+     "reason": "211 CNY lists 315-788-0970 as the Mental Health Association in Jefferson County business line and peer warmline: \"non-crisis\", Monday-Friday 8:30 AM-4 PM. Fort Drum's crisis page labels it Mobile Crisis Services; the 24/7 mobile crisis team is CHJC (safety-003)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "priority",
+     "old": "P0",
+     "new": "P2",
+     "reason": "211 CNY lists 315-788-0970 as the Mental Health Association in Jefferson County business line and peer warmline: \"non-crisis\", Monday-Friday 8:30 AM-4 PM. Fort Drum's crisis page labels it Mobile Crisis Services; the 24/7 mobile crisis team is CHJC (safety-003)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "cost",
+     "old": "Varies",
+     "new": null,
+     "reason": "No cost published; ask when you call."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "use_this_when",
+     "old": "A mobile mental-health crisis response may be appropriate.",
+     "new": "You want to talk with a trained peer and it is not an emergency. In a crisis, call 988 (press 1 for the Military Crisis Line) or Jefferson County Crisis Response, (315) 782-2327.",
+     "reason": "211 CNY lists 315-788-0970 as the Mental Health Association in Jefferson County business line and peer warmline: \"non-crisis\", Monday-Friday 8:30 AM-4 PM. Fort Drum's crisis page labels it Mobile Crisis Services; the 24/7 mobile crisis team is CHJC (safety-003)."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://home.army.mil/drum/contact/crisis-phone-numbers",
+     "new": "https://www.211cny.com/resource/mental-health-association-in-jefferson-county-warmline/",
+     "reason": "Re-verified Oct 28, 2026 against this page."
+    }
+   ],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-005",
@@ -205,14 +313,14 @@
    "status": "active",
    "source_name": "Samaritan Health Behavioral Health",
    "source_url": "https://samaritanhealth.com/service/behavioral-health/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-006",
@@ -248,14 +356,14 @@
    "status": "active",
    "source_name": "Fort Drum Crisis Phone Numbers",
    "source_url": "https://home.army.mil/drum/contact/crisis-phone-numbers",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-007",
@@ -289,14 +397,14 @@
    "status": "active",
    "source_name": "DoD Safe Helpline",
    "source_url": "https://safehelpline.org/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-008",
@@ -331,14 +439,14 @@
    "status": "active",
    "source_name": "Fort Drum Family Advocacy Program",
    "source_url": "https://home.army.mil/drum/about/Garrison/directorate-human-resources/soldier-and-family-readiness-division-sfrd/SFRC/family-advocacy-program-fap",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-009",
@@ -371,14 +479,14 @@
    "status": "active",
    "source_name": "Fort Drum Family Advocacy Program",
    "source_url": "https://home.army.mil/drum/about/Garrison/directorate-human-resources/soldier-and-family-readiness-division-sfrd/SFRC/family-advocacy-program-fap",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-010",
@@ -414,14 +522,14 @@
    "status": "active",
    "source_name": "Victims Assistance Center of Jefferson County",
    "source_url": "https://vacjc.com/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-011",
@@ -444,7 +552,7 @@
    "area": "Jefferson County",
    "lat": null,
    "lng": null,
-   "hours_display": "Monday-Friday 8:00am-4:30pm per source",
+   "hours_display": "Monday to Friday, 8:00 a.m. to 4:30 p.m., closed 12:30 to 1:00 p.m. After hours, call the 24/7 hotline, (315) 782-1855.",
    "eligibility": "Victims/survivors in the region",
    "cost": "Free services",
    "military_civilian": "civilian",
@@ -454,14 +562,22 @@
    "status": "active",
    "source_name": "Victims Assistance Center of Jefferson County",
    "source_url": "https://vacjc.com/about-us/contact-us/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
-   "change_history": [],
+   "recheck_at": "2026-11-04",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "hours_display",
+     "old": "Monday-Friday 8:00am-4:30pm per source",
+     "new": "Monday to Friday, 8:00 a.m. to 4:30 p.m., closed 12:30 to 1:00 p.m. After hours, call the 24/7 hotline, (315) 782-1855.",
+     "reason": "vacjc.com contact page."
+    }
+   ],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-012",
@@ -494,14 +610,14 @@
    "status": "active",
    "source_name": "New York State / LASMNY resource",
    "source_url": "https://www.lasmny.org/services/domestic-violence/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-013",
@@ -535,14 +651,14 @@
    "status": "active",
    "source_name": "National Domestic Violence Hotline",
    "source_url": "https://www.thehotline.org/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-014",
@@ -575,14 +691,14 @@
    "status": "active",
    "source_name": "Fort Drum Crisis Phone Numbers / Childhelp",
    "source_url": "https://home.army.mil/drum/contact/crisis-phone-numbers",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-015",
@@ -616,14 +732,14 @@
    "status": "active",
    "source_name": "Poison Control",
    "source_url": "https://www.poison.org/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-016",
@@ -657,14 +773,14 @@
    "status": "active",
    "source_name": "American Red Cross",
    "source_url": "https://www.redcross.org/get-help/military-families/hero-care-network/emergency-communication.html",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "safety-017",
@@ -698,10 +814,10 @@
    "status": "active",
    "source_name": "Fort Drum Chaplain's Office",
    "source_url": "https://home.army.mil/drum/my-fort/all-services/chaplains-office",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 7,
-   "recheck_at": "2026-10-01",
+   "recheck_at": "2026-11-04",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -713,7 +829,7 @@
    ],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report",
-   "bishop_verified_at": "2026-09-24"
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-018",
@@ -748,13 +864,14 @@
    "status": "active",
    "source_name": "Guthrie Army Health Clinic / MEDDAC",
    "source_url": "https://guthrie.tricare.mil/About-Us/Contact-Us",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": "Guthrie does not operate an emergency department or urgent-care clinic.",
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-019",
@@ -787,13 +904,14 @@
    "status": "active",
    "source_name": "Guthrie Appointments & Referrals",
    "source_url": "https://guthrie.tricare.mil/Getting-Care/Appointments-Referrals",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-020",
@@ -945,13 +1063,14 @@
    "status": "active",
    "source_name": "Samaritan Health Emergency Care",
    "source_url": "https://samaritanhealth.com/service/emergency-care/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-024",
@@ -984,13 +1103,14 @@
    "status": "active",
    "source_name": "Samaritan Health",
    "source_url": "https://discover.samaritanhealth.com/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-025",
@@ -1146,13 +1266,14 @@
    "status": "active",
    "source_name": "VA Syracuse Health Care",
    "source_url": "https://www.va.gov/syracuse-health-care/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-029",
@@ -1185,13 +1306,14 @@
    "status": "active",
    "source_name": "VA Syracuse Health Care",
    "source_url": "https://www.va.gov/syracuse-health-care/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "medical-030",
@@ -1263,13 +1385,14 @@
    "status": "active",
    "source_name": "VA Watertown Vet Center",
    "source_url": "https://www.va.gov/watertown-vet-center/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-032",
@@ -1304,13 +1427,14 @@
    "status": "active",
    "source_name": "Jefferson County Department of Social Services",
    "source_url": "https://www.jeffersoncountyny.gov/socialservices",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-033",
@@ -1344,13 +1468,14 @@
    "status": "active",
    "source_name": "Jefferson County SNAP",
    "source_url": "https://www.jeffersoncountyny.gov/departments/socialservices/snap",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-034",
@@ -1384,13 +1509,14 @@
    "status": "active",
    "source_name": "Jefferson County Temporary Assistance",
    "source_url": "https://www.jeffersoncountyny.gov/departments/socialservices/temporary-assistance",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-035",
@@ -1425,13 +1551,14 @@
    "status": "active",
    "source_name": "Jefferson County HEAP",
    "source_url": "https://www.jeffersoncountyny.gov/departments/socialservices/home-energy-assistance-program",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-036",
@@ -1465,13 +1592,14 @@
    "status": "active",
    "source_name": "Jefferson County CCAP",
    "source_url": "https://www.jeffersoncountyny.gov/departments/socialservices/child-care",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-037",
@@ -1506,13 +1634,14 @@
    "status": "active",
    "source_name": "North Country Family Health Center WIC",
    "source_url": "https://www.nocofamilyhealth.org/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-038",
@@ -1567,7 +1696,7 @@
     "need money now"
    ],
    "phone_primary": "315-772-6560",
-   "phone_secondary": "315-772-0423",
+   "phone_secondary": null,
    "sms": null,
    "address": null,
    "city": null,
@@ -1585,14 +1714,30 @@
    "priority": "P0",
    "status": "active",
    "source_name": "Military OneSource - Fort Drum Emergency Assistance",
-   "source_url": "https://installations.militaryonesource.mil/military-installation/fort-drum/base-essentials/emergency-assistance",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "source_url": "https://home.army.mil/drum/about/Garrison/directorate-human-resources/soldier-and-family-readiness-division-sfrd/family-resource-center-frc/army-emergency-relief-aer",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
-   "change_history": [],
+   "recheck_at": "2026-11-27",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "phone_secondary",
+     "old": "315-772-0423",
+     "new": null,
+     "reason": "315-772-0423 appears on no official Fort Drum AER page or directory; AER lists only (315) 772-6560."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://installations.militaryonesource.mil/military-installation/fort-drum/base-essentials/emergency-assistance",
+     "new": "https://home.army.mil/drum/about/Garrison/directorate-human-resources/soldier-and-family-readiness-division-sfrd/family-resource-center-frc/army-emergency-relief-aer",
+     "reason": "Re-verified Oct 28, 2026 against this page."
+    }
+   ],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-040",
@@ -1706,20 +1851,21 @@
    "status": "active",
    "source_name": "Military OneSource / Fort Drum Mountain CARES",
    "source_url": "https://home.army.mil/drum/my-fort/all-services/CARES",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "benefits-043",
    "name": "Watertown Urban Mission",
    "category": "Food, Money & Benefits",
    "subcategory": "Local Material Assistance",
-   "use_this_when": "Potential local help with food, clothing, household goods, or emergency material needs; verify current programs before publishing as verified.",
+   "use_this_when": "Food pantry, help finding housing, recovery support and Meals on Wheels in Watertown.",
    "intent_tags": [
     "Urban Mission",
     "clothes help",
@@ -1727,33 +1873,91 @@
     "food help",
     "material assistance"
    ],
-   "phone_primary": null,
+   "phone_primary": "315-782-8440",
    "phone_secondary": null,
    "sms": null,
-   "address": null,
-   "city": null,
+   "address": "247 Factory Street",
+   "city": "Watertown",
    "state": "NY",
-   "zip": null,
+   "zip": "13601",
    "area": "Watertown / Jefferson County",
    "lat": null,
    "lng": null,
-   "hours_display": "Needs re-verification",
+   "hours_display": "Monday to Friday, 8:30 a.m. to 4:30 p.m. CARE/Navigation Center: Monday to Friday, 9 a.m. to 4 p.m.",
    "eligibility": "Program-specific",
    "cost": "Often free/low-cost assistance",
    "military_civilian": "civilian",
    "confidentiality_reporting_notes": null,
    "emergency": false,
    "priority": "P1",
-   "status": "needs_recheck",
+   "status": "active",
    "source_name": "Older Fort Drum Soldier & Family Resource Guide",
-   "source_url": "https://home.army.mil/drum/3516/6439/2995/Soldier_and_Family_Resource_Guide.pdf",
-   "verified_at": null,
-   "last_checked_at": "2026-09-24",
+   "source_url": "https://www.watertownurbanmission.org/",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 0,
-   "recheck_at": "2026-09-24",
-   "change_history": [],
+   "recheck_at": "2026-11-27",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "phone_primary",
+     "old": null,
+     "new": "315-782-8440",
+     "reason": "watertownurbanmission.org"
+    },
+    {
+     "date": "2026-10-28",
+     "field": "address",
+     "old": null,
+     "new": "247 Factory Street",
+     "reason": "watertownurbanmission.org"
+    },
+    {
+     "date": "2026-10-28",
+     "field": "city",
+     "old": null,
+     "new": "Watertown",
+     "reason": "watertownurbanmission.org"
+    },
+    {
+     "date": "2026-10-28",
+     "field": "zip",
+     "old": null,
+     "new": "13601",
+     "reason": "watertownurbanmission.org"
+    },
+    {
+     "date": "2026-10-28",
+     "field": "hours_display",
+     "old": "Needs re-verification",
+     "new": "Monday to Friday, 8:30 a.m. to 4:30 p.m. CARE/Navigation Center: Monday to Friday, 9 a.m. to 4 p.m.",
+     "reason": "watertownurbanmission.org"
+    },
+    {
+     "date": "2026-10-28",
+     "field": "use_this_when",
+     "old": "Potential local help with food, clothing, household goods, or emergency material needs; verify current programs before publishing as verified.",
+     "new": "Food pantry, help finding housing, recovery support and Meals on Wheels in Watertown.",
+     "reason": "Programs listed on watertownurbanmission.org."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "status",
+     "old": "needs_recheck",
+     "new": "active",
+     "reason": "Organization operating in 2026 with phone, address and hours confirmed on its own site."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://home.army.mil/drum/3516/6439/2995/Soldier_and_Family_Resource_Guide.pdf",
+     "new": "https://www.watertownurbanmission.org/",
+     "reason": "Re-verified Oct 28, 2026 against this page."
+    }
+   ],
    "admin_notes": "Deep Research intentionally flagged this older local-resource record for re-verification rather than presenting it as current.",
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-044",
@@ -1789,13 +1993,14 @@
    "status": "active",
    "source_name": "Fort Drum Legal Assistance Office",
    "source_url": "https://home.army.mil/drum/my-fort/all-services/office-staff-judge-advocate-osja/legal-assistance",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-045",
@@ -1819,7 +2024,7 @@
    "area": "Jefferson County",
    "lat": null,
    "lng": null,
-   "hours_display": "By appointment; verify current hours",
+   "hours_display": "Monday to Thursday, 8:30 a.m. to 5 p.m. Call before you go.",
    "eligibility": "Income/case-type rules apply",
    "cost": "Free legal aid for qualifying clients",
    "military_civilian": "civilian",
@@ -1829,13 +2034,22 @@
    "status": "active",
    "source_name": "Legal Aid Society of Mid-New York",
    "source_url": "https://www.lasmny.org/about/office-locations/watertown/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
-   "change_history": [],
+   "recheck_at": "2026-11-27",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "hours_display",
+     "old": "By appointment; verify current hours",
+     "new": "Monday to Thursday, 8:30 a.m. to 5 p.m. Call before you go.",
+     "reason": "lasmny.org Watertown office page."
+    }
+   ],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-046",
@@ -1867,36 +2081,37 @@
    "status": "active",
    "source_name": "Legal Aid Society of Mid-New York",
    "source_url": "https://www.lasmny.org/apply/",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-047",
    "name": "Jefferson County Supreme & County Court",
    "category": "Legal, Divorce & Family",
    "subcategory": "Divorce / Supreme Court",
-   "use_this_when": "Divorce action, Supreme Court filing information, and County/Supreme Court matters.",
+   "use_this_when": "Divorce and other Supreme Court filings: State Office Building, 317 Washington Street, (315) 221-5818. County Court matters: Court Complex, 163 Arsenal Street, 2nd Floor, (315) 570-2950.",
    "intent_tags": [
     "divorce court",
     "supreme court",
     "file for divorce"
    ],
-   "phone_primary": "315-570-2950",
-   "phone_secondary": null,
+   "phone_primary": "315-221-5818",
+   "phone_secondary": "315-570-2950",
    "sms": null,
-   "address": "163 Arsenal Street, 2nd Floor",
+   "address": "State Office Building, 317 Washington Street",
    "city": "Watertown",
    "state": "NY",
    "zip": "13601",
    "area": "Jefferson County",
    "lat": null,
    "lng": null,
-   "hours_display": "Monday-Friday 8:30am-4:30pm per source",
+   "hours_display": "Monday to Friday, 8:30 a.m. to 4:30 p.m.",
    "eligibility": "Court users",
    "cost": "Court filing fees may apply",
    "military_civilian": "civilian",
@@ -1906,13 +2121,50 @@
    "status": "active",
    "source_name": "New York Courts",
    "source_url": "https://www.nycourts.gov/courts/5th-judicial-district/jefferson-supreme-county-court",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
-   "change_history": [],
+   "recheck_at": "2026-11-27",
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "phone_primary",
+     "old": "315-570-2950",
+     "new": "315-221-5818",
+     "reason": "Two offices on the court page: Supreme Court (divorce) at the State Office Building, 317 Washington St., 315-221-5818; County Court at the Court Complex, 163 Arsenal St., 2nd Floor, 315-570-2950."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "phone_secondary",
+     "old": null,
+     "new": "315-570-2950",
+     "reason": "Two offices on the court page: Supreme Court (divorce) at the State Office Building, 317 Washington St., 315-221-5818; County Court at the Court Complex, 163 Arsenal St., 2nd Floor, 315-570-2950."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "address",
+     "old": "163 Arsenal Street, 2nd Floor",
+     "new": "State Office Building, 317 Washington Street",
+     "reason": "Two offices on the court page: Supreme Court (divorce) at the State Office Building, 317 Washington St., 315-221-5818; County Court at the Court Complex, 163 Arsenal St., 2nd Floor, 315-570-2950."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "hours_display",
+     "old": "Monday-Friday 8:30am-4:30pm per source",
+     "new": "Monday to Friday, 8:30 a.m. to 4:30 p.m.",
+     "reason": "nycourts.gov court page."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "use_this_when",
+     "old": "Divorce action, Supreme Court filing information, and County/Supreme Court matters.",
+     "new": "Divorce and other Supreme Court filings: State Office Building, 317 Washington Street, (315) 221-5818. County Court matters: Court Complex, 163 Arsenal Street, 2nd Floor, (315) 570-2950.",
+     "reason": "Two offices on the court page: Supreme Court (divorce) at the State Office Building, 317 Washington St., 315-221-5818; County Court at the Court Complex, 163 Arsenal St., 2nd Floor, 315-570-2950."
+    }
+   ],
    "admin_notes": "In New York, divorce actions are brought in Supreme Court, not Family Court.",
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-048",
@@ -1947,13 +2199,14 @@
    "status": "active",
    "source_name": "New York Courts",
    "source_url": "https://www.nycourts.gov/courts/5th-judicial-district/jefferson-county-family-court",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-049",
@@ -1987,13 +2240,14 @@
    "status": "active",
    "source_name": "Jefferson County Public Defender",
    "source_url": "https://www.jeffersoncountyny.gov/PublicDefender",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "legal-050",
@@ -2108,13 +2362,14 @@
    "status": "active",
    "source_name": "Fort Drum Child and Youth Services",
    "source_url": "https://home.army.mil/drum/my-fort/all-services/child-and-youth-services",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "drum-053",
@@ -2149,13 +2404,14 @@
    "status": "active",
    "source_name": "Fort Drum EFMP",
    "source_url": "https://home.army.mil/drum/about/Garrison/directorate-human-resources/soldier-and-family-readiness-division-sfrd/SFRC/exceptional-family-member-program-efmp",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "drum-054",
@@ -2348,13 +2604,14 @@
    "status": "active",
    "source_name": "Fort Drum Army Substance Abuse Program",
    "source_url": "https://home.army.mil/drum/my-fort/all-services/army-substance-abuse-program",
-   "verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [],
    "admin_notes": null,
-   "provenance": "restored_from_pcshomes_deep_research_report"
+   "provenance": "restored_from_pcshomes_deep_research_report",
+   "bishop_verified_at": "2026-10-28"
   },
   {
    "id": "drum-059",
@@ -3159,11 +3416,11 @@
    "status": "active",
    "source_name": "NYS Department of Veterans' Services",
    "source_url": "https://veterans.ny.gov/location/jefferson-county-veterans-service-agency",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3178,10 +3435,10 @@
   },
   {
    "id": "unit-079",
-   "name": "1st Mobile Brigade Combat Team · Staff Duty",
+   "name": "1st Mobile Brigade · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
-   "use_this_when": "Reach 1st MBCT around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 1-32 Infantry, 2-22 Infantry, 1-87 Infantry, HHC, Company M, 293rd Signal.",
+   "use_this_when": "Reach 1st Mobile Brigade around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 1-32 Infantry, 2-22 Infantry, 1-87 Infantry, HHC, Company M, 293rd Signal.",
    "intent_tags": [
     "1st MBCT",
     "1st BCT",
@@ -3222,12 +3479,12 @@
    "priority": "P0",
    "status": "active",
    "source_name": "Fort Drum units page",
-   "source_url": "https://home.army.mil/drum/units-tenants/1st-MBCT",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "source_url": "https://home.army.mil/drum/units-tenants/1-MBCT",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3235,6 +3492,27 @@
      "old": null,
      "new": "added",
      "reason": "Command directory, owner request. Number + '24 hours' read from the raw official unit page and cross-checked against the Fort Drum phone directory."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "name",
+     "old": "1st Mobile Brigade Combat Team · Staff Duty",
+     "new": "1st Mobile Brigade · Staff Duty",
+     "reason": "The Fort Drum unit page and units list now name it this way."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "use_this_when",
+     "old": "Reach 1st MBCT around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 1-32 Infantry, 2-22 Infantry, 1-87 Infantry, HHC, Company M, 293rd Signal.",
+     "new": "Reach 1st Mobile Brigade around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 1-32 Infantry, 2-22 Infantry, 1-87 Infantry, HHC, Company M, 293rd Signal.",
+     "reason": "Matches the unit's current name."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://home.army.mil/drum/units-tenants/1st-MBCT",
+     "new": "https://home.army.mil/drum/units-tenants/1-MBCT",
+     "reason": "Re-verified Oct 28, 2026 against this page."
     }
    ],
    "admin_notes": null,
@@ -3242,10 +3520,10 @@
   },
   {
    "id": "unit-080",
-   "name": "2nd Mobile Brigade Combat Team · Staff Duty",
+   "name": "2nd Mobile Brigade · Staff Duty",
    "category": "Your Soldier's Unit",
    "subcategory": "Brigade Staff Duty (24/7)",
-   "use_this_when": "Reach 2nd MBCT around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 2-14 Infantry, 2-87 Infantry, 4-31 Infantry, HHC, Company M, 94th Signal.",
+   "use_this_when": "Reach 2nd Mobile Brigade around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 2-14 Infantry, 2-87 Infantry, 4-31 Infantry, HHC, Company M, 94th Signal.",
    "intent_tags": [
     "2nd MBCT",
     "2nd BCT",
@@ -3285,12 +3563,12 @@
    "priority": "P0",
    "status": "active",
    "source_name": "Fort Drum units page",
-   "source_url": "https://home.army.mil/drum/units-tenants/2nd-MBCT",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "source_url": "https://home.army.mil/drum/units-tenants/2nd-M-BDE",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3298,6 +3576,27 @@
      "old": null,
      "new": "added",
      "reason": "Command directory, owner request. Number + '24 hours' read from the raw official unit page and cross-checked against the Fort Drum phone directory."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "name",
+     "old": "2nd Mobile Brigade Combat Team · Staff Duty",
+     "new": "2nd Mobile Brigade · Staff Duty",
+     "reason": "The Fort Drum unit page and units list now name it this way."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "use_this_when",
+     "old": "Reach 2nd MBCT around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 2-14 Infantry, 2-87 Infantry, 4-31 Infantry, HHC, Company M, 94th Signal.",
+     "new": "Reach 2nd Mobile Brigade around the clock: the duty desk can route your call to your soldier's leadership. Battalions: 2-14 Infantry, 2-87 Infantry, 4-31 Infantry, HHC, Company M, 94th Signal.",
+     "reason": "Matches the unit's current name."
+    },
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://home.army.mil/drum/units-tenants/2nd-MBCT",
+     "new": "https://home.army.mil/drum/units-tenants/2nd-M-BDE",
+     "reason": "Re-verified Oct 28, 2026 against this page."
     }
    ],
    "admin_notes": "Army pages list two numbers for this desk (the unit page and the installation phone directory). If one doesn't connect, try the other.",
@@ -3351,11 +3650,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/10th-CAB",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3410,11 +3709,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/DIVARTY",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3473,11 +3772,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/10th-Sustainment",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3524,11 +3823,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/HHBN-Division",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3578,11 +3877,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/41st-engineer-battalion",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3630,11 +3929,11 @@
    "status": "active",
    "source_name": "Fort Drum Phone Directory",
    "source_url": "https://home.army.mil/drum/contact/phone-directory",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3685,11 +3984,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/10th-mountain-reception-company",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3735,11 +4034,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/10th-mountain-division-mountain-training-group",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",
@@ -3891,11 +4190,11 @@
    "status": "active",
    "source_name": "Fort Drum units page",
    "source_url": "https://home.army.mil/drum/units-tenants/20th-air-support-operations-squadron-asos",
-   "verified_at": "2026-09-24",
-   "bishop_verified_at": "2026-09-24",
-   "last_checked_at": "2026-09-24",
+   "verified_at": "2026-10-28",
+   "bishop_verified_at": "2026-10-28",
+   "last_checked_at": "2026-10-28",
    "reverify_days": 30,
-   "recheck_at": "2026-10-24",
+   "recheck_at": "2026-11-27",
    "change_history": [
     {
      "date": "2026-09-24",

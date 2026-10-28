@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Runs tools/fact-watch.py every morning at 6:30. Install: copy to ~/Library/LaunchAgents/ and
+     launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/net.woodconsulting.pcshomes-fact-watch.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>net.woodconsulting.pcshomes-fact-watch</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/python3</string>
+    <string>/Users/aryenwood/claude-projects/PCS_Homes/tools/fact-watch.py</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/aryenwood/claude-projects/PCS_Homes</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>HOME</key>
+    <string>/Users/aryenwood</string>
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>6</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>StandardOutPath</key>
+  <string>/Users/aryenwood/.pcshomes-fact-watch/run.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/aryenwood/.pcshomes-fact-watch/run.err.log</string>
+</dict>
+</plist>

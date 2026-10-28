@@ -1,0 +1,217 @@
+{
+  "about": "Figures families act on, where they appear, the official page that publishes them, and when they change. tools/fact-watch.py reads this daily: a figure whose source page no longer shows it, or whose change date has passed since it was verified, is reported. After re-verifying, update value/expect and set verified to that day. A source with {fy} gets the current federal fiscal year (Oct 1 starts the next one). Pages that draw their numbers with scripts have an empty expect list and rely on the change dates.",
+  "facts": [
+    {
+      "id": "per-diem",
+      "label": "PCS per diem, standard CONUS rate ($113 lodging + $68 meals)",
+      "value": "$181",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://api.gsa.gov/travel/perdiem/v2/rates/zip/13601/year/{fy}?api_key=DEMO_KEY",
+      "expect": [
+        "\"value\":113",
+        "\"meals\":68"
+      ],
+      "changes": [
+        "10-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "malt",
+      "label": "Mileage (MALT) per mile",
+      "value": "$0.235",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.travel.dod.mil/Allowances/Mileage-Rates/",
+      "expect": [],
+      "changes": [
+        "01-01",
+        "07-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "dla",
+      "label": "Dislocation allowance (DLA) range",
+      "value": "$1,870 to $6,385",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html",
+        "pcshomes-glossary.html"
+      ],
+      "source": "https://www.travel.dod.mil/Allowances/Dislocation-Allowance/",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "tle",
+      "label": "Temporary lodging expense (TLE) daily cap",
+      "value": "$290",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.travel.dod.mil/Allowances/Temporary-Lodging-Expense/",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "pet",
+      "label": "Pet transportation reimbursement, CONUS",
+      "value": "$550",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.travel.dod.mil/Policy-Regulations/Joint-Travel-Regulations/",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "childcare-pilot",
+      "label": "Child care provider travel pilot, up to $500, ends Sep 30, 2027",
+      "value": "$500",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.travel.dod.mil/Policy-Regulations/Joint-Travel-Regulations/",
+      "expect": [],
+      "changes": [],
+      "expires": "2027-09-30",
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "bah",
+      "label": "Fort Drum BAH examples (ZIP 13602)",
+      "value": "$1,665 / $1,356 / $2,823",
+      "files": [
+        "fort-drum/buying.html",
+        "index.html",
+        "pcshomes-fortdrum.html",
+        "pcshomes-glossary.html"
+      ],
+      "source": "https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-09-24"
+    },
+    {
+      "id": "va-funding-fee",
+      "label": "VA funding fee: 2.15% first use, 3.3% after, 1.5% with 5% down, 1.25% with 10% down",
+      "value": "2.15% / 3.3% / 1.5% / 1.25%",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html",
+        "fort-drum/buying.html"
+      ],
+      "source": "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/",
+      "expect": [
+        "2.15%",
+        "3.3%",
+        "1.5%",
+        "1.25%"
+      ],
+      "changes": [],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "loan-limit",
+      "label": "Conforming loan limit used by VA with partial entitlement",
+      "value": "$832,750",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html",
+        "fort-drum/buying.html"
+      ],
+      "source": "https://www.fhfa.gov/news/news-release/fhfa-announces-conforming-loan-limit-values-for-2026",
+      "expect": [
+        "832,750"
+      ],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "trs",
+      "label": "TRICARE Reserve Select monthly premiums (member / member and family)",
+      "value": "$57.88 / $286.66",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.tricare.mil/Costs/HealthPlanCosts/PremiumsEnrollmentFees",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "median-sale",
+      "label": "Watertown area median sale price (Redfin, last quarter)",
+      "value": "$250,000",
+      "files": [
+        "fort-drum/buying.html",
+        "index.html",
+        "pcshomes-fortdrum.html"
+      ],
+      "source": "https://www.redfin.com/city/19495/NY/Watertown/housing-market",
+      "expect": [],
+      "changes": [
+        "01-15",
+        "04-15",
+        "07-15",
+        "10-15"
+      ],
+      "verified": "2026-10-27"
+    },
+    {
+      "id": "recording-tax",
+      "label": "NY mortgage recording tax: $0.75 per $100 Jefferson and St. Lawrence, $1.00 Lewis",
+      "value": "$0.75 / $1.00 per $100",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.tax.ny.gov/bus/mortgage/mtgidx.htm",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "residual-income",
+      "label": "VA residual income, Northeast, family of four, loan $80,000 or more",
+      "value": "$1,025",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.benefits.va.gov/WARMS/docs/admin26/m26_07/m26-7-chapter4-credit-underwriting.pdf",
+      "expect": [],
+      "changes": [
+        "01-01"
+      ],
+      "verified": "2026-10-28"
+    }
+  ]
+}
