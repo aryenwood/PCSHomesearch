@@ -164,6 +164,12 @@
 .route li:first-child { border-top: 1px solid rgba(246,241,230,0.24); }
 .route-plate canvas.ground { opacity: .55; }
 @media (max-width: 360px) { .facts { grid-template-columns: 1fr; } .facts > div { border-right: none !important; border-bottom: 1px solid var(--rule); } }
+    .facts .bah > summary { list-style: none; cursor: pointer; min-height: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .facts .bah > summary::-webkit-details-marker { display: none; }
+    .facts .bah-open { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-weight: 700; font-size: 17px; color: var(--gold); }
+    .facts .bah-open::after { content: '+'; font-size: 20px; }
+    .facts .bah[open] .bah-open { display: none; }
+    .facts .bah .note { color: var(--ink); font-weight: 500; }
   </style>
   <script type="application/ld+json">
   {
@@ -275,7 +281,7 @@
 <!-- FACTS STRIP — the four answers everyone looks up -->
 <div class="wide" style="margin-top:52px;">
   <div class="facts rv">
-    <div><div class="label">BAH, E-5 with dependents</div><div class="val">$1,665/mo</div><div class="note"><a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/" target="_blank" rel="noopener">Check your rate</a></div></div>
+    <div><details class="bah"><summary><span class="label">Housing allowance (BAH)</span><span class="bah-open">Show the rate</span></summary><div class="val">$1,665/mo</div><div class="note">For an E-5 with dependents at Fort Drum. <a href="https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/" target="_blank" rel="noopener">Check your own rate</a></div></details></div>
     <div><div class="label">Median home sale</div><div class="val">$250,000</div><div class="note"><a href="https://www.redfin.com/county/1967/NY/Jefferson-County/housing-market" target="_blank" rel="noopener">Jefferson County, Jul to Sep 2026</a></div></div>
     <div><div class="label">School districts</div><div class="val">4</div><div class="note"><a href="/fort-drum/schools">Which one fits →</a></div></div>
     <div><div class="label">CYS Parent Central</div><div class="val"><a href="tel:+13157728675">(315) 772-8675</a></div><div class="note">childcare waitlist · call early</div></div>

@@ -39,9 +39,10 @@ with sync_playwright() as p:
     R["prompt_hidden_after"] = pg.evaluate("document.getElementById('stagePrompt').hidden")
     R["page_errors"] = errs
     ctx.close()
-    # the homepage's 'orders' marks both orders rows; legacy '60-days' normalizes
+    # one row is ever marked (owner, Oct 27): the homepage's 'orders' marks the first orders row; a tapped row wins; legacy '60-days' normalizes
     ctx, pg, _ = fresh(b, {"pcshomes_stage": "orders"}); R["orders_marks"] = pg.evaluate(pressed); ctx.close()
     ctx, pg, _ = fresh(b, {"pcshomes_stage": "60-days"}); R["legacy_60_days"] = pg.evaluate(pressed); ctx.close()
+    ctx, pg, _ = fresh(b, {"pcshomes_stage": "orders", "pcshomes_stage_row": "r90"}); R["tapped_90_marks"] = pg.evaluate(pressed); ctx.close()
     # negative control: a homepage-only stage ('deployed') marks nothing and shows the prompt
     ctx, pg, _ = fresh(b, {"pcshomes_stage": "deployed"})
     R["control_deployed_marks_nothing"] = pg.evaluate(pressed) == [] and pg.evaluate("!document.getElementById('stagePrompt').hidden")
@@ -75,7 +76,7 @@ with sync_playwright() as p:
 want = {
     "no_stage_prompt_visible": True, "no_stage_pressed": [], "tap_saves": "sixty",
     "tap_survives_reload": ["60 days out"], "prompt_hidden_after": True, "page_errors": [],
-    "orders_marks": ["120+ days out", "90 days out"], "legacy_60_days": ["60 days out"],
+    "orders_marks": ["120+ days out"], "tapped_90_marks": ["90 days out"], "legacy_60_days": ["60 days out"],
     "control_deployed_marks_nothing": True,
     "v2_restores": ["coe", "winter-plan"], "tick_survives_reload": ["coe", "bah-lookup", "winter-plan"],
     "saved_record": ["coe", "bah-lookup", "winter-plan"], "link_is_outside_label": True,
