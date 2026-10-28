@@ -141,8 +141,9 @@ function formatWhen(iso) {
 function renderLead(formName, data, createdAt) {
   const lead = normalize(formName, data, createdAt);
   const when = formatWhen(lead.createdAt);
-  const area = lead.area || 'Area not given';
-  const subject = `A NEW WC REALTY LEAD | ${lead.need} | ${lead.name} | ${area}`;
+  // The town they typed counts as the area when no page set one.
+  const place = lead.area || lead.preferredTown;
+  const subject = `A NEW WC REALTY LEAD | ${lead.need} | ${lead.name} | ${place || 'Area not given'}`;
   const promise = PROMISES[formName] || PROMISE_SHORT;
 
   const phoneLine = lead.phone.display ? lead.phone.display + (lead.phone.valid ? '' : ' (check this number)') : 'Not given';
@@ -189,7 +190,8 @@ function renderLead(formName, data, createdAt) {
     lead.sourcePage && `page ${lead.sourcePage}`,
     lead.referrer && `from ${lead.referrer}`,
     (lead.utmSource || lead.utmMedium || lead.utmCampaign) && `ad tags ${[lead.utmSource, lead.utmMedium, lead.utmCampaign].filter(Boolean).join(' / ')}`,
-    lead.leadSource && `source ${lead.leadSource}`,
+    // Guide pages copy the ad tags into lead-source too; say them once.
+    lead.leadSource && !(/^utm_/.test(lead.leadSource) && (lead.utmSource || lead.utmMedium || lead.utmCampaign)) && `source ${lead.leadSource}`,
   ].filter(Boolean).join(', ');
 
   const text = [
@@ -241,7 +243,7 @@ function renderLead(formName, data, createdAt) {
   <tr><td bgcolor="${navy}" style="background:${navy};padding:24px 22px 16px;">
     <p style="margin:0 0 8px;font:700 14px/1.4 ${sans};letter-spacing:.1em;text-transform:uppercase;color:${gold};">A new WC Realty lead</p>
     <p style="margin:0;font:700 30px/1.2 Georgia,'Times New Roman',serif;color:#ffffff;">${e(lead.name)}</p>
-    <p style="margin:6px 0 18px;font:400 18px/1.4 ${sans};color:#E6EBF3;">${e(lead.need)}${lead.area ? ` in ${e(lead.area)}` : ''}<br>${e(when)}</p>
+    <p style="margin:6px 0 18px;font:400 18px/1.4 ${sans};color:#E6EBF3;">${e(lead.need)}${place ? ` in ${e(place)}` : ''}<br>${e(when)}</p>
     ${buttons}
     <p style="margin:2px 0 0;font:400 16px/1.5 ${sans};color:#E6EBF3;">Call first, then text, then email.</p>
   </td></tr>
@@ -251,7 +253,7 @@ function renderLead(formName, data, createdAt) {
     ${heading('Their note')}
     <p style="margin:0;padding:12px 14px;background:${paper};border:1px solid ${rule};border-radius:8px;font:400 18px/1.55 ${sans};color:${ink};white-space:pre-wrap;">${lead.message ? e(lead.message) : 'No note was added.'}</p>
     ${lead.homes.length ? heading('Homes they like') + `<table role="presentation" width="100%" cellpadding="0" cellspacing="0">${lead.homes.map((h) => `<tr><td style="padding:10px 0;border-top:1px solid ${rule};font:400 18px/1.45 ${sans};color:${ink};">${h.kind === 'link' ? `<a href="${e(h.href)}" style="color:#1D4E9E;font-weight:700;">${e(h.label)}: open the listing</a><br><span style="font-size:14px;color:#4A5568;word-break:break-all;">${e(h.text)}</span>` : `<b>${e(h.text)}</b><br><a href="https://www.google.com/maps/search/${encodeURIComponent(h.text + ' NY')}" style="color:#1D4E9E;font-size:16px;">Open on a map</a>`}${h.note ? `<br>They like: ${e(h.note)}` : ''}</td></tr>`).join('')}</table>` : ''}
-    ${asks.length ? heading('Ask on the first call') : ''}
+    ${asks.length ? heading('Ask on the first call') : `${heading('Everything we ask was answered')}<p style="margin:0;font:400 17px/1.5 ${sans};color:${ink};">Every question on the form has an answer above.</p>`}
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${asks.map((q) => `<tr><td style="width:30px;padding:6px 0;vertical-align:top;font:400 20px/1.35 ${sans};color:${ink};">&#9744;</td><td style="padding:6px 0;font:400 18px/1.45 ${sans};color:${ink};">${e(q)}</td></tr>`).join('')}</table>
     ${heading('What we told them')}
     <p style="margin:0;font:400 16px/1.55 ${sans};color:${ink};">${e(promise)}</p>

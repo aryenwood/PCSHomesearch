@@ -13,9 +13,94 @@ const WHO = {
   ss: 'Surviving spouse',
 };
 
+// Photos already on the site; authors and licenses are in docs/research-2026-09/photo-provenance.json.
+// WebP from pcshomes.com: Gmail and Apple Mail show it; Outlook on Windows shows the alt text instead.
+const IMG = 'https://pcshomes.com/images';
+const PHOTOS = {
+  drum: { src: `${IMG}/fort-drum/blackhawk-in-snow-800.webp`, w: 800, h: 571, alt: 'A Black Hawk helicopter on a snowy landing zone at Fort Drum', credit: 'Fort Drum in winter. Photo: Fort Drum and 10th Mountain Division, public domain.' },
+  square: { src: `${IMG}/places/public-square-winter-800.webp`, w: 800, h: 600, alt: 'Public Square in downtown Watertown on a winter day', credit: 'Public Square, Watertown. Photo: Lallint, CC0.' },
+  maple: { src: `${IMG}/places/thompson-park-fall-maple-800.webp`, w: 800, h: 533, alt: 'A maple in full fall color in Thompson Park, Watertown', credit: 'Fall in Thompson Park, Watertown. Photo: Kurt Thomas Hunt, CC BY 2.0.' },
+};
+
+// Where each step sends the family: the same addresses the checklist page links (checked Oct 28, 2026),
+// plus the VA's own pages for fees, limits and survivors. Keyed by step title; tools/qa-realty-lead.mjs
+// fails if a key stops matching a step.
+const VA = 'https://www.va.gov/housing-assistance/home-loans';
+const L = {
+  planMyMove: ['Plan My Move', 'https://planmymove.militaryonesource.mil/'],
+  movingOffice: ['Fort Drum moving office', 'https://installations.militaryonesource.mil/military-installation/fort-drum/moving/household-goods'],
+  mch: ['Mountain Community Homes', 'https://www.fortdrummch.com'],
+  childCare: ['MilitaryChildCare.com', 'https://www.militarychildcare.com/'],
+  scra: ['Your SCRA rights', 'https://www.justice.gov/servicemembers/resources'],
+  bah: ['DoD BAH calculator', 'https://www.travel.dod.mil/Allowances/Basic-Allowance-for-Housing/BAH-Rate-Lookup/'],
+  tricareMove: ['TRICARE moving steps', 'https://www.tricare.mil/LifeEvents/Moving'],
+  milConnect: ['milConnect (DEERS)', 'https://milconnect.dmdc.osd.mil/milconnect/'],
+  visitors: ['Fort Drum visitor information', 'https://home.army.mil/drum/about/visitor-information'],
+  spouseWorks: ['SpouseWorks', 'https://spouseworks.militaryonesource.mil/portal/'],
+  vaClinics: ['VA clinics near Fort Drum', 'https://www.va.gov/syracuse-health-care/locations/'],
+  nysVets: ["NYS Veterans' Services", 'https://veterans.ny.gov/'],
+  vetCenter: ['Watertown Vet Center', 'https://www.va.gov/watertown-vet-center/'],
+  records: ['Request your DD214', 'https://www.archives.gov/veterans/military-service-records'],
+  taxExempt: ['NY veterans exemption', 'https://www.tax.ny.gov/pit/property/exemption/vetexempt.htm'],
+  dmv: ['Veteran status on your license', 'https://dmv.ny.gov/more-info/veteran-status-designation-on-a-photo-document'],
+  libertyPass: ['Lifetime Liberty Pass', 'https://veterans.ny.gov/lifetime-liberty-pass'],
+  nyLabor: ['NY Labor veteran services', 'https://dol.ny.gov/services-veterans'],
+  tuition: ['Veterans Tuition Award', 'https://hesc.ny.gov/vta'],
+  tap: ['SFL-TAP at Fort Drum', 'https://home.army.mil/drum/my-fort/all-services/SFL-TAP'],
+  vaEligibility: ['VA loan eligibility', `${VA}/eligibility/`],
+  coe: ['Request your COE', `${VA}/how-to-request-coe/`],
+  trs: ['TRICARE Reserve Select', 'https://tricare.mil/Plans/HealthPlans/TRS'],
+  dec: ['DEC free licenses', 'https://dec.ny.gov/regulatory/permits-licenses/sporting-and-use/sporting/free-reduced-fee'],
+  userra: ['USERRA', 'https://www.dol.gov/agencies/vets/programs/userra'],
+  survivorLoan: ['VA loan for surviving spouses', 'https://www.va.gov/family-and-caregiver-benefits/housing-assistance/surviving-spouse-home-loan/'],
+  sos: ['Survivor Outreach Services', 'https://home.army.mil/drum/about/Garrison/directorate-human-resources/MPD/personnel-operations-branch-casualty-assistance-center/survivor-outreach-services'],
+  lender: ['Talk to a VA lender', 'https://pcshomes.com/get-help'],
+  fees: ['VA fees and closing costs', `${VA}/funding-fee-and-closing-costs/`],
+  limits: ['VA loan limits', `${VA}/loan-limits/`],
+  buying: ['Buying near Fort Drum', 'https://pcshomes.com/fort-drum/buying'],
+  jtr: ['Joint Travel Regulations', 'https://www.travel.dod.mil/Policy-Regulations/Joint-Travel-Regulations/'],
+};
+const LINKS = {
+  'The week orders drop': [L.planMyMove, L.movingOffice, L.mch, L.childCare],
+  'Renting now?': [L.scra],
+  'Your housing allowance': [L.bah],
+  'Health care on the move': [L.tricareMove, L.milConnect],
+  'Arrival week': [L.visitors],
+  'Schools and spouse jobs': [L.spouseWorks],
+  'VA health care': [L.vaClinics],
+  'Free help with claims and benefits': [L.nysVets],
+  Counseling: [L.vetCenter],
+  'Your DD214': [L.records],
+  'Veterans property tax exemption': [L.taxExempt],
+  'New York extras': [L.dmv, L.libertyPass],
+  'Jobs and school': [L.nyLabor, L.tuition],
+  'Retiring from Fort Drum': [L.tap],
+  'VA loan eligibility': [L.vaEligibility],
+  'Documents for your COE': [L.coe],
+  'TRICARE Reserve Select (2026)': [L.trs],
+  'Free New York licenses': [L.dec],
+  'Your civilian job': [L.userra],
+  'VA home loan': [L.survivorLoan],
+  'Help at Fort Drum': [L.sos],
+  'Property taxes': [L.taxExempt],
+  'Benefits help': [L.libertyPass],
+  '1. Get your Certificate of Eligibility (COE)': [L.coe],
+  '2. Get pre-approved': [L.lender],
+  '3. Know the funding fee': [L.fees],
+  '4. Loan limits': [L.limits],
+  '5. Costs': [L.fees],
+  '6. Older and rural homes': [L.buying],
+  'Moving allowance (DLA): $1,870 to $6,385, one time': [L.jtr],
+  'Child care while you wait: up to $500': [L.childCare],
+  'Damage you find after the movers leave: tell the carrier in writing within 7 days': [L.movingOffice],
+  'Moving some of it yourself (a PPM): turn in paperwork within 45 days': [L.movingOffice],
+  'Property tax exemption: file by March 1 in most towns': [L.taxExempt],
+};
+
 const PATHS = {
   ad: {
     title: 'Your move, step by step (active duty, any branch)',
+    photo: 'drum',
     items: [
       ['The week orders drop', 'Make your plan on Military OneSource Plan My Move (free, every branch). Book your household goods move in DPS and call the Fort Drum transportation office, (315) 772-6384; the move help line is 833-MIL-MOVE. Apply for on-post housing with Mountain Community Homes, (315) 955-6644. Request child care at MilitaryChildCare.com. In EFMP? Update your enrollment before you go: Fort Drum EFMP, (315) 772-5476.'],
       ['Renting now?', 'Under the SCRA you can end the lease with written notice and a copy of your orders.'],
@@ -28,6 +113,7 @@ const PATHS = {
   },
   vet: {
     title: 'Settling in as a veteran or retiree',
+    photo: 'square',
     items: [
       ['VA health care', 'Enroll or move your care: 877-222-8387. Watertown VA Clinic, 1222 Arsenal St., (315) 425-8240. Fort Drum VA Clinic (specialty care), (315) 425-4400 ext. 58158. Syracuse VA Medical Center, (315) 425-4400.'],
       ['Free help with claims and benefits', 'Jefferson County Veterans Service Agency, (315) 785-3086. Lewis County, (315) 377-2065 (Wednesday and Friday). St. Lawrence County, (315) 386-4754. NYS Veterans\' Services in Watertown, (315) 785-2468.'],
@@ -41,6 +127,7 @@ const PATHS = {
   },
   gr: {
     title: 'For National Guard and Reserve',
+    photo: 'drum',
     items: [
       ['VA loan eligibility', 'Six creditable years, or 90 days of non-training active duty. For the Guard, Title 10 counts, or 90 days with 30 in a row under Title 32 shown on a DD214.'],
       ['Documents for your COE', 'Activated: your DD214. Serving, never activated: a signed statement of service with your creditable years. Discharged Guard: NGB Form 22 and NGB Form 23. Discharged Reserve: your latest retirement points statement.'],
@@ -52,6 +139,7 @@ const PATHS = {
   },
   ss: {
     title: 'For surviving spouses',
+    photo: 'square',
     items: [
       ['VA home loan', 'There is no service-time test if you receive or are eligible for DIC. COE: VA Form 26-1817 if you receive DIC; otherwise VA Form 21P-534EZ, your marriage license and the death certificate. No funding fee if you receive DIC.'],
       ['Help at Fort Drum', 'Survivor Outreach Services, Clark Hall, (315) 772-6357.'],
@@ -64,6 +152,7 @@ const PATHS = {
 const SHARED = [
   {
     title: 'Your VA loan, step by step',
+    photo: 'maple',
     items: [
       ['1. Get your Certificate of Eligibility (COE)', 'Your lender can request it online, or you can at va.gov. Veterans use a DD214; active duty use a statement of service signed by your command.'],
       ['2. Get pre-approved', 'The VA sets no minimum credit score (lenders set their own). The VA\'s guideline is monthly debts at 41% of income or less. BAH and BAS count as income. VA also checks what\'s left each month: in the Northeast, a family of four with a loan of $80,000 or more needs $1,025.'],
@@ -77,6 +166,7 @@ const SHARED = [
   {
     title: 'Moving pay you may be owed (active duty)',
     adOnly: true,
+    photo: 'square',
     items: [
       ['Moving allowance (DLA): $1,870 to $6,385, one time', 'Depends on rank and dependents. Ask finance; up to 80% can come as an advance.'],
       ['Mileage (MALT): $0.235 a mile', 'For each car you\'re authorized to drive. This rate took effect July 1, 2026.'],
@@ -122,6 +212,15 @@ const SECTIONS = [PATHS.ad, PATHS.vet, PATHS.gr, PATHS.ss, ...SHARED];
 const escapeHtml = (value = '') =>
   String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
+// Phone numbers in a step become tap-to-call links: (315) 772-6384, 1-800-444-5445, 877-222-8387,
+// an extension (dialed after a pause), 833-MIL-MOVE and the 988 crisis line.
+const PHONE = /\((\d{3})\) (\d{3})-(\d{4})(?: ext\. (\d+))?|\b(?:1-)?(\d{3})-(\d{3})-(\d{4})\b|\b833-MIL-MOVE\b|\b988(?=, then press 1)/g;
+const telFor = (m, a, b, c, ext, d, f, g) => {
+  if (a) return `tel:+1${a}${b}${c}${ext ? `,,${ext}` : ''}`;
+  if (d) return `tel:+1${d}${f}${g}`;
+  return m === '988' ? 'tel:988' : 'tel:+18336456683';
+};
+
 function renderChecklistEmail(firstName, who) {
   const e = escapeHtml;
   const name = (firstName || '').trim();
@@ -131,17 +230,27 @@ function renderChecklistEmail(firstName, who) {
   const page = 'https://pcshomes.com/fort-drum/pcs-checklist';
   const others = key && key !== 'ad' ? '' : 'Veteran, Guard, Reserve or surviving spouse? Your own steps are on the interactive checklist.';
   const sections = sectionsFor(key);
+  const helpPage = 'https://pcshomes.com/get-help';
+  const connect = 'When you start looking at homes, tell us what you need and a person from our team will reach out.';
 
   const text = [
     subject.toUpperCase(),
     '',
     intro,
     '',
-    ...sections.flatMap((s) => [s.title.toUpperCase(), ...s.items.map(([a, b]) => `[ ] ${a}${b ? `${/[.?!]$/.test(a) ? '' : '.'} ${b}` : ''}`), '']),
+    ...sections.flatMap((s) => [
+      s.title.toUpperCase(),
+      ...s.items.flatMap(([a, b]) => [
+        `[ ] ${a}${b ? `${/[.?!]$/.test(a) ? '' : '.'} ${b}` : ''}`,
+        ...(LINKS[a] || []).map(([label, url]) => `    ${label}: ${url}`),
+      ]),
+      '',
+    ]),
     CHECKED,
     '',
     `The interactive version saves your progress on your phone: ${page}`,
     ...(others ? [others] : []),
+    `${connect} ${helpPage}`,
     'Questions? Text or call (315) 221-4857. A real person answers.',
     '',
     'PCSHomes. Built for service members, by service members. You asked for this checklist on pcshomes.com.',
@@ -149,11 +258,17 @@ function renderChecklistEmail(firstName, who) {
 
   const navy = '#14263F', ink = '#1A1F2B', rule = '#D9D2C2', paper = '#FBF7EF', gold = '#D9B45B', goldText = '#8A6520';
   const sans = 'Arial,Helvetica,sans-serif', serif = "Georgia,'Times New Roman',serif";
-  const section = (s) => `
-    <p style="margin:28px 0 8px;font:700 21px/1.3 ${serif};color:#1D3557;">${e(s.title)}</p>
+  // Links match the page's step links: gold text, bold, an arrow, and a tall enough tap target.
+  const call = (html) => html.replace(PHONE, (...m) => `<a href="${telFor(...m)}" style="color:${goldText};font-weight:700;white-space:nowrap;">${m[0]}</a>`);
+  const go = ([label, url]) => `<a href="${e(url)}" style="display:inline-block;padding:10px 18px 4px 0;color:${goldText};font:700 17px/1.3 ${sans};text-decoration:none;">${e(label)}&nbsp;&rarr;</a>`;
+  const photo = (p) => (p ? `
+    <p style="margin:30px 0 0;"><img src="${p.src}" width="556" height="${Math.round(556 * p.h / p.w)}" alt="${e(p.alt)}" style="display:block;width:100%;max-width:556px;height:auto;border:0;border-radius:10px;background:${paper};"></p>
+    <p style="margin:6px 0 0;font:400 14px/1.4 ${sans};color:#4A5568;">${e(p.credit)}</p>` : '');
+  const section = (s) => `${photo(PHOTOS[s.photo])}
+    <p style="margin:${s.photo ? 20 : 28}px 0 8px;font:700 21px/1.3 ${serif};color:#1D3557;">${e(s.title)}</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${s.items.map(([a, b]) => `
       <tr><td style="width:30px;padding:10px 0;vertical-align:top;border-top:1px solid ${rule};font:400 20px/1.3 ${sans};color:${ink};">&#9744;</td>
-      <td style="padding:10px 0;vertical-align:top;border-top:1px solid ${rule};font:700 17px/1.45 ${sans};color:${ink};">${e(a)}${b ? `<br><span style="font-weight:400;">${e(b)}</span>` : ''}</td></tr>`).join('')}
+      <td style="padding:10px 0;vertical-align:top;border-top:1px solid ${rule};font:700 17px/1.45 ${sans};color:${ink};">${e(a)}${b ? `<br><span style="font-weight:400;">${call(e(b))}</span>` : ''}${LINKS[a] ? `<br>${LINKS[a].map(go).join('')}` : ''}</td></tr>`).join('')}
     </table>`;
 
   const html = `<!doctype html>
@@ -171,6 +286,8 @@ function renderChecklistEmail(firstName, who) {
     <p style="margin:24px 0 0;font:400 15px/1.55 ${sans};color:#4A5568;">${e(CHECKED)}</p>
     <p style="margin:22px 0 0;"><a href="${page}" style="display:inline-block;padding:16px 22px;border-radius:10px;background:${gold};color:#0E1C30;font:700 17px/1 ${sans};text-decoration:none;">Open the interactive checklist</a></p>
     ${others ? `<p style="margin:14px 0 0;font:400 16px/1.55 ${sans};color:${ink};">${e(others)}</p>` : ''}
+    <p style="margin:18px 0 0;font:400 17px/1.55 ${sans};color:${ink};">${e(connect)}</p>
+    <p style="margin:10px 0 0;"><a href="${helpPage}" style="display:inline-block;padding:15px 21px;border-radius:10px;background:#ffffff;color:${navy};border:1px solid ${navy};font:700 17px/1 ${sans};text-decoration:none;">Talk to a local agent or lender</a></p>
     <p style="margin:18px 0 0;font:400 17px/1.55 ${sans};color:${ink};">Questions? Text or call <a href="tel:+13152214857" style="color:${goldText};font-weight:700;">(315) 221-4857</a>. A real person answers.</p>
     <p style="margin:24px 0 0;font:400 14px/1.5 ${sans};color:#4A5568;">PCSHomes. Built for service members, by service members. You asked for this checklist on pcshomes.com.</p>
   </td></tr>
@@ -181,4 +298,4 @@ function renderChecklistEmail(firstName, who) {
   return { subject, html, text };
 }
 
-module.exports = { renderChecklistEmail, SECTIONS, CHECKED, WHO };
+module.exports = { renderChecklistEmail, SECTIONS, CHECKED, WHO, LINKS, PHOTOS };

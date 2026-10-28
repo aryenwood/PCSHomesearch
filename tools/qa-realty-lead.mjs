@@ -2,7 +2,7 @@
 // Checks the email builder, the routing filter, the send call, and that every routed form
 // asks for both an email and a phone and shows the contact promise the email repeats.
 import { createRequire } from 'node:module';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -141,6 +141,29 @@ for (const [who, figs] of Object.entries(PATH_FIGS)) {
 }
 check(renderChecklistEmail('Dana', 'ad').text.includes('Travel voucher') && renderChecklistEmail('Dana', 'vet').text.includes('set up for: Veteran or retiree'), 'active duty keeps the moving items; a veteran email says who it is set up for');
 check(!/\$178|\$110 for lodging/.test(plain(checklistPage) + mail.text), 'the old FY2026 per diem is gone');
+// Links and photos: every link key still names a step, every phone number in a step taps to call,
+// and every photo is a site image with alt text and a license record.
+const { LINKS, PHOTOS, SECTIONS } = require(path.join(root, 'netlify/functions/_lib/checklist.js'));
+const stepTitles = new Set(SECTIONS.flatMap((s) => s.items.map(([a]) => a)));
+for (const k of Object.keys(LINKS)) check(stepTitles.has(k), `checklist link "${k}" still names a step`);
+const provenance = readFileSync(path.join(root, 'docs/research-2026-09/photo-provenance.json'), 'utf8');
+for (const [k, p] of Object.entries(PHOTOS)) {
+  const local = p.src.replace('https://pcshomes.com/', '');
+  check(existsSync(path.join(root, local)) && p.alt && provenance.includes(local.replace(/-800\.webp$/, '')), `checklist photo ${k} ships on the site, has alt text and a license record`);
+}
+for (const who of ['ad', 'vet', 'gr', 'ss']) {
+  const m = renderChecklistEmail('Dana', who);
+  check([...m.html.matchAll(/href="([^"]+)"/g)].every(([, h]) => /^(https:\/\/|tel:)/.test(h)), `${who} email: every link is https or tel`);
+  const nums = (m.html.match(/\(\d{3}\) \d{3}-\d{4}/g) || []).length;
+  const tapped = (m.html.match(/<a href="tel:[^"]+"[^>]*>\(\d{3}\) \d{3}-\d{4}/g) || []).length;
+  check(nums > 1 && nums === tapped, `${who} email: all ${nums} local phone numbers tap to call`);
+  check((m.html.match(/<img /g) || []).length >= 2 && !/<img (?![^>]*alt="[^"]+")/.test(m.html), `${who} email: photos break up the list, each with alt text`);
+}
+check(renderChecklistEmail('Dana', 'ad').html.includes('href="tel:+18336456683"') && renderChecklistEmail('Dana', 'vet').html.includes('href="tel:+13154254400,,58158"'), '833-MIL-MOVE and an extension dial the right numbers');
+const fullLead = fn.renderLead('pcshomes-contact', { 'first-name': 'Dana', phone: '3155550142', email: 'dana@example.com', 'preferred-town': 'Evans Mills', 'lead-source': 'utm_source=fb | utm_medium=paid', 'utm-source': 'fb', 'utm-medium': 'paid', 'pcs-date': 'May 2027', 'need-by': 'April 2027', 'rent-or-buy': 'Buy', bedrooms: '3', pets: 'None', 'school-age-kids': 'No', budget: 'Not sure yet', 'va-loan': 'Yes', preapproved: 'No' });
+check(fullLead.subject.endsWith('| Evans Mills') && fullLead.html.includes('in Evans Mills'), 'the town they typed names the area when no page set one');
+check(fullLead.html.includes('Everything we ask was answered') && !fullLead.html.includes('Ask on the first call'), 'a fully answered form says so instead of showing nothing');
+check((fullLead.text.match(/utm_source|fb \/ paid/g) || []).length === 1, 'ad tags appear once in where it came from');
 const twBlock = formBlock(checklistPage, 'pcs-checklist');
 check(/type="email"[^>]*required/.test(twBlock) && /type="tel"[^>]*required/.test(twBlock) && /name="first-name"[^>]*required/.test(twBlock), 'checklist form requires first name, email and phone');
 check(/name="va-loan"/.test(twBlock) && /name="who"/.test(twBlock) && /name="source-page"/.test(twBlock), 'checklist form carries the VA answer, who is moving, and the page');
