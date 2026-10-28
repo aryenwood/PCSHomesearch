@@ -111,7 +111,7 @@
       ? '<div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:3px solid #C9A84C;flex-shrink:0;"><img src="' + escapeAttr(p.photoUrl) + '" alt="' + escapeAttr(p.name) + '" style="width:100%;height:100%;object-fit:cover;"/></div>'
       : '';
     var tags = (p.tags || []).map(function(t) {
-      return '<span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.15);color:#C9A84C;">' + escapeHtml(t) + '</span>';
+      return '<span style="font-size:13px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(201,168,76,0.15);color:#C9A84C;">' + escapeHtml(t) + '</span>';
     }).join('');
     var reviews = (p.reviews || []).map(function(r) {
       return '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">' +
@@ -128,7 +128,7 @@
       ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:6px;font-size:15px;font-weight:700;color:var(--gold-bright);text-decoration:none;">' + escapeHtml(p.reviewsLinkLabel || 'Read all reviews on Zillow →') + '</a>'
       : '';
     var platformBadges = (p.platformBadges || []).map(function(b) {
-      return '<span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:#E2C57A;">' + escapeHtml(b) + '</span>';
+      return '<span style="font-size:13px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:#E2C57A;">' + escapeHtml(b) + '</span>';
     }).join('');
     if (platformBadges) platformBadges = '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">' + platformBadges + '</div>';
 

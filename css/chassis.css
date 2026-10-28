@@ -330,3 +330,20 @@ footer > a { display: inline-flex; align-items: center; min-height: 44px; paddin
   .hero-photo img, .hero-banner img { animation: none !important; }
   .js .cascade > * { opacity: 1 !important; transform: none !important; }
 }
+
+/* ── no pills (owner, Oct 2026: "the pills make it feel AI") ─────
+   Photo captions sit on a dark fade at the bottom of the photo; choice buttons and tags get the 10px / 6px radius. */
+figure figcaption, figure .tag, figure .label, .chip { left: 0; right: 0; bottom: 0; top: auto; border-radius: 0; box-shadow: none;
+  background: linear-gradient(180deg, rgba(14,28,48,0) 0%, rgba(14,28,48,.82) 100%); color: #fff;
+  padding: 34px 14px 12px; font: 500 15px/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: 0; text-transform: none; }
+.chips button, .filter-bar .filter-btn { border-radius: 10px; }
+.category-badge, .vendor-tag, .vendor-tags span, .dist-row .tag { border-radius: 6px; }
+
+/* ── folds (phones): long sections open on a tap ─────────────── */
+.fold-btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 56px; margin: 16px 0 0; padding: 0 16px;
+  border: 1px solid var(--rule-strong); border-radius: 10px; background: var(--card); color: var(--navy); text-align: left; cursor: pointer;
+  font: 700 var(--t-m)/1.3 'DM Sans', 'DM Fallback', system-ui, sans-serif; }
+.fold-btn::after { content: '+'; flex: none; font-size: 24px; line-height: 1; color: var(--gold); }
+.fold-btn.open::after { content: '\2212'; }
+.fold-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.plate .fold-btn { background: rgba(246,241,230,0.07); border-color: rgba(246,241,230,0.3); color: var(--plate-ink); }

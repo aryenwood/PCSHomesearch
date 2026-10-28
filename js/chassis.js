@@ -67,6 +67,39 @@ document.documentElement.classList.add('js');
     });
   }
 
+  // folds (phones only): a long section shows its heading and summary, and opens on a tap.
+  // section[data-fold="Label"] folds everything after its first child; [data-fold-block="Label"] folds itself.
+  // A link or address pointing inside a fold opens it. Desktop is untouched.
+  if (window.matchMedia && window.matchMedia('(max-width: 780px)').matches) {
+    var foldN = 0;
+    function makeFold(after, nodes, label) {
+      var body = document.createElement('div'); body.className = 'fold-body'; body.id = 'fold-' + (++foldN); body.hidden = true;
+      nodes.forEach(function (n) { body.appendChild(n); });
+      var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'fold-btn';
+      btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', body.id); btn.textContent = label;
+      after.parentNode.insertBefore(btn, after.nextSibling); btn.parentNode.insertBefore(body, btn.nextSibling);
+      btn.addEventListener('click', function () {
+        var open = body.hidden; body.hidden = !open; btn.setAttribute('aria-expanded', String(open)); btn.classList.toggle('open', open);
+        if (open) body.querySelectorAll('.rv, .cascade').forEach(function (e) { e.classList.add('in'); });
+      });
+    }
+    document.querySelectorAll('section[data-fold]').forEach(function (sec) {
+      var kids = [].slice.call(sec.children); var head = kids.shift(); if (head && kids.length) makeFold(head, kids, sec.getAttribute('data-fold'));
+    });
+    document.querySelectorAll('[data-fold-block]').forEach(function (blk) {
+      var mark = document.createElement('span'); blk.parentNode.insertBefore(mark, blk); makeFold(mark, [blk], blk.getAttribute('data-fold-block')); mark.remove();
+    });
+    function openFor(hash) {
+      if (!hash || hash.length < 2) return;
+      var t = document.getElementById(decodeURIComponent(hash.slice(1))); if (!t) return;
+      var body = t.closest('.fold-body') || (t.matches('section[data-fold]') ? t.querySelector(':scope > .fold-body') : null);
+      if (body && body.hidden) { var b = document.querySelector('[aria-controls="' + body.id + '"]'); if (b) b.click(); }
+    }
+    openFor(location.hash);
+    window.addEventListener('hashchange', function () { openFor(location.hash); });
+    document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href*="#"]'); if (a && a.pathname === location.pathname) openFor(a.hash); });
+  }
+
   // reading progress (chapter pages carry #prog in the bar)
   var prog = document.getElementById('prog');
   if (prog) {

@@ -253,7 +253,7 @@
     .pick figure { margin: 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); aspect-ratio: 4 / 5; position: relative; }
     .pick img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.6,.2,1); }
     .pick:hover img { transform: scale(1.04); }
-    .pick .tag { position: absolute; left: 12px; top: 12px; margin: 0; background: rgba(251,247,239,.94); color: var(--navy); font-size: var(--t-s); letter-spacing: .02em; text-transform: none; padding: 6px 12px; border-radius: 100px; }
+    .pick .tag { position: absolute; left: 12px; top: 12px; margin: 0; background: rgba(251,247,239,.94); color: var(--navy); font-size: var(--t-s); letter-spacing: .02em; text-transform: none; padding: 6px 12px; border-radius: 10px; }
     .pick h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; color: var(--navy); margin: 14px 0 0; }
     .pick p { margin: 4px 0 0; font-size: var(--t-m); color: var(--muted); }
 
@@ -263,7 +263,7 @@
     .season { background: var(--card); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); display: grid; grid-row: span 3; grid-template-rows: subgrid; }
     .season figure { margin: 0; aspect-ratio: 4 / 3; position: relative; }
     .season img { width: 100%; height: 100%; object-fit: cover; }
-    .season .label { position: absolute; left: 12px; bottom: 12px; color: #fff; font: 700 var(--t-2xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; padding: 6px 12px; border-radius: 100px; }
+    .season .label { position: absolute; left: 12px; bottom: 12px; color: #fff; font: 700 var(--t-2xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; padding: 6px 12px; border-radius: 10px; }
     .season h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 21px; color: var(--navy); margin: 0; padding: 16px 18px 0; line-height: 1.3; }
     .season ul { list-style: none; margin: 10px 0 0; padding: 0 18px 18px; }
     .season li { font-size: var(--t-m); line-height: 1.45; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); }
@@ -274,7 +274,7 @@
     /* the places finder */
     .pf-tools { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 14px; align-items: end; margin-top: 26px; }
     .chips { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
-    .chips button { min-height: 46px; border-radius: 100px; border: 1px solid var(--rule-strong); background: var(--card); color: var(--navy);
+    .chips button { min-height: 46px; border-radius: 10px; border: 1px solid var(--rule-strong); background: var(--card); color: var(--navy);
                     font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; padding: 0 8px; }
     .chips button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
     .lf { display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--rule-strong); border-radius: 9px; background: var(--card); padding: 8px 14px 7px; }
@@ -316,7 +316,7 @@
     /* hunt, fish, paddle: one photo, the rules before you go, then its own finder */
     .od-photo { margin: 30px 0 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); aspect-ratio: 16 / 7; position: relative; }
     .od-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
-    .od-photo figcaption { position: absolute; left: 12px; bottom: 12px; margin: 0; background: rgba(251,247,239,.94); color: var(--navy); font-size: var(--t-s); font-weight: 700; padding: 6px 12px; border-radius: 100px; }
+    .od-photo figcaption { position: absolute; left: 12px; bottom: 12px; margin: 0; background: rgba(251,247,239,.94); color: var(--navy); font-size: var(--t-s); font-weight: 700; padding: 6px 12px; border-radius: 10px; }
     .od-rules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto 1fr auto; gap: 0 16px; margin-top: 22px; }
     .od-rule { display: grid; grid-row: span 3; grid-template-rows: subgrid; background: var(--card); border-radius: 16px; box-shadow: var(--shadow-photo); border-top: 4px solid var(--navy); padding: 18px 20px 16px; }
     .od-rule h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 19px; color: var(--navy); margin: 0; line-height: 1.3; }
@@ -378,6 +378,10 @@
       .od-photo { aspect-ratio: 4 / 3; }
       .od-rules { grid-template-columns: 1fr; }
     }
+    /* no pills: photo labels sit on a dark fade at the bottom of the photo */
+    .pick .tag, .season .label, .od-photo figcaption { left: 0; right: 0; bottom: 0; top: auto; border-radius: 0; margin: 0;
+      background: linear-gradient(180deg, rgba(14,28,48,0) 0%, rgba(14,28,48,.82) 100%); color: #fff; padding: 34px 14px 12px;
+      font: 600 15px/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: 0; text-transform: none; }
   </style>
 </head>
 <body>
@@ -599,7 +603,7 @@
   <h2>Big water, big woods, <em>minutes from the gate.</em></h2>
   <p class="lh-sub">Lake Ontario, the St. Lawrence and the Black River on one side; the Tug Hill's forests and snowmobile trails on the other. <span class="ocount">61</span> spots below, closest first, each checked on the DEC, New York State Parks, Fort Drum or the county's own page.</p>
   <figure class="od-photo"><img src="/images/places/salmon-river-fall-fishing-800.webp" srcset="/images/places/salmon-river-fall-fishing-800.webp 800w, /images/places/salmon-river-fall-fishing.webp 1600w" sizes="(max-width: 1100px) 100vw, 1060px" alt="Two anglers in waders fishing the Salmon River under orange and gold fall trees" loading="lazy" decoding="async" width="800" height="534"><figcaption>The Salmon River in October</figcaption></figure>
-  <div class="od-rules">
+  <div class="od-rules" data-fold-block="Licenses, passes and the rules (4)">
     <article class="od-rule"><h3>Licenses at the resident price</h3><p>Stationed in New York more than 30 days? You pay the resident price for fishing, hunting and trapping licenses. Fishing takes a license from age 16, except on free fishing days: Feb. 14&ndash;15, June 27&ndash;28, Sept. 26 and Nov. 11 in 2026.</p><a href="https://dec.ny.gov/regulatory/permits-licenses/sporting-and-use/sporting/free-reduced-fee/sporting-licenses-under-patriot-plan" target="_blank" rel="noopener">DEC: military licenses &rarr;</a></article>
     <article class="od-rule"><h3>Hunting and fishing on post</h3><p>The training areas are open for recreation with a Fort Drum Recreational Access Pass ($25 for adults 18 and older, good through Dec. 31) and your New York license. Check in before you go, online or at <a class="nw" href="tel:+18552679770">1-855-267-9770</a>.</p><a href="https://fortdrum.isportsman.net/access.aspx" target="_blank" rel="noopener">Fort Drum iSportsman &rarr;</a></article>
     <article class="od-rule"><h3>Your first New York hunt</h3><p>First-time hunters take hunter education before their first license, and bowhunters after deer or bear take a bowhunter course too. New York accepts hunter education certificates from other states, and both courses run online.</p><a href="https://dec.ny.gov/things-to-do/hunting/hunter-education" target="_blank" rel="noopener">DEC: hunter education &rarr;</a></article>

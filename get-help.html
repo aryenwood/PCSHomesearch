@@ -89,7 +89,7 @@
     /* five filters, five equal slots; phones: All on its own row, then two even pairs */
     .filter-bar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; max-width: 1060px; margin: 0 auto; padding: 26px 20px 0; }
     @media (max-width: 780px) { .filter-bar { grid-template-columns: 1fr 1fr; } .filter-bar > :first-child { grid-column: 1 / -1; } .filter-btn { padding: 6px 12px; border-radius: 12px; line-height: 1.25; } }
-    .filter-btn { background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 100px;
+    .filter-btn { background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 10px;
       padding: 0 22px; min-height: 44px; font: 700 var(--t-xs) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; transition: all .2s; }
     .filter-btn:hover { border-color: var(--gold-bright); color: var(--navy); }
     .filter-btn.active { background: var(--gold-bright); color: var(--plate-deep); border-color: var(--gold-bright); }
@@ -102,7 +102,7 @@
     .vendor-card:hover { box-shadow: var(--shadow-photo); transform: translateY(-3px); }
     .vendor-card.placeholder { opacity: .55; }
     .vendor-card.placeholder:hover { box-shadow: var(--shadow); transform: none; }
-    .category-badge { position: static; order: -1; align-self: flex-start; margin-bottom: 10px; font-size: 10px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
+    .category-badge { position: static; order: -1; align-self: flex-start; margin-bottom: 10px; font-size: 13px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; padding: 5px 12px; border-radius: 6px; }
     .category-badge.agent { background: var(--gold-tint); color: var(--gold); }
     .category-badge.lender { background: rgba(29,53,87,0.08); color: var(--navy); }
     .category-badge.inspector { background: rgba(47,107,79,0.12); color: var(--ok); }
@@ -118,7 +118,7 @@
     .vendor-trusted { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 700; color: var(--gold); }
     .vendor-trusted svg { flex-shrink: 0; }
     .vendor-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-    .vendor-tag { background: var(--gold-tint); color: var(--gold); font-size: 10.5px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+    .vendor-tag { background: var(--gold-tint); color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; padding: 4px 10px; border-radius: 10px; }
     .vendor-desc { font-size: var(--t-s); color: var(--muted); line-height: 1.65; margin-bottom: 20px; flex: 1; }
     .vendor-cta { display: block; width: 100%; padding: 13px; background: var(--navy); color: #fff; border: none; border-radius: 9px;
       font: 700 var(--t-s) 'DM Sans', 'DM Fallback', system-ui, sans-serif; cursor: pointer; transition: background .2s, color .2s; text-align: center; min-height: 44px; }
@@ -411,7 +411,7 @@
     </div>
     <h3 style="font-family:'Libre Baskerville', 'LB Fallback', serif;font-size:19px;color:var(--navy);margin-bottom:8px;">We&rsquo;re vetting partners in this category right now.</h3>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:18px;">Only professionals with a proven Fort Drum track record make the network. Are you one? Introduce yourself.</p>
-    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:var(--gold);padding:13px 22px;border-radius:100px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
+    <a href="#partner-apply" style="display:inline-block;border:1.5px solid var(--gold);color:var(--gold);padding:13px 22px;border-radius:10px;font-weight:700;font-size:13px;">Apply to Join the Network</a>
   </div>
 </section>
 
@@ -569,7 +569,7 @@
         <textarea class="pim-input" id="piMessage" name="message" rows="3" enterkeyhint="send" placeholder="e.g. Military discounts, 8 years serving Fort Drum families"></textarea>
       </div>
       <div class="form-reassure">We review every inquiry personally and reply within 48 hours.</div>
-      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:100px;padding:14px;font-family:'DM Sans', 'DM Fallback', system-ui, sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:46px;">Send inquiry</button>
+      <button type="button" onclick="submitPartnerInquiry()" style="width:100%;background:#1D3557;color:#fff;border:none;border-radius:10px;padding:14px;font-family:'DM Sans', 'DM Fallback', system-ui, sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:46px;">Send inquiry</button>
       <div style="font-size:12px;color:#6B7280;text-align:center;margin-top:12px;">Questions? <a href="sms:+13152214857" style="color:var(--gold);font-weight:600;text-decoration:none;">Text</a> or call <a href="tel:+13152214857" style="color:var(--gold);font-weight:600;text-decoration:none;">(315) 221-4857</a></div>
     </form>
     <div id="partnerInquirySuccess" style="display:none;padding:40px 28px;text-align:center;">
