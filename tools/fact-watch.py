@@ -134,8 +134,17 @@ def harmless_redirect(url, final):
     if re.search(r"/(blocked|captcha)\b", final):
         return True
     a, b = urllib.parse.urlsplit(url), urllib.parse.urlsplit(final)
-    same_host = a.netloc.removeprefix("www.") == b.netloc.removeprefix("www.")
-    return same_host and a.path in ("", "/") and re.fullmatch(r"/[a-z]{2}(-[A-Za-z]{2})?/?", b.path or "") is not None
+    if a.netloc.removeprefix("www.") != b.netloc.removeprefix("www."):
+        return False
+    locale = re.match(r"/[a-z]{2}(-[A-Za-z]{2})(?=/|$)", b.path or "")
+    return bool(locale) and b.path[locale.end():].rstrip("/") == a.path.rstrip("/")
+
+
+def curl_ok(url):
+    """Some servers drop Python's TLS handshake but serve curl and browsers; ask curl before calling a link dead."""
+    r = subprocess.run(["curl", "-s", "-L", "-m", "25", "-o", "/dev/null", "-A", qa.UA, "-w", "%{http_code}", url],
+                       capture_output=True, text=True, check=False)
+    return r.stdout.strip() == "200"
 
 
 def check_links(state, today):
@@ -150,6 +159,9 @@ def check_links(state, today):
                 fails.pop(url, None)
                 if qa.moved(url, final) and not harmless_redirect(url, final):
                     moved.append({"url": url, "now": final, "in": sorted(urls[url])})
+                continue
+            if curl_ok(url):
+                fails.pop(url, None)
                 continue
             f = fails.setdefault(url, {"first": today.isoformat(), "runs": 0})
             f["runs"] += 1

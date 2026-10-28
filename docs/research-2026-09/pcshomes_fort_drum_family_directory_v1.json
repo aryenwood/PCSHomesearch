@@ -2444,12 +2444,20 @@
    "priority": "P1",
    "status": "active",
    "source_name": "Fort Drum Clark Hall Services",
-   "source_url": "https://home.army.mil/drum/about/services-clark-hall",
+   "source_url": "https://home.army.mil/drum/my-fort/all-services/SFL-TAP",
    "verified_at": "2026-09-24",
    "last_checked_at": "2026-09-24",
    "reverify_days": 60,
    "recheck_at": "2026-11-23",
-   "change_history": [],
+   "change_history": [
+    {
+     "date": "2026-10-28",
+     "field": "source_url",
+     "old": "https://home.army.mil/drum/about/services-clark-hall",
+     "new": "https://home.army.mil/drum/my-fort/all-services/SFL-TAP",
+     "reason": "The Clark Hall services page now redirects to the garrison mission page. Fort Drum's SFL-TAP page lists the Employment Readiness Program in Clark Hall, Bldg. 10720, Room B2-18, at (315) 772-1090 / 7581 / 6984 / 4767. MilitaryINSTALLATIONS lists 315-772-9611; the garrison page is kept as the local source."
+    }
+   ],
    "admin_notes": null,
    "provenance": "restored_from_pcshomes_deep_research_report"
   },

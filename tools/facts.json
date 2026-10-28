@@ -27,8 +27,10 @@
         "netlify/functions/_lib/checklist.js",
         "fort-drum/pcs-checklist.html"
       ],
-      "source": "https://www.travel.dod.mil/Allowances/Mileage-Rates/",
-      "expect": [],
+      "source": "https://www.gsa.gov/policy-regulations/regulations/federal-travel-regulation/ftr-and-related-files/gsa-bulletin-ftr-2603",
+      "expect": [
+        "23.5"
+      ],
       "changes": [
         "01-01",
         "07-01"
@@ -44,7 +46,7 @@
         "fort-drum/pcs-checklist.html",
         "pcshomes-glossary.html"
       ],
-      "source": "https://www.travel.dod.mil/Allowances/Dislocation-Allowance/",
+      "source": "https://www.dfas.mil/MilitaryMembers/travelpay/armypcs/dislocationallowance",
       "expect": [],
       "changes": [
         "01-01"
@@ -59,8 +61,10 @@
         "netlify/functions/_lib/checklist.js",
         "fort-drum/pcs-checklist.html"
       ],
-      "source": "https://www.travel.dod.mil/Allowances/Temporary-Lodging-Expense/",
-      "expect": [],
+      "source": "https://www.dfas.mil/militarymembers/travelpay/armypcs/tle/",
+      "expect": [
+        "290"
+      ],
       "changes": [
         "01-01"
       ],
@@ -89,8 +93,11 @@
         "netlify/functions/_lib/checklist.js",
         "fort-drum/pcs-checklist.html"
       ],
-      "source": "https://www.travel.dod.mil/Policy-Regulations/Joint-Travel-Regulations/",
-      "expect": [],
+      "source": "https://public.militarychildcare.csd.disa.mil/mcc-central/mcchome/travel-reimbursement",
+      "expect": [
+        "$500",
+        "30 September 2027"
+      ],
       "changes": [],
       "expires": "2027-09-30",
       "verified": "2026-10-28"
@@ -110,7 +117,8 @@
       "changes": [
         "01-01"
       ],
-      "verified": "2026-09-24"
+      "verified": "2026-09-24",
+      "note": "The buying page carries all 42 NY225 BAH values; DoD publishes 2027 rates in mid-December."
     },
     {
       "id": "va-funding-fee",
@@ -157,11 +165,55 @@
         "netlify/functions/_lib/checklist.js",
         "fort-drum/pcs-checklist.html"
       ],
-      "source": "https://www.tricare.mil/Costs/HealthPlanCosts/PremiumsEnrollmentFees",
+      "source": "https://tricare.mil/FAQs/TRS/TRS_How_Much",
       "expect": [],
       "changes": [
         "01-01"
       ],
+      "verified": "2026-10-28",
+      "note": "2027 premiums reported as $60.54 / $307.48 from Jan 1, 2027 (seen in search results only; confirm on tricare.mil before changing the site)."
+    },
+    {
+      "id": "mortgage-rate",
+      "label": "Freddie Mac weekly 30-year fixed average quoted on the buying page",
+      "value": "7.32%",
+      "files": [
+        "fort-drum/buying.html"
+      ],
+      "source": "https://www.freddiemac.com/pmms",
+      "expect": [],
+      "changes": [
+        "01-01",
+        "02-01",
+        "03-01",
+        "04-01",
+        "05-01",
+        "06-01",
+        "07-01",
+        "08-01",
+        "09-01",
+        "10-01",
+        "11-01",
+        "12-01"
+      ],
+      "verified": "2026-10-28",
+      "note": "Updates every Thursday; refresh the dated sentence once a month."
+    },
+    {
+      "id": "claims-window",
+      "label": "Household goods claims: notice within 180 days, file within 12 months (9 before May 15, 2026); 7 days for home damage and essential items",
+      "value": "180 days / 12 months / 7 days",
+      "files": [
+        "netlify/functions/_lib/checklist.js",
+        "fort-drum/pcs-checklist.html"
+      ],
+      "source": "https://www.ppa.mil/Your-Move/The-Claims-Process/",
+      "expect": [
+        "180 days",
+        "12 months",
+        "seven days"
+      ],
+      "changes": [],
       "verified": "2026-10-28"
     },
     {
@@ -191,7 +243,7 @@
         "netlify/functions/_lib/checklist.js",
         "fort-drum/pcs-checklist.html"
       ],
-      "source": "https://www.tax.ny.gov/bus/mortgage/mtgidx.htm",
+      "source": "https://www.tax.ny.gov/pdf/current_forms/mortgage/mt15.pdf",
       "expect": [],
       "changes": [
         "01-01"
@@ -206,10 +258,45 @@
         "netlify/functions/_lib/checklist.js",
         "fort-drum/pcs-checklist.html"
       ],
-      "source": "https://www.benefits.va.gov/WARMS/docs/admin26/m26_07/m26-7-chapter4-credit-underwriting.pdf",
+      "source": "https://www.knowva.ebenefits.va.gov/system/templates/selfservice/va_ssnew/help/customer/locale/en-US/portal/554400000001018/content/554400000330850/VA-Pamphlet-VAP26-7-Chapter-04-Credit-Underwriting",
       "expect": [],
       "changes": [
         "01-01"
+      ],
+      "verified": "2026-10-28"
+    },
+    {
+      "id": "events-and-seasons",
+      "label": "Living Here event dates, park seasons and DEC free fishing days",
+      "value": "event and season dates",
+      "files": [
+        "living-here.html",
+        "data/places.json"
+      ],
+      "source": "https://parks.ny.gov/",
+      "expect": [],
+      "changes": [
+        "01-15",
+        "04-15"
+      ],
+      "verified": "2026-10-28",
+      "note": "Each new year: post the year's event dates as organizers announce them (Boldt Castle, county fair, Pirate Days, Winterlude, Mountainfest) and the new DEC free fishing days."
+    },
+    {
+      "id": "heap-season",
+      "label": "HEAP season dates (regular opens Nov 2, 2026; emergency Jan 4, 2027)",
+      "value": "November 2, 2026",
+      "files": [
+        "fort-drum/winter.html",
+        "pcshomes-spouse.html"
+      ],
+      "source": "https://www.ny.gov/services/apply-heating-assistance-heap",
+      "expect": [
+        "November 2, 2026",
+        "January 4, 2027"
+      ],
+      "changes": [
+        "09-15"
       ],
       "verified": "2026-10-28"
     }
