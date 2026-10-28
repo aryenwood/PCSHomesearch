@@ -381,7 +381,7 @@
     /* no pills: photo labels sit on a dark fade at the bottom of the photo */
     .pick .tag, .season .label, .od-photo figcaption { left: 0; right: 0; bottom: 0; top: auto; border-radius: 0; margin: 0;
       background: linear-gradient(180deg, rgba(14,28,48,0) 0%, rgba(14,28,48,.82) 100%); color: #fff; padding: 34px 14px 12px;
-      font: 600 15px/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: 0; text-transform: none; }
+      font: 700 15px/1.35 'DM Sans', 'DM Fallback', system-ui, sans-serif; letter-spacing: 0; text-transform: none; }
   </style>
 </head>
 <body>
@@ -704,7 +704,7 @@
           <div>
             <div id="gpName" style="font-family:'Libre Baskerville', 'LB Fallback', serif;font-size:16px;font-weight:700;color:#fff;line-height:1.25;"></div>
             <div id="gpAddress" style="font-size:12px;color:rgba(255,255,255,0.62);margin-top:4px;line-height:1.5;"></div>
-            <div id="gpNotes" style="font-size:11px;color:var(--gold-bright);margin-top:6px;font-weight:600;"></div>
+            <div id="gpNotes" style="font-size:11px;color:var(--gold-bright);margin-top:6px;font-weight:700;"></div>
             <div id="gpLinks" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;"></div>
           </div>
           <button onclick="document.getElementById('groceryPanel').style.display='none'" aria-label="Close place details" style="background:rgba(255,255,255,0.1);border:none;color:rgba(255,255,255,0.65);cursor:pointer;width:40px;height:40px;font-size:16px;line-height:1;flex-shrink:0;margin:-8px -8px 0 8px;">&times;</button>
@@ -864,7 +864,7 @@
 <script>
 (function(){
   function showMapError(){
-    document.getElementById('groceryMap').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;">Couldn\'t load the map: refresh or call us at <a href="tel:+13152214857" style="color:var(--gold-bright);text-decoration:none;font-weight:600;">&nbsp;(315) 221-4857</a></div>';
+    document.getElementById('groceryMap').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;">Couldn\'t load the map: refresh or call us at <a href="tel:+13152214857" style="color:var(--gold-bright);text-decoration:none;font-weight:700;">&nbsp;(315) 221-4857</a></div>';
   }
 
   function initMap(){
@@ -903,7 +903,7 @@
         document.getElementById('gpName').textContent = v.name;
         document.getElementById('gpAddress').textContent = v.address;
         document.getElementById('gpNotes').textContent = v.description || DEFAULT_NOTES[v.category] || '';
-        var linkStyle = 'display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--gold-bright);text-decoration:none;background:rgba(217,180,91,0.1);border:1px solid rgba(217,180,91,0.25);padding:5px 12px;';
+        var linkStyle = 'display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--gold-bright);text-decoration:none;background:rgba(217,180,91,0.1);border:1px solid rgba(217,180,91,0.25);padding:5px 12px;';
         var linksHtml = '';
         if (v.phone) {
           var telDigits = String(v.phone).replace(/\D/g, '');
@@ -1002,7 +1002,7 @@
     <a href="pcshomes-spouse.html" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(217,180,91,0.08);border:1px solid rgba(217,180,91,0.2);margin-top:6px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D9B45B" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Spouse & Family HQ</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.2);">›</div></a>
     <a href="pcshomes-spouse.html#numbers" style="text-decoration:none;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;background:rgba(220,90,90,0.10);border:1px solid rgba(220,90,90,0.3);margin-top:6px;min-height:44px;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58C8C" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><div style="font-size:13px;font-weight:700;color:#fff;">Emergency &amp; 2am numbers</div><div style="margin-left:auto;font-size:13px;color:rgba(255,255,255,0.3);">›</div></a>
     <div style="display:flex;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
-      <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);">Glossary</a>
+      <a href="pcshomes-glossary.html" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:12px;font-weight:700;color:rgba(255,255,255,0.55);">Glossary</a>
       <a href="/get-help" onclick="toggleQuickLinks()" style="flex:1;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px;border-radius:10px;background:rgba(217,180,91,0.12);border:1px solid rgba(217,180,91,0.25);font-size:12px;font-weight:700;color:#D9B45B;">Talk to an Expert</a>
     </div>
   </div>

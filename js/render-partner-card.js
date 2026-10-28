@@ -122,7 +122,7 @@
 
     var primaryCta = '<button class="vendor-cta" data-request-name="' + escapeAttr(p.name) + '" data-request-category="Real Estate Agent" style="flex:1;">Request Info</button>';
     var phoneCta = p.phone
-      ? '<a href="tel:' + escapeAttr(p.phone) + '" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;text-decoration:none;font-family:\'DM Sans\',sans-serif;min-height:44px;">Call/Text</a>'
+      ? '<a href="tel:' + escapeAttr(p.phone) + '" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;text-decoration:none;font-family:\'DM Sans\',sans-serif;min-height:44px;">Call/Text</a>'
       : '';
     var reviewsLink = p.reviewsUrl
       ? '<a href="' + escapeAttr(p.reviewsUrl) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:6px;font-size:15px;font-weight:700;color:var(--gold-bright);text-decoration:none;">' + escapeHtml(p.reviewsLinkLabel || 'Read all reviews on Zillow →') + '</a>'

@@ -83,8 +83,16 @@ document.documentElement.classList.add('js');
         if (open) body.querySelectorAll('.rv, .cascade').forEach(function (e) { e.classList.add('in'); });
       });
     }
+    // the section's heading block (eyebrow, h2, its summary line) stays; everything after it folds
+    function isHead(el) { return /^H[12]$/.test(el.tagName) || /(^| )(eyebrow|sec-eyebrow|sec-head|sub|lede|lh-sub|dek)( |$)/.test(el.className); }
     document.querySelectorAll('section[data-fold]').forEach(function (sec) {
-      var kids = [].slice.call(sec.children); var head = kids.shift(); if (head && kids.length) makeFold(head, kids, sec.getAttribute('data-fold'));
+      var host = sec.children.length === 1 ? sec.firstElementChild : sec;
+      var kids = [].slice.call(host.children), keep = [];
+      while (kids.length && (!keep.length || isHead(kids[0]))) keep.push(kids.shift());
+      // never fold a way to reach us: stop at a contact band, a plate, a form or the sources note
+      var stop = kids.findIndex(function (k) { return k.matches('.ask, .ask-band, .plate, form, .page-verified') || !!k.querySelector('.ask-band, form'); });
+      if (stop !== -1) kids = kids.slice(0, stop);
+      if (kids.length) makeFold(keep[keep.length - 1], kids, sec.getAttribute('data-fold'));
     });
     document.querySelectorAll('[data-fold-block]').forEach(function (blk) {
       var mark = document.createElement('span'); blk.parentNode.insertBefore(mark, blk); makeFold(mark, [blk], blk.getAttribute('data-fold-block')); mark.remove();

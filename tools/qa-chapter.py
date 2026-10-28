@@ -45,6 +45,9 @@ with sync_playwright() as p:
         report["hash_opens_district"] = pg.evaluate(f"document.querySelector('#{DISTRICT} details.dx').open")
         pg.goto(BASE + CHAPTER, wait_until="networkidle")
         closed = pg.evaluate("[...document.querySelectorAll('details.dx')].every(d => !d.open)")
+        # on phones the districts sit inside a tap-to-open section: open it the way a reader would
+        report["districts_folded_on_phone"] = pg.evaluate("(() => { const b = document.querySelector('details.dx').closest('.fold-body'); return !!b && b.hidden; })()")
+        pg.evaluate("(() => { const b = document.querySelector('details.dx').closest('.fold-body'); if (b && b.hidden) document.querySelector('[aria-controls=\"' + b.id + '\"]').click(); })()")
         pg.locator("details.dx summary").first.click()
         report["expanders_closed_by_default"] = closed
         report["expander_opens_on_tap"] = pg.evaluate("document.querySelector('details.dx').open")
