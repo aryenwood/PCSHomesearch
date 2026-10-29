@@ -197,8 +197,10 @@
     @media (prefers-reduced-motion: no-preference) { .lh-hero img { animation: lh-drift 30s ease-in-out infinite alternate; } }
     @keyframes lh-drift { from { transform: scale(1.02); } to { transform: scale(1.08) translate(-1.2%, -0.8%); } }
     .lh-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,28,48,0) 24%, rgba(14,28,48,.6) 56%, rgba(14,28,48,.94) 100%); }
+    /* wide screens: the words sit beside the castle over bright sky, so a side shade keeps the gold eyebrow readable and leaves the castle clear */
+    @media (min-width: 781px) { .lh-hero::after { background: linear-gradient(90deg, rgba(14,28,48,.78) 0%, rgba(14,28,48,.55) 40%, rgba(14,28,48,0) 72%), linear-gradient(180deg, rgba(14,28,48,0) 24%, rgba(14,28,48,.6) 56%, rgba(14,28,48,.94) 100%); } }
     .lh-hero .shell { position: relative; z-index: 1; width: 100%; padding-block: 0 44px; }
-    .lh-hero .eyebrow { color: var(--gold-bright); }
+    .lh-hero .eyebrow { color: var(--gold-bright); text-shadow: 0 1px 3px rgba(14,28,48,.7); }
     .lh-hero h1 { color: #fff; font-size: clamp(40px, 7vw, 76px); line-height: 1.04; max-width: 12em; }
     .lh-hero h1 em { color: var(--gold-bright); }
     .lh-hero .answer { color: #fff; font-size: clamp(19px, 2.2vw, 23px); line-height: 1.55; max-width: 31em; margin: 18px 0 0; }
@@ -374,7 +376,7 @@
   <picture><source media="(max-width: 780px)" srcset="/images/places/boldt-from-alexandria-bay-phone.webp" width="900" height="1080"><img src="/images/places/boldt-from-alexandria-bay.webp" srcset="/images/places/boldt-from-alexandria-bay-800.webp 800w, /images/places/boldt-from-alexandria-bay.webp 2000w" sizes="100vw" alt="Boldt Castle on Heart Island, seen across the St. Lawrence River from Alexandria Bay, with a jet ski crossing the water" width="2000" height="1329" fetchpriority="high"></picture>
   <div class="shell">
     <p class="eyebrow">Living here &middot; Fort Drum</p>
-    <h1>What it's <em>really like at Fort Drum.</em></h1>
+    <h1>Is Fort Drum <em>really that bad?</em></h1>
     <p class="answer">That's Boldt Castle, on an island in the St. Lawrence, about <b>44 minutes from post.</b> There's a Lake Ontario beach about 34 minutes away, a free city park with a zoo next door, and <span class="pcount">105</span> family places below, closest first.</p>
   </div>
 </header>

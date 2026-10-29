@@ -76,6 +76,16 @@
    "license": "Public domain (U.S. Army / DVIDS)",
    "page": "https://www.dvidshub.net/image/8968333/students-practice-hands-stem-learning-fort-drum-starbase",
    "ai_assisted": false
+  },
+  {
+   "file": "images/places/tug-hill-salmon-river-winter(-800).webp",
+   "title": "North Branch Salmon River, Tug Hill region, NY (winter), taken January 9, 2009",
+   "author": "Antepenultimate",
+   "license": "CC BY-SA 4.0",
+   "page": "https://commons.wikimedia.org/wiki/File:North_Branch_Salmon_River,_Tug_Hill_region,_NY_(winter).JPG",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "ai_assisted": false,
+   "note": "Oct 28, 2026: replaces public-square-winter on the homepage ('The North Country in January'); resized only, credited under The network on index.html"
   }
  ],
  "crops": {

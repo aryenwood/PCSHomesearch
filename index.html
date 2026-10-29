@@ -179,6 +179,36 @@
       .stage-row { transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), opacity .25s; }
       .stage-grid.has-pick .stage-row:not([aria-expanded="true"]) { opacity: .82; }
     }
+    /* Joe's videos: the cover is ours; TikTok's player replaces it only after a tap */
+    .tt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .tt { min-width: 0; }
+    .tt-frame { margin: 0; position: relative; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-photo); background: var(--plate-deep); aspect-ratio: 4 / 5; }
+    .tt-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
+    .tt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .tt.playing .tt-frame { aspect-ratio: 9 / 16; }
+    .tt-play { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; background: none; cursor: pointer; z-index: 2; }
+    .tt-play span { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+                    background: rgba(251,247,239,.93); box-shadow: 0 4px 16px rgba(14,28,48,.3); transition: transform .2s var(--ease-out); }
+    .tt-play span::after { content: ''; position: absolute; left: 25px; top: 21px; border-style: solid; border-width: 11px 0 11px 18px;
+                           border-color: transparent transparent transparent var(--navy); }
+    .tt-play:hover span { transform: scale(1.06); }
+    .tt-play:focus-visible { outline: none; }
+    .tt-play:focus-visible span { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+    .tt h3 { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: 22px; line-height: 1.3; color: var(--navy); margin: 18px 0 6px; }
+    .tt p { margin: 0; font-size: 17px; line-height: 1.55; color: var(--ink); }
+    .tt-out { display: inline-flex; align-items: center; min-height: 44px; color: var(--gold); font-weight: 700; font-size: 17px; text-decoration: none; }
+    .tt-note { margin: 18px 0 0; font-size: 15px; color: var(--muted); }
+    .tt-note a { color: var(--navy); font-weight: 700; }
+    @media (max-width: 780px) {
+      .tt-grid { grid-template-columns: 1fr; gap: 26px; }
+      .tt { display: grid; grid-template-columns: 112px 1fr; column-gap: 14px; align-items: start; }
+      .tt-frame { aspect-ratio: 9 / 16; grid-row: 1 / span 3; }
+      .tt h3 { margin-top: 0; }
+      .tt-play span { transform: scale(.75); }
+      .tt.playing { display: block; }
+      .tt.playing .tt-frame { max-width: 420px; margin-bottom: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .tt-play span { transition: none; } }
   </style>
   <script type="application/ld+json">
   {
@@ -333,8 +363,63 @@
     </div>
     <a class="more" href="pcshomes-fortdrum.html">All guides →</a>
   </div>
-  <div class="side rv"><figure><img src="images/places/public-square-winter-800.webp" srcset="images/places/public-square-winter-800.webp 800w, images/places/public-square-winter.webp 1600w" sizes="(max-width: 980px) 100vw, 360px" alt="Snowbanks along Watertown's Public Square in winter" loading="lazy" decoding="async" width="800" height="600"/><figcaption>The North Country in January</figcaption></figure></div>
+  <div class="side rv"><figure><img src="images/places/tug-hill-salmon-river-winter-800.webp" srcset="images/places/tug-hill-salmon-river-winter-800.webp 800w, images/places/tug-hill-salmon-river-winter.webp 1600w" sizes="(max-width: 980px) 100vw, 360px" alt="Snow-covered trees along the North Branch of the Salmon River on Tug Hill under a blue January sky" loading="lazy" decoding="async" width="800" height="600"/><figcaption>The North Country in January</figcaption></figure></div>
 </div></section>
+
+<!-- FROM JOE — a local agent's short videos (owner request, Oct 28 2026). Real estate tips only; listings and
+     personal posts stay off because they go stale. Nothing loads from TikTok until a family taps play. -->
+<section id="from-joe"><div class="wide">
+  <h2 class="rv">What Joe tells <em>families moving in.</em></h2>
+  <p class="sub rv">Joseph Murtha grew up here and sells homes around Fort Drum. Three short videos.</p>
+  <div class="tt-grid rv">
+    <article class="tt">
+      <figure class="tt-frame" data-tt="7691865799237143839">
+        <img src="images/joe/joe-va-loan-rates.webp" alt="" loading="lazy" decoding="async" width="405" height="720"/>
+        <button type="button" class="tt-play" data-title="Joe Murtha: ask for the seller's rate" aria-label="Play: Ask for the seller's rate, 1 minute 44 seconds"><span aria-hidden="true"></span></button>
+        <figcaption>1:44</figcaption>
+      </figure>
+      <h3>Ask for the seller's rate</h3>
+      <p>A VA loan can be taken over by the next buyer, and some sellers here have rates from 2.5% to 5%. It's rarely advertised, so ask. Expect some money up front and extra steps.</p>
+      <a class="tt-out" href="https://www.tiktok.com/@josephdavidii/video/7691865799237143839" target="_blank" rel="noopener">Watch on TikTok →</a>
+    </article>
+    <article class="tt">
+      <figure class="tt-frame" data-tt="7688556451429715231">
+        <img src="images/joe/joe-fort-drum-winters.webp" alt="" loading="lazy" decoding="async" width="405" height="720"/>
+        <button type="button" class="tt-play" data-title="Joe Murtha: surviving Fort Drum winters" aria-label="Play: Pull a year of heating bills, 2 minutes 20 seconds"><span aria-hidden="true"></span></button>
+        <figcaption>2:20</figcaption>
+      </figure>
+      <h3>Pull a year of heating bills</h3>
+      <p>Buying or renting, ask for the last 12 months of utility bills and look hard at December through March. BAH against rent or mortgage isn't the whole picture.</p>
+      <a class="tt-out" href="https://www.tiktok.com/@josephdavidii/video/7688556451429715231" target="_blank" rel="noopener">Watch on TikTok →</a>
+    </article>
+    <article class="tt">
+      <figure class="tt-frame" data-tt="7686570784650824991">
+        <img src="images/joe/joe-duplex.webp" alt="" loading="lazy" decoding="async" width="405" height="720"/>
+        <button type="button" class="tt-play" data-title="Joe Murtha: don't skip the duplex" aria-label="Play: Don't skip the duplex, 3 minutes 57 seconds"><span aria-hidden="true"></span></button>
+        <figcaption>3:57</figcaption>
+      </figure>
+      <h3>Don't skip the duplex</h3>
+      <p>Live in one side and rent the other to keep your monthly costs low. Joe bought one in his early 20s and still owns it.</p>
+      <a class="tt-out" href="https://www.tiktok.com/@josephdavidii/video/7686570784650824991" target="_blank" rel="noopener">Watch on TikTok →</a>
+    </article>
+  </div>
+  <p class="tt-note rv">Videos play from TikTok. More from Joe at <a href="https://www.tiktok.com/@josephdavidii" target="_blank" rel="noopener">@josephdavidii</a>.</p>
+</div></section>
+<script>
+// Joe's videos: swap the cover for TikTok's player on tap, so the page sends nothing to TikTok before then
+document.querySelectorAll('.tt-play').forEach(function(b){
+  b.addEventListener('click', function(){
+    var fig = b.closest('.tt-frame'), f = document.createElement('iframe');
+    f.src = 'https://www.tiktok.com/player/v1/' + fig.getAttribute('data-tt') + '?autoplay=1&music_info=0&description=0&rel=0';
+    f.title = b.getAttribute('data-title');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    fig.closest('.tt').classList.add('playing');
+    fig.replaceChildren(f);
+    f.focus();
+  });
+});
+</script>
 
 <!-- THE NETWORK — resolver rows -->
 <section><div class="wrap">
@@ -345,6 +430,7 @@
     <a href="tel:+13157674222"><span class="towns">DP Development &amp; Properties</span><span class="dist">High-end rentals built for veterans and active duty families</span><span class="call">(315) 767-4222</span></a>
     <a href="https://www.woodconsultingllc.net" target="_blank" rel="noopener"><span class="towns">Wood Consulting</span><span class="dist">Home services: water treatment and solar for homes around Fort Drum</span><span class="call">Book a home service →</span></a>
   </div>
+  <p class="photo-credits">Photos: Tug Hill in January: <a href="https://commons.wikimedia.org/wiki/File:North_Branch_Salmon_River,_Tug_Hill_region,_NY_(winter).JPG" target="_blank" rel="noopener">Antepenultimate</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Credits for the other photos are on <a href="/living-here#photo-credits">Living Here</a>.</p>
 </div></section>
 
 <!-- Netlify form registration for the guide pages' "Have someone call me" bands (they post by script as popup-lead).
@@ -453,7 +539,7 @@ function toggleQuickLinks(){
 var STAGES = {
   orders: ['Orders just dropped', [
     ['Register for childcare', 'The childcare waitlist at Fort Drum is long, so it helps to join the day you get orders.', 'Spouse HQ: childcare', 'pcshomes-spouse.html#childcare'],
-    ['Apply for on-post housing', 'Rank, dependents and eligibility date set your place, so it helps to apply with orders in hand.', 'Housing guide', '/fort-drum/housing#onpost'],
+    ['Apply for on-post housing', 'Your eligibility date and priority group set your place, so it helps to apply with orders in hand.', 'Housing guide', '/fort-drum/housing#onpost'],
     ['Pre-enroll the kids', 'You can start school enrollment from where you are, before you arrive.', 'Schools guide', '/fort-drum/schools']]],
   sixty: ['60 days out', [
     ['Check the school district before you sign a lease', 'Fort Drum spans four districts and the lines can be confusing, so it\'s worth confirming first.', 'Schools guide', '/fort-drum/schools'],
