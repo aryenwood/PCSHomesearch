@@ -41,8 +41,8 @@ img { max-width: 100%; }
 .skip:focus { left: 0; }
 
 /* ── sticky bar ─────────────────────────────────────────────── */
-.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(251,247,239,0.94);
-       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+/* solid paper, no backdrop blur: at 94% opacity the blur was invisible, and iPhone Safari re-blurs it on every scroll frame */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--paper); border-bottom: 1px solid var(--rule); }
 .bar-in { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; gap: 14px; }
 .bar b { font-family: 'Libre Baskerville', 'LB Fallback', serif; font-size: var(--t-m); color: var(--navy); font-weight: 700; }
 .bar b em { color: var(--gold); font-style: normal; }
@@ -60,7 +60,7 @@ img { max-width: 100%; }
 .wide { max-width: 1100px; margin: 0 auto; padding-inline: 20px; }
 
 /* ── reveals (js/chassis.js adds .in) ───────────────────────── */
-.js .rv { opacity: 0; transform: translateY(16px); transition: opacity .65s cubic-bezier(.2,.6,.2,1), transform .65s cubic-bezier(.2,.6,.2,1); }
+.js .rv { opacity: 0; transform: translateY(16px); transition: opacity .4s cubic-bezier(.2,.6,.2,1), transform .4s cubic-bezier(.2,.6,.2,1); }
 .js .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1 !important; transform: none !important; transition: none !important; } }
 
@@ -312,11 +312,12 @@ footer > a { display: inline-flex; align-items: center; min-height: 44px; paddin
 .hero-photo img, .hero-banner img { transform-origin: 50% 40%; }
 @media (prefers-reduced-motion: no-preference) {
   .hero-photo img, .hero-banner img { animation: pcsh-kenburns 26s ease-in-out infinite alternate; }
-  .js .cascade > * { opacity: 0; transform: translateY(14px); transition: opacity .55s var(--ease-out), transform .55s var(--ease-out); }
+  /* quick and started at the screen edge, so words never wait behind the thumb (owner, Oct 28: "feels sluggish") */
+  .js .cascade > * { opacity: 0; transform: translateY(14px); transition: opacity .4s var(--ease-out), transform .4s var(--ease-out); }
   .js .cascade.in > * { opacity: 1; transform: none; }
-  .js .cascade.in > :nth-child(2) { transition-delay: .07s; } .js .cascade.in > :nth-child(3) { transition-delay: .14s; }
-  .js .cascade.in > :nth-child(4) { transition-delay: .21s; } .js .cascade.in > :nth-child(5) { transition-delay: .28s; }
-  .js .cascade.in > :nth-child(6) { transition-delay: .35s; } .js .cascade.in > :nth-child(n+7) { transition-delay: .42s; }
+  .js .cascade.in > :nth-child(2) { transition-delay: .04s; } .js .cascade.in > :nth-child(3) { transition-delay: .08s; }
+  .js .cascade.in > :nth-child(4) { transition-delay: .12s; } .js .cascade.in > :nth-child(5) { transition-delay: .16s; }
+  .js .cascade.in > :nth-child(n+6) { transition-delay: .2s; }
   .stage-row img, .trio figure img, .side figure img { transition: transform .6s var(--ease-out); }
   .stage-row:active { transform: scale(.98); }
 }

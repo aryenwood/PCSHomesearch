@@ -14,11 +14,11 @@ document.documentElement.classList.add('js');
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;
-          en.target.style.transitionDelay = Math.min((seen++ % 5) * 55, 220) + 'ms';
+          en.target.style.transitionDelay = Math.min((seen++ % 4) * 40, 120) + 'ms';
           en.target.classList.add('in');
           io.unobserve(en.target);
         });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+      }, { rootMargin: '0px', threshold: 0 });   // start on the first pixel in view; a tall block can never stay hidden
       els.forEach(function (e) {
         if (e.getBoundingClientRect().top < window.innerHeight) e.classList.add('in');
         else io.observe(e);
@@ -36,7 +36,7 @@ document.documentElement.classList.add('js');
   else {
     var lio = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); lio.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    }, { rootMargin: '0px', threshold: 0 });
     lists.forEach(function (l) { lio.observe(l); });
   }
 
