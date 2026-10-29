@@ -194,7 +194,7 @@
     .lh-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
     /* phones get their own crop of the same photo, the castle in the top third above the words */
     @media (max-width: 780px) { .lh-hero img { object-position: 50% 0%; } }
-    @media (prefers-reduced-motion: no-preference) { .lh-hero img { animation: lh-drift 30s ease-in-out infinite alternate; } }
+    @media (prefers-reduced-motion: no-preference) { .lh-hero img { animation: lh-drift 30s ease-in-out infinite alternate; } .is-scrolling .lh-hero img { animation-play-state: paused; } }
     @keyframes lh-drift { from { transform: scale(1.02); } to { transform: scale(1.08) translate(-1.2%, -0.8%); } }
     .lh-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,28,48,0) 24%, rgba(14,28,48,.6) 56%, rgba(14,28,48,.94) 100%); }
     /* wide screens: the words sit beside the castle over bright sky, so a side shade keeps the gold eyebrow readable and leaves the castle clear */

@@ -116,9 +116,22 @@ document.documentElement.classList.add('js');
       if (ticking) return; ticking = true;
       requestAnimationFrame(function () {
         var d = document.documentElement;
-        prog.style.width = (100 * window.scrollY / (d.scrollHeight - window.innerHeight)) + '%';
+        prog.style.transform = 'scaleX(' + Math.min(1, window.scrollY / (d.scrollHeight - window.innerHeight)) + ')';
         ticking = false;
       });
+    }, { passive: true });
+  }
+
+  // While the page scrolls, the contour ground and the photo drift hold still and resume ~0.2 s after.
+  // Both move over tens of seconds, so the pause can't be seen, and slower graphics chips spend every
+  // frame on the scroll itself (owner, Oct 28: desktop scrolling "super noticeable" choppy).
+  var scrolling = false;
+  if (!reduce && document.querySelector('canvas.ground, .hero-photo img, .hero-banner img, .lh-hero img')) {
+    var idle = null, root = document.documentElement;
+    window.addEventListener('scroll', function () {
+      if (!scrolling) { scrolling = true; root.classList.add('is-scrolling'); }
+      clearTimeout(idle);
+      idle = setTimeout(function () { scrolling = false; root.classList.remove('is-scrolling'); }, 200);
     }, { passive: true });
   }
 
@@ -153,7 +166,7 @@ document.documentElement.classList.add('js');
     // ~30fps is plenty for a drift measured in tens of seconds, and halves the phone's paint work
     var last = 0;
     function loop(now) {
-      if (now - last >= 33) { last = now; t = now; draw(); }
+      if (!scrolling && now - last >= 33) { last = now; t = now; draw(); }
       if (running) raf = requestAnimationFrame(loop);
     }
     size();
