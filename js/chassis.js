@@ -125,13 +125,16 @@ document.documentElement.classList.add('js');
   // While the page scrolls, the contour ground and the photo drift hold still and resume ~0.2 s after.
   // Both move over tens of seconds, so the pause can't be seen, and slower graphics chips spend every
   // frame on the scroll itself (owner, Oct 28: desktop scrolling "super noticeable" choppy).
-  var scrolling = false;
+  var scrolling = false, resumers = [];
   if (!reduce && document.querySelector('canvas.ground, .hero-photo img, .hero-banner img, .lh-hero img')) {
     var idle = null, root = document.documentElement;
     window.addEventListener('scroll', function () {
       if (!scrolling) { scrolling = true; root.classList.add('is-scrolling'); }
       clearTimeout(idle);
-      idle = setTimeout(function () { scrolling = false; root.classList.remove('is-scrolling'); }, 200);
+      idle = setTimeout(function () {
+        scrolling = false; root.classList.remove('is-scrolling');
+        resumers.forEach(function (f) { f(); });
+      }, 200);
     }, { passive: true });
   }
 
@@ -164,12 +167,17 @@ document.documentElement.classList.add('js');
       }
     }
     // ~30fps is plenty for a drift measured in tens of seconds, and halves the phone's paint work
+    // While the page scrolls the loop stops asking for frames at all, so the browser can scroll without
+    // waking the page each frame; the drift clock stops with it and picks up where it left off.
     var last = 0;
     function loop(now) {
-      if (!scrolling && now - last >= 33) { last = now; t = now; draw(); }
+      raf = null;
+      if (scrolling) return;
+      if (now - last >= 33) { t += Math.min(now - last, 66); last = now; draw(); }
       if (running) raf = requestAnimationFrame(loop);
     }
-    size();
+    resumers.push(function () { if (running && !raf) raf = requestAnimationFrame(loop); });
+    size(); draw();   // a first frame now, so a plate that scrolls into view mid-scroll already shows its lines
     // Re-measure only when the plate itself changes size (an expander opening inside it).
     // window resize fires on every iPhone toolbar show/hide while scrolling; reallocating
     // the canvas there makes the plate flicker.
@@ -183,15 +191,15 @@ document.documentElement.classList.add('js');
     } else {
       window.addEventListener('resize', function () { size(); draw(); }, { passive: true });
     }
-    if (reduce) { draw(); }
-    else if ('IntersectionObserver' in window) {
+    // reduced motion keeps the still first frame
+    if (!reduce && 'IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (en.isIntersecting && !running) { running = true; raf = requestAnimationFrame(loop); }
-          else if (!en.isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+          else if (!en.isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); raf = null; }
         });
       }, { threshold: 0.02 }).observe(cv);
-    } else { draw(); }
+    }
   });
 })();
 
