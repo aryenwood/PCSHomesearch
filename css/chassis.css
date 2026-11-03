@@ -3,6 +3,18 @@
    Type uses the --t-* scale and space uses the 8px --s-* scale. No other sizes.
    Serif display sizes (h1/h2/h3, big numerals) are the display scale and live here, nowhere else. */
 
+/* The two families, served from this site so first paint never waits on another company's server.
+   These are Google's own latin files (Libre Baskerville v24, DM Sans v17; OFL, licences in /fonts/).
+   Each file is variable; each weight is named separately, as Google's stylesheet did, so a 600 still
+   resolves to the 700 face and nothing renders differently. */
+@font-face { font-family: 'Libre Baskerville'; src: url('/fonts/libre-baskerville-v24-latin.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Libre Baskerville'; src: url('/fonts/libre-baskerville-v24-latin.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Libre Baskerville'; src: url('/fonts/libre-baskerville-italic-v24-latin.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Libre Baskerville'; src: url('/fonts/libre-baskerville-italic-v24-latin.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/dm-sans-v17-latin.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/dm-sans-v17-latin.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/dm-sans-v17-latin.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
 /* Metric-matched fallbacks: until the web fonts arrive, text is set in Georgia/Arial scaled to the
    same widths, so lines wrap the same before and after the swap and nothing below them jumps.
    Ratios measured against Libre Baskerville / DM Sans in Chromium, Sep 2026; DM Sans at body sizes
