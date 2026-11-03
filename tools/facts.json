@@ -176,7 +176,7 @@
     {
       "id": "mortgage-rate",
       "label": "Freddie Mac weekly 30-year fixed average quoted on the buying page",
-      "value": "7.32%",
+      "value": "7.24%",
       "files": [
         "fort-drum/buying.html"
       ],
@@ -196,7 +196,7 @@
         "11-01",
         "12-01"
       ],
-      "verified": "2026-10-28",
+      "verified": "2026-11-02",
       "note": "Updates every Thursday; refresh the dated sentence once a month."
     },
     {
